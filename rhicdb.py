@@ -324,7 +324,6 @@ class line:
         # Dictionary of corrector names to a list of coil SiteWideNames
         self.correctors = {}
         # Dictionary of corrector coil SiteWideNames to coil names
-        self.coil_types = set()
         self.ele_geometry=set()
         self.ele_strength=set()
         state = 0
