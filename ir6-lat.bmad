@@ -1,0 +1,242 @@
+! FIX: incorrect RHIC CQ modules
+yo5_cq7_mod:line=(obl7b,
+ yo5_b7,
+ oqbw7,
+ yo5_qd7,
+ ocq7,
+ lmp05y07,
+ ocfl)
+yo5_cq8_mod:line=(ocfl,
+ lmp05y08,
+ ocq,
+ yo5_qf8,
+ oqbwm,
+ yo5_b8,
+ obl8b)
+
+e275 = 275e9
+p275 = sqrt(e275*e275-m_proton*m_proton)
+
+! Detector solenoid
+sol_rot = 0.025
+sol_half: solenoid, l=2, bs_field=0
+star_detect_f: sol_half, fringe_at=entrance_end
+star_detect_r: sol_half, fringe_at=exit_end
+pb_sol_f: patch, ref_coords=no_end, x_pitch=sol_rot,
+ x_offset=-sol_half[l]*sin(sol_rot)
+pe_sol_f: patch, ref_coords=no_end, x_pitch=-sol_rot
+l_sol_pf: line=(pb_sol_f,star_detect_f,pe_sol_f)
+pb_sol_r: patch, ref_coords=no_end, x_pitch=sol_rot
+pe_sol_r: patch, ref_coords=no_end, x_pitch=-sol_rot,
+ x_offset=-sol_half[l]*tan(sol_rot)
+l_sol_pr: line=(pb_sol_r,star_detect_r,pe_sol_r)
+
+! Extra offset since I don't want ot have a z_offset for the detector solenoid
+dz_sol_r = -sol_half[l]*tan(sol_rot)*tan(0.5*sol_rot)
+! Layout near the IR
+
+o1pr: drift, l=38
+q1apr: quadrupole, l=1.8, superimpose, ref=o1pr, ref_origin=beginning, offset=4.2+dz_sol_r
+q1bpr: quadrupole, l=1.4, superimpose, ref=o1pr, ref_origin=beginning, offset=6.3+dz_sol_r
+q2pr: quadrupole, l=4.5, superimpose, ref=o1pr, ref_origin=beginning, offset=10.75+dz_sol_r
+
+! b0pf layout
+ze = 5.8 ! Distance along electron line to B0 entrance plane
+ac = 25e-3 ! Crossing angle
+xb0hf = 1.45779264977192957E-01 ! Distance of B0 axis from electron line
+
+d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
+b0pf: sbend, l=1.20, field_master=t, b1_gradient = 8.12223828336297515E+00
+b0pf[db_field] = xb0hf*b0pf[b1_gradient]
+pb_b0pf: patch, ref_coords=no_end, x_offset = -3.02264219559301335E-002, x_pitch = 2.67043931616361939E-02
+pe_b0pf: patch, ref_coords=no_end, x_offset = ze*tan(ac) - xb0hf, x_pitch = -ac
+d2_pf: drift
+b0apf: sbend, l=0.60, field_master=t
+pb_b0apf: patch, ref_coords=no_end
+pe_b0apf: patch, ref_coords=no_end
+d3_pf: drift
+! Q1 forward
+! Represented by three quadrupoles
+! oq1pf is the iron
+oq1pf: pipe, l=3.5
+lq1pfbeg = +8.7768511358365120e-01
+lq1apf = +9.0177077738536116e-01
+lq1bpf = +1.1613766261661405e+00
+lq1cpf = +1.1468521770041784e+00
+lq1pfend = +9.1231530586066856e-01
+q1apf: quadrupole, l=lq1apf, superimpose, ref=oq1pf, offset=-0.5*(lq1pfbeg-lq1bpf-lq1cpf-lq1pfend)
+q1bpf: quadrupole, l=lq1bpf, superimpose, ref=oq1pf, offset=-0.5*(lq1pfbeg+lq1apf-lq1cpf-lq1pfend)
+q1cpf: quadrupole, l=lq1cpf, superimpose, ref=oq1pf, offset=-0.5*(lq1pfbeg+lq1apf+lq1bpf-lq1pfend)
+blq1275 = +2.2432056209539334e+02
+fq1apf = +3.7547133404469496e-01
+fq1bpf = +3.6124589607054558e-01
+fq1cpf = +2.6328276988475935e-01
+ovq1pf: overlay = {
+ q1apf[k1] : k1*l*fq1apf/lq1apf,
+ q1bpf[k1] : k1*l*fq1bpf/lq1bpf,
+ q1cpf[k1] : k1*l*fq1cpf/lq1cpf},
+ var = {k1,l}, l=lq1apf+lq1bpf+lq1cpf ! Do not modify l; this is to make it act like a quad.
+d5_pf: drift
+q2pf: quadrupole, l=3.80
+pb_q2pf: patch, ref_coords=no_end
+pe_q2pf: patch, ref_coords=no_end
+d6_pf: drift
+b1pf: sbend, l=3.00, field_master=t
+pb_b1pf: patch, ref_coords=no_end
+pe_b1pf: patch, ref_coords=no_end
+d7_pf: drift
+b1apf: sbend, l=1.50
+pb_b1apf: patch, ref_coords=no_end
+pe_b1apf: patch, ref_coords=no_end
+
+! These are RHIC DX magnets
+b1pr: sbend
+b2pr: sbend
+o_b1pr : overlay={
+ b1pr[l]:lcendx/sinc(0.5*angle),
+ b1pr[g]:2*sin(0.5*angle)/lcendx,
+ b1pr[e1]:0.5*angle,
+ b1pr[e2]:0.5*angle},
+ var={angle}
+o_b2pr : overlay={
+ b2pr[l]:lcendx/sinc(0.5*angle),
+ b2pr[g]:2*sin(0.5*angle)/lcendx,
+ b2pr[e1]:0.5*angle,
+ b2pr[e2]:0.5*angle},
+ var={angle}
+
+! New dipoles
+b2pf: sbend, l=4.4
+b3pf: sbend, l=4.4
+
+oint: drift, l=0.3
+
+! Drifts from magnet to flange, new magnets
+ofl: drift, l=0.5
+o2fl: drift, l=2*ofl[l]
+
+! Quads for proton forward
+q3pf: quadrupole, l=0.75
+qf3_pf: quadrupole, l=lq3
+! Nominal quads for proton rear
+qcrab: quadrupole, l=1.5
+q3pr: qcrab, superimpose, ref=o1pr, ref_origin=end, ele_origin=end, offset=-ofl[l]
+q4pr: qcrab
+q5pr: qcrab
+
+! Other drifts
+o2pr: drift
+o3pr: drift
+o10int_pr: drift, l=2.9798943330376915E-01 ! Just to fit previous version
+d8_pf: drift, l=16.5
+d9_pf: drift
+
+l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds
+o9injct:drift,l=l9injct
+
+! Drifts for rotators, snakes, and crabs
+o_crab_ip6f: pipe, l=15.06
+o_crab_ip6r: pipe, l=15.2
+o_snake_ip6: pipe, l=l7dummy+2*ldum1fl
+o_rotator_ip6f: pipe, l=l7dummy+2*ldum1fl
+o_rotator_ip6r: pipe, l=l7dummy+2*ldum1fl
+
+! Far-forward detectors
+o_roman_pot_ip6_1: instrument, l=5e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-4.03654156323990687E+000 ! z=26.1
+o_roman_pot_ip6_2: instrument, l=5e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-6.03876768738732128E+000 ! z=28.1
+o_off_mom_ip6_1: instrument, l=1e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-1.24458912846590426E+001 ! z=34.5
+o_off_mom_ip6_2: instrument, l=1e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-1.44481174088064570E+001 ! z=36.5
+
+! Proton forward, closer orbit near IR
+b1apf[dg] = -2.7*c_light/p275
+
+! Forward geometry
+D2_PF[L] = +9.01271368225624814E-001
+PE_B0APF[X_OFFSET] = -3.35339011530041585E-003
+PE_B0APF[X_PITCH] = -5.04984917138313113E-003
+PB_B0APF[X_OFFSET] = -3.24124784149819637E-004
+PB_B0APF[X_PITCH] = +7.20840839611508726E-003
+D3_PF[L] =  3.83860454925630756E-001
+D5_PF[L] = +3.89069911377144806E-001
+PE_Q2PF[X_OFFSET] = -3.32802030065817295E-002
+PE_Q2PF[X_PITCH] = -8.50784348282005234E-003
+PB_Q2PF[X_OFFSET] = -4.90576945774339867E-003
+PB_Q2PF[X_PITCH] = +1.06608188932094290E-002
+D6_PF[L] = +5.01735480633649811E-001
+PE_B1PF[X_OFFSET] = -1.80369119489946148E-002
+PB_B1PF[X_PITCH] = +1.66206204176246215E-002
+PB_B1PF[X_OFFSET] = -1.51436449904647375E-002
+PE_B1PF[X_PITCH] = -5.50024340556791707E-003
+D7_PF[L] = +5.01695641782968327E-001
+PE_B1APF[X_OFFSET] = +1.96219812510122936E-003
+PE_B1APF[X_PITCH] = -2.11363048088140416E-002
+PB_B1APF[X_OFFSET] = -3.69732122116240500E-002
+PB_B1APF[X_PITCH] = +2.55526627114428841E-002
+B2PF[G] = +5.62846183687445902E-003
+D9_PF[L] = +5.38366111361763799E+000
+B3PF[G] = +5.06214590826366620E-003
+
+! Geometric parameter values
+O2PR[L] =  1.66686780884237962E+001
+O3PR[L] =  6.77592289451467789E+000
+o_b1pr[angle] = -17e-3
+O_B2PR[ANGLE] =  3.67453870996644781E-003
+
+hsr6w: line=(
+ yo5_int9_6,yo5_d9,o9injct,yo5_cq9,
+ yo5_int8_2,yo5_d8,yo5_int8_1,yo5_cq8_mod,
+ o_snake_ip6,
+ oint,
+ yo5_cq7_mod,
+ o_rotator_ip6f,
+ yo5_cqt6,
+ oint,
+ ofl, b3pf, ofl,
+ oint,
+ yo5_cqt4,
+ oint,
+ yo5_d5,
+ oint,
+ yo5_cqt5,
+ d9_pf,
+ ofl, qf3_pf, ofl,
+ o_crab_ip6f,
+ ofl, q3pf,
+ o2fl, b2pf,
+ d8_pf,
+ pb_b1apf, b1apf, pe_b1apf,
+ d7_pf,
+ pb_b1pf, b1pf, pe_b1pf,
+ d6_pf,
+ pb_q2pf, q2pf, pe_q2pf,
+ d5_pf,
+ oq1pf,
+ d3_pf,
+ pb_b0apf, b0apf, pe_b0apf,
+ d2_pf,
+ pb_b0pf, b0pf, pe_b0pf,
+ d1_pf,
+ l_sol_pf)
+
+! FIX: missing interconnects
+hsr6d: line=(
+ l_sol_pr,
+ o1pr,
+ o_crab_ip6r,
+ ofl, q4pr, o2pr,
+ b1pr, o2fl,
+ q5pr, ofl,
+ o3pr,
+ yi6_cqt4,
+ o_rotator_ip6r,
+ yi6_cqt5,
+ ofl, b2pr, ofl,
+ yi6_cqt6,
+ yi6_d5,
+ yi6_cq7,
+ yi6_d6,
+ yi6_cq8,
+ yi6_d9,
+ yi6_cqb9,
+ yi6_d8,
+ o10int_pr)

@@ -1,0 +1,28 @@
+&tao_start
+ startup_file = 'hsr.tao'
+/
+
+&tao_params
+ global%draw_curve_off_scale_warn = f
+ global%history_file = '.history_tao'
+ global%lmdif_negligible_merit = 1e-60
+ global%n_opti_cycles = 128
+/
+
+&tao_design_lattice
+ n_universes = 6
+ design_lattice(1)%file = 'hsr-275-10.bmad'
+ design_lattice(2)%file = 'hsr-275-10.bmad'
+ design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6'
+ design_lattice(2)%reverse_lattice = t
+ design_lattice(3)%file = 'hsr-275-10.bmad'
+ design_lattice(3)%slice_lattice = 'ip6:yi6_int11_2'
+ design_lattice(4)%file = 'hsr-275-10.bmad'
+ design_lattice(4)%slice_lattice = 'yo4_int9_3+1:yo4_int11_2'
+ design_lattice(5)%file = 'hsr-275-10.bmad'
+ design_lattice(5)%slice_lattice = 'yo4_int9_3+1:yo4_int11_2'
+ design_lattice(5)%reverse_lattice = t
+ design_lattice(6)%file = 'hsr-275-10.bmad'
+ design_lattice(6)%slice_lattice = 'o10int_pr+1:yi6_int11_2'
+/
+
