@@ -512,6 +512,42 @@ def write_ps_cors(db,cors,file_out):
 def slot(machine,slot,db):
     return line(machine,slot,slot,db)
 
+def write_all_swns(lines,db,file):
+    print("! drifts", file=file)
+    for (l,s) in sorted(lines.lnms.items(),key=lambda s:slot_key(s[0])):
+        if db.magnet_piece[l] == 'drift' and s and type(next(iter(s))) is str:
+            for ss in sorted(s,key=lambda s:slot_key(s)):
+                print(ss+':'+l, file=file)
+    print("! things, acting currently like drifts",file=file)
+    for (l,s) in sorted(lines.lnms.items(),key=lambda s:slot_key(s[0])):
+        if db.magnet_piece[l] == 'drift' and s and type(next(iter(s))) is not str:
+            for ss in sorted(s,key=lambda s:slot_key(s[0])):
+                if ss[0] != l:
+                    print(ss[0]+':'+l, file=file)
+    print("! dipoles", file=file)
+    write_swns('sbend',db,lines.lnms,file)
+    print("! quadrupoles", file=file)
+    write_swns('quadrupole',db,lines.lnms,file)
+    print("! sextupoles", file=file)
+    write_swns('sextupole',db,lines.lnms,file)
+    print("! solenoids", file=file)
+    write_swns('solenoid',db,lines.lnms,file)
+    print("! kickers",file=file)
+    write_swns(('hkick','hkicker','kicker','vkicker'),db,lines.lnms,file)
+    print("! correctors", file=file)
+    for c in sorted(lines.correctors,key=lambda c:slot_key(c)):
+        print(c+':kicker,l=lcor,scale_multipoles=f',file=file)
+    print("! cavities",file=file)
+    write_swns('rfcavity',db,lines.lnms,file)
+    print("! monitors",file=file)
+    write_swns(('hmonitor','monitor','vmonitor'),db,lines.lnms,file)
+    print("! instruments",file=file)
+    write_swns('instrument',db,lines.lnms,file)
+    print("! collimators",file=file)
+    write_swns('rcollimator',db,lines.lnms,file)
+    print("! markers",file=file)
+    write_swns('marker',db,lines.lnms,file)
+
 db = db_parser()
 
 arc01b = line('b','bi12_cqs10','bi1_cqs10',db)
@@ -545,6 +581,7 @@ ir6_slots = [slot('y',s,db)
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_6',
                        'yi6_cqt4','yi6_cqt5','yi6_d5','yi6_cqt6','yi6_d6','yi6_cq7','yi6_cq8','yi6_d8','yi6_cqb9','yi6_d9')]
 all_lines = line_info(line_list)
+all_slots = line_info(ir6_slots)
 slots_and_lines = line_info(line_list+ir6_slots)
 
 geometry_deptree = deptree(slots_and_lines.ele_geometry,db.geometry)
@@ -599,47 +636,22 @@ with open('rhic-lat.bmad',mode='w') as file_lat:
     write_eles('marker','marker',None,db,slots_and_lines.lnms,file_lat)
 
     print("! site-wide names", file=file_lat)
-    print("! drifts", file=file_lat)
-    for (l,s) in sorted(slots_and_lines.lnms.items(),key=lambda s:slot_key(s[0])):
-        if db.magnet_piece[l] == 'drift' and s and type(next(iter(s))) is str:
-            for ss in sorted(s,key=lambda s:slot_key(s)):
-                print(ss+':'+l, file=file_lat)
-    print("! things, acting currently like drifts",file=file_lat)
-    for (l,s) in sorted(slots_and_lines.lnms.items(),key=lambda s:slot_key(s[0])):
-        if db.magnet_piece[l] == 'drift' and s and type(next(iter(s))) is not str:
-            for ss in sorted(s,key=lambda s:slot_key(s[0])):
-                if ss[0] != l:
-                    print(ss[0]+':'+l, file=file_lat)
-    print("! dipoles", file=file_lat)
-    write_swns('sbend',db,slots_and_lines.lnms,file_lat)
-    print("! quadrupoles", file=file_lat)
-    write_swns('quadrupole',db,slots_and_lines.lnms,file_lat)
-    print("! sextupoles", file=file_lat)
-    write_swns('sextupole',db,slots_and_lines.lnms,file_lat)
-    print("! solenoids", file=file_lat)
-    write_swns('solenoid',db,slots_and_lines.lnms,file_lat)
-    print("! kickers",file=file_lat)
-    write_swns(('hkick','hkicker','kicker','vkicker'),db,slots_and_lines.lnms,file_lat)
-    print("! correctors", file=file_lat)
-    for c in sorted(slots_and_lines.correctors,key=lambda c:slot_key(c)):
-        print(c+':kicker,l=lcor,scale_multipoles=f',file=file_lat)
-    print("! cavities",file=file_lat)
-    write_swns('rfcavity',db,slots_and_lines.lnms,file_lat)
-    print("! monitors",file=file_lat)
-    write_swns(('hmonitor','monitor','vmonitor'),db,slots_and_lines.lnms,file_lat)
-    print("! instruments",file=file_lat)
-    write_swns('instrument',db,slots_and_lines.lnms,file_lat)
-    print("! collimators",file=file_lat)
-    write_swns('rcollimator',db,slots_and_lines.lnms,file_lat)
-    print("! markers",file=file_lat)
-    write_swns('marker',db,slots_and_lines.lnms,file_lat)
+    write_all_swns(all_lines,db,file_lat)
 
-    print("! slots that aren't just drifts",file=file_lat)
-    for (s,el) in sorted(slots_and_lines.slots.items(),key=lambda s:slot_key(s[0])):
+    print("! slots from the intact part of RHIC (that aren't just drifts)",file=file_lat)
+    for (s,el) in sorted(all_lines.slots.items(),key=lambda s:slot_key(s[0])):
         print(s+':line=('+',\n '.join(el)+')',file=file_lat)
-    print("! sections",file=file_lat)
+    print("! sections of RHIC",file=file_lat)
     for l in line_list:
         print(l.name+':line=('+',\n '.join(l.slot_list)+')',file=file_lat)
+
+    print("! slots used in individual IRs",file=file_lat)
+    print("! site-wide names",file=file_lat)
+    write_all_swns(all_slots,db,file_lat)
+    print("! slots",file=file_lat)
+    for (s,el) in sorted(all_slots.slots.items(),key=lambda s:slot_key(s[0])):
+        print(s+':line=('+',\n '.join(el)+')',file=file_lat)
+    
 
 with open('rhic-ps.bmad',mode='w') as file_ps:
     print("! quadrupoles",file=file_ps)
