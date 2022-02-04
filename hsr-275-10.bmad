@@ -1,6 +1,7 @@
 call, file='rhic-lat.bmad'
 call, file='ir6-lat.bmad'
-call, file='rhic-str.bmad'
+call, file='rhic-ps.bmad'
+call, file='rhic-cur.bmad'
 call, file='ir6-str-275-10.bmad'
 
 parameter[geometry]        = open            
