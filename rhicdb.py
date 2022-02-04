@@ -654,6 +654,7 @@ with open('rhic-lat.bmad',mode='w') as file_lat:
     
 
 with open('rhic-ps.bmad',mode='w') as file_ps:
+    print("! RHIC sections that are kept",file=file_ps)
     print("! quadrupoles",file=file_ps)
     (psset,swns) = write_transfer('quadrupole','b1_gradient',db,all_lines.lnms,file_ps)
     write_ps_to_i(psset,swns,db,file_ps)
@@ -668,7 +669,17 @@ with open('rhic-ps.bmad',mode='w') as file_ps:
     print("! correctors",file=file_ps)
     (psset,swns) = write_transfer_cors(db,all_lines.correctors,file_ps)
     write_ps_to_i(psset,swns,db,file_ps)
-
+    print ("! IR slots",file=file_ps)
+    print("! quadrupoles",file=file_ps)
+    write_transfer('quadrupole','b1_gradient',db,all_slots.lnms,file_ps)
+    print("! sextupoles",file=file_ps)
+    write_transfer('sextupole','b2_gradient',db,all_slots.lnms,file_ps)
+    print("! kickers",file=file_ps)
+    write_transfer('hkicker','bl_kick',db,all_slots.lnms,file_ps)
+    write_transfer('vkicker','bl_kick',db,all_slots.lnms,file_ps)
+    print("! correctors",file=file_ps)
+    write_transfer_cors(db,all_slots.correctors,file_ps)
+    
 with open('rhic-str.bmad',mode='w') as file_str:
     strength_deptree.bmad_sorted(file=file_str)
     print("! quadrupoles",file=file_str)
