@@ -459,7 +459,7 @@ def write_ps_to_i(psset,swnset,db,file_out):
                            for (swn,sgn) in sorted(db.ps_to_swn[ps],key=lambda s:slot_key(s[0])) if swn in swnset])
               +'},var={i}',file=file_out)
 
-def write_ps(mag_type,field_attr,db,lnms,file_out):
+def write_transfer(mag_type,field_attr,db,lnms,file_out):
     psset = set()
     swnset = set()
     for (lnm,swns) in sorted(lnms.items(),key=lambda s:slot_key(s[0])):
@@ -472,7 +472,7 @@ def write_ps(mag_type,field_attr,db,lnms,file_out):
                     swnset.add(swn)
                     for (ps,sgn) in db.swn_to_ps[swn]:
                         psset.add(ps)
-    write_ps_to_i(psset,swnset,db,file_out)
+    return (psset,swnset)
 
 def factorial(n):
     f = n
@@ -481,7 +481,7 @@ def factorial(n):
         f *= n
     return f
 
-def write_ps_cors(db,cors,file_out):
+def write_transfer_cors(db,cors,file_out):
     psset = set()
     swnset = set()
     for (cor,coils) in sorted(cors.items(),key=lambda s:slot_key(s[0])):
@@ -501,13 +501,13 @@ def write_ps_cors(db,cors,file_out):
             else: # multipole
                 m = db.eles['multipole'][lnm]
                 print(swn+'_i:overlay={'+cor
-                      +('[b' if m['skew'] else '[a')+f"{m['order']}]:{db.trans[coiltyp]}/{factorial(m['order'])}"
+                      +('[b' if m['skew'] else '[a')+f"{m['order']}]:{db.trans[coiltyp]/factorial(m['order'])}"
                       +"*i},var={i}",
                       file=file_out)
             if swn in db.swn_to_ps:
                 for (ps,sgn) in db.swn_to_ps[swn]:
                     psset.add(ps)
-    write_ps_to_i(psset,swnset,db,file_out)
+    return (psset,swnset)
 
 def slot(machine,slot,db):
     return line(machine,slot,slot,db)
@@ -655,14 +655,19 @@ with open('rhic-lat.bmad',mode='w') as file_lat:
 
 with open('rhic-ps.bmad',mode='w') as file_ps:
     print("! quadrupoles",file=file_ps)
-    write_ps('quadrupole','b1_gradient',db,all_lines.lnms,file_ps)
+    (psset,swns) = write_transfer('quadrupole','b1_gradient',db,all_lines.lnms,file_ps)
+    write_ps_to_i(psset,swns,db,file_ps)
     print("! sextupoles",file=file_ps)
-    write_ps('sextupole','b2_gradient',db,all_lines.lnms,file_ps)
+    (psset,swns) = write_transfer('sextupole','b2_gradient',db,all_lines.lnms,file_ps)
+    write_ps_to_i(psset,swns,db,file_ps)
     print("! kickers",file=file_ps)
-    write_ps('hkicker','bl_kick',db,all_lines.lnms,file_ps)
-    write_ps('vkicker','bl_kick',db,all_lines.lnms,file_ps)
+    (psset,swns) = write_transfer('hkicker','bl_kick',db,all_lines.lnms,file_ps)
+    write_ps_to_i(psset,swns,db,file_ps)
+    (psset,swns) = write_transfer('vkicker','bl_kick',db,all_lines.lnms,file_ps)
+    write_ps_to_i(psset,swns,db,file_ps)
     print("! correctors",file=file_ps)
-    write_ps_cors(db,all_lines.correctors,file_ps)
+    (psset,swns) = write_transfer_cors(db,all_lines.correctors,file_ps)
+    write_ps_to_i(psset,swns,db,file_ps)
 
 with open('rhic-str.bmad',mode='w') as file_str:
     strength_deptree.bmad_sorted(file=file_str)
