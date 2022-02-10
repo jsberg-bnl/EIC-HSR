@@ -293,11 +293,6 @@ class db_parser:
             r[2],
             r[3].rstrip() if r[3] is not None else r[3])
 
-    @staticmethod
-    def advance_to_atom(cur,row,ix_atom,lnm):
-        while row[2] > 0 and row[2] <= ix_atom and row[1] != lnm:
-            row[:] = self.nl_row(cur)
-            
     def slot_list(self,name):
         if name in self.beam_line:
             return itertools.chain(*map(lambda n: self.slot_list(n),self.beam_line[name]))
