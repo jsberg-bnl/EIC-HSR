@@ -119,6 +119,14 @@ class db_parser:
                 if eles:
                     self.slots[m].append((row[1],row[1] if re.match('g\d+_dx',row[0]) else row[0],[]))
                     eles = eles[:]
+                    # First pass, expand beamlines that aren't correctors
+                    ix_ele = 0
+                    while ix_ele < len(eles):
+                        while eles[ix_ele] in self.beam_line and eles[ix_ele][0:3] != 'lmp':
+                            eles[ix_ele:ix_ele+1] = self.beam_line[eles[ix_ele]]
+                        ix_ele += 1
+                    is_du3 = re.match('^str[0-9]{2}'+m+'3$',s)
+                    o3id = 0
                     ix_ele = 0
                     row = self.nl_row(cur)
                     while ix_ele < len(eles):
@@ -135,9 +143,6 @@ class db_parser:
                             ix_ele += 1
                         # Not a corrector
                         else:
-                            # If it's a beam line, insert the beam line and work on the first element
-                            if eles[ix_ele] in self.beam_line:
-                                eles[ix_ele:ix_ele+1] = self.beam_line[eles[ix_ele]]
                             # Remove edge multipoles
                             if self.magnet_piece[eles[ix_ele]] == 'multipole' \
                                and eles[ix_ele][0] == 'e' and eles[ix_ele][1] in 'lr' \
@@ -176,6 +181,32 @@ class db_parser:
                                 ix_atom += 3
                                 while row[2] > 0 and row[2] <= ix_atom and row[1] != eles[ix_ele]:
                                     row = self.nl_row(cur)
+                            # Remove apertures from du3 slots
+                            elif is_du3 and ( re.match('^ap[0-9]+p[0-9]+[BY]$',eles[ix_ele]) or
+                                              re.match('^o3'+m+'[0-9]+l[0-9]+$',eles[ix_ele]) ):
+                                len_exprs = []
+                                while ix_ele < len(eles) and (
+                                        re.match('^ap[0-9]+p[0-9]+[BY]$',eles[ix_ele]) or
+                                        re.match('^o3'+m+'[0-9]+l[0-9]+$',eles[ix_ele]) ):
+                                    mat = re.match('^(o3'+m+'[0-9]+)l[0-9]+$',eles[ix_ele])
+                                    if mat:
+                                        stem = mat[1]
+                                        len_exprs.append(self.eles['drift'][eles[ix_ele]]['l'])
+                                    ix_atom += 1
+                                    while row[2] > 0 and row[2] <= ix_atom and row[1] != eles[ix_ele]:
+                                        row = self.nl_row(cur)
+                                    eles[ix_ele:ix_ele+1] = []
+                                if len(len_exprs):
+                                    eles[ix_ele:ix_ele] = [stem+'c'+str(o3id)]
+                                    o3id += 1
+                                    self.magnet_piece[eles[ix_ele]] = 'drift'
+                                    self.eles['drift'][eles[ix_ele]] = {'l':'+'.join(len_exprs)}
+                                elif ix_ele >= len(eles):
+                                    # End of the slot
+                                    break
+                                else:
+                                    # Only removed a marker, don't output anything or advance ix_ele
+                                    continue
                             else:
                                 ix_atom += 1
                                 while row[2] > 0 and row[2] <= ix_atom and row[1] != eles[ix_ele]:
