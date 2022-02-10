@@ -1,0 +1,6 @@
+call, file='rhic-lat.bmad'
+call, file='ir6-lat.bmad'
+call, file='rhic-ps.bmad'
+
+ip6: marker
+hsr: line=(ins04y,arc05y,hsr6w,ip6,hsr6d,arc07y)
