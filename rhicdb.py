@@ -591,24 +591,32 @@ ins11b = line('b','bo11_int9_3','bo11_trp1',db)
 ins12b = line('b','bi12_trp1','bi12_int9_3',db)
 
 ins03y = line('y','yi3_int9_3','yi3_trp1',db)
-ins04y = line('y','yo4_trp1','yo4_int9_3',db)
+trp04y = line('y','yo4_trp1','yo4_trp3',db)
+mat04y = line('y','yo4_cqt4','yo4_int9_3',db)
 ins09y = line('y','yo9_int9_3','yo9_trp1',db)
 ins10y = line('y','yi10_trp1','yi10_int9_3',db)
 ins11y = line('y','yi11_int9_3','yi11_trp1',db)
 
+# Lines carried over from RHIC
 line_list = [
     arc01b,arc03y,arc05y,arc07y,arc09y,arc11b,arc11y,
-    ins03y,ins04y,ins09y,ins10b,ins10y,ins11b,ins11y,ins12b]
+    ins03y,trp04y,mat04y,ins09y,ins10b,ins10y,ins11b,ins11y,ins12b]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
+# slots kept intact but used in isolation
 ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp3','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_6',
                        'yi6_cqt4','yi6_cqt5','yi6_d5','yi6_cqt6','yi6_d6','yi6_cq7','yi6_cq8','yi6_d8','yi6_cqb9','yi6_d9')]
-all_lines = line_info(line_list)
-all_slots = line_info(ir6_slots)
-slots_and_lines = line_info(line_list+ir6_slots)
+
+# slots that are broken up, but I need the bits for whatever reason
+ir4_parts = [slot('y','yo4_du3',db)]
+
+slots_and_lines = line_info(line_list+ir4_parts+ir6_slots) # Everything I have some need for
+all_parts = line_info(ir4_parts+ir6_slots) # Things I need all the parts for 
+all_slots = line_info(ir6_slots) # Slots kept intact but used in isolation
+all_lines = line_info(line_list) # RHIC lines
 
 geometry_deptree = deptree(slots_and_lines.ele_geometry,db.geometry)
 strength_deptree = deptree(all_lines.ele_strength,db.strength)
@@ -671,9 +679,9 @@ with open('rhic-lat.bmad',mode='w') as file_lat:
     for l in line_list:
         print(l.name+':line=('+',\n '.join(l.slot_list)+')',file=file_lat)
 
-    print("! slots used in individual IRs",file=file_lat)
+    print("! slots and other parts used in individual IRs",file=file_lat)
     print("! site-wide names",file=file_lat)
-    write_all_swns(all_slots,db,file_lat)
+    write_all_swns(all_parts,db,file_lat)
     print("! slots",file=file_lat)
     for (s,el) in sorted(all_slots.slots.items(),key=lambda s:slot_key(s[0])):
         print(s+':line=('+',\n '.join(el)+')',file=file_lat)

@@ -1,0 +1,32 @@
+lseptum = 2
+lpc = 2.5
+lpcsep = 3
+l_wcm_to_septum = 16
+l_pc_to_bpm4 = 4
+
+o_wcm_to_septum: drift, l=l_wcm_to_septum-lwcmxfl
+o_pc: drift, l=lpcsep-lpc
+o_pc_to_gv: drift, l=l_pc_to_bpm4-lbfl4-lbsk4iy-0.5*lpc
+o_septum_to_pc: drift, l=l3space-lbsk4ly-o3y4c0[l]-o3y4c1[l]-lwcmxfl-l_wcm_to_septum-lseptum-l_pc_to_bpm4-lpcsep-0.5*lpc+lbfl4
+
+septum_ir4: pipe, l=lseptum
+det_pol_hpol_pc1: instrument, l = lpc
+det_pol_hpol_pc2: instrument, l = lpc
+
+yo4_du3_hsr:line=(obsk4ly,
+ yo4_sv3_1,
+ o3y4c0,
+ yo4_kfbh3,
+ o3y4c1,
+ owcmxfl,
+ yo4_wcm3,
+ owcmxfl,
+ o_wcm_to_septum,
+ septum_ir4,
+ o_septum_to_pc,
+ det_pol_hpol_pc2,
+ o_pc,
+ det_pol_hpol_pc1,
+ o_pc_to_gv,
+ yo4_sv4,
+ obsk4iy)
