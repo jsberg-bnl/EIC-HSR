@@ -492,8 +492,9 @@ def write_transfer(mag_type,field_attr,db,lnms,file_out):
         if db.magnet_piece[lnm] == mag_type:
             for (swn,coil) in sorted(swns,key=lambda s:slot_key(s[0])):
                 if coil:
+                    sign = +1 if swn[0]=='b' else -1
                     print(swn+'[field_master]=t',file=file_out)
-                    print(swn+'_i:overlay={'+swn+'['+field_attr+']:'+f'{db.trans[coil]}'+
+                    print(swn+'_i:overlay={'+swn+'['+field_attr+']:'+f'{sign*db.trans[coil]}'+
                           ('' if 'kick' in mag_type else '/'+swn+'[l]')+'*i}, var={i}',file=file_out)
                     swnset.add(swn)
                     for (ps,sgn) in db.swn_to_ps[swn]:
