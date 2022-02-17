@@ -1,20 +1,168 @@
 lseptum = 2
+lhjet = 2
 lpc = 2.5
 lpcsep = 3
 l_wcm_to_septum = 16
 l_pc_to_bpm4 = 4
+lqwir4 = 0.9
+lqwfl = 0.2
+lwd = 5
+lq1wd = 2.92770376 - lflq1x
+thwdir4 = 6.06998319986880829E-003
+lir4h = 17.0952891656339503
+lkickinj = 0.9
+l_kick_assy = 10
+n_kick_inj = 10
+lkickx3 = 4.1
+lkickx4 = 4.0
+lk28 = 5 - lqwir4 - 2*lqwfl - lbsk3ly
+lk197 = 5 - lcktufl
+li28 = 0.5
+li197 = 0.5
+
+dwarm3: sbend
+dwarm4: sbend
+ov_dwarm3: overlay={
+ dwarm3[l] : lwd/sinc(0.5*angle),
+ dwarm3[g] : 2*sin(0.5*angle)/lwd,
+ dwarm3[e1] : 0.5*angle,
+ dwarm3[e2] : 0.5*angle}, var={angle}, angle=-thwdir4
+ov_dwarm4: overlay={
+ dwarm4[l] : lwd/sinc(0.5*angle),
+ dwarm4[g] : 2*sin(0.5*angle)/lwd,
+ dwarm4[e1] : 0.5*angle,
+ dwarm4[e2] : 0.5*angle}, var={angle}, angle=+thwdir4
+
+warm_quad3: quadrupole, l=lqwir4
+warm_quad4: quadrupole, l=lqwir4
+
+kickinj: kicker, l=lkickinj
+sl_kick_mod1a: kickinj
+sl_kick_mod2a: kickinj
+sl_kick_mod3a: kickinj
+sl_kick_mod4a: kickinj
+sl_kick_mod5a: kickinj
+sl_kick_mod6a: kickinj
+sl_kick_mod7a: kickinj
+sl_kick_mod8a: kickinj
+sl_kick_mod9a: kickinj
+sl_kick_mod10a: kickinj
+sl_kick_mod1b: kickinj
+sl_kick_mod2b: kickinj
+sl_kick_mod3b: kickinj
+sl_kick_mod4b: kickinj
+sl_kick_mod5b: kickinj
+sl_kick_mod6b: kickinj
+sl_kick_mod7b: kickinj
+sl_kick_mod8b: kickinj
+sl_kick_mod9b: kickinj
+sl_kick_mod10b: kickinj
+
+cav28: rfcavity, l=3394.8e-3, harmon=315
+cav197: rfcavity, l=874e-3, harmon=2520
+cav28_1: cav28
+cav28_2: cav28
+cav197_1: cav197
+cav197_2: cav197
+cav197_3: cav197
+cav197_4: cav197
+cav197_5: cav197
+
+septum_ir4: pipe, l=lseptum
+det_pol_hpol_hjet: instrument, l=lhjet
+det_pol_hpol_pc1: instrument, l = lpc
+det_pol_hpol_pc2: instrument, l = lpc
 
 o_wcm_to_septum: drift, l=l_wcm_to_septum-lwcmxfl
 o_pc: drift, l=lpcsep-lpc
 o_pc_to_gv: drift, l=l_pc_to_bpm4-lbfl4-lbsk4iy-0.5*lpc
-o_septum_to_pc: drift, l=l3space-lbsk4ly-o3y4c0[l]-o3y4c1[l]-lwcmxfl-l_wcm_to_septum-lseptum-l_pc_to_bpm4-lpcsep-0.5*lpc+lbfl4
+o_septum_to_pc: drift, l=l3space-2*lbsk4ly-o3y4c0[l]-o3y4c1[l]-lwcmxfl-l_wcm_to_septum-lseptum-l_pc_to_bpm4-lpcsep-0.5*lpc+lbfl4-lqwir4-2*lqwfl
+oqwfl: drift, l=lqwfl
+oq1wd: drift, l=lq1wd
+ohjetfl: drift, l=0.5*(lq1wd-lhjet)
+o_kick_assy: drift, l=l_kick_assy/n_kick_inj - lkickinj
+okickx3: drift, l=lkickx3
+okickx4: drift, l=lkickx4
+okickwd3: drift, l=lir4h-l_kick_assy-lkickx3
+okickwd4: drift, l=lir4h-l_kick_assy-lkickx4
+ok28: drift, l=lk28
+ok197: drift, l=lk197
+o28: drift, l=li28
+o197: drift, l=li197
+o197_28: drift, l=l3space - &
+ (lbsk3iy+o3y3c0[l]+2*lcktxfl+o3y3c1[l]+4*lcktufl+o3y3c2[l] &
+  +2*lbsk3ly+o3y3c10[l]+lqwir4+2*lqwfl &
+  +5*cav197[l]+4*li197+2*cav28[l]+li28+lk197+lk28)
 
-septum_ir4: pipe, l=lseptum
-det_pol_hpol_pc1: instrument, l = lpc
-det_pol_hpol_pc2: instrument, l = lpc
+kick_assy_a: line=(
+ sl_kick_mod1a,o_kick_assy,
+ sl_kick_mod2a,o_kick_assy,
+ sl_kick_mod3a,o_kick_assy,
+ sl_kick_mod4a,o_kick_assy,
+ sl_kick_mod5a,o_kick_assy,
+ sl_kick_mod6a,o_kick_assy,
+ sl_kick_mod7a,o_kick_assy,
+ sl_kick_mod8a,o_kick_assy,
+ sl_kick_mod9a,o_kick_assy,
+ sl_kick_mod10a,o_kick_assy)
+kick_assy_b: line=(
+ sl_kick_mod1b,o_kick_assy,
+ sl_kick_mod2b,o_kick_assy,
+ sl_kick_mod3b,o_kick_assy,
+ sl_kick_mod4b,o_kick_assy,
+ sl_kick_mod5b,o_kick_assy,
+ sl_kick_mod6b,o_kick_assy,
+ sl_kick_mod7b,o_kick_assy,
+ sl_kick_mod8b,o_kick_assy,
+ sl_kick_mod9b,o_kick_assy,
+ sl_kick_mod10b,o_kick_assy)
+
+ip4: marker
+
+yi3_du3_hsr:line=(obsk3iy,
+ yi3_sv4,
+ o3y3c0,
+ ocktxfl,
+ yi3_kscv3,
+ ocktxfl,
+ o3y3c1,
+ ocktufl,
+ yi3_ksch3_2,
+ ocktufl,
+ o3y3c2,
+ ocktufl,
+ yi3_ksch3_1,
+ ocktufl,
+ ok197,
+ cav197_5,
+ o197,
+ cav197_4,
+ o197,
+ cav197_3,
+ o197,
+ cav197_2,
+ o197,
+ cav197_1,
+ o197_28,
+ cav28_2,
+ o28,
+ cav28_1,
+ ok28,
+ yi3_kfbh3,
+ o3y3c10,
+ oqwfl,
+ warm_quad3,
+ oqwfl,
+ obsk3ly,
+ yi3_sv3,
+ obsk3ly)
 
 yo4_du3_hsr:line=(obsk4ly,
  yo4_sv3_1,
+ obsk4ly,
+ oqwfl,
+ warm_quad4,
+ oqwfl,
  o3y4c0,
  yo4_kfbh3,
  o3y4c1,
@@ -30,3 +178,7 @@ yo4_du3_hsr:line=(obsk4ly,
  o_pc_to_gv,
  yo4_sv4,
  obsk4iy)
+
+ir4: line=(
+ oq1wd,dwarm3,okickwd3,kick_assy_b,okickx3,ip4,
+ okickx4,kick_assy_a,okickwd4,dwarm4,ohjetfl,det_pol_hpol_hjet,ohjetfl)
