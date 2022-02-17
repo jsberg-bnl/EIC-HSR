@@ -204,7 +204,7 @@
 &tao_d2_data
  universe = '9'
  d2_data%name = 'ir4'
- n_d1_data = 2
+ n_d1_data = 3
 /
 
 &tao_d1_data
@@ -226,6 +226,16 @@
  datum(2:7)%ele_name = 'yi3_int11_2' 'yi3_int11_2' 'yi3_b3' 'yi3_b3' 'yo4_b4' 'yo4_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
  datum(1:7)%meas = 0 0 0 0 0 0 0
- datum(1:7)%weight = 1e-4 1e-6 1e-6 1e-6 1e-6 1e-6 1e-6
+ datum(1:7)%weight = 1e-4 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
  datum(1:7)%good_user = f f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'cur'
+ datum(1)%data_type = 'expression: ele::yo4_qd7_ps[i]-ele::yi3_qf7_ps[i]'
+ datum(2)%data_type = 'expression: ele::yo4_qf6_ps[i]-ele::yi3_qd6_ps[i]'
+ datum(1:2)%meas = 0 0
+ datum(1:2)%weight = 1e-8 1e-8
+ datum(1:2)%good_user = f f
 /
