@@ -1,0 +1,66 @@
+! RHIC lines
+ins01b: line=(bi1_int9_3,
+ bi1_d9,
+ bi1_int9_2,
+ bi1_du9,
+ bi1_int9_1,
+ bi1_cqb9,
+ bi1_int8_2,
+ bi1_d8,
+ bi1_int8_1,
+ bi1_cq8,
+ bi1_int7_2,
+ bi1_du7,
+ bi1_int7_1)
+
+ins02y: line=(yi2_int7_1,
+ yi2_du7,
+ yi2_int7_2,
+ yi2_cq8,
+ yi2_int8_1,
+ yi2_d8,
+ yi2_int8_2,
+ yi2_cqb9,
+ yi2_int9_1,
+ yi2_du9,
+ yi2_int9_2,
+ yi2_d9,
+ yi2_int9_3)
+
+ld5 = rho*thd5
+
+delta_lqd = -0.008759
+l65 = 56.699873    ! 25 mm value
+l6m = 44.195574    ! 25 mm value
+l_inner_hc = 14.793530
+lqd5tot = l_inner_hc - ld5 - 0.5*(lq+lq7)
+lqd6tot = l_inner_hc - ldps - lq
+foqd5 = 0.5
+foqd6 = 0.2
+
+o76: drift, l=4+(lbfl+lqbms7+lq7)-(lbfl4+lsb4+lsxt+lqs4+lq4+lcq4+lcor+lcfl)-(lcfl+lcor+lcq)
+o6d: drift, l=foqd6*lqd6tot - (lqs+lsxt+lsb+lbfl) - ldsfl
+o5c: drift, l=l65 - l6m - (lcfl+lcor+lcq4)
+o54: drift, l=4 - (lqs4+lsxt+lsb4+lbfl4) - (lcfl+lcor+lcq)
+o4d: drift, l=foqd5*lqd5tot - (lqs+lsxt+lsb+lbfl)
+o3d: drift, l=(1-foqd5)*lqd5tot - (lcfl+lcor+lcq)
+o32: drift, l=l_inner_hc - lq - (lqs+lsxt+lsb+lbfl) - (lcfl+lcor+lcq)
+o21_1: drift, l=2*(lqd+delta_lqd) + ldip - (lbfl+lqbms7)
+o21_2: drift, l=2*(lqd+delta_lqd) + ldip - (lcq7-lcor-lcfl)
+
+ocool_out: pipe, l=0.5*l65 - foqd6*lqd6tot - ldps - ldsfl
+ocool_in:  pipe, l=l6m - 0.5*l65 - 1e-6
+
+cool_kicker_out: ocool_out
+cool_kicker_in: ocool_in
+cool_modulator_in: ocool_in
+cool_modulator_out: ocool_out
+
+d5: sbend, g=1/rho, l=ld5 ! Not any RHIC magnet; do something about me
+
+ir2: line=(
+ ins01b,bi1_cqt4,o76,bi1_cqt6,o6d,bi1_d6,cool_kicker_out,cool_kicker_in,
+ o5c,yo1_cqt4,o54,bi1_cqt5,o4d,d5,o3d,yo1_cqt6,o32,yo1_cqt5,
+ o21_1,bi1_cq7,o21_2,
+ bo2_cqt5,o32,bo2_cqt6,o3d,d5,o4d,yi2_cqt5,o54,bo2_cqt4,o5c,
+ cool_modulator_in,cool_modulator_out,yi2_d6,o6d,yi2_cqt6,o76,yi2_cqt4,ins02y)

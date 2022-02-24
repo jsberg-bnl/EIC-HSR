@@ -587,10 +587,12 @@ arc07y = line('y','yi6_cqs10','yi7_cqs10',db)
 arc09y = line('y','yo8_cqs10','yo9_cqs10',db)
 arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
+mat01b = line('b','bi1_int9_3','bi1_cq7',db)
 ins10b = line('b','bo10_trp1','bo10_int9_3',db)
 ins11b = line('b','bo11_int9_3','bo11_trp1',db)
 ins12b = line('b','bi12_trp1','bi12_int9_3',db)
 
+mat02y = line('y','yi2_cq7','yi2_int9_3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
 trp03y = line('y','yi3_trp3','yi3_trp1',db)
 trp04y = line('y','yo4_trp1','yo4_trp3',db)
@@ -607,6 +609,20 @@ for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.ma
     v.name = n
 
 # slots kept intact but used in isolation
+ir2_slots = [slot('y',s,db)
+             for s in ('yo1_cqt4','yo1_cqt5','yo1_cqt6',
+                       'yi2_cqt4','yi2_cqt5','yi2_cqt6',
+                       'yi2_d6',
+                       'yi2_cq7','yi2_int7_1','yi2_du7','yi2_int7_2',
+                       'yi2_cq8','yi2_int8_1','yi2_d8','yi2_int8_2',
+                       'yi2_cqb9','yi2_int9_1','yi2_du9','yi2_int9_2','yi2_d9','yi2_int9_3')] + \
+            [slot('b',s,db)
+             for s in ('bi1_int9_3','bi1_d9','bi1_int9_2','bi1_du9','bi1_int9_1','bi1_cqb9',
+                       'bi1_int8_2','bi1_d8','bi1_int8_1','bi1_cq8',
+                       'bi1_int7_2','bi1_du7','bi1_int7_1','bi1_cq7',
+                       'bi1_d6',
+                       'bi1_cqt4','bi1_cqt5','bi1_cqt6',
+                       'bo2_cqt4','bo2_cqt5','bo2_cqt6')]
 ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp3','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_6',
@@ -615,9 +631,9 @@ ir6_slots = [slot('y',s,db)
 # slots that are broken up, but I need the bits for whatever reason
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
 
-slots_and_lines = line_info(line_list+ir4_parts+ir6_slots) # Everything I have some need for
-all_parts = line_info(ir4_parts+ir6_slots) # Things I need all the parts for 
-all_slots = line_info(ir6_slots) # Slots kept intact but used in isolation
+slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots) # Everything I have some need for
+all_parts = line_info(ir2_slots+ir4_parts+ir6_slots) # Things I need all the parts for 
+all_slots = line_info(ir2_slots+ir6_slots) # Slots kept intact but used in isolation
 all_lines = line_info(line_list) # RHIC lines
 
 extra_geom = {'lcenxdx','lcendxd0','ld0fla','lbeld0q1','thdx'}
