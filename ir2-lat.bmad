@@ -44,7 +44,7 @@ o5c: drift, l=l65 + 0.5*lq - l6m - (lcfl+lcor+lcq4+0.5*lq4)
 o54: drift, l=4 + 0.5*lq7 - (0.5*lq4+lqs4+lsxt+lsb4+lbfl4) - (lcfl+lcor+lcq)
 o4d: drift, l=foqd5*lqd5tot + 0.5*lq7 - (0.5*lq+lqs+lsxt+lsb+lbfl)
 o3d: drift, l=(1-foqd5)*lqd5tot - (lcfl+lcor+lcq)
-o32: drift, l=l_inner_hc - lq - (lqs+lsxt+lsb+lbfl) - (lcfl+lcor+lcq)
+o32: drift, l=11.0743358735516466
 o21_1: drift, l=2*(lqd+delta_lqd) + ldip + 0.5*lq - (lbfl+lsb+lsxt+lqs) - (lbfl+lqbms7+0.5*lq7)
 o21_2: drift, l=2*(lqd+delta_lqd) + ldip + 0.5*lq - (lbfl+lsb+lsxt+lqs) - (0.5*lq7+lcq7+lcor+lcfl)
 
