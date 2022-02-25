@@ -7,30 +7,22 @@ k6_ir2 =  0.06469635
 k7_ir2 = -0.10225104
 k8_ir2 =  0.02266926
 k9_ir2 =  0.04099802
+ir2_q1_i: overlay={ bi1_qf7_i[i] : -i }, var={i}
+ir2_q2_i: overlay={ yo1_qd5_i[i] : +i, bo2_qd5_i[i] : -i }, var={i}
+ir2_q3_i: overlay={ yo1_qf6_i[i] : +i, bo2_qf6_i[i] : -i }, var={i}
+ir2_q4_i: overlay={ bi1_qf5_i[i] : -i, yi2_qf5_i[i] : +i }, var={i}
+ir2_q5_i: overlay={ yo1_qf4_i[i] : +i, bo2_qf4_i[i] : -i }, var={i}
+ir2_q6_i: overlay={ bi1_qd6_i[i] : -i, yi2_qd6_i[i] : +i }, var={i}
+ir2_q7_i: overlay={ bi1_qd4_i[i] : -i, yi2_qd4_i[i] : +i }, var={i}
+ir2_q8_i: overlay={ bi1_qd8_i[i] : -i, yi2_qd8_i[i] : +i }, var={i}
+ir2_q9_i: overlay={ bi1_qf9_i[i] : -i, yi2_qf9_i[i] : +i }, var={i}
 brho = p275/c_light
-! q1
-bi1_qf7_i[i] = -k1_ir2*brho/0.013872341176470586*lq
-! q2
-yo1_qd5_i[i] = +k2_ir2*brho/0.016572460606060605*lq
-bo2_qd5_i[i] = -k2_ir2*brho/0.016572460606060605*lq
-! q3
-yo1_qf6_i[i] = +k3_ir2*brho/0.016572460606060605*lq
-bo2_qf6_i[i] = -k3_ir2*brho/0.016572460606060605*lq
-! q4
-bi1_qf5_i[i] = -k4_ir2*brho/0.016572460606060605*lq
-yi2_qf5_i[i] = +k4_ir2*brho/0.016572460606060605*lq
-! q5
-yo1_qf4_i[i] = +k5_ir2*brho/0.027149189411764706*lq
-bo2_qf4_i[i] = -k5_ir2*brho/0.027149189411764706*lq
-! q6
-bi1_qd6_i[i] = -k6_ir2*brho/0.016572460606060605*lq
-yi2_qd6_i[i] = +k6_ir2*brho/0.016572460606060605*lq
-! q7
-bi1_qd4_i[i] = -k7_ir2*brho/0.027149189411764706*lq7
-yi2_qd4_i[i] = +k7_ir2*brho/0.027149189411764706*lq7
-! q8
-bi1_qd8_i[i] = -k8_ir2*brho/0.016572460606060605*lq
-yi2_qd8_i[i] = +k8_ir2*brho/0.016572460606060605*lq
-! q9
-bi1_qf9_i[i] = -k9_ir2*brho/0.016572460606060605*lq
-yi2_qf9_i[i] = +k9_ir2*brho/0.016572460606060605*lq
+ir2_q1_i[i] = k1_ir2*brho/0.013872341176470586*lq
+ir2_q2_i[i] = k2_ir2*brho/0.016572460606060605*lq
+ir2_q3_i[i] = k3_ir2*brho/0.016572460606060605*lq
+ir2_q4_i[i] = k4_ir2*brho/0.016572460606060605*lq7
+ir2_q5_i[i] = k5_ir2*brho/0.027149189411764706*lq
+ir2_q6_i[i] = k6_ir2*brho/0.016572460606060605*lq
+ir2_q7_i[i] = k7_ir2*brho/0.027149189411764706*lq7
+ir2_q8_i[i] = k8_ir2*brho/0.016572460606060605*lq
+ir2_q9_i[i] = k9_ir2*brho/0.016572460606060605*lq
