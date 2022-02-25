@@ -77,6 +77,14 @@
  var(18:23)%high_lim = +100 +100 +100 430 550 -5
 /
 
+&tao_var
+ v1_var%name = 'ir2'
+ default_universe = '1,10'
+ default_attribute = 'i'
+ default_step = 1
+ var(1:9)%ele_name = 'ir2_q1_i' 'ir2_q2_i' 'ir2_q3_i' 'ir2_q4_i' 'ir2_q5_i' 'ir2_q6_i' 'ir2_q7_i' 'ir2_q8_i' 'ir2_q9_i'
+/
+
 &tao_d2_data
  universe = '2'
  d2_data%name = 'ir6w'
@@ -242,4 +250,29 @@
  datum(1:2)%meas = 0 0
  datum(1:2)%weight = 1e-8 1e-8
  datum(1:2)%good_user = f f
+/
+
+&tao_d2_data
+ universe = '10'
+ d2_data%name = 'ir2'
+ n_d1_data = 2
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'kicker'
+ datum(1:4)%data_type = 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(1:4)%ele_name = 'cool_kicker_out' 'cool_kicker_out' 'cool_kicker_out' 'cool_kicker_out'
+ datum(1:4)%meas = 40 0 60 0
+ datum(1:4)%weight = 1e-2 1 1e-2 1
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'center'
+ datum(1:5)%data_type = 'beta.a' 'alpha.a' 'beta.b' 'alpha.b' 'etap.x'
+ datum(1:5)%ele_name = 'bi1_qf7' 'bi1_qf7' 'bi1_qf7' 'bi1_qf7' 'bi1_qf7'
+ datum(1:5)%eval_point = 'center' 'center' 'center' 'center' 'center'
+ datum(1:5)%meas = 50 0 50 0 0
+ datum(1:5)%weight = 1e-2 1 1e-2 1 1
 /
