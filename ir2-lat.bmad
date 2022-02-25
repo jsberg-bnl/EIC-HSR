@@ -40,16 +40,16 @@ foqd6 = 0.2
 
 o76: drift, l=4+(lbfl+lqbms7+lq7)-(lbfl4+lsb4+lsxt+lqs4+lq4+lcq4+lcor+lcfl)-(lcfl+lcor+lcq)
 o6d: drift, l=foqd6*lqd6tot - (lqs+lsxt+lsb+lbfl) - ldsfl
-o5c: drift, l=l65 - l6m - (lcfl+lcor+lcq4)
-o54: drift, l=4 - (lqs4+lsxt+lsb4+lbfl4) - (lcfl+lcor+lcq)
-o4d: drift, l=foqd5*lqd5tot - (lqs+lsxt+lsb+lbfl)
+o5c: drift, l=l65 + 0.5*lq - l6m - (lcfl+lcor+lcq4+0.5*lq4)
+o54: drift, l=4 + 0.5*lq7 - (0.5*lq4+lqs4+lsxt+lsb4+lbfl4) - (lcfl+lcor+lcq)
+o4d: drift, l=foqd5*lqd5tot + 0.5*lq7 - (0.5*lq+lqs+lsxt+lsb+lbfl)
 o3d: drift, l=(1-foqd5)*lqd5tot - (lcfl+lcor+lcq)
 o32: drift, l=l_inner_hc - lq - (lqs+lsxt+lsb+lbfl) - (lcfl+lcor+lcq)
-o21_1: drift, l=2*(lqd+delta_lqd) + ldip - (lbfl+lsb+lsxt+lqs) - (lbfl+lqbms7)
-o21_2: drift, l=2*(lqd+delta_lqd) + ldip - (lbfl+lsb+lsxt+lqs) - (lcq7+lcor+lcfl)
+o21_1: drift, l=2*(lqd+delta_lqd) + ldip + 0.5*lq - (lbfl+lsb+lsxt+lqs) - (lbfl+lqbms7+0.5*lq7)
+o21_2: drift, l=2*(lqd+delta_lqd) + ldip + 0.5*lq - (lbfl+lsb+lsxt+lqs) - (0.5*lq7+lcq7+lcor+lcfl)
 
 ocool_out: pipe, l=0.5*l65 - foqd6*lqd6tot - ldps - ldsfl
-ocool_in:  pipe, l=l6m - 0.5*l65 - 1e-6
+ocool_in:  pipe, l=l6m - 0.5*l65 + 1e-6
 
 cool_kicker_out: ocool_out
 cool_kicker_in: ocool_in
