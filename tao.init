@@ -11,7 +11,7 @@
 /
 
 &tao_design_lattice
- n_universes = 9
+ n_universes = 11
  design_lattice(1)%file = 'hsr-275-10.bmad'
  design_lattice(2)%file = 'hsr-275-10.bmad'
  design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6'
@@ -31,6 +31,10 @@
  design_lattice(8)%slice_lattice = 'yi3_b1+2:yo4_b1-2'
  design_lattice(9)%file = 'hsr-275-10.bmad'
  design_lattice(9)%slice_lattice = 'yi3_int11_2:yo4_int11_2'
+ design_lattice(10)%file = 'hsr-275-10.bmad'
+ design_lattice(10)%slice_lattice = 'bi1_int11_2:yi2_int11_2'
+ design_lattice(11)%file = 'hsr-275-10.bmad'
+ design_lattice(11)%slice_lattice = 'bi1_int11_2:bi1_int9_3-1'
 /
 
 &tao_var

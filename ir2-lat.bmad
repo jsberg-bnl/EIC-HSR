@@ -45,8 +45,8 @@ o54: drift, l=4 - (lqs4+lsxt+lsb4+lbfl4) - (lcfl+lcor+lcq)
 o4d: drift, l=foqd5*lqd5tot - (lqs+lsxt+lsb+lbfl)
 o3d: drift, l=(1-foqd5)*lqd5tot - (lcfl+lcor+lcq)
 o32: drift, l=l_inner_hc - lq - (lqs+lsxt+lsb+lbfl) - (lcfl+lcor+lcq)
-o21_1: drift, l=2*(lqd+delta_lqd) + ldip - (lbfl+lqbms7)
-o21_2: drift, l=2*(lqd+delta_lqd) + ldip - (lcq7-lcor-lcfl)
+o21_1: drift, l=2*(lqd+delta_lqd) + ldip - (lbfl+lsb+lsxt+lqs) - (lbfl+lqbms7)
+o21_2: drift, l=2*(lqd+delta_lqd) + ldip - (lbfl+lsb+lsxt+lqs) - (lcq7+lcor+lcfl)
 
 ocool_out: pipe, l=0.5*l65 - foqd6*lqd6tot - ldps - ldsfl
 ocool_in:  pipe, l=l6m - 0.5*l65 - 1e-6
