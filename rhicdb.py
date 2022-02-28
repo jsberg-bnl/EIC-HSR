@@ -125,8 +125,9 @@ class db_parser:
                         while eles[ix_ele] in self.beam_line and eles[ix_ele][0:3] != 'lmp':
                             eles[ix_ele:ix_ele+1] = self.beam_line[eles[ix_ele]]
                         ix_ele += 1
-                    is_du3 = re.match('^str[0-9]{2}'+m+'3$',s)
-                    o3id = 0
+                    remove_ap = re.match('^str[0-9]{2}('+m+'3|g0)$',s)
+                    if remove_ap:
+                        oapid = 0
                     ix_ele = 0
                     row = self.nl_row(cur)
                     while ix_ele < len(eles):
@@ -182,13 +183,13 @@ class db_parser:
                                 while row[2] > 0 and row[2] <= ix_atom and row[1] != eles[ix_ele]:
                                     row = self.nl_row(cur)
                             # Remove apertures from du3 slots
-                            elif is_du3 and ( re.match('^ap[0-9]+p[0-9]+[BY]$',eles[ix_ele]) or
-                                              re.match('^o3'+m+'[0-9]+l[0-9]+$',eles[ix_ele]) ):
+                            elif remove_ap and ( re.match('^ap[0-9]+p[0-9]+[BGY]$',eles[ix_ele]) or
+                                                 re.match('^o(3'+m+'|x)[0-9]+[al][0-9]+$',eles[ix_ele]) ):
                                 len_exprs = []
                                 while ix_ele < len(eles) and (
-                                        re.match('^ap[0-9]+p[0-9]+[BY]$',eles[ix_ele]) or
-                                        re.match('^o3'+m+'[0-9]+l[0-9]+$',eles[ix_ele]) ):
-                                    mat = re.match('^(o3'+m+'[0-9]+)l[0-9]+$',eles[ix_ele])
+                                        re.match('^ap[0-9]+p[0-9]+[BGY]$',eles[ix_ele]) or
+                                        re.match('^o(3'+m+'|x)[0-9]+[al][0-9]+$',eles[ix_ele]) ):
+                                    mat = re.match('^(o(3'+m+'|x)[0-9]+)[al][0-9]+$',eles[ix_ele])
                                     if mat:
                                         stem = mat[1]
                                         len_exprs.append(self.eles['drift'][eles[ix_ele]]['l'])
@@ -197,8 +198,8 @@ class db_parser:
                                         row = self.nl_row(cur)
                                     eles[ix_ele:ix_ele+1] = []
                                 if len(len_exprs):
-                                    eles[ix_ele:ix_ele] = [stem+'c'+str(o3id)]
-                                    o3id += 1
+                                    eles[ix_ele:ix_ele] = [stem+'c'+str(oapid)]
+                                    oapid += 1
                                     self.magnet_piece[eles[ix_ele]] = 'drift'
                                     self.eles['drift'][eles[ix_ele]] = {'l':'+'.join(len_exprs)}
                                 elif ix_ele >= len(eles):
@@ -589,8 +590,8 @@ arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
 mat01b = line('b','bi1_int9_3','bi1_cq7',db)
 ins10b = line('b','bo10_trp1','bo10_int9_3',db)
-ins11b = line('b','bo11_int9_3','bo11_trp1',db)
-ins12b = line('b','bi12_trp1','bi12_int9_3',db)
+ins11b = line('b','bo11_int9_3','bo11_d0',db)
+ins12b = line('b','bi12_d0','bi12_int9_3',db)
 
 mat02y = line('y','yi2_cq7','yi2_int9_3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
