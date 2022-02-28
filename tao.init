@@ -11,7 +11,7 @@
 /
 
 &tao_design_lattice
- n_universes = 11
+ n_universes = 12
  design_lattice(1)%file = 'hsr-275-10.bmad'
  design_lattice(2)%file = 'hsr-275-10.bmad'
  design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6'
@@ -35,6 +35,8 @@
  design_lattice(10)%slice_lattice = 'bi1_int11_2:yi2_int11_2'
  design_lattice(11)%file = 'hsr-275-10.bmad'
  design_lattice(11)%slice_lattice = 'bi1_int11_2:bi1_int9_3-1'
+ design_lattice(12)%file = 'hsr-275-10.bmad'
+ design_lattice(12)%slice_lattice = 'bo11_dh0-1:bi12_dh0+1'
 /
 
 &tao_var
@@ -83,6 +85,14 @@
  default_attribute = 'i'
  default_step = 1
  var(1:9)%ele_name = 'ir2_q1_i' 'ir2_q2_i' 'ir2_q3_i' 'ir2_q4_i' 'ir2_q5_i' 'ir2_q6_i' 'ir2_q7_i' 'ir2_q8_i' 'ir2_q9_i'
+/
+
+&tao_var
+ v1_var%name = 'ir12'
+ default_universe = '1,12'
+ var(1:2)%ele_name = 'ov_ir12_dh0' 'oir12'
+ var(1:2)%attribute = 'angle' 'l'
+ var(1:2)%step = 1e-6 1e-2
 /
 
 &tao_d2_data
@@ -275,4 +285,18 @@
  datum(1:5)%eval_point = 'center' 'center' 'center' 'center' 'center'
  datum(1:5)%meas = 50 0 50 0 0
  datum(1:5)%weight = 1e-2 1 1e-2 1 1
+/
+
+&tao_d2_data
+ universe = '12'
+ d2_data%name = 'ir12'
+ n_d1_data = 1
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'geom'
+ datum(1:2)%data_type = 'floor.x' 'floor.z'
+ datum(1:2)%ele_name = 'bi12_dh0+1' 'bi12_dh0+1'
+ datum(1:2)%weight = 1 1
 /

@@ -1,0 +1,19 @@
+ov_bo11_d0: overlay={
+ bo11_dh0[dg] : bo11_dh0[g]*sin(angle-bo11_dh0[angle])/sin(bo11_dh0[angle]),
+ pt_bo11_dh0[x_offset] : bo11_dh0[l]*sinc(0.5*bo11_dh0[angle])*sin(0.5*(bo11_dh0[angle]-angle))/cos(bo11_dh0[angle]-0.5*angle) - ld0flx*tan(angle-bo11_dh0[angle]),
+ pr_bo11_dh0[x_pitch] : bo11_dh0[angle] - angle}, var={angle}
+ov_bi12_d0: overlay={
+ bi12_dh0[dg] : bi12_dh0[g]*sin(angle-bi12_dh0[angle])/sin(bi12_dh0[angle]),
+ pt_bi12_dh0[x_offset] : -bi12_dh0[l]*sinc(0.5*bi12_dh0[angle])*sin(0.5*(bi12_dh0[angle]-angle))/cos(bi12_dh0[angle]-0.5*angle) + ld0flx*tan(angle-bi12_dh0[angle]),
+ pr_bi12_dh0[x_pitch] : bi12_dh0[angle] - angle}, var={angle}
+
+pt_bo11_dh0: patch
+pr_bo11_dh0: patch
+pt_bi12_dh0: patch
+pr_bi12_dh0: patch
+
+lir12 = 3.92440539461223494E+001
+
+ov_ir12_dh0: overlay={ ov_bo11_d0[angle]: angle, ov_bi12_d0[angle] : -angle }, var={angle}, angle = 5.33359674055741521E-003
+oir12: drift, l = lir12
+ir12: line=(ins11b,pt_bo11_dh0,pr_bo11_dh0,oir12,pr_bi12_dh0,pt_bi12_dh0,ins12b)
