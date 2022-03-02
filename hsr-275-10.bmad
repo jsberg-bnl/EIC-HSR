@@ -3,6 +3,7 @@ call, file='rhic-cur.bmad'
 call, file='ir2-str-275-10.bmad'
 call, file='ir4-str-275-10.bmad'
 call, file='ir6-str-275-10.bmad'
+call, file='ir12-str-275-10.bmad'
 
 parameter[geometry]        = open            
 parameter[particle]        = antiproton

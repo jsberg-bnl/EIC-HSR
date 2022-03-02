@@ -11,7 +11,7 @@
 /
 
 &tao_design_lattice
- n_universes = 13
+ n_universes = 15
  design_lattice(1)%file = 'hsr-275-10.bmad'
  design_lattice(2)%file = 'hsr-275-10.bmad'
  design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6'
@@ -39,6 +39,10 @@
  design_lattice(12)%slice_lattice = 'bo11_dh0-1:bi12_dh0+1'
  design_lattice(13)%file = 'hsr-275-10.bmad@ir12_41'
  design_lattice(13)%slice_lattice = 'oir12_41:bi12_dh0+2'
+ design_lattice(14)%file = 'hsr-275-10.bmad'
+ design_lattice(14)%slice_lattice = 'bo11_int11_2:bi12_int11_2'
+ design_lattice(15)%file = 'hsr-275-10.bmad'
+ design_lattice(15)%slice_lattice = 'bo11_int11_2:bo11_int9_3-1'
 /
 
 &tao_var
@@ -91,10 +95,21 @@
 
 &tao_var
  v1_var%name = 'ir12'
- default_universe = '1,12'
+ default_universe = '1,12,14'
  var(1:2)%ele_name = 'ov_ir12_dh0' 'o11d0g'
  var(1:2)%attribute = 'angle' 'l'
  var(1:2)%step = 1e-6 1e-2
+ var(3:5)%ele_name = 'b12_q89_ps' 'b12_q7_ps' 'b12_q6_ps'
+ var(6:12)%ele_name = 'bo11_qf8_ps' 'bo11_tq6_ps' 'bo11_tq5_ps' 'bo11_tq4_ps' 'bo11_qd3_ps' 'bo11_qf2_ps' 'bo11_qd1_ps'
+ var(13:19)%ele_name = 'bi12_qf1_ps' 'bi12_qd2_ps' 'bi12_qf3_ps' 'bi12_tq4_ps' 'bi12_tq5_ps' 'bi12_tq6_ps' 'bi12_qf9_ps'
+ var(3:19)%step = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ var(3:19)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+ var(3:5)%low_lim =  -278 -550 -430
+ var(3:5)%high_lim = +278  -14  -14
+ var(6:12)%low_lim =    +5 -100 -100 -100  +14 -140 -190
+ var(6:12)%high_lim = +150 +100 +100 +100 +280 +140  -14
+ var(13:19)%low_lim =  -190 -140  +14 -100 -100 -100   +5
+ var(13:19)%high_lim =  -14 +140 +280 +100 +100 +100 +150
 /
 
 &tao_d2_data
@@ -291,7 +306,7 @@
 
 &tao_d2_data
  universe = '12'
- d2_data%name = 'ir12'
+ d2_data%name = 'ir12g'
  n_d1_data = 1
 /
 
@@ -301,4 +316,33 @@
  datum(1:2)%data_type = 'floor.x' 'floor.z'
  datum(1:2)%ele_name = 'g12_markx' 'g12_markx'
  datum(1:2)%weight = 1 1
+/
+
+&tao_d2_data
+ universe = '14'
+ d2_data%name = 'ir12'
+ n_d1_data = 2
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(1:6)%ele_name = 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2'
+ datum(7:11)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(7:11)%ele_name = 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx'
+ datum(1:11)%weight = 1 1 100 1 100 1 1 10 1 10 1
+ datum(1:11)%meas = 0 0 0 0 0 0 0 5 0 5 0
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'opt'
+ datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
+ datum(1:7)%ele_name = 'g12_markx' 'bo11_b4' 'bo11_b4' 'bi12_b3' 'bi12_b3' 'bi12_int11_2' 'bi12_int11_2'
+ datum(2:7)%ele_start_name = 'bo11_int11_2' 'bo11_int11_2' 'bo11_b3' 'bo11_b3' 'bi12_b4' 'bi12_b4'
+ datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+ datum(1:7)%weight = 1e-4 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
+ datum(1:7)%good_user = f f f f f f f
 /
