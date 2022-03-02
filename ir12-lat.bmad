@@ -12,8 +12,43 @@ pr_bo11_dh0: patch
 pt_bi12_dh0: patch
 pr_bi12_dh0: patch
 
+tir12 = 5.33359674055741521E-003
 lir12 = 3.92440539461223494E+001
+ldswitch = 5
+tir12s = tir12+thd0
+tir12x = tir12+2*thd0
+lhsw12 = 0.5*ldswitch/cos(0.5*tir12x)
+l12gsw = (
+  lcend0*sin(0.5*(thdx-thd0))/cos(0.5*(thdx+thd0)) &
+  + lcendxd0*sin(thdx-thd0)/cos(thdx) &
+  + lcendx*sin(0.5*thdx - thd0)/cos(0.5*thdx) &
+  - lcenxdx*sin(thd0) ) / sin(tir12x) &
+ - lhsw12
+lir12_41 = (
+ lcenxdx*sin(tir12s) &
+ + lcendx*sin(0.5*thdx+tir12s)/cos(0.5*thdx) &
+ + lcendxd0*sin(thdx+tir12s)/cos(thdx) &
+ + lcend0*sin(0.5*(thdx+thd0)+tir12s)/cos(0.5*(thdx+thd0))) / sin(tir12x) &
+ + ld0fla + lbeld0q1  - lhsw12
 
-ov_ir12_dh0: overlay={ ov_bo11_d0[angle]: angle, ov_bi12_d0[angle] : -angle }, var={angle}, angle = 5.33359674055741521E-003
-oir12: drift, l = lir12
-ir12: line=(ins11b,pt_bo11_dh0,pr_bo11_dh0,oir12,pr_bi12_dh0,pt_bi12_dh0,ins12b)
+o11d0g: drift, l=0.5*lir12 + ldxflx - lcenxdx
+o12gsw: drift, l=l12gsw-lpjetfl
+ogswd0: drift, l=0.5*lir12 - l12gsw - 2*lhsw12
+oir12_41: drift, l=lir12_41
+
+! d_switch_ir12: sbend, l=ldswitch/sinc(0.5*tir12x), g=2*sin(0.5*tir12x)/ldswitch, e1=0.5*tir12x, e2=0.5*tir12x
+! d_switch_ir12[dg] = -d_switch_ir12[g]
+d_switch_ir12: sbend, l=ldswitch
+prd_switch_ir12: patch, x_pitch=-0.5*tir12x
+prw_switch_ir12: patch, x_pitch=+0.5*tir12x
+pt_switch_ir12: patch, x_offset=-ldswitch*tan(0.5*tir12x)
+
+ov_ir12_dh0: overlay={ ov_bo11_d0[angle]: angle, ov_bi12_d0[angle] : -angle }, var={angle}, angle = tir12
+
+ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,pr_bi12_dh0,pt_bi12_dh0,ins12b)
+
+ir12: line=(ins11b,pt_bo11_dh0,pr_bo11_dh0,o11d0g,
+ g11_dux,opjetfl,g12_pjetx,g12_markx,opjetfl,
+ o12gsw,prw_switch_ir12,pt_switch_ir12,ir12d)
+
+ir12_41: line=(ins11y,oir12_41,prd_switch_ir12,ir12d)
