@@ -6,7 +6,6 @@ l_wcm_to_septum = 16
 l_pc_to_bpm4 = 4
 lqwir4 = 0.9
 lqwfl = 0.2
-lwd = 5
 lq1wd = 2.92770376 - lflq1x
 thwdir4 = 6.06998319986880829E-003
 lir4h = 17.0952891656339503
