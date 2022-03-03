@@ -46,9 +46,15 @@ pt_switch_ir12: patch, x_offset=-ldswitch*tan(0.5*tir12x)
 ov_ir12_dh0: overlay={ ov_bo11_d0[angle]: angle, ov_bi12_d0[angle] : -angle }, var={angle}, angle = tir12
 
 lcolkfbh = 0.5
+lcolps = 20
 ocolkfbh: drift, l=lcolkfbh
+ocolksch: drift, l=0.5*o3b12c5[l]
 o3b11c1_hsr: drift, l=o3b11c1[l]-lcolkfbh
+o3b12c2w: drift, l=o3b12c2[l] + o3b12c3[l] + o3b12c4[l] + 2*leldfl + 4*lcktvfl + 0.5*o3b12c5[l] - lcolps
+o3b12c2d: drift, l=lcolps - 0.5*o3b12c5[l] - 4*lcktvfl - o3b12c4[l] - o3b12c3[l] - 2*leldfl
+scol_h3_1: rcollimator
 scol_h3_2: rcollimator
+pcol_h4: rcollimator
 
 bo11_du3_hsr:line=(obsk11ib,
  bo11_sv4,
@@ -64,7 +70,51 @@ bo11_du3_hsr:line=(obsk11ib,
  bo11_sv3,
  obsk11lb)
 
-ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,pr_bi12_dh0,pt_bi12_dh0,ins12b)
+bi12_du3_hsr:line=(obsk12lb,
+ bi12_sv3_1,
+ o3b12c0,
+ bi12_kfbh3,
+ o3b12c1,
+ oipmfll,
+ bi12_ipm3,
+ oipmfls,
+ o3b12c2w,
+ scol_h3_1,
+ o3b12c2d,
+ oeldfl,
+ bi12_eld3,
+ oeldfl,
+ o3b12c3,
+ ocktvfl,
+ bi12_ksch3_1,
+ ocktvfl,
+ o3b12c4,
+ ocktvfl,
+ bi12_ksch3_2,
+ ocktvfl,
+ ocolksch,
+ pcol_h4,
+ ocolksch,
+ ocktvfl,
+ bi12_kscv3_1,
+ ocktvfl,
+ o3b12c6,
+ ocktvfl,
+ bi12_kscv3_2,
+ ocktvfl,
+ o3b12c7,
+ bi12_sv3_2,
+ o3b12c8,
+ opolfls,
+ bi12_pol3_1,
+ opolflm,
+ bi12_pol3_2,
+ opolfll,
+ o3b12c9,
+ bi12_sv4,
+ obsk12ib)
+
+ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,pr_bi12_dh0,pt_bi12_dh0,trp12b,bi12_du3_hsr,mat12b)
 
 ir12: line=(mat11b,bo11_du3_hsr,trp11b,pt_bo11_dh0,pr_bo11_dh0,o11d0g,
  g11_dux,opjetfl,g12_pjetx,g12_markx,opjetfl,

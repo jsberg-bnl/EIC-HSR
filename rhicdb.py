@@ -592,7 +592,8 @@ mat01b = line('b','bi1_int9_3','bi1_cq7',db)
 ins10b = line('b','bo10_trp1','bo10_int9_3',db)
 mat11b = line('b','bo11_int9_3','bo11_cqt4',db)
 trp11b = line('b','bo11_trp3','bo11_d0',db)
-ins12b = line('b','bi12_d0','bi12_int9_3',db)
+trp12b = line('b','bi12_d0','bi12_trp3',db)
+mat12b = line('b','bi12_cqt4','bi12_int9_3',db)
 
 mat02y = line('y','yi2_cq7','yi2_int9_3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
@@ -606,7 +607,7 @@ ins11y = line('y','yi11_int9_3','yi11_trp1',db)
 # Lines carried over from RHIC
 line_list = [
     arc01b,arc03y,arc05y,arc07y,arc09y,arc11b,arc11y,
-    mat03y,trp03y,trp04y,mat04y,ins09y,ins10b,ins10y,mat11b,trp11b,ins11y,ins12b]
+    mat03y,trp03y,trp04y,mat04y,ins09y,ins10b,ins10y,mat11b,trp11b,ins11y,trp12b,mat12b]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
@@ -634,7 +635,7 @@ ir12_slots = [slot('b','g11_dux',db)]
 
 # slots that are broken up, but I need the bits for whatever reason
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
-ir12_parts = [slot('b','bo11_du3',db),slot('b','g12_dux',db)]
+ir12_parts = [slot('b','bo11_du3',db),slot('b','g12_dux',db),slot('b','bi12_du3',db)]
 
 slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots+ir12_parts+ir12_slots) # Everything I have some need for
 all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir12_parts+ir12_slots) # Things I need all the parts for 
