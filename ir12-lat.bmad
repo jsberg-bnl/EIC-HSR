@@ -45,9 +45,28 @@ pt_switch_ir12: patch, x_offset=-ldswitch*tan(0.5*tir12x)
 
 ov_ir12_dh0: overlay={ ov_bo11_d0[angle]: angle, ov_bi12_d0[angle] : -angle }, var={angle}, angle = tir12
 
+lcolkfbh = 0.5
+ocolkfbh: drift, l=lcolkfbh
+o3b11c1_hsr: drift, l=o3b11c1[l]-lcolkfbh
+scol_h3_2: rcollimator
+
+bo11_du3_hsr:line=(obsk11ib,
+ bo11_sv4,
+ o3b11c0,
+ omskhfl,
+ bo11_mskh3,
+ omskhfl,
+ o3b11c1_hsr,
+ scol_h3_2,
+ ocolkfbh,
+ bo11_kfbh3,
+ o3b11c2,
+ bo11_sv3,
+ obsk11lb)
+
 ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,pr_bi12_dh0,pt_bi12_dh0,ins12b)
 
-ir12: line=(ins11b,pt_bo11_dh0,pr_bo11_dh0,o11d0g,
+ir12: line=(mat11b,bo11_du3_hsr,trp11b,pt_bo11_dh0,pr_bo11_dh0,o11d0g,
  g11_dux,opjetfl,g12_pjetx,g12_markx,opjetfl,
  o12gsw,prw_switch_ir12,pt_switch_ir12,ir12d)
 
