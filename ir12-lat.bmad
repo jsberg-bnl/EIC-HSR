@@ -32,12 +32,10 @@ lir12_41 = (
  + ld0fla + lbeld0q1  - lhsw12
 
 o11d0g: drift, l=0.5*lir12 + ldxflx - lcenxdx
-o12gsw: drift, l=l12gsw-lpjetfl
-ogswd0: drift, l=0.5*lir12 - l12gsw - 2*lhsw12
+o12gsw: drift, l=l12gsw-lpjetfl-ox12c0[l]-ox12c1[l]-2*leldhvfl-2*leldfl-3*lsolec
+ogswd0: drift, l=0.5*(0.5*lir12 - l12gsw - 2*lhsw12 - ox12c3[l] - ox12c4[l] - ox12c5[l] - lbxflx - lbxfla - ox12c6[l] - lbsk12lg)
 oir12_41: drift, l=lir12_41
 
-! d_switch_ir12: sbend, l=ldswitch/sinc(0.5*tir12x), g=2*sin(0.5*tir12x)/ldswitch, e1=0.5*tir12x, e2=0.5*tir12x
-! d_switch_ir12[dg] = -d_switch_ir12[g]
 d_switch_ir12: sbend, l=ldswitch
 prd_switch_ir12: patch, x_pitch=-0.5*tir12x
 prw_switch_ir12: patch, x_pitch=+0.5*tir12x
@@ -114,10 +112,39 @@ bi12_du3_hsr:line=(obsk12lb,
  bi12_sv4,
  obsk12ib)
 
-ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,pr_bi12_dh0,pt_bi12_dh0,trp12b,bi12_du3_hsr,mat12b)
+g12_duxw: line=(opjetfl,
+ g12_pjetx,
+ g12_markx,
+ opjetfl,
+ ox12c0,
+ g12_svx_1,
+ ox12c1,
+ oeldhvfl,
+ g12_eldx_1,
+ oeldhvfl,
+ oeldfl,
+ g12_eldx_2,
+ oeldfl,
+ g12_solx_1,
+ g12_solx_1,
+ g12_solx_1)
+g12_duxd: line=(g12_bsx_1,
+ ox12c3,
+ g12_bsx_2,
+ ox12c4,
+ g12_bsx_3,
+ ox12c5,
+ obxflx,
+ g12_bx,
+ obxfla,
+ ox12c6,
+ g12_svx_2,
+ obsk12lg)
+
+ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,g12_duxd,ogswd0,pr_bi12_dh0,pt_bi12_dh0,trp12b,bi12_du3_hsr,mat12b)
 
 ir12: line=(mat11b,bo11_du3_hsr,trp11b,pt_bo11_dh0,pr_bo11_dh0,o11d0g,
- g11_dux,opjetfl,g12_pjetx,g12_markx,opjetfl,
+ g11_dux,g12_duxw,
  o12gsw,prw_switch_ir12,pt_switch_ir12,ir12d)
 
 ir12_41: line=(ins11y,oir12_41,prd_switch_ir12,ir12d)
