@@ -1,4 +1,4 @@
-set branch [4:7,11,15]@0 geometry=closed
+set branch [4:7,11,15,17]@0 geometry=closed
 set sym mxx = lat::r.11[0&yo4_int9_3]
 set sym mxp = lat::r.12[0&yo4_int9_3]
 set sym mxd = lat::r.16[0&yo4_int9_3]
@@ -79,3 +79,9 @@ set data 14@ir12.fit[3]|meas = 11@lat::beta.a[bi1_int10_1]
 set data 14@ir12.fit[4]|meas = 11@lat::alpha.a[bi1_int10_1]
 set data 14@ir12.fit[5]|meas = 11@lat::beta.b[bi1_int10_1]
 set data 14@ir12.fit[6]|meas = 11@lat::alpha.b[bi1_int10_1]
+set ele 16@0 eta_x = 17@lat::eta.x[0]
+set ele 16@0 etap_x = 17@lat::etap.x[0]
+set ele 16@0 beta_a = 17@lat::beta.a[0]
+set ele 16@0 alpha_a = 17@lat::alpha.a[0]
+set ele 16@0 beta_b = 17@lat::beta.b[0]
+set ele 16@0 alpha_b = 17@lat::alpha.b[0]

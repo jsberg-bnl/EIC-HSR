@@ -9,6 +9,7 @@ call, file='ir10-lat.bmad'
 call, file='ir12-lat.bmad'
 call, file='rhic-ps.bmad'
 call, file='ir2-ps.bmad'
+call, file='ir10-ps.bmad'
 
 ip6: marker
 hsr: line=(arc09y,
