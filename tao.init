@@ -11,42 +11,53 @@
 /
 
 &tao_design_lattice
- n_universes = 17
+ n_universes = 21
  design_lattice(1)%file = 'hsr-275-10.bmad'
  design_lattice(2)%file = 'hsr-275-10.bmad'
+ design_lattice(3)%file = 'hsr-275-10.bmad'
+ design_lattice(4)%file = 'hsr-275-10.bmad'
+ design_lattice(5)%file = 'hsr-275-10.bmad'
+ design_lattice(6)%file = 'hsr-275-10.bmad'
+ design_lattice(7)%file = 'hsr-275-10.bmad'
+ design_lattice(8)%file = 'hsr-275-10.bmad'
+ design_lattice(9)%file = 'hsr-275-10.bmad'
+ design_lattice(10)%file = 'hsr-275-10.bmad'
+ design_lattice(11)%file = 'hsr-275-10.bmad'
+ design_lattice(12)%file = 'hsr-275-10.bmad'
+ design_lattice(13)%file = 'hsr-275-10.bmad@ir12_41'
+ design_lattice(14)%file = 'hsr-275-10.bmad'
+ design_lattice(15)%file = 'hsr-275-10.bmad'
+ design_lattice(16)%file = 'hsr-275-10.bmad'
+ design_lattice(17)%file = 'hsr-275-10.bmad'
+ design_lattice(18)%file = 'hsr-275-10.bmad'
+ design_lattice(19)%file = 'hsr-275-10.bmad'
+ design_lattice(20)%file = 'hsr-275-10.bmad'
+ design_lattice(21)%file = 'hsr-275-10.bmad'
  design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6'
  design_lattice(2)%reverse_lattice = t
- design_lattice(3)%file = 'hsr-275-10.bmad'
  design_lattice(3)%slice_lattice = 'ip6:yi6_int11_2'
- design_lattice(4)%file = 'hsr-275-10.bmad'
  design_lattice(4)%slice_lattice = 'yo4_int9_3+1:yo4_int11_2'
- design_lattice(5)%file = 'hsr-275-10.bmad'
  design_lattice(5)%slice_lattice = 'yo4_int9_3+1:yo4_int11_2'
  design_lattice(5)%reverse_lattice = t
- design_lattice(6)%file = 'hsr-275-10.bmad'
  design_lattice(6)%slice_lattice = 'o10int_pr+1:yi6_int11_2'
- design_lattice(7)%file = 'hsr-275-10.bmad'
  design_lattice(7)%slice_lattice = 'yi3_int11_2:yi3_int9_3-1'
- design_lattice(8)%file = 'hsr-275-10.bmad'
  design_lattice(8)%slice_lattice = 'yi3_b1+2:yo4_b1-2'
- design_lattice(9)%file = 'hsr-275-10.bmad'
  design_lattice(9)%slice_lattice = 'yi3_int11_2:yo4_int11_2'
- design_lattice(10)%file = 'hsr-275-10.bmad'
  design_lattice(10)%slice_lattice = 'bi1_int11_2:yi2_int11_2'
- design_lattice(11)%file = 'hsr-275-10.bmad'
  design_lattice(11)%slice_lattice = 'bi1_int11_2:bi1_int9_3-1'
- design_lattice(12)%file = 'hsr-275-10.bmad'
  design_lattice(12)%slice_lattice = 'bo11_dh0-1:bi12_dh0+1'
- design_lattice(13)%file = 'hsr-275-10.bmad@ir12_41'
  design_lattice(13)%slice_lattice = 'oir12_41:bi12_dh0+2'
- design_lattice(14)%file = 'hsr-275-10.bmad'
  design_lattice(14)%slice_lattice = 'bo11_int11_2:bi12_int11_2'
- design_lattice(15)%file = 'hsr-275-10.bmad'
  design_lattice(15)%slice_lattice = 'bo11_int11_2:bo11_int9_3-1'
- design_lattice(16)%file = 'hsr-275-10.bmad'
  design_lattice(16)%slice_lattice = 'yo9_int11_2:bo10_int11_2'
- design_lattice(17)%file = 'hsr-275-10.bmad'
  design_lattice(17)%slice_lattice = 'yo9_int11_2:yo9_int9_3-1'
+ design_lattice(18)%slice_lattice = 'yi7_int9_3:yo8_int11_2'
+ design_lattice(18)%reverse_lattice = t
+ design_lattice(19)%slice_lattice = 'yi7_int9_3:ip8'
+ design_lattice(19)%reverse_lattice = t
+ design_lattice(20)%slice_lattice = 'yi7_int11_2:lmp07y10+1'
+ design_lattice(20)%reverse_lattice = t
+ design_lattice(21)%slice_lattice = 'ip8:yo8_int11_2'
 /
 
 &tao_var
@@ -125,6 +136,31 @@
  var(1:10)%step = 1 1 1 1 1 1 1 1 1 1
  var(1:10)%low_lim  =  +14 -140 -280 -100 -100 -100  +14  +14  -150 -278
  var(1:10)%high_lim = +190 +140  -14 +100 +100 +100 +430 +550    -5 +278
+/
+
+&tao_var
+ v1_var%name = 'ir8w'
+ default_universe = '1,18,19'
+ var(1:5)%ele_name = 'dds05n' 'dds08n' 'bxdsds04' 'bxds01a' 'bxds01b'
+ var(1:5)%attribute = 'l' 'l' 'g' 'dg' 'dg'
+ var(1:5)%step = 1e-3 1e-3 1e-6 1e-6 1e-6
+ var(6:14)%ele_name = 'qffds01a' 'qffds01b' 'qffds02a' 'qffds02b' 'qds01' 'qds02' 'qds02a' 'qds03a' 'qds03b'
+ var(6:14)%attribute = 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1'
+ var(6:14)%step = 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5
+ var(15:22)%ele_name = 'qds04a' 'qds04b' 'qds05' 'qds06' 'qds07' 'qds08' 'qds09' 'qds10'
+ var(15:22)%attribute = 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1'
+ var(15:22)%step = 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5
+/
+
+&tao_var
+ v1_var%name = 'ir8d'
+ default_universe = '1,21'
+ var(1:5)%ele_name = 'bxus9m1' 'bxus9m2' 'bxus9m3' 'dus06n' 'dus07n'
+ var(1:5)%attribute = 'g' 'g' 'g' 'l' 'l'
+ var(1:5)%step = 1e-6 1e-6 1e-6 1e-3 1e-3
+ var(6:17)%ele_name = 'qffus01' 'qffus02' 'qffus03' 'qus01c' 'qus02c' 'qus03' 'qus04' 'qus05' 'qus06' 'qus07' 'qus08' 'qus09'
+ var(6:17)%attribute = 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1'
+ var(6:17)%step = 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5
 /
 
 &tao_d2_data
@@ -387,4 +423,77 @@
  datum(1:6)%meas = 0 0 0 0 0 0
  datum(1:6)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
  datum(1:6)%good_user = f f f f f f
+/
+
+&tao_d2_data
+ universe = '19'
+ d2_data%name = 'ir8w'
+ n_d1_data = 4
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'floor'
+ default_weight = 1
+ datum(1:3)%data_type = 'floor.x' 'floor.z' 'floor.theta'
+ datum(1:3)%ele_name = 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3'
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'orbit'
+ default_weight = 1e4
+ datum(1:2)%data_type = 'orbit.x' 'orbit.px'
+ datum(1:2)%ele_name = 'bxds01b' 'bxds01b'
+ datum(1:2)%meas = 0 0
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'ir'
+ datum(1:3)%data_type = 'alpha.a' 'beta.a' 'alpha.a'
+ datum(1:3)%ele_name = 'mpot1' 'o_crab_ir8w' 'o_crab_ir8w'
+ datum(2:3)%eval_point = 'center' 'center'
+ datum(1:3)%meas = 0 1300 0
+ datum(1:3)%weight = 1 1e-3 1
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'arc'
+ datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(1:6)%ele_name = 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3'
+ datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
+/
+
+&tao_d2_data
+ universe = '21'
+ d2_data%name = 'ir8d'
+ n_d1_data = 3
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'floor'
+ default_weight = 1
+ datum(1:3)%data_type = 'floor.x' 'floor.z' 'floor.theta'
+ datum(1:3)%ele_name = 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3'
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'ir'
+ datum(1:2)%data_type = 'beta.a' 'alpha.a'
+ datum(1:2)%ele_name = 'o_crab_ir8d' 'o_crab_ir8d'
+ datum(1:2)%eval_point = 'center' 'center'
+ datum(1:2)%meas = 1300 0
+ datum(1:2)%weight = 1e-3 1
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'arc'
+ datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(1:6)%ele_name = 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3'
+ datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
 /

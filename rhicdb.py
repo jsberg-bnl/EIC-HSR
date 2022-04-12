@@ -630,6 +630,7 @@ ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp3','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_6',
                        'yi6_cqt4','yi6_cqt5','yi6_d5','yi6_cqt6','yi6_d6','yi6_cq7','yi6_cq8','yi6_d8','yi6_cqb9','yi6_d9')]
+ir8_slots = [slot('y','yi7_int9_3',db),slot('y','yi7_d9',db),slot('y','yo8_d9',db),slot('y','yo8_int9_3',db)]
 ir10_slots = [slot('y','g9_dux',db),slot('b','g10_dux',db)]
 ir12_slots = [slot('b','g11_dux',db)]
 
@@ -637,9 +638,9 @@ ir12_slots = [slot('b','g11_dux',db)]
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
 ir12_parts = [slot('b','bo11_du3',db),slot('b','g12_dux',db),slot('b','bi12_du3',db)]
 
-slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots+ir10_slots+ir12_parts+ir12_slots) # Everything I have some need for
-all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir10_slots+ir12_parts+ir12_slots) # Things I need all the parts for 
-all_slots = line_info(ir2_slots+ir6_slots+ir10_slots+ir12_slots) # Slots kept intact but used in isolation
+slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots+ir8_slots+ir10_slots+ir12_parts+ir12_slots) # Everything I have some need for
+all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir8_slots+ir10_slots+ir12_parts+ir12_slots) # Things I need all the parts for 
+all_slots = line_info(ir2_slots+ir6_slots+ir8_slots+ir10_slots+ir12_slots) # Slots kept intact but used in isolation
 all_lines = line_info(line_list) # RHIC lines
 
 extra_geom = {'lcenxdx','lcendxd0','ld0fla','lbeld0q1','thdx'}

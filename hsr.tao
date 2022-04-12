@@ -1,4 +1,4 @@
-set branch [4:7,11,15,17]@0 geometry=closed
+set branch [4:7,11,15,17,20]@0 geometry=closed
 set sym mxx = lat::r.11[0&yo4_int9_3]
 set sym mxp = lat::r.12[0&yo4_int9_3]
 set sym mxd = lat::r.16[0&yo4_int9_3]
@@ -27,13 +27,13 @@ set ele 1@0 s = 1@lat::s_position[0] - 1@lat::s_position[ip6]
 set ele [2,3]@0 theta_position = dtheta0_eic - pi
 set ele [2,3]@0 x_position = rhic_x0 + dx0_eic
 set ele [2,3]@0 z_position = rhic_z0
-set ele [2,3]@0 s = 0
-set ele [2,3]@0 eta_x = 0
-set ele [2,3]@0 etap_x = 0
-set ele [2,3]@0 beta_a = 80e-2
-set ele [2,3]@0 alpha_a = 0
-set ele [2,3]@0 beta_b = 7.2e-2
-set ele [2,3]@0 alpha_b = 0
+set ele [2,3,19,21]@0 s = 0
+set ele [2,3,19,21]@0 eta_x = 0
+set ele [2,3,19,21]@0 etap_x = 0
+set ele [2,3,19,21]@0 beta_a = 80e-2
+set ele [2,3,19,21]@0 alpha_a = 0
+set ele [2,3,19,21]@0 beta_b = 7.2e-2
+set ele [2,3,19,21]@0 alpha_b = 0
 set ele 8@0 theta_position = thd0
 set ele 8@0 z_position = -(lcenxdx + lcendx + lcendxd0 + lcend0 + (lbeld0q1+ld0fla)*cos(thd0))
 set ele 8@0 x_position = -(lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0)) + (lbeld0q1+ld0fla)*sin(thd0))
@@ -85,3 +85,66 @@ set ele 16@0 beta_a = 17@lat::beta.a[0]
 set ele 16@0 alpha_a = 17@lat::alpha.a[0]
 set ele 16@0 beta_b = 17@lat::beta.b[0]
 set ele 16@0 alpha_b = 17@lat::alpha.b[0]
+set ele 18@0 eta_x = 5@lat::eta.x[0]
+set ele 18@0 etap_x = 5@lat::etap.x[0]
+set ele 18@0 beta_a = 5@lat::beta.a[0]
+set ele 18@0 alpha_a = 5@lat::alpha.a[0]
+set ele 18@0 beta_b = 5@lat::beta.b[0]
+set ele 18@0 alpha_b = 5@lat::alpha.b[0]
+set particle_start [18,19,21]@x = 0
+set particle_start [18,19,21]@px = 0
+set ele 19@0 x_position = 0.85
+set ele [19,21]@0 z_position = 0
+set ele 19@0 theta_position = 24e-3-pi
+set ele 21@0 x_position = -0.85
+set ele 21@0 theta_position = 24e-3
+set sym lcend0d5i = lcend0d5 - ldspd5a
+set sym lcend0d5o = lcend0d5 + ldspd5a
+set sym l56i = 0.5*lplq5q6 - rho*tan(0.5*(thd5-thd0)) - ldspd5a + lq + lplq6q7 - lpldsq7 - ldps - ldspds
+set sym l56o = 0.5*lplq5q6 - rho*tan(0.5*(thd5+thd0)) + ldspd5a + lq + lplq6q7 - lpldsq7 - ldps + ldspds
+set sym l68i = lpldsq7 - ldspds + lq7 + lplq7q8 + lq + lqd - ldspqd
+set sym l68o = lpldsq7 + ldspds + lq7 + lplq7q8 + lq + lqd + ldspqd
+set sym l89i = lqd-ldspqd+lq+lplq9ds-ldspds
+set sym l89o = lqd+ldspqd+lq+lplq9ds+ldspds
+set sym l9ci = lpldsq10 - ldspds - lcfl - lcor - lcq
+set sym l9bo = lpldsq10 + ldspds - lbfl - lqb
+set sym lt5i = rho*tan(0.5*(thd5-thd0))
+set sym lt5o = rho*tan(0.5*(thd5+thd0))
+set sym ld5ichord = 2*rho*sin(0.5*(thd5-thd0))
+set sym ld5ochord = 2*rho*sin(0.5*(thd5+thd0))
+set sym ldschord = 2*rho*sin(0.5*thds)
+set sym ldchord = 2*rho*sin(0.5*thcell)
+set dat 19@ir8w.floor[1]|meas = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0)) + lcend0d5i*tan(thd0)
+set dat 19@ir8w.floor[1]|meas = 19@data::ir8w.floor[1]|meas - lt5i*sin(thd0) + ld5ichord*sin(0.5*(thd5+thd0)) + l56i*sin(thd5) 
+set dat 19@ir8w.floor[1]|meas = 19@data::ir8w.floor[1]|meas + ldschord*(sin(thd5+0.5*thds)+sin(thd5+1.5*thds+thcell))
+set dat 19@ir8w.floor[1]|meas = 19@data::ir8w.floor[1]|meas + l68i*sin(thd5+thds) + ldchord*sin(thd5+thds+0.5*thcell)
+set dat 19@ir8w.floor[1]|meas = 19@data::ir8w.floor[1]|meas + l89i*sin(thd5+thds+thcell) + l9ci*sin(thd5+2*thds+thcell)
+set dat 19@ir8w.floor[2]|meas = lcenxdx + lcendx + lcendxd0 + lcend0 + lcend0d5i
+set dat 19@ir8w.floor[2]|meas = 19@data::ir8w.floor[2]|meas - lt5i*cos(thd0) + ld5ichord*cos(0.5*(thd5+thd0)) + l56i*cos(thd5)
+set dat 19@ir8w.floor[2]|meas = 19@data::ir8w.floor[2]|meas + ldschord*(cos(thd5+0.5*thds)+cos(thd5+1.5*thds+thcell))
+set dat 19@ir8w.floor[2]|meas = 19@data::ir8w.floor[2]|meas + l68i*cos(thd5+thds) + ldchord*cos(thd5+thds+0.5*thcell)
+set dat 19@ir8w.floor[2]|meas = 19@data::ir8w.floor[2]|meas + l89i*cos(thd5+thds+thcell) + l9ci*cos(thd5+2*thds+thcell)
+set dat 19@ir8w.floor[3]|meas = thd5+2*thds+thcell-pi
+set dat 19@ir8w.arc[1]|meas = 20@lat::eta.x[0]
+set dat 19@ir8w.arc[2]|meas = 20@lat::etap.x[0]
+set dat 19@ir8w.arc[3]|meas = 20@lat::beta.a[0]
+set dat 19@ir8w.arc[4]|meas = 20@lat::alpha.a[0]
+set dat 19@ir8w.arc[5]|meas = 20@lat::beta.b[0]
+set dat 19@ir8w.arc[6]|meas = 20@lat::alpha.b[0]
+set dat 21@ir8d.floor[1]|meas = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0)) + lcend0d5o*tan(thd0) &
+ - lt5o*sin(thd0) - ld5ochord*sin(0.5*(thd5-thd0)) - l56o*sin(thd5) &
+ - ldschord*(sin(thd5+0.5*thds)+sin(thd5+1.5*thds+thcell)) &
+ - l68o*sin(thd5+thds) - ldchord*sin(thd5+thds+0.5*thcell) &
+ - l89o*sin(thd5+thds+thcell) - l9bo*sin(thd5+2*thds+thcell)
+set dat 21@ir8d.floor[2]|meas = lcenxdx + lcendx + lcendxd0 + lcend0 + lcend0d5o &
+ - lt5o*cos(thd0) + ld5ochord*cos(0.5*(thd5-thd0)) + l56o*cos(thd5) &
+ + ldschord*(cos(thd5+0.5*thds)+cos(thd5+1.5*thds+thcell)) &
+ + l68o*cos(thd5+thds) + ldchord*cos(thd5+thds+0.5*thcell) &
+ + l89o*cos(thd5+thds+thcell) + l9bo*cos(thd5+2*thds+thcell)
+set dat 21@ir8d.floor[3]|meas = -thd5-2*thds-thcell
+set dat 21@ir8d.arc[1]|meas = 4@lat::eta.x[0]
+set dat 21@ir8d.arc[2]|meas = 4@lat::etap.x[0]
+set dat 21@ir8d.arc[3]|meas = 4@lat::beta.a[0]
+set dat 21@ir8d.arc[4]|meas = 4@lat::alpha.a[0]
+set dat 21@ir8d.arc[5]|meas = 4@lat::beta.b[0]
+set dat 21@ir8d.arc[6]|meas = 4@lat::alpha.b[0]

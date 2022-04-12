@@ -5,6 +5,7 @@ lwd = 5
 call, file='ir2-lat.bmad'
 call, file='ir4-lat.bmad'
 call, file='ir6-lat.bmad'
+call, file='ir8c-lat.bmad'
 call, file='ir10-lat.bmad'
 call, file='ir12-lat.bmad'
 call, file='rhic-ps.bmad'
@@ -12,7 +13,7 @@ call, file='ir2-ps.bmad'
 call, file='ir10-ps.bmad'
 
 ip6: marker
-hsr: line=(arc09y,
+hsr: line=(ir8,arc09y,
  ins09y,ir10,ins10b,
  arc11b,
  mat11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
