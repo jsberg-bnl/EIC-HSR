@@ -18,18 +18,22 @@ set sym ld5ichord = 2*rho*sin(0.5*(thd5-thd0))
 set sym ld5ochord = 2*rho*sin(0.5*(thd5+thd0))
 set sym ldschord = 2*rho*sin(0.5*thds)
 set sym ldchord = 2*rho*sin(0.5*thcell)
-set sym xcq10i = xd0 + lcend0d5i*tan(thd0) - lt5i*sin(thd0) + ld5ichord*sin(0.5*(thd5+thd0)) + l56i*sin(thd5) &
+set sym xds9i = xd0 + lcend0d5i*tan(thd0) - lt5i*sin(thd0) + ld5ichord*sin(0.5*(thd5+thd0)) + l56i*sin(thd5) &
  + ldschord*(sin(thd5+0.5*thds)+sin(thd5+1.5*thds+thcell)) + l68i*sin(thd5+thds) + ldchord*sin(thd5+thds+0.5*thcell) &
- + l89i*sin(thd5+thds+thcell) + l9ci*sin(thd5+2*thds+thcell)
-set sym zcq10i = zd0 + lcend0d5i - lt5i*cos(thd0) + ld5ichord*cos(0.5*(thd5+thd0)) + l56i*cos(thd5) &
+ + l89i*sin(thd5+thds+thcell)
+set sym zds9i = zd0 + lcend0d5i - lt5i*cos(thd0) + ld5ichord*cos(0.5*(thd5+thd0)) + l56i*cos(thd5) &
  + ldschord*(cos(thd5+0.5*thds)+cos(thd5+1.5*thds+thcell)) + l68i*cos(thd5+thds) + ldchord*cos(thd5+thds+0.5*thcell) &
- + l89i*cos(thd5+thds+thcell) + l9ci*cos(thd5+2*thds+thcell)
-set sym xcq10o = -xd0 - lcend0d5o*tan(thd0) + lt5o*sin(thd0) + ld5ochord*sin(0.5*(thd5-thd0)) + l56o*sin(thd5) &
+ + l89i*cos(thd5+thds+thcell)
+set sym xds9o = -xd0 - lcend0d5o*tan(thd0) + lt5o*sin(thd0) + ld5ochord*sin(0.5*(thd5-thd0)) + l56o*sin(thd5) &
  + ldschord*(sin(thd5+0.5*thds)+sin(thd5+1.5*thds+thcell)) + l68o*sin(thd5+thds) + ldchord*sin(thd5+thds+0.5*thcell) &
- + l89o*sin(thd5+thds+thcell) + l9bo*sin(thd5+2*thds+thcell)
-set sym zcq10o = zd0 + lcend0d5o - lt5o*cos(thd0) + ld5ochord*cos(0.5*(thd5-thd0)) + l56o*cos(thd5) &
+ + l89o*sin(thd5+thds+thcell)
+set sym zds9o = zd0 + lcend0d5o - lt5o*cos(thd0) + ld5ochord*cos(0.5*(thd5-thd0)) + l56o*cos(thd5) &
  + ldschord*(cos(thd5+0.5*thds)+cos(thd5+1.5*thds+thcell)) + l68o*cos(thd5+thds) + ldchord*cos(thd5+thds+0.5*thcell) &
- + l89o*cos(thd5+thds+thcell) + l9bo*cos(thd5+2*thds+thcell)
+ + l89o*cos(thd5+thds+thcell)
+set sym xcq10i = xds9i + l9ci*sin(thd5+2*thds+thcell)
+set sym zcq10i = zds9i + l9ci*cos(thd5+2*thds+thcell)
+set sym xcq10o = xds9o + l9bo*sin(thd5+2*thds+thcell)
+set sym zcq10o = zds9o + l9bo*cos(thd5+2*thds+thcell)
 ! Floor layout
 set sym rhic_x0 = -590.581639053215
 set sym rhic_z0 = 0
