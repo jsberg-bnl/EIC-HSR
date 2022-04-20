@@ -12,8 +12,10 @@ call, file='rhic-ps.bmad'
 call, file='ir2-ps.bmad'
 call, file='ir10-ps.bmad'
 
-ip6: marker
-hsr: line=(ir8,arc09y,
+ip6d: marker
+ip6w: marker
+hsr: line=(ip6d,hsr6d,
+ arc07y,ir8,arc09y,
  ins09y,ir10,ins10b,
  arc11b,
  mat11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
@@ -22,5 +24,4 @@ hsr: line=(ir8,arc09y,
  arc03y,
  mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
  arc05y,
- hsr6w,ip6,hsr6d,
- arc07y)
+ hsr6w,ip6w)
