@@ -7,19 +7,9 @@ call, file='ir8c-str-275-10.bmad'
 call, file='ir10-str-275-10.bmad'
 call, file='ir12-str-275-10.bmad'
 
-parameter[geometry]        = open            
-parameter[particle]        = antiproton
-parameter[ptc_exact_model] = t
 beginning[e_tot]           = e275
 
-beginning[x_position] =  -581.034604448580808
-beginning[z_position] =  198.301464555407989
-beginning[theta_position] =  -2.92938609211768686+twopi
-beginning[eta_x] =  +1.04125911010660821E+00
-beginning[etap_x] =  -4.38068501621277015E-02
-beginning[beta_a] = 4.16917285369697765E+01
-beginning[alpha_a] = -2.00180204981945575E+00
-beginning[beta_b] = 1.20450836994714052E+01
-beginning[alpha_b] =  -1.94874345958573625E+00
+beginning[beta_a] = 80e-2
+beginning[beta_b] = 7.2e-2
 
 use, hsr

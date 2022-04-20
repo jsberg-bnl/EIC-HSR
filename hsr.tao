@@ -1,4 +1,4 @@
-set branch [10:20]@0 geometry=closed
+set branch [1,10:20]@0 geometry=closed
 ! RHIC geometry calculations
 set sym xd0 = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0))
 set sym zd0 = lcenxdx + lcendx + lcendxd0 + lcend0
@@ -146,5 +146,5 @@ set ele 21@0 beta_a = 15@lat::beta.a[0]
 set ele 21@0 alpha_a = 15@lat::alpha.a[0]
 set ele 21@0 beta_b = 15@lat::beta.b[0]
 set ele 21@0 alpha_b = 15@lat::alpha.b[0]
-set particle_start [1:9,21:24]@x = 0
-set particle_start [1:9,21:24]@px = 0
+set particle_start [2:9,21:24]@x = 0
+set particle_start [2:9,21:24]@px = 0
