@@ -1,3 +1,5 @@
+set global plot_on=f
+set global lattice_calc_on=f
 set branch [1,10:20]@0 geometry=closed
 ! RHIC geometry calculations
 set sym xd0 = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0))
@@ -148,3 +150,14 @@ set ele 21@0 beta_b = 15@lat::beta.b[0]
 set ele 21@0 alpha_b = 15@lat::alpha.b[0]
 set particle_start [2:9,21:24]@x = 0
 set particle_start [2:9,21:24]@px = 0
+set graph * draw_title = f
+set graph * x%draw_label = f
+set graph * x%draw_numbers = f
+x_scale -exact * 0 1@ele::end[s]
+set graph * x%major_div_nominal = 8
+set lat_layout ele_shape(1:10)%label = 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none'
+set lat_layout ele_shape(11:20)%label = 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none'
+set lat_layout ele_shape(21:30)%label = 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none' 'none'
+scale dispersion -1 2
+set global lattice_calc_on=t
+set global plot_on=t

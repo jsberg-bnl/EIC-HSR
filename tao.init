@@ -518,3 +518,12 @@
  datum(1:6)%ele_name = 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
 /
+
+&tao_plot_page
+ plot_page%size = 500 300
+ plot_page%n_curve_pts = 8192
+ plot_page%draw_graph_title_suffix = f
+ place(1) = 'layout' 'lat_layout'
+ place(2) = 'r12' 'beta'
+ place(3) = 'r22' 'dispersion'
+/
