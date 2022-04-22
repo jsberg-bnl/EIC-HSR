@@ -338,7 +338,7 @@
  d1_data%name = 'opt'
  datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
  datum(1:7)%ele_name = 'ip4' 'yi3_b4' 'yi3_b4' 'yo4_b3' 'yo4_b3' 'yo4_int11_2' 'yo4_int11_2'
- datum(2:7)%ele_name = 'yi3_int11_2' 'yi3_int11_2' 'yi3_b3' 'yi3_b3' 'yo4_b4' 'yo4_b4'
+ datum(2:7)%ele_start_name = 'yi3_int11_2' 'yi3_int11_2' 'yi3_b3' 'yi3_b3' 'yo4_b4' 'yo4_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
  datum(1:7)%meas = 0 0 0 0 0 0 0
  datum(1:7)%weight = 1e-4 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
