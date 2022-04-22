@@ -64,6 +64,8 @@ set dat 3@ir6d.floor[3]|meas = -(thd5+2*thds+thcell)
 set ele [23,24]@0 theta_position = thd0
 set ele [23,24]@0 z_position = -(zd0 + (lbeld0q1+ld0fla)*cos(thd0))
 set ele [23,24]@0 x_position = -(xd0 + (lbeld0q1+ld0fla)*sin(thd0))
+set global lattice_calc_on=t
+set global lattice_calc_on=f
 set dat 24@ir4g.geom[1]|meas = -24@lat::floor.x[0]
 set dat 24@ir4g.geom[2]|meas = -24@lat::floor.z[0]
 set dat 24@ir4g.geom[3]|meas = 24@lat::floor.theta[0]
@@ -94,5 +96,7 @@ set ele [2:5]@0 beta_a = 80e-2
 set ele [2:5]@0 alpha_a = 0
 set ele [2:5]@0 beta_b = 7.2e-2
 set ele [2:5]@0 alpha_b = 0
+set global lattice_calc_on=t
+set global lattice_calc_on=f
 call set-match.tao
 set global lattice_calc_on=t
