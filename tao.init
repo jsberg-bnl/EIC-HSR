@@ -321,8 +321,12 @@
 &tao_d1_data
  ix_d1_data = 1
  d1_data%name = 'fit'
- datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
- datum(1:6)%ele_name = 'yo4_int11_2' 'yo4_int11_2' 'yo4_int11_2' 'yo4_int11_2' 'yo4_int11_2' 'yo4_int11_2'
+ datum(1)%data_type = 'expression: 9@lat::eta.x[yo4_int11_2] - 13@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 9@lat::etap.x[yo4_int11_2] - 13@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 9@lat::beta.a[yo4_int11_2] - 13@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 9@lat::alpha.a[yo4_int11_2] - 13@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 9@lat::beta.b[yo4_int11_2] - 13@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 9@lat::alpha.b[yo4_int11_2] - 13@lat::alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
  datum(7:11)%ele_name = 'ip4' 'ip4' 'ip4' 'ip4' 'ip4'
  datum(1:11)%weight = 1 1 100 1 100 1 1 10 1 10 1
@@ -399,8 +403,12 @@
 &tao_d1_data
  ix_d1_data = 1
  d1_data%name = 'fit'
- datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
- datum(1:6)%ele_name = 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2' 'bi12_int11_2'
+ datum(1)%data_type = 'expression: 7@lat::eta.x[bi12_int11_2] - 17@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 7@lat::etap.x[bi12_int11_2] - 17@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 7@lat::beta.a[bi12_int11_2] - 17@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 7@lat::alpha.a[bi12_int11_2] - 17@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 7@lat::beta.b[bi12_int11_2] - 17@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 7@lat::alpha.b[bi12_int11_2] - 17@lat::alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
  datum(7:11)%ele_name = 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx'
  datum(1:11)%weight = 1 1 100 1 100 1 1 10 1 10 1
@@ -482,8 +490,12 @@
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'arc'
- datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
- datum(1:6)%ele_name = 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3'
+ datum(1)%data_type = 'expression: 4@lat::eta.x[yi7_int9_3] - 12@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 4@lat::etap.x[yi7_int9_3] - 12@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 4@lat::beta.a[yi7_int9_3] - 12@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 4@lat::alpha.a[yi7_int9_3] - 12@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 4@lat::beta.b[yi7_int9_3] - 12@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 4@lat::alpha.b[yi7_int9_3] - 12@lat::alpha.b[0]'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
 /
 
@@ -514,8 +526,12 @@
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'arc'
- datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
- datum(1:6)%ele_name = 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3' 'yo8_int9_3'
+ datum(1)%data_type = 'expression: 5@lat::eta.x[yo8_int9_3] - 13@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 5@lat::etap.x[yo8_int9_3] - 13@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 5@lat::beta.a[yo8_int9_3] - 13@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 5@lat::alpha.a[yo8_int9_3] - 13@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 5@lat::beta.b[yo8_int9_3] - 13@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 5@lat::alpha.b[yo8_int9_3] - 13@lat::alpha.b[0]'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
 /
 
