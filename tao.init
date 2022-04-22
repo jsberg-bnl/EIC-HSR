@@ -411,7 +411,7 @@
  datum(6)%data_type = 'expression: 7@lat::alpha.b[bi12_int11_2] - 17@lat::alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
  datum(7:11)%ele_name = 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx'
- datum(1:11)%weight = 1 1 100 1 100 1 1 10 1 10 1
+ datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1e-1 1 1e-1 1
  datum(1:11)%meas = 0 0 0 0 0 0 0 5 0 5 0
 /
 
@@ -423,7 +423,7 @@
  datum(2:7)%ele_start_name = 'bo11_int11_2' 'bo11_int11_2' 'bo11_b3' 'bo11_b3' 'bi12_b4' 'bi12_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
  datum(1:7)%meas = 0 0 0 0 0 0 0
- datum(1:7)%weight = 1e-4 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
+ datum(1:7)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
  datum(1:7)%good_user = f f f f f f f
 /
 
