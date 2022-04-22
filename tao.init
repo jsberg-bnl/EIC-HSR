@@ -497,6 +497,7 @@
  datum(5)%data_type = 'expression: 4@lat::beta.b[yi7_int9_3] - 12@lat::beta.b[0]'
  datum(6)%data_type = 'expression: 4@lat::alpha.b[yi7_int9_3] - 12@lat::alpha.b[0]'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
+ datum(1:6)%meas = 0 0 0 0 0 0
 /
 
 &tao_d2_data
@@ -533,6 +534,7 @@
  datum(5)%data_type = 'expression: 5@lat::beta.b[yo8_int9_3] - 13@lat::beta.b[0]'
  datum(6)%data_type = 'expression: 5@lat::alpha.b[yo8_int9_3] - 13@lat::alpha.b[0]'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
+ datum(1:6)%meas = 0 0 0 0 0 0
 /
 
 &tao_plot_page
