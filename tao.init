@@ -515,7 +515,7 @@
 &tao_d2_data
  universe = '5'
  d2_data%name = 'ir8d'
- n_d1_data = 3
+ n_d1_data = 4
 /
 
 &tao_d1_data
@@ -547,6 +547,18 @@
  datum(6)%data_type = 'expression: 5@lat::alpha.b[yo8_int9_3] - 13@lat::alpha.b[0]'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
  datum(1:6)%meas = 0 0 0 0 0 0
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'opt'
+ datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
+ datum(1:5)%ele_name = 'qus09' 'qus09' 'qus09' 'qus09' 'yo8_int11_2'
+ datum(1:4)%ele_start_name = 'qus04' 'qus04' 'ip8' 'ip8'
+ datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
+ datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
+ datum(1:5)%meas = 0 0 0 0 0
+ datum(1:5)%good_user = f f f f t
 /
 
 &tao_plot_page
