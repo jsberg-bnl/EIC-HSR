@@ -5,6 +5,8 @@ import sys
 
 def optimize(tao,chatty=False):
     m0 = float(tao.cmd('python merit')[0])
+    if chatty:
+        print(m0,file=sys.stderr)
     tao.cmd('run lmdif',raises=False)
     m1 = float(tao.cmd('python merit')[0])
     if chatty:
@@ -74,6 +76,12 @@ def match_hsr(tao):
     tao.cmd('use dat ir8d.ir')
     print('IR8D: '+format(optimize(tao),'+23.16e'))
     tao.cmd('set universe 5 off')
+    tao.cmd('set universe 6 on')
+    tao.cmd('set def uni=6')
+    tao.cmd('use var ir10[4:6,8,10]')
+    tao.cmd('use dat ir10.fit[2:]')
+    print('IR10: '+format(optimize(tao),'+23.16e'))
+    tao.cmd('set universe 6 off')
     
 tao = pytao.Tao()
 tao.init('-quiet -noplot -startup hsr-init.tao')
