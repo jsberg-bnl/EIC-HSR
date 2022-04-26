@@ -91,7 +91,7 @@ def match_hsr(tao):
     tao.cmd('set def uni=7')
     tao.cmd('use var ir12[3:]')
     tao.cmd('use dat ir12.fit')
-    tao.cmd('use dat ir12.sym[1:6]')
+    tao.cmd('use dat ir12.sym[1:3]')
     print('IR12: '+format(optimize(tao,chatty=True),'+23.16e'))
     tao.cmd('set universe 7 off')
     tao.cmd('veto var *')

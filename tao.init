@@ -12,30 +12,30 @@
 
 &tao_design_lattice
  n_universes = 24
- design_lattice(1)%file = 'hsr-275-10.bmad' ! Full ring
- design_lattice(2)%file = 'hsr-275-10.bmad'
- design_lattice(3)%file = 'hsr-275-10.bmad'
- design_lattice(4)%file = 'hsr-275-10.bmad'
- design_lattice(5)%file = 'hsr-275-10.bmad'
- design_lattice(6)%file = 'hsr-275-10.bmad'
- design_lattice(7)%file = 'hsr-275-10.bmad'
- design_lattice(8)%file = 'hsr-275-10.bmad'
- design_lattice(9)%file = 'hsr-275-10.bmad'
- design_lattice(10)%file = 'hsr-275-10.bmad'
- design_lattice(11)%file = 'hsr-275-10.bmad'
- design_lattice(12)%file = 'hsr-275-10.bmad'
- design_lattice(13)%file = 'hsr-275-10.bmad'
- design_lattice(14)%file = 'hsr-275-10.bmad'
- design_lattice(15)%file = 'hsr-275-10.bmad'
- design_lattice(16)%file = 'hsr-275-10.bmad'
- design_lattice(17)%file = 'hsr-275-10.bmad'
- design_lattice(18)%file = 'hsr-275-10.bmad'
- design_lattice(19)%file = 'hsr-275-10.bmad'
- design_lattice(20)%file = 'hsr-275-10.bmad'
- design_lattice(21)%file = 'hsr-275-10.bmad'
- design_lattice(22)%file = 'hsr-275-10.bmad'
- design_lattice(23)%file = 'hsr-275-10.bmad@ir12_41'
- design_lattice(24)%file = 'hsr-275-10.bmad'
+ design_lattice(1) = 'hsr-275-10.bmad' 'hsr-ovl.bmad' ! Full ring
+ design_lattice(2) = 'hsr-275-10.bmad'
+ design_lattice(3) = 'hsr-275-10.bmad'
+ design_lattice(4) = 'hsr-275-10.bmad'
+ design_lattice(5) = 'hsr-275-10.bmad'
+ design_lattice(6) = 'hsr-275-10.bmad'
+ design_lattice(7) = 'hsr-275-10.bmad' 'ir12-ovl.bmad'
+ design_lattice(8) = 'hsr-275-10.bmad'
+ design_lattice(9) = 'hsr-275-10.bmad'
+ design_lattice(10) = 'hsr-275-10.bmad'
+ design_lattice(11) = 'hsr-275-10.bmad'
+ design_lattice(12) = 'hsr-275-10.bmad'
+ design_lattice(13) = 'hsr-275-10.bmad'
+ design_lattice(14) = 'hsr-275-10.bmad'
+ design_lattice(15) = 'hsr-275-10.bmad'
+ design_lattice(16) = 'hsr-275-10.bmad'
+ design_lattice(17) = 'hsr-275-10.bmad'
+ design_lattice(18) = 'hsr-275-10.bmad'
+ design_lattice(19) = 'hsr-275-10.bmad'
+ design_lattice(20) = 'hsr-275-10.bmad'
+ design_lattice(21) = 'hsr-275-10.bmad'
+ design_lattice(22) = 'hsr-275-10.bmad'
+ design_lattice(23) = 'hsr-275-10.bmad@ir12_41'
+ design_lattice(24) = 'hsr-275-10.bmad'
  ! Insertions
  design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6w' ! ir6w
  design_lattice(2)%reverse_lattice = t
@@ -127,17 +127,15 @@
  var(1:2)%ele_name = 'ov_ir12_dh0' 'o11d0g'
  var(1:2)%attribute = 'angle' 'l'
  var(1:2)%step = 1e-6 1e-2
- var(3:5)%ele_name = 'b12_q89_ps' 'b12_q7_ps' 'b12_q6_ps'
- var(6:12)%ele_name = 'bo11_qf8_ps' 'bo11_tq6_ps' 'bo11_tq5_ps' 'bo11_tq4_ps' 'bo11_qd3_ps' 'bo11_qf2_ps' 'bo11_qd1_ps'
- var(13:19)%ele_name = 'bi12_qf1_ps' 'bi12_qd2_ps' 'bi12_qf3_ps' 'bi12_tq4_ps' 'bi12_tq5_ps' 'bi12_tq6_ps' 'bi12_qf9_ps'
- var(3:19)%step = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
- var(3:19)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
- var(3:5)%low_lim =  -278 -550 -430
- var(3:5)%high_lim = +278  -14  -14
- var(6:12)%low_lim =    +5 -100 -100 -100  +14 -140 -190
- var(6:12)%high_lim = +150 +100 +100 +100 +280 +140  -14
- var(13:19)%low_lim =  -190 -140  +14 -100 -100 -100   +5
- var(13:19)%high_lim =  -14 +140 +280 +100 +100 +100 +150
+ var(3:8)%ele_name = 'b12_q89_ps' 'b12_q7_ps' 'b12_q6_ps' 'b12_q3_ps' 'b12_q2_ps' 'b12_q1_ps'
+ var(9:12)%ele_name = 'bo11_qf8_ps' 'bo11_tq6_ps' 'bo11_tq5_ps' 'bo11_tq4_ps'
+ var(13:16)%ele_name = 'bi12_tq4_ps' 'bi12_tq5_ps' 'bi12_tq6_ps' 'bi12_qf9_ps'
+ var(3:16)%step = 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ var(3:16)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+ var(3:8)%low_lim =  -278 -550 -430  +14 -140 -190
+ var(3:8)%high_lim = +278  -14  -14 +280 +140  -14
+ var(9:16)%low_lim =    +5 -100 -100 -100 -100 -100 -100   +5
+ var(9:16)%high_lim = +150 +100 +100 +100 +100 +100 +100 +150
 /
 
 &tao_var
@@ -423,22 +421,19 @@
  datum(1)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim'
  datum(2)%data_type = 'expression: var::ir12[5]|high_lim - var::ir12[5]|model'
  datum(3)%data_type = 'expression: var::ir12[6]|high_lim - var::ir12[6]|model'
- datum(4)%data_type = 'expression: var::ir12[10]|high_lim - var::ir12[10]|model'
- datum(5)%data_type = 'expression: var::ir12[12]|high_lim - var::ir12[12]|model'
+ datum(4)%data_type = 'expression: var::ir12[8]|high_lim - var::ir12[8]|model'
+ datum(5)%data_type = 'expression: var::ir12[9]|high_lim - var::ir12[9]|model'
 /
 
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'sym'
- datum(1)%data_type = 'expression: 7@ele::bo11_qd1[k1] + 7@ele::bi12_qf1[k1]'
- datum(2)%data_type = 'expression: 7@ele::bo11_qf2[k1] + 7@ele::bi12_qd2[k1]'
- datum(3)%data_type = 'expression: 7@ele::bo11_qd3[k1] + 7@ele::bi12_qf3[k1]'
- datum(4)%data_type = 'expression: 7@data::ir12.lim[2] - data::ir12.lim[4]'
- datum(5)%data_type = 'expression: 7@data::ir12.lim[4] - data::ir12.lim[5]'
- datum(6)%data_type = 'expression: 7@data::ir12.lim[1] - data::ir12.lim[2]'
- datum(7)%data_type = 'expression: 7@data::ir12.lim[2] - data::ir12.lim[3]'
- datum(1:7)%weight = 100 100 100 1 1 1 1
- datum(1:7)%meas = 0 0 0 0 0 0 0
+ datum(1)%data_type = 'expression: 7@data::ir12.lim[2] - data::ir12.lim[3]'
+ datum(2)%data_type = 'expression: 7@data::ir12.lim[3] - data::ir12.lim[4]'
+ datum(3)%data_type = 'expression: 7@data::ir12.lim[1] - data::ir12.lim[2]'
+ datum(4)%data_type = 'expression: 7@data::ir12.lim[2] - data::ir12.lim[5]'
+ datum(1:4)%weight = 1 1 1 1
+ datum(1:4)%meas = 0 0 0 0
 /
 
 &tao_d1_data
