@@ -397,7 +397,7 @@
 &tao_d2_data
  universe = '7'
  d2_data%name = 'ir12'
- n_d1_data = 3
+ n_d1_data = 4
 /
 
 &tao_d1_data
@@ -419,19 +419,30 @@
 
 &tao_d1_data
  ix_d1_data = 2
- d1_data%name = 'sym'
- datum(1)%data_type = 'expression: 7@ele::bo11_qd1[k1] + 7@ele::bi12_qf1[k1]'
- datum(2)%data_type = 'expression: 7@ele::bo11_qf2[k1] + 7@ele::bi12_qd2[k1]'
- datum(3)%data_type = 'expression: 7@ele::bo11_qd3[k1] + 7@ele::bi12_qf3[k1]'
- datum(4)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim - var::ir12[5]|high_lim + var::ir12[5]|model'
- datum(5)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim - var::ir12[10]|high_lim + var::ir12[10]|model'
- datum(6)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim - var::ir12[12]|high_lim + var::ir12[12]|model'
- datum(1:6)%weight = 100 100 100 1 1 1
- datum(1:6)%meas = 0 0 0 0 0 0
+ d1_data%name = 'lim'
+ datum(1)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim'
+ datum(2)%data_type = 'expression: var::ir12[5]|high_lim - var::ir12[5]|model'
+ datum(3)%data_type = 'expression: var::ir12[6]|high_lim - var::ir12[6]|model'
+ datum(4)%data_type = 'expression: var::ir12[10]|high_lim - var::ir12[10]|model'
+ datum(5)%data_type = 'expression: var::ir12[12]|high_lim - var::ir12[12]|model'
 /
 
 &tao_d1_data
  ix_d1_data = 3
+ d1_data%name = 'sym'
+ datum(1)%data_type = 'expression: 7@ele::bo11_qd1[k1] + 7@ele::bi12_qf1[k1]'
+ datum(2)%data_type = 'expression: 7@ele::bo11_qf2[k1] + 7@ele::bi12_qd2[k1]'
+ datum(3)%data_type = 'expression: 7@ele::bo11_qd3[k1] + 7@ele::bi12_qf3[k1]'
+ datum(4)%data_type = 'expression: 7@data::ir12.lim[2] - data::ir12.lim[4]'
+ datum(5)%data_type = 'expression: 7@data::ir12.lim[4] - data::ir12.lim[5]'
+ datum(6)%data_type = 'expression: 7@data::ir12.lim[1] - data::ir12.lim[2]'
+ datum(7)%data_type = 'expression: 7@data::ir12.lim[2] - data::ir12.lim[3]'
+ datum(1:7)%weight = 100 100 100 1 1 1 1
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+/
+
+&tao_d1_data
+ ix_d1_data = 4
  d1_data%name = 'opt'
  datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
  datum(1:7)%ele_name = 'g12_markx' 'bo11_b4' 'bo11_b4' 'bi12_b3' 'bi12_b3' 'bi12_int11_2' 'bi12_int11_2'
