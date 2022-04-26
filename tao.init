@@ -397,7 +397,7 @@
 &tao_d2_data
  universe = '7'
  d2_data%name = 'ir12'
- n_d1_data = 2
+ n_d1_data = 3
 /
 
 &tao_d1_data
@@ -409,14 +409,29 @@
  datum(4)%data_type = 'expression: 7@lat::alpha.a[bi12_int11_2] - 17@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: 7@lat::beta.b[bi12_int11_2] - 17@lat::beta.b[0]'
  datum(6)%data_type = 'expression: 7@lat::alpha.b[bi12_int11_2] - 17@lat::alpha.b[0]'
- datum(7:11)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
- datum(7:11)%ele_name = 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx' 'g12_markx'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1e-1 1 1e-1 1
- datum(1:11)%meas = 0 0 0 0 0 0 0 5 0 5 0
+ datum(7:9)%data_type = 'eta.x' 'alpha.a' 'alpha.b'
+ datum(10)%data_type = 'expression: 7@lat::beta.a[g12_markx]-7@lat::beta.b[g12_markx]'
+ datum(11)%data_type = 'expression: 0.5*(7@lat::beta.a[g12_markx]+7@lat::beta.b[g12_markx])'
+ datum(7:9)%ele_name = 'g12_markx' 'g12_markx' 'g12_markx'
+ datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1e-1 1e-1
+ datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0 5
 /
 
 &tao_d1_data
  ix_d1_data = 2
+ d1_data%name = 'sym'
+ datum(1)%data_type = 'expression: 7@ele::bo11_qd1[k1] + 7@ele::bi12_qf1[k1]'
+ datum(2)%data_type = 'expression: 7@ele::bo11_qf2[k1] + 7@ele::bi12_qd2[k1]'
+ datum(3)%data_type = 'expression: 7@ele::bo11_qd3[k1] + 7@ele::bi12_qf3[k1]'
+ datum(4)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim - var::ir12[5]|high_lim + var::ir12[5]|model'
+ datum(5)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim - var::ir12[10]|high_lim + var::ir12[10]|model'
+ datum(6)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim - var::ir12[12]|high_lim + var::ir12[12]|model'
+ datum(1:6)%weight = 100 100 100 1 1 1
+ datum(1:6)%meas = 0 0 0 0 0 0
+/
+
+&tao_d1_data
+ ix_d1_data = 3
  d1_data%name = 'opt'
  datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
  datum(1:7)%ele_name = 'g12_markx' 'bo11_b4' 'bo11_b4' 'bi12_b3' 'bi12_b3' 'bi12_int11_2' 'bi12_int11_2'
