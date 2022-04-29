@@ -135,7 +135,39 @@ def tunes_hsr(tao,di):
     tao.cmd('call set-match.tao')
     residual = match_hsr(tao)
     tao.cmd('set universe 1 on')
-    tunes = (tao.evaluate('1@lat::tune.a[0]/twopi')[0],tao.evaluate('1@lat::tune.b[0]/twopi')[0])
+    tunes = (
+        (
+            tao.evaluate('1@lat::phase.a[0&o10int_pr]')[0],
+            tao.evaluate('1@lat::phase.a[o10int_pr&yi7_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yi7_int9_3&yo8_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yo8_int9_3&yo9_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yo9_int9_3&bo10_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[bo10_int9_3&bo11_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[bo11_int9_3&bi12_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[bi12_int9_3&bi1_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[bi1_int9_3&yi2_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yi2_int9_3&yi3_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yi3_int9_3&yo4_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yo4_int9_3&yo5_int9_6]')[0],
+            tao.evaluate('1@lat::phase.a[yo5_int9_6&end]')[0]
+        ),
+        (
+            tao.evaluate('1@lat::phase.b[0&o10int_pr]')[0],
+            tao.evaluate('1@lat::phase.b[o10int_pr&yi7_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yi7_int9_3&yo8_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yo8_int9_3&yo9_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yo9_int9_3&bo10_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[bo10_int9_3&bo11_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[bo11_int9_3&bi12_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[bi12_int9_3&bi1_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[bi1_int9_3&yi2_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yi2_int9_3&yi3_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yi3_int9_3&yo4_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yo4_int9_3&yo5_int9_6]')[0],
+            tao.evaluate('1@lat::phase.b[yo5_int9_6&end]')[0]
+        )
+    )
+    # tunes = (tao.evaluate('1@lat::tune.a[0]/twopi')[0],tao.evaluate('1@lat::tune.b[0]/twopi')[0])
     tao.cmd('set universe 1 off')
     return (tunes,residual)
 
