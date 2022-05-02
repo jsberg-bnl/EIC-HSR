@@ -121,15 +121,15 @@
  var(1:2)%ele_name = 'ov_ir12_dh0' 'o11d0g'
  var(1:2)%attribute = 'angle' 'l'
  var(1:2)%step = 1e-6 1e-2
- var(3:8)%ele_name = 'b12_q89_ps' 'b12_q7_ps' 'b12_q6_ps' 'b12_q3_ps' 'b12_q2_ps' 'b12_q1_ps'
- var(9:12)%ele_name = 'bo11_qf8_ps' 'bo11_tq6_ps' 'bo11_tq5_ps' 'bo11_tq4_ps'
- var(13:16)%ele_name = 'bi12_tq4_ps' 'bi12_tq5_ps' 'bi12_tq6_ps' 'bi12_qf9_ps'
- var(3:16)%step = 1 1 1 1 1 1 1 1 1 1 1 1 1 1
- var(3:16)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
- var(3:8)%low_lim =  -278 -550 -430  +14 -140 -190
- var(3:8)%high_lim = +278  -14  -14 +280 +140  -14
- var(9:16)%low_lim =    +5 -100 -100 -100 -100 -100 -100   +5
- var(9:16)%high_lim = +150 +100 +100 +100 +100 +100 +100 +150
+ var(3:10)%ele_name = 'b12_q89_ps' 'b12_q7_ps' 'b12_q6_ps' 'b12_q5_ps' 'b12_q4_ps' 'b12_q3_ps' 'b12_q2_ps' 'b12_q1_ps'
+ var(11:12)%ele_name = 'bo11_qf8_ps' 'bo11_tq6_ps'
+ var(13:14)%ele_name = 'bi12_tq6_ps' 'bi12_qf9_ps'
+ var(3:14)%step = 1 1 1 1 1 1 1 1 1 1 1 1
+ var(3:14)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+ var(3:10)%low_lim =  -278 -550 -430 -100 -100 +14 -140 -190
+ var(3:10)%high_lim = +278  -14  -14 +100 +100 +280 +140  -14
+ var(11:14)%low_lim =    +5 -100 -100   +5
+ var(11:14)%high_lim = +150 +100 +100 +150
 /
 
 &tao_var
@@ -398,7 +398,7 @@
 &tao_d2_data
  universe = '7'
  d2_data%name = 'ir12'
- n_d1_data = 4
+ n_d1_data = 2
 /
 
 &tao_d1_data
@@ -418,7 +418,7 @@
  datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0 5
 /
 
-&tao_d1_data
+tao_d1_data
  ix_d1_data = 2
  d1_data%name = 'lim'
  datum(1)%data_type = 'expression: var::ir12[4]|model - var::ir12[4]|low_lim'
@@ -428,7 +428,7 @@
  datum(5)%data_type = 'expression: var::ir12[9]|high_lim - var::ir12[9]|model'
 /
 
-&tao_d1_data
+tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'sym'
  datum(1)%data_type = 'expression: 7@data::ir12.lim[2] - data::ir12.lim[3]'
@@ -440,15 +440,18 @@
 /
 
 &tao_d1_data
- ix_d1_data = 4
+ ix_d1_data = 2
  d1_data%name = 'opt'
  datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
  datum(1:7)%ele_name = 'g12_markx' 'bo11_b4' 'bo11_b4' 'bi12_b3' 'bi12_b3' 'bi12_int11_2' 'bi12_int11_2'
  datum(2:7)%ele_start_name = 'bo11_int11_2' 'bo11_int11_2' 'bo11_b3' 'bo11_b3' 'bi12_b4' 'bi12_b4'
+ datum(8:9)%data_type = 'phase.a' 'phase.b'
+ datum(8:9)%ele_name = 'bi12_int11_2' 'bi12_int11_2'
+ datum(8:9)%ele_ref_name = 'bo11_int11_2' 'bo11_int11_2'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
- datum(1:7)%meas = 0 0 0 0 0 0 0
- datum(1:7)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
- datum(1:7)%good_user = f f f f f f f
+ datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
+ datum(1:9)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-10 1e-10
+ datum(1:9)%good_user = f f f f f f f f f
 /
 
 &tao_d2_data
