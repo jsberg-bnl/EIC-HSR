@@ -1,5 +1,2 @@
-y4_q1_ps: overlay={yi3_qf1_ps[i]: i, yo4_qd1_ps[i]: i}, var={i}, i=yi3_qf1_ps[i]
-y4_q2_ps: overlay={yi3_qd2_ps[i]: i, yo4_qf2_ps[i]: i}, var={i}, i=yi3_qd2_ps[i]
-y4_q3_ps: overlay={yi3_qf3_ps[i]: i, yo4_qd3_ps[i]: i}, var={i}, i=yi3_qf3_ps[i]
 y4_q6_ps: overlay={yi3_qd6_ps[i]: i, yo4_qf6_ps[i]: i}, var={i}, i=yi3_qd6_ps[i]
 y4_q7_ps: overlay={yi3_qf7_ps[i]: i, yo4_qd7_ps[i]: i}, var={i}, i=yi3_qf7_ps[i]
