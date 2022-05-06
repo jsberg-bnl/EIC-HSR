@@ -19,7 +19,7 @@
  design_lattice(4) = 'hsr-275-10.bmad'
  design_lattice(5) = 'hsr-275-10.bmad'
  design_lattice(6) = 'hsr-275-10.bmad'
- design_lattice(7) = 'hsr-275-10.bmad' 'ir12-ovl.bmad'
+ design_lattice(7) = 'hsr-275-10.bmad'
  design_lattice(8) = 'hsr-275-10.bmad'
  design_lattice(9) = 'hsr-275-10.bmad' 'ir4-ovl.bmad'
  design_lattice(10) = 'hsr-275-10.bmad'
