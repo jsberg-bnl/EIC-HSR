@@ -2,6 +2,7 @@ import pytao
 import os
 import re
 import sys
+import numpy
 
 def optimize(tao,chatty=False):
     m0 = float(tao.cmd('python merit')[0])
@@ -151,6 +152,29 @@ def tunes_hsr(tao,di):
     # tunes = (tao.evaluate('1@lat::tune.a[0]/twopi')[0],tao.evaluate('1@lat::tune.b[0]/twopi')[0])
     tao.cmd('set universe 1 off')
     return (tunes,residual)
+
+# One Newton iteration of a tune fit
+# Load meas variables with values after match for I0
+# Update I0 with new currents
+# returns ((nux,nuy),match_error)
+# tao state has variables that generated the returned values
+def fit_tune(tao,tune_goal,I0,dI=(10.0,10.0)):
+    nua = numpy.sum(tunes_hsr(tao,I0)[0],1)/(2*numpy.pi)
+    tao.cmd('set var *|meas = *|model')
+    nu0m = numpy.sum(tunes_hsr(tao,(I0[0]-dI[0],I0[1]))[0],1)
+    tao.cmd('set var *|model = *|meas')
+    nu0p = numpy.sum(tunes_hsr(tao,(I0[0]+dI[0],I0[1]))[0],1)
+    tao.cmd('set var *|model = *|meas')
+    nu1m = numpy.sum(tunes_hsr(tao,(I0[0],I0[1]-dI[1]))[0],1)
+    tao.cmd('set var *|model = *|meas')
+    nu1p = numpy.sum(tunes_hsr(tao,(I0[0],I0[1]+dI[1]))[0],1)
+    I1 = (numpy.linalg.inv(numpy.transpose(numpy.matrix(((nu0p-nu0m)/dI[0],(nu1p-nu1m)/dI[1]))/(4*numpy.pi))) @
+          (numpy.array(tune_goal)-nua)).A1
+    tao.cmd('set var *|model = *|meas')
+    I0[0] += I1[0]
+    I0[1] += I1[1]
+    nub = tunes_hsr(tao,I0)
+    return (numpy.sum(nub[0],1)/(2*numpy.pi),numpy.sum(nub[1]))
 
 tao = pytao.Tao()
 tao.init('-quiet -noplot -startup hsr-init.tao')
