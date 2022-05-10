@@ -15,7 +15,7 @@ call, file='ir10-ps.bmad'
 ip6d: marker
 ip6w: marker
 
-parameter[geometry]        = open
+parameter[geometry]        = closed
 parameter[particle]        = antiproton
 parameter[ptc_exact_model] = t
 
