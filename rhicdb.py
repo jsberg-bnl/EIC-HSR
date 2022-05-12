@@ -514,7 +514,7 @@ def write_transfer_cors(db,cors,file_out):
             else: # multipole
                 m = db.eles['multipole'][lnm]
                 print(swn+'_i:overlay={'+cor
-                      +('[b' if m['skew'] else '[a')+f"{m['order']}]:{db.trans[coiltyp]/factorial(m['order'])}"
+                      +('[a' if m['skew'] else '[b')+f"{m['order']}]:{db.trans[coiltyp]/factorial(m['order'])}"
                       +"*i},var={i}",
                       file=file_out)
             if swn in db.swn_to_ps:
