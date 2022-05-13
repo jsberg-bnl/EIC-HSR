@@ -327,13 +327,13 @@ class deptree(dict):
                         self[d]['p'] = {v}
             vars0 = vars1
 
-    def bmad_sorted(self,file=sys.stdout):
+    def output_sorted(self,file_bmad,file_madx):
         dt = copy.deepcopy(dict(self))
         while len(dt) > 0:
             leaves = sorted(v for v in dt if len(dt[v]['c'])==0)
             for l in leaves:
                 if l not in ('pi'):
-                    print(l+'='+dt[l]['e'],file=file)
+                    print_both(l+'='+dt[l]['e'],file_bmad,file_madx)
                 if 'p' in dt[l]:
                     for p in dt[l]['p']:
                         dt[p]['c'].remove(l)
@@ -417,7 +417,7 @@ def slot_key(s):
     s = re.sub(r'([^0-9])([0-9])([^0-9])',r'\g<1>0\2\3',s)
     return re.sub(r'([^0-9])([0-9])$',r'\g<1>0\2',s)
         
-def write_swns(t,db,lnms,file_out):
+def write_swns(t,db,lnms,file_bmad,file_madx):
     if type(t) is str:
         tl = (t,)
     else:
@@ -426,9 +426,9 @@ def write_swns(t,db,lnms,file_out):
         if db.magnet_piece[l] in tl:
             for swn in sorted(s,key=lambda s:slot_key(s[0])):
                 if swn[0] != l:
-                    print(swn[0]+':'+l,file=file_out)
+                    print_both(swn[0]+':'+l,file_bmad,file_madx)
 
-def write_attrs(et,e):
+def write_attrs(et,e,is_bmad):
     s = ''
     if et == 'bend':
         attrs = (('l','l'),('angle','angle'),('e1','e1'),('e2','e2'),('tilt','ref_tilt'))
@@ -438,18 +438,16 @@ def write_attrs(et,e):
         attrs = (('harmon','harmon'),)
     elif et == 'rcollimator':
         attrs = (('l','l'),('x_limit','x_limit'),('y_limit','y_limit'))
-    elif et == 'multipole' and 'order' in e and e['order'] == 1 and 'kl' in e:
-        attrs = (('kl','k1l'),)
     else:
         attrs = (('l','l'),)
     for a in attrs:
         if a[0] in e:
-            s += ','+a[1]
+            s += ','+(a[1] if is_bmad else a[0])
             if type(e[a[0]]) is not bool:
                 s += '='+e[a[0]]
     return s
 
-def write_eles(t,bt,et,db,lnms,file_out):
+def write_eles(t,bt,et,db,lnms,file_bmad,file_madx):
     if type(t) is str:
         tl = (t,)
         btl = (bt,)
@@ -459,19 +457,25 @@ def write_eles(t,bt,et,db,lnms,file_out):
     for l in sorted(lnms,key=lambda s:slot_key(s)):
         if db.magnet_piece[l] in tl:
             b = btl[tl.index(db.magnet_piece[l])]
-            s = l+':'+b;
+            sb = l+':'+b
+            sm = l+':'+db.magnet_piece[l]
             if et is not None:
-                s += write_attrs(et,db.eles[et][l])
-            print(s,file=file_out)
+                sb += write_attrs(et,db.eles[et][l],True)
+                sm += write_attrs(et,db.eles[et][l],False)
+            print(sb,file=file_bmad)
+            print(sm+';',file=file_madx)
 
-def write_ps_to_i(psset,swnset,db,file_out):
+def write_ps_to_i(psset,swnset,db,file_bmad,file_madx):
     for ps in sorted(psset,key=lambda s:slot_key(s)):
-        print(ps+":overlay={",file=file_out)
+        print(ps+":overlay={",file=file_bmad)
         print(' '+',\n '.join([swn+'_i[i]:'+('+i' if sgn==1 else '-i')
                            for (swn,sgn) in sorted(db.ps_to_swn[ps],key=lambda s:slot_key(s[0])) if swn in swnset])
-              +'},var={i}',file=file_out)
+              +'},var={i}',file=file_bmad)
+    for swn in sorted(swnset,key=lambda s:slot_key(s)):
+        if swn in db.swn_to_ps:
+            print(swn+'_i:='+''.join([('+' if sgn==1 else '-')+ps for ps,sgn in db.swn_to_ps[swn]])+';',file=file_madx)
 
-def write_transfer(mag_type,field_attr,db,lnms,file_out):
+def write_transfer(mag_type,field_attr,db,lnms,file_bmad,file_madx):
     psset = set()
     swnset = set()
     for (lnm,swns) in sorted(lnms.items(),key=lambda s:slot_key(s[0])):
@@ -479,9 +483,12 @@ def write_transfer(mag_type,field_attr,db,lnms,file_out):
             for (swn,coil) in sorted(swns,key=lambda s:slot_key(s[0])):
                 if coil:
                     sign = +1 if swn[0]=='b' else -1
-                    print(swn+'[field_master]=t',file=file_out)
-                    print(swn+'_i:overlay={'+swn+'['+field_attr+']:'+f'{sign*db.trans[coil]}'+
-                          ('' if 'kick' in mag_type else '/'+swn+'[l]')+'*i}, var={i}',file=file_out)
+                    print(swn+'[field_master]=t',file=file_bmad)
+                    print(swn+'_i:overlay={'+swn+'['+field_attr[0]+']:'+f'{sign*db.trans[coil]}'+
+                          ('' if 'kick' in mag_type else '/'+swn+'[l]')+'*i}, var={i}',file=file_bmad)
+                    print(swn+','+field_attr[1]+':='+
+                          f'{sign*db.trans[coil]}'+('' if 'kick' in mag_type else '/'+swn+'->l')+'*'+swn+'_i/beam->brho;',
+                          file=file_madx)
                     swnset.add(swn)
                     for (ps,sgn) in db.swn_to_ps[swn]:
                         psset.add(ps)
@@ -494,29 +501,35 @@ def factorial(n):
         f *= n
     return f
 
-def write_transfer_cors(db,cors,file_out):
+def write_transfer_cors(db,cors,file_bmad,file_madx):
     psset = set()
     swnset = set()
     for (cor,coils) in sorted(cors.items(),key=lambda s:slot_key(s[0])):
-        print(cor+'[field_master]=t',file=file_out)
+        print(cor+'[field_master]=t',file=file_bmad)
         for (lnm,swn,coiltyp) in coils:
             swnset.add(swn)
             magtyp = db.magnet_piece[lnm]
             if magtyp == 'hkicker':
-                print(swn+'_i:overlay={'+cor+'[bl_hkick]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_out)
+                print(swn+'_i:overlay={'+cor+'[bl_hkick]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
+                print(swn+',kick:='+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho;',file=file_madx)
             elif magtyp == 'vkicker':
-                print(swn+'_i:overlay={'+cor+'[bl_vkick]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_out)
+                print(swn+'_i:overlay={'+cor+'[bl_vkick]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
+                print(swn+',kick:='+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho;',file=file_madx)
             elif magtyp == 'quadrupole':
                 if 'tilt' in db.eles['quadrupole'][lnm]:
-                    print(swn+'_i:overlay={'+cor+'[a1]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_out)
+                    print(swn+'_i:overlay={'+cor+'[a1]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
+                    print(swn+',ksl:={0,'+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
                 else:
-                    print(swn+'_i:overlay={'+cor+'[b1]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_out)
+                    print(swn+'_i:overlay={'+cor+'[b1]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
+                    print(swn+',knl:={0,'+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
             else: # multipole
                 m = db.eles['multipole'][lnm]
                 print(swn+'_i:overlay={'+cor
                       +('[a' if m['skew'] else '[b')+f"{m['order']}]:{db.trans[coiltyp]/factorial(m['order'])}"
                       +"*i},var={i}",
-                      file=file_out)
+                      file=file_bmad)
+                print(swn+(',ksl:={' if m['skew'] else ',knl:={')+m['order']*'0,'
+                      +f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
             if swn in db.swn_to_ps:
                 for (ps,sgn) in db.swn_to_ps[swn]:
                     psset.add(ps)
@@ -525,41 +538,54 @@ def write_transfer_cors(db,cors,file_out):
 def slot(machine,slot,db):
     return line(machine,slot,slot,db)
 
-def write_all_swns(lines,db,file):
-    print("! drifts", file=file)
+def comment_line(comment,file_bmad,file_madx):
+    print('! '+comment,file=file_bmad)
+    print('// '+comment,file=file_madx)
+
+def print_both(l,file_bmad,file_madx):
+    print(l,file=file_bmad)
+    print(l+';',file=file_madx)
+
+def write_all_swns(lines,db,file_bmad,file_madx):
+    comment_line("drifts",file_bmad,file_madx)
     for (l,s) in sorted(lines.lnms.items(),key=lambda s:slot_key(s[0])):
         if db.magnet_piece[l] == 'drift' and s and type(next(iter(s))) is str:
             for ss in sorted(s,key=lambda s:slot_key(s)):
-                print(ss+':'+l, file=file)
-    print("! things, acting currently like drifts",file=file)
+                print_both(ss+':'+l,file_bmad,file_madx)
+    comment_line("things, acting currently like drifts",file_bmad,file_madx)
     for (l,s) in sorted(lines.lnms.items(),key=lambda s:slot_key(s[0])):
         if db.magnet_piece[l] == 'drift' and s and type(next(iter(s))) is not str:
             for ss in sorted(s,key=lambda s:slot_key(s[0])):
                 if ss[0] != l:
-                    print(ss[0]+':'+l, file=file)
-    print("! dipoles", file=file)
-    write_swns('sbend',db,lines.lnms,file)
-    print("! quadrupoles", file=file)
-    write_swns('quadrupole',db,lines.lnms,file)
-    print("! sextupoles", file=file)
-    write_swns('sextupole',db,lines.lnms,file)
-    print("! solenoids", file=file)
-    write_swns('solenoid',db,lines.lnms,file)
-    print("! kickers",file=file)
-    write_swns(('hkick','hkicker','kicker','vkicker'),db,lines.lnms,file)
-    print("! correctors", file=file)
+                    print_both(ss[0]+':'+l,file_bmad,file_madx)
+    comment_line("dipoles",file_bmad,file_madx)
+    write_swns('sbend',db,lines.lnms,file_bmad,file_madx)
+    comment_line("quadrupoles",file_bmad,file_madx)
+    write_swns('quadrupole',db,lines.lnms,file_bmad,file_madx)
+    comment_line("sextupoles",file_bmad,file_madx)
+    write_swns('sextupole',db,lines.lnms,file_bmad,file_madx)
+    comment_line("solenoids",file_bmad,file_madx)
+    write_swns('solenoid',db,lines.lnms,file_bmad,file_madx)
+    comment_line("kickers",file_bmad,file_madx)
+    write_swns(('hkick','hkicker','kicker','vkicker'),db,lines.lnms,file_bmad,file_madx)
+    comment_line("correctors",file_bmad,file_madx)
     for c in sorted(lines.correctors,key=lambda c:slot_key(c)):
-        print(c+':kicker,l=lcor,scale_multipoles=f',file=file)
-    print("! cavities",file=file)
-    write_swns('rfcavity',db,lines.lnms,file)
-    print("! monitors",file=file)
-    write_swns(('hmonitor','monitor','vmonitor'),db,lines.lnms,file)
-    print("! instruments",file=file)
-    write_swns('instrument',db,lines.lnms,file)
-    print("! collimators",file=file)
-    write_swns('rcollimator',db,lines.lnms,file)
-    print("! markers",file=file)
-    write_swns('marker',db,lines.lnms,file)
+        print(c+':kicker,l=lcor,scale_multipoles=f',file=file_bmad)
+    for c in sorted([coil[:2] for name, coils in lines.correctors.items() for coil in coils],key=lambda s:slot_key(s[1])):
+        print(c[1]+':'+(c[0]+'_coil' if 'kick' in c[0] else c[0])+';',file=file_madx)
+    print('// Corrector coil packs',file=file_madx)
+    for name, coils in sorted(lines.correctors.items(),key=lambda c:slot_key(c[0])):
+        print(name+':line=(olmp0,'+','.join([c[1] for c in coils])+',olmp0);',file=file_madx)
+    comment_line("cavities",file_bmad,file_madx)
+    write_swns('rfcavity',db,lines.lnms,file_bmad,file_madx)
+    comment_line("monitors",file_bmad,file_madx)
+    write_swns(('hmonitor','monitor','vmonitor'),db,lines.lnms,file_bmad,file_madx)
+    comment_line("instruments",file_bmad,file_madx)
+    write_swns('instrument',db,lines.lnms,file_bmad,file_madx)
+    comment_line("collimators",file_bmad,file_madx)
+    write_swns('rcollimator',db,lines.lnms,file_bmad,file_madx)
+    comment_line("markers",file_bmad,file_madx)
+    write_swns('marker',db,lines.lnms,file_bmad,file_madx)
 
 db = db_parser()
 
@@ -632,28 +658,31 @@ extra_geom = {'lcenxdx','lcendxd0','ld0fla','lbeld0q1','thdx'}
 
 geometry_deptree = deptree(set.union(slots_and_lines.ele_geometry,extra_geom),db.geometry)
 
-with open('rhic-lat.bmad',mode='w') as file_lat:
-    print("! Generated by rhicdb.py; do not modify.",file=file_lat)
-    print("! geometry",file=file_lat)
-    geometry_deptree.bmad_sorted(file=file_lat)
-    print("! drifts",file=file_lat)
+with open('rhic-lat.bmad',mode='w') as file_bmad, open('rhic-lat.madx',mode='w') as file_madx:
+    comment_line("Generated by rhicdb.py; do not modify.",file_bmad,file_madx)
+    comment_line("geometry",file_bmad,file_madx)
+    geometry_deptree.output_sorted(file_bmad,file_madx)
+    comment_line("drifts",file_bmad,file_madx)
     for (l,s) in sorted(slots_and_lines.lnms.items(),key=lambda s:slot_key(s[0])):
         if db.magnet_piece[l] == 'drift' and not (s and type(next(iter(s))) is not str):
-            print(l+':drift,l='+db.eles['drift'][l]['l'],file=file_lat)
-    print("! things, acting currently like drifts",file=file_lat)
+            print_both(l+':drift,l='+db.eles['drift'][l]['l'],file_bmad,file_madx)
+    # Correctors in MAD-X need olmp0; not needed in Bmad
+    print('olmp0:drift,l='+db.eles['drift']['olmp0']['l']+';',file=file_madx)
+    comment_line("things, acting currently like drifts",file_bmad,file_madx)
     for (l,s) in sorted(slots_and_lines.lnms.items(),key=lambda s:slot_key(s[0])):
         if db.magnet_piece[l] == 'drift' and s and type(next(iter(s))) is not str:
-            print(l+':pipe,l='+db.eles['drift'][l]['l'],file=file_lat)
-    print("! elements, with lattice names",file=file_lat)
-    print("! dipoles",file=file_lat)
-    write_eles('sbend','sbend','bend',db,slots_and_lines.lnms,file_lat)
-    print("! quadrupoles",file=file_lat)
-    write_eles('quadrupole','quadrupole','quadrupole',db,slots_and_lines.lnms,file_lat)
-    print("! sextupoles",file=file_lat)
-    write_eles('sextupole','sextupole','sextupole',db,slots_and_lines.lnms,file_lat)
-    print("! solenoids",file=file_lat)
-    write_eles('solenoid','solenoid','solenoid',db,slots_and_lines.lnms,file_lat)
-    print("! kickers",file=file_lat)
+            print(l+':pipe,l='+db.eles['drift'][l]['l'],file=file_bmad)
+            print(l+':placeholder,l='+db.eles['drift'][l]['l']+';',file=file_madx)
+    comment_line("elements, with lattice names",file_bmad,file_madx)
+    comment_line("dipoles",file_bmad,file_madx)
+    write_eles('sbend','sbend','bend',db,slots_and_lines.lnms,file_bmad,file_madx)
+    comment_line("quadrupoles",file_bmad,file_madx)
+    write_eles('quadrupole','quadrupole','quadrupole',db,slots_and_lines.lnms,file_bmad,file_madx)
+    comment_line("sextupoles",file_bmad,file_madx)
+    write_eles('sextupole','sextupole','sextupole',db,slots_and_lines.lnms,file_bmad,file_madx)
+    comment_line("solenoids",file_bmad,file_madx)
+    write_eles('solenoid','solenoid','solenoid',db,slots_and_lines.lnms,file_bmad,file_madx)
+    comment_line("kickers",file_bmad,file_madx)
     for l in sorted(slots_and_lines.lnms,key=lambda s:slot_key(s)):
         if 'kick' in db.magnet_piece[l]:
             lattrib = ''
@@ -669,60 +698,90 @@ with open('rhic-lat.bmad',mode='w') as file_lat:
                     etype = 'kicker'
             else:
                 etype = 'kicker'
-            print(l+':'+etype+lattrib,file=file_lat)
-    print("! cavities",file=file_lat)
-    write_eles('rfcavity','rfcavity','rfcavity',db,slots_and_lines.lnms,file_lat)
-    print("! monitors",file=file_lat)
-    write_eles(('hmonitor','monitor','vmonitor'),('monitor','monitor','monitor'),None,db,slots_and_lines.lnms,file_lat)
-    print("! instruments",file=file_lat)
-    write_eles('instrument','instrument',None,db,slots_and_lines.lnms,file_lat)
-    print("! collimators",file=file_lat)
-    write_eles('rcollimator','rcollimator','rcollimator',db,slots_and_lines.lnms,file_lat)
-    print("! markers",file=file_lat)
-    write_eles('marker','marker',None,db,slots_and_lines.lnms,file_lat)
+            print_both(l+':'+etype+lattrib,file_bmad,file_madx)
+    print('// corrector coils',file=file_madx)
+    coil_lnms = sorted({ coil[0] for name, coils in all_lines.correctors.items() for coil in coils },key=lambda s:slot_key(s))
+    for c in coil_lnms:
+        if 'kick' in db.magnet_piece[c]:
+            print(c+'_coil:'+db.magnet_piece[c]+';',file=file_madx)
+        else:
+            print(c+':multipole;',file=file_madx)
+    comment_line("cavities",file_bmad,file_madx)
+    write_eles('rfcavity','rfcavity','rfcavity',db,slots_and_lines.lnms,file_bmad,file_madx)
+    comment_line("monitors",file_bmad,file_madx)
+    write_eles(('hmonitor','monitor','vmonitor'),('monitor','monitor','monitor'),None,db,slots_and_lines.lnms,file_bmad,file_madx)
+    comment_line("instruments",file_bmad,file_madx)
+    write_eles('instrument','instrument',None,db,slots_and_lines.lnms,file_bmad,file_madx)
+    comment_line('collimators',file_bmad,file_madx)
+    for l in sorted(all_lines.lnms,key=lambda s:slot_key(s)):
+        if db.magnet_piece[l]=='rcollimator':
+            attrmap = db.eles['rcollimator'][l]
+            sb = l+':rcollimator';
+            sm = l+':collimator';
+            if 'l' in attrmap:
+                sb += ',l='+attrmap['l']
+                sm += ',l='+attrmap['l']
+            xlim = False
+            ylim = False
+            if 'x_limit' in attrmap:
+                xlim = attrmap['x_limit']
+                sb += ',x_limit='+xlim
+            if 'y_limit' in attrmap:
+                ylim = attrmap['y_limit']
+                sb += ',y_limit='+ylim
+            if xlim or ylim:
+                if not xlim:
+                    xlim = '1'
+                if not ylim:
+                    ylim = '1'
+                sm += ',apertype=rectangle,aperture={'+xlim+','+ylim+'};'
+            print(sb,file=file_bmad)
+            print(sm,file=file_madx)
+    comment_line("markers",file_bmad,file_madx)
+    write_eles('marker','marker',None,db,slots_and_lines.lnms,file_bmad,file_madx)
 
-    print("! site-wide names", file=file_lat)
-    write_all_swns(all_lines,db,file_lat)
+    comment_line("site-wide names",file_bmad,file_madx)
+    write_all_swns(all_lines,db,file_bmad,file_madx)
 
-    print("! slots from the intact part of RHIC (that aren't just drifts)",file=file_lat)
+    comment_line("slots from the intact part of RHIC (that aren't just drifts)",file_bmad,file_madx)
     for (s,el) in sorted(all_lines.slots.items(),key=lambda s:slot_key(s[0])):
-        print(s+':line=('+',\n '.join(el)+')',file=file_lat)
-    print("! sections of RHIC",file=file_lat)
+        print_both(s+':line=('+',\n '.join(el)+')',file_bmad,file_madx)
+    comment_line("sections of RHIC",file_bmad,file_madx)
     for l in line_list:
-        print(l.name+':line=('+',\n '.join(l.slot_list)+')',file=file_lat)
+        print_both(l.name+':line=('+',\n '.join(l.slot_list)+')',file_bmad,file_madx)
 
-    print("! slots and other parts used in individual IRs",file=file_lat)
-    print("! site-wide names",file=file_lat)
-    write_all_swns(all_parts,db,file_lat)
-    print("! slots",file=file_lat)
+    comment_line("slots and other parts used in individual IRs",file_bmad,file_madx)
+    comment_line("site-wide names",file_bmad,file_madx)
+    write_all_swns(all_parts,db,file_bmad,file_madx)
+    comment_line("slots",file_bmad,file_madx)
     for (s,el) in sorted(all_slots.slots.items(),key=lambda s:slot_key(s[0])):
-        print(s+':line=('+',\n '.join(el)+')',file=file_lat)
+        print_both(s+':line=('+',\n '.join(el)+')',file_bmad,file_madx)
     
 
-with open('rhic-ps.bmad',mode='w') as file_ps:
-    print("! Generated by rhicdb.py; do not modify.",file=file_ps)
-    print("! RHIC sections that are kept",file=file_ps)
-    print("! quadrupoles",file=file_ps)
-    (psset,swns) = write_transfer('quadrupole','b1_gradient',db,all_lines.lnms,file_ps)
-    write_ps_to_i(psset,swns,db,file_ps)
-    print("! sextupoles",file=file_ps)
-    (psset,swns) = write_transfer('sextupole','b2_gradient',db,all_lines.lnms,file_ps)
-    write_ps_to_i(psset,swns,db,file_ps)
-    print("! kickers",file=file_ps)
-    (psset,swns) = write_transfer('hkicker','bl_kick',db,all_lines.lnms,file_ps)
-    write_ps_to_i(psset,swns,db,file_ps)
-    (psset,swns) = write_transfer('vkicker','bl_kick',db,all_lines.lnms,file_ps)
-    write_ps_to_i(psset,swns,db,file_ps)
-    print("! correctors",file=file_ps)
-    (psset,swns) = write_transfer_cors(db,all_lines.correctors,file_ps)
-    write_ps_to_i(psset,swns,db,file_ps)
-    print ("! IR slots",file=file_ps)
-    print("! quadrupoles",file=file_ps)
-    write_transfer('quadrupole','b1_gradient',db,all_slots.lnms,file_ps)
-    print("! sextupoles",file=file_ps)
-    write_transfer('sextupole','b2_gradient',db,all_slots.lnms,file_ps)
-    print("! kickers",file=file_ps)
-    write_transfer('hkicker','bl_kick',db,all_slots.lnms,file_ps)
-    write_transfer('vkicker','bl_kick',db,all_slots.lnms,file_ps)
-    print("! correctors",file=file_ps)
-    write_transfer_cors(db,all_slots.correctors,file_ps)
+with open('rhic-ps.bmad',mode='w') as file_bmad, open('rhic-ps.madx',mode='w') as file_madx:
+    comment_line("Generated by rhicdb.py; do not modify.",file_bmad,file_madx)
+    comment_line("RHIC sections that are kept",file_bmad,file_madx)
+    comment_line("quadrupoles",file_bmad,file_madx)
+    (psset,swns) = write_transfer('quadrupole',('b1_gradient','k1'),db,all_lines.lnms,file_bmad,file_madx)
+    write_ps_to_i(psset,swns,db,file_bmad,file_madx)
+    comment_line("sextupoles",file_bmad,file_madx)
+    (psset,swns) = write_transfer('sextupole',('b2_gradient','k2'),db,all_lines.lnms,file_bmad,file_madx)
+    write_ps_to_i(psset,swns,db,file_bmad,file_madx)
+    comment_line("kickers",file_bmad,file_madx)
+    (psset,swns) = write_transfer('hkicker',('bl_kick','kick'),db,all_lines.lnms,file_bmad,file_madx)
+    write_ps_to_i(psset,swns,db,file_bmad,file_madx)
+    (psset,swns) = write_transfer('vkicker',('bl_kick','kick'),db,all_lines.lnms,file_bmad,file_madx)
+    write_ps_to_i(psset,swns,db,file_bmad,file_madx)
+    comment_line("correctors",file_bmad,file_madx)
+    (psset,swns) = write_transfer_cors(db,all_lines.correctors,file_bmad,file_madx)
+    write_ps_to_i(psset,swns,db,file_bmad,file_madx)
+    comment_line("IR slots",file_bmad,file_madx)
+    comment_line("quadrupoles",file_bmad,file_madx)
+    write_transfer('quadrupole',('b1_gradient','k1'),db,all_slots.lnms,file_bmad,file_madx)
+    comment_line("sextupoles",file_bmad,file_madx)
+    write_transfer('sextupole',('b2_gradient','k2'),db,all_slots.lnms,file_bmad,file_madx)
+    comment_line("kickers",file_bmad,file_madx)
+    write_transfer('hkicker',('bl_kick','kick'),db,all_slots.lnms,file_bmad,file_madx)
+    write_transfer('vkicker',('bl_kick','kick'),db,all_slots.lnms,file_bmad,file_madx)
+    comment_line("correctors",file_bmad,file_madx)
+    write_transfer_cors(db,all_slots.correctors,file_bmad,file_madx)
