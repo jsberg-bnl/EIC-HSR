@@ -700,7 +700,7 @@ with open('rhic-lat.bmad',mode='w') as file_bmad, open('rhic-lat.madx',mode='w')
                 etype = 'kicker'
             print_both(l+':'+etype+lattrib,file_bmad,file_madx)
     print('// corrector coils',file=file_madx)
-    coil_lnms = sorted({ coil[0] for name, coils in all_lines.correctors.items() for coil in coils },key=lambda s:slot_key(s))
+    coil_lnms = sorted({ coil[0] for name, coils in slots_and_lines.correctors.items() for coil in coils },key=lambda s:slot_key(s))
     for c in coil_lnms:
         if 'kick' in db.magnet_piece[c]:
             print(c+'_coil:'+db.magnet_piece[c]+';',file=file_madx)
@@ -713,7 +713,7 @@ with open('rhic-lat.bmad',mode='w') as file_bmad, open('rhic-lat.madx',mode='w')
     comment_line("instruments",file_bmad,file_madx)
     write_eles('instrument','instrument',None,db,slots_and_lines.lnms,file_bmad,file_madx)
     comment_line('collimators',file_bmad,file_madx)
-    for l in sorted(all_lines.lnms,key=lambda s:slot_key(s)):
+    for l in sorted(slots_and_lines.lnms,key=lambda s:slot_key(s)):
         if db.magnet_piece[l]=='rcollimator':
             attrmap = db.eles['rcollimator'][l]
             sb = l+':rcollimator';
