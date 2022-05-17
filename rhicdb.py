@@ -487,7 +487,7 @@ def write_transfer(mag_type,field_attr,db,lnms,file_bmad,file_madx):
                     print(swn+'_i:overlay={'+swn+'['+field_attr[0]+']:'+f'{sign*db.trans[coil]}'+
                           ('' if 'kick' in mag_type else '/'+swn+'[l]')+'*i}, var={i}',file=file_bmad)
                     print(swn+','+field_attr[1]+':='+
-                          f'{sign*db.trans[coil]}'+('' if 'kick' in mag_type else '/'+swn+'->l')+'*'+swn+'_i/beam->brho;',
+                          f'{-sign*db.trans[coil]}'+('' if 'kick' in mag_type else '/'+swn+'->l')+'*'+swn+'_i/beam->brho;',
                           file=file_madx)
                     swnset.add(swn)
                     for (ps,sgn) in db.swn_to_ps[swn]:
@@ -511,17 +511,17 @@ def write_transfer_cors(db,cors,file_bmad,file_madx):
             magtyp = db.magnet_piece[lnm]
             if magtyp == 'hkicker':
                 print(swn+'_i:overlay={'+cor+'[bl_hkick]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
-                print(swn+',kick:='+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho;',file=file_madx)
+                print(swn+',kick:='+f'{-db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho;',file=file_madx)
             elif magtyp == 'vkicker':
                 print(swn+'_i:overlay={'+cor+'[bl_vkick]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
-                print(swn+',kick:='+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho;',file=file_madx)
+                print(swn+',kick:='+f'{-db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho;',file=file_madx)
             elif magtyp == 'quadrupole':
                 if 'tilt' in db.eles['quadrupole'][lnm]:
                     print(swn+'_i:overlay={'+cor+'[a1]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
-                    print(swn+',ksl:={0,'+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
+                    print(swn+',ksl:={0,'+f'{-db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
                 else:
                     print(swn+'_i:overlay={'+cor+'[b1]:'+f'{db.trans[coiltyp]}'+'*i},var={i}',file=file_bmad)
-                    print(swn+',knl:={0,'+f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
+                    print(swn+',knl:={0,'+f'{-db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
             else: # multipole
                 m = db.eles['multipole'][lnm]
                 print(swn+'_i:overlay={'+cor
@@ -529,7 +529,7 @@ def write_transfer_cors(db,cors,file_bmad,file_madx):
                       +"*i},var={i}",
                       file=file_bmad)
                 print(swn+(',ksl:={' if m['skew'] else ',knl:={')+m['order']*'0,'
-                      +f'{db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
+                      +f'{-db.trans[coiltyp]}'+'*'+swn+'_i/beam->brho};',file=file_madx)
             if swn in db.swn_to_ps:
                 for (ps,sgn) in db.swn_to_ps[swn]:
                     psset.add(ps)
