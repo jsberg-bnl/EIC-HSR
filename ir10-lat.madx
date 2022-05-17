@@ -1,0 +1,57 @@
+lq1dw_10 = 0.927704;
+l591 = 5.211;
+ld0591 = 1.0;
+ldx591 = 1.5;
+
+oq1dw_10: drift, l=lq1dw_10-lflq1x;
+lir10 = lcendx+lcendxd0+lcend0+(ld0fla+lbeld0q1+lflq1x-lq1dw_10)*cos(thd0);
+lzd0 = lcenxdx+lir10;
+lxd0 = lcendx*tan(0.5*thdx)+lcendxd0*tan(thdx)+lcend0*tan(0.5*(thd0+thdx))+(ld0fla+lbeld0q1+lflq1x-lq1dw_10)*sin(thd0);
+
+cavity_591MHz: rfcavity, l = l591, harmon = 7560;
+
+tir10x = +1.30116123888018229e-02;
+td41 = tir10x-thd0;
+lsw10 = lwd/cos(0.5*tir10x);
+
+od0591: drift, l=ld0591;
+odx591: drift, l=ldx591;
+ox9c1_hsr: drift, l=ox9c1->l+lir10+ldxflx-lsw10-ldx591-l591-ld0591-lwd*cos(0.5*thd0);
+oir10d: drift, l=lir10+ldxflx-lwd*cos(0.5*thd0);
+oir10_41: drift, l=(2*lzd0-ld0591-l591-ldx591)*cos(tir10x) + 2*lxd0*sin(tir10x)
+ - lwd*(cos(tir10x-0.5*thd0)+cos(0.5*tir10x)+cos(0.5*(tir10x-thd0)));
+
+dwarm_ir10: sbend, l=lwd/sinc(0.5*thd0), angle=-thd0, e1=-0.5*thd0, e2=-0.5*thd0;
+dwarm_ir10_41: sbend, l=lwd/sinc(0.5*td41), angle=-td41, e1=-0.5*td41, e2=-0.5*td41;
+dsw_ir10: sbend, l=lwd;
+
+pt_dsw_ir10: translation, dx=+lwd*tan(0.5*tir10x);
+prd_dsw_ir10: yrotation, angle=+0.5*tir10x;
+prw_dsw_ir10: yrotation, angle=-0.5*tir10x;
+
+g9_dux_hsr:line=(obsk9lg,
+ g9_svx,
+ ox9c0,
+ obxfla,
+ g9_bx,
+ obxflx,
+ ox9c1_hsr,
+ g9_solx_10,
+ g9_solx_9,
+ g9_bx_2,
+ g9_solx_8,
+ g9_solx_7,
+ g9_solx_6,
+ g9_markx_5,
+ g9_solx_5,
+ g9_solx_4,
+ g9_solx_3,
+ g9_bx_1,
+ g9_solx_2,
+ g9_solx_1,
+ ox9c2);
+
+ir10w: line=(oq1dw_10,dwarm_ir10,od0591,cavity_591MHz,odx591,prw_dsw_ir10,dsw_ir10);
+
+ir10: line=(ir10w,pt_dsw_ir10,prd_dsw_ir10,g9_dux_hsr,g10_dux,oir10d,dwarm_ir10,oq1dw_10);
+ir10_41: line=(ir10w,prw_dsw_ir10,oir10_41,dwarm_ir10_41,oq1dw_10);
