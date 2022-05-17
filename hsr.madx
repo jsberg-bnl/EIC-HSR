@@ -1,0 +1,7 @@
+call, file='rhic-lat.madx';
+call, file='rhic-ps.madx';
+call, file='ir6-lat.madx';
+ip6: marker;
+arc05_cell: line=(yo5_int11_2,yo5_d11,yo5_int11_1,yo5_cqs11,yo5_int10_2,yo5_d10,yo5_int10_1,yo5_cqs10);
+arc07_cell: line=(yi6_cqs10,yi6_int10_1,yi6_d10,yi6_int10_2,yi6_cqs11,yi6_int11_1,yi6_d11,yi6_int11_2);
+hsr: line=(arc05_cell,hsr6w,ip6,hsr6d,arc07_cell);
