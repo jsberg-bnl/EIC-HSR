@@ -1,0 +1,299 @@
+loir8 = 0.5;
+lq1bq2a = 1;
+ldds02 = 13;
+
+drq : drift, l = 1.6;
+dus08n : drift, l = 0.003420176;
+drbx9 : drift, l = 0.522;
+dus07n : drift, l = 7.73573197522638423E-001;
+dus06n : drift, l = 3.85978906626665563E-001;
+dus05n : drift, l = 0.046524239;
+dus04 : drift, l = loir8;
+dus03 : drift, l = loir8;
+dcrab : drift, l =  10;
+dus02 : drift, l = loir8;
+dus01 : drift, l =  18;
+dusq3 : drift, l = 1.5;
+dusq2 : drift, l = loir8;
+dusq1 : drift, l = 3.3;
+dffds01 : drift, l = 3.8;
+dds01 : drift, l = loir8;
+dds01_0 : drift, l =   0;
+dds03b : drift, l =   1;
+dds04 : drift, l = 1.18576611;
+dds05n : drift, l = 8.62876447501860766E-002;
+dds06n : drift, l = 0.848020152;
+dds07n : drift, l = 0.2131419235;
+dds08n : drift, l = 8.08624904825369195E-001;
+
+ldrg = 9.440656;
+ld96 = 2.949;
+
+
+//Forward near IR magnet offsets! 
+//"_shift" is moving in x axis, "_rot" is rotating around y axis.
+
+b1_shift           =      0.01919672337;
+q1a_shift          =      0.00244838225;
+q1b_shift          =     0.005801379438;
+q2a_shift          =   -0.0006089511936;
+q2b_shift          =      0.01124943071;
+b2_shift           =              0.035;
+b1_rot             =             -0.032;
+q1a_rot            =     -0.00391498719;
+q1b_rot            =    -0.003686351983;
+q2a_rot            =     0.004023441114;
+q2b_rot            =     0.003479144725;
+b2_rot             =     0.009252237898;
+
+// Values from original MAD-X lattice
+lbxsp01=1.2;
+thbxsp01=0.006;
+lbxds01a=4.8;
+thbxds01a=0.015;
+thbxds01b=-0.01;
+lbxds01b=3;
+gbxds01a=-thbxds01a/lbxds01a;
+gbxds01b=-thbxds01b/lbxds01b;
+lbxds02disp1=3.7;
+thbxds02disp1=-0.017;
+thbxdsds04=1.1022248537655212E-02;
+lqffds01a=2;
+lqffds01b=2.2;
+lqffds02a=2.6;
+lqffds02b=2.4;
+
+bxsp01: sbend,l=lbxsp01,angle=-thbxsp01,e1=-0.5*thbxsp01,e2=-0.5*thbxsp01;
+bxds01a: sbend,l= lbxds01a,angle=-thbxds01a,e1=-0.5*thbxds01a,e2=-0.5*thbxds01a;
+bxds01b: sbend,l= lbxds01b,angle=-thbxds01b,e1=-0.5*thbxds01b,e2=-0.5*thbxds01b;
+bxds02disp1: sbend,l=lbxds02disp1,angle=thbxds02disp1,e1=0.5*thbxds02disp1,e2=0.5*thbxds02disp1;
+
+bxds9m1: sbend,l=ldrg,angle= +0.03879709293;
+bxdsds04: sbend,l= ld96,angle= thbxdsds04, e1=0.5*thbxdsds04, e2=0.5*thbxdsds04;
+bxds9m2: sbend,l=ldrg,angle= +0.03745458963;
+bxus9m1: sbend,l=ldrg,angle= +0.03888054621;
+bxus9m2: sbend,l=ldrg,angle= +0.03617333923;
+bxus9m3: sbend,l=ldrg ,angle= +3.2220045657653767E-02;
+
+qus09: quadrupole,l= 1.1;
+qus08: quadrupole,l= 1.1;
+qus07: quadrupole,l= 1.1;
+qus06: quadrupole,l= 1.1;
+qus05: quadrupole,l= 1.1;
+qus04: quadrupole,l= 1.8;
+qus03: quadrupole,l= 1.8;
+qus02c: quadrupole,l= 1.5;
+qus01c: quadrupole,l= 1.5;
+qffus03: quadrupole,l= 4.5;
+qffus02: quadrupole,l= 1.4;
+qffus01: quadrupole,l= 1.8;
+qffds01a: quadrupole,l=lqffds01a;
+qffds01b: quadrupole,l=lqffds01b;
+qffds02a: quadrupole,l=lqffds02a;
+qffds02b: quadrupole,l=lqffds02b;
+qds01: quadrupole,l= 1.5;
+qds02: quadrupole,l= 1.5;
+qds02a: quadrupole,l= 1.5;
+qds03a: quadrupole,l= 1.5;
+qds03b: quadrupole,l= 1.5;
+qds04a: quadrupole,l= 1.5;
+qds04b: quadrupole,l= 1.5;
+qds05: quadrupole,l= 1.1;
+qds06: quadrupole,l= 1.1;
+qds07: quadrupole,l= 1.1;
+qds08: quadrupole,l= 1.1;
+qds09: quadrupole,l= 1.1;
+qds10: quadrupole,l= 1.1;
+
+solus: solenoid,l= 2;
+solds: solenoid,l= 2;
+
+// Patches to implement misaligned magnets
+// bxsp01
+pwt_bxsp01: translation, dx=-2*lbxsp01*sinc(0.5*thbxsp01)*sin(0.5*b1_rot)*cos(0.5*(thbxsp01+b1_rot))-b1_shift*cos(thbxsp01);
+pwr_bxsp01: yrotation, angle=b1_rot;
+pdr_bxsp01: yrotation, angle=-b1_rot;
+pdt_bxsp01: translation, dx=b1_shift;
+ob1q1a: drift, l=loir8 + b1_shift*sin(thbxsp01) + 2*lbxsp01*sinc(0.5*thbxsp01)*sin(0.5*b1_rot)*sin(0.5*(thbxsp01+b1_rot));
+// qffds01a
+pwt_qffds01a: translation, dx=-lqffds01a*sin(q1a_rot)-q1a_shift;
+pwr_qffds01a: yrotation, angle=q1a_rot;
+pdr_qffds01a: yrotation, angle=-q1a_rot;
+pdt_qffds01a: translation, dx=q1a_shift;
+oq1aq1b: drift, l=loir8 + 2*lqffds01a*sin(0.5*q1a_rot)^2;
+// qffds01b
+pwt_qffds01b: translation, dx=-lqffds01b*sin(q1b_rot)-q1b_shift;
+pwr_qffds01b: yrotation, angle=q1b_rot;
+pdr_qffds01b: yrotation, angle=-q1b_rot;
+pdt_qffds01b: translation, dx=q1b_shift;
+oq1bq2a: drift, l=lq1bq2a + 2*lqffds01b*sin(0.5*q1b_rot)^2;
+// qffds02a
+pwt_qffds02a: translation, dx=-lqffds02a*sin(q2a_rot)-q2a_shift;
+pwr_qffds02a: yrotation, angle=q2a_rot;
+pdr_qffds02a: yrotation, angle=-q2a_rot;
+pdt_qffds02a: translation, dx=q2a_shift;
+oq2aq2b: drift, l=loir8 + 2*lqffds02a*sin(0.5*q2a_rot)^2;
+// qffds02b
+pwt_qffds02b: translation, dx=-lqffds02b*sin(q2b_rot)-q2b_shift;
+pwr_qffds02b: yrotation, angle=q2b_rot;
+pdr_qffds02b: yrotation, angle=-q2b_rot;
+pdt_qffds02b: translation, dx=q2b_shift;
+oq2bb2: drift, l=loir8 + 2*lqffds02b*sin(0.5*q2b_rot)^2;
+// bxds01a
+pwt_bxds01a: translation, dx=-2*lbxds01a*sinc(0.5*thbxds01a)*sin(0.5*b2_rot)*cos(0.5*(thbxds01a+b2_rot))-b2_shift*cos(thbxds01a);
+pwr_bxds01a: yrotation, angle=b2_rot;
+pdr_bxds01a: yrotation, angle=-b2_rot;
+pdt_bxds01a: translation, dx=b2_shift;
+dds02: drift, l=ldds02 + b2_shift*sin(thbxds01a) + 2*lbxds01a*sinc(0.5*thbxds01a)*sin(0.5*b2_rot)*sin(0.5*(thbxds01a+b2_rot));
+
+o_crab_ir8d: placeholder, l=20;
+o_crab_ir8w: placeholder, l=20;
+spin_rotator : placeholder, l = 12.9;
+snake : placeholder, l = 12.9;
+
+mpot1i: marker;
+mpot1: marker;
+mpot1o: marker;
+
+ffus_3 : line = (
+ dus05n,
+ drq,
+ qus03,
+ drq,
+ dus05n,
+ drbx9,
+ bxus9m1,
+ drbx9,
+ dus06n,
+ drq,
+ qus04,
+ drq,
+ dus06n,
+ spin_rotator,
+ dus06n,
+ drq,
+ qus05,
+ drq,
+ dus06n,
+ drbx9,
+ bxus9m2,
+ drbx9,
+ dus07n,
+ drq,
+ qus06,
+ drq,
+ dus07n,
+ snake,
+ dus07n,
+ drq,
+ qus07,
+ drq,
+ dus07n,
+ drbx9,
+ bxus9m3,
+ drbx9,
+ dus08n,
+ drq,
+ qus08,
+ drq,
+ dus08n,
+ drq,
+ qus09,
+ drq,
+ dus08n);
+
+ffus_1 : line=(
+ solus,
+ dusq1,
+ qffus01,
+ dusq2,
+ qffus02,
+ dusq3,
+ qffus03,
+ dus01,
+ qus01c,
+ dus02,
+ o_crab_ir8d,
+ dus03,
+ qus02c,
+ dus04);
+
+ffds_1: line=(
+ dds04,
+ qds02,
+ dds03b,
+ mpot1o,
+ dds03b,
+ mpot1,
+ dds03b,
+ mpot1i,
+ dds03b,
+ qds01,
+ dds01,
+ dds01,
+ bxds01b,
+ dds02,
+ pwt_bxds01a,pwr_bxds01a,bxds01a,pdr_bxds01a,pdt_bxds01a,
+ oq2bb2,
+ pwt_qffds02b,pwr_qffds02b,qffds02b,pdr_qffds02b,pdt_qffds02b,
+ oq2aq2b,
+ pwt_qffds02a,pwr_qffds02a,qffds02a,pdr_qffds02a,pdt_qffds02a,
+ oq1bq2a,
+ pwt_qffds01b,pwr_qffds01b,qffds01b,pdr_qffds01b,pdt_qffds01b,
+ oq1aq1b,
+ pwt_qffds01a,pwr_qffds01a,qffds01a,pdr_qffds01a,pdt_qffds01a,
+ ob1q1a,
+ pwt_bxsp01,pwr_bxsp01,bxsp01,pdr_bxsp01,pdt_bxsp01,
+ dffds01,
+ solds);
+
+ffds_2: line=(
+ o_crab_ir8w,
+ qds03b,
+ dds04,
+ qds03a,
+ dds04,
+ bxds02disp1,
+ dds04,
+ qds02a);
+
+ffds_4: line=(
+ dds01,
+ dds08n,
+ drq,
+ qds10,
+ drq,
+ dds08n,
+ drq,
+ qds09,
+ drq,
+ dds08n,
+ bxds9m2,
+ dds07n,
+ drq,
+ qds08,
+ drq,
+ dds07n,
+ bxdsds04,
+ dds06n,
+ drq,
+ qds07,
+ drq,
+ dds06n,
+ bxds9m1,
+ dds05n,
+ drq,
+ qds06,
+ drq,
+ spin_rotator,
+ drq,
+ qds05,
+ drq,
+ dds05n,
+ qds04b,
+ dds04,
+ qds04a);
+
+ip8: marker;
+
+ir8: line=(yi7_int9_3,odsfl,yi7_dh9,ffds_4,ffds_2,ffds_1,ip8,ffus_1,ffus_3,yo8_dh9,odsfl,yo8_int9_3);
