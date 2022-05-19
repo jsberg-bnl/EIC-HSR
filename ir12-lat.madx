@@ -1,0 +1,142 @@
+tir12 = 5.33359674055741521E-003;
+lir12 = 3.92440539461223494E+001;
+tir12s = tir12+thd0;
+tir12x = tir12+2*thd0;
+lhsw12 = 0.5*lwd/cos(0.5*tir12x);
+l12gsw = (
+  lcend0*sin(0.5*(thdx-thd0))/cos(0.5*(thdx+thd0))
+  + lcendxd0*sin(thdx-thd0)/cos(thdx)
+  + lcendx*sin(0.5*thdx - thd0)/cos(0.5*thdx)
+  - lcenxdx*sin(thd0) ) / sin(tir12x)
+ - lhsw12;
+lir12_41 = (
+ lcenxdx*sin(tir12s)
+ + lcendx*sin(0.5*thdx+tir12s)/cos(0.5*thdx)
+ + lcendxd0*sin(thdx+tir12s)/cos(thdx)
+ + lcend0*sin(0.5*(thdx+thd0)+tir12s)/cos(0.5*(thdx+thd0))) / sin(tir12x)
+ + ld0fla + lbeld0q1  - lhsw12;
+
+bo11_dh0, k0=bo11_dh0->angle/bo11_dh0->l*2*sin(0.5*tir12)*cos(bo11_dh0->angle-0.5*tir12)/sin(bo11_dh0->angle);
+bi12_dh0, k0=-bi12_dh0->angle/bi12_dh0->l*2*sin(0.5*tir12)*cos(bi12_dh0->angle+0.5*tir12)/sin(bi12_dh0->angle);
+pt_bo11_dh0: translation, dx=
+ bo11_dh0->l*sinc(0.5*bo11_dh0->angle)*sin(0.5*(bo11_dh0->angle-tir12))/cos(bo11_dh0->angle-0.5*tir12)
+ - ld0flx*tan(tir12-bo11_dh0->angle);
+pr_bo11_dh0: yrotation, angle=bo11_dh0->angle - tir12;
+pt_bi12_dh0: translation, dx=
+ -bi12_dh0->l*sinc(0.5*bi12_dh0->angle)*sin(0.5*(bi12_dh0->angle+tir12))/cos(bi12_dh0->angle+0.5*tir12)
+ - ld0flx*tan(tir12+bi12_dh0->angle);
+pr_bi12_dh0: yrotation, angle=bi12_dh0->angle + tir12;
+
+o11d0g: drift, l=0.5*lir12 + ldxflx - lcenxdx;
+o12gsw: drift, l=l12gsw-lpjetfl-ox12c0->l-ox12c1->l-2*leldhvfl-2*leldfl-3*lsolec;
+ogswd0: drift, l=0.5*(0.5*lir12 - l12gsw - 2*lhsw12 - ox12c3->l - ox12c4->l - ox12c5->l - lbxflx - lbxfla - ox12c6->l - lbsk12lg);
+oir12_41: drift, l=lir12_41;
+
+d_switch_ir12: sbend, l=lwd;
+prd_switch_ir12: yrotation, angle=-0.5*tir12x;
+prw_switch_ir12: yrotation, angle=+0.5*tir12x;
+pt_switch_ir12: translation, dx=-lwd*tan(0.5*tir12x);
+
+lcolkfbh = 0.5;
+lcolps = 20;
+ocolkfbh: drift, l=lcolkfbh;
+ocolksch: drift, l=0.5*o3b12c5->l;
+o3b11c1_hsr: drift, l=o3b11c1->l-lcolkfbh;
+o3b12c2w: drift, l=o3b12c2->l + o3b12c3->l + o3b12c4->l + 2*leldfl + 4*lcktvfl + 0.5*o3b12c5->l - lcolps;
+o3b12c2d: drift, l=lcolps - 0.5*o3b12c5->l - 4*lcktvfl - o3b12c4->l - o3b12c3->l - 2*leldfl;
+scol_h3_1: rcollimator;
+scol_h3_2: rcollimator;
+pcol_h4: rcollimator;
+
+bo11_du3_hsr:line=(obsk11ib,
+ bo11_sv4,
+ o3b11c0,
+ omskhfl,
+ bo11_mskh3,
+ omskhfl,
+ o3b11c1_hsr,
+ scol_h3_2,
+ ocolkfbh,
+ bo11_kfbh3,
+ o3b11c2,
+ bo11_sv3,
+ obsk11lb);
+
+bi12_du3_hsr:line=(obsk12lb,
+ bi12_sv3_1,
+ o3b12c0,
+ bi12_kfbh3,
+ o3b12c1,
+ oipmfll,
+ bi12_ipm3,
+ oipmfls,
+ o3b12c2w,
+ scol_h3_1,
+ o3b12c2d,
+ oeldfl,
+ bi12_eld3,
+ oeldfl,
+ o3b12c3,
+ ocktvfl,
+ bi12_ksch3_1,
+ ocktvfl,
+ o3b12c4,
+ ocktvfl,
+ bi12_ksch3_2,
+ ocktvfl,
+ ocolksch,
+ pcol_h4,
+ ocolksch,
+ ocktvfl,
+ bi12_kscv3_1,
+ ocktvfl,
+ o3b12c6,
+ ocktvfl,
+ bi12_kscv3_2,
+ ocktvfl,
+ o3b12c7,
+ bi12_sv3_2,
+ o3b12c8,
+ opolfls,
+ bi12_pol3_1,
+ opolflm,
+ bi12_pol3_2,
+ opolfll,
+ o3b12c9,
+ bi12_sv4,
+ obsk12ib);
+
+g12_duxw: line=(opjetfl,
+ g12_pjetx,
+ g12_markx,
+ opjetfl,
+ ox12c0,
+ g12_svx_1,
+ ox12c1,
+ oeldhvfl,
+ g12_eldx_1,
+ oeldhvfl,
+ oeldfl,
+ g12_eldx_2,
+ oeldfl,
+ g12_solx_1,
+ g12_solx_1,
+ g12_solx_1);
+g12_duxd: line=(g12_bsx_1,
+ ox12c3,
+ g12_bsx_2,
+ ox12c4,
+ g12_bsx_3,
+ ox12c5,
+ obxflx,
+ g12_bx,
+ obxfla,
+ ox12c6,
+ g12_svx_2,
+ obsk12lg);
+
+ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,g12_duxd,ogswd0,pr_bi12_dh0,pt_bi12_dh0);
+
+ir12: line=(pt_bo11_dh0,pr_bo11_dh0,o11d0g,g11_dux,g12_duxw,o12gsw,prw_switch_ir12,pt_switch_ir12,ir12d);
+
+ir12_41: line=(ins11y,oir12_41,prd_switch_ir12,ir12d,trp12b);
