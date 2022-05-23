@@ -1,9 +1,9 @@
 ir2_q1_i: overlay={ bi1_qf7_i[i] : -i }, var={i}
 ir2_q2_i: overlay={ yo1_qd5_i[i] : +i, bo2_qd5_i[i] : -i }, var={i}
-ir2_q3_i: overlay={ yo1_qf6_i[i] : +i, bo2_qf6_i[i] : -i }, var={i}
+ir2_q3_i: overlay={ yo1_qd9_i[i] : +i, bo2_qd9_i[i] : -i }, var={i}
 ir2_q4_i: overlay={ bi1_qf5_i[i] : -i, yi2_qf5_i[i] : +i }, var={i}
 ir2_q5_i: overlay={ yo1_qf4_i[i] : +i, bo2_qf4_i[i] : -i }, var={i}
 ir2_q6_i: overlay={ bi1_qd6_i[i] : -i, yi2_qd6_i[i] : +i }, var={i}
-ir2_q7_i: overlay={ bi1_qd4_i[i] : -i, yi2_qd4_i[i] : +i }, var={i}
+ir2_q7_i: overlay={ yo1_qf6_i[i] : +i, bo2_qf6_i[i] : -i }, var={i}
 ir2_q8_i: overlay={ bi1_qd8_i[i] : -i, yi2_qd8_i[i] : +i }, var={i}
 ir2_q9_i: overlay={ bi1_qf9_i[i] : -i, yi2_qf9_i[i] : +i }, var={i}

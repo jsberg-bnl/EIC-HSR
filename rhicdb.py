@@ -624,8 +624,8 @@ for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.ma
 
 # slots kept intact but used in isolation
 ir2_slots = [slot('y',s,db)
-             for s in ('yo1_cqt4','yo1_cqt5','yo1_cqt6',
-                       'yi2_cqt4','yi2_cqt5','yi2_cqt6',
+             for s in ('yo1_cqt4','yo1_cqt5','yo1_cqt6','yo1_cqb9',
+                       'yi2_cqt5','yi2_cqt6',
                        'yi2_d6',
                        'yi2_cq7','yi2_int7_1','yi2_du7','yi2_int7_2',
                        'yi2_cq8','yi2_int8_1','yi2_d8','yi2_int8_2',
@@ -635,8 +635,8 @@ ir2_slots = [slot('y',s,db)
                        'bi1_int8_2','bi1_d8','bi1_int8_1','bi1_cq8',
                        'bi1_int7_2','bi1_du7','bi1_int7_1','bi1_cq7',
                        'bi1_d6',
-                       'bi1_cqt4','bi1_cqt5','bi1_cqt6',
-                       'bo2_cqt4','bo2_cqt5','bo2_cqt6')]
+                       'bi1_cqt5','bi1_cqt6',
+                       'bo2_cqt4','bo2_cqt5','bo2_cqt6','bo2_cqb9')]
 ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp3','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_6',

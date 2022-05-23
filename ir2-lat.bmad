@@ -38,7 +38,7 @@ lqd6tot = l_inner_hc - ldps - lq
 foqd5 = 0.5
 foqd6 = 0.2
 
-o76: drift, l=4+(lbfl+lqbms7+lq7)-(lbfl4+lsb4+lsxt+lqs4+lq4+lcq4+lcor+lcfl)-(lcfl+lcor+lcq)
+o76: drift, l=4+(lbfl+lqbms7+lq7)-(lbfl+lqb+lq+lcq+lcor+lcfl)-(lcfl+lcor+lcq)
 o6d: drift, l=foqd6*lqd6tot - (lqs+lsxt+lsb+lbfl) - ldsfl
 o5c: drift, l=l65 + 0.5*lq - l6m - (lcfl+lcor+lcq4+0.5*lq4)
 o54: drift, l=4 + 0.5*lq7 - (0.5*lq4+lqs4+lsxt+lsb4+lbfl4) - (lcfl+lcor+lcq)
@@ -59,8 +59,8 @@ cool_modulator_out: ocool_out
 d5: sbend, g=1/rho, l=ld5 ! Not any RHIC magnet; do something about me
 
 ir2: line=(
- ins01b,bi1_cqt4,o76,bi1_cqt6,o6d,bi1_d6,cool_kicker_out,cool_kicker_in,
- o5c,yo1_cqt4,o54,bi1_cqt5,o4d,d5,o3d,yo1_cqt6,o32,yo1_cqt5,
+ ins01b,yo1_cqt6,o76,bi1_cqt6,o6d,bi1_d6,cool_kicker_out,cool_kicker_in,
+ o5c,yo1_cqt4,o54,bi1_cqt5,o4d,d5,o3d,yo1_cqb9,o32,yo1_cqt5,
  o21_1,bi1_cq7,o21_2,
- bo2_cqt5,o32,bo2_cqt6,o3d,d5,o4d,yi2_cqt5,o54,bo2_cqt4,o5c,
- cool_modulator_in,cool_modulator_out,yi2_d6,o6d,yi2_cqt6,o76,yi2_cqt4,ins02y)
+ bo2_cqt5,o32,bo2_cqb9,o3d,d5,o4d,yi2_cqt5,o54,bo2_cqt4,o5c,
+ cool_modulator_in,cool_modulator_out,yi2_d6,o6d,yi2_cqt6,o76,bo2_cqt6,ins02y)

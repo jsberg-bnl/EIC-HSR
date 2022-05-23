@@ -706,12 +706,10 @@ q3o4:quadrupole,l=lq3
 q3o6:quadrupole,l=lq3
 q3o10:quadrupole,l=lq3
 q3o12:quadrupole,l=lq3
-q4i2:quadrupole,l=lq4
 q4i4:quadrupole,l=lq4
 q4i6:quadrupole,l=lq4
 q4i10:quadrupole,l=lq4
 q4i12:quadrupole,l=lq4
-q4it2:quadrupole,l=lsxt
 q4it4:quadrupole,l=lsxt
 q4it6:quadrupole,l=lsxt
 q4it10:quadrupole,l=lsxt
@@ -6108,11 +6106,7 @@ yi7_dh9:ds
 yo8_dh9:ds
 ! quadrupoles
 yo5_qd3:q3o6
-bi1_qd4:q4i2
-yi2_qd4:q4i2
 yi6_qd4:q4i6
-bi1_tq4:q4it2
-yi2_tq4:q4it2
 yi6_tq4:q4it6
 bo2_qf4:q4o2
 yo1_qf4:q4o2
@@ -6149,6 +6143,8 @@ yi2_qf7:q7i2
 yi6_qf7:q7i6
 yo5_qd7:q7o6
 bi1_qd8:qda2
+bo2_qd9:qda2
+yo1_qd9:qda2
 yi2_qd8:qda2
 yo5_qd9:qda6
 yi6_qd8:qda6
@@ -6185,7 +6181,6 @@ bi12_kfbh3:kfbh
 yi3_kfbh3:kfbh
 yo4_kfbh3:kfbh
 ! correctors
-lmp01b04:kicker,l=lcor,scale_multipoles=f
 lmp01b05:kicker,l=lcor,scale_multipoles=f
 lmp01b06:kicker,l=lcor,scale_multipoles=f
 lmp01b07:kicker,l=lcor,scale_multipoles=f
@@ -6194,10 +6189,11 @@ lmp01b09:kicker,l=lcor,scale_multipoles=f
 lmp01y04:kicker,l=lcor,scale_multipoles=f
 lmp01y05:kicker,l=lcor,scale_multipoles=f
 lmp01y06:kicker,l=lcor,scale_multipoles=f
+lmp01y09:kicker,l=lcor,scale_multipoles=f
 lmp02b04:kicker,l=lcor,scale_multipoles=f
 lmp02b05:kicker,l=lcor,scale_multipoles=f
 lmp02b06:kicker,l=lcor,scale_multipoles=f
-lmp02y04:kicker,l=lcor,scale_multipoles=f
+lmp02b09:kicker,l=lcor,scale_multipoles=f
 lmp02y05:kicker,l=lcor,scale_multipoles=f
 lmp02y06:kicker,l=lcor,scale_multipoles=f
 lmp02y07:kicker,l=lcor,scale_multipoles=f
@@ -6241,12 +6237,13 @@ yi6_bh5:bpmh
 yi6_bh9:bpmh
 bi1_bv6:bpmv
 bo2_bv5:bpmv
+bo2_bv9:bpmv
 yo1_bv5:bpmv
+yo1_bv9:bpmv
 yi2_bv6:bpmv
 yo5_bv5:bpmv
 yo5_bv9:bpmv
 yi6_bv6:bpmv
-bi1_b4:cplmon
 bi1_b7:cplmon
 bi1_b8:cplmon
 bo2_b4:cplmon
@@ -6259,7 +6256,6 @@ g10_bx_2:cplmon
 g11_bx:cplmon
 g12_bx:cplmon
 yo1_b4:cplmon
-yi2_b4:cplmon
 yi2_b7:cplmon
 yi2_b8:cplmon
 yo5_b3:cplmon
@@ -6338,15 +6334,6 @@ bi1_cqb9:line=(obfl,
  ocq,
  lmp01b09,
  ocfl)
-bi1_cqt4:line=(ocfl,
- lmp01b04,
- ocq4,
- bi1_qd4,
- oqs4,
- bi1_tq4,
- osb4,
- bi1_b4,
- obfl4)
 bi1_cqt5:line=(ocfl,
  lmp01b05,
  ocq,
@@ -6380,6 +6367,13 @@ bi1_du7:line=(odum1fl,
 bi1_du9:line=(odum2fl,
  o9dummy,
  odum1fl)
+bo2_cqb9:line=(ocfl,
+ lmp02b09,
+ ocq,
+ bo2_qd9,
+ oqb,
+ bo2_bv9,
+ obfl)
 bo2_cqt4:line=(obfl4,
  bo2_b4,
  osb4,
@@ -6459,6 +6453,13 @@ g11_dux:line=(obsk11lg,
  ox11c1,
  g11_svx_1,
  ox11c2)
+yo1_cqb9:line=(obfl,
+ yo1_bv9,
+ oqb,
+ yo1_qd9,
+ ocq,
+ lmp01y09,
+ ocfl)
 yo1_cqt4:line=(ocfl,
  lmp01y04,
  ocq4,
@@ -6507,15 +6508,6 @@ yi2_cqb9:line=(ocfl,
  oqb,
  yi2_bh9,
  obfl)
-yi2_cqt4:line=(obfl4,
- yi2_b4,
- osb4,
- yi2_tq4,
- oqs4,
- yi2_qd4,
- ocq4,
- lmp02y04,
- ocfl)
 yi2_cqt5:line=(obfl,
  yi2_bh5,
  osb,
