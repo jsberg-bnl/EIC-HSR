@@ -707,12 +707,10 @@ q3o4:quadrupole,l=lq3;
 q3o6:quadrupole,l=lq3;
 q3o10:quadrupole,l=lq3;
 q3o12:quadrupole,l=lq3;
-q4i2:quadrupole,l=lq4;
 q4i4:quadrupole,l=lq4;
 q4i6:quadrupole,l=lq4;
 q4i10:quadrupole,l=lq4;
 q4i12:quadrupole,l=lq4;
-q4it2:quadrupole,l=lsxt;
 q4it4:quadrupole,l=lsxt;
 q4it6:quadrupole,l=lsxt;
 q4it10:quadrupole,l=lsxt;
@@ -6781,11 +6779,7 @@ yi7_dh9:ds;
 yo8_dh9:ds;
 // quadrupoles
 yo5_qd3:q3o6;
-bi1_qd4:q4i2;
-yi2_qd4:q4i2;
 yi6_qd4:q4i6;
-bi1_tq4:q4it2;
-yi2_tq4:q4it2;
 yi6_tq4:q4it6;
 bo2_qf4:q4o2;
 yo1_qf4:q4o2;
@@ -6822,6 +6816,8 @@ yi2_qf7:q7i2;
 yi6_qf7:q7i6;
 yo5_qd7:q7o6;
 bi1_qd8:qda2;
+bo2_qd9:qda2;
+yo1_qd9:qda2;
 yi2_qd8:qda2;
 yo5_qd9:qda6;
 yi6_qd8:qda6;
@@ -6858,13 +6854,11 @@ bi12_kfbh3:kfbh;
 yi3_kfbh3:kfbh;
 yo4_kfbh3:kfbh;
 // correctors
-bi1_dec4:dec;
 bi1_dec5:dec;
 bi1_dec6:dec;
 bi1_dec7:dec;
 bi1_dec8:dec;
 bi1_dec9:dec;
-bi1_oct4:oct;
 bi1_oct5:oct;
 bi1_oct6:oct;
 bi1_oct7:oct;
@@ -6872,47 +6866,51 @@ bi1_oct8:oct;
 bi1_oct9:oct;
 bi1_qgt5:qgtti;
 bi1_qgt7:qgtti;
-bi1_qs4:sqsk;
 bi1_qs6:sqsk2;
 bi1_qs8:sqsk2;
 bi1_qs9:sqsk2;
 bi1_th5:kickh_coil;
 bi1_th7:kickh_coil;
 bi1_th9:kickh_coil;
-bi1_tv4:kickv_coil;
 bi1_tv6:kickv_coil;
 bi1_tv8:kickv_coil;
 bo2_dec4:dec;
 bo2_dec5:dec;
 bo2_dec6:dec;
+bo2_dec9:dec;
 bo2_oct4:oct;
 bo2_oct5:oct;
 bo2_oct6:oct;
+bo2_oct9:oct;
 bo2_qgt6:qgtto;
 bo2_qs4:sqsk;
 bo2_qs5:sqsk;
+bo2_qs9:sqsk2;
 bo2_th4:kickh_coil;
 bo2_th6:kickh_coil;
 bo2_tv5:kickv_coil;
+bo2_tv9:kickv_coil;
 yo1_dec4:dec;
 yo1_dec5:dec;
 yo1_dec6:dec;
+yo1_dec9:dec;
 yo1_oct4:oct;
 yo1_oct5:oct;
 yo1_oct6:oct;
+yo1_oct9:oct;
 yo1_qgt6:qgtto;
 yo1_qs4:sqsk;
 yo1_qs5:sqsk;
+yo1_qs9:sqsk2;
 yo1_th4:kickh_coil;
 yo1_th6:kickh_coil;
 yo1_tv5:kickv_coil;
-yi2_dec4:dec;
+yo1_tv9:kickv_coil;
 yi2_dec5:dec;
 yi2_dec6:dec;
 yi2_dec7:dec;
 yi2_dec8:dec;
 yi2_dec9:dec;
-yi2_oct4:oct;
 yi2_oct5:oct;
 yi2_oct6:oct;
 yi2_oct7:oct;
@@ -6920,14 +6918,12 @@ yi2_oct8:oct;
 yi2_oct9:oct;
 yi2_qgt5:qgtti;
 yi2_qgt7:qgtti;
-yi2_qs4:sqsk;
 yi2_qs6:sqsk2;
 yi2_qs8:sqsk2;
 yi2_qs9:sqsk2;
 yi2_th5:kickh_coil;
 yi2_th7:kickh_coil;
 yi2_th9:kickh_coil;
-yi2_tv4:kickv_coil;
 yi2_tv6:kickv_coil;
 yi2_tv8:kickv_coil;
 yo5_dec4:dec;
@@ -6987,7 +6983,6 @@ yi6_tv4:kickv_coil;
 yi6_tv6:kickv_coil;
 yi6_tv8:kickv_coil;
 // Corrector coil packs
-lmp01b04:line=(olmp0,bi1_tv4,bi1_oct4,bi1_dec4,bi1_qs4,olmp0);
 lmp01b05:line=(olmp0,bi1_th5,bi1_oct5,bi1_dec5,bi1_qgt5,olmp0);
 lmp01b06:line=(olmp0,bi1_tv6,bi1_oct6,bi1_dec6,bi1_qs6,olmp0);
 lmp01b07:line=(olmp0,bi1_th7,bi1_oct7,bi1_dec7,bi1_qgt7,olmp0);
@@ -6996,10 +6991,11 @@ lmp01b09:line=(olmp0,bi1_th9,bi1_oct9,bi1_dec9,bi1_qs9,olmp0);
 lmp01y04:line=(olmp0,yo1_th4,yo1_oct4,yo1_dec4,yo1_qs4,olmp0);
 lmp01y05:line=(olmp0,yo1_tv5,yo1_oct5,yo1_dec5,yo1_qs5,olmp0);
 lmp01y06:line=(olmp0,yo1_th6,yo1_oct6,yo1_dec6,yo1_qgt6,olmp0);
+lmp01y09:line=(olmp0,yo1_tv9,yo1_oct9,yo1_dec9,yo1_qs9,olmp0);
 lmp02b04:line=(olmp0,bo2_th4,bo2_oct4,bo2_dec4,bo2_qs4,olmp0);
 lmp02b05:line=(olmp0,bo2_tv5,bo2_oct5,bo2_dec5,bo2_qs5,olmp0);
 lmp02b06:line=(olmp0,bo2_th6,bo2_oct6,bo2_dec6,bo2_qgt6,olmp0);
-lmp02y04:line=(olmp0,yi2_tv4,yi2_oct4,yi2_dec4,yi2_qs4,olmp0);
+lmp02b09:line=(olmp0,bo2_tv9,bo2_oct9,bo2_dec9,bo2_qs9,olmp0);
 lmp02y05:line=(olmp0,yi2_th5,yi2_oct5,yi2_dec5,yi2_qgt5,olmp0);
 lmp02y06:line=(olmp0,yi2_tv6,yi2_oct6,yi2_dec6,yi2_qs6,olmp0);
 lmp02y07:line=(olmp0,yi2_th7,yi2_oct7,yi2_dec7,yi2_qgt7,olmp0);
@@ -7043,12 +7039,13 @@ yi6_bh5:bpmh;
 yi6_bh9:bpmh;
 bi1_bv6:bpmv;
 bo2_bv5:bpmv;
+bo2_bv9:bpmv;
 yo1_bv5:bpmv;
+yo1_bv9:bpmv;
 yi2_bv6:bpmv;
 yo5_bv5:bpmv;
 yo5_bv9:bpmv;
 yi6_bv6:bpmv;
-bi1_b4:cplmon;
 bi1_b7:cplmon;
 bi1_b8:cplmon;
 bo2_b4:cplmon;
@@ -7061,7 +7058,6 @@ g10_bx_2:cplmon;
 g11_bx:cplmon;
 g12_bx:cplmon;
 yo1_b4:cplmon;
-yi2_b4:cplmon;
 yi2_b7:cplmon;
 yi2_b8:cplmon;
 yo5_b3:cplmon;
@@ -7140,15 +7136,6 @@ bi1_cqb9:line=(obfl,
  ocq,
  lmp01b09,
  ocfl);
-bi1_cqt4:line=(ocfl,
- lmp01b04,
- ocq4,
- bi1_qd4,
- oqs4,
- bi1_tq4,
- osb4,
- bi1_b4,
- obfl4);
 bi1_cqt5:line=(ocfl,
  lmp01b05,
  ocq,
@@ -7182,6 +7169,13 @@ bi1_du7:line=(odum1fl,
 bi1_du9:line=(odum2fl,
  o9dummy,
  odum1fl);
+bo2_cqb9:line=(ocfl,
+ lmp02b09,
+ ocq,
+ bo2_qd9,
+ oqb,
+ bo2_bv9,
+ obfl);
 bo2_cqt4:line=(obfl4,
  bo2_b4,
  osb4,
@@ -7261,6 +7255,13 @@ g11_dux:line=(obsk11lg,
  ox11c1,
  g11_svx_1,
  ox11c2);
+yo1_cqb9:line=(obfl,
+ yo1_bv9,
+ oqb,
+ yo1_qd9,
+ ocq,
+ lmp01y09,
+ ocfl);
 yo1_cqt4:line=(ocfl,
  lmp01y04,
  ocq4,
@@ -7309,15 +7310,6 @@ yi2_cqb9:line=(ocfl,
  oqb,
  yi2_bh9,
  obfl);
-yi2_cqt4:line=(obfl4,
- yi2_b4,
- osb4,
- yi2_tq4,
- oqs4,
- yi2_qd4,
- ocq4,
- lmp02y04,
- ocfl);
 yi2_cqt5:line=(obfl,
  yi2_bh5,
  osb,
