@@ -13,15 +13,6 @@ use, sequence=hsr;
 rhic_rip = 590.581639053215;
 dx0_eic_ip6 = +0.81;
 dtheta0_eic_ip6 = -0.017;
-survey;
-
-xip60 = -(rhic_rip - dx0_eic_ip6);
-zip60 = 0;
-tip60 = pi + dtheta0_eic_ip6;
-
-xip61 = table(survey,ip6,x);
-zip61 = table(survey,ip6,z);
-tip61 = table(survey,ip6,theta);
 
 set, format="10d", "25.17e", "-24s";
 select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
