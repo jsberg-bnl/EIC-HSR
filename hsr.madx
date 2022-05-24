@@ -3,6 +3,7 @@ call, file='rhic-lat.madx';
 lwd = 5;
 
 call, file='ir2-lat.madx';
+call, file='ir4-lat.madx';
 call, file='ir6-lat.madx';
 call, file='ir8c-lat.madx';
 call, file='ir10-lat.madx';
@@ -10,9 +11,9 @@ call, file='ir12-lat.madx';
 call, file='rhic-ps.madx';
 call, file='ir2-ps.madx';
 call, file='ir10-ps.madx';
-ip6: marker;
-hsr: line=(arc05y,
- hsr6w,ip6,hsr6d,
+ip6d: marker;
+ip6w: marker;
+hsr: line=(ip6d,hsr6d,
  arc07y,
  ir8,
  arc09y,
@@ -21,4 +22,7 @@ hsr: line=(arc05y,
  mat11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
  arc01b,
  ir2,
- arc03y);
+ arc03y,
+ mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
+ arc05y,
+ hsr6w,ip6w);
