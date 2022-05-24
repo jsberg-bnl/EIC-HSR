@@ -25,5 +25,5 @@ use, sequence=hsr;
 select, flag=ptc_twiss, column=name,keyword,t,s,x,px,disp1,disp2,beta11,alfa11,beta22,alfa22;
 ptc_create_universe;
 ptc_create_layout, exact, model=2, method=6, nst=5;
-ptc_twiss, betz=1, icase=56, no=5, file='hsr-ptc.tfs';
+ptc_twiss, closed_orbit, icase=56, no=5, file='hsr-ptc.tfs';
 ptc_end;
