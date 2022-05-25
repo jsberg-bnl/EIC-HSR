@@ -9,7 +9,4 @@ call, file='ir12-str-275-10.bmad'
 
 beginning[e_tot]           = e275
 
-beginning[beta_a] = 80e-2
-beginning[beta_b] = 7.2e-2
-
 use, hsr
