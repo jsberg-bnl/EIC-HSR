@@ -40,7 +40,8 @@ prd_switch_ir12: patch, x_pitch=-0.5*tir12x
 prw_switch_ir12: patch, x_pitch=+0.5*tir12x
 pt_switch_ir12: patch, x_offset=-lwd*tan(0.5*tir12x)
 
-ov_ir12_dh0: overlay={ ov_bo11_d0[angle]: angle, ov_bi12_d0[angle] : -angle }, var={angle}, angle = tir12
+ov_bo11_d0[angle] = +tir12
+ov_bi12_d0[angle] = -tir12
 
 lcolkfbh = 0.5
 lcolps = 20
@@ -144,7 +145,4 @@ ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,g12_duxd,ogswd0,pr_bi12_dh0,pt
 
 ir12: line=(pt_bo11_dh0,pr_bo11_dh0,o11d0g,g11_dux,g12_duxw,o12gsw,prw_switch_ir12,pt_switch_ir12,ir12d)
 
-ir12_41: line=(ins11y,oir12_41,prd_switch_ir12,ir12d,trp12b)
-ir12_41[geometry] = open
-ir12_41[beta_a] = 1
-ir12_41[beta_b] = 1
+ir12_41: line=(oir12_41,prd_switch_ir12,ir12d)

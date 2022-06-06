@@ -80,7 +80,7 @@ def match_hsr(tao):
     tao.cmd('veto dat *')
     tao.cmd('set universe 7 on')
     tao.cmd('set def uni=7')
-    tao.cmd('use var ir12[3:]')
+    tao.cmd('use var ir12[4:]')
     tao.cmd('use dat ir12.fit')
     tao.cmd('use dat ir12.sym')
     residual[5] = optimize(tao)
