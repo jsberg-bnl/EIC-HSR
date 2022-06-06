@@ -811,11 +811,24 @@
 &tao_d2_data
  universe = '26'
  d2_data%name = 'ir12_41'
- n_d1_data = 1
+ n_d1_data = 5
 /
 
 &tao_d1_data
  ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1)%data_type = 'expression: lat::eta.x[yi11_qf1]-lat::eta.x[bi12_qf1-1]'
+ datum(2)%data_type = 'expression: lat::etap.x[yi11_qf1]+lat::etap.x[bi12_qf1-1]'
+ datum(3)%data_type = 'expression: 0.5*(lat::beta.a[yi11_qf1]/(1+lat::alpha.a[yi11_qf1]^2)+lat::beta.a[bi12_qf1-1]/(1+lat::alpha.a[bi12_qf1-1]^2))'
+ datum(4)%data_type = 'expression: lat::alpha.a[yi11_qf1]+lat::alpha.a[bi12_qf1-1]'
+ datum(5)%data_type = 'expression: 0.5*(lat::beta.b[yi11_qf1]/(1+lat::alpha.b[yi11_qf1]^2)+lat::beta.b[bi12_qf1-1]/(1+lat::alpha.b[bi12_qf1-1]^2))'
+ datum(6)%data_type = 'expression: lat::alpha.b[yi11_qf1]+lat::alpha.b[bi12_qf1-1]'
+ datum(1:6)%weight = 1 1 100 1 100 1
+ datum(1:6)%meas = 0 0 5 0 5 0
+/
+
+&tao_d1_data
+ ix_d1_data = 2
  d1_data%name = 'arc'
  datum(1)%data_type = 'expression: 26@lat::eta.x[bi12_int9_3] - 30@lat::eta.x[0]'
  datum(2)%data_type = 'expression: 26@lat::etap.x[bi12_int9_3] - 30@lat::etap.x[0]'
@@ -825,6 +838,73 @@
  datum(6)%data_type = 'expression: 26@lat::alpha.b[bi12_int9_3] - 30@lat::alpha.b[0]'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
  datum(1:6)%meas = 0 0 0 0 0 0
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'low_lim'
+ datum(1)%data_type   = 'expression: var::ir12_41[1]|model   - var::ir12_41[1]|low_lim'
+ datum(2)%data_type   = 'expression: var::ir12_41[2]|model   - var::ir12_41[2]|low_lim'
+ datum(3)%data_type   = 'expression: var::ir12_41[3]|model   - var::ir12_41[3]|low_lim'
+ datum(4)%data_type   = 'expression: var::ir12_41[4]|model   - var::ir12_41[4]|low_lim'
+ datum(5)%data_type   = 'expression: var::ir12_41[5]|model   - var::ir12_41[5]|low_lim'
+ datum(6)%data_type   = 'expression: var::ir12_41[6]|model   - var::ir12_41[6]|low_lim'
+ datum(7)%data_type   = 'expression: var::ir12_41[7]|model   - var::ir12_41[7]|low_lim'
+ datum(8)%data_type   = 'expression: var::ir12_41[8]|model   - var::ir12_41[8]|low_lim'
+ datum(9)%data_type   = 'expression: var::ir12_41[9]|model   - var::ir12_41[9]|low_lim'
+ datum(10)%data_type  = 'expression: var::ir12_41[10]|model  - var::ir12_41[10]|low_lim'
+ datum(11)%data_type  = 'expression: var::ir12_41[11]|model  - var::ir12_41[11]|low_lim'
+ datum(12)%data_type  = 'expression: var::ir12_41[12]|model  - var::ir12_41[12]|low_lim'
+ datum(13)%data_type  = 'expression: var::ir12_41[13]|model  - var::ir12_41[13]|low_lim'
+ datum(14)%data_type  = 'expression: var::ir12_41[14]|model  - var::ir12_41[14]|low_lim'
+ datum(15)%data_type  = 'expression: var::ir12_41[15]|model  - var::ir12_41[15]|low_lim'
+ datum(16)%data_type  = 'expression: var::ir12_41[16]|model  - var::ir12_41[16]|low_lim'
+ datum(17)%data_type  = 'expression: var::ir12_41[17]|model  - var::ir12_41[17]|low_lim'
+ datum(18)%data_type  = 'expression: var::ir12_41[18]|model  - var::ir12_41[18]|low_lim'
+ datum(19)%data_type  = 'expression: var::ir12_41[19]|model  - var::ir12_41[19]|low_lim'
+ datum(20)%data_type  = 'expression: var::ir12_41[20]|model  - var::ir12_41[20]|low_lim'
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'high_lim'
+ datum(1)%data_type   = 'expression: var::ir12_41[1]|high_lim   - var::ir12_41[1]|model'
+ datum(2)%data_type   = 'expression: var::ir12_41[2]|high_lim   - var::ir12_41[2]|model'
+ datum(3)%data_type   = 'expression: var::ir12_41[3]|high_lim   - var::ir12_41[3]|model'
+ datum(4)%data_type   = 'expression: var::ir12_41[4]|high_lim   - var::ir12_41[4]|model'
+ datum(5)%data_type   = 'expression: var::ir12_41[5]|high_lim   - var::ir12_41[5]|model'
+ datum(6)%data_type   = 'expression: var::ir12_41[6]|high_lim   - var::ir12_41[6]|model'
+ datum(7)%data_type   = 'expression: var::ir12_41[7]|high_lim   - var::ir12_41[7]|model'
+ datum(8)%data_type   = 'expression: var::ir12_41[8]|high_lim   - var::ir12_41[8]|model'
+ datum(9)%data_type   = 'expression: var::ir12_41[9]|high_lim   - var::ir12_41[9]|model'
+ datum(10)%data_type  = 'expression: var::ir12_41[10]|high_lim  - var::ir12_41[10]|model'
+ datum(11)%data_type  = 'expression: var::ir12_41[11]|high_lim  - var::ir12_41[11]|model'
+ datum(12)%data_type  = 'expression: var::ir12_41[12]|high_lim  - var::ir12_41[12]|model'
+ datum(13)%data_type  = 'expression: var::ir12_41[13]|high_lim  - var::ir12_41[13]|model'
+ datum(14)%data_type  = 'expression: var::ir12_41[14]|high_lim  - var::ir12_41[14]|model'
+ datum(15)%data_type  = 'expression: var::ir12_41[15]|high_lim  - var::ir12_41[15]|model'
+ datum(16)%data_type  = 'expression: var::ir12_41[16]|high_lim  - var::ir12_41[16]|model'
+ datum(17)%data_type  = 'expression: var::ir12_41[17]|high_lim  - var::ir12_41[17]|model'
+ datum(18)%data_type  = 'expression: var::ir12_41[18]|high_lim  - var::ir12_41[18]|model'
+ datum(19)%data_type  = 'expression: var::ir12_41[19]|high_lim  - var::ir12_41[19]|model'
+ datum(20)%data_type  = 'expression: var::ir12_41[20]|high_lim  - var::ir12_41[20]|model'
+/
+
+&tao_d1_data
+ ix_d1_data = 5
+ d1_data%name = 'sym'
+ datum(1)%data_type  = 'expression: 26@data::ir12_41.low_lim[1]   - 26@data::ir12_41.low_lim[19]'
+ datum(2)%data_type  = 'expression: 26@data::ir12_41.high_lim[2]  - 26@data::ir12_41.low_lim[19]'
+ datum(3)%data_type  = 'expression: 26@data::ir12_41.low_lim[7]   - 26@data::ir12_41.low_lim[19]'
+ datum(4)%data_type  = 'expression: 26@data::ir12_41.high_lim[8]  - 26@data::ir12_41.low_lim[19]'
+ datum(5)%data_type  = 'expression: 26@data::ir12_41.high_lim[9]  - 26@data::ir12_41.low_lim[19]'
+ datum(6)%data_type  = 'expression: 26@data::ir12_41.low_lim[11]  - 26@data::ir12_41.low_lim[19]'
+ datum(7)%data_type  = 'expression: 26@data::ir12_41.high_lim[12] - 26@data::ir12_41.low_lim[19]'
+ datum(8)%data_type  = 'expression: 26@data::ir12_41.high_lim[14] - 26@data::ir12_41.low_lim[19]'
+ datum(9)%data_type  = 'expression: 26@data::ir12_41.low_lim[17]  - 26@data::ir12_41.low_lim[19]'
+ datum(10)%data_type = 'expression: 26@data::ir12_41.high_lim[18] - 26@data::ir12_41.low_lim[19]'
+ datum(1:10)%meas = 0 0 0 0 0 0 0 0 0 0
+ datum(1:10)%weight = 1 1 1 1 1 1 1 1 1 1
 /
 
 &tao_d2_data
