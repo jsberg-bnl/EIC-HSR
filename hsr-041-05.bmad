@@ -1,16 +1,19 @@
 call, file='hsr.bmad'
 
+e041 = 41e9
+p041 = sqrt(e041^2-m_proton^2)
+
 dsw_ir10[dg] = 2*sin(0.5*tir10x)/lwd
 d_switch_ir12[dg] = 2*sin(0.5*tir12x)/lwd
 
-call, file='rhic-str-275-10.bmad'
-call, file='ir2-str-275-10.bmad'
-call, file='ir4-str-275-10.bmad'
-call, file='ir6-str-275-10.bmad'
-call, file='ir8c-str-275-10.bmad'
+call, file='rhic-str-041-05.bmad'
+call, file='ir2-str-041-05.bmad'
+call, file='ir4-str-041-05.bmad'
+call, file='ir6-str-041-05.bmad'
+call, file='ir8c-str-041-05.bmad'
 call, file='ir10-str-041-05.bmad'
 call, file='ir12-str-041-05.bmad'
 
-beginning[e_tot]           = e275
+parameter[e_tot] = e041
 
 use, hsr41
