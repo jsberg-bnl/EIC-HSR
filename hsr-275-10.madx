@@ -1,5 +1,5 @@
 call, file='hsr.madx';
-call, file='rhic-cur.madx';
+call, file='rhic-str-275-10.madx';
 call, file='ir2-str-275-10.madx';
 call, file='ir4-str-275-10.madx';
 call, file='ir6-str-275-10.madx';
