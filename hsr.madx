@@ -1,5 +1,8 @@
 call, file='rhic-lat.madx';
 
+e275 = 275e9;
+p275 = sqrt(e275*e275-pmass*pmass);
+
 lwd = 5;
 
 call, file='ir2-lat.madx';
@@ -20,6 +23,17 @@ hsr: line=(ip6d,hsr6d,
  ins09y,ir10,ins10b,
  arc11b,
  mat11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
+ arc01b,
+ ir2,
+ arc03y,
+ mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
+ arc05y,
+ hsr6w,ip6w);
+hsr41: line=(ip6d,hsr6d,
+ arc07y,ir8,arc09y,
+ ins09y,ir10_41,ins10y,
+ arc11y,
+ ins11y,ir12_41,trp12b,bi12_du3_hsr,mat12b,
  arc01b,
  ir2,
  arc03y,

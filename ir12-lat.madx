@@ -139,4 +139,4 @@ ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,g12_duxd,ogswd0,pr_bi12_dh0,pt
 
 ir12: line=(pt_bo11_dh0,pr_bo11_dh0,o11d0g,g11_dux,g12_duxw,o12gsw,prw_switch_ir12,pt_switch_ir12,ir12d);
 
-ir12_41: line=(ins11y,oir12_41,prd_switch_ir12,ir12d,trp12b);
+ir12_41: line=(oir12_41,prd_switch_ir12,ir12d);

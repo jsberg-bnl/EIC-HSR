@@ -14,9 +14,6 @@ yo5_cq8_mod:line=(ocfl,
  yo5_b8,
  obl8b);
 
-e275 = 275e9;
-p275 = sqrt(e275*e275-pmass*pmass);
-
 // Detector solenoid
 sol_rot = 0.025;
 sol_half: solenoid, l=2;
