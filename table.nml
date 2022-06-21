@@ -9,7 +9,7 @@
  column(9)  = 'orbit_x'        'sp,es25.17' 25 'orbit.x (m)'
  column(10) = 'orbit_px'       'sp,es25.17' 25 'orbit.px'
  column(11) = 'eta_x'          'sp,es25.17' 25 'eta.x (m)'
- column(12) = 'etap_x'         'sp,es25.17' 25 'eta.px'
+ column(12) = 'etap_x'         'sp,es25.17' 25 'etap.x'
  column(13) = 'beta_a'         'es24.17'    24 'beta.x (m)'
  column(14) = 'alpha_a'        'sp,es25.17' 25 'alpha.x'
  column(15) = 'beta_b'         'es24.17'    24 'beta.y (m)'
