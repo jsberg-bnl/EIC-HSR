@@ -611,6 +611,10 @@ mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
 trp03y = line('y','yi3_trp3','yi3_trp1',db)
 trp04y = line('y','yo4_trp1','yo4_trp3',db)
 mat04y = line('y','yo4_cqt4','yo4_int9_3',db)
+ins07y = line('y','yi7_int9_3','yi7_trp1',db)
+beg08y = line('y','yo8_trp1','yo8_int7_1',db)
+mid08y = line('y','yo8_int7_2','yo8_int9_1',db)
+end08y = line('y','yo8_int9_2','yo8_int9_3',db)
 ins09y = line('y','yo9_int9_3','yo9_trp1',db)
 ins10y = line('y','yi10_trp1','yi10_int9_3',db)
 ins11y = line('y','yi11_int9_3','yi11_trp1',db)
@@ -618,7 +622,7 @@ ins11y = line('y','yi11_int9_3','yi11_trp1',db)
 # Lines carried over from RHIC
 line_list = [
     arc01b,arc03y,arc05y,arc07y,arc09y,arc11b,arc11y,
-    mat03y,trp03y,trp04y,mat04y,ins09y,ins10b,ins10y,mat11b,trp11b,ins11y,trp12b,mat12b]
+    mat03y,trp03y,trp04y,mat04y,ins07y,beg08y,mid08y,end08y,ins09y,ins10b,ins10y,mat11b,trp11b,ins11y,trp12b,mat12b]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
@@ -641,7 +645,7 @@ ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp3','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_6',
                        'yi6_cqt4','yi6_cqt5','yi6_d5','yi6_cqt6','yi6_d6','yi6_cq7','yi6_cq8','yi6_d8','yi6_cqb9','yi6_d9')]
-ir8_slots = [slot('y','yi7_int9_3',db),slot('y','yi7_d9',db),slot('y','yo8_d9',db),slot('y','yo8_int9_3',db)]
+ir8_slots = [slot('y','yo8_du7',db),slot('y','yo8_du9',db)]
 ir10_slots = [slot('y','g9_dux',db),slot('b','g10_dux',db)]
 ir12_slots = [slot('b','g11_dux',db)]
 
