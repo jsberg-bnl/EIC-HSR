@@ -756,6 +756,7 @@ bka3:sbend,l=lka
 bka4:sbend,l=lka
 bka5:sbend,l=lka
 d:sbend,l=ldip,angle=thcell
+d0mm07:sbend,l=ld0,angle=thd0 - thdx
 d0mp12:sbend,l=ld0,angle=thd0 - thdx
 d0pm11:sbend,l=ld0,angle=thdx - thd0
 d0pp08:sbend,l=ld0,angle=thdx - thd0
@@ -6617,6 +6618,7 @@ yi2_int8_1:obelaci
 yi2_int8_2:obelaci
 yo5_int8_1:obelaco
 yo5_int8_2:obelaco
+yi7_int0:obeld0q1
 yo8_int0:obeld0q1
 ! things, acting currently like drifts
 ! dipoles
@@ -6624,6 +6626,7 @@ bi1_dh8:d
 yi2_dh8:d
 yo5_dh8:d
 yi6_dh8:d
+yi7_dh0:d0mm07
 yo8_dh0:d0pp08
 yi6_dh5:d5i
 yo5_dh5:d5o
@@ -7201,6 +7204,9 @@ yi6_d8:line=(odfl,
 yi6_d9:line=(odsfl,
  yi6_dh9,
  odsfl)
+yi7_d0:line=(od0fla,
+ yi7_dh0,
+ od0flx)
 yo8_d0:line=(od0flx,
  yo8_dh0,
  od0fla)
