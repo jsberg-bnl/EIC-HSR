@@ -13,7 +13,7 @@
 /
 
 &tao_design_lattice
- n_universes = 30
+ n_universes = 31
  design_lattice(1) = 'hsr-275-10.bmad' 'hsr-ovl.bmad' ! Full ring
  design_lattice(2) = 'hsr-275-10.bmad'
  design_lattice(3) = 'hsr-275-10.bmad'
@@ -44,6 +44,7 @@
  design_lattice(28) = 'hsr-041-05.bmad'
  design_lattice(29) = 'hsr-041-05.bmad'
  design_lattice(30) = 'hsr-041-05.bmad'
+ design_lattice(31) = 'hsrn-275-10.bmad' 'ir8n-ovl.bmad'
  ! Insertions
  design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6w' ! ir6w
  design_lattice(2)%reverse_lattice = t
@@ -83,6 +84,7 @@
  design_lattice(28)%slice_lattice = 'yi10_int9_3+1:yi10_int11_2'  ! yi beg
  design_lattice(29)%slice_lattice = 'yi11_int11_2:yi11_int9_3-1'  ! yi end
  design_lattice(30)%slice_lattice = 'bi12_int9_3+1:bi12_int11_2'  ! bi beg
+ design_lattice(31)%slice_lattice = 'yi7_int11_2:yo8_int11_2'     ! ir8, non-colliding
 /
 
 &tao_var
@@ -187,6 +189,14 @@
  var(6:17)%ele_name = 'qffus01' 'qffus02' 'qffus03' 'qus01c' 'qus02c' 'qus03' 'qus04' 'qus05' 'qus06' 'qus07' 'qus08' 'qus09'
  var(6:17)%attribute = 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1' 'k1'
  var(6:17)%step = 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5 1e-5
+/
+
+&tao_var
+ v1_var%name = 'ir8n'
+ default_universe = '31'
+ var(1:5)%ele_name = 'ov_d8' 'ov_p8' 'ov_p8' 'ov_p8' 'ov_o8'
+ var(1:5)%attribute = 'dg' 'xpi' 'xpx' 'xox' 'l'
+ var(1:5)%step = 1e-6 1e-6 1e-6 1e-4 1e-3
 /
 
 &tao_var
@@ -927,6 +937,30 @@
  default_weight = 1
  datum(1:2)%data_type = 'chrom.a' 'chrom.b'
  datum(1:2)%meas = 2 2
+/
+
+&tao_d2_data
+ universe = '31'
+ d2_data%name = 'ir8n'
+ n_d1_data = 2
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'aux'
+ datum(1)%data_type = 'expression: asin(lat::orbit.px[yi7_dh0-1])'
+ datum(2)%data_type = 'expression: atan(ele::yi7_dh0[g]*sin(data::ir8n.aux[1]|model)/((ele::yi7_dh0[g]+ele::yi7_dh0[dg])*(1+lat::orbit.x[yi7_dh0-1]*ele::yi7_dh0[g])-ele::yi7_dh0[g]*cos(data::ir8n.aux[1]|model)))'
+ datum(3)%data_type = 'expression: (lat::orbit.x[yi7_dh0-1]*cos(0.5*(data::ir8n.aux[2]|model-data::ir8n.aux[1]|model))+ele::yi7_dh0[rho]*2*sin(0.5*data::ir8n.aux[2]|model)*sin(0.5*data::ir8n.aux[1]|model))/cos(0.5*(data::ir8n.aux[1]|model+data::ir8n.aux[2]|model))'
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'geom'
+ default_weight = 1
+ datum(1)%data_type = 'expression: data::ir8n.aux[3]|model+lat::orbit.x[yi7_dh0+1]'
+ datum(2:5)%ele_name = 'pr8wxd0' 'pr8wxd0' 'yo8_int0' 'yo8_int0'
+ datum(2:5)%data_type = 'orbit.x' 'orbit.px' 'floor.x' 'floor.z'
+ datum(1:3)%meas = 0 0 0
 /
 
 &tao_plot_page

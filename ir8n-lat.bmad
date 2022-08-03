@@ -1,0 +1,46 @@
+ldl8d = l7dummy+ldum1fl-(l9dummy+ldum2fl)
+thavg8d = thd5+thds+0.5*thcell
+ldx8d = -2*ldl8d*sin(0.5*thcell)*cos(thavg8d)
+ldz8d = -2*ldl8d*sin(0.5*thcell)*sin(thavg8d)
+
+hlxsnk8_1: pipe, l=lhelix
+hlxsnk8_2: pipe, l=lhelix
+hlxsnk8_3: pipe, l=lhelix
+hlxsnk8_4: pipe, l=lhelix
+! A BPM may be placed between the osnkmm
+snake8: line=(odum1fl,osnke,hlxsnk8_1,osnkm,hlxsnk8_2,osnkmm,osnkmm,hlxsnk8_3,osnkm,hlxsnk8_4,osnke,odum1fl)
+
+pr8wint0: patch
+pr8wint1: patch
+pr8wxd0: patch
+pt8wxd0: patch
+pr8dint0: patch
+pr8dint1: patch
+pr8dxd0: patch
+pt8dxd0: patch
+
+yo8_dh0[dg] = -1.31790885201134387E-003
+pr8dint0[x_pitch] =  1.03157721694360598E-003
+pr8dxd0[x_pitch] =  2.66684473087112168E-003
+pt8dxd0[x_offset] = -2.52795355861299993E-003
+
+yi7_dh0[dg] = -yo8_dh0[dg]
+pr8dint1[x_pitch] = pr8dint0[x_pitch]
+pr8wint0[x_pitch] = -pr8dint0[x_pitch]
+pr8wint1[x_pitch] = -pr8dint0[x_pitch]
+pr8wxd0[x_pitch] = -pt8dxd0[x_pitch]
+pt8wxd0[x_offset] = pt8dxd0[x_offset]
+
+lc8 = 3.92511368879497553E+001
+
+ldlip8 = 0
+
+oir8w: drift, l=0.5*lc8-ldlip8
+oir8d: drift, l=0.5*lc8+ldlip8
+ip8n: marker
+
+ir8n: line=(ins07y,
+ pr8wint1,yi7_int0,pr8wint0,yi7_d0,pt8wxd0,pr8wxd0,oir8w,
+ ip8n,
+ oir8d,pr8dxd0,pt8dxd0,yo8_d0,pr8dint0,yo8_int0,pr8dint1,
+ beg08y,yo8_du9,mid08y,snake8,end08y)

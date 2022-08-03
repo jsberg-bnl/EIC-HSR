@@ -1,0 +1,14 @@
+ov_d8: overlay={ yi7_dh0[dg] : -dg, yo8_dh0[dg] : +dg }, var={dg}, dg=yo8_dh0[dg]
+
+ov_p8: overlay={
+ pr8wint0[x_pitch] : -xpi,
+ pr8wint1[x_pitch] : -xpi,
+ pr8wxd0[x_pitch] : -xpx,
+ pt8wxd0[x_offset] : +xox,
+ pr8dint0[x_pitch] : +xpi,
+ pr8dint1[x_pitch] : +xpi,
+ pr8dxd0[x_pitch] : +xpx,
+ pt8dxd0[x_offset] : +xox},
+ var={xpi,xpx,xox}, xpi=pr8dint0[x_pitch], xpx=pr8dxd0[x_pitch], xox=pt8dxd0[x_offset]
+
+ov_o8: overlay={ oir8d[l]: 0.5*l+dl, oir8w[l]: 0.5*l-dl }, var={l,dl}, l=lc8, dl=ldlip8
