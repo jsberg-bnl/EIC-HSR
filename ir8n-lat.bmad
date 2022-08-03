@@ -1,0 +1,26 @@
+ldl8d = 2*(l7dummy+ldum1fl-(l9dummy+ldum2fl))*sin(0.5*thcell)
+thavg8d = thd5+thds+0.5*thcell
+
+hlxsnk8_1: pipe, l=lhelix
+hlxsnk8_2: pipe, l=lhelix
+hlxsnk8_3: pipe, l=lhelix
+hlxsnk8_4: pipe, l=lhelix
+! A BPM may be placed between the osnkmm
+snake8: line=(odum1fl,osnke,hlxsnk8_1,osnkm,hlxsnk8_2,osnkmm,osnkmm,hlxsnk8_3,osnkm,hlxsnk8_4,osnke,odum1fl)
+
+lc8 = 2*lcendxd0/cos(thdx) &
+ + (2*(lcendx*sin(0.5*thdx-thd0)/cos(0.5*thdx)-lcenxdx*sin(thd0))+ldl8d*cos(thavg8d+thd0))/sin(thdx-thd0) &
+ - 2*ld0flx
+lt08 = lbeld0q1 + (lcenxdx*sin(thdx)+lcendx*tan(0.5*thdx)-0.5*ldl8d*cos(thavg8d+thdx))/sin(thdx-thd0)
+
+ldlip8 = 0
+
+otrpd0w: drift, l=lt08
+otrpd0d: drift, l=lt08
+oir8w: drift, l=0.5*lc8-ldlip8
+oir8d: drift, l=0.5*lc8+ldlip8
+ip8n: marker
+
+ir8n: line=(ins07y,
+ otrpd0w,yi7_d0,oir8w,ip8n,oir8d,yo8_d0,otrpd0d,
+ beg08y,yo8_du9,mid08y,snake8,end08y)
