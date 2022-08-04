@@ -22,12 +22,12 @@ sol_rot = 0.025
 sol_half: solenoid, l=2, bs_field=0
 star_detect_f: sol_half, fringe_at=entrance_end
 star_detect_r: sol_half, fringe_at=exit_end
-pb_sol_f: patch, ref_coords=no_end, x_pitch=sol_rot,
+pb_sol_f: patch, x_pitch=sol_rot,
  x_offset=-sol_half[l]*sin(sol_rot)
-pe_sol_f: patch, ref_coords=no_end, x_pitch=-sol_rot
+pe_sol_f: patch, x_pitch=-sol_rot
 l_sol_pf: line=(pb_sol_f,star_detect_f,pe_sol_f)
-pb_sol_r: patch, ref_coords=no_end, x_pitch=sol_rot
-pe_sol_r: patch, ref_coords=no_end, x_pitch=-sol_rot,
+pb_sol_r: patch, x_pitch=sol_rot
+pe_sol_r: patch, x_pitch=-sol_rot,
  x_offset=-sol_half[l]*tan(sol_rot)
 l_sol_pr: line=(pb_sol_r,star_detect_r,pe_sol_r)
 
@@ -48,12 +48,12 @@ xb0hf = 1.45779264977192957E-01 ! Distance of B0 axis from electron line
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
 b0pf: sbend, l=1.20, field_master=t, b1_gradient = 8.12223828336297515E+00
 b0pf[db_field] = xb0hf*b0pf[b1_gradient]
-pb_b0pf: patch, ref_coords=no_end, x_offset = -3.02264219559301335E-002, x_pitch = 2.67043931616361939E-02
-pe_b0pf: patch, ref_coords=no_end, x_offset = ze*tan(ac) - xb0hf, x_pitch = -ac
+pb_b0pf: patch, x_offset = -3.02264219559301335E-002, x_pitch = 2.67043931616361939E-02
+pe_b0pf: patch, x_offset = ze*tan(ac) - xb0hf, x_pitch = -ac
 d2_pf: drift
 b0apf: sbend, l=0.60, field_master=t
-pb_b0apf: patch, ref_coords=no_end
-pe_b0apf: patch, ref_coords=no_end
+pb_b0apf: patch
+pe_b0apf: patch
 d3_pf: drift
 ! Q1 forward
 ! Represented by three quadrupoles
@@ -78,16 +78,16 @@ ovq1pf: overlay = {
  var = {k1,l}, l=lq1apf+lq1bpf+lq1cpf ! Do not modify l; this is to make it act like a quad.
 d5_pf: drift
 q2pf: quadrupole, l=3.80
-pb_q2pf: patch, ref_coords=no_end
-pe_q2pf: patch, ref_coords=no_end
+pb_q2pf: patch
+pe_q2pf: patch
 d6_pf: drift
 b1pf: sbend, l=3.00, field_master=t
-pb_b1pf: patch, ref_coords=no_end
-pe_b1pf: patch, ref_coords=no_end
+pb_b1pf: patch
+pe_b1pf: patch
 d7_pf: drift
 b1apf: sbend, l=1.50
-pb_b1apf: patch, ref_coords=no_end
-pe_b1apf: patch, ref_coords=no_end
+pb_b1apf: patch
+pe_b1apf: patch
 
 ! These are RHIC DX magnets
 b1pr: sbend
