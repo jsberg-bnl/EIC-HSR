@@ -3,7 +3,7 @@ call, file='hsr.bmad'
 e041 = 41e9
 p041 = sqrt(e041^2-m_proton^2)
 
-dsw_ir10[dg] = 2*sin(0.5*tir10x)/lwd
+dsw_ir10[dg] = -dwarm_ir10_41[dg]
 d_switch_ir12[dg] = 2*sin(0.5*tir12x)/lwd
 
 call, file='rhic-str-041-05.bmad'

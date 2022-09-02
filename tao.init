@@ -594,7 +594,8 @@
  ix_d1_data = 1
  d1_data%name = 'fit'
  datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
- datum(1:6)%ele_name = 'g10_markx' 'g10_markx' 'g10_markx' 'g10_markx' 'g10_markx' 'g10_markx'
+ datum(1:6)%ele_name = 'oh10' 'oh10' 'oh10' 'oh10' 'oh10' 'oh10'
+ datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
  datum(1:6)%weight = 1 1 100 1 100 1
  datum(1:6)%meas = 0 0 5 0 5 0
 /
