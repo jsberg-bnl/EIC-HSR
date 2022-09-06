@@ -722,19 +722,17 @@
 &tao_d2_data
  universe = '25'
  d2_data%name = 'ir10_41'
- n_d1_data = 5
+ n_d1_data = 6
 /
 
 &tao_d1_data
  ix_d1_data = 1
  d1_data%name = 'fit'
- datum(1)%data_type = 'expression: lat::eta.x[yo9_qd1]+lat::eta.x[yi10_qf1-1]'
- datum(2)%data_type = 'expression: 0.5*(lat::beta.a[yo9_qd1]/(1+lat::alpha.a[yo9_qd1]^2)+lat::beta.a[yi10_qf1-1]/(1+lat::alpha.a[yi10_qf1-1]^2))'
- datum(3)%data_type = 'expression: lat::alpha.a[yo9_qd1]+lat::alpha.a[yi10_qf1-1]'
- datum(4)%data_type = 'expression: 0.5*(lat::beta.b[yo9_qd1]/(1+lat::alpha.b[yo9_qd1]^2)+lat::beta.b[yi10_qf1-1]/(1+lat::alpha.b[yi10_qf1-1]^2))'
- datum(5)%data_type = 'expression: lat::alpha.b[yo9_qd1]+lat::alpha.b[yi10_qf1-1]'
- datum(1:5)%weight = 1 100 1 100 1
- datum(1:5)%meas = 0 5 0 5 0
+ datum(1:7)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b' 'eta.x' 'etap.x'
+ datum(1:7)%ele_name = 'ol10' 'ol10' 'ol10' 'ol10' 'ol10' 'cavity_591mhz' 'cavity_591mhz'
+ datum(1:7)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:7)%weight = 1 100 1 100 1 1 1
+ datum(1:7)%meas = 0 5 0 5 0 0 0
 /
 
 &tao_d1_data
@@ -803,18 +801,34 @@
 &tao_d1_data
  ix_d1_data = 5
  d1_data%name = 'sym'
- datum(1)%data_type  = 'expression: 25@data::ir10_41.low_lim[1]   - 25@data::ir10_41.low_lim[19]'
- datum(2)%data_type  = 'expression: 25@data::ir10_41.high_lim[2]  - 25@data::ir10_41.low_lim[19]'
- datum(3)%data_type  = 'expression: 25@data::ir10_41.low_lim[7]   - 25@data::ir10_41.low_lim[19]'
- datum(4)%data_type  = 'expression: 25@data::ir10_41.high_lim[8]  - 25@data::ir10_41.low_lim[19]'
- datum(5)%data_type  = 'expression: 25@data::ir10_41.high_lim[9]  - 25@data::ir10_41.low_lim[19]'
- datum(6)%data_type  = 'expression: 25@data::ir10_41.low_lim[11]  - 25@data::ir10_41.low_lim[19]'
- datum(7)%data_type  = 'expression: 25@data::ir10_41.high_lim[12] - 25@data::ir10_41.low_lim[19]'
- datum(8)%data_type  = 'expression: 25@data::ir10_41.high_lim[14] - 25@data::ir10_41.low_lim[19]'
- datum(9)%data_type  = 'expression: 25@data::ir10_41.low_lim[17]  - 25@data::ir10_41.low_lim[19]'
- datum(10)%data_type = 'expression: 25@data::ir10_41.high_lim[18] - 25@data::ir10_41.low_lim[19]'
- datum(1:10)%meas = 0 0 0 0 0 0 0 0 0 0
- datum(1:10)%weight = 1 1 1 1 1 1 1 1 1 1
+ datum(1)%data_type  = 'expression: 25@data::ir10_41.low_lim[1]   - 25@data::ir10_41.high_lim[19]'
+ datum(2)%data_type  = 'expression: 25@data::ir10_41.high_lim[3]  - 25@data::ir10_41.high_lim[19]'
+ datum(3)%data_type  = 'expression: 25@data::ir10_41.low_lim[7]   - 25@data::ir10_41.high_lim[19]'
+ datum(4)%data_type  = 'expression: 25@data::ir10_41.low_lim[8]   - 25@data::ir10_41.high_lim[19]'
+ datum(5)%data_type  = 'expression: 25@data::ir10_41.high_lim[9]  - 25@data::ir10_41.high_lim[19]'
+ datum(6)%data_type  = 'expression: 25@data::ir10_41.low_lim[11]  - 25@data::ir10_41.high_lim[19]'
+ datum(7)%data_type  = 'expression: 25@data::ir10_41.high_lim[13] - 25@data::ir10_41.high_lim[19]'
+ datum(8)%data_type  = 'expression: 25@data::ir10_41.low_lim[17]  - 25@data::ir10_41.high_lim[19]'
+ datum(9)%data_type  = 'expression: 25@data::ir10_41.low_lim[18]  - 25@data::ir10_41.high_lim[19]'
+ datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
+ datum(1:9)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
+/
+
+&tao_d1_data
+ ix_d1_data = 6
+ d1_data%name = 'opt'
+ datum(1:6)%data_type = 'gamma.a' 'gamma.b' 'gamma.a' 'gamma.b' 'gamma.a' 'gamma.b'
+ datum(1:6)%ele_name = 'yo9_dh5' 'yo9_dh5' 'yo9_int4_2' 'yo9_int4_2' 'yo9_dmp3_2' 'yo9_dmp3_2'
+ datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(7:12)%data_type = 'gamma.a' 'gamma.b' 'gamma.a' 'gamma.b' 'gamma.a' 'gamma.b'
+ datum(7:12)%ele_name = 'o3y10c1' 'o3y10c1' 'yi10_int4_2' 'yi10_int4_2' 'yi10_dh5' 'yi10_dh5'
+ datum(7:12)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(13:14)%data_type = 'gamma.a' 'gamma.b'
+ datum(13:14)%ele_name = 'yi10_qf9' 'yi10_qf9'
+ datum(13:14)%ele_start_name = 'yo9_qd9' 'yo9_qd9'
+ datum(13:14)%merit_type = 'integral' 'integral'
+ datum(1:14)%meas = 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ datum(1:14)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-10 1e-10
 /
 
 &tao_d2_data
