@@ -801,15 +801,15 @@
 &tao_d1_data
  ix_d1_data = 5
  d1_data%name = 'sym'
- datum(1)%data_type  = 'expression: 25@data::ir10_41.low_lim[1]   - 25@data::ir10_41.high_lim[19]'
- datum(2)%data_type  = 'expression: 25@data::ir10_41.high_lim[3]  - 25@data::ir10_41.high_lim[19]'
- datum(3)%data_type  = 'expression: 25@data::ir10_41.low_lim[7]   - 25@data::ir10_41.high_lim[19]'
- datum(4)%data_type  = 'expression: 25@data::ir10_41.low_lim[8]   - 25@data::ir10_41.high_lim[19]'
- datum(5)%data_type  = 'expression: 25@data::ir10_41.high_lim[9]  - 25@data::ir10_41.high_lim[19]'
- datum(6)%data_type  = 'expression: 25@data::ir10_41.low_lim[11]  - 25@data::ir10_41.high_lim[19]'
- datum(7)%data_type  = 'expression: 25@data::ir10_41.high_lim[13] - 25@data::ir10_41.high_lim[19]'
- datum(8)%data_type  = 'expression: 25@data::ir10_41.low_lim[17]  - 25@data::ir10_41.high_lim[19]'
- datum(9)%data_type  = 'expression: 25@data::ir10_41.low_lim[18]  - 25@data::ir10_41.high_lim[19]'
+ datum(1)%data_type  = 'expression: 25@data::ir10_41.low_lim[4]   - 25@data::ir10_41.high_lim[19]'
+ datum(2)%data_type  = 'expression: 25@data::ir10_41.low_lim[7]   - 25@data::ir10_41.high_lim[19]'
+ datum(3)%data_type  = 'expression: 25@data::ir10_41.low_lim[8]   - 25@data::ir10_41.high_lim[19]'
+ datum(4)%data_type  = 'expression: 25@data::ir10_41.low_lim[17]  - 25@data::ir10_41.high_lim[19]'
+ datum(5)%data_type  = 'expression: 25@data::ir10_41.low_lim[18]  - 25@data::ir10_41.high_lim[19]'
+ datum(6)%data_type  = 'expression: 25@data::ir10_41.high_lim[1]  - 25@data::ir10_41.high_lim[19]'
+ datum(7)%data_type  = 'expression: 25@data::ir10_41.high_lim[2]  - 25@data::ir10_41.high_lim[19]'
+ datum(8)%data_type  = 'expression: 25@data::ir10_41.high_lim[11] - 25@data::ir10_41.high_lim[19]'
+ datum(9)%data_type  = 'expression: 25@data::ir10_41.high_lim[14] - 25@data::ir10_41.high_lim[19]'
  datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
  datum(1:9)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
 /
@@ -827,8 +827,9 @@
  datum(13:14)%ele_name = 'yi10_qf9' 'yi10_qf9'
  datum(13:14)%ele_start_name = 'yo9_qd9' 'yo9_qd9'
  datum(13:14)%merit_type = 'integral' 'integral'
- datum(1:14)%meas = 0 0 0 0 0 0 0 0 0 0 0 0 0 0
- datum(1:14)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-10 1e-10
+ datum(15)%data_type = 'unstable.orbit'
+ datum(1:15)%meas = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ datum(1:15)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-10 1e-10 100
 /
 
 &tao_d2_data
