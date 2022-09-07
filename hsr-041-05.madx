@@ -2,7 +2,7 @@ call, file='hsr.madx';
 
 beam, energy=41, particle=antiproton;
 
-dsw_ir10, k0 = 2*sin(0.5*tir10x)/lwd;
+dsw_ir10, k0 = -dwarm_ir10_41->k0;
 d_switch_ir12, k0 = 2*sin(0.5*tir12x)/lwd;
 
 call, file='rhic-str-041-05.madx';
