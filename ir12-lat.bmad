@@ -1,47 +1,29 @@
-ov_bo11_d0: overlay={
- bo11_dh0[dg] : bo11_dh0[g]*sin(angle-bo11_dh0[angle])/sin(bo11_dh0[angle]),
- pt_bo11_dh0[x_offset] : bo11_dh0[l]*sinc(0.5*bo11_dh0[angle])*sin(0.5*(bo11_dh0[angle]-angle))/cos(bo11_dh0[angle]-0.5*angle) - ld0flx*tan(angle-bo11_dh0[angle]),
- pr_bo11_dh0[x_pitch] : bo11_dh0[angle] - angle}, var={angle}
-ov_bi12_d0: overlay={
- bi12_dh0[dg] : bi12_dh0[g]*sin(angle-bi12_dh0[angle])/sin(bi12_dh0[angle]),
- pt_bi12_dh0[x_offset] : -bi12_dh0[l]*sinc(0.5*bi12_dh0[angle])*sin(0.5*(bi12_dh0[angle]-angle))/cos(bi12_dh0[angle]-0.5*angle) + ld0flx*tan(angle-bi12_dh0[angle]),
- pr_bi12_dh0[x_pitch] : bi12_dh0[angle] - angle}, var={angle}
+thh12 = +9.37652843743953107e-03
+ltrpwd12x = lwc-lpld0q1
 
-pt_bo11_dh0: patch
-pr_bo11_dh0: patch
-pt_bi12_dh0: patch
-pr_bi12_dh0: patch
+ll12 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd12x*cos(thd0) - lwd*cos(0.5*thd0)/cos(0.25*thh12))
+lh12 = 2*(lcenxdx*cos(thh12) + lcendx*cos(0.5*thdx-thh12)/cos(0.5*thdx) + lcendxd0*cos(thdx-thh12)/cos(thdx) &
+ + lcend0*cos(0.5*(thdx+thd0)-thh12)/cos(0.5*(thdx+thd0)) - ltrpwd12x*cos(thh12-thd0) - lwd*cos(0.5*(thh12-thd0))/cos(0.25*thh12))
 
-tir12 = 5.33359674055741521E-003
-lir12 = 3.92440539461223494E+001
-tir12s = tir12+thd0
-tir12x = tir12+2*thd0
-lhsw12 = 0.5*lwd/cos(0.5*tir12x)
-l12gsw = (
-  lcend0*sin(0.5*(thdx-thd0))/cos(0.5*(thdx+thd0)) &
-  + lcendxd0*sin(thdx-thd0)/cos(thdx) &
-  + lcendx*sin(0.5*thdx - thd0)/cos(0.5*thdx) &
-  - lcenxdx*sin(thd0) ) / sin(tir12x) &
- - lhsw12
-lir12_41 = (
- lcenxdx*sin(tir12s) &
- + lcendx*sin(0.5*thdx+tir12s)/cos(0.5*thdx) &
- + lcendxd0*sin(thdx+tir12s)/cos(thdx) &
- + lcend0*sin(0.5*(thdx+thd0)+tir12s)/cos(0.5*(thdx+thd0))) / sin(tir12x) &
- + ld0fla + lbeld0q1  - lhsw12
+otrpwd12: drift, l=lwc-(lflq1x+lbq1)
+oh12: drift, l=lh12
+ol12: drift, l=ll12
 
-o11d0g: drift, l=0.5*lir12 + ldxflx - lcenxdx
-o12gsw: drift, l=l12gsw-lpjetfl-ox12c0[l]-ox12c1[l]-2*leldhvfl-2*leldfl-3*lsolec
-ogswd0: drift, l=0.5*(0.5*lir12 - l12gsw - 2*lhsw12 - ox12c3[l] - ox12c4[l] - ox12c5[l] - lbxflx - lbxfla - ox12c6[l] - lbsk12lg)
-oir12_41: drift, l=lir12_41
+dsw_ir12: sbend, l=lwd
+dwarm_ir12: sbend, l=lwd, dg=2*sin(0.5*(thh12-thd0))*cos(0.25*thh12)/lwd
+dwarm_ir12_41: sbend, l=lwd, dg=2*sin(0.5*thd0)*cos(0.25*thh12)/lwd
 
-d_switch_ir12: sbend, l=lwd
-prd_switch_ir12: patch, x_pitch=-0.5*tir12x
-prw_switch_ir12: patch, x_pitch=+0.5*tir12x
-pt_switch_ir12: patch, x_offset=-lwd*tan(0.5*tir12x)
-
-ov_bo11_d0[angle] = +tir12
-ov_bi12_d0[angle] = -tir12
+prd_dsw_12: patch, x_pitch=0.25*thh12-0.5*thd0
+ptw_dsw_12h: patch, x_offset=-lwd*tan(0.25*thh12)
+ptw_dsw_12l: patch, x_offset=-ptw_dsw_12h[x_offset]
+prw_dsw_12h: patch, x_pitch=0.75*thh12-0.5*thd0
+prw_dsw_12l: patch, x_pitch=-0.25*thh12-0.5*thd0
+prd_dw_12h: patch, x_pitch=-prw_dsw_12h[x_pitch]
+prd_dw_12l: prw_dsw_12l
+ptd_dw_12h: ptw_dsw_12h
+ptd_dw_12l: patch, x_offset=-ptw_dsw_12l[x_offset]
+prw_dw_12h: patch, x_pitch=-prd_dsw_12[x_pitch]
+prw_dw_12l: prd_dsw_12
 
 lcolkfbh = 0.5
 lcolps = 20
@@ -141,8 +123,7 @@ g12_duxd: line=(g12_bsx_1,
  g12_svx_2,
  obsk12lg)
 
-ir12d: line=(d_switch_ir12,prd_switch_ir12,ogswd0,g12_duxd,ogswd0,pr_bi12_dh0,pt_bi12_dh0)
+ir12d: line=(dsw_ir12,prd_dsw_12,otrpwd12)
 
-ir12: line=(pt_bo11_dh0,pr_bo11_dh0,o11d0g,g11_dux,g12_duxw,o12gsw,prw_switch_ir12,pt_switch_ir12,ir12d)
-
-ir12_41: line=(oir12_41,prd_switch_ir12,ir12d)
+ir12: line=(otrpwd12,prw_dw_12h,dwarm_ir12,ptd_dw_12h,prd_dw_12h,oh12,prw_dsw_12h,ptw_dsw_12h,ir12d)
+ir12_41: line=(otrpwd12,prw_dw_12l,dwarm_ir12_41,ptd_dw_12l,prd_dw_12l,ol12,prw_dsw_12l,ptw_dsw_12l,ir12d)

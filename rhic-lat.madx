@@ -260,7 +260,6 @@ lcktxfl=0.964311;
 lcol=0.533400;
 lcor=0.50000;
 ld0fla=0.1589964;
-ld0flx=0.884076197994;
 ld5ifl=1.78544882818;
 ld5ofl=0.908956155203;
 ldfl=0.52159658996;
@@ -405,7 +404,6 @@ lbel78d=0.5*(lplq7q8-l7dummy-lqbms7-lqbms)-lbfl-ldum1fl;
 lbelq1q2=lplq1q2-lcq2-lcor-lcfl2-lflq1a;
 lbelq2q3=lplq2q3-lcq3x-lcor-lcfl3-lflq2a;
 lbl8a=lplq7q8-lqbw7-lbl7a-lbl7b-lbl8b-lelm7-llamb-lelm8-lqbwm;
-ld0=-rhod0 * (thd0 - thdx);
 ldc=lqd - lcq - lcor;
 ldc10=lpldsq10 - lcq - lcor;
 ldc7=lpldsq7 - lcq7 - lcor;
@@ -556,7 +554,6 @@ obelabi:drift,l=lbelabi;
 obelabo:drift,l=lbelabo;
 obelaci:drift,l=lbelaci;
 obelaco:drift,l=lbelaco;
-obeld0q1:drift,l=lbeld0q1;
 obelq1q2:drift,l=lbelq1q2;
 obelq2q3:drift,l=lbelq2q3;
 obfl:drift,l=lbfl;
@@ -603,8 +600,6 @@ ocq3a:drift,l=lcq3a;
 ocq3x:drift,l=lcq3x;
 ocq4:drift,l=lcq4;
 ocq7:drift,l=lcq7;
-od0fla:drift,l=ld0fla;
-od0flx:drift,l=ld0flx;
 od5ifl:drift,l=ld5ifl;
 od5ofl:drift,l=ld5ofl;
 odfl:drift,l=ldfl;
@@ -677,8 +672,6 @@ bka3:sbend,l=lka;
 bka4:sbend,l=lka;
 bka5:sbend,l=lka;
 d:sbend,l=ldip,angle=thcell;
-d0mp12:sbend,l=ld0,angle=thd0 - thdx;
-d0pm11:sbend,l=ld0,angle=thdx - thd0;
 d5i:sbend,l=ld5i,angle=thd5 - thd0;
 d5o:sbend,l=ld5o,angle=thd5 + thd0;
 ds:sbend,l=ldps,angle=thds;
@@ -1370,8 +1363,6 @@ yo9_int17_1:obelaco;
 yo9_int18_1:obelaco;
 yo9_int19_1:obelaco;
 yo9_int20_1:obelaco;
-bo11_int0:obeld0q1;
-bi12_int0:obeld0q1;
 bo10_int1:obelq1q2;
 bo11_int1:obelq1q2;
 bi12_int1:obelq1q2;
@@ -1569,8 +1560,6 @@ yi11_dh17:d;
 yi11_dh18:d;
 yi11_dh19:d;
 yi11_dh20:d;
-bi12_dh0:d0mp12;
-bo11_dh0:d0pm11;
 bi12_dh5:d5i;
 yi3_dh5:d5i;
 yi10_dh5:d5i;
@@ -3635,9 +3624,6 @@ bo11_cqt6:line=(ocfl,
  osb,
  bo11_bh6,
  obfl);
-bo11_d0:line=(od0fla,
- bo11_dh0,
- od0flx);
 bo11_d5:line=(od5ofl,
  bo11_dh5,
  od5ofl);
@@ -3863,9 +3849,6 @@ bi12_cqt6:line=(obfl,
  ocq,
  lmp12b06,
  ocfl);
-bi12_d0:line=(od0flx,
- bi12_dh0,
- od0fla);
 bi12_d5:line=(od5ifl,
  bi12_dh5,
  od5ifl);
@@ -6666,9 +6649,7 @@ trp11b:line=(bo11_trp3,
  bo11_int2,
  bo11_trp2,
  bo11_int1,
- bo11_trp1,
- bo11_int0,
- bo11_d0);
+ bo11_trp1);
 ins11y:line=(yi11_int9_3,
  yi11_d9,
  yi11_int9_2,
@@ -6703,9 +6684,7 @@ ins11y:line=(yi11_int9_3,
  yi11_trp2,
  yi11_int1,
  yi11_trp1);
-trp12b:line=(bi12_d0,
- bi12_int0,
- bi12_trp1,
+trp12b:line=(bi12_trp1,
  bi12_int1,
  bi12_trp2,
  bi12_int2,

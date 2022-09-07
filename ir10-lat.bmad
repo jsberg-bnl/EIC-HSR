@@ -1,7 +1,6 @@
 lq1dw_10 = 0.927704
 l591 = 5.211
 ltrpcav = 0.370
-lwc = 2
 ltrpwd10 = ltrpcav+l591+lwc
 ltrpwd10x = ltrpwd10+lflq1x+lbq1-lpld0q1
 

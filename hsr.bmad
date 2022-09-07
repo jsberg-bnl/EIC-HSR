@@ -1,6 +1,7 @@
 call, file='rhic-lat.bmad'
 
 lwd = 5
+lwc = 2
 
 call, file='ir2-lat.bmad'
 call, file='ir4-lat.bmad'
