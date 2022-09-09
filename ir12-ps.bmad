@@ -1,0 +1,10 @@
+ir12_qf1_ps: overlay={ yi11_qf1_ps[i] : +i, bi12_qf1_ps[i] : -i }, var = {i}
+ir12_qd2_ps: overlay={ yi11_qd2_ps[i] : +i, bi12_qd2_ps[i] : -i }, var = {i}
+ir12_qf3_ps: overlay={ yi11_qf3_ps[i] : +i, bi12_qf3_ps[i] : -i }, var = {i}
+ir12_tq4_ps: overlay={ yi11_tq4_ps[i] : +i, bi12_tq4_ps[i] : -i }, var = {i}
+ir12_tq5_ps: overlay={ yi11_tq5_ps[i] : +i, bi12_tq5_ps[i] : -i }, var = {i}
+ir12_tq6_ps: overlay={ yi11_tq6_ps[i] : +i, bi12_tq6_ps[i] : -i }, var = {i}
+ir12_qd6_ps: overlay={ y12_q6_ps[i]   : +i, b12_q6_ps[i]   : -i }, var = {i}
+ir12_qf7_ps: overlay={ y12_q7_ps[i]   : +i, b12_q7_ps[i]   : -i }, var = {i}
+ir12_qf9_ps: overlay={ yi11_qf9_ps[i] : +i, bi12_qf9_ps[i] : -i }, var = {i}
+ir12_q89_ps: overlay={ y12_q89_ps[i]  : +i, b12_q89_ps[i]  : -i }, var = {i}

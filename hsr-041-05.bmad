@@ -1,5 +1,5 @@
 call, file='hsr.bmad'
-
+call, file='ir12-ps.bmad'
 e041 = 41e9
 p041 = sqrt(e041^2-m_proton^2)
 
