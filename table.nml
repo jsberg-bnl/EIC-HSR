@@ -14,4 +14,7 @@
  column(14) = 'alpha_a'        'sp,es25.17' 25 'alpha.x'
  column(15) = 'beta_b'         'es24.17'    24 'beta.y (m)'
  column(16) = 'alpha_b'        'sp,es25.17' 25 'alpha.y'
+ column(17) = 'ele::#[b_field]+ele::#[db_field]' 'sp,es25.17' 25 'b_field (T)'
+ column(18) = 'b1_gradient'    'sp,es25.17' 25 'b1_gradient (T/m)'
+ column(19) = 'b2_gradient'    'sp,es25.17' 25 'b2_gradient (T/m^2)'
 /
