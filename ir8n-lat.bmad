@@ -1,5 +1,15 @@
-ldl8d = 2*(l7dummy+ldum1fl-(l9dummy+ldum2fl))*sin(0.5*thcell)
+ldl8d = (l7dummy+ldum1fl)-(l9dummy+ldum2fl)
 thavg8d = thd5+thds+0.5*thcell
+
+! thc8 = +1.65848184157068416e-02
+thc8 = +1.73389737354743695e-02
+ldd = 0.5
+lwc = 2
+
+lwd8 = 5
+
+dwarm_ir8w: sbend, l=lwd8/sinc(0.25*(thc8-thd0)), g=-2*sin(0.25*(thc8-thd0))/lwd8, e1=-0.25*(thc8-thd0), e2=-0.25*(thc8-thd0)
+dwarm_ir8d: sbend, l=lwd8/sinc(0.25*(thc8-thd0)), g=+2*sin(0.25*(thc8-thd0))/lwd8, e1=+0.25*(thc8-thd0), e2=+0.25*(thc8-thd0)
 
 hlxsnk8_1: pipe, l=lhelix
 hlxsnk8_2: pipe, l=lhelix
@@ -8,19 +18,15 @@ hlxsnk8_4: pipe, l=lhelix
 ! A BPM may be placed between the osnkmm
 snake8: line=(odum1fl,osnke,hlxsnk8_1,osnkm,hlxsnk8_2,osnkmm,osnkmm,hlxsnk8_3,osnkm,hlxsnk8_4,osnke,odum1fl)
 
-lc8 = 2*lcendxd0/cos(thdx) &
- + (2*(lcendx*sin(0.5*thdx-thd0)/cos(0.5*thdx)-lcenxdx*sin(thd0))+ldl8d*cos(thavg8d+thd0))/sin(thdx-thd0) &
- - 2*ld0flx
-lt08 = lbeld0q1 + (lcenxdx*sin(thdx)+lcendx*tan(0.5*thdx)-0.5*ldl8d*cos(thavg8d+thdx))/sin(thdx-thd0)
+lc8 = 2*lcenxdx*cos(thc8) + 2*lcendx*cos(thc8-0.5*thdx)/cos(0.5*thdx) + 2*lcendxd0*cos(thc8-thdx)/cos(thdx) &
+ + 2*lcend0*cos(thc8-0.5*(thdx+thd0))/cos(0.5*(thdx+thd0)) + 2*ldl8d*sin(0.5*thcell)*sin(thc8+thavg8d) &
+ - 2*(lwc-lpld0q1)*cos(thc8-thd0) - 4*lwd8*cos(0.25*(thc8-thd0))*cos(0.5*(thc8-thd0)) - 2*ldd*cos(0.5*(thc8-thd0))
 
-ldlip8 = 0
-
-otrpd0w: drift, l=lt08
-otrpd0d: drift, l=lt08
-oir8w: drift, l=0.5*lc8-ldlip8
-oir8d: drift, l=0.5*lc8+ldlip8
-ip8n: marker
+otrpd0w: drift, l=lwc-lbq1-lflq1x
+otrpd0d: drift, l=lwc-lbq1-lflq1x
+oir8: drift, l=lc8
+odd: drift, l=ldd
 
 ir8n: line=(ins07y,
- otrpd0w,yi7_d0,oir8w,ip8n,oir8d,yo8_d0,otrpd0d,
+ otrpd0w,dwarm_ir8w,odd,dwarm_ir8w,oir8,dwarm_ir8d,odd,dwarm_ir8d,otrpd0d,
  beg08y,yo8_du9,mid08y,snake8,end08y)
