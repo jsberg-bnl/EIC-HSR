@@ -192,6 +192,18 @@
 /
 
 &tao_var
+ v1_var%name = 'ir8n'
+ default_universe = 'clone 31'
+ default_attribute = 'i'
+ default_step = 1
+ var(1:3)%ele_name = 'y8_q6_ps' 'y8_q7_ps' 'y8_q89_ps'
+ var(4:10)%ele_name = 'yi7_qf1_ps' 'yi7_qd2_ps' 'yi7_qf3_ps' 'yi7_tq4_ps' 'yi7_tq5_ps' 'yi7_tq6_ps' 'yi7_qf9_ps'
+ var(11:17)%ele_name = 'yo8_qd1_ps' 'yo8_qf2_ps' 'yo8_qd3_ps' 'yo8_tq4_ps' 'yo8_tq5_ps' 'yo8_tq6_ps' 'yo8_qf8_ps'
+ var(1:17)%low_lim =    1   1 -278   1 -140 -280 -140 -140 -140 -151   1 -140 -280 -140 -140 -140 -151
+ var(1:17)%high_lim = 430 550  278 190  140   -1  140  140  140   -1 190  140   -1  140  140  140   -1
+/
+
+&tao_var
  v1_var%name = 'sx'
  default_universe = 'clone 1,24'
  default_attribute = 'i'
@@ -929,6 +941,79 @@
  default_weight = 1
  datum(1:2)%data_type = 'chrom.a' 'chrom.b'
  datum(1:2)%meas = 2 2
+/
+
+&tao_d2_data
+ universe = '31'
+ d2_data%name = 'ir8n'
+ n_d1_data = 4
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(1:6)%ele_name = 'oir8' 'oir8' 'oir8' 'oir8' 'oir8' 'oir8'
+ datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:6)%meas = 0 0 5 0 5 0
+ datum(1:6)%weight = 1 1 0.01 1 0.01 1
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'arc'
+ datum(1)%data_type = 'expression: 31@lat::eta.x[yo8_int9_3] - 13@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 31@lat::etap.x[yo8_int9_3] - 13@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 31@lat::beta.a[yo8_int9_3] - 13@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 31@lat::alpha.a[yo8_int9_3] - 13@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 31@lat::beta.b[yo8_int9_3] - 13@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 31@lat::alpha.b[yo8_int9_3] - 13@lat::alpha.b[0]'
+ datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
+ datum(1:6)%meas = 0 0 0 0 0 0
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'low_lim'
+ datum(1)%data_type   = 'expression: var::ir8n_u31[1]|model   - var::ir8n_u31[1]|low_lim'
+ datum(2)%data_type   = 'expression: var::ir8n_u31[2]|model   - var::ir8n_u31[2]|low_lim'
+ datum(3)%data_type   = 'expression: var::ir8n_u31[3]|model   - var::ir8n_u31[3]|low_lim'
+ datum(4)%data_type   = 'expression: var::ir8n_u31[4]|model   - var::ir8n_u31[4]|low_lim'
+ datum(5)%data_type   = 'expression: var::ir8n_u31[5]|model   - var::ir8n_u31[5]|low_lim'
+ datum(6)%data_type   = 'expression: var::ir8n_u31[6]|model   - var::ir8n_u31[6]|low_lim'
+ datum(7)%data_type   = 'expression: var::ir8n_u31[7]|model   - var::ir8n_u31[7]|low_lim'
+ datum(8)%data_type   = 'expression: var::ir8n_u31[8]|model   - var::ir8n_u31[8]|low_lim'
+ datum(9)%data_type   = 'expression: var::ir8n_u31[9]|model   - var::ir8n_u31[9]|low_lim'
+ datum(10)%data_type  = 'expression: var::ir8n_u31[10]|model  - var::ir8n_u31[10]|low_lim'
+ datum(11)%data_type  = 'expression: var::ir8n_u31[11]|model  - var::ir8n_u31[11]|low_lim'
+ datum(12)%data_type  = 'expression: var::ir8n_u31[12]|model  - var::ir8n_u31[12]|low_lim'
+ datum(13)%data_type  = 'expression: var::ir8n_u31[13]|model  - var::ir8n_u31[13]|low_lim'
+ datum(14)%data_type  = 'expression: var::ir8n_u31[14]|model  - var::ir8n_u31[14]|low_lim'
+ datum(15)%data_type  = 'expression: var::ir8n_u31[15]|model  - var::ir8n_u31[15]|low_lim'
+ datum(16)%data_type  = 'expression: var::ir8n_u31[16]|model  - var::ir8n_u31[16]|low_lim'
+ datum(17)%data_type  = 'expression: var::ir8n_u31[17]|model  - var::ir8n_u31[17]|low_lim'
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'high_lim'
+ datum(1)%data_type   = 'expression: var::ir8n_u31[1]|high_lim   - var::ir8n_u31[1]|model'
+ datum(2)%data_type   = 'expression: var::ir8n_u31[2]|high_lim   - var::ir8n_u31[2]|model'
+ datum(3)%data_type   = 'expression: var::ir8n_u31[3]|high_lim   - var::ir8n_u31[3]|model'
+ datum(4)%data_type   = 'expression: var::ir8n_u31[4]|high_lim   - var::ir8n_u31[4]|model'
+ datum(5)%data_type   = 'expression: var::ir8n_u31[5]|high_lim   - var::ir8n_u31[5]|model'
+ datum(6)%data_type   = 'expression: var::ir8n_u31[6]|high_lim   - var::ir8n_u31[6]|model'
+ datum(7)%data_type   = 'expression: var::ir8n_u31[7]|high_lim   - var::ir8n_u31[7]|model'
+ datum(8)%data_type   = 'expression: var::ir8n_u31[8]|high_lim   - var::ir8n_u31[8]|model'
+ datum(9)%data_type   = 'expression: var::ir8n_u31[9]|high_lim   - var::ir8n_u31[9]|model'
+ datum(10)%data_type  = 'expression: var::ir8n_u31[10]|high_lim  - var::ir8n_u31[10]|model'
+ datum(11)%data_type  = 'expression: var::ir8n_u31[11]|high_lim  - var::ir8n_u31[11]|model'
+ datum(12)%data_type  = 'expression: var::ir8n_u31[12]|high_lim  - var::ir8n_u31[12]|model'
+ datum(13)%data_type  = 'expression: var::ir8n_u31[13]|high_lim  - var::ir8n_u31[13]|model'
+ datum(14)%data_type  = 'expression: var::ir8n_u31[14]|high_lim  - var::ir8n_u31[14]|model'
+ datum(15)%data_type  = 'expression: var::ir8n_u31[15]|high_lim  - var::ir8n_u31[15]|model'
+ datum(16)%data_type  = 'expression: var::ir8n_u31[16]|high_lim  - var::ir8n_u31[16]|model'
+ datum(17)%data_type  = 'expression: var::ir8n_u31[17]|high_lim  - var::ir8n_u31[17]|model'
 /
 
 &tao_plot_page
