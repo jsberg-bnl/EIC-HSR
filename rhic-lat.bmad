@@ -187,6 +187,54 @@ l3y4l6=0.207518
 l3y4l7=4.299077
 l3y4l8=0.207518
 l3y4l9=0.304800
+l3y7l0=0.042500
+l3y7l1=0.215900
+l3y7l10=0.244348
+l3y7l11=0.488950
+l3y7l12=0.488950
+l3y7l13=0.244348
+l3y7l14=1.783080
+l3y7l15=0.333248
+l3y7l16=0.468376
+l3y7l17=5.196256
+l3y7l18=0.244348
+l3y7l19=0.488950
+l3y7l2=0.180848
+l3y7l20=0.488950
+l3y7l21=0.244348
+l3y7l22=1.243838
+l3y7l23=0.062199
+l3y7l24=0.271049
+l3y7l25=0.194818
+l3y7l3=0.333248
+l3y7l4=0.244348
+l3y7l5=0.488950
+l3y7l6=0.488950
+l3y7l7=0.488950
+l3y7l8=0.244348
+l3y7l9=4.172712
+l3y8l0=0.048750
+l3y8l1=0.194818
+l3y8l10=5.196256
+l3y8l11=0.180975
+l3y8l12=0.187325
+l3y8l13=0.228600
+l3y8l14=0.228600
+l3y8l15=0.187325
+l3y8l16=0.155575
+l3y8l17=3.259836
+l3y8l18=0.292608
+l3y8l19=0.333248
+l3y8l2=0.062049
+l3y8l20=0.180848
+l3y8l21=0.215900
+l3y8l3=0.271199
+l3y8l4=0.292608
+l3y8l5=5.196256
+l3y8l6=3.126791
+l3y8l7=0.292608
+l3y8l8=0.333248
+l3y8l9=0.292608
 l3y9l0=0.042500
 l3y9l1=0.019812
 l3y9l10=0.333248
@@ -216,6 +264,7 @@ labkck=7.237247
 lavehc=14.8110482756
 lbabfla=0.190500
 lbabflx=0.190500
+lbel4rot=0.295148
 lbel6c=0.295148
 lbel9b=0.295148
 lbfl=0.1973834
@@ -241,6 +290,10 @@ lbsk3iy=0.042508
 lbsk3ly=0.048769
 lbsk4iy=0.042500
 lbsk4ly=0.048766
+lbsk7iy=0.042501
+lbsk7ly=0.048141
+lbsk8iy=0.042500
+lbsk8ly=0.048751
 lbsk9iy=0.042501
 lbsk9lg=0.048750
 lbsk9ly=0.048841
@@ -260,6 +313,7 @@ lcktxfl=0.964311
 lcol=0.533400
 lcor=0.50000
 ld0fla=0.1589964
+ld0flx=0.884076197994
 ld5ifl=1.78544882818
 ld5ofl=0.908956155203
 ldfl=0.52159658996
@@ -272,6 +326,7 @@ ldsfl=0.517281632902
 ldswl=0.998116795902
 ldum1fl=0.377825
 ldum2fl=0.365633
+ldxfla=1.22731863021
 ldxflx=1.185626
 leldfl=0.119634
 leldhvfl=0.227584
@@ -317,6 +372,7 @@ lrfaln=2.263343
 lrfash=0.673100
 lrfst1=0.368046
 lrfstend=0.371475
+lrotcwt=0.861927
 lsep=0.900000
 lska=0.139700
 lsnkm=0.212000
@@ -404,9 +460,11 @@ lbel78d=0.5*(lplq7q8-l7dummy-lqbms7-lqbms)-lbfl-ldum1fl
 lbelq1q2=lplq1q2-lcq2-lcor-lcfl2-lflq1a
 lbelq2q3=lplq2q3-lcq3x-lcor-lcfl3-lflq2a
 lbl8a=lplq7q8-lqbw7-lbl7a-lbl7b-lbl8b-lelm7-llamb-lelm8-lqbwm
+ld0=-rhod0 * (thd0 - thdx)
 ldc=lqd - lcq - lcor
 ldc10=lpldsq10 - lcq - lcor
 ldc7=lpldsq7 - lcq7 - lcor
+ldx=rhodx * (thdx - alpha)
 lpld0d5=lcend0d5/cos(thd0)
 lplq5d5=lplq5q6/2.0 - lcq - lcor
 lplq6ds=lplq6q7 - lpldsq7 - ldps - lcq - lcor
@@ -461,6 +519,7 @@ lplq5d5o=lplq5d5 - abs(rho*tan((thd5+thd0)/2.0)) + ldspd5x
 l3b10l24=l3space-lbsk10ib-lbsk10lb-lbabfla-lbabflx-ldmpshrt-ldmplong-labkck-lcol-20.226054
 l3b11l22=l3space-lbsk11ib-lbsk11lb-2.0*lmskhfl-33.2138410
 l3b12sum=l3space-lbsk12ib-lbsk12lb-lpolfll-lpolflm-lpolfls-lipmfls-lipmfll
+l3rotat=l3space-ldum1fl-lrotcwt-l7dummy-lbel4rot+lbfl4-lbfl+lsb4-lsb4c
 l3y10l18=l3space-lbsk10iy-lbsk10ly-33.988028
 l3y11l21=l3space-lbsk11iy-lbsk11ly-6.0*lcktlfl-30.416209
 l3y3l41=l3space-lbsk3iy-lbsk3ly-l3y3sum-27.945421
@@ -469,6 +528,8 @@ l3y9l21=l3space-lbsk9iy-lbsk9ly-lbabfla-lbabflx-ldmpshrt-ldmplong-labkck-20.7533
 lbel5ci=lplq5d5i - lcfl - ld5ifl
 lbel5co=lplq5d5o - lcfl - ld5ofl
 l3b12l28=l3b12sum-2.0*(4.0*lcktvfl+leldfl)-26.596363
+l3y7l26=l3rotat-lbsk7iy-lbsk7ly-4.0*lcol-19.386810
+l3y8l22=l3rotat-lbsk8iy-lbsk8ly-2.0*lmskhfl-20.758031
 ! drifts
 o3b10c0:drift,l=l3b10l0+l3b10l1
 o3b10c1:drift,l=l3b10l2+l3b10l3
@@ -519,6 +580,15 @@ o3y4c7:drift,l=l3y4l16
 o3y4c8:drift,l=l3y4l17+l3y4l18+l3y4l19+l3y4l20
 o3y4c9:drift,l=l3y4l21+l3y4l22
 o3y4c10:drift,l=l3y4l23+l3y4l24+l3y4l25+l3y4l26+l3y4l27+l3y4l28+l3y4l29+l3y4l30+l3y4l31+l3y4l32
+o3y7c0:drift,l=l3y7l0+l3y7l1+l3y7l2+l3y7l3+l3y7l4+l3y7l5
+o3y7c1:drift,l=l3y7l6
+o3y7c2:drift,l=l3y7l7+l3y7l8+l3y7l9+l3y7l10+l3y7l11
+o3y7c3:drift,l=l3y7l12+l3y7l13+l3y7l14+l3y7l15+l3y7l16+l3y7l17+l3y7l18+l3y7l19
+o3y7c4:drift,l=l3y7l20+l3y7l21+l3y7l22+l3y7l23
+o3y7c5:drift,l=l3y7l24+l3y7l25+l3y7l26
+o3y8c0:drift,l=l3y8l0+l3y8l1+l3y8l2
+o3y8c1:drift,l=l3y8l3+l3y8l4+l3y8l5+l3y8l6+l3y8l7+l3y8l8+l3y8l9+l3y8l10+l3y8l11+l3y8l12+l3y8l13
+o3y8c2:drift,l=l3y8l14+l3y8l15+l3y8l16+l3y8l17+l3y8l18+l3y8l19+l3y8l20+l3y8l21+l3y8l22
 o3y9c0:drift,l=l3y9l0+l3y9l1+l3y9l2+l3y9l3+l3y9l4
 o3y9c1:drift,l=l3y9l5+l3y9l6+l3y9l7+l3y9l8+l3y9l9+l3y9l10+l3y9l11
 o3y9c2:drift,l=l3y9l12+l3y9l13+l3y9l14+l3y9l15+l3y9l16
@@ -532,6 +602,7 @@ o9dummy:drift,l=l9dummy
 obabfla:drift,l=lbabfla
 obabflx:drift,l=lbabflx
 obc3:drift,l=lbc3
+obel4rot:drift,l=lbel4rot
 obel5ci:drift,l=lbel5ci
 obel5co:drift,l=lbel5co
 obel6bi:drift,l=lbel6bi
@@ -554,6 +625,7 @@ obelabi:drift,l=lbelabi
 obelabo:drift,l=lbelabo
 obelaci:drift,l=lbelaci
 obelaco:drift,l=lbelaco
+obeld0q1:drift,l=lbeld0q1
 obelq1q2:drift,l=lbelq1q2
 obelq2q3:drift,l=lbelq2q3
 obfl:drift,l=lbfl
@@ -568,6 +640,10 @@ obsk3iy:drift,l=lbsk3iy
 obsk3ly:drift,l=lbsk3ly
 obsk4iy:drift,l=lbsk4iy
 obsk4ly:drift,l=lbsk4ly
+obsk7iy:drift,l=lbsk7iy
+obsk7ly:drift,l=lbsk7ly
+obsk8iy:drift,l=lbsk8iy
+obsk8ly:drift,l=lbsk8ly
 obsk9iy:drift,l=lbsk9iy
 obsk9lg:drift,l=lbsk9lg
 obsk9ly:drift,l=lbsk9ly
@@ -600,6 +676,8 @@ ocq3a:drift,l=lcq3a
 ocq3x:drift,l=lcq3x
 ocq4:drift,l=lcq4
 ocq7:drift,l=lcq7
+od0fla:drift,l=ld0fla
+od0flx:drift,l=ld0flx
 od5ifl:drift,l=ld5ifl
 od5ofl:drift,l=ld5ofl
 odfl:drift,l=ldfl
@@ -607,6 +685,8 @@ odsfl:drift,l=ldsfl
 odswl:drift,l=ldswl
 odum1fl:drift,l=ldum1fl
 odum2fl:drift,l=ldum2fl
+odxfla:drift,l=ldxfla
+odxflx:drift,l=ldxflx
 oeka:drift,l=leka
 oeldfl:drift,l=leldfl
 oeldhvfl:drift,l=leldhvfl
@@ -632,6 +712,7 @@ orfaln:drift,l=lrfaln
 orfash:drift,l=lrfash
 orfst1:drift,l=lrfst1
 orfstend:drift,l=lrfstend
+orotcwt:drift,l=lrotcwt
 osb:drift,l=lsb
 osb4:drift,l=lsb4
 osb4c:drift,l=lsb4c
@@ -659,6 +740,14 @@ ox12c6:drift,l=lx12a0
 ! things, acting currently like drifts
 dmplong:pipe,l=ldmplong
 dmpshrt:pipe,l=ldmpshrt
+hlxh19ml:pipe,l=lhelix
+hlxh19mr:pipe,l=lhelix
+hlxh19pl:pipe,l=lhelix
+hlxh19pr:pipe,l=lhelix
+hlxh23ml:pipe,l=lhelix
+hlxh23mr:pipe,l=lhelix
+hlxh23pl:pipe,l=lhelix
+hlxh23pr:pipe,l=lhelix
 hlxv12mr:pipe,l=lhelix
 hlxv12pr:pipe,l=lhelix
 hlxv40mr:pipe,l=lhelix
@@ -671,9 +760,13 @@ bka3:sbend,l=lka
 bka4:sbend,l=lka
 bka5:sbend,l=lka
 d:sbend,l=ldip,angle=thcell
+d0mm07:sbend,l=ld0,angle=thd0 - thdx
+d0pp08:sbend,l=ld0,angle=thdx - thd0
 d5i:sbend,l=ld5i,angle=thd5 - thd0
 d5o:sbend,l=ld5o,angle=thd5 + thd0
 ds:sbend,l=ldps,angle=thds
+dxmm08:sbend,l=ldx,angle=alpha - thdx,e1=+alpha,e2=-thdx
+dxpp07:sbend,l=ldx,angle=thdx - alpha,e1=+thdx,e2=-alpha
 yka1:sbend,l=lka
 yka2:sbend,l=lka
 yka3:sbend,l=lka
@@ -681,89 +774,109 @@ yka4:sbend,l=lka
 yka5:sbend,l=lka
 ! quadrupoles
 q1i4:quadrupole,l=lq1
+q1i8:quadrupole,l=lq1
 q1i10:quadrupole,l=lq1
 q1i12:quadrupole,l=lq1
 q1o4:quadrupole,l=lq1
+q1o8:quadrupole,l=lq1
 q1o10:quadrupole,l=lq1
 q1o12:quadrupole,l=lq1
 q2i4:quadrupole,l=lq2
+q2i8:quadrupole,l=lq2
 q2i10:quadrupole,l=lq2
 q2i12:quadrupole,l=lq2
 q2o4:quadrupole,l=lq2
+q2o8:quadrupole,l=lq2
 q2o10:quadrupole,l=lq2
 q2o12:quadrupole,l=lq2
 q3i4:quadrupole,l=lq3
+q3i8:quadrupole,l=lq3
 q3i10:quadrupole,l=lq3
 q3i12:quadrupole,l=lq3
 q3o4:quadrupole,l=lq3
 q3o6:quadrupole,l=lq3
+q3o8:quadrupole,l=lq3
 q3o10:quadrupole,l=lq3
 q3o12:quadrupole,l=lq3
 q4i4:quadrupole,l=lq4
 q4i6:quadrupole,l=lq4
+q4i8:quadrupole,l=lq4
 q4i10:quadrupole,l=lq4
 q4i12:quadrupole,l=lq4
 q4it4:quadrupole,l=lsxt
 q4it6:quadrupole,l=lsxt
+q4it8:quadrupole,l=lsxt
 q4it10:quadrupole,l=lsxt
 q4it12:quadrupole,l=lsxt
 q4o2:quadrupole,l=lq4
 q4o4:quadrupole,l=lq4
 q4o6:quadrupole,l=lq4
+q4o8:quadrupole,l=lq4
 q4o10:quadrupole,l=lq4
 q4o12:quadrupole,l=lq4
 q4ot2:quadrupole,l=lsxt
 q4ot4:quadrupole,l=lsxt
 q4ot6:quadrupole,l=lsxt
+q4ot8:quadrupole,l=lsxt
 q4ot10:quadrupole,l=lsxt
 q4ot12:quadrupole,l=lsxt
 q5i2:quadrupole,l=lq
 q5i4:quadrupole,l=lq
 q5i6:quadrupole,l=lq
+q5i8:quadrupole,l=lq
 q5i10:quadrupole,l=lq
 q5i12:quadrupole,l=lq
 q5it2:quadrupole,l=lsxt
 q5it4:quadrupole,l=lsxt
 q5it6:quadrupole,l=lsxt
+q5it8:quadrupole,l=lsxt
 q5it10:quadrupole,l=lsxt
 q5it12:quadrupole,l=lsxt
 q5o2:quadrupole,l=lq
 q5o4:quadrupole,l=lq
 q5o6:quadrupole,l=lq
+q5o8:quadrupole,l=lq
 q5o10:quadrupole,l=lq
 q5o12:quadrupole,l=lq
 q5ot2:quadrupole,l=lsxt
 q5ot4:quadrupole,l=lsxt
 q5ot6:quadrupole,l=lsxt
+q5ot8:quadrupole,l=lsxt
 q5ot10:quadrupole,l=lsxt
 q5ot12:quadrupole,l=lsxt
 q6i2:quadrupole,l=lq
 q6i4:quadrupole,l=lq
 q6i6:quadrupole,l=lq
+q6i8:quadrupole,l=lq
 q6i10:quadrupole,l=lq
 q6i12:quadrupole,l=lq
 q6it2:quadrupole,l=lsxt
 q6it4:quadrupole,l=lsxt
 q6it6:quadrupole,l=lsxt
+q6it8:quadrupole,l=lsxt
 q6it10:quadrupole,l=lsxt
 q6it12:quadrupole,l=lsxt
 q6o2:quadrupole,l=lq
 q6o4:quadrupole,l=lq
 q6o6:quadrupole,l=lq
+q6o8:quadrupole,l=lq
 q6o10:quadrupole,l=lq
 q6o12:quadrupole,l=lq
 q6ot2:quadrupole,l=lsxt
 q6ot4:quadrupole,l=lsxt
 q6ot6:quadrupole,l=lsxt
+q6ot8:quadrupole,l=lsxt
 q6ot10:quadrupole,l=lsxt
 q6ot12:quadrupole,l=lsxt
 q7i2:quadrupole,l=lq7
 q7i4:quadrupole,l=lq7
 q7i6:quadrupole,l=lq7
+q7i8:quadrupole,l=lq7
 q7i10:quadrupole,l=lq7
 q7i12:quadrupole,l=lq7
 q7o4:quadrupole,l=lq7
 q7o6:quadrupole,l=lq7
+q7o8:quadrupole,l=lq7
 q7o10:quadrupole,l=lq7
 q7o12:quadrupole,l=lq7
 qd:quadrupole,l=lq
@@ -771,6 +884,7 @@ qd9:quadrupole,l=lq
 qda2:quadrupole,l=lq
 qda4:quadrupole,l=lq
 qda6:quadrupole,l=lq
+qda8:quadrupole,l=lq
 qda10:quadrupole,l=lq
 qda12:quadrupole,l=lq
 qdb10:quadrupole,l=lq
@@ -779,10 +893,12 @@ qf9:quadrupole,l=lq
 qfa2:quadrupole,l=lq
 qfa4:quadrupole,l=lq
 qfa6:quadrupole,l=lq
+qfa8:quadrupole,l=lq
 qfa10:quadrupole,l=lq
 qfa12:quadrupole,l=lq
 qfb4:quadrupole,l=lq
 qfb6:quadrupole,l=lq
+qfb8:quadrupole,l=lq
 qfb10:quadrupole,l=lq
 qfb12:quadrupole,l=lq
 ! sextupoles
@@ -831,6 +947,9 @@ polar2:instrument
 wcm:instrument
 ! collimators
 col:rcollimator,l=lcol,x_limit=0.0527,y_limit=0.05055
+colh1:rcollimator,l=lcol,x_limit=0.0515
+colh2:rcollimator,l=lcol,x_limit=0.0439
+colv1:rcollimator,l=lcol,y_limit=0.04879
 ! markers
 clock10:marker
 clock12:marker
@@ -839,70 +958,88 @@ mvalve:marker
 shutter:marker
 ! site-wide names
 ! drifts
+yi7_int3:obel4rot
+yo8_int3:obel4rot
 bi12_int5_1:obel5ci
 yi3_int5_1:obel5ci
+yi7_int5_1:obel5ci
 yi10_int5_1:obel5ci
 yi11_int5_1:obel5ci
 bo10_int5_1:obel5co
 bo11_int5_1:obel5co
 yo4_int5_1:obel5co
+yo8_int5_1:obel5co
 yo9_int5_1:obel5co
 bi12_int5_2:obel6bi
 yi3_int5_2:obel6bi
+yi7_int5_2:obel6bi
 yi10_int5_2:obel6bi
 yi11_int5_2:obel6bi
 bo10_int5_2:obel6bo
 bo11_int5_2:obel6bo
 yo4_int5_2:obel6bo
+yo8_int5_2:obel6bo
 yo9_int5_2:obel6bo
 bo10_int6_1:obel6c
 bo11_int6_1:obel6c
 bi12_int6_1:obel6c
 yi3_int6_1:obel6c
 yo4_int6_1:obel6c
+yi7_int6_1:obel6c
+yo8_int6_1:obel6c
 yo9_int6_1:obel6c
 yi10_int6_1:obel6c
 yi11_int6_1:obel6c
 bi12_int6_2:obel6ti
 yi3_int6_2:obel6ti
+yi7_int6_2:obel6ti
 yi10_int6_2:obel6ti
 yi11_int6_2:obel6ti
 bo10_int6_2:obel6to
 bo11_int6_2:obel6to
 yo4_int6_2:obel6to
+yo8_int6_2:obel6to
 yo9_int6_2:obel6to
 bi12_int6_3:obel7ci
 yi3_int6_3:obel7ci
+yi7_int6_3:obel7ci
 yi10_int6_3:obel7ci
 yi11_int6_3:obel7ci
 bo10_int6_3:obel7co
 bo11_int6_3:obel7co
 yo4_int6_3:obel7co
+yo8_int6_3:obel7co
 yo9_int6_3:obel7co
 bo10_int9_1:obel9b
 bo11_int9_1:obel9b
 bi12_int9_1:obel9b
 yi3_int9_1:obel9b
 yo4_int9_1:obel9b
+yi7_int9_1:obel9b
+yo8_int9_1:obel9b
 yo9_int9_1:obel9b
 yi10_int9_1:obel9b
 yi11_int9_1:obel9b
 bi12_int9_2:obel9ti
 yi3_int9_2:obel9ti
+yi7_int9_2:obel9ti
 yi10_int9_2:obel9ti
 yi11_int9_2:obel9ti
 bo10_int9_2:obel9to
 bo11_int9_2:obel9to
 yo4_int9_2:obel9to
+yo8_int9_2:obel9to
 yo9_int9_2:obel9to
 yi10_int9_3:obel10bi
 bo10_int9_3:obel10bo
 yo9_int9_3:obel10bo
 bi12_int9_3:obel10ci
 yi3_int9_3:obel10ci
+yi7_int9_3:obel10ci
 yi11_int9_3:obel10ci
 bo11_int9_3:obel10co
 yo4_int9_3:obel10co
+yo8_int9_3:obel10co
 bo10_int4_1:obel45d
 bo10_int4_2:obel45d
 bo11_int4_1:obel45d
@@ -913,6 +1050,10 @@ yi3_int4_1:obel45d
 yi3_int4_2:obel45d
 yo4_int4_1:obel45d
 yo4_int4_2:obel45d
+yi7_int4_1:obel45d
+yi7_int4_2:obel45d
+yo8_int4_1:obel45d
+yo8_int4_2:obel45d
 yo9_int4_1:obel45d
 yo9_int4_2:obel45d
 yi10_int4_1:obel45d
@@ -929,6 +1070,10 @@ yi3_int7_1:obel78d
 yi3_int7_2:obel78d
 yo4_int7_1:obel78d
 yo4_int7_2:obel78d
+yi7_int7_1:obel78d
+yi7_int7_2:obel78d
+yo8_int7_1:obel78d
+yo8_int7_2:obel78d
 yo9_int7_1:obel78d
 yo9_int7_2:obel78d
 yi10_int7_1:obel78d
@@ -1148,6 +1293,8 @@ yi6_int17_1:obelaci
 yi6_int18_1:obelaci
 yi6_int19_1:obelaci
 yi6_int20_1:obelaci
+yi7_int8_1:obelaci
+yi7_int8_2:obelaci
 yi7_int10_2:obelaci
 yi7_int11_2:obelaci
 yi7_int12_2:obelaci
@@ -1235,6 +1382,8 @@ yo5_int17_1:obelaco
 yo5_int18_1:obelaco
 yo5_int19_1:obelaco
 yo5_int20_1:obelaco
+yo8_int8_1:obelaco
+yo8_int8_2:obelaco
 yo8_int10_2:obelaco
 yo8_int11_2:obelaco
 yo8_int12_2:obelaco
@@ -1259,11 +1408,15 @@ yo9_int17_1:obelaco
 yo9_int18_1:obelaco
 yo9_int19_1:obelaco
 yo9_int20_1:obelaco
+yi7_int0:obeld0q1
+yo8_int0:obeld0q1
 bo10_int1:obelq1q2
 bo11_int1:obelq1q2
 bi12_int1:obelq1q2
 yi3_int1:obelq1q2
 yo4_int1:obelq1q2
+yi7_int1:obelq1q2
+yo8_int1:obelq1q2
 yo9_int1:obelq1q2
 yi10_int1:obelq1q2
 yi11_int1:obelq1q2
@@ -1272,6 +1425,8 @@ bo11_int2:obelq2q3
 bi12_int2:obelq2q3
 yi3_int2:obelq2q3
 yo4_int2:obelq2q3
+yi7_int2:obelq2q3
+yo8_int2:obelq2q3
 yo9_int2:obelq2q3
 yi10_int2:obelq2q3
 yi11_int2:obelq2q3
@@ -1280,6 +1435,14 @@ bo10_dmp3_2:dmplong
 yo9_dmp3_2:dmplong
 bo10_dmp3_1:dmpshrt
 yo9_dmp3_1:dmpshrt
+yi7_hlx3_1:hlxh19ml
+yi7_hlx3_4:hlxh19mr
+yo8_hlx3_4:hlxh19pl
+yo8_hlx3_1:hlxh19pr
+yi7_hlx3_3:hlxh23ml
+yi7_hlx3_2:hlxh23mr
+yo8_hlx3_2:hlxh23pl
+yo8_hlx3_3:hlxh23pr
 yi3_hlx7_4:hlxv12mr
 yo9_hlx7_1:hlxv12mr
 yi3_hlx7_1:hlxv12pr
@@ -1398,6 +1561,7 @@ yi6_dh17:d
 yi6_dh18:d
 yi6_dh19:d
 yi6_dh20:d
+yi7_dh8:d
 yi7_dh10:d
 yi7_dh11:d
 yi7_dh12:d
@@ -1409,6 +1573,7 @@ yi7_dh17:d
 yi7_dh18:d
 yi7_dh19:d
 yi7_dh20:d
+yo8_dh8:d
 yo8_dh10:d
 yo8_dh11:d
 yo8_dh12:d
@@ -1456,13 +1621,17 @@ yi11_dh17:d
 yi11_dh18:d
 yi11_dh19:d
 yi11_dh20:d
+yi7_dh0:d0mm07
+yo8_dh0:d0pp08
 bi12_dh5:d5i
 yi3_dh5:d5i
+yi7_dh5:d5i
 yi10_dh5:d5i
 yi11_dh5:d5i
 bo10_dh5:d5o
 bo11_dh5:d5o
 yo4_dh5:d5o
+yo8_dh5:d5o
 yo9_dh5:d5o
 bo10_dh6:ds
 bo10_dh9:ds
@@ -1474,6 +1643,10 @@ yi3_dh6:ds
 yi3_dh9:ds
 yo4_dh6:ds
 yo4_dh9:ds
+yi7_dh6:ds
+yi7_dh9:ds
+yo8_dh6:ds
+yo8_dh9:ds
 yo9_dh6:ds
 yo9_dh9:ds
 yi10_dh6:ds
@@ -1487,82 +1660,102 @@ yo9_ka3_2:yka4
 yo9_ka3_1:yka5
 ! quadrupoles
 yi3_qf1:q1i4
+yi7_qf1:q1i8
 yi10_qf1:q1i10
 bi12_qf1:q1i12
 yi11_qf1:q1i12
 yo4_qd1:q1o4
+yo8_qd1:q1o8
 bo10_qd1:q1o10
 yo9_qd1:q1o10
 bo11_qd1:q1o12
 yi3_qd2:q2i4
+yi7_qd2:q2i8
 yi10_qd2:q2i10
 bi12_qd2:q2i12
 yi11_qd2:q2i12
 yo4_qf2:q2o4
+yo8_qf2:q2o8
 bo10_qf2:q2o10
 yo9_qf2:q2o10
 bo11_qf2:q2o12
 yi3_qf3:q3i4
+yi7_qf3:q3i8
 yi10_qf3:q3i10
 bi12_qf3:q3i12
 yi11_qf3:q3i12
 yo4_qd3:q3o4
+yo8_qd3:q3o8
 bo10_qd3:q3o10
 yo9_qd3:q3o10
 bo11_qd3:q3o12
 yi3_qd4:q4i4
+yi7_qd4:q4i8
 yi10_qd4:q4i10
 bi12_qd4:q4i12
 yi11_qd4:q4i12
 yi3_tq4:q4it4
+yi7_tq4:q4it8
 yi10_tq4:q4it10
 bi12_tq4:q4it12
 yi11_tq4:q4it12
 yo4_qf4:q4o4
+yo8_qf4:q4o8
 bo10_qf4:q4o10
 yo9_qf4:q4o10
 bo11_qf4:q4o12
 yo4_tq4:q4ot4
+yo8_tq4:q4ot8
 bo10_tq4:q4ot10
 yo9_tq4:q4ot10
 bo11_tq4:q4ot12
 yi3_qf5:q5i4
+yi7_qf5:q5i8
 yi10_qf5:q5i10
 bi12_qf5:q5i12
 yi11_qf5:q5i12
 yi3_tq5:q5it4
+yi7_tq5:q5it8
 yi10_tq5:q5it10
 bi12_tq5:q5it12
 yi11_tq5:q5it12
 yo4_qd5:q5o4
+yo8_qd5:q5o8
 bo10_qd5:q5o10
 yo9_qd5:q5o10
 bo11_qd5:q5o12
 yo4_tq5:q5ot4
+yo8_tq5:q5ot8
 bo10_tq5:q5ot10
 yo9_tq5:q5ot10
 bo11_tq5:q5ot12
 yi3_qd6:q6i4
+yi7_qd6:q6i8
 yi10_qd6:q6i10
 bi12_qd6:q6i12
 yi11_qd6:q6i12
 yi3_tq6:q6it4
+yi7_tq6:q6it8
 yi10_tq6:q6it10
 bi12_tq6:q6it12
 yi11_tq6:q6it12
 yo4_qf6:q6o4
+yo8_qf6:q6o8
 bo10_qf6:q6o10
 yo9_qf6:q6o10
 bo11_qf6:q6o12
 yo4_tq6:q6ot4
+yo8_tq6:q6ot8
 bo10_tq6:q6ot10
 yo9_tq6:q6ot10
 bo11_tq6:q6ot12
 yi3_qf7:q7i4
+yi7_qf7:q7i8
 yi10_qf7:q7i10
 bi12_qf7:q7i12
 yi11_qf7:q7i12
 yo4_qd7:q7o4
+yo8_qd7:q7o8
 bo10_qd7:q7o10
 yo9_qd7:q7o10
 bo11_qd7:q7o12
@@ -1649,6 +1842,8 @@ yo9_qd19:qd9
 yo9_qd21:qd9
 yi3_qd8:qda4
 yo4_qd9:qda4
+yi7_qd8:qda8
+yo8_qd9:qda8
 yi10_qd8:qda10
 bo11_qd9:qda12
 bi12_qd8:qda12
@@ -1736,10 +1931,12 @@ yo9_qf16:qf9
 yo9_qf18:qf9
 yo9_qf20:qf9
 yi3_qf9:qfa4
+yi7_qf9:qfa8
 yi10_qf9:qfa10
 bi12_qf9:qfa12
 yi11_qf9:qfa12
 yo4_qf8:qfb4
+yo8_qf8:qfb8
 bo10_qf8:qfb10
 yo9_qf8:qfb10
 bo11_qf8:qfb12
@@ -1780,6 +1977,7 @@ yo4_sxd17:sdmo
 yo5_sxd13:sdmo
 yo5_sxd17:sdmo
 yo5_sxd21:sdmo
+yo8_sxd9:sdmo
 yo8_sxd13:sdmo
 yo8_sxd17:sdmo
 yo9_sxd13:sdmo
@@ -1841,6 +2039,7 @@ yi3_sxf17:sfmi
 yi3_sxf21:sfmi
 yi6_sxf13:sfmi
 yi6_sxf17:sfmi
+yi7_sxf9:sfmi
 yi7_sxf13:sfmi
 yi7_sxf17:sfmi
 yi7_sxf21:sfmi
@@ -1913,6 +2112,8 @@ yo9_sxf18:sfpo
 ! solenoids
 ! kickers
 bo10_kfbh3:kfbh
+yi7_kfbh3:kfbh
+yo8_kfbh3:kfbh
 yo9_kfbh3:kfbh
 yi10_kfbh3:kfbh
 yi11_kfbh3:kfbh
@@ -2048,6 +2249,15 @@ lmp05y16:kicker,l=lcor,scale_multipoles=f
 lmp05y17:kicker,l=lcor,scale_multipoles=f
 lmp05y18:kicker,l=lcor,scale_multipoles=f
 lmp06y10:kicker,l=lcor,scale_multipoles=f
+lmp07y02:kicker,l=lcor,scale_multipoles=f
+lmp07y3a:kicker,l=lcor,scale_multipoles=f
+lmp07y3x:kicker,l=lcor,scale_multipoles=f
+lmp07y04:kicker,l=lcor,scale_multipoles=f
+lmp07y05:kicker,l=lcor,scale_multipoles=f
+lmp07y06:kicker,l=lcor,scale_multipoles=f
+lmp07y07:kicker,l=lcor,scale_multipoles=f
+lmp07y08:kicker,l=lcor,scale_multipoles=f
+lmp07y09:kicker,l=lcor,scale_multipoles=f
 lmp07y10:kicker,l=lcor,scale_multipoles=f
 lmp07y11:kicker,l=lcor,scale_multipoles=f
 lmp07y12:kicker,l=lcor,scale_multipoles=f
@@ -2057,6 +2267,15 @@ lmp07y15:kicker,l=lcor,scale_multipoles=f
 lmp07y16:kicker,l=lcor,scale_multipoles=f
 lmp07y17:kicker,l=lcor,scale_multipoles=f
 lmp07y18:kicker,l=lcor,scale_multipoles=f
+lmp08y02:kicker,l=lcor,scale_multipoles=f
+lmp08y3a:kicker,l=lcor,scale_multipoles=f
+lmp08y3x:kicker,l=lcor,scale_multipoles=f
+lmp08y04:kicker,l=lcor,scale_multipoles=f
+lmp08y05:kicker,l=lcor,scale_multipoles=f
+lmp08y06:kicker,l=lcor,scale_multipoles=f
+lmp08y07:kicker,l=lcor,scale_multipoles=f
+lmp08y08:kicker,l=lcor,scale_multipoles=f
+lmp08y09:kicker,l=lcor,scale_multipoles=f
 lmp08y10:kicker,l=lcor,scale_multipoles=f
 lmp09y02:kicker,l=lcor,scale_multipoles=f
 lmp09y3a:kicker,l=lcor,scale_multipoles=f
@@ -2210,12 +2429,15 @@ yi6_bh13:bpmh
 yi6_bh15:bpmh
 yi6_bh17:bpmh
 yi6_bh19:bpmh
+yi7_bh5:bpmh
+yi7_bh9:bpmh
 yi7_bh11:bpmh
 yi7_bh13:bpmh
 yi7_bh15:bpmh
 yi7_bh17:bpmh
 yi7_bh19:bpmh
 yi7_bh21:bpmh
+yo8_bh6:bpmh
 yo8_bh10:bpmh
 yo8_bh12:bpmh
 yo8_bh14:bpmh
@@ -2305,12 +2527,17 @@ yi6_bv14:bpmv
 yi6_bv16:bpmv
 yi6_bv18:bpmv
 yi6_bv20:bpmv
+yi7_b3_1:bpmv
+yi7_bv6:bpmv
 yi7_bv10:bpmv
 yi7_bv12:bpmv
 yi7_bv14:bpmv
 yi7_bv16:bpmv
 yi7_bv18:bpmv
 yi7_bv20:bpmv
+yo8_b3_1:bpmv
+yo8_bv5:bpmv
+yo8_bv9:bpmv
 yo8_bv11:bpmv
 yo8_bv13:bpmv
 yo8_bv15:bpmv
@@ -2365,6 +2592,16 @@ yo4_b3:cplmon
 yo4_b4:cplmon
 yo4_b7:cplmon
 yo4_b8:cplmon
+yi7_b1:cplmon
+yi7_b3:cplmon
+yi7_b4:cplmon
+yi7_b7:cplmon
+yi7_b8:cplmon
+yo8_b1:cplmon
+yo8_b3:cplmon
+yo8_b4:cplmon
+yo8_b7:cplmon
+yo8_b8:cplmon
 yo9_b1:cplmon
 yo9_b3:cplmon
 yo9_b3_1:cplmon
@@ -2385,12 +2622,21 @@ yi11_b8:cplmon
 yi11_kscl3_1:cktl
 yi11_kscl3_2:cktl
 yi11_kscl3_3:cktl
+yo8_mskh3:mskh
 ! collimators
 bo10_c3:col
+yi7_c3:col
+yi7_ch3_1:colh1
+yi7_ch3_2:colh2
+yi7_cv3:colv1
 ! markers
 bo10_sv3_1:mvalve
 bo10_sv3_2:mvalve
 bo10_sv4:mvalve
+yi7_sv3_1:mvalve
+yi7_sv3_2:mvalve
+yo8_sv3_1:mvalve
+yo8_sv3_2:mvalve
 yo9_sv3_1:mvalve
 yo9_sv3_2:mvalve
 yo9_sv4:mvalve
@@ -4126,6 +4372,29 @@ yi6_d19:line=(odfl,
 yi6_d20:line=(odfl,
  yi6_dh20,
  odfl)
+yi7_cq7:line=(obfl,
+ yi7_b7,
+ oqbms7,
+ yi7_qf7,
+ ocq7,
+ lmp07y07,
+ ocfl)
+yi7_cq8:line=(ocfl,
+ lmp07y08,
+ ocq,
+ yi7_qd8,
+ oqbms,
+ yi7_b8,
+ obfl)
+yi7_cqs9:line=(obfl,
+ yi7_bh9,
+ osb,
+ yi7_sxf9,
+ oqs,
+ yi7_qf9,
+ ocq,
+ lmp07y09,
+ ocfl)
 yi7_cqs10:line=(obfl,
  yi7_bv10,
  osb,
@@ -4234,6 +4503,48 @@ yi7_cqs21:line=(obfl,
  ocq,
  yi7_th21,
  ocfl)
+yi7_cqt4:line=(ocfl,
+ lmp07y04,
+ ocq4,
+ yi7_qd4,
+ oqs4,
+ yi7_tq4,
+ osb4c,
+ yi7_b4,
+ obfl)
+yi7_cqt5:line=(ocfl,
+ lmp07y05,
+ ocq,
+ yi7_qf5,
+ oqs,
+ yi7_tq5,
+ osb,
+ yi7_bh5,
+ obfl)
+yi7_cqt6:line=(ocfl,
+ lmp07y06,
+ ocq,
+ yi7_qd6,
+ oqs,
+ yi7_tq6,
+ osb,
+ yi7_bv6,
+ obfl)
+yi7_d0:line=(od0fla,
+ yi7_dh0,
+ od0flx)
+yi7_d5:line=(od5ifl,
+ yi7_dh5,
+ od5ifl)
+yi7_d6:line=(odsfl,
+ yi7_dh6,
+ odsfl)
+yi7_d8:line=(odfl,
+ yi7_dh8,
+ odfl)
+yi7_d9:line=(odsfl,
+ yi7_dh9,
+ odsfl)
 yi7_d10:line=(odfl,
  yi7_dh10,
  odfl)
@@ -4267,6 +4578,88 @@ yi7_d19:line=(odfl,
 yi7_d20:line=(odfl,
  yi7_dh20,
  odfl)
+yi7_du3:line=(obsk7iy,
+ yi7_sv3_2,
+ o3y7c0,
+ yi7_ch3_2,
+ o3y7c1,
+ yi7_cv3,
+ o3y7c2,
+ yi7_ch3_1,
+ o3y7c3,
+ yi7_c3,
+ o3y7c4,
+ yi7_kfbh3,
+ o3y7c5,
+ yi7_sv3_1,
+ obsk7ly)
+yi7_du4:line=(odum1fl,
+ o4dummy,
+ odum1fl)
+yi7_du6:line=(odum2fl,
+ o6dummy,
+ odum1fl)
+yi7_du7:line=(odum1fl,
+ o7dummy,
+ odum1fl)
+yi7_du9:line=(odum2fl,
+ o9dummy,
+ odum1fl)
+yi7_rot3:line=(odum1fl,
+ osnke,
+ yi7_hlx3_4,
+ osnkm,
+ yi7_hlx3_3,
+ osnkmm,
+ yi7_b3_1,
+ osnkmm,
+ yi7_hlx3_2,
+ osnkm,
+ yi7_hlx3_1,
+ osnke,
+ orotcwt)
+yi7_trp1:line=(oflq1a,
+ yi7_qf1,
+ obq1,
+ yi7_b1,
+ oflq1x)
+yi7_trp2:line=(oflq2a,
+ yi7_qd2,
+ ocq2,
+ lmp07y02,
+ ocfl2)
+yi7_trp3:line=(obfl3,
+ yi7_b3,
+ obc3,
+ lmp07y3a,
+ ocq3a,
+ yi7_qf3,
+ ocq3x,
+ lmp07y3x,
+ ocfl3)
+yo8_cq7:line=(ocfl,
+ lmp08y07,
+ ocq7,
+ yo8_qd7,
+ oqbms7,
+ yo8_b7,
+ obfl)
+yo8_cq8:line=(obfl,
+ yo8_b8,
+ oqbms,
+ yo8_qf8,
+ ocq,
+ lmp08y08,
+ ocfl)
+yo8_cqs9:line=(ocfl,
+ lmp08y09,
+ ocq,
+ yo8_qd9,
+ oqs,
+ yo8_sxd9,
+ osb,
+ yo8_bv9,
+ obfl)
 yo8_cqs10:line=(ocfl,
  lmp08y10,
  ocq,
@@ -4366,6 +4759,48 @@ yo8_cqs20:line=(ocfl,
  osb,
  yo8_bh20,
  obfl)
+yo8_cqt4:line=(obfl,
+ yo8_b4,
+ osb4c,
+ yo8_tq4,
+ oqs4,
+ yo8_qf4,
+ ocq4,
+ lmp08y04,
+ ocfl)
+yo8_cqt5:line=(obfl,
+ yo8_bv5,
+ osb,
+ yo8_tq5,
+ oqs,
+ yo8_qd5,
+ ocq,
+ lmp08y05,
+ ocfl)
+yo8_cqt6:line=(obfl,
+ yo8_bh6,
+ osb,
+ yo8_tq6,
+ oqs,
+ yo8_qf6,
+ ocq,
+ lmp08y06,
+ ocfl)
+yo8_d0:line=(od0flx,
+ yo8_dh0,
+ od0fla)
+yo8_d5:line=(od5ofl,
+ yo8_dh5,
+ od5ofl)
+yo8_d6:line=(odsfl,
+ yo8_dh6,
+ odsfl)
+yo8_d8:line=(odfl,
+ yo8_dh8,
+ odfl)
+yo8_d9:line=(odsfl,
+ yo8_dh9,
+ odsfl)
 yo8_d10:line=(odfl,
  yo8_dh10,
  odfl)
@@ -4399,6 +4834,61 @@ yo8_d19:line=(odfl,
 yo8_d20:line=(odfl,
  yo8_dh20,
  odfl)
+yo8_du3:line=(obsk8ly,
+ yo8_sv3_1,
+ o3y8c0,
+ yo8_kfbh3,
+ o3y8c1,
+ omskhfl,
+ yo8_mskh3,
+ omskhfl,
+ o3y8c2,
+ yo8_sv3_2,
+ obsk8iy)
+yo8_du4:line=(odum1fl,
+ o4dummy,
+ odum1fl)
+yo8_du6:line=(odum1fl,
+ o6dummy,
+ odum2fl)
+yo8_du7:line=(odum1fl,
+ o7dummy,
+ odum1fl)
+yo8_du9:line=(odum1fl,
+ o9dummy,
+ odum2fl)
+yo8_rot3:line=(orotcwt,
+ osnke,
+ yo8_hlx3_1,
+ osnkm,
+ yo8_hlx3_2,
+ osnkmm,
+ yo8_b3_1,
+ osnkmm,
+ yo8_hlx3_3,
+ osnkm,
+ yo8_hlx3_4,
+ osnke,
+ odum1fl)
+yo8_trp1:line=(oflq1x,
+ yo8_b1,
+ obq1,
+ yo8_qd1,
+ oflq1a)
+yo8_trp2:line=(ocfl2,
+ lmp08y02,
+ ocq2,
+ yo8_qf2,
+ oflq2a)
+yo8_trp3:line=(ocfl3,
+ lmp08y3x,
+ ocq3x,
+ yo8_qd3,
+ ocq3a,
+ lmp08y3a,
+ obc3,
+ yo8_b3,
+ obfl3)
 yo9_cq7:line=(obfl,
  yo9_b7,
  oqbms7,
@@ -5842,6 +6332,82 @@ mat04y:line=(yo4_cqt4,
  yo4_int9_2,
  yo4_d9,
  yo4_int9_3)
+ins07y:line=(yi7_int9_3,
+ yi7_d9,
+ yi7_int9_2,
+ yi7_du9,
+ yi7_int9_1,
+ yi7_cqs9,
+ yi7_int8_2,
+ yi7_d8,
+ yi7_int8_1,
+ yi7_cq8,
+ yi7_int7_2,
+ yi7_du7,
+ yi7_int7_1,
+ yi7_cq7,
+ yi7_int6_3,
+ yi7_d6,
+ yi7_int6_2,
+ yi7_du6,
+ yi7_int6_1,
+ yi7_cqt6,
+ yi7_int5_2,
+ yi7_d5,
+ yi7_int5_1,
+ yi7_cqt5,
+ yi7_int4_2,
+ yi7_du4,
+ yi7_int4_1,
+ yi7_cqt4,
+ yi7_int3,
+ yi7_rot3,
+ yi7_du3,
+ yi7_trp3,
+ yi7_int2,
+ yi7_trp2,
+ yi7_int1,
+ yi7_trp1,
+ yi7_int0,
+ yi7_d0)
+ins08y:line=(yo8_d0,
+ yo8_int0,
+ yo8_trp1,
+ yo8_int1,
+ yo8_trp2,
+ yo8_int2,
+ yo8_trp3,
+ yo8_du3,
+ yo8_rot3,
+ yo8_int3,
+ yo8_cqt4,
+ yo8_int4_1,
+ yo8_du4,
+ yo8_int4_2,
+ yo8_cqt5,
+ yo8_int5_1,
+ yo8_d5,
+ yo8_int5_2,
+ yo8_cqt6,
+ yo8_int6_1,
+ yo8_du6,
+ yo8_int6_2,
+ yo8_d6,
+ yo8_int6_3,
+ yo8_cq7,
+ yo8_int7_1,
+ yo8_du7,
+ yo8_int7_2,
+ yo8_cq8,
+ yo8_int8_1,
+ yo8_d8,
+ yo8_int8_2,
+ yo8_cqs9,
+ yo8_int9_1,
+ yo8_du9,
+ yo8_int9_2,
+ yo8_d9,
+ yo8_int9_3)
 ins09y:line=(yo9_int9_3,
  yo9_d9,
  yo9_int9_2,
@@ -6054,8 +6620,6 @@ yi2_int9_2:obel9ti
 bi1_int9_3:obel10bi
 yi2_int9_3:obel10bi
 yo5_int9_6:obel10bo
-yi7_int9_3:obel10ci
-yo8_int9_3:obel10co
 bi1_int7_1:obel78d
 bi1_int7_2:obel78d
 yi2_int7_1:obel78d
@@ -6081,8 +6645,6 @@ yi2_dh9:ds
 yo5_dh9:ds
 yi6_dh6:ds
 yi6_dh9:ds
-yi7_dh9:ds
-yo8_dh9:ds
 ! quadrupoles
 yo5_qd3:q3o6
 yi6_qd4:q4i6
@@ -6649,10 +7211,4 @@ yi6_d8:line=(odfl,
  odfl)
 yi6_d9:line=(odsfl,
  yi6_dh9,
- odsfl)
-yi7_d9:line=(odsfl,
- yi7_dh9,
- odsfl)
-yo8_d9:line=(odsfl,
- yo8_dh9,
  odsfl)
