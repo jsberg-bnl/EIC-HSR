@@ -1,0 +1,16 @@
+call, file='hsr.bmad'
+
+dsw_ir10[dg] = dwarm_ir10[dg]
+dsw_ir12[dg] = -dwarm_ir12[dg]
+
+call, file='rhic-str-275-10.bmad'
+call, file='ir2-str-275-10.bmad'
+call, file='ir4-str-275-10.bmad'
+call, file='ir6-str-275-10.bmad'
+! call, file='ir8c-str-275-10.bmad'
+call, file='ir10-str-275-10.bmad'
+call, file='ir12-str-275-10.bmad'
+
+beginning[e_tot]           = e275
+
+use, hsrn

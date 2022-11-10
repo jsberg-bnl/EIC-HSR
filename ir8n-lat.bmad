@@ -1,0 +1,44 @@
+erhic = 255e9
+prhic = sqrt(erhic*erhic-m_proton*m_proton)
+gdx = prhic/(rhodx*p275)
+thdx8 = asin(lcendx*gdx)
+xdx8 = lcendx*tan(0.5*thdx8)
+xdxfl8 = ldxfla*cos(thdx)*tan(thdx8)
+
+hsr8w_dhx : sbend, l=lcendx, dg=+gdx
+hsr8d_dhx : sbend, l=lcendx, dg=-gdx
+
+odxfla8: drift, l=ldxfla*cos(thdx)
+
+hsr8w_dx: line=(odxfla8,hsr8w_dhx,odxflx)
+hsr8d_dx: line=(odxflx,hsr8d_dhx,odxfla8)
+
+th8 = +6.55252950481074862e-04
+xd08 = lcend0*sin(0.5*(thdx-thdx8-th8))/(cos(0.5*(thdx+thd0))*cos(thdx-0.5*(thdx8+th8+thd0)))
+xd0fl8 = ld0flx*tan(thdx-thdx8-th8)
+
+pt_dxw8: patch, x_offset=+(xdx8+xdxfl8)
+pr_dxw8: patch, x_pitch=-thdx8
+pt_dxd8: patch, x_offset=+(xdx8+xdxfl8)
+pr_dxd8: patch, x_pitch=+thdx8
+
+pt_d0w8: patch, x_offset=-(xd08+xd0fl8)
+pr_d0w8: patch, x_pitch=-(thdx-thdx8-th8)
+pt_d0d8: patch, x_offset=-(xd08+xd0fl8)
+pr_d0d8: patch, x_pitch=+(thdx-thdx8-th8)
+
+dgd08 = sin(thdx-thdx8-th8)*cos(0.5*(thdx+thd0))/(lcend0*cos(0.5*(thdx-thd0)))
+yi7_dh0[dg] = +dgd08
+yo8_dh0[dg] = -dgd08
+
+oir8n: drift, l=2*((lcenxdx+lcendx*sin(0.5*th8)^2)/cos(th8)-ldxflx)
+lir8x0 = -lcenxdx*tan(th8)*sin(thdx8+th8) &
+ - lcendx*(2*sin(0.5*thdx8)^2 + (1+2*cos(th8))*sin(0.5*th8)^2*cos(thdx8)/cos(th8) &
+           + sin(thdx8)*sin(th8) - sin(thdx8+th8)*tan(0.5*thdx)) &
+ + lcendxd0*cos(thdx-thdx8-th8)/cos(thdx) - xd08*sin(thdx-thdx8-th8) &
+ - ldxfla*cos(thdx)/cos(thdx8) - ld0flx/cos(thdx-thdx8-th8)
+oir8w: drift, l=lir8x0
+oir8d: drift, l=lir8x0
+
+
+ir8n: line=(ins07y,pt_d0w8,pr_d0w8,oir8w,pr_dxw8,pt_dxw8,hsr8w_dx,oir8n,hsr8d_dx,pt_dxd8,pr_dxd8,oir8d,pr_d0d8,pt_d0d8,ins08y)
