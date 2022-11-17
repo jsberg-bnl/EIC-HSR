@@ -50,7 +50,7 @@ b0pf: sbend, l=1.20, field_master=t, b1_gradient = 8.12223828336297515E+00
 b0pf[db_field] = xb0hf*b0pf[b1_gradient]
 pb_b0pf: patch, x_offset = -3.02264219559301335E-002, x_pitch = 2.67043931616361939E-02
 pe_b0pf: patch, x_offset = ze*tan(ac) - xb0hf, x_pitch = -ac
-d2_pf: drift
+o06w_b0_b0a: drift
 b0apf: sbend, l=0.60, field_master=t
 pbt_b0apf: patch
 pbr_b0apf: patch
@@ -59,9 +59,9 @@ per_b0apf: patch
 ! Q1 forward
 q1apf: quadrupole, l=1.46
 q1bpf: quadrupole, l=1.61
-o06_b0a_q1a: drift
-o06_q1a_q1b: drift
-o06_q1b_q2: drift
+o06w_b0a_q1a: drift
+o06w_q1a_q1b: drift
+o06w_q1b_q2: drift
 pbt_q1apf: patch
 pbr_q1apf: patch
 pet_q1apf: patch
@@ -76,13 +76,13 @@ pbt_q2pf: patch
 pbr_q2pf: patch
 pet_q2pf: patch
 per_q2pf: patch
-o06_q2_b1: drift
+o06w_q2_b1: drift
 b1pf: sbend, l=3.00, field_master=t
 pbt_b1pf: patch
 pbr_b1pf: patch
 pet_b1pf: patch
 per_b1pf: patch
-o06_b1_b1a: drift
+o06w_b1_b1a: drift
 b1apf: sbend, l=1.50
 pbt_b1apf: patch
 pbr_b1apf: patch
@@ -151,24 +151,24 @@ o_off_mom_ip6_2: instrument, l=1e-2, superimpose, ref=d8_pf, ref_origin=end, off
 b1apf[dg] = -2.7*c_light/p275
 
 ! Forward geometry
-D2_PF[L] = +9.01271368232813730E-001
+o06w_b0_b0a[L] = +9.01271368232813730E-001
 PER_B0APF[X_PITCH] = -5.04984917138313807E-003
 PET_B0APF[X_OFFSET] = -3.35339044727382424E-003
 PBT_B0APF[X_OFFSET] = -3.24132873307261121E-004
 PBR_B0APF[X_PITCH] = +7.20840839611516185E-003
-o06_b0a_q1a[l] = 0.4
-o06_q1a_q1b[l] = 0.4
-o06_q1b_q2[l] = 0.4
+o06w_b0a_q1a[l] = 0.4
+o06w_q1a_q1b[l] = 0.4
+o06w_q1b_q2[l] = 0.4
 PET_Q2PF[X_OFFSET] = -3.32802030065817295E-002
 PER_Q2PF[X_PITCH] = -8.50784348282005234E-003
 PBT_Q2PF[X_OFFSET] = -4.90576945774339867E-003
 PBR_Q2PF[X_PITCH] = +1.06608188932094290E-002
-o06_q2_b1[L] = +5.01735480633649811E-001
+o06w_q2_b1[L] = +5.01735480633649811E-001
 PET_B1PF[X_OFFSET] = -1.80369119489946148E-002
 PBR_B1PF[X_PITCH] = +1.66206204176246215E-002
 PBT_B1PF[X_OFFSET] = -1.51436449904647375E-002
 PER_B1PF[X_PITCH] = -5.50024340556791707E-003
-o06_b1_b1a[L] = +5.01695641782968327E-001
+o06w_b1_b1a[L] = +5.01695641782968327E-001
 PET_B1APF[X_OFFSET] = +1.96219812510122936E-003
 PER_B1APF[X_PITCH] = -2.11363048088140416E-002
 PBT_B1APF[X_OFFSET] = -3.69732122116240500E-002
@@ -206,17 +206,17 @@ hsr6w: line=(
  o2fl, b2pf,
  d8_pf,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
- o06_b1_b1a,
+ o06w_b1_b1a,
  pbr_b1pf, pbt_b1pf, b1pf, pet_b1pf, per_b1pf,
- o06_q2_b1,
+ o06w_q2_b1,
  pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
- o06_q1b_q2,
+ o06w_q1b_q2,
  pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
- o06_q1a_q1b,
+ o06w_q1a_q1b,
  pbr_q1apf, pbt_q1apf, q1apf, pet_q1apf, per_q1apf,
- o06_b0a_q1a,
+ o06w_b0a_q1a,
  pbr_b0apf, pbt_b0apf, b0apf, pet_b0apf, per_b0apf,
- d2_pf,
+ o06w_b0_b0a,
  pb_b0pf, b0pf, pe_b0pf,
  d1_pf,
  l_sol_pf)
