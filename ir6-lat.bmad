@@ -72,16 +72,22 @@ pet_q1bpf: patch
 per_q1bpf: patch
 ! Q2 forward
 q2pf: quadrupole, l=3.80
-pb_q2pf: patch
-pe_q2pf: patch
-d6_pf: drift
+pbt_q2pf: patch
+pbr_q2pf: patch
+pet_q2pf: patch
+per_q2pf: patch
+o06_q2_b1: drift
 b1pf: sbend, l=3.00, field_master=t
-pb_b1pf: patch
-pe_b1pf: patch
-d7_pf: drift
+pbt_b1pf: patch
+pbr_b1pf: patch
+pet_b1pf: patch
+per_b1pf: patch
+o06_b1_b1a: drift
 b1apf: sbend, l=1.50
-pb_b1apf: patch
-pe_b1apf: patch
+pbt_b1apf: patch
+pbr_b1apf: patch
+pet_b1apf: patch
+per_b1apf: patch
 
 ! These are RHIC DX magnets
 b1pr: sbend
@@ -153,20 +159,20 @@ PBR_B0APF[X_PITCH] = +7.20840839611516185E-003
 o06_b0a_q1a[l] = 0.4
 o06_q1a_q1b[l] = 0.4
 o06_q1b_q2[l] = 0.4
-PE_Q2PF[X_OFFSET] = -3.32802030065817295E-002
-PE_Q2PF[X_PITCH] = -8.50784348282005234E-003
-PB_Q2PF[X_OFFSET] = -4.90576945774339867E-003
-PB_Q2PF[X_PITCH] = +1.06608188932094290E-002
-D6_PF[L] = +5.01735480633649811E-001
-PE_B1PF[X_OFFSET] = -1.80369119489946148E-002
-PB_B1PF[X_PITCH] = +1.66206204176246215E-002
-PB_B1PF[X_OFFSET] = -1.51436449904647375E-002
-PE_B1PF[X_PITCH] = -5.50024340556791707E-003
-D7_PF[L] = +5.01695641782968327E-001
-PE_B1APF[X_OFFSET] = +1.96219812510122936E-003
-PE_B1APF[X_PITCH] = -2.11363048088140416E-002
-PB_B1APF[X_OFFSET] = -3.69732122116240500E-002
-PB_B1APF[X_PITCH] = +2.55526627114428841E-002
+PET_Q2PF[X_OFFSET] = -3.32802030065817295E-002
+PER_Q2PF[X_PITCH] = -8.50784348282005234E-003
+PBT_Q2PF[X_OFFSET] = -4.90576945774339867E-003
+PBR_Q2PF[X_PITCH] = +1.06608188932094290E-002
+o06_q2_b1[L] = +5.01735480633649811E-001
+PET_B1PF[X_OFFSET] = -1.80369119489946148E-002
+PBR_B1PF[X_PITCH] = +1.66206204176246215E-002
+PBT_B1PF[X_OFFSET] = -1.51436449904647375E-002
+PER_B1PF[X_PITCH] = -5.50024340556791707E-003
+o06_b1_b1a[L] = +5.01695641782968327E-001
+PET_B1APF[X_OFFSET] = +1.96219812510122936E-003
+PER_B1APF[X_PITCH] = -2.11363048088140416E-002
+PBT_B1APF[X_OFFSET] = -3.69732122116240500E-002
+PBR_B1APF[X_PITCH] = +2.55526627114428841E-002
 B2PF[G] = +5.62846183687445902E-003
 D9_PF[L] = +5.38366111361763799E+000
 B3PF[G] = +5.06214590826366620E-003
@@ -199,11 +205,11 @@ hsr6w: line=(
  ofl, q3pf,
  o2fl, b2pf,
  d8_pf,
- pb_b1apf, b1apf, pe_b1apf,
- d7_pf,
- pb_b1pf, b1pf, pe_b1pf,
- d6_pf,
- pb_q2pf, q2pf, pe_q2pf,
+ pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
+ o06_b1_b1a,
+ pbr_b1pf, pbt_b1pf, b1pf, pet_b1pf, per_b1pf,
+ o06_q2_b1,
+ pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
  o06_q1b_q2,
  pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
  o06_q1a_q1b,
