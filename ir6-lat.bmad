@@ -128,7 +128,7 @@ q5pr: qcrab
 o2pr: drift
 o3pr: drift
 o10int_pr: drift, l=2.9798943330376915E-01 ! Just to fit previous version
-d8_pf: drift, l=16.5
+o06w_ffdet: drift, l=16.5
 d9_pf: drift
 
 l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds
@@ -142,10 +142,10 @@ o_rotator_ip6f: pipe, l=l7dummy+2*ldum1fl
 o_rotator_ip6r: pipe, l=l7dummy+2*ldum1fl
 
 ! Far-forward detectors
-o_roman_pot_ip6_1: instrument, l=5e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-4.03654156323990687E+000 ! z=26.1
-o_roman_pot_ip6_2: instrument, l=5e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-6.03876768738732128E+000 ! z=28.1
-o_off_mom_ip6_1: instrument, l=1e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-1.24458912846590426E+001 ! z=34.5
-o_off_mom_ip6_2: instrument, l=1e-2, superimpose, ref=d8_pf, ref_origin=end, offset=-1.44481174088064570E+001 ! z=36.5
+o_roman_pot_ip6_1: instrument, l=5e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-4.03654156323990687E+000 ! z=26.1
+o_roman_pot_ip6_2: instrument, l=5e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-6.03876768738732128E+000 ! z=28.1
+o_off_mom_ip6_1: instrument, l=1e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-1.24458912846590426E+001 ! z=34.5
+o_off_mom_ip6_2: instrument, l=1e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-1.44481174088064570E+001 ! z=36.5
 
 ! Proton forward, closer orbit near IR
 b1apf[dg] = -2.7*c_light/p275
@@ -213,7 +213,7 @@ hsr6w: line=(
  o_crab_ip6f,
  ofl, q3pf,
  o2fl, b2pf,
- d8_pf,
+ o06w_ffdet,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
  o06w_b1_b1a,
  pbr_b1pf, pbt_b1pf, b1pf, pet_b1pf, per_b1pf,
