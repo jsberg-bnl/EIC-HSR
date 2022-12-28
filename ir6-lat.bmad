@@ -154,6 +154,9 @@ b3pf: sbend, l=4.4
 oint: drift, l=0.3
 
 ! Drifts from magnet to flange, new magnets
+o_crab_mag: drift, l=1.0
+ow2c: drift, l=1.0
+o_ffdet_wq: drift, l=0.3
 ofl: drift, l=0.5
 o2fl: drift, l=2*ofl[l]
 
@@ -170,7 +173,7 @@ q5pr: qcrab
 o2pr: drift
 o3pr: drift
 o10int_pr: drift, l=2.9798943330376915E-01 ! Just to fit previous version
-o06w_ffdet: drift, l=16.5
+o06w_ffdet: drift
 d9_pf: drift
 
 l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds
@@ -182,10 +185,10 @@ o_crab_ip6r: pipe, l=15.2
 o_rotator_ip6r: pipe, l=l7dummy+2*ldum1fl
 
 ! Far-forward detectors
-o_roman_pot_ip6_1: instrument, l=5e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-4.03654156323990687E+000 ! z=26.1
-o_roman_pot_ip6_2: instrument, l=5e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-6.03876768738732128E+000 ! z=28.1
-o_off_mom_ip6_1: instrument, l=1e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-1.24458912846590426E+001 ! z=34.5
-o_off_mom_ip6_2: instrument, l=1e-2, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-1.44481174088064570E+001 ! z=36.5
+o_roman_pot_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
+o_roman_pot_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
+o_off_mom_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
+o_off_mom_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
 
 ! Proton forward, closer orbit near IR
 b1apf[dg] = -2.7*c_light/p275
@@ -223,6 +226,13 @@ PET_B1APF[X_OFFSET] = -1.72743202756956288E-002
 PBT_B1APF[X_OFFSET] = -1.51056670970938639E-002
 PBR_B1APF[X_PITCH] = +2.37913977507665138E-002
 
+! Far-forward detector layout
+O06W_FFDET[L] =  1.69372788685834941E+001
+O_ROMAN_POT_IP6_1[OFFSET] = -3.93442866655295864E+000
+O_ROMAN_POT_IP6_2[OFFSET] = -5.93643661436678105E+000
+O_OFF_MOM_IP6_1[OFFSET] = -4.30914757878770038E-001
+O_OFF_MOM_IP6_2[OFFSET] = -2.43292270569259239E+000
+
 B2PF[G] = +5.62846183687445902E-003
 D9_PF[L] = +5.38366111361763799E+000
 B3PF[G] = +5.06214590826366620E-003
@@ -249,10 +259,9 @@ hsr6w: line=(
  oint,
  yo5_cqt5,
  d9_pf,
- ofl, qf3_pf, ofl,
+ yo5_trp2, o_crab_mag,
  o_crab_ip6f,
- ofl, q3pf,
- o2fl, b2pf,
+ o_crab_mag, b2pf, ow2c, q3pf, o_ffdet_wq,
  o06w_ffdet,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
  o06w_b1_b1a,
