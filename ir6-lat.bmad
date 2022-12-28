@@ -1,7 +1,7 @@
-! FIX: incorrect RHIC CQ modules
-yo5_cq7_mod:line=(obl7b,
+! Modfied yo5_cq[78] to look like they do near RHIC snakes IRs
+yo5_cq7_mod:line=(obfl,
  yo5_b7,
- oqbw7,
+ oqbms7,
  yo5_qd7,
  ocq7,
  lmp05y07,
@@ -10,9 +10,51 @@ yo5_cq8_mod:line=(ocfl,
  lmp05y08,
  ocq,
  yo5_qf8,
- oqbwm,
+ oqbms,
  yo5_b8,
- obl8b)
+ obfl)
+! The IR6 snake, RHIC style
+yo5_int7_1 : obel78d
+yo5_int7_2 : obel78d
+yo5_bsnk : bpmv
+yo5_snk_hlx1 : pipe, l=lhelix
+yo5_snk_hlx2 : pipe, l=lhelix
+yo5_snk_hlx3 : pipe, l=lhelix
+yo5_snk_hlx4 : pipe, l=lhelix
+yo5_snk7:line=(odum1fl,
+ osnke,
+ yo5_snk_hlx4,
+ osnkm,
+ yo5_snk_hlx3,
+ osnkmm,
+ yo5_bsnk,
+ osnkmm,
+ yo5_snk_hlx2,
+ osnkm,
+ yo5_snk_hlx1,
+ osnke,
+ odum1fl)
+
+! The IR6 widdershins rotator, RHIC style
+yo5_introt : obel78d
+yo5_brot : bpmv
+yo5_rot_hlx1 : pipe, l=lhelix
+yo5_rot_hlx2 : pipe, l=lhelix
+yo5_rot_hlx3 : pipe, l=lhelix
+yo5_rot_hlx4 : pipe, l=lhelix
+yo5_rot:line=(odum1fl,
+ osnke,
+ yo5_rot_hlx4,
+ osnkm,
+ yo5_rot_hlx3,
+ osnkmm,
+ yo5_brot,
+ osnkmm,
+ yo5_rot_hlx2,
+ osnkm,
+ yo5_rot_hlx1,
+ osnke,
+ odum1fl)
 
 e275 = 275e9
 p275 = sqrt(e275*e275-m_proton*m_proton)
@@ -132,13 +174,11 @@ o06w_ffdet: drift, l=16.5
 d9_pf: drift
 
 l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds
-o9injct:drift,l=l9injct
+yo5_du9w: drift, l=l9injct - 2*lbel9ki
 
 ! Drifts for rotators, snakes, and crabs
 o_crab_ip6f: pipe, l=15.06
 o_crab_ip6r: pipe, l=15.2
-o_snake_ip6: pipe, l=l7dummy+2*ldum1fl
-o_rotator_ip6f: pipe, l=l7dummy+2*ldum1fl
 o_rotator_ip6r: pipe, l=l7dummy+2*ldum1fl
 
 ! Far-forward detectors
@@ -194,12 +234,11 @@ o_b1pr[angle] = -17e-3
 O_B2PR[ANGLE] =  3.67453870996644781E-003
 
 hsr6w: line=(
- yo5_int9_6,yo5_d9,o9injct,yo5_cq9,
+ yo5_int9_6,yo5_d9,yo5_int9_5,yo5_du9w,yo5_int9_1,yo5_cq9,
  yo5_int8_2,yo5_d8,yo5_int8_1,yo5_cq8_mod,
- o_snake_ip6,
- oint,
+ yo5_int7_2, yo5_snk7, yo5_int7_1,
  yo5_cq7_mod,
- o_rotator_ip6f,
+ yo5_introt, yo5_rot, yo5_introt,
  yo5_cqt6,
  oint,
  ofl, b3pf, ofl,

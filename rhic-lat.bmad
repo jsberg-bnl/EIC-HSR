@@ -218,6 +218,8 @@ lbabfla=0.190500
 lbabflx=0.190500
 lbel6c=0.295148
 lbel9b=0.295148
+lbel9ki=0.490474
+lbelski=0.042500
 lbfl=0.1973834
 lbfl3=1.539020
 lbfl4=0.612790
@@ -373,6 +375,7 @@ l3y3sum=2.0*lcktxfl+4.0*lcktufl+4.0*lrfst1+6.0*lrfa9mhz3
 l3y4sum=2.0*(4.0*lrfstend+lrfash+lrfaln+lwcmxfl)
 lbc3=0.47142826 - lcor / 2.0
 lbeld0q1=lpld0q1-ld0fla-lflq1x-lbq1
+lbellki=lbel9ki - lbelski
 lbl7a=6.570017-lbl7b
 lcfl2=0.385819 - lcor / 2.0
 lcfl3=0.4131016 - lcor / 2.0
@@ -554,8 +557,10 @@ obelabi:drift,l=lbelabi
 obelabo:drift,l=lbelabo
 obelaci:drift,l=lbelaci
 obelaco:drift,l=lbelaco
+obellki:drift,l=lbellki
 obelq1q2:drift,l=lbelq1q2
 obelq2q3:drift,l=lbelq2q3
+obelski:drift,l=lbelski
 obfl:drift,l=lbfl
 obfl3:drift,l=lbfl3
 obfl4:drift,l=lbfl4
@@ -6288,6 +6293,8 @@ yo4_sv3_3:mvalve
 yo4_sv4:mvalve
 yo5_sv7:mvalve
 yo5_sv8:mvalve
+yo5_sv9_1:mvalve
+yo5_sv9_2:mvalve
 g12_bsx_1:shutter
 g12_bsx_2:shutter
 g12_bsx_3:shutter
@@ -6581,6 +6588,12 @@ yo5_d8:line=(odfl,
 yo5_d9:line=(odsfl,
  yo5_dh9,
  odswl)
+yo5_int9_1:line=(obellki,
+ yo5_sv9_1,
+ obelski)
+yo5_int9_5:line=(obelski,
+ yo5_sv9_2,
+ obellki)
 yo5_trp3:line=(obfl3,
  yo5_b3,
  obc3,
