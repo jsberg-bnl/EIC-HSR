@@ -148,8 +148,18 @@ o_b2pr : overlay={
  var={angle}
 
 ! New dipoles
-b2pf: sbend, l=4.4
-b3pf: sbend, l=4.4
+b2pf: sbend
+b3pf: sbend
+o_dip_ir6w : overlay={
+ b2pf[g] : 2*sin(0.5*th2)/l,
+ b2pf[l] : l/sinc(0.5*th2),
+ b2pf[e1] : 0.5*th2,
+ b2pf[e2] : 0.5*th2,
+ b3pf[g] : 2*sin(0.5*th3)/l,
+ b3pf[l] : l/sinc(0.5*th3),
+ b3pf[e1] : 0.5*th3,
+ b3pf[e2] : 0.5*th3},
+ var = {l, th2, th3}, l=4.4
 
 oint: drift, l=0.3
 
@@ -233,9 +243,17 @@ O_ROMAN_POT_IP6_2[OFFSET] = -5.93643661436678105E+000
 O_OFF_MOM_IP6_1[OFFSET] = -4.30914757878770038E-001
 O_OFF_MOM_IP6_2[OFFSET] = -2.43292270569259239E+000
 
-B2PF[G] = +5.62846183687445902E-003
+o_dip_ir6w[th2] = +5.62846183687445902E-003*4.4
+o_dip_ir6w[th3] = +5.06214590826366620E-003*4.4
 D9_PF[L] = +5.38366111361763799E+000
-B3PF[G] = +5.06214590826366620E-003
+O_DIP_IR6W[TH2] = +2.11267624712344719E-002
+O_DIP_IR6W[TH3] = +2.41506466466938942E-002
+O_DIP_IR6W[L] = +4.43055026532899188E+000
+D9_PF[L] = +1.78108795769336581E+000
+O_DIP_IR6W[TH2] = +5.11232121618792126E-003
+O_DIP_IR6W[TH3] = +4.01650879017404483E-002
+O_DIP_IR6W[L] = +2.05170683933622371E+001
+D9_PF[L] = -3.03821480885119328E+001
 
 ! Geometric parameter values
 O2PR[L] =  1.66686780884237962E+001
