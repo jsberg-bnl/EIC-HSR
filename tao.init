@@ -994,3 +994,19 @@
  curve(1:2)%legend_text = '\gg\fn\dA\u' '\gg\fn\dB\u'
  curve(1:2)%n_turn = -1 -1
 /
+
+&tao_template_plot
+ plot%name = 'curly_h'
+ plot%x_axis_type = 's'
+ plot%n_graph = 1
+/
+
+&tao_template_graph
+ graph_index = 1
+ graph%name = 'gamma'
+ graph%n_curve = 1
+ graph%y%label = 'curly H (m)'
+ curve(1)%data_type = 'curly_h.a'
+ curve(1)%line%color = 'blue'
+ curve(1)%n_turn = -1
+/
