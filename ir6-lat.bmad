@@ -35,6 +35,12 @@ yo5_snk7:line=(odum1fl,
  osnke,
  odum1fl)
 
+! Make two D5Is with shortened beam tubes
+h5_dh3: sbend, angle=thd5-thd0, l=ld5i
+h5_dh4: sbend, angle=thd5-thd0, l=ld5i
+h5_d3: line=(odsfl,h5_dh3,odsfl)
+h5_d4: line=(odsfl,h5_dh4,odsfl)
+
 ! The IR6 widdershins rotator, RHIC style
 yo5_introt : obel78d
 yo5_brot : bpmv
@@ -148,18 +154,14 @@ o_b2pr : overlay={
  var={angle}
 
 ! New dipoles
-b2pf: sbend
-b3pf: sbend
-o_dip_ir6w : overlay={
- b2pf[g] : 2*sin(0.5*th2)/l,
- b2pf[l] : l/sinc(0.5*th2),
+b_b2pf = 5
+g_b2pf = b_b2pf*c_light/p275
+b2pf: sbend, g=g_b2pf
+ov_b2pf : overlay={
+ b2pf[l] : th2/g_b2pf,
  b2pf[e1] : 0.5*th2,
- b2pf[e2] : 0.5*th2,
- b3pf[g] : 2*sin(0.5*th3)/l,
- b3pf[l] : l/sinc(0.5*th3),
- b3pf[e1] : 0.5*th3,
- b3pf[e2] : 0.5*th3},
- var = {l, th2, th3}, l=4.4
+ b2pf[e2] : 0.5*th2},
+ var = {th2}
 
 oint: drift, l=0.3
 
@@ -243,10 +245,9 @@ O_ROMAN_POT_IP6_2[OFFSET] = -5.93643661436678105E+000
 O_OFF_MOM_IP6_1[OFFSET] = -4.30914757878770038E-001
 O_OFF_MOM_IP6_2[OFFSET] = -2.43292270569259239E+000
 
-O_DIP_IR6W[TH2] = +2.32133940300502314E-002
-O_DIP_IR6W[TH3] = +2.20640150878781346E-002
-O_DIP_IR6W[L] = +4.25861472036736366E+000
-D9_PF[L] = +2.12582401720621306E+000
+OV_B2PF[TH2] = +2.41116709930762063E-002
+D9_PF[L] = +2.09221848248170295E+000
+YO5_DU9W[L] = +5.45590876053282958E+000
 
 ! Geometric parameter values
 O2PR[L] =  1.66686780884237962E+001
@@ -262,11 +263,11 @@ hsr6w: line=(
  yo5_introt, yo5_rot, yo5_introt,
  yo5_cqt6,
  oint,
- ofl, b3pf, ofl,
+ h5_d4,
  oint,
  yo5_cqt4,
  oint,
- yo5_d5,
+ h5_d3,
  oint,
  yo5_cqt5,
  d9_pf,
