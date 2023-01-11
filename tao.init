@@ -229,7 +229,7 @@
  d1_data%name = 'orbit'
  default_weight = 1e4
  datum(1:2)%data_type = 'orbit.x' 'orbit.px'
- datum(1:2)%ele_name = 'pb_b1apf' 'pb_b1apf'
+ datum(1:2)%ele_name = 'b1pf+2' 'b1pf+2'
  datum(1:2)%meas = 0 0
  datum(1:2)%good_user = f f
 /
