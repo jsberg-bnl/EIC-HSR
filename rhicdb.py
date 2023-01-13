@@ -647,10 +647,13 @@ ir12_slots = [slot('b','g11_dux',db)]
 
 # slots that are broken up, but I need the bits for whatever reason
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
+ir6_parts = [slot('y','dx05y',db)]
 ir12_parts = [slot('b','bo11_du3',db),slot('b','g12_dux',db),slot('b','bi12_du3',db)]
 
-slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots+ir8_slots+ir10_slots+ir12_parts+ir12_slots) # Everything I have some need for
-all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir8_slots+ir10_slots+ir12_parts+ir12_slots) # Things I need all the parts for 
+slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_parts+ir6_slots
+                            +ir8_slots+ir10_slots+ir12_parts+ir12_slots) # Everything I have some need for
+all_parts = line_info(ir2_slots+ir4_parts+ir6_parts+ir6_slots
+                      +ir8_slots+ir10_slots+ir12_parts+ir12_slots) # Things I need all the parts for 
 all_slots = line_info(ir2_slots+ir6_slots+ir8_slots+ir10_slots+ir12_slots) # Slots kept intact but used in isolation
 all_lines = line_info(line_list) # RHIC lines
 

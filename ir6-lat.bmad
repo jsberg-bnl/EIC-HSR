@@ -153,14 +153,16 @@ o_b2pr : overlay={
  b2pr[e2]:0.5*angle},
  var={angle}
 
-! New dipoles
-b_b2pf = 5
-g_b2pf = b_b2pf*c_light/p275
-b2pf: sbend, g=g_b2pf
-ov_b2pf : overlay={
- b2pf[l] : th2/g_b2pf,
- b2pf[e1] : 0.5*th2,
- b2pf[e2] : 0.5*th2},
+! Use a DX on the IP side of the widdershins crab
+h5_dh2: sbend, l=lcendx
+o5_dh2c: drift, l=ldxfla*cos(thdx)
+pr5_dh2: patch
+pt5_dh2: patch
+h5_d2: line=(pr5_dh2,pt5_dh2,o5_dh2c,h5_dh2,odxflx)
+ov_h5_d2 : overlay={
+ h5_dh2[dg] : sin(th2)/lcendx,
+ pt5_dh2[x_offset] : lcendx*tan(0.5*th2)+ldxfla*cos(thdx)*tan(th2),
+ pr5_dh2[x_pitch] : -th2},
  var = {th2}
 
 oint: drift, l=0.3
@@ -239,15 +241,15 @@ PBT_B1APF[X_OFFSET] = -1.51056670970938639E-002
 PBR_B1APF[X_PITCH] = +2.37913977507665138E-002
 
 ! Far-forward detector layout
-O06W_FFDET[L] =  1.69372788685834941E+001 - 2
+O06W_FFDET[L] =  1.69372788685834941E+001 - 4
 O_ROMAN_POT_IP6_1[OFFSET] = -3.93442866655295864E+000
 O_ROMAN_POT_IP6_2[OFFSET] = -5.93643661436678105E+000
 O_OFF_MOM_IP6_1[OFFSET] = -4.30914757878770038E-001
 O_OFF_MOM_IP6_2[OFFSET] = -2.43292270569259239E+000
 
-OV_B2PF[TH2] = +1.67625935731443576E-002
-D9_PF[L] = +1.35373529291738826E+000
-YO5_DU9W[L] = +6.98421156046714486E+000
+OV_H5_D2[TH2] = +1.67625935731443576E-002
+D9_PF[L] = +1.21005747367496208E+000
+YO5_DU9W[L] = +6.78884410073124567E+000
 
 ! Geometric parameter values
 O2PR[L] =  1.66686780884237962E+001
@@ -273,7 +275,7 @@ hsr6w: line=(
  d9_pf,
  yo5_trp2, o_crab_mag,
  o_crab_ip6f,
- o_crab_mag, b2pf, ow2c, q3pf, o_ffdet_wq,
+ o_crab_mag, h5_d2, o_ffdet_wq, q3pf, o_ffdet_wq,
  o06w_ffdet,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
  o06w_b1_b1a,
