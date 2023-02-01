@@ -692,10 +692,10 @@ q1o4:quadrupole,l=lq1
 q1o10:quadrupole,l=lq1
 q1o12:quadrupole,l=lq1
 q2i4:quadrupole,l=lq2
+q2i6:quadrupole,l=lq2
 q2i10:quadrupole,l=lq2
 q2i12:quadrupole,l=lq2
 q2o4:quadrupole,l=lq2
-q2o6:quadrupole,l=lq2
 q2o10:quadrupole,l=lq2
 q2o12:quadrupole,l=lq2
 q3i4:quadrupole,l=lq3
@@ -6089,7 +6089,7 @@ yi6_dh9:ds
 yi7_dh9:ds
 yo8_dh9:ds
 ! quadrupoles
-yo5_qf2:q2o6
+yi6_qd2:q2i6
 yi6_qd4:q4i6
 yi6_tq4:q4it6
 bo2_qf4:q4o2
@@ -6183,13 +6183,13 @@ lmp02y06:kicker,l=lcor,scale_multipoles=f
 lmp02y07:kicker,l=lcor,scale_multipoles=f
 lmp02y08:kicker,l=lcor,scale_multipoles=f
 lmp02y09:kicker,l=lcor,scale_multipoles=f
-lmp05y02:kicker,l=lcor,scale_multipoles=f
 lmp05y04:kicker,l=lcor,scale_multipoles=f
 lmp05y05:kicker,l=lcor,scale_multipoles=f
 lmp05y06:kicker,l=lcor,scale_multipoles=f
 lmp05y07:kicker,l=lcor,scale_multipoles=f
 lmp05y08:kicker,l=lcor,scale_multipoles=f
 lmp05y09:kicker,l=lcor,scale_multipoles=f
+lmp06y02:kicker,l=lcor,scale_multipoles=f
 lmp06y04:kicker,l=lcor,scale_multipoles=f
 lmp06y05:kicker,l=lcor,scale_multipoles=f
 lmp06y06:kicker,l=lcor,scale_multipoles=f
@@ -6592,11 +6592,6 @@ yo5_int9_1:line=(obellki,
 yo5_int9_5:line=(obelski,
  yo5_sv9_2,
  obellki)
-yo5_trp2:line=(oflq2a,
- yo5_qf2,
- ocq2,
- lmp05y02,
- ocfl2)
 yi6_cq7:line=(ocfl,
  lmp06y07,
  ocq7,
@@ -6657,6 +6652,11 @@ yi6_d8:line=(odfl,
 yi6_d9:line=(odsfl,
  yi6_dh9,
  odsfl)
+yi6_trp2:line=(ocfl2,
+ lmp06y02,
+ ocq2,
+ yi6_qd2,
+ oflq2a)
 yi7_d9:line=(odsfl,
  yi7_dh9,
  odsfl)

@@ -86,7 +86,7 @@
 &tao_var
  v1_var%name = 'ir6w'
  default_universe = 'clone 1,2,23'
- var(1:11)%ele_name = 'q1apf' 'q1bpf' 'q2pf' 'q3pf' 'yo5_qf2_i' 'yo5_qd5_i' 'yo5_qf4_i' 'yo5_qf6_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i'
+ var(1:11)%ele_name = 'q1apf' 'q1bpf' 'q2pf' 'q3pf' 'yi6_qd2_i' 'yo5_qd5_i' 'yo5_qf4_i' 'yo5_qf6_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i'
  var(1:11)%step = 1e-3 1e-3 1e-3 1e-3 1 1 1 1 1 1 1
  var(1:11)%attribute = 'k1' 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
  var(12:13)%ele_name = 'b0apf' 'b1pf'
