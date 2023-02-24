@@ -3315,6 +3315,8 @@ yo1_qd9[field_master]=t
 yo1_qd9_i:overlay={yo1_qd9[b1_gradient]:-0.016572460606060605/yo1_qd9[l]*i}, var={i}
 yi2_qd8[field_master]=t
 yi2_qd8_i:overlay={yi2_qd8[b1_gradient]:-0.016572460606060605/yi2_qd8[l]*i}, var={i}
+bi5_qd8[field_master]=t
+bi5_qd8_i:overlay={bi5_qd8[b1_gradient]:0.016572460606060605/bi5_qd8[l]*i}, var={i}
 yo5_qd9[field_master]=t
 yo5_qd9_i:overlay={yo5_qd9[b1_gradient]:-0.016572460606060605/yo5_qd9[l]*i}, var={i}
 yi6_qd8[field_master]=t
@@ -3420,6 +3422,11 @@ yi2_th9_i:overlay={lmp02y09[bl_hkick]:0.005610334999999999*i},var={i}
 yi2_oct9_i:overlay={lmp02y09[b3]:12.31232*i},var={i}
 yi2_dec9_i:overlay={lmp02y09[b4]:387.2896*i},var={i}
 yi2_qs9_i:overlay={lmp02y09[a1]:0.03043852000000001*i},var={i}
+lmp05b08[field_master]=t
+bi5_tv8_i:overlay={lmp05b08[bl_vkick]:0.005612747*i},var={i}
+bi5_oct8_i:overlay={lmp05b08[b3]:12.346880000000004*i},var={i}
+bi5_dec8_i:overlay={lmp05b08[b4]:386.38592*i},var={i}
+bi5_qs8_i:overlay={lmp05b08[a1]:0.030435680000000007*i},var={i}
 lmp05y02[field_master]=t
 yo5_th2_i:overlay={lmp05y02[bl_hkick]:0.005637592999999998*i},var={i}
 yo5_oct2_i:overlay={lmp05y02[b3]:2.657578125*i},var={i}

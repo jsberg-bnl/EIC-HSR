@@ -6132,6 +6132,7 @@ bi1_qd8:qda2
 bo2_qd9:qda2
 yo1_qd9:qda2
 yi2_qd8:qda2
+bi5_qd8:qda6
 yo5_qd9:qda6
 yi6_qd8:qda6
 bi1_qf9:qfa2
@@ -6185,6 +6186,7 @@ lmp02y06:kicker,l=lcor,scale_multipoles=f
 lmp02y07:kicker,l=lcor,scale_multipoles=f
 lmp02y08:kicker,l=lcor,scale_multipoles=f
 lmp02y09:kicker,l=lcor,scale_multipoles=f
+lmp05b08:kicker,l=lcor,scale_multipoles=f
 lmp05y02:kicker,l=lcor,scale_multipoles=f
 lmp05y04:kicker,l=lcor,scale_multipoles=f
 lmp05y05:kicker,l=lcor,scale_multipoles=f
@@ -6233,6 +6235,7 @@ yi6_bv6:bpmv
 bi1_b7:cplmon
 bi1_b8:cplmon
 bo2_b4:cplmon
+bi5_b8:cplmon
 g9_bx:cplmon
 g9_bx_1:cplmon
 g9_bx_2:cplmon
@@ -6388,6 +6391,13 @@ bo2_cqt6:line=(obfl,
  ocq,
  lmp02b06,
  ocfl)
+bi5_cq8:line=(ocfl,
+ lmp05b08,
+ ocq,
+ bi5_qd8,
+ oqbms,
+ bi5_b8,
+ obfl)
 g9_dux:line=(obsk9lg,
  g9_svx,
  ox9c0,
