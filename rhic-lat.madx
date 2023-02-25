@@ -6810,6 +6810,7 @@ yi6_qd8:qda6;
 bi1_qf9:qfa2;
 yi2_qf9:qfa2;
 yi6_qf9:qfa6;
+bo3_qf8:qfb4;
 yo5_qf8:qfb6;
 // sextupoles
 // solenoids
@@ -6876,6 +6877,10 @@ bo2_th4:kickh_coil;
 bo2_th6:kickh_coil;
 bo2_tv5:kickv_coil;
 bo2_tv9:kickv_coil;
+bo3_dec8:dec;
+bo3_oct8:oct;
+bo3_qgt8:qgtto;
+bo3_th8:kickh_coil;
 bi5_dec8:dec;
 bi5_oct8:oct;
 bi5_qs8:sqsk6;
@@ -6991,6 +6996,7 @@ lmp02y06:line=(olmp0,yi2_tv6,yi2_oct6,yi2_dec6,yi2_qs6,olmp0);
 lmp02y07:line=(olmp0,yi2_th7,yi2_oct7,yi2_dec7,yi2_qgt7,olmp0);
 lmp02y08:line=(olmp0,yi2_tv8,yi2_oct8,yi2_dec8,yi2_qs8,olmp0);
 lmp02y09:line=(olmp0,yi2_th9,yi2_oct9,yi2_dec9,yi2_qs9,olmp0);
+lmp03b08:line=(olmp0,bo3_th8,bo3_oct8,bo3_dec8,bo3_qgt8,olmp0);
 lmp05b08:line=(olmp0,bi5_tv8,bi5_oct8,bi5_dec8,bi5_qs8,olmp0);
 lmp05y02:line=(olmp0,yo5_th2,yo5_oct2,yo5_dec2,yo5_dod2,olmp0);
 lmp05y04:line=(olmp0,yo5_th4,yo5_oct4,yo5_dec4,yo5_qs4,olmp0);
@@ -7040,6 +7046,7 @@ yi6_bv6:bpmv;
 bi1_b7:cplmon;
 bi1_b8:cplmon;
 bo2_b4:cplmon;
+bo3_b8:cplmon;
 bi5_b8:cplmon;
 g9_bx:cplmon;
 g9_bx_1:cplmon;
@@ -7196,6 +7203,13 @@ bo2_cqt6:line=(obfl,
  ocq,
  lmp02b06,
  ocfl);
+bo3_cq8:line=(ocfl,
+ lmp03b08,
+ ocq,
+ bo3_qf8,
+ oqbms,
+ bo3_b8,
+ obfl);
 bi5_cq8:line=(ocfl,
  lmp05b08,
  ocq,

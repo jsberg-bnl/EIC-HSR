@@ -86,7 +86,7 @@
 &tao_var
  v1_var%name = 'ir6w'
  default_universe = 'clone 1,2,23'
- var(1:11)%ele_name = 'q1apf' 'q1bpf' 'q2pf' 'q3pf' 'yi6_qd2_i' 'yo5_qf2_i' 'yo5_qf4_i' 'bi5_qd8_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i'
+ var(1:11)%ele_name = 'q1apf' 'q1bpf' 'q2pf' 'q3pf' 'yi6_qd2_i' 'bo3_qf8_i' 'yo5_qf4_i' 'bi5_qd8_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i'
  var(1:11)%step = 1e-3 1e-3 1e-3 1e-3 1 1 1 1 1 1 1
  var(1:11)%attribute = 'k1' 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
  var(12:13)%ele_name = 'b0apf' 'b1pf'
@@ -275,7 +275,7 @@
  default_weight = 1
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
  datum(1:5)%ele_name = 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_int11_2'
- datum(1:4)%ele_start_name = 'yo5_tq4' 'yo5_tq5' 'ip6w' 'ip6w'
+ datum(1:4)%ele_start_name = 'yo5_tq4' 'bo3_qf8' 'ip6w' 'ip6w'
  datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
  datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
  datum(1:5)%meas = 0 0 0 0 0

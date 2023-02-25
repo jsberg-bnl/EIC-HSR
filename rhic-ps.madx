@@ -1962,6 +1962,7 @@ yi6_qd8,k1:=0.016572460606060605/yi6_qd8->l*yi6_qd8_i/beam->brho;
 bi1_qf9,k1:=-0.016572460606060605/bi1_qf9->l*bi1_qf9_i/beam->brho;
 yi2_qf9,k1:=0.016572460606060605/yi2_qf9->l*yi2_qf9_i/beam->brho;
 yi6_qf9,k1:=0.016572460606060605/yi6_qf9->l*yi6_qf9_i/beam->brho;
+bo3_qf8,k1:=-0.016572460606060605/bo3_qf8->l*bo3_qf8_i/beam->brho;
 yo5_qf8,k1:=0.016572460606060605/yo5_qf8->l*yo5_qf8_i/beam->brho;
 // sextupoles
 // kickers
@@ -2038,6 +2039,10 @@ yi2_th9,kick:=-0.005610334999999999*yi2_th9_i/beam->brho;
 yi2_oct9,knl:={0,0,0,-73.87392*yi2_oct9_i/beam->brho};
 yi2_dec9,knl:={0,0,0,0,-9294.9504*yi2_dec9_i/beam->brho};
 yi2_qs9,ksl:={0,-0.03043852000000001*yi2_qs9_i/beam->brho};
+bo3_th8,kick:=-0.005619562*bo3_th8_i/beam->brho;
+bo3_oct8,knl:={0,0,0,-74.28479999999999*bo3_oct8_i/beam->brho};
+bo3_dec8,knl:={0,0,0,0,-9326.469119999998*bo3_dec8_i/beam->brho};
+bo3_qgt8,knl:={0,-0.030651719999999997*bo3_qgt8_i/beam->brho};
 bi5_tv8,kick:=-0.005612747*bi5_tv8_i/beam->brho;
 bi5_oct8,knl:={0,0,0,-74.08128000000002*bi5_oct8_i/beam->brho};
 bi5_dec8,knl:={0,0,0,0,-9273.26208*bi5_dec8_i/beam->brho};

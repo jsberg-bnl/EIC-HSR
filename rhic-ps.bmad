@@ -3327,6 +3327,8 @@ yi2_qf9[field_master]=t
 yi2_qf9_i:overlay={yi2_qf9[b1_gradient]:-0.016572460606060605/yi2_qf9[l]*i}, var={i}
 yi6_qf9[field_master]=t
 yi6_qf9_i:overlay={yi6_qf9[b1_gradient]:-0.016572460606060605/yi6_qf9[l]*i}, var={i}
+bo3_qf8[field_master]=t
+bo3_qf8_i:overlay={bo3_qf8[b1_gradient]:0.016572460606060605/bo3_qf8[l]*i}, var={i}
 yo5_qf8[field_master]=t
 yo5_qf8_i:overlay={yo5_qf8[b1_gradient]:-0.016572460606060605/yo5_qf8[l]*i}, var={i}
 ! sextupoles
@@ -3422,6 +3424,11 @@ yi2_th9_i:overlay={lmp02y09[bl_hkick]:0.005610334999999999*i},var={i}
 yi2_oct9_i:overlay={lmp02y09[b3]:12.31232*i},var={i}
 yi2_dec9_i:overlay={lmp02y09[b4]:387.2896*i},var={i}
 yi2_qs9_i:overlay={lmp02y09[a1]:0.03043852000000001*i},var={i}
+lmp03b08[field_master]=t
+bo3_th8_i:overlay={lmp03b08[bl_hkick]:0.005619562*i},var={i}
+bo3_oct8_i:overlay={lmp03b08[b3]:12.380799999999999*i},var={i}
+bo3_dec8_i:overlay={lmp03b08[b4]:388.6028799999999*i},var={i}
+bo3_qgt8_i:overlay={lmp03b08[b1]:0.030651719999999997*i},var={i}
 lmp05b08[field_master]=t
 bi5_tv8_i:overlay={lmp05b08[bl_vkick]:0.005612747*i},var={i}
 bi5_oct8_i:overlay={lmp05b08[b3]:12.346880000000004*i},var={i}
