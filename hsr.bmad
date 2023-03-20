@@ -1,5 +1,9 @@
 call, file='rhic-lat.bmad'
 
+rhic_rip = 590.581639053215
+dx0_eic = +0.81
+dtheta0_eic = -0.017
+
 lwd = 5
 lwc = 2
 
@@ -19,6 +23,9 @@ ip6w: marker
 parameter[geometry]        = closed
 parameter[particle]        = antiproton
 parameter[ptc_exact_model] = t
+
+beginning[x_position] = -rhic_rip + dx0_eic
+beginning[theta_position] = dtheta0_eic + pi
 
 hsr: line=(ip6d,hsr6d,
  arc07y,ir8,arc09y,
