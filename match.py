@@ -37,7 +37,7 @@ def replace(filename):
 def match_hsr(tao):
     tao.cmd('set universe 2 on')
     tao.cmd('set def uni=2')
-    tao.cmd('use var ir6w_u2[4,6:10]')
+    tao.cmd('use var ir6w_u2[5,6,8:11]')
     tao.cmd('use dat ir6w.arc')
     residual = [0.0 for i in range(0,8)]
     residual[0] = optimize(tao)
