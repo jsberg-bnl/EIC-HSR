@@ -42,11 +42,11 @@ set sym zcq10bo = zds9o + l9bo*cos(thd5+2*thds+thcell)
 set sym xcq10co = xds9o + l9co*sin(thd5+2*thds+thcell)
 set sym zcq10co = zds9o + l9co*cos(thd5+2*thds+thcell)
 ! Floor layout
-set ele 2@0 theta_position = dtheta0_eic - pi
-set ele 2@0 x_position = dx0_eic
+set ele 2@0 theta_position = dtheta0_eic_ip6 - pi
+set ele 2@0 x_position = dx0_eic_ip6
 set ele [2,3]@0 z_position = 0
-set ele 3@0 x_position = -dx0_eic
-set ele 3@0 theta_position = dtheta0_eic
+set ele 3@0 x_position = -dx0_eic_ip6
+set ele 3@0 theta_position = dtheta0_eic_ip6
 set dat 2@ir6w.floor[1]|meas = xcq10bo
 set dat 2@ir6w.floor[2]|meas = zcq10bo
 set dat 2@ir6w.floor[3]|meas = thd5+2*thds+thcell-pi
