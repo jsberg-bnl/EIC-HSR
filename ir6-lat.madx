@@ -1,7 +1,7 @@
-// FIX: incorrect RHIC CQ modules
-yo5_cq7_mod:line=(obl7b,
+// Modfied yo5_cq[78] to look like they do near RHIC snakes IRs
+yo5_cq7_mod:line=(obfl,
  yo5_b7,
- oqbw7,
+ oqbms7,
  yo5_qd7,
  ocq7,
  lmp05y07,
@@ -10,23 +10,76 @@ yo5_cq8_mod:line=(ocfl,
  lmp05y08,
  ocq,
  yo5_qf8,
- oqbwm,
+ oqbms,
  yo5_b8,
- obl8b);
+ obfl);
+yo5_d9r:line=(odswl,yo5_dh9,odsfl);
+
+! The IR6 snake, RHIC style
+yo5_int7_1 : obel78d;
+yo5_int7_2 : obel78d;
+yo5_bsnk : bpmv;
+yo5_snk_hlx1 : placeholder, l=lhelix;
+yo5_snk_hlx2 : placeholder, l=lhelix;
+yo5_snk_hlx3 : placeholder, l=lhelix;
+yo5_snk_hlx4 : placeholder, l=lhelix;
+yo5_snk7:line=(odum1fl,
+ osnke,
+ yo5_snk_hlx4,
+ osnkm,
+ yo5_snk_hlx3,
+ osnkmm,
+ yo5_bsnk,
+ osnkmm,
+ yo5_snk_hlx2,
+ osnkm,
+ yo5_snk_hlx1,
+ osnke,
+ odum1fl);
+
+! Make two D5Is with shortened beam tubes
+h5_dh3: sbend, angle=thd5-thd0, l=ld5i;
+h5_dh4: sbend, angle=thd5-thd0, l=ld5i;
+h5_d3: line=(odsfl,h5_dh3,odsfl);
+h5_d4: line=(odsfl,h5_dh4,odsfl);
+
+! The IR6 widdershins rotator, RHIC style
+yo5_introt : obel78d;
+yo5_brot : bpmv;
+yo5_rot_hlx1 : placeholder, l=lhelix;
+yo5_rot_hlx2 : placeholder, l=lhelix;
+yo5_rot_hlx3 : placeholder, l=lhelix;
+yo5_rot_hlx4 : placeholder, l=lhelix;
+yo5_rot:line=(odum1fl,
+ osnke,
+ yo5_rot_hlx4,
+ osnkm,
+ yo5_rot_hlx3,
+ osnkmm,
+ yo5_brot,
+ osnkmm,
+ yo5_rot_hlx2,
+ osnkm,
+ yo5_rot_hlx1,
+ osnke,
+ odum1fl);
+
+e275 = 275e9;
+p275 = sqrt(e275*e275-pmass*pmass*1e18);
 
 // Detector solenoid
 sol_rot = 0.025;
 sol_half: solenoid, l=2;
 star_detect_f: sol_half;
 star_detect_r: sol_half;
-prb_sol_f: yrotation, angle=+sol_rot;
-ptb_sol_f: translation, dx=-sol_half->l*sin(sol_rot);
-pre_sol_f: yrotation, angle=-sol_rot;
-l_sol_pf: line=(ptb_sol_f,prb_sol_f,star_detect_f,pre_sol_f);
-prb_sol_r: yrotation, angle=+sol_rot;
-pre_sol_r: yrotation, angle=-sol_rot;
-pte_sol_r: translation, dx=-sol_half->l*tan(sol_rot);
-l_sol_pr: line=(prb_sol_r,star_detect_r,pte_sol_r,pre_sol_r);
+pbr_sol_f: yrotation, angle=+sol_rot;
+pbt_sol_f: translation, dx=-sol_half->l*sin(sol_rot);
+per_sol_f: yrotation, angle=-sol_rot;
+l_sol_pf: line=(pbt_sol_f,pbr_sol_f,star_detect_f,per_sol_f);
+pbr_sol_r: yrotation, angle=+sol_rot;
+per_sol_r: yrotation, angle=-sol_rot;
+pet_sol_r: translation, dx=-sol_half->l*tan(sol_rot);
+l_sol_pr: line=(pbr_sol_r,star_detect_r,pet_sol_r,per_sol_r);
 
 // Extra offset since I don't want ot have a z_offset for the detector solenoid
 dz_sol_r = -sol_half->l*tan(sol_rot)*tan(0.5*sol_rot);
@@ -71,176 +124,191 @@ d1_pf: drift, l=ze/cos(ac) - sol_half->l + sol_half->l*sin(sol_rot)*tan(0.5*sol_
 lb0pf = 1.2;
 kb0pf := -8.12223828336297515E+00/beam->brho;
 b0pf: sbend, l=lb0pf, k0:=xb0hf*kb0pf, k1:=kb0pf;
-prb_b0pf: yrotation, angle=2.67043931616361939E-02;
-ptb_b0pf: translation, dx=-3.02264219559301335E-002;
-pre_b0pf: yrotation, angle=-ac;
-pte_b0pf: translation, dx=ze*tan(ac) - xb0hf;
-d2_pf: drift;
+pbr_b0pf: yrotation, angle=2.67043931616361939E-02;
+pbt_b0pf: translation, dx=-3.02264219559301335E-002;
+per_b0pf: yrotation, angle=-ac;
+pet_b0pf: translation, dx=ze*tan(ac) - xb0hf;
+o06w_b0_b0a: drift;
 b0apf: sbend, l=0.60;
-prb_b0apf: yrotation;
-ptb_b0apf: translation;
-pre_b0apf: yrotation;
-pte_b0apf: translation;
-d3_pf: drift;
+pbt_b0apf: translation;
+pbr_b0apf: yrotation;
+pet_b0apf: translation;
+per_b0apf: yrotation;
 // Q1 forward
-// Represented by three quadrupoles
-// oq1pf is the iron
-lq1pf_iron = 3.5;
-lq1pfbeg = +8.7768511358365120e-01;
-lq1apf = +9.0177077738536116e-01;
-lq1bpf = +1.1613766261661405e+00;
-lq1cpf = +1.1468521770041784e+00;
-lq1pf = lq1apf+lq1bpf+lq1cpf;
-lq1pfend = +9.1231530586066856e-01;
-oq1pf_1: drift, l=0.5*(lq1pf_iron-lq1pfbeg-lq1pf+lq1pfend);
-oq1pf_2: drift, l=0.5*(lq1pf_iron+lq1pfbeg-lq1pf-lq1pfend);
-fq1apf = +3.7547133404469496e-01;
-fq1bpf = +3.6124589607054558e-01;
-fq1cpf = +2.6328276988475935e-01;
-q1apf: quadrupole, l=lq1apf, k1:=kq1pf*lq1pf*fq1apf/lq1apf;
-q1bpf: quadrupole, l=lq1bpf, k1:=kq1pf*lq1pf*fq1bpf/lq1bpf;
-q1cpf: quadrupole, l=lq1cpf, k1:=kq1pf*lq1pf*fq1cpf/lq1cpf;
-q1pf: line=(oq1pf_1,q1cpf,q1bpf,q1apf,oq1pf_2);
-
-d5_pf: drift;
+q1apf: quadrupole, l=1.46;
+q1bpf: quadrupole, l=1.61;
+o06w_b0a_q1a: drift;
+o06w_q1a_q1b: drift;
+o06w_q1b_q2: drift;
+pbt_q1apf: translation;
+pbr_q1apf: yrotation;
+pet_q1apf: translation;
+per_q1apf: yrotation;
+pbt_q1bpf: translation;
+pbr_q1bpf: yrotation;
+pet_q1bpf: translation;
+per_q1bpf: yrotation;
+// Q2 forward
 q2pf: quadrupole, l=3.80;
-prb_q2pf: yrotation;
-ptb_q2pf: translation;
-pre_q2pf: yrotation;
-pte_q2pf: translation;
-d6_pf: drift;
+pbr_q2pf: yrotation;
+pbt_q2pf: translation;
+per_q2pf: yrotation;
+pet_q2pf: translation;
+o06w_q2_b1: drift;
 b1pf: sbend, l=3.00;
-prb_b1pf: yrotation;
-ptb_b1pf: translation;
-pre_b1pf: yrotation;
-pte_b1pf: translation;
-d7_pf: drift;
+pbr_b1pf: yrotation;
+pbt_b1pf: translation;
+per_b1pf: yrotation;
+pet_b1pf: translation;
+o06w_b1_b1a: drift;
 b1apf: sbend, l=1.50, k0:=0;
-prb_b1apf: yrotation;
-ptb_b1apf: translation;
-pre_b1apf: yrotation;
-pte_b1apf: translation;
+pbr_b1apf: yrotation;
+pbt_b1apf: translation;
+per_b1apf: yrotation;
+pet_b1apf: translation;
 
 // These are RHIC DX magnets
 b1pr: rbend, l=lcendx, angle=-17e-3;
 b2pr: rbend, l=lcendx, angle=+3.67453870996644781E-003;
 
 // New dipoles
-b2pf: sbend, l=4.4;
-b3pf: sbend, l=4.4;
+b_b2pf = 5;
+g_b2pf = b_b2pf*clight/p275;
+B2PF_TH = +1.67746301611395587E-002;
+b2pf: sbend, angle:=b2pf_th, l:=b2pf_th/g_b2pf, e1:=0.5*b2pf_th, e2:=0.5*b2pf_th;
 
 oint: drift, l=0.3;
 
 // Drifts from magnet to flange, new magnets
+o_crab_mag: drift, l=1.0;
+ow2c: drift, l=1.0;
+o_ffdet_wq: drift, l=0.3;
 ofl: drift, l=0.5;
 o2fl: drift, l=2*ofl->l;
 
 // Quads for proton forward
 q3pf: quadrupole, l=0.75;
-qf3_pf: quadrupole, l=lq3;
+
+h5_tv3: vkicker, l=0.25;
+o5_q3t3: drift, l=0.15;
 
 // Other drifts
 o2pr: drift;
 o3pr: drift;
 o10int_pr: drift, l=2.9798943330376915E-01; // Just to fit previous version
-d8_pf: drift, l=16.5;
 d9_pf: drift;
 
-l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds;
-o9injct:drift,l=l9injct;
+yo5_du9w: drift;
 
 // Drifts for rotators, snakes, and crabs
 o_crab_ip6f: placeholder, l=15.06;
 o_crab_ip6r: placeholder, l=15.2;
-o_snake_ip6: placeholder, l=l7dummy+2*ldum1fl;
-o_rotator_ip6f: placeholder, l=l7dummy+2*ldum1fl;
 o_rotator_ip6r: placeholder, l=l7dummy+2*ldum1fl;
 
 // Far-forward detectors
-ldz_roman_pot_ip6_1 = 4.03654156323990687E+000;
-ldz_roman_pot_ip6_2 = 6.03876768738732128E+000;
-ldz_off_mom_ip6_1 = 1.24458912846590426E+001;
-ldz_off_mom_ip6_2 = 1.44481174088064570E+001;
-l_roman_pot = 5e-2;
-l_off_mom = 1e-2;
-dz_det_f = 0.5;
-o8pf_1: drift, l=17 - dz_det_f - ldz_off_mom_ip6_2 - 0.5*l_off_mom;
-o8pf_2: drift, l=ldz_off_mom_ip6_2-ldz_off_mom_ip6_1-l_off_mom;
-o8pf_3: drift, l=ldz_off_mom_ip6_1-ldz_roman_pot_ip6_2-0.5*l_roman_pot-0.5*l_off_mom;
-o8pf_4: drift, l=ldz_roman_pot_ip6_2-ldz_roman_pot_ip6_1-l_roman_pot;
-o8pf_5: drift, l=ldz_roman_pot_ip6_1-0.5*l_roman_pot;
+l_roman_pot = 0.4;
+l_off_mom = 0.4;
+L_O06W_FFDET =  1.57324303218413384E+001;
+L_ROMAN_POT_IP6_1 = 3.93443677497362465E+000;
+L_ROMAN_POT_IP6_2 = 5.93644580300921554E+000;
+L_OFF_MOM_IP6_1 = 4.30920975911339599E-001;
+L_OFF_MOM_IP6_2 = 2.43293000394693104E+000;
+o06w_ffdet_1: drift, l=l_o06w_ffdet - l_roman_pot_ip6_2 - 0.5*l_roman_pot;
+o06w_ffdet_2: drift, l=l_roman_pot_ip6_2 - l_roman_pot_ip6_1 - l_roman_pot;
+o06w_ffdet_3: drift, l=l_roman_pot_ip6_1 - l_off_mom_ip6_2 - 0.5*l_roman_pot - 0.5*l_off_mom;
+o06w_ffdet_4: drift, l=l_off_mom_ip6_2 - l_off_mom_ip6_1 - l_off_mom;
+o06w_ffdet_5: drift, l=l_off_mom_ip6_1 - 0.5*l_off_mom;
 o_roman_pot_ip6_1: instrument, l=l_roman_pot;
 o_roman_pot_ip6_2: instrument, l=l_roman_pot;
 o_off_mom_ip6_1: instrument, l=l_off_mom;
 o_off_mom_ip6_2: instrument, l=l_off_mom;
-o8pf: line=(o8pf_1,o_off_mom_ip6_2,o8pf_2,o_off_mom_ip6_1,o8pf_3,o_roman_pot_ip6_2,o8pf_4,o_roman_pot_ip6_1,o8pf_5);
+o06w_ffdet: line=(
+ o06w_ffdet_1,
+ o_roman_pot_ip6_2,
+ o06w_ffdet_2,
+ o_roman_pot_ip6_1,
+ o06w_ffdet_3,
+ o_off_mom_ip6_2,
+ o06w_ffdet_4,
+ o_off_mom_ip6_1,
+ o06w_ffdet_5);
 
 // Proton forward, closer orbit near IR
 b1apf, k0 = -2.7*clight/p275;
 
+pt_ir6f = 1.23446182828266096E+009; // Transverse momentum passed by apertures at 275 GeV, for information only
 // Forward geometry
-D2_PF, L = +9.01271368225624814E-001;
-PTE_B0APF, DX = -3.35339011530041585E-003;
-PRE_B0APF, ANGLE = -5.04984917138313113E-003;
-PTB_B0APF, DX = -3.24124784149819637E-004;
-PRB_B0APF, ANGLE = +7.20840839611508726E-003;
-D3_PF, L =  3.83860454925630756E-001;
-D5_PF, L = +3.89069911377144806E-001;
-PTE_Q2PF, DX = -3.32802030065817295E-002;
-PRE_Q2PF, ANGLE = -8.50784348282005234E-003;
-PTB_Q2PF, DX = -4.90576945774339867E-003;
-PRB_Q2PF, ANGLE = +1.06608188932094290E-002;
-D6_PF, L = +5.01735480633649811E-001;
-PTE_B1PF, DX = -1.80369119489946148E-002;
-PRB_B1PF, ANGLE = +1.66206204176246215E-002;
-PTB_B1PF, DX = -1.51436449904647375E-002;
-PRE_B1PF, ANGLE = -5.50024340556791707E-003;
-D7_PF, L = +5.01695641782968327E-001;
-PTE_B1APF, DX = +1.96219812510122936E-003;
-PRE_B1APF, ANGLE = -2.11363048088140416E-002;
-PTB_B1APF, DX = -3.69732122116240500E-002;
-PRB_B1APF, ANGLE = +2.55526627114428841E-002;
-B2PF, ANGLE = +5.62846183687445902E-003*B2PF->L;
-D9_PF, L = +5.38366111361763799E+000;
-B3PF, ANGLE = +5.06214590826366620E-003*B3PF->L;
+O06W_B0_B0A, L = +9.01355477554346529E-001;
+PER_B0APF, ANGLE = -4.79526837272917575E-003;
+PET_B0APF, DX = -7.07644709986636217E-003;
+PBT_B0APF, DX = +3.55167875125531702E-003;
+PBR_B0APF, ANGLE = +6.95382429922527558E-003;
+O06W_B0A_Q1A, L = +4.00625976781881721E-001;
+PER_Q1APF, ANGLE = -7.98826111738371904E-003;
+PET_Q1APF, DX = -1.46541743845307985E-002;
+PBT_Q1APF, DX = +4.05100129015199643E-003;
+PBR_Q1APF, ANGLE = +6.76991821689610154E-003;
+O06W_Q1A_Q1B, L = +4.00595802354937192E-001;
+PER_Q1BPF, ANGLE = -1.40896591033368712E-002;
+PET_Q1BPF, DX = -2.17123002195576502E-002;
+PBT_Q1BPF, DX = +4.55926792834390748E-006;
+PBR_Q1BPF, ANGLE = +1.31823396410456796E-002;
+O06W_Q1B_Q2, L = +4.01021316761249025E-001;
+PER_Q2PF, ANGLE = -1.29375665895164887E-002;
+PET_Q2PF, DX = -4.51606753666673744E-002;
+PBT_Q2PF, DX = -1.13911524026461264E-002;
+PBR_Q2PF, ANGLE = +1.54675578235941632E-002;
+O06W_Q2_B1, L = +5.01544444449684046E-001;
+PER_B1PF, ANGLE = -1.47616950282712916E-003;
+PET_B1PF, DX = -1.48388644743147197E-002;
+PBT_B1PF, DX = -6.26995050224366315E-003;
+PBR_B1PF, ANGLE = +1.25961415820370938E-002;
+O06W_B1_B1A, L = +5.01685052345845039E-001;
+PER_B1APF, ANGLE = -1.93872500386404086E-002;
+PET_B1APF, DX = -1.70076228449223751E-002;
+PBT_B1APF, DX = -1.53904269666433752E-002;
+PBR_B1APF, ANGLE = +2.38034343387618329E-002;
+
+D9_PF, L = +2.00885835013063652E+000;
+YO5_DU9W, L = +6.76188541049515734E+000;
 
 // Geometric parameter values
 O2PR, L =  1.66686780884237962E+001;
 O3PR, L =  6.77592289451467789E+000;
 
 hsr6w: line=(
- yo5_int9_6,yo5_d9,o9injct,yo5_cq9,
+ yo5_int9_5,yo5_du9w,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
  yo5_int8_2,yo5_d8,yo5_int8_1,yo5_cq8_mod,
- o_snake_ip6,
- oint,
+ yo5_int7_2, yo5_snk7, yo5_int7_1,
  yo5_cq7_mod,
- o_rotator_ip6f,
- yo5_cqt6,
+ yo5_introt, yo5_rot, yo5_introt,
+ bi5_cq8,
  oint,
- ofl, b3pf, ofl,
+ h5_d4,
  oint,
  yo5_cqt4,
  oint,
  yo5_d5,
  oint,
- yo5_cqt5,
+ bo3_cq8,
  d9_pf,
- ofl, qf3_pf, ofl,
+ yi6_trp2, o_crab_mag,
  o_crab_ip6f,
- ofl, q3pf,
- o2fl, b2pf,
- o8pf,
- ptb_b1apf, prb_b1apf, b1apf, pte_b1apf, pre_b1apf,
- d7_pf,
- ptb_b1pf, prb_b1pf, b1pf, pte_b1pf, pre_b1pf,
- d6_pf,
- ptb_q2pf, prb_q2pf, q2pf, pte_q2pf, pre_q2pf,
- d5_pf,
- q1pf,
- d3_pf,
- ptb_b0apf, prb_b0apf, b0apf, pte_b0apf, pre_b0apf,
- d2_pf,
- ptb_b0pf, prb_b0pf, b0pf, pte_b0pf, pre_b0pf,
+ o_crab_mag, b2pf, ow2c, h5_tv3, o5_q3t3, q3pf, o_ffdet_wq,
+ o06w_ffdet,
+ pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
+ o06w_b1_b1a,
+ pbr_b1pf, pbt_b1pf, b1pf, pet_b1pf, per_b1pf,
+ o06w_q2_b1,
+ pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
+ o06w_q1b_q2,
+ pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
+ o06w_q1a_q1b,
+ pbr_q1apf, pbt_q1apf, q1apf, pet_q1apf, per_q1apf,
+ o06w_b0a_q1a,
+ pbr_b0apf, pbt_b0apf, b0apf, pet_b0apf, per_b0apf,
+ o06w_b0_b0a,
+ pbt_b0pf, pbr_b0pf, b0pf, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf);
 
