@@ -4,17 +4,17 @@ import re
 import sys
 import numpy
 
-def optimize(tao,chatty=False):
+def optimize(tao,method='lmdif',chatty=False):
     m0 = float(tao.cmd('python merit')[0])
     if chatty:
         print(m0,file=sys.stderr)
-    tao.cmd('run lmdif',raises=False)
+    tao.cmd(f'run {method}',raises=False)
     m1 = float(tao.cmd('python merit')[0])
     if chatty:
         print(m1,file=sys.stderr)
     while m1 > 0 and m1 < m0:
         m0 = m1
-        tao.cmd('run lmdif',raises=False)
+        tao.cmd(f'run {method}',raises=False)
         m1 = float(tao.cmd('python merit')[0])
         if chatty:
             print(m1,file=sys.stderr)
@@ -42,9 +42,11 @@ ir_var = ['use var '+v for v in (
     'ir10',
     'ir12',
     'ir2_u8',
-    'ir4_u9')]
+    'ir4_u9',
+    'sx_u1')]
 
 def strength_map(tao):
+    tao.cmd('set universe 1 on')
     tao.cmd('veto var *')
     for v in ir_var:
         tao.cmd(v)
@@ -56,7 +58,10 @@ def strength_map(tao):
         'Y_QTRIM_PS' : ('I',tao.evaluate('1@ele::y_qtrim_ps[i]')[0])}
     eav['YI3_QD6_PS'] = eav.pop('Y4_Q6_PS')
     eav['YI3_QF7_PS'] = eav.pop('Y4_Q7_PS')
+    eav['YI3_SXD1_PS'] = eav.pop('SXD_PS')
+    eav['YI3_SXF1_PS'] = eav.pop('SXF_PS')
     tao.cmd('veto var *')
+    tao.cmd('set universe 1 off')
     return eav
 
 def replace_bmad(filename,eav):
@@ -72,12 +77,33 @@ def replace_bmad(filename,eav):
     os.replace(filename,filename+'-')
     os.rename(filename+'+',filename)
 
+def replace_madx(filename,eav):
+    with open(filename,'r') as madx0, open(filename+'+','w') as madx1:
+        for l0 in madx0:
+            leav = re.match(r'^([a-z]\w*)[, =]',l0,re.I)
+            if leav and leav.group(1).upper() in eav:
+                e = leav.group(1).upper()
+                av = eav[e]
+                if av[0] == 'I':
+                    madx1.write(f'{e} = {av[1]:+24.17e};\n')
+                else:
+                    madx1.write(f'{e}, {av[0]} = {av[1]:+24.17e};\n')
+            else:
+                madx1.write(l0)
+    os.replace(filename,filename+'-')
+    os.rename(filename+'+',filename)
+
 ir_files = ('rhic','ir6','ir8c','ir10','ir12','ir2','ir4')
 
 def replace_all_bmad(ext,eav):
     for h in ir_files:
-        fn = h+'-str-'+ext+'.bmad'
+        fn = h+'-str'+ext+'.bmad'
         replace_bmad(fn,eav)
+
+def replace_all_madx(ext,eav):
+    for h in ir_files:
+        fn = h+'-str'+ext+'.madx'
+        replace_madx(fn,eav)
 
 def match_hsr(tao):
     tao.cmd('set universe 2 on')
@@ -237,6 +263,13 @@ def fit_tune(tao,tune_goal,dI=(10.0,10.0)):
         e0 = e1
         r = fit_tune1(tao,tune_goal,I,dI)
         e1 = sum((r[0]-tune_goal)**2)
+    tao.cmd('set universe 1 on')
+    tao.cmd('veto var *')
+    tao.cmd('veto dat *@*')
+    tao.cmd('use var sx_u1')
+    tao.cmd('use dat 1@chrom')
+    optimize(tao,method='lm')
+    tao.cmd('set universe 1 off')
     return I
 
 tao = pytao.Tao()
