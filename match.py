@@ -34,10 +34,55 @@ def replace(filename):
     os.replace(filename,filename+'-')
     os.rename(filename+'+',filename)
     
+ir_var = ['use var '+v for v in (
+    'ir6w_u2[5,6,8:11]',
+    'ir6d_u3[5:7,9:11]',
+    'ir8w_u4[17:]',
+    'ir8d_u5[6,8,9,11,13:16]',
+    'ir10',
+    'ir12',
+    'ir2_u8',
+    'ir4_u9')]
+
+def strength_map(tao):
+    tao.cmd('veto var *')
+    for v in ir_var:
+        tao.cmd(v)
+    eav = { x[0] : (x[1],float(x[2])) for x in 
+            [ re.match(r'^([a-z]\w*)\[([a-z]\w*)\] *= *([-+0-9e.]+)',l,re.I).group(1,2,3)
+              for l in tao.cmd('sho var -bmad -good') ] }
+    eav |= {
+        'Y_QMAIN_PS' : ('I',tao.evaluate('1@ele::y_qmain_ps[i]')[0]),
+        'Y_QTRIM_PS' : ('I',tao.evaluate('1@ele::y_qtrim_ps[i]')[0])}
+    eav['YI3_QD6_PS'] = eav.pop('Y4_Q6_PS')
+    eav['YI3_QF7_PS'] = eav.pop('Y4_Q7_PS')
+    tao.cmd('veto var *')
+    return eav
+
+def replace_bmad(filename,eav):
+    with open(filename,'r') as bmad0, open(filename+'+','w') as bmad1:
+        for l0 in bmad0:
+            leav = re.match(r'^([a-z]\w*)\[([a-z]\w*)\] *= *([-+0-9e.]+)',l0,re.I)
+            if leav and leav.group(1).upper() in eav:
+                e = leav.group(1).upper()
+                av = eav[e]
+                bmad1.write(f'{e}[{av[0]}] = {av[1]:+24.17e}\n')
+            else:
+                bmad1.write(l0)
+    os.replace(filename,filename+'-')
+    os.rename(filename+'+',filename)
+
+ir_files = ('rhic','ir6','ir8c','ir10','ir12','ir2','ir4')
+
+def replace_all_bmad(ext,eav):
+    for h in ir_files:
+        fn = h+'-str-'+ext+'.bmad'
+        replace_bmad(fn,eav)
+
 def match_hsr(tao):
     tao.cmd('set universe 2 on')
     tao.cmd('set def uni=2')
-    tao.cmd('use var ir6w_u2[5,6,8:11]')
+    tao.cmd(ir_var[0])
     tao.cmd('use dat ir6w.arc')
     residual = [0.0 for i in range(0,8)]
     residual[0] = optimize(tao)
@@ -46,7 +91,7 @@ def match_hsr(tao):
     tao.cmd('veto dat *')
     tao.cmd('set universe 3 on')
     tao.cmd('set def uni=3')
-    tao.cmd('use var ir6d_u3[5:7,9:11]')
+    tao.cmd(ir_var[1])
     tao.cmd('use dat ir6d.arc')
     residual[1] = optimize(tao)
     tao.cmd('set universe 3 off')
@@ -54,7 +99,7 @@ def match_hsr(tao):
     tao.cmd('veto dat *')
     tao.cmd('set universe 4 on')
     tao.cmd('set def uni=4')
-    tao.cmd('use var ir8w_u4[17:]')
+    tao.cmd(ir_var[2])
     tao.cmd('use dat ir8w.arc')
     residual[2] = optimize(tao)
     tao.cmd('set universe 4 off')
@@ -62,7 +107,7 @@ def match_hsr(tao):
     tao.cmd('veto dat *')
     tao.cmd('set universe 5 on')
     tao.cmd('set def uni=5')
-    tao.cmd('use var ir8d_u5[6,8,9,11,13:16]')
+    tao.cmd(ir_var[3])
     tao.cmd('use dat ir8d.arc')
     tao.cmd('use dat ir8d.ir')
     residual[3] = optimize(tao)
@@ -72,7 +117,7 @@ def match_hsr(tao):
     tao.cmd('set global var_limits_on=f')
     tao.cmd('set universe 6 on')
     tao.cmd('set def uni=6')
-    tao.cmd('use var ir10')
+    tao.cmd(ir_var[4])
     tao.cmd('use dat ir10.fit[2:]')
     tao.cmd('use dat ir10.sym')
     residual[4] = optimize(tao)
@@ -81,7 +126,7 @@ def match_hsr(tao):
     tao.cmd('veto dat *')
     tao.cmd('set universe 7 on')
     tao.cmd('set def uni=7')
-    tao.cmd('use var ir12')
+    tao.cmd(ir_var[5])
     tao.cmd('use dat ir12.fit')
     tao.cmd('use dat ir12.sym')
     residual[5] = optimize(tao)
@@ -90,7 +135,7 @@ def match_hsr(tao):
     tao.cmd('veto dat *')
     tao.cmd('set universe 8 on')
     tao.cmd('set def uni=8')
-    tao.cmd('use var ir2_u8')
+    tao.cmd(ir_var[6])
     tao.cmd('use dat ir2.kicker')
     tao.cmd('use dat ir2.center')
     residual[6] = optimize(tao)
@@ -99,7 +144,7 @@ def match_hsr(tao):
     tao.cmd('veto dat *')
     tao.cmd('set universe 9 on')
     tao.cmd('set def uni=9')
-    tao.cmd('use var ir4_u9')
+    tao.cmd(ir_var[7])
     tao.cmd('use dat ir4.fit')
     tao.cmd('use dat ir4.sym')
     residual[7] = optimize(tao)
