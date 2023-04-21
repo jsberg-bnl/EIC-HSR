@@ -10,8 +10,8 @@ sxf_ps: overlay={
  yi7_sxf2_ps[i] : +i,
  yo9_sxf1_ps[i] : +i,
  yo9_sxf2_ps[i] : +i,
- yi11_sxf1_ps[i] : -i,
- yi11_sxf2_ps[i] : -i}, var={i}, i=yi3_sxf1_ps[i]
+ yi11_sxf1_ps[i] : +i,
+ yi11_sxf2_ps[i] : +i}, var={i}, i=yi3_sxf1_ps[i]
 sxd_ps: overlay={
  bi1_sxd1_ps[i] : -i,
  bi1_sxd2_ps[i] : -i,
@@ -23,5 +23,5 @@ sxd_ps: overlay={
  yi7_sxd2_ps[i] : +i,
  yo9_sxd1_ps[i] : +i,
  yo9_sxd2_ps[i] : +i,
- yi11_sxd1_ps[i] : -i,
- yi11_sxd2_ps[i] : -i}, var={i}, i=yi3_sxd1_ps[i]
+ yi11_sxd1_ps[i] : +i,
+ yi11_sxd2_ps[i] : +i}, var={i}, i=yi3_sxd1_ps[i]
