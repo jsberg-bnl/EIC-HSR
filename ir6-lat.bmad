@@ -64,6 +64,27 @@ yo5_rot:line=(odum1fl,
  osnke,
  odum1fl)
 
+! The IR6 deisul rotator, RHIC style
+yi6_introt : obel78d
+yi6_brot : bpmv
+yi6_rot_hlx1 : pipe, l=lhelix
+yi6_rot_hlx2 : pipe, l=lhelix
+yi6_rot_hlx3 : pipe, l=lhelix
+yi6_rot_hlx4 : pipe, l=lhelix
+yi6_rot:line=(odum1fl,
+ osnke,
+ yi6_rot_hlx4,
+ osnkm,
+ yi6_rot_hlx3,
+ osnkmm,
+ yi6_brot,
+ osnkmm,
+ yi6_rot_hlx2,
+ osnkm,
+ yi6_rot_hlx1,
+ osnke,
+ odum1fl)
+
 e275 = 275e9
 p275 = sqrt(e275*e275-m_proton*m_proton)
 
@@ -309,7 +330,7 @@ hsr6d: line=(
  q5pr, ofl,
  o3pr,
  yi6_cqt4,
- o_rotator_ip6r,
+ yi6_rot,
  yi6_cqt5,
  ofl, b2pr, ofl,
  yi6_cqt6,
