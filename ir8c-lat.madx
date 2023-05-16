@@ -148,8 +148,25 @@ dds02: drift, l=ldds02 + b2_shift*sin(thbxds01a) + 2*lbxds01a*sinc(0.5*thbxds01a
 
 o_crab_ir8d: placeholder, l=20;
 o_crab_ir8w: placeholder, l=20;
-spin_rotator : placeholder, l = 12.9;
-snake : placeholder, l = 12.9;
+ohlxint8: drift, l=0.5*(12.9-l7dummy)-ldum1fl;
+yi7_brot : bpmv;
+yi7_rot_hlx1 : placeholder, l=lhelix;
+yi7_rot_hlx2 : placeholder, l=lhelix;
+yi7_rot_hlx3 : placeholder, l=lhelix;
+yi7_rot_hlx4 : placeholder, l=lhelix;
+yo8_brot : bpmv;
+yo8_rot_hlx1 : placeholder, l=lhelix;
+yo8_rot_hlx2 : placeholder, l=lhelix;
+yo8_rot_hlx3 : placeholder, l=lhelix;
+yo8_rot_hlx4 : placeholder, l=lhelix;
+yo8_bsnk : bpmv;
+yo8_snk_hlx1 : placeholder, l=lhelix;
+yo8_snk_hlx2 : placeholder, l=lhelix;
+yo8_snk_hlx3 : placeholder, l=lhelix;
+yo8_snk_hlx4 : placeholder, l=lhelix;
+yi7_rot:line=(odum1fl,osnke,yi7_rot_hlx4,osnkm,yi7_rot_hlx3,osnkmm,yi7_brot,osnkmm,yi7_rot_hlx2,osnkm,yi7_rot_hlx1,osnke,odum1fl);
+yo8_rot:line=(odum1fl,osnke,yo8_rot_hlx4,osnkm,yo8_rot_hlx3,osnkmm,yo8_brot,osnkmm,yo8_rot_hlx2,osnkm,yo8_rot_hlx1,osnke,odum1fl);
+yo8_snk:line=(odum1fl,osnke,yo8_snk_hlx4,osnkm,yo8_snk_hlx3,osnkmm,yo8_bsnk,osnkmm,yo8_snk_hlx2,osnkm,yo8_snk_hlx1,osnke,odum1fl);
 
 mpot1i: marker;
 mpot1: marker;
@@ -169,7 +186,7 @@ ffus_3 : line = (
  qus04,
  drq,
  dus06n,
- spin_rotator,
+ ohlxint8,yo8_rot,ohlxint8,
  dus06n,
  drq,
  qus05,
@@ -183,7 +200,7 @@ ffus_3 : line = (
  qus06,
  drq,
  dus07n,
- snake,
+ ohlxint8,yo8_snk,ohlxint8,
  dus07n,
  drq,
  qus07,
@@ -285,7 +302,7 @@ ffds_4: line=(
  drq,
  qds06,
  drq,
- spin_rotator,
+ ohlxint8,yi7_rot,ohlxint8,
  drq,
  qds05,
  drq,
