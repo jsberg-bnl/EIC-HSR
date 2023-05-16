@@ -3680,9 +3680,6 @@ bo11_du4:line=(odum1fl,
 bo11_du6:line=(odum2fl,
  o6dummy,
  odum1fl);
-bo11_du7:line=(odum1fl,
- o7dummy,
- odum1fl);
 bo11_du9:line=(odum2fl,
  o9dummy,
  odum1fl);
@@ -6632,9 +6629,8 @@ mat11b:line=(bo11_int9_3,
  bo11_d8,
  bo11_int8_1,
  bo11_cq8,
- bo11_int7_2,
- bo11_du7,
- bo11_int7_1,
+ bo11_int7_2);
+ins11b:line=(bo11_int7_1,
  bo11_cq7,
  bo11_int6_3,
  bo11_d6,

@@ -601,7 +601,8 @@ arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
 mat01b = line('b','bi1_int9_3','bi1_cq7',db)
 ins10b = line('b','bo10_trp1','bo10_int9_3',db)
-mat11b = line('b','bo11_int9_3','bo11_cqt4',db)
+mat11b = line('b','bo11_int9_3','bo11_int7_2',db)
+ins11b = line('b','bo11_int7_1','bo11_cqt4',db)
 trp11b = line('b','bo11_trp3','bo11_trp1',db)
 trp12b = line('b','bi12_trp1','bi12_trp3',db)
 mat12b = line('b','bi12_cqt4','bi12_int9_3',db)
@@ -618,7 +619,7 @@ ins11y = line('y','yi11_int9_3','yi11_trp1',db)
 # Lines carried over from RHIC
 line_list = [
     arc01b,arc03y,arc05y,arc07y,arc09y,arc11b,arc11y,
-    mat03y,trp03y,trp04y,mat04y,ins09y,ins10b,ins10y,mat11b,trp11b,ins11y,trp12b,mat12b]
+    mat03y,trp03y,trp04y,mat04y,ins09y,ins10b,ins10y,mat11b,ins11b,trp11b,ins11y,trp12b,mat12b]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 

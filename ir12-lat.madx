@@ -36,6 +36,25 @@ scol_h3_1: rcollimator;
 scol_h3_2: rcollimator;
 pcol_h4: rcollimator;
 
+bo11_bsnk : bpmv;
+bo11_snk_hlx1 : placeholder, l=lhelix;
+bo11_snk_hlx2 : placeholder, l=lhelix;
+bo11_snk_hlx3 : placeholder, l=lhelix;
+bo11_snk_hlx4 : placeholder, l=lhelix;
+bo11_snk7:line=(odum1fl,
+ osnke,
+ bo11_snk_hlx4,
+ osnkm,
+ bo11_snk_hlx3,
+ osnkmm,
+ bo11_bsnk,
+ osnkmm,
+ bo11_snk_hlx2,
+ osnkm,
+ bo11_snk_hlx1,
+ osnke,
+ odum1fl);
+
 bo11_du3_hsr:line=(obsk11ib,
  bo11_sv4,
  o3b11c0,
