@@ -1,3 +1,11 @@
+// Snake
+bi1_bsnk : bpmv;
+bi1_snk_hlx1 : placeholder, l=lhelix;
+bi1_snk_hlx2 : placeholder, l=lhelix;
+bi1_snk_hlx3 : placeholder, l=lhelix;
+bi1_snk_hlx4 : placeholder, l=lhelix;
+bi1_snk7:line=(odum1fl,osnke,bi1_snk_hlx4,osnkm,bi1_snk_hlx3,osnkmm,bi1_bsnk,osnkmm,bi1_snk_hlx2,osnkm,bi1_snk_hlx1,osnke,odum1fl);
+
 // RHIC lines
 ins01b: line=(bi1_int9_3,
  bi1_d9,
@@ -10,7 +18,7 @@ ins01b: line=(bi1_int9_3,
  bi1_int8_1,
  bi1_cq8,
  bi1_int7_2,
- bi1_du7,
+ bi1_snk7,
  bi1_int7_1);
 
 ins02y: line=(yi2_int7_1,
