@@ -1,0 +1,26 @@
+set global lattice_calc_on=f
+set branch [6:]@0 geometry=closed
+set ele [2:3]@0 s = 0
+set particle_start [2:5]@x = 0
+set particle_start [2:5]@px = 0
+set ele [2:3]@0 eta_x = 0
+set ele [2:3]@0 etap_x = 0
+set ele [2:3]@0 beta_a = 80e-2
+set ele [2:3]@0 alpha_a = 0
+set ele [2:3]@0 beta_b = 7.2e-2
+set ele [2:3]@0 alpha_b = 0
+set ele 4@0 eta_x = 8@lat::eta.x[0]
+set ele 4@0 etap_x = 8@lat::etap.x[0]
+set ele 4@0 beta_a = 8@lat::beta.a[0]
+set ele 4@0 alpha_a = 8@lat::alpha.a[0]
+set ele 4@0 beta_b = 8@lat::beta.b[0]
+set ele 4@0 alpha_b = 8@lat::alpha.b[0]
+set ele 5@0 eta_x = 10@lat::eta.x[0]
+set ele 5@0 etap_x = 10@lat::etap.x[0]
+set ele 5@0 beta_a = 10@lat::beta.a[0]
+set ele 5@0 alpha_a = 10@lat::alpha.a[0]
+set ele 5@0 beta_b = 10@lat::beta.b[0]
+set ele 5@0 alpha_b = 10@lat::alpha.b[0]
+set global lattice_calc_on=t
+call '../../hsr-plot.tao'
+set global plot_on=t
