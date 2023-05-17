@@ -1,4 +1,4 @@
-call, file='hsr.bmad'
+call, file='../../hsr.bmad'
 
 call, file='rhic-str-275-10.bmad'
 call, file='ir2-str-275-10.bmad'
