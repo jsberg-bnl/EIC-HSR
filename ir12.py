@@ -17,18 +17,19 @@ rhodx=196.1858025048003
 thd0=asin(sin(alpha) + lcendx/rhodx - lcend0/rhod0)
 thdx=asin(sin(alpha) + lcendx/rhodx)
 # 
-lwd = 5
+lwd = 6
 lwc = 2
 lw12 = lwc-lpld0q1
-z0 = lcenxdx+lcendx+lcendxd0+lcend0
-x0 = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0))
 
 def fth(thh):
-    return lw12*sin(thh-thd0) + lwd*sin(0.5*(thh-thd0))/cos(0.25*thh) - z0*sin(thh) + x0*cos(thh)
+    return lw12*sin(thh-thd0) + lwd*sin(0.5*(thh-thd0)) \
+        - lcenxdx*sin(thh) - lcendx*sin(thh-0.5*thdx)/cos(0.5*thdx) \
+        - lcendxd0*sin(thh-thdx)/cos(thdx) - lcend0*sin(thh-0.5*(thdx+thd0))/cos(0.5*(thdx+thd0))
 
 def dth(thh):
-    return lw12*cos(thh-thd0) + 0.5*lwd*cos(0.5*(thh-thd0))/cos(0.25*thh) \
-        + 0.25*lwd*sin(0.5*(thh-thd0))*tan(0.25*thh)/cos(0.25*thh) - z0*cos(thh) - x0*sin(thh)
+    return lw12*cos(thh-thd0) + 0.5*lwd*cos(0.5*(thh-thd0)) \
+        - lcenxdx*cos(thh) - lcendx*cos(thh-0.5*thdx)/cos(0.5*thdx) \
+        - lcendxd0*cos(thh-thdx)/cos(thdx) - lcend0*cos(thh-0.5*(thdx+thd0))/cos(0.5*(thdx+thd0))
 
 thh = thd0
 e1 = fth(thh)

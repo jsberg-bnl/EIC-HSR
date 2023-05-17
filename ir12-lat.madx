@@ -1,29 +1,19 @@
-thh12 = +9.37652843743953107e-03;
+thh12 = +9.51655616279081969e-03;
 ltrpwd12x = lwc-lpld0q1;
+lwd12 = 6;
 
-ll12 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd12x*cos(thd0) - lwd*cos(0.5*thd0)/cos(0.25*thh12));
+ll12 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd12x*cos(thd0) - lwd12*cos(0.5*thd0));
 lh12 = 2*(lcenxdx*cos(thh12) + lcendx*cos(0.5*thdx-thh12)/cos(0.5*thdx) + lcendxd0*cos(thdx-thh12)/cos(thdx)
- + lcend0*cos(0.5*(thdx+thd0)-thh12)/cos(0.5*(thdx+thd0)) - ltrpwd12x*cos(thh12-thd0) - lwd*cos(0.5*(thh12-thd0))/cos(0.25*thh12));
+ + lcend0*cos(0.5*(thdx+thd0)-thh12)/cos(0.5*(thdx+thd0)) - ltrpwd12x*cos(thh12-thd0) - lwd12*cos(0.5*(thh12-thd0)));
 
 otrpwd12: drift, l=lwc-(lflq1x+lbq1);
 oh12: drift, l=lh12;
 ol12: drift, l=ll12;
 
-dsw_ir12: sbend, l=lwd;
-dwarm_ir12: sbend, l=lwd, k0=2*sin(0.5*(thh12-thd0))*cos(0.25*thh12)/lwd;
-dwarm_ir12_41: sbend, l=lwd, k0=2*sin(0.5*thd0)*cos(0.25*thh12)/lwd;
-
-prd_dsw_12: yrotation, angle=0.25*thh12-0.5*thd0;
-ptw_dsw_12h: translation, dx=-lwd*tan(0.25*thh12);
-ptw_dsw_12l: translation, dx=-ptw_dsw_12h->dx;
-prw_dsw_12h: yrotation, angle=0.75*thh12-0.5*thd0;
-prw_dsw_12l: yrotation, angle=-0.25*thh12-0.5*thd0;
-prd_dw_12h: yrotation, angle=-prw_dsw_12h->angle;
-prd_dw_12l: prw_dsw_12l;
-ptd_dw_12h: ptw_dsw_12h;
-ptd_dw_12l: translation, dx=-ptw_dsw_12l->dx;
-prw_dw_12h: yrotation, angle=-prd_dsw_12->angle;
-prw_dw_12l: prd_dsw_12;
+dsw_ir12h: sbend, l=lwd12/sinc(0.5*(thh12-thd0)), angle=-(thh12-thd0), e1=-0.5*(thh12-thd0), e2=-0.5*(thh12-thd0);
+dsw_ir12l: sbend, l=lwd12/sinc(0.5*thd0), angle=thd0, e1=0.5*thd0, e2=0.5*thd0;
+dwarm_ir12h: dsw_ir12h, angle=-dsw_ir12h->angle, e1=-dsw_ir12h->e1, e2=-dsw_ir12h->e2;
+dwarm_ir12l: dsw_ir12l;
 
 lcolkfbh = 0.5;
 lcolps = 20;
@@ -142,7 +132,5 @@ g12_duxd: line=(g12_bsx_1,
  g12_svx_2,
  obsk12lg);
 
-ir12d: line=(dsw_ir12,prd_dsw_12,otrpwd12);
-
-ir12: line=(otrpwd12,prw_dw_12h,dwarm_ir12,ptd_dw_12h,prd_dw_12h,oh12,prw_dsw_12h,ptw_dsw_12h,ir12d);
-ir12_41: line=(otrpwd12,prw_dw_12l,dwarm_ir12_41,ptd_dw_12l,prd_dw_12l,ol12,prw_dsw_12l,ptw_dsw_12l,ir12d);
+ir12: line=(otrpwd12,dwarm_ir12h,oh12,dsw_ir12h,otrpwd12);
+ir12_41: line=(otrpwd12,dwarm_ir12l,ol12,dsw_ir12l,otrpwd12);

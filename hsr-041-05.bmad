@@ -4,7 +4,6 @@ e041 = 41e9
 p041 = sqrt(e041^2-m_proton^2)
 
 dsw_ir10[dg] = -dwarm_ir10_41[dg]
-dsw_ir12[dg] = dwarm_ir12_41[dg]
 
 call, file='rhic-str-041-05.bmad'
 call, file='ir2-str-041-05.bmad'

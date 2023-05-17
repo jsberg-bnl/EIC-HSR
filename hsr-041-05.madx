@@ -4,7 +4,6 @@ call, file='ir12-ps.madx';
 beam, energy=41, particle=antiproton;
 
 dsw_ir10, k0 = -dwarm_ir10_41->k0;
-dsw_ir12, k0 = +dwarm_ir12_41->k0;
 
 call, file='rhic-str-041-05.madx';
 call, file='ir2-str-041-05.madx';
