@@ -95,14 +95,14 @@ def replace_madx(filename,eav):
 
 ir_files = ('rhic','ir6','ir8c','ir10','ir12','ir2','ir4')
 
-def replace_all_bmad(ext,eav):
+def replace_all_bmad(eav):
     for h in ir_files:
-        fn = h+'-str'+ext+'.bmad'
+        fn = h+'.bmad'
         replace_bmad(fn,eav)
 
-def replace_all_madx(ext,eav):
+def replace_all_madx(eav):
     for h in ir_files:
-        fn = h+'-str'+ext+'.madx'
+        fn = h+'.madx'
         replace_madx(fn,eav)
 
 def match_hsr(tao):
@@ -266,7 +266,7 @@ def fit_tune(tao,tune_goal,dI=(10.0,10.0)):
     tao.cmd('set universe 1 on')
     tao.cmd('veto var *')
     tao.cmd('veto dat *@*')
-    tao.cmd('use var sx_u1')
+    tao.cmd('use var sx')
     tao.cmd('use dat 1@chrom')
     optimize(tao,method='lm')
     tao.cmd('set universe 1 off')
