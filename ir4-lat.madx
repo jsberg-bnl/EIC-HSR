@@ -1,3 +1,4 @@
+lwd04 = 5;
 lseptum = 2;
 lhjet = 2;
 lpc = 2.5;
@@ -19,8 +20,8 @@ lk197 = 5 - lcktufl;
 li28 = 0.5;
 li197 = 0.5;
 
-dwarm3: sbend, angle=-thwdir4, l=lwd/sinc(0.5*thwdir4), e1=-0.5*thwdir4, e2=-0.5*thwdir4;
-dwarm4: sbend, angle=+thwdir4, l=lwd/sinc(0.5*thwdir4), e1=+0.5*thwdir4, e2=+0.5*thwdir4;
+dwarm3: sbend, angle=-thwdir4, l=lwd04/sinc(0.5*thwdir4), e1=-0.5*thwdir4, e2=-0.5*thwdir4;
+dwarm4: sbend, angle=+thwdir4, l=lwd04/sinc(0.5*thwdir4), e1=+0.5*thwdir4, e2=+0.5*thwdir4;
 
 warm_quad3: quadrupole, l=lqwir4;
 warm_quad4: quadrupole, l=lqwir4;

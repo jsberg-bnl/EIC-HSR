@@ -1,3 +1,4 @@
+lwd04 = 5
 lseptum = 2
 lhjet = 2
 lpc = 2.5
@@ -22,13 +23,13 @@ li197 = 0.5
 dwarm3: sbend
 dwarm4: sbend
 ov_dwarm3: overlay={
- dwarm3[l] : lwd/sinc(0.5*angle),
- dwarm3[g] : 2*sin(0.5*angle)/lwd,
+ dwarm3[l] : lwd04/sinc(0.5*angle),
+ dwarm3[g] : 2*sin(0.5*angle)/lwd04,
  dwarm3[e1] : 0.5*angle,
  dwarm3[e2] : 0.5*angle}, var={angle}, angle=-thwdir4
 ov_dwarm4: overlay={
- dwarm4[l] : lwd/sinc(0.5*angle),
- dwarm4[g] : 2*sin(0.5*angle)/lwd,
+ dwarm4[l] : lwd04/sinc(0.5*angle),
+ dwarm4[g] : 2*sin(0.5*angle)/lwd04,
  dwarm4[e1] : 0.5*angle,
  dwarm4[e2] : 0.5*angle}, var={angle}, angle=+thwdir4
 

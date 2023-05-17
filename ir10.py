@@ -18,20 +18,21 @@ lbeld0q1=lpld0q1-ld0fla-lflq1x-lbq1
 thd0=asin(sin(alpha) + lcendx/rhodx - lcend0/rhod0)
 thdx=asin(sin(alpha) + lcendx/rhodx)
 # 
-lwd = 5
+lwd = 6
 lcav = 5.211
 ltrpcav = 0.370
 lwc = 2
 lw10 = ltrpcav+lcav+lwc+lflq1x+lbq1-lpld0q1
-z0 = lcenxdx+lcendx+lcendxd0+lcend0
-x0 = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0))
 
 def fth(thl):
-    return lw10*sin(thl-thd0) + lwd*sin(0.5*(thl-thd0))/cos(0.25*thl) - z0*sin(thl) + x0*cos(thl)
+    return lw10*sin(thl-thd0) + lwd*sin(0.5*(thl-thd0)) \
+        - lcenxdx*sin(thl) - lcendx*sin(thl-0.5*thdx)/cos(0.5*thdx) \
+        - lcendxd0*sin(thl-thdx)/cos(thdx) - lcend0*sin(thl-0.5*(thdx+thd0))/cos(0.5*(thdx+thd0))
 
 def dth(thl):
-    return lw10*cos(thl-thd0) + 0.5*lwd*cos(0.5*(thl-thd0))/cos(0.25*thl) \
-        + 0.25*lwd*sin(0.5*(thl-thd0))*tan(0.25*thl)/cos(0.25*thl) - z0*cos(thl) - x0*sin(thl)
+    return lw10*cos(thl-thd0) + 0.5*lwd*cos(0.5*(thl-thd0)) \
+        - lcenxdx*cos(thl) - lcendx*cos(thl-0.5*thdx)/cos(0.5*thdx) \
+        - lcendxd0*cos(thl-thdx)/cos(thdx) - lcend0*cos(thl-0.5*(thdx+thd0))/cos(0.5*(thdx+thd0))
 
 thl = thd0
 e1 = fth(thl)

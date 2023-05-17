@@ -1,17 +1,16 @@
 thh12 = +9.51655616279081969e-03;
 ltrpwd12x = lwc-lpld0q1;
-lwd12 = 6;
 
-ll12 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd12x*cos(thd0) - lwd12*cos(0.5*thd0));
+ll12 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd12x*cos(thd0) - lwd*cos(0.5*thd0));
 lh12 = 2*(lcenxdx*cos(thh12) + lcendx*cos(0.5*thdx-thh12)/cos(0.5*thdx) + lcendxd0*cos(thdx-thh12)/cos(thdx)
- + lcend0*cos(0.5*(thdx+thd0)-thh12)/cos(0.5*(thdx+thd0)) - ltrpwd12x*cos(thh12-thd0) - lwd12*cos(0.5*(thh12-thd0)));
+ + lcend0*cos(0.5*(thdx+thd0)-thh12)/cos(0.5*(thdx+thd0)) - ltrpwd12x*cos(thh12-thd0) - lwd*cos(0.5*(thh12-thd0)));
 
 otrpwd12: drift, l=lwc-(lflq1x+lbq1);
 oh12: drift, l=lh12;
 ol12: drift, l=ll12;
 
-dsw_ir12h: sbend, l=lwd12/sinc(0.5*(thh12-thd0)), angle=-(thh12-thd0), e1=-0.5*(thh12-thd0), e2=-0.5*(thh12-thd0);
-dsw_ir12l: sbend, l=lwd12/sinc(0.5*thd0), angle=thd0, e1=0.5*thd0, e2=0.5*thd0;
+dsw_ir12h: sbend, l=lwd/sinc(0.5*(thh12-thd0)), angle=-(thh12-thd0), e1=-0.5*(thh12-thd0), e2=-0.5*(thh12-thd0);
+dsw_ir12l: sbend, l=lwd/sinc(0.5*thd0), angle=thd0, e1=0.5*thd0, e2=0.5*thd0;
 dwarm_ir12h: dsw_ir12h, angle=-dsw_ir12h->angle, e1=-dsw_ir12h->e1, e2=-dsw_ir12h->e2;
 dwarm_ir12l: dsw_ir12l;
 
