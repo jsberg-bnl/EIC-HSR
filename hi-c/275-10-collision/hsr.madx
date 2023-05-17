@@ -2,13 +2,13 @@ chdir, dir='../..';
 call, file='hsr.madx';
 chdir, dir='hi-c/275-10-collision';
 
-call, file='rhic-str-275-10.madx';
-call, file='ir2-str-275-10.madx';
-call, file='ir4-str-275-10.madx';
-call, file='ir6-str-275-10.madx';
-call, file='ir8c-str-275-10.madx';
-call, file='ir10-str-275-10.madx';
-call, file='ir12-str-275-10.madx';
+call, file='rhic.madx';
+call, file='ir2.madx';
+call, file='ir4.madx';
+call, file='ir6.madx';
+call, file='ir8c.madx';
+call, file='ir10.madx';
+call, file='ir12.madx';
 
 beam, energy=275, particle=antiproton;
 use, sequence=hsr;
