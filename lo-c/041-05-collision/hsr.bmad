@@ -1,0 +1,16 @@
+call, file='../../hsr.bmad'
+call, file='../ir12-ps.bmad'
+e041 = 41e9
+p041 = sqrt(e041^2-m_proton^2)
+
+call, file='rhic.bmad'
+call, file='ir2.bmad'
+call, file='ir4.bmad'
+call, file='ir6.bmad'
+call, file='ir8c.bmad'
+call, file='ir10.bmad'
+call, file='ir12.bmad'
+
+parameter[e_tot] = e041
+
+use, hsr41
