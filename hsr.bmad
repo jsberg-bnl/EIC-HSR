@@ -29,7 +29,7 @@ beginning[x_position] = -rhic_rip + dx0_eic_ip6
 beginning[theta_position] = dtheta0_eic_ip6 + pi
 
 hsr_hi_n: line=(ip6d,hsr6d,
- arc07y,ins07y,ir08n,ins09y,arc09y,
+ arc07y,ins07y,ir08n,ins08y,arc09y,
  ins09y,ir10,ins10b,
  arc11b,
  mat11b,bo11_snk7,ins11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
