@@ -1,0 +1,31 @@
+chdir, dir='../..';
+call, file='hsr.madx';
+chdir, dir='hi-n/275-10-collision';
+
+call, file='rhic.madx';
+call, file='ir2.madx';
+call, file='ir4.madx';
+call, file='ir6.madx';
+call, file='ir8n.madx';
+call, file='ir10.madx';
+call, file='ir12.madx';
+
+beam, energy=275, particle=antiproton;
+use, sequence=hsr_hi_n;
+
+rhic_rip = 590.581639053215;
+dx0_eic_ip6 = +0.81;
+dtheta0_eic_ip6 = -0.017;
+
+set, format="10d", "25.17e", "-24s";
+select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
+survey, file='hsr-survey.tfs',
+ x0 = -(rhic_rip - dx0_eic_ip6),
+ z0 = 0,
+ theta0 = pi + dtheta0_eic_ip6;
+
+select, flag=ptc_twiss, column=name,keyword,t,s,x,px,disp1,disp2,beta11,alfa11,beta22,alfa22;
+ptc_create_universe;
+ptc_create_layout, exact, model=2, method=6, nst=5;
+ptc_twiss, closed_orbit, icase=56, no=5, file='hsr-ptc.tfs';
+ptc_end;
