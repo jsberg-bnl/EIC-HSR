@@ -104,79 +104,105 @@ def replace_all_madx(eav):
         fn = h+'.madx'
         replace_madx(fn,eav)
 
-def match_hsr(tao):
+def match_hsr(tao,chatty=False):
+    residual = [0.0 for i in range(0,7)]
+
+    if chatty:
+        print('ir6w',file=sys.stderr)
     tao.cmd('set universe 2 on')
     tao.cmd('set def uni=2')
     tao.cmd(ir_var[0])
     tao.cmd('use dat ir6w.arc')
-    residual = [0.0 for i in range(0,8)]
-    residual[0] = optimize(tao)
+    residual[0] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 2 off')
     tao.cmd('veto var *')
     tao.cmd('veto dat *')
 
+    if chatty:
+        print('ir6d',file=sys.stderr)
     tao.cmd('set universe 3 on')
     tao.cmd('set def uni=3')
     tao.cmd(ir_var[1])
     tao.cmd('use dat ir6d.arc')
-    residual[1] = optimize(tao)
+    residual[1] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 3 off')
     tao.cmd('veto var *')
     tao.cmd('veto dat *')
 
+    if chatty:
+        print('ir8',file=sys.stderr)
     tao.cmd('set universe 4 on')
     tao.cmd('set def uni=4')
     tao.cmd(ir_var[2])
     tao.cmd('use dat ir8.fit')
     tao.cmd('use dat ir8.sym')
-    residual[2] = optimize(tao)
+    residual[2] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 4 off')
     tao.cmd('veto var *')
     tao.cmd('veto dat *')
 
+    if chatty:
+        print('ir10',file=sys.stderr)
     tao.cmd('set global var_limits_on=f')
     tao.cmd('set universe 5 on')
     tao.cmd('set def uni=5')
     tao.cmd(ir_var[3])
     tao.cmd('use dat ir10.fit[2:]')
     tao.cmd('use dat ir10.sym')
-    residual[3] = optimize(tao)
+    residual[3] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 5 off')
     tao.cmd('veto var *')
     tao.cmd('veto dat *')
 
+    if chatty:
+        print('ir12',file=sys.stderr)
     tao.cmd('set universe 6 on')
     tao.cmd('set def uni=6')
     tao.cmd(ir_var[4])
     tao.cmd('use dat ir12.fit')
     tao.cmd('use dat ir12.sym')
-    residual[4] = optimize(tao)
+    residual[4] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 7 off')
     tao.cmd('veto var *')
     tao.cmd('veto dat *')
 
+    if chatty:
+        print('ir2',file=sys.stderr)
     tao.cmd('set universe 7 on')
     tao.cmd('set def uni=7')
     tao.cmd(ir_var[5])
     tao.cmd('use dat ir2.kicker')
     tao.cmd('use dat ir2.center')
-    residual[5] = optimize(tao)
+    residual[5] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 7 off')
     tao.cmd('veto var *')
     tao.cmd('veto dat *')
 
+    if chatty:
+        print('ir4',file=sys.stderr)
     tao.cmd('set universe 8 on')
     tao.cmd('set def uni=8')
     tao.cmd(ir_var[6])
     tao.cmd('use dat ir4.fit')
     tao.cmd('use dat ir4.sym')
-    residual[6] = optimize(tao)
+    residual[6] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 8 off')
     tao.cmd('veto var *')
     tao.cmd('veto dat *')
     return residual
     
-def tunes_hsr(tao,di):
+def reset_hsr(tao):
+    tao.cmd('set uni * off')
+    tao.cmd('set ele [1:17]@y_qmain_ps i = 1@ele::y_qmain_ps[i]|design')
+    tao.cmd('set ele [1:17]@b_qmain_ps i = -(1@ele::y_qmain_ps[i]|design)')
+    tao.cmd('set ele [1:17]@y_qtrim_ps i = 1@ele::y_qtrim_ps[i]|design')
+    tao.cmd('set ele [1:17]@b_qtrim_ps i = -(1@ele::y_qtrim_ps[i]|design)')
+    tao.cmd('set var *|model = *|design')
+    tao.cmd('set universe 9:17 recalculate')
+    tao.cmd('veto var *')
+    tao.cmd('veto dat *@*')
+
+def tunes_hsr(tao,di,chatty=False):
     tao.cmd('set universe * off')
     tao.cmd(f'set ele [1:17]@y_qmain_ps i = 1@ele::y_qmain_ps[i]|design+{di[0]}')
     tao.cmd(f'set ele [1:17]@b_qmain_ps i = -(1@ele::y_qmain_ps[i]|design+{di[0]})')
@@ -184,7 +210,7 @@ def tunes_hsr(tao,di):
     tao.cmd(f'set ele [1:17]@b_qtrim_ps i = -(1@ele::y_qtrim_ps[i]|design+{di[1]})')
     tao.cmd('set universe 9:17 recalculate')
     tao.cmd('call set-match.tao')
-    residual = match_hsr(tao)
+    residual = match_hsr(tao,chatty)
     tao.cmd('set universe 1 on')
     tunes = (
         (
