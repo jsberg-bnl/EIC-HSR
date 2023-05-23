@@ -315,12 +315,12 @@
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'sym'
- datum(1)%data_type = 'expression: 4@data::ir8.high_lim[1]  - 4@data::ir8.low_lim[2]'
- datum(2)%data_type = 'expression: 4@data::ir8.low_lim[2]   - 4@data::ir8.high_lim[4]'
- datum(3)%data_type = 'expression: 4@data::ir8.high_lim[4]  - 4@data::ir8.low_lim[5]'
- datum(4)%data_type = 'expression: 4@data::ir8.low_lim[5]   - 4@data::ir8.low_lim[10]'
- datum(5)%data_type = 'expression: 4@data::ir8.low_lim[10]  - 4@data::ir8.high_lim[11]'
- datum(6)%data_type = 'expression: 4@data::ir8.high_lim[11] - 4@data::ir8.low_lim[14]'
+ datum(1)%data_type = 'expression: 4@data::ir8.low_lim[1]   - 4@data::ir8.high_lim[2]'
+ datum(2)%data_type = 'expression: 4@data::ir8.high_lim[2]  - 4@data::ir8.low_lim[4]'
+ datum(3)%data_type = 'expression: 4@data::ir8.low_lim[4]   - 4@data::ir8.high_lim[7]'
+ datum(4)%data_type = 'expression: 4@data::ir8.high_lim[5]  - 4@data::ir8.los_lim[11]'
+ datum(5)%data_type = 'expression: 4@data::ir8.low_lim[11]  - 4@data::ir8.high_lim[12]'
+ datum(6)%data_type = 'expression: 4@data::ir8.high_lim[12] - 4@data::ir8.high_lim[17]'
  datum(1:6)%weight = 1 1 1 1 1 1
  datum(1:6)%meas = 0 0 0 0 0 0
 /
