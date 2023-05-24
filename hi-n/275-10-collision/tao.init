@@ -135,6 +135,13 @@
 /
 
 &tao_var
+ v1_var%name = 'qarc'
+ default_attribute = 'i'
+ default_step = 0.1
+ var(1:2)%ele_name = 'qmain_ps' 'qtrim_ps'
+/
+
+&tao_var
  v1_var%name = 'sx'
  default_universe = '1'
  default_attribute = 'i'
@@ -640,4 +647,19 @@
  default_weight = 1
  datum(1:2)%data_type = 'chrom.a' 'chrom.b'
  datum(1:2)%meas = 2 2
+/
+
+&tao_d2_data
+ universe = '9'
+ d2_data%name = 'cell'
+ n_d1_data = 1
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'tune'
+ default_weight = 1
+ datum(1:2)%ele_ref_name = 'beginning' 'beginning'
+ datum(1:2)%ele_name = 'yo9_int11_2' 'yo9_int11_2'
+ datum(1:2)%data_type = 'phase.a' 'phase.b'
 /

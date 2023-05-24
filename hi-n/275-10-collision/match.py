@@ -193,10 +193,6 @@ def match_hsr(tao,chatty=False):
     
 def reset_hsr(tao):
     tao.cmd('set uni * off')
-    tao.cmd('set ele [1:17]@y_qmain_ps i = 1@ele::y_qmain_ps[i]|design')
-    tao.cmd('set ele [1:17]@b_qmain_ps i = -(1@ele::y_qmain_ps[i]|design)')
-    tao.cmd('set ele [1:17]@y_qtrim_ps i = 1@ele::y_qtrim_ps[i]|design')
-    tao.cmd('set ele [1:17]@b_qtrim_ps i = -(1@ele::y_qtrim_ps[i]|design)')
     tao.cmd('set var *|model = *|design')
     tao.cmd('set universe 9:17 recalculate')
     tao.cmd('veto var *')
@@ -204,10 +200,8 @@ def reset_hsr(tao):
 
 def tunes_hsr(tao,di,chatty=False):
     tao.cmd('set universe * off')
-    tao.cmd(f'set ele [1:17]@y_qmain_ps i = 1@ele::y_qmain_ps[i]|design+{di[0]}')
-    tao.cmd(f'set ele [1:17]@b_qmain_ps i = -(1@ele::y_qmain_ps[i]|design+{di[0]})')
-    tao.cmd(f'set ele [1:17]@y_qtrim_ps i = 1@ele::y_qtrim_ps[i]|design+{di[1]}')
-    tao.cmd(f'set ele [1:17]@b_qtrim_ps i = -(1@ele::y_qtrim_ps[i]|design+{di[1]})')
+    tao.cmd(f'set var qarc[1]|model = qarc[1]|design+{di[0]}')
+    tao.cmd(f'set var qarc[2]|model = qarc[2]|design+{di[1]}')
     tao.cmd('set universe 9:17 recalculate')
     tao.cmd('call set-match.tao')
     residual = match_hsr(tao,chatty)

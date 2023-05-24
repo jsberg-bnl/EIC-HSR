@@ -54,8 +54,8 @@ def strength_map(tao):
             [ re.match(r'^([a-z]\w*)\[([a-z]\w*)\] *= *([-+0-9e.]+)',l,re.I).group(1,2,3)
               for l in tao.cmd('sho var -bmad -good') ] }
     eav |= {
-        'Y_QMAIN_PS' : ('I',tao.evaluate('1@ele::y_qmain_ps[i]')[0]),
-        'Y_QTRIM_PS' : ('I',tao.evaluate('1@ele::y_qtrim_ps[i]')[0])}
+        'QMAIN_PS' : ('I',tao.evaluate('1@ele::y_qmain_ps[i]')[0]),
+        'QTRIM_PS' : ('I',tao.evaluate('1@ele::y_qtrim_ps[i]')[0])}
     eav['YI3_QD6_PS'] = eav.pop('Y4_Q6_PS')
     eav['YI3_QF7_PS'] = eav.pop('Y4_Q7_PS')
     eav['YI3_SXD1_PS'] = eav.pop('SXD_PS')
@@ -181,10 +181,8 @@ def match_hsr(tao):
     
 def tunes_hsr(tao,di):
     tao.cmd('set universe * off')
-    tao.cmd(f'set ele [1:20]@y_qmain_ps i = 1@ele::y_qmain_ps[i]|design+{di[0]}')
-    tao.cmd(f'set ele [1:20]@b_qmain_ps i = -(1@ele::y_qmain_ps[i]|design+{di[0]})')
-    tao.cmd(f'set ele [1:20]@y_qtrim_ps i = 1@ele::y_qtrim_ps[i]|design+{di[1]}')
-    tao.cmd(f'set ele [1:20]@b_qtrim_ps i = -(1@ele::y_qtrim_ps[i]|design+{di[1]})')
+    tao.cmd(f'set ele [1:20]@qmain_ps i = 1@ele::qmain_ps[i]|design+{di[0]}')
+    tao.cmd(f'set ele [1:20]@qtrim_ps i = 1@ele::qtrim_ps[i]|design+{di[1]}')
     tao.cmd('set universe 10:20 recalculate')
     tao.cmd('call set-match.tao')
     residual = match_hsr(tao)

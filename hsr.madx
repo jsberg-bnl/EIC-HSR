@@ -16,6 +16,12 @@ call, file='ir12-lat.madx';
 call, file='rhic-ps.madx';
 call, file='ir2-ps.madx';
 call, file='ir10-ps.madx';
+
+y_qmain_ps := qmain_ps;
+b_qmain_ps := -qmain_ps;
+y_qtrim_ps := qtrim_ps;
+b_qtrim_ps := -qtrim_ps;
+
 ip6d: marker;
 ip6w: marker;
 

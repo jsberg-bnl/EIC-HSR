@@ -18,6 +18,9 @@ call, file='rhic-ps.bmad'
 call, file='ir2-ps.bmad'
 call, file='ir10-ps.bmad'
 
+qmain_ps: overlay={ y_qmain_ps[i] : +i, b_qmain_ps[i] : -i }, var={i}
+qtrim_ps: overlay={ y_qtrim_ps[i] : +i, b_qtrim_ps[i] : -i }, var={i}
+
 ip6d: marker
 ip6w: marker
 
