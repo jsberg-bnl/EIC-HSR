@@ -15,6 +15,17 @@ yo5_cq8_mod:line=(ocfl,
  obfl)
 yo5_d9r:line=(odswl,yo5_dh9,odsfl)
 
+h5_tq11: quadrupole, l=lsxt
+h5_tq11_i:overlay={h5_tq11[b1_gradient]:0.2381915*i/lsxt},var={i}
+h5_q11: quadrupole, l=lq
+h5_q11_i:overlay={h5_q11[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h5_cor11: kicker, l=lcor
+h5_tv11_i:overlay={h5_cor11[bl_vkick]:0.005612747*i},var={i}
+h5_b311_i:overlay={h5_cor11[b3]:12.346880000000004*i},var={i}
+h5_b411_i:overlay={h5_cor11[b4]:386.38592*i},var={i}
+h5_a111_i:overlay={h5_cor11[a1]:0.030435680000000007*i},var={i}
+h5_cqtc11:line=(obfl,osb,h5_tq11,oqs,h5_q11,ocq,h5_cor11,ocfl)
+
 ! The IR6 snake, RHIC style
 yo5_int7_1 : obel78d
 yo5_int7_2 : obel78d
@@ -276,7 +287,7 @@ O_OFF_MOM_IP6_2[OFFSET] = -2.43292994238379023E+000
 
 OV_B2PF[TH2] = +1.67744943262122526E-002
 D9_PF[L] = +1.55089650046537342E+000
-YO5_DU9W[L] = +6.82010965822203730E+000
+YO5_DU9W[L] = +6.82010965822203730E+000-lbfl-lqb-lq-lcq-lcor-lcfl
 
 ! Geometric parameter values
 O2PR[L] =  1.66686780884237962E+001
@@ -285,7 +296,7 @@ o_b1pr[angle] = -17e-3
 O_B2PR[ANGLE] =  3.67453870996644781E-003
 
 hsr6w: line=(
- yo5_int9_5,yo5_du9w,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
+ yo5_int9_5,yo5_du9w,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
  yo5_int8_2,yo5_d8,yo5_int8_1,yo5_cq8_mod,
  yo5_int7_2, yo5_snk7, yo5_int7_1,
  yo5_cq7_mod,
