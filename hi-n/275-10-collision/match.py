@@ -35,7 +35,7 @@ def replace(filename):
     os.rename(filename+'+',filename)
     
 ir_var = ['use var '+v for v in (
-    'ir6w[5,6,8:11]',
+    'ir6w[4,7:11]',
     'ir6d[5:7,9:11]',
     'ir8',
     'ir10',
@@ -53,8 +53,8 @@ def strength_map(tao):
             [ re.match(r'^([a-z]\w*)\[([a-z]\w*)\] *= *([-+0-9e.]+)',l,re.I).group(1,2,3)
               for l in tao.cmd('sho var -bmad -good') ] }
     eav |= {
-        'Y_QMAIN_PS' : ('I',tao.evaluate('1@ele::y_qmain_ps[i]')[0]),
-        'Y_QTRIM_PS' : ('I',tao.evaluate('1@ele::y_qtrim_ps[i]')[0])}
+        'QMAIN_PS' : ('I',tao.evaluate('1@ele::qmain_ps[i]')[0]),
+        'QTRIM_PS' : ('I',tao.evaluate('1@ele::qtrim_ps[i]')[0])}
     eav['YI3_QD6_PS'] = eav.pop('Y4_Q6_PS')
     eav['YI3_QF7_PS'] = eav.pop('Y4_Q7_PS')
     eav['YI3_SXD1_PS'] = eav.pop('SXD_PS')
@@ -134,7 +134,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 4 on')
     tao.cmd('set def uni=4')
     tao.cmd(ir_var[2])
-    tao.cmd('use dat ir8.fit')
+    tao.cmd('use dat ir8.fit[1:9]')
     tao.cmd('use dat ir8.sym')
     residual[2] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 4 off')
@@ -147,7 +147,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 5 on')
     tao.cmd('set def uni=5')
     tao.cmd(ir_var[3])
-    tao.cmd('use dat ir10.fit[2:]')
+    tao.cmd('use dat ir10.fit[2,3,4,6]')
     tao.cmd('use dat ir10.sym')
     residual[3] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 5 off')
@@ -159,7 +159,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 6 on')
     tao.cmd('set def uni=6')
     tao.cmd(ir_var[4])
-    tao.cmd('use dat ir12.fit')
+    tao.cmd('use dat ir12.fit[1:9]')
     tao.cmd('use dat ir12.sym')
     residual[4] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 7 off')
@@ -183,7 +183,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 8 on')
     tao.cmd('set def uni=8')
     tao.cmd(ir_var[6])
-    tao.cmd('use dat ir4.fit')
+    tao.cmd('use dat ir4.fit[1:7,9,11]')
     tao.cmd('use dat ir4.sym')
     residual[6] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 8 off')
