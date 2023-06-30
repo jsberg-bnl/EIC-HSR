@@ -15,9 +15,9 @@ yo5_cq8_mod:line=(ocfl,
  obfl)
 yo5_d9r:line=(odswl,yo5_dh9,odsfl)
 
-h5_tq11: quadrupole, l=lsxt
+h5_tq11:quadrupole,l=lsxt,field_master=t
 h5_tq11_i:overlay={h5_tq11[b1_gradient]:0.2381915*i/lsxt},var={i}
-h5_q11: quadrupole, l=lq
+h5_q11:quadrupole,l=lq,field_master=t
 h5_q11_i:overlay={h5_q11[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h5_cor11: kicker, l=lcor
 h5_tv11_i:overlay={h5_cor11[bl_vkick]:0.005612747*i},var={i}
