@@ -35,15 +35,15 @@ def replace(filename):
     os.rename(filename+'+',filename)
     
 ir_var = ['use var '+v for v in (
-    'ir6w_u2[5,6,8:11]',
-    'ir6d_u3[5:7,9:11]',
-    'ir8w_u4[17:]',
-    'ir8d_u5[6,8,9,11,13:16]',
+    'ir6w[5,6,8:11]',
+    'ir6d[5,6,8:11]',
+    'ir8w[17:]',
+    'ir8d[10,12:16]',
     'ir10',
     'ir12',
-    'ir2_u8',
-    'ir4_u9',
-    'sx_u1')]
+    'ir2',
+    'ir4',
+    'sx')]
 
 def strength_map(tao):
     tao.cmd('set universe 1 on')
@@ -135,7 +135,6 @@ def match_hsr(tao):
     tao.cmd('set def uni=5')
     tao.cmd(ir_var[3])
     tao.cmd('use dat ir8d.arc')
-    tao.cmd('use dat ir8d.ir')
     residual[3] = optimize(tao)
     tao.cmd('set universe 5 off')
     tao.cmd('veto var *')
@@ -144,7 +143,7 @@ def match_hsr(tao):
     tao.cmd('set universe 6 on')
     tao.cmd('set def uni=6')
     tao.cmd(ir_var[4])
-    tao.cmd('use dat ir10.fit[2:]')
+    tao.cmd('use dat ir10.fit[2:5]')
     tao.cmd('use dat ir10.sym')
     residual[4] = optimize(tao)
     tao.cmd('set universe 6 off')
@@ -153,7 +152,7 @@ def match_hsr(tao):
     tao.cmd('set universe 7 on')
     tao.cmd('set def uni=7')
     tao.cmd(ir_var[5])
-    tao.cmd('use dat ir12.fit')
+    tao.cmd('use dat ir12.fit[1:7,10]')
     tao.cmd('use dat ir12.sym')
     residual[5] = optimize(tao)
     tao.cmd('set universe 7 off')
@@ -171,7 +170,7 @@ def match_hsr(tao):
     tao.cmd('set universe 9 on')
     tao.cmd('set def uni=9')
     tao.cmd(ir_var[7])
-    tao.cmd('use dat ir4.fit')
+    tao.cmd('use dat ir4.fit[1:7,10]')
     tao.cmd('use dat ir4.sym')
     residual[7] = optimize(tao)
     tao.cmd('set universe 9 off')
@@ -186,12 +185,6 @@ def tunes_hsr(tao,di):
     tao.cmd('set universe 10:20 recalculate')
     tao.cmd('call set-match.tao')
     residual = match_hsr(tao)
-    tao.cmd('set var ir6w_u1|model = ir6w_u2|model')
-    tao.cmd('set var ir6d_u1|model = ir6d_u3|model')
-    tao.cmd('set var ir8w_u1|model = ir8w_u4|model')
-    tao.cmd('set var ir8d_u1|model = ir8d_u5|model')
-    tao.cmd('set var ir2_u1|model = ir2_u8|model')
-    tao.cmd('set var ir4_u1|model = ir4_u9|model')
     tao.cmd('set universe 1 on')
     tunes = (
         (
