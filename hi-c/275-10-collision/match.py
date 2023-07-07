@@ -54,8 +54,8 @@ def strength_map(tao):
             [ re.match(r'^([a-z]\w*)\[([a-z]\w*)\] *= *([-+0-9e.]+)',l,re.I).group(1,2,3)
               for l in tao.cmd('sho var -bmad -good') ] }
     eav |= {
-        'QMAIN_PS' : ('I',tao.evaluate('1@ele::y_qmain_ps[i]')[0]),
-        'QTRIM_PS' : ('I',tao.evaluate('1@ele::y_qtrim_ps[i]')[0])}
+        'QMAIN_PS' : ('I',tao.evaluate('1@ele::qmain_ps[i]')[0]),
+        'QTRIM_PS' : ('I',tao.evaluate('1@ele::qtrim_ps[i]')[0])}
     eav['YI3_QD6_PS'] = eav.pop('Y4_Q6_PS')
     eav['YI3_QF7_PS'] = eav.pop('Y4_Q7_PS')
     eav['YI3_SXD1_PS'] = eav.pop('SXD_PS')
