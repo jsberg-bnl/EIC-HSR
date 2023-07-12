@@ -267,11 +267,11 @@
  datum(4)%data_type = 'expression: 4@lat::alpha.a[yo8_int11_2] - 12@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: 4@lat::beta.b[yo8_int11_2] - 12@lat::beta.b[0]'
  datum(6)%data_type = 'expression: 4@lat::alpha.b[yo8_int11_2] - 12@lat::alpha.b[0]'
- datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'beta.a' 'beta.b'
+ datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'o08' 'o08' 'o08' 'o08' 'o08'
- datum(7:11)%eval_point = 'center' 'center' 'center' 'center' 'center'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1e-1 1e-1
- datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0 5
+ datum(7:9)%eval_point = 'center' 'center' 'center'
+ datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1
+ datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2
 /
 
 &tao_d1_data
@@ -321,16 +321,17 @@
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'sym'
- datum(1)%data_type = 'expression: data::ir8.low_lim[1]   - data::ir8.low_lim[4]'
- datum(2)%data_type = 'expression: data::ir8.low_lim[4]   - data::ir8.low_lim[6]'
- datum(3)%data_type = 'expression: data::ir8.low_lim[6]   - data::ir8.low_lim[11]'
- datum(4)%data_type = 'expression: data::ir8.low_lim[11]  - data::ir8.low_lim[17]'
- datum(5)%data_type = 'expression: data::ir8.low_lim[17]  - data::ir8.high_lim[7]'
- datum(6)%data_type = 'expression: data::ir8.high_lim[7]  - data::ir8.high_lim[9]'
- datum(7)%data_type = 'expression: data::ir8.high_lim[9]  - data::ir8.high_lim[10]'
- datum(8)%data_type = 'expression: data::ir8.high_lim[10] - data::ir8.high_lim[16]'
- datum(1:8)%weight = 1 1 1 1 1 1 1 1
- datum(1:8)%meas =   0 0 0 0 0 0 0 0
+ datum(1)%data_type =  'expression: data::ir8.low_lim[10]  - data::ir8.low_lim[9]'
+ datum(2)%data_type =  'expression: data::ir8.low_lim[1]   - data::ir8.low_lim[9]'
+ datum(3)%data_type =  'expression: data::ir8.high_lim[12] - data::ir8.low_lim[9]'
+ datum(4)%data_type =  'expression: data::ir8.low_lim[4]   - data::ir8.low_lim[9]'
+ datum(5)%data_type =  'expression: data::ir8.low_lim[6]   - data::ir8.low_lim[9]'
+ datum(6)%data_type =  'expression: data::ir8.low_lim[11]  - data::ir8.low_lim[9]'
+ datum(7)%data_type =  'expression: data::ir8.low_lim[13]  - data::ir8.low_lim[9]'
+ datum(8)%data_type =  'expression: data::ir8.high_lim[16] - data::ir8.low_lim[9]'
+ datum(9)%data_type =  'expression: data::ir8.high_lim[17] - data::ir8.low_lim[9]'
+ datum(1:9)%weight = 1 1 1 1 1 1 1 1 1
+ datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
 /
 
 &tao_d1_data
@@ -355,12 +356,15 @@
 &tao_d1_data
  ix_d1_data = 1
  d1_data%name = 'fit'
- datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
- datum(1:6)%ele_name = 'oh10' 'oh10' 'oh10' 'oh10' 'oh10' 'oh10'
- datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(1:6)%weight = 1 1 100 1 100 1
- datum(1:6)%meas = 0 0 1.5 0 5 0
+ datum(1:4)%data_type = 'eta.x' 'etap.x' 'alpha.a' 'alpha.b'
+ datum(5)%data_type = 'expression:lat::beta.b[oh10->-0.5*l]-lat::beta.a[oh10->-0.5*l]'
+ datum(6)%data_type = 'expression:0.5*(lat::beta.b[oh10->-0.5*l]+lat::beta.a[oh10->-0.5*l])'
+ datum(1:4)%ele_name = 'oh10' 'oh10' 'oh10' 'oh10'
+ datum(1:4)%eval_point = 'center' 'center' 'center' 'center'
+ datum(1:6)%weight = 1 1 1 1 1 1
+ datum(1:6)%meas = 0 0 0 0 0 2
  datum(1)%good_user = f
+ datum(6)%good_user = f
 /
 
 &tao_d1_data
@@ -403,10 +407,10 @@
  ix_d1_data = 4
  d1_data%name = 'sym'
  datum(1)%data_type  = 'expression: data::ir10.low_lim[3]   - data::ir10.low_lim[1]'
- datum(2)%data_type  = 'expression: data::ir10.low_lim[6]   - data::ir10.low_lim[1]'
+ datum(2)%data_type  = 'expression: data::ir10.low_lim[7]   - data::ir10.low_lim[1]'
  datum(3)%data_type  = 'expression: data::ir10.low_lim[8]   - data::ir10.low_lim[1]'
- datum(4)%data_type  = 'expression: data::ir10.low_lim[9]   - data::ir10.low_lim[1]'
- datum(5)%data_type  = 'expression: data::ir10.high_lim[5]  - data::ir10.low_lim[1]'
+ datum(4)%data_type  = 'expression: data::ir10.high_lim[5]  - data::ir10.low_lim[1]'
+ datum(5)%data_type  = 'expression: data::ir10.high_lim[9]  - data::ir10.low_lim[1]'
  datum(6)%data_type  = 'expression: data::ir10.high_lim[10] - data::ir10.low_lim[1]'
  datum(1:6)%meas = 0 0 0 0 0 0
  datum(1:6)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
@@ -443,11 +447,11 @@
  datum(4)%data_type = 'expression: lat::alpha.a[bi12_int11_2] - 16@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: lat::beta.b[bi12_int11_2] - 16@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[bi12_int11_2] - 16@lat::alpha.b[0]'
- datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'beta.a' 'beta.b'
+ datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'oh12' 'oh12' 'oh12' 'oh12' 'oh12'
- datum(7:11)%eval_point = 'center' 'center' 'center' 'center' 'center'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1e-1 1e-1
- datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0 5
+ datum(7:9)%eval_point = 'center' 'center' 'center'
+ datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1
+ datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2
 /
 
 &tao_d1_data
@@ -497,16 +501,17 @@
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'sym'
- datum(1)%data_type = 'expression: data::ir12.high_lim[1]   - data::ir12.high_lim[11]'
- datum(2)%data_type = 'expression: data::ir12.high_lim[11]   - data::ir12.high_lim[13]'
- datum(3)%data_type = 'expression: data::ir12.high_lim[13]   - data::ir12.high_lim[4]'
- datum(4)%data_type = 'expression: data::ir12.high_lim[4]  - data::ir12.high_lim[10]'
- datum(5)%data_type = 'expression: data::ir12.high_lim[10]  - data::ir12.low_lim[14]'
- datum(6)%data_type = 'expression: data::ir12.low_lim[14]  - data::ir12.low_lim[16]'
- datum(7)%data_type = 'expression: data::ir12.low_lim[16]  - data::ir12.low_lim[17]'
- datum(8)%data_type = 'expression: data::ir12.low_lim[17] - data::ir12.low_lim[9]'
- datum(1:8)%weight = 1 1 1 1 1 1 1 1
- datum(1:8)%meas = 0 0 0 0 0 0 0 0
+ datum(1)%data_type =  'expression: data::ir12.low_lim[10]  - data::ir12.low_lim[9]'
+ datum(2)%data_type =  'expression: data::ir12.high_lim[1]  - data::ir12.low_lim[9]'
+ datum(3)%data_type =  'expression: data::ir12.low_lim[5]   - data::ir12.low_lim[9]'
+ datum(4)%data_type =  'expression: data::ir12.high_lim[4]  - data::ir12.low_lim[9]'
+ datum(5)%data_type =  'expression: data::ir12.high_lim[6]  - data::ir12.low_lim[9]'
+ datum(6)%data_type =  'expression: data::ir12.high_lim[11]  - data::ir12.low_lim[9]'
+ datum(7)%data_type =  'expression: data::ir12.high_lim[13] - data::ir12.low_lim[9]'
+ datum(8)%data_type =  'expression: data::ir12.high_lim[16] - data::ir12.low_lim[9]'
+ datum(9)%data_type =  'expression: data::ir12.high_lim[17] - data::ir12.low_lim[9]'
+ datum(1:9)%weight = 1 1 1 1 1 1 1 1 1
+ datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
 /
 
 &tao_d1_data
@@ -562,10 +567,10 @@
  datum(4)%data_type = 'expression: lat::alpha.a[yo4_int11_2] - 12@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: lat::beta.b[yo4_int11_2] - 12@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[yo4_int11_2] - 12@lat::alpha.b[0]'
- datum(7:11)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'ip4' 'ip4' 'ip4' 'ip4' 'ip4'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1e-1 1 1e-1 1
- datum(1:11)%meas = 0 0 0 0 0 0 0 5 0 5 0
+ datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1
+ datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2
 /
 
 &tao_d1_data
@@ -615,16 +620,17 @@
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'sym'
- datum(1)%data_type = 'expression: data::ir4.low_lim[1]   - data::ir4.low_lim[4]'
- datum(2)%data_type = 'expression: data::ir4.low_lim[4]   - data::ir4.low_lim[6]'
- datum(3)%data_type = 'expression: data::ir4.low_lim[6]   - data::ir4.low_lim[11]'
- datum(4)%data_type = 'expression: data::ir4.low_lim[11]  - data::ir4.low_lim[17]'
- datum(5)%data_type = 'expression: data::ir4.low_lim[17]  - data::ir4.high_lim[7]'
- datum(6)%data_type = 'expression: data::ir4.high_lim[7]  - data::ir4.high_lim[9]'
- datum(7)%data_type = 'expression: data::ir4.high_lim[9]  - data::ir4.high_lim[10]'
- datum(8)%data_type = 'expression: data::ir4.high_lim[10] - data::ir4.high_lim[16]'
- datum(1:8)%weight = 1 1 1 1 1 1 1 1
- datum(1:8)%meas = 0 0 0 0 0 0 0 0
+ datum(1)%data_type =  'expression: data::ir4.low_lim[10]  - data::ir4.low_lim[9]'
+ datum(2)%data_type =  'expression: data::ir4.low_lim[1]   - data::ir4.low_lim[9]'
+ datum(3)%data_type =  'expression: data::ir4.high_lim[12] - data::ir4.low_lim[9]'
+ datum(4)%data_type =  'expression: data::ir4.low_lim[4]   - data::ir4.low_lim[9]'
+ datum(5)%data_type =  'expression: data::ir4.low_lim[6]   - data::ir4.low_lim[9]'
+ datum(6)%data_type =  'expression: data::ir4.low_lim[11]  - data::ir4.low_lim[9]'
+ datum(7)%data_type =  'expression: data::ir4.low_lim[13]  - data::ir4.low_lim[9]'
+ datum(8)%data_type =  'expression: data::ir4.high_lim[16] - data::ir4.low_lim[9]'
+ datum(9)%data_type =  'expression: data::ir4.high_lim[17] - data::ir4.low_lim[9]'
+ datum(1:9)%weight = 1 1 1 1 1 1 1 1 1
+ datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
 /
 
 &tao_d1_data
