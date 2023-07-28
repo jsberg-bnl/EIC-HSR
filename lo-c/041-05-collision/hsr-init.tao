@@ -1,13 +1,18 @@
-set global lattice_calc_on=f
-set branch [6:]@0 geometry=closed
-set ele [2:3]@0 s = 0
+set uni * off
+set uni 10: on
+set branch [10:]@0 geometry=closed
+set uni 10: off
+set uni 2:5 on
+set ele [2:5]@0 s = 0
 set particle_start [2:5]@x = 0
 set particle_start [2:5]@px = 0
-set ele 3@0 eta_x = 0
-set ele 3@0 etap_x = 0
-set ele 3@0 beta_a = 90e-2
-set ele 3@0 alpha_a = 0
-set ele 3@0 beta_b = 7.1e-2
-set ele 3@0 alpha_b = 0
+set ele [2:5]@0 eta_x = 0
+set ele [2:5]@0 etap_x = 0
+set ele [2:5]@0 beta_a = 90e-2
+set ele [2:5]@0 alpha_a = 0
+set ele [2:5]@0 beta_b = 7.1e-2
+set ele [2:5]@0 alpha_b = 0
+set uni 2:5 off
+set data ir6w.crab[2]|meas = 0.25*twopi
 call 'set-match.tao'
-set global lattice_calc_on=t
+set uni * on

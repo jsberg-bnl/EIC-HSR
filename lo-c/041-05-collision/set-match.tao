@@ -1,20 +1,24 @@
-set global lattice_calc_on=f
-set ele 2@0 eta_x = 6@lat::eta.x[0]
-set ele 2@0 etap_x = 6@lat::etap.x[0]
-set ele 2@0 beta_a = 6@lat::beta.a[0]
-set ele 2@0 alpha_a = 6@lat::alpha.a[0]
-set ele 2@0 beta_b = 6@lat::beta.b[0]
-set ele 2@0 alpha_b = 6@lat::alpha.b[0]
-set ele 4@0 eta_x = 8@lat::eta.x[0]
-set ele 4@0 etap_x = 8@lat::etap.x[0]
-set ele 4@0 beta_a = 8@lat::beta.a[0]
-set ele 4@0 alpha_a = 8@lat::alpha.a[0]
-set ele 4@0 beta_b = 8@lat::beta.b[0]
-set ele 4@0 alpha_b = 8@lat::alpha.b[0]
-set ele 5@0 eta_x = 10@lat::eta.x[0]
-set ele 5@0 etap_x = 10@lat::etap.x[0]
-set ele 5@0 beta_a = 10@lat::beta.a[0]
-set ele 5@0 alpha_a = 10@lat::alpha.a[0]
-set ele 5@0 beta_b = 10@lat::beta.b[0]
-set ele 5@0 alpha_b = 10@lat::alpha.b[0]
-set global lattice_calc_on=t
+set uni 6:9,14,15,17 on
+
+set ele 6@0 eta_x = 14@lat::eta.x[0]
+set ele 6@0 etap_x = 14@lat::etap.x[0]
+set ele 6@0 beta_a = 14@lat::beta.a[0]
+set ele 6@0 alpha_a = 14@lat::alpha.a[0]
+set ele 6@0 beta_b = 14@lat::beta.b[0]
+set ele 6@0 alpha_b = 14@lat::alpha.b[0]
+
+set ele [7,9]@0 eta_x = 15@lat::eta.x[0]
+set ele [7,9]@0 etap_x = 15@lat::etap.x[0]
+set ele [7,9]@0 beta_a = 15@lat::beta.a[0]
+set ele [7,9]@0 alpha_a = 15@lat::alpha.a[0]
+set ele [7,9]@0 beta_b = 15@lat::beta.b[0]
+set ele [7,9]@0 alpha_b = 15@lat::alpha.b[0]
+
+set ele 8@0 eta_x = 17@lat::eta.x[0]
+set ele 8@0 etap_x = 17@lat::etap.x[0]
+set ele 8@0 beta_a = 17@lat::beta.a[0]
+set ele 8@0 alpha_a = 17@lat::alpha.a[0]
+set ele 8@0 beta_b = 17@lat::beta.b[0]
+set ele 8@0 alpha_b = 17@lat::alpha.b[0]
+
+set uni 6:9,14,15,17 off
