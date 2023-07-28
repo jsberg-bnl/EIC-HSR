@@ -265,7 +265,7 @@
  datum(1:3)%data_type = 'beta.a' 'alpha.a' 'phase.a'
  datum(3)%ele_ref_name = 'ip6d'
  datum(1:3)%ele_name = 'o_crab_ip6r' 'o_crab_ip6r' 'o_crab_ip6r'
- datum(1:3)%meas = 1300 0 1.57079632679489662
+ datum(1:3)%meas = 200 0 1.57079632679489662
  datum(1:3)%weight = 1e-3 1 1
  datum(1:3)%eval_point = 'center' 'center' 'center'
  datum(1:3)%good_user = f f f
