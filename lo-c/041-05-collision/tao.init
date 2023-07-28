@@ -324,11 +324,11 @@
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'ir'
- datum(1:3)%data_type = 'alpha.a' 'beta.a' 'alpha.a'
- datum(1:3)%ele_name = 'mpot1' 'o_crab_ir8w' 'o_crab_ir8w'
- datum(2:3)%eval_point = 'center' 'center'
- datum(1:3)%meas = 0 1300 0
- datum(1:3)%weight = 1 1e-3 1
+ datum(1:6)%data_type = 'alpha.a' 'beta.a' 'alpha.a' 'phase.a' 'eta.x' 'etap.x'
+ datum(1:6)%ele_name = 'mpot1' 'o_crab_ir8w' 'o_crab_ir8w' 'o_crab_ir8w' 'o_crab_ir8w' 'o_crab_ir8w'
+ datum(2:6)%eval_point = 'center' 'center' 'center' 'center' 'center'
+ datum(1:6)%meas = 0 200 0 4.71238898038468986
+ datum(1:6)%weight = 1 1e-2 1 1 1 1
 /
 
 &tao_d1_data
@@ -349,9 +349,9 @@
  d1_data%name = 'opt'
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
  datum(1:5)%ele_name = 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3' 'yi7_int9_3'
- datum(1:4)%ele_start_name = 'qds05' 'qds05' 'ip8' 'ip8'
+ datum(1:4)%ele_start_name = 'qds05' 'mpot1' 'ip8' 'ip8'
  datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
- datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
+ datum(1:5)%weight = 1e-12 5e-13 1e-8 1e-8 100
  datum(1:5)%meas = 0 0 0 0 0
  datum(1:5)%good_user = f f f f t
 /
