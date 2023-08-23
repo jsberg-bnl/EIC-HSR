@@ -522,7 +522,7 @@
 &tao_d2_data
  universe = '7'
  d2_data%name = 'ir12'
- n_d1_data = 6
+ n_d1_data = 7
 /
 
 &tao_d1_data
@@ -531,7 +531,7 @@
  datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
  datum(1:6)%ele_name = 'ol12' 'ol12' 'ol12' 'ol12' 'ol12' 'ol12'
  datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(1:6)%weight = 1 1 100 1 100 1
+ datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
  datum(1:6)%meas = 0 0 5 0 5 0
 /
 
