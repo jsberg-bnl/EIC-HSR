@@ -373,11 +373,12 @@
 &tao_d1_data
  ix_d1_data = 2
  d1_data%name = 'ir'
- datum(1:2)%data_type = 'beta.a' 'alpha.a'
- datum(1:2)%ele_name = 'o_crab_ir8d' 'o_crab_ir8d'
- datum(1:2)%eval_point = 'center' 'center'
- datum(1:2)%meas = 1300 0
- datum(1:2)%weight = 1e-3 1
+ datum(1:3)%data_type = 'beta.a' 'alpha.a' 'phase.a'
+ datum(1:3)%ele_name = 'o_crab_ir8d' 'o_crab_ir8d' 'o_crab_ir8d'
+ datum(3)%ele_ref_name = 'ip8'
+ datum(1:3)%eval_point = 'center' 'center' 'center'
+ datum(1:3)%meas = 200 0 1.57079632679489662
+ datum(1:3)%weight = 1e-3 1 1
 /
 
 &tao_d1_data
