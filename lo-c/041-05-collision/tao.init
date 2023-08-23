@@ -563,7 +563,8 @@
  datum(1:6)%ele_name = 'ol12' 'ol12' 'ol12' 'ol12' 'ol12' 'ol12'
  datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
- datum(1:6)%meas = 0 0 5 0 5 0
+ datum(1:6)%meas = 0 0 10 0 10 0
+ datum(1)%good_user = f
 /
 
 &tao_d1_data
@@ -577,6 +578,7 @@
  datum(6)%data_type = 'expression: lat::alpha.b[bi12_int9_3] - 16@lat::alpha.b[0]'
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
  datum(1:6)%meas = 0 0 0 0 0 0
+ datum(1:6)%good_user = f f f f f f
 /
 
 &tao_d1_data
@@ -625,20 +627,29 @@
  datum(5)%data_type  = 'expression: data::ir12.high_lim[2] - data::ir12.high_lim[8]'
  datum(1:5)%meas = 0 0 0 0 0
  datum(1:5)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8
+ datum(1:5)%good_user = f
 /
 
 &tao_d1_data
  ix_d1_data = 6
  d1_data%name = 'opt'
- datum(1:5)%data_type = 'gamma.a' 'gamma.b' 'beta.b' 'beta.a'
- datum(5)%data_type = 'expression: lat::beta.b[yi11_qd2->-0.5*l]-lat::beta.a[yi11_qf3-1]'
- datum(6)%data_type = 'unstable.orbit'
- datum(1:4)%ele_name = 'bi12_qf9' 'bi12_qf9' 'yi11_qd2' 'yi11_qf3'
- datum(3:4)%eval_point = 'center' 'beginning'
- datum(1:2)%ele_start_name = 'yi11_qf9' 'yi11_qf9'
- datum(1:2)%merit_type = 'integral' 'integral'
- datum(1:6)%meas = 0 0 0 0 0 0
- datum(1:6)%weight = 1e-9 1e-9 1e-9 1e-9 1e-9 100
+ datum(1:4)%data_type = 'gamma.a' 'gamma.b' 'beta.a' 'beta.b'
+ datum(1:4)%ele_name = 'bi12_qf9' 'bi12_qf9' 'yi11_tq4' 'yi11_tq4'
+ datum(1:4)%ele_start_name = 'yi11_qf9' 'yi11_qf9' 'yi11_int11_2' 'yi11_int11_2'
+ datum(1:4)%merit_type = 'integral' 'integral' 'max' 'max'
+ datum(5)%data_type = 'unstable.orbit'
+ datum(1:5)%meas = 0 0 0 0 0
+ datum(1:5)%weight = 1e-9 1e-9 1e-4 1e-4 100
+ datum(1:4)%good_user = f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 7
+ d1_data%name = 'beta'
+ default_weight = 1e-2
+ default_meas = 0
+ datum(1)%data_type = 'expression:lat::beta.a[yi11_qf5->-0.5*l]-lat::beta.a[yi11_qf7->-0.5*l]'
+ datum(2)%data_type = 'expression:lat::beta.b[yi11_qd6->-0.5*l]-lat::beta.b[yi11_qd10->-0.5*l]'
 /
 
 &tao_d2_data
