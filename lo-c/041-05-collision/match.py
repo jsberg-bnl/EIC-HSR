@@ -42,7 +42,7 @@ ir_var = ['use var '+v for v in (
     'ir10[2,4:8,10,14:16,18,20]',
     'ir12[1:6,8]',
     'ir2',
-    'ir4',
+    'ir4[1:5,7,9,11:12,14,17]',
     'sx')]
 
 def strength_map(tao):
