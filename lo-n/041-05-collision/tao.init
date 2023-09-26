@@ -498,6 +498,7 @@
 &tao_d1_data
  ix_d1_data = 7
  d1_data%name = 'beta'
+ default_weight = 1e-2
  datum(1)%data_type = 'expression:lat::beta.a[yo9_qf4->-0.5*l]-lat::beta.a[yo9_qf6->-0.5*l]'
  datum(2)%data_type = 'expression:lat::beta.a[yo9_qf4->-0.5*l]-lat::beta.a[yo9_qf8->-0.5*l]'
  datum(3)%data_type = 'expression:lat::beta.b[yo9_qd5->-0.5*l]-lat::beta.b[yo9_qd7->-0.5*l]'
