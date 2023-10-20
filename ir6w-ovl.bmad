@@ -1,0 +1,10 @@
+b1l_q1a_6w = 125.845
+b1l_q1b_6w = 80.34
+
+b1avg_q1_6w = (b1l_q1a_6w+b1l_q1b_6w)/(q1apf[l]+q1bpf[l])
+
+k1_q1_6w: overlay = {
+ q1apf[k1] : b1l_q1a_6w/q1apf[l]/b1avg_q1_6w*k1,
+ q1bpf[k1] : b1l_q1b_6w/q1bpf[l]/b1avg_q1_6w*k1 },
+ var = {k1},
+ k1 = (q1apf[k1]*q1apf[l]+q1bpf[k1]*q1bpf[l])/(q1apf[l]+q1bpf[l])
