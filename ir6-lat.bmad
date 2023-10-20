@@ -139,11 +139,31 @@ pbr_b0apf: patch
 pet_b0apf: patch
 per_b0apf: patch
 ! Q1 forward
-q1apf: quadrupole, l=1.46
-q1bpf: quadrupole, l=1.61
-o06w_b0a_q1a: drift
-o06w_q1a_q1b: drift
-o06w_q1b_q2: drift
+lq1f = 3.5 !
+q1fbl = +2.1972725964394266e+02
+lq1f0 = +8.6982609130456234e-01
+lq1fa = +9.4743700497697669e-01
+lq1fb = +1.1586707136673664e+00
+lq1fc = +1.1188188983740881e+00
+lq1f1 = +9.0524729167700624e-01
+fkl_q1fa = +3.8235651189621717e-01
+fkl_q1fb = +3.6234531718013097e-01
+fkl_q1fc = +2.5529817092365187e-01
+q1fa: quadrupole, l=lq1fa
+q1fb: quadrupole, l=lq1fb
+q1fc: quadrupole, l=lq1fc
+oq1f0: pipe, l = 0.5*(lq1f+lq1f0-lq1fa-lq1fb-lq1fc-lq1f1)
+oq1f1: pipe, l = 0.5*(lq1f-lq1f0-lq1fa-lq1fb-lq1fc+lq1f1)
+q1f: line=(oq1f1,q1fc,q1fb,q1fa,oq1f0)
+! Do not modify l; l attribute used to make this look like a quadrupole
+ov_q1f: overlay={
+ q1fa[k1] : k1*l*fkl_q1fa/lq1fa,
+ q1fb[k1] : k1*l*fkl_q1fa/lq1fb,
+ q1fc[k1] : k1*l*fkl_q1fa/lq1fc},
+ var={k1,l}, l=lq1fa+lq1fb+lq1fc
+
+o06w_b0a_q1: drift
+o06w_q1_q2: drift
 pbt_q1apf: patch
 pbr_q1apf: patch
 pet_q1apf: patch
@@ -252,17 +272,8 @@ PER_B0APF[X_PITCH] = -4.79514821232049273E-003
 PET_B0APF[X_OFFSET] = -7.07734721058384929E-003
 PBT_B0APF[X_OFFSET] = +3.55265096116321247E-003
 PBR_B0APF[X_PITCH] = +6.95370413729287911E-003
-O06W_B0A_Q1A[L] = +4.00625972111453454E-001
-PER_Q1APF[X_PITCH] = -7.98771680129673443E-003
-PET_Q1APF[X_OFFSET] = -1.46541743061257106E-002
-PBT_Q1APF[X_OFFSET] = +4.05191841125844728E-003
-PBR_Q1APF[X_PITCH] = +6.76920671694013470E-003
-O06W_Q1A_Q1B[L] = +4.00595774121126236E-001
-PER_Q1BPF[X_PITCH] = -1.40902338121864472E-002
-PET_Q1BPF[X_OFFSET] = -2.17131032452377963E-002
-PBT_Q1BPF[X_OFFSET] = +4.55987368366134183E-006
-PBR_Q1BPF[X_PITCH] = +1.31828003697269328E-002
-O06W_Q1B_Q2[L] = +4.01021324745810426E-001
+O06W_B0A_Q1[L] = +4.00625972111453454E-001-0.015
+O06W_Q1_Q2[L] = +4.01021324745810426E-001-0.015
 PER_Q2PF[X_PITCH] = -1.29367560655846096E-002
 PET_Q2PF[X_OFFSET] = -4.51593211840057920E-002
 PBT_Q2PF[X_OFFSET] = -1.13897121786721012E-002
@@ -320,11 +331,9 @@ hsr6w: line=(
  pbr_b1pf, pbt_b1pf, b1pf, pet_b1pf, per_b1pf,
  o06w_q2_b1,
  pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
- o06w_q1b_q2,
- pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
- o06w_q1a_q1b,
- pbr_q1apf, pbt_q1apf, q1apf, pet_q1apf, per_q1apf,
- o06w_b0a_q1a,
+ o06w_q1_q2,
+ q1f,
+ o06w_b0a_q1,
  pbr_b0apf, pbt_b0apf, b0apf, pet_b0apf, per_b0apf,
  o06w_b0_b0a,
  pb_b0pf, b0pf, pe_b0pf,
