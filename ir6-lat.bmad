@@ -158,8 +158,8 @@ q1f: line=(oq1f1,q1fc,q1fb,q1fa,oq1f0)
 ! Do not modify l; l attribute used to make this look like a quadrupole
 ov_q1f: overlay={
  q1fa[k1] : k1*l*fkl_q1fa/lq1fa,
- q1fb[k1] : k1*l*fkl_q1fa/lq1fb,
- q1fc[k1] : k1*l*fkl_q1fa/lq1fc},
+ q1fb[k1] : k1*l*fkl_q1fb/lq1fb,
+ q1fc[k1] : k1*l*fkl_q1fc/lq1fc},
  var={k1,l}, l=lq1fa+lq1fb+lq1fc
 
 o06w_b0a_q1: drift
