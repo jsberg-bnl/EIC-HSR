@@ -92,7 +92,7 @@ def replace_madx(filename,eav):
     os.replace(filename,filename+'-')
     os.rename(filename+'+',filename)
 
-ir_files = ('rhic','ir6','ir8c','ir10','ir12','ir2','ir4')
+ir_files = ('rhic','ir6','ir8n','ir10','ir12','ir2','ir4')
 
 def replace_all_bmad(eav):
     for h in ir_files:
