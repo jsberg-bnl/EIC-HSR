@@ -180,9 +180,9 @@ def match_hsr(tao):
     
 def tunes_hsr(tao,di):
     tao.cmd('set universe * off')
-    tao.cmd(f'set ele [1:20]@qmain_ps i = 1@ele::qmain_ps[i]|design+{di[0]}')
-    tao.cmd(f'set ele [1:20]@qtrim_ps i = 1@ele::qtrim_ps[i]|design+{di[1]}')
-    tao.cmd('set universe 10:20 recalculate')
+    tao.cmd(f'set ele *@qmain_ps i = 1@ele::qmain_ps[i]|design+{di[0]}')
+    tao.cmd(f'set ele *@qtrim_ps i = 1@ele::qtrim_ps[i]|design+{di[1]}')
+    tao.cmd('set universe 9:15 recalculate')
     tao.cmd('call set-match.tao')
     residual = match_hsr(tao)
     tao.cmd('set universe 1 on')
