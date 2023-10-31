@@ -288,17 +288,24 @@
 &tao_d1_data
  ix_d1_data = 1
  d1_data%name = 'fit'
- datum(1)%data_type = 'expression: lat::eta.x[yo8_int11_2] - 11@lat::eta.x[0]'
- datum(2)%data_type = 'expression: lat::etap.x[yo8_int11_2] - 11@lat::etap.x[0]'
- datum(3)%data_type = 'expression: lat::beta.a[yo8_int11_2] - 11@lat::beta.a[0]'
- datum(4)%data_type = 'expression: lat::alpha.a[yo8_int11_2] - 11@lat::alpha.a[0]'
- datum(5)%data_type = 'expression: lat::beta.b[yo8_int11_2] - 11@lat::beta.b[0]'
- datum(6)%data_type = 'expression: lat::alpha.b[yo8_int11_2] - 11@lat::alpha.b[0]'
+ datum(1)%data_type = 'expression: eta.x[yo8_int11_2] - 11@eta.x[0]'
+ datum(2)%data_type = 'expression: etap.x[yo8_int11_2] - 11@etap.x[0]'
+ datum(3)%data_type = 'expression: beta.a[yo8_int11_2] - 11@beta.a[0]'
+ datum(4)%data_type = 'expression: alpha.a[yo8_int11_2] - 11@alpha.a[0]'
+ datum(5)%data_type = 'expression: beta.b[yo8_int11_2] - 11@beta.b[0]'
+ datum(6)%data_type = 'expression: alpha.b[yo8_int11_2] - 11@alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'o08' 'o08' 'o08' 'o08' 'o08'
+ datum(12)%data_type = 'expression:beta.a[yo8_qf2->-0.5*l]-beta.a[yi7_qf3-1]'
+ datum(13)%data_type = 'expression:beta.b[yo8_qd3]-beta.b[yi7_qd2->-0.5*l]'
+ datum(14)%data_type = 'expression:beta.a[yi7_qf5->-0.5*l]-beta.a[yi7_qf7->-0.5*l]'
+ datum(15)%data_type = 'expression:beta.b[yi7_qd4->-0.5*l]-beta.b[yi7_qd6->-0.5*l]'
+ datum(16)%data_type = 'expression:beta.a[yo8_qf4->-0.5*l]-beta.a[yo8_qf8->-0.5*l]'
+ datum(17)%data_type = 'expression:beta.b[yo8_qd5->-0.5*l]-beta.b[yo8_qd7->-0.5*l]'
  datum(7:9)%eval_point = 'center' 'center' 'center'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1
- datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2
+ datum(1:17)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2
+ datum(1:17)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0 0 0 0 0 0
+ datum(1:17)%good_user = t t t t t t t f f f f t t f t t f 
 /
 
 &tao_d1_data
