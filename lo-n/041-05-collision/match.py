@@ -38,7 +38,7 @@ ir_var = ['use var '+v for v in (
     'ir6w[7:12]',
     'ir6d[5,6,8:11]',
     'ir8[1:5,7,9,11,12,14,17]',
-    'ir10[2,4:8,10,14:16,18,20]',
+    'ir10[2,4:10,12:16,20]',
     'ir12[1:6,8]',
     'ir2',
     'ir4[1:5,7,9,11:12,14,17]',
@@ -136,7 +136,6 @@ def match_hsr(tao):
     tao.cmd(ir_var[3])
     tao.cmd('use dat ir10.fit[1,7:9]')
     tao.cmd('use dat ir10.arc')
-    tao.cmd('use dat ir10.beta[3,4]')
     residual[3] = optimize(tao)
     tao.cmd('set universe 5 off')
     tao.cmd('veto var *')
