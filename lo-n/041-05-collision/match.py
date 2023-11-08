@@ -105,6 +105,8 @@ def replace_all_madx(eav):
         replace_madx(fn,eav)
 
 def match_hsr(tao):
+    tao.cmd('veto var *')
+    tao.cmd('veto dat *@*')
     tao.cmd('set global var_limits_on=f')
     tao.cmd('set universe 2 on')
     tao.cmd('set def uni=2')
@@ -254,6 +256,8 @@ def fit_tune(tao,tune_goal,chatty=False,I0=(0.0,0.0),dI=(10.0,10.0)):
     tao.cmd('use var sx')
     tao.cmd('use dat 1@chrom')
     optimize(tao,method='lm')
+    tao.cmd('veto var *')
+    tao.cmd('veto dat *@*')
     tao.cmd('set universe 1 off')
     return I
 

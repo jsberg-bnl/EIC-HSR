@@ -105,6 +105,10 @@ def replace_all_madx(eav):
         replace_madx(fn,eav)
 
 def match_hsr(tao,chatty=False):
+    tao.cmd('veto var *')
+    tao.cmd('veto dat *@*')
+    tao.cmd('set global var_limits_on=f')
+
     residual = [0.0 for i in range(0,7)]
 
     if chatty:
@@ -283,6 +287,8 @@ def fit_tune(tao,tune_goal,chatty=False,I0=(0.0,0.0),dI=(10.0,10.0)):
     tao.cmd('use var sx')
     tao.cmd('use dat 1@chrom')
     optimize(tao,method='lm')
+    tao.cmd('veto var *')
+    tao.cmd('veto dat *@*')
     tao.cmd('set universe 1 off')
     return I
 
