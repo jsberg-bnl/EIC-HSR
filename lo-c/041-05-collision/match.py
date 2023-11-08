@@ -245,8 +245,8 @@ def fit_tune1(tao,tune_goal,I0,dI=(10.0,10.0)):
     nub = tunes_hsr(tao,I0)
     return (numpy.sum(nub[0],1)/(2*numpy.pi),numpy.sum(nub[1]))
 
-def fit_tune(tao,tune_goal,chatty=False,dI=(10.0,10.0)):
-    I = [0.0,0.0]
+def fit_tune(tao,tune_goal,chatty=False,I0=(0.0,0.0),dI=(10.0,10.0)):
+    I = list(I0)
     r = fit_tune1(tao,tune_goal,I,dI)
     if (chatty):
         print(f'Tune: {r[0][0]-tune_goal[0]:+24.17e} {r[0][1]-tune_goal[1]:+24.17e}, Err: {r[1]:+24.17e}')
