@@ -219,7 +219,7 @@ def tunes_hsr(tao,di):
 # Update I0 with new currents
 # returns ((nux,nuy),match_error)
 # tao state has variables that generated the returned values
-def fit_tune1(tao,tune_goal,I0,dI=(10.0,10.0)):
+def fit_tune1(tao,tune_goal,I0,dI=(1.0,1.0)):
     nua = numpy.sum(tunes_hsr(tao,I0)[0],1)/(2*numpy.pi)
     tao.cmd('set var *|meas = *|model')
     nu0m = numpy.sum(tunes_hsr(tao,(I0[0]-dI[0],I0[1]))[0],1)
@@ -237,7 +237,7 @@ def fit_tune1(tao,tune_goal,I0,dI=(10.0,10.0)):
     nub = tunes_hsr(tao,I0)
     return (numpy.sum(nub[0],1)/(2*numpy.pi),numpy.sum(nub[1]))
 
-def fit_tune(tao,tune_goal,chatty=False,I0=(0.0,0.0),dI=(10.0,10.0)):
+def fit_tune(tao,tune_goal,chatty=False,I0=(0.0,0.0),dI=(1.0,1.0)):
     I = list(I0)
     r = fit_tune1(tao,tune_goal,I,dI)
     if (chatty):
