@@ -55,8 +55,10 @@ def strength_map(tao):
     eav |= {
         'QMAIN_PS' : ('I',tao.evaluate('1@ele::qmain_ps[i]')[0]),
         'QTRIM_PS' : ('I',tao.evaluate('1@ele::qtrim_ps[i]')[0])}
-    eav['YI3_QD6_PS'] = eav.pop('Y4_Q6_PS')
-    eav['YI3_QF7_PS'] = eav.pop('Y4_Q7_PS')
+    if 'Y4_Q6_PS' in eav:
+        eav['YI3_QD6_PS'] = eav.pop('Y4_Q6_PS')
+    if 'Y4_Q7_PS' in eav:
+        eav['YI3_QF7_PS'] = eav.pop('Y4_Q7_PS')
     eav['YI3_SXD1_PS'] = eav.pop('SXD_PS')
     eav['YI3_SXF1_PS'] = eav.pop('SXF_PS')
     tao.cmd('veto var *')
