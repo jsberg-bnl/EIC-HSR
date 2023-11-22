@@ -553,11 +553,12 @@
 &tao_d1_data
  ix_d1_data = 2
  d1_data%name = 'center'
- datum(1:5)%data_type = 'beta.a' 'alpha.a' 'beta.b' 'alpha.b' 'etap.x'
- datum(1:5)%ele_name = 'bi1_qf7' 'bi1_qf7' 'bi1_qf7' 'bi1_qf7' 'bi1_qf7'
+ datum(1:6)%data_type = 'beta.a' 'alpha.a' 'beta.b' 'alpha.b' 'etap.x' 'r56_compacation'
+ datum(1:6)%ele_name = 'bi1_qf7' 'bi1_qf7' 'bi1_qf7' 'bi1_qf7' 'bi1_qf7' 'cool_modulator_in'
  datum(1:5)%eval_point = 'center' 'center' 'center' 'center' 'center'
- datum(1:5)%meas = 50 0 50 0 0
- datum(1:5)%weight = 1e-2 1 1e-2 1 1
+ datum(6)%ele_ref_name = 'cool_kicker_out'
+ datum(1:6)%meas = 50 0 50 0 0 2.75e-3
+ datum(1:6)%weight = 1e-2 1 1e-2 1 1 10
 /
 
 &tao_d2_data
