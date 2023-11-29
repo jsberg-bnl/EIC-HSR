@@ -557,6 +557,9 @@
 &tao_d1_data
  ix_d1_data = 2
  d1_data%name = 'low_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
  datum(1)%data_type   = 'expression: var::ir10[1]|model   - var::ir10[1]|low_lim'
  datum(2)%data_type   = 'expression: var::ir10[2]|model   - var::ir10[2]|low_lim'
  datum(3)%data_type   = 'expression: var::ir10[3]|model   - var::ir10[3]|low_lim'
@@ -575,6 +578,9 @@
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'high_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
  datum(1)%data_type   = 'expression: var::ir10[1]|high_lim   - var::ir10[1]|model'
  datum(2)%data_type   = 'expression: var::ir10[2]|high_lim   - var::ir10[2]|model'
  datum(3)%data_type   = 'expression: var::ir10[3]|high_lim   - var::ir10[3]|model'
