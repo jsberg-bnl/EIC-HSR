@@ -1,0 +1,2 @@
+k1_q1_6d: overlay = { q1apr[k1] : k1, q1bpr[k1] : k1 },
+ var={k1}, k1=(q1apr[k1]*q1apr[l]+q1bpr[k1]*q1bpr[l])/(q1apr[l]+q1bpr[l])
