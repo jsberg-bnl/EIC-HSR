@@ -357,7 +357,7 @@
 &tao_d2_data
  universe = '5'
  d2_data%name = 'ir10'
- n_d1_data = 4
+ n_d1_data = 5
 /
 
 &tao_d1_data
