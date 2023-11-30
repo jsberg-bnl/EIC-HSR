@@ -1,0 +1,13 @@
+ltrpwd08x = lwc-lpld0q1;
+thc08 = +9.51655616279081969e-03;
+
+l08 = 2*(lcenxdx*cos(thc08) + lcendx*cos(0.5*thdx-thc08)/cos(0.5*thdx) + lcendxd0*cos(thdx-thc08)/cos(thdx)
+ + lcend0*cos(0.5*(thdx+thd0)-thc08)/cos(0.5*(thdx+thd0)) - ltrpwd08x*cos(thc08-thd0) - lwd*cos(0.5*(thc08-thd0)));
+
+otrpwd08: drift, l=lwc-(lflq1x+lbq1);
+o08: drift, l=l08;
+
+dw08d: sbend, l=lwd/sinc(0.5*(thc08-thd0)), angle=thc08-thd0, e1=0.5*(thc08-thd0), e2=0.5*(thc08-thd0);
+dw08w: dw08d, angle=-dw08d->angle, e1=-dw08d->e1, e2=-dw08d->e2;
+
+ir08n: line=(otrpwd08,dw08w,o08,dw08d,otrpwd08);
