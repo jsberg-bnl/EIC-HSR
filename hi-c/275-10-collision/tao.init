@@ -339,8 +339,9 @@
  datum(6)%data_type = 'expression: 9@lat::alpha.b[yo4_int11_2] - 13@lat::alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'ip4' 'ip4' 'ip4' 'ip4' 'ip4'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1
- datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2
+ datum(12)%data_type = 'expression:gamma.a[ip4]-gamma.b[ip4]'
+ datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
 /
 
 &tao_d1_data
@@ -458,8 +459,9 @@
  datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'oh12' 'oh12' 'oh12' 'oh12' 'oh12'
  datum(7:9)%eval_point = 'center' 'center' 'center'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1
- datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2
+ datum(12)%data_type = 'expression:gamma.a[oh12]-gamma.b[oh12]'
+ datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
 /
 
 &tao_d1_data
