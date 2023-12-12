@@ -1,5 +1,6 @@
 call, file='../ir4-ovl.bmad'
 call, file='../ir6w-ovl.bmad'
+call, file='../ir6d-ovl.bmad'
 sxf_ps: overlay={
  bi1_sxf1_ps[i] : -i,
  bi1_sxf2_ps[i] : -i,
