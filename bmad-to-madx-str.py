@@ -7,6 +7,7 @@ def bmad_to_madx(bmad,madx):
         if m:
             e,a,v = m.group(1,2,3)
             v = v.replace('[I]','');
+            v = v.replace('[K1]','->K1');
             v = v.replace('c_light','clight');
             v = v.replace('C_LIGHT','CLIGHT');
             if re.match('^ *[-+.eE0-9]+ *$',v):
