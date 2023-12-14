@@ -90,12 +90,12 @@ vary, name=bxds01b->k0, step=1e-6;
 vary, name=qffds02b->k1, step=1e-5;
 vary, name=qds02a->k1, step=1e-5;
 vary, name=qds03b->k1, step=1e-5;
-constraint, weight=1e6, expr=table(ptc_twiss,ip6w,x)=0;
-constraint, weight=1e6, expr=table(ptc_twiss,ip6w,px)=0;
-constraint, weight=1e-3, expr=table(ptc_twiss,ip6w,beta11)=beta_ip;
-constraint, expr=table(ptc_twiss,ip6w,alfa11)=0;
-constraint, weight=1e6, expr=table(ptc_twiss,mpot1,alfa11)=0;
-jacobian, calls=1024, tolerance=1e-18;
+constraint, weight=1e2, expr=table(ptc_twiss,ip8,x)=0;
+constraint, weight=1e2, expr=table(ptc_twiss,ip8,px)=0;
+constraint, expr=table(ptc_twiss,ip8,beta11)=betx_ip;
+constraint, expr=table(ptc_twiss,ip8,alfa11)=0;
+constraint, expr=table(ptc_twiss,mpot1,alfa11)=0;
+jacobian, calls=32, tolerance=1e-18;
 endmatch;
 
 select, flag=ptc_twiss, clear;
