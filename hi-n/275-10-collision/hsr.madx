@@ -61,11 +61,11 @@ fit_ir6w1:macro={
  ptc_end;
 };
 vary, name=h5_q11_i, step=0.1;
-vary, name=yo5_qd9_i, step=0.1;
 vary, name=yo5_qf8_i, step=0.1;
 vary, name=yo5_qd7_i, step=0.1;
 vary, name=bi5_qd8_i, step=0.1;
 vary, name=yo5_qf4_i, step=0.1;
+vary, name=yi6_qd2_i, step=0.1;
 constraint, expr=table(ptc_twiss,ip6w,disp1)=0;
 constraint, expr=table(ptc_twiss,ip6w,disp2)=0;
 constraint, weight=1e-3, expr=table(ptc_twiss,o_crab_mag[1],beta11)=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab;
