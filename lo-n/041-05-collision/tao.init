@@ -215,6 +215,8 @@
  default_weight = 1e-2
  datum(1:6)%ele_name = 'bo3_qf8' 'yo5_qf4' 'bi5_qd8' 'yo5_qd7' 'yo5_qf8' 'yo5_qd9'
  datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1)%meas = 70
+ datum(5)%meas = 61
 /
 
 &tao_d1_data
@@ -224,12 +226,11 @@
  datum(2) = 'expression:20*1e3*sqrt(44e-9*lat::beta.a[d9_pf]+(10.3e-4*lat::eta.x[d9_pf])^2)'
  datum(3) = 'expression:20*1e3*sqrt(44e-9*lat::beta.a[bo3_qf8->-0.5*l]+(10.3e-4*lat::eta.x[bo3_qf8->-0.5*l])^2)'
  datum(4) = 'expression:20*1e3*sqrt(44e-9*lat::beta.a[bi5_qd8->-0.5*l]+(10.3e-4*lat::eta.x[bi5_qd8->-0.5*l])^2)'
- datum(5) = 'expression:20*1e3*sqrt(44e-9*lat::beta.a[yo5_qf8->-0.5*l]+(10.3e-4*lat::eta.x[yo5_qf8->-0.5*l])^2)'
+ datum(5) = 'expression:20*1e3*sqrt(44e-9*lat::beta.a[yo5_qd7->-0.5*l]+(10.3e-4*lat::eta.x[yo5_qd7->-0.5*l])^2)'
  datum(1)%ele_name = 'yo5_int11_2'
  datum(1)%weight = 10000
  datum(2:5)%weight = 0.01 0.01 0.01 0.01
  datum(1)%meas = 0
- datum(2:5)%meas = 36 36 36 36
 /
 
 &tao_d2_data

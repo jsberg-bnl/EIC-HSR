@@ -35,7 +35,7 @@ def replace(filename):
     os.rename(filename+'+',filename)
     
 ir_var = ['use var '+v for v in (
-    'ir6w[7:12]',
+    'ir6w[5:12]',
     'ir6d[5,6,8:11]',
     'ir8[1:5,7,9,11,12,14,17]',
     'ir10[2,4,5,6,10,12,14,15,16,20]',
@@ -114,6 +114,7 @@ def match_hsr(tao):
     tao.cmd('set def uni=2')
     tao.cmd(ir_var[0])
     tao.cmd('use dat ir6w.arc')
+    tao.cmd('use dat ir6w.betay[1,5]')
     residual = [0.0 for i in range(0,8)]
     residual[0] = optimize(tao)
     tao.cmd('set universe 2 off')
