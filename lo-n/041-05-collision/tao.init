@@ -396,9 +396,10 @@
  datum(1:7)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center'
  datum(8)%data_type = 'expression:lat::beta.a[yi10_qf3]-lat::beta.a[yo9_qf2->-0.5*l]'
  datum(9)%data_type = 'expression:lat::beta.b[yi10_qd2->-0.5*l]-lat::beta.b[yo9_qd3-1]'
- datum(1:9)%weight = 1 1e-2 1 1e-2 1 1 10 1e-2 1e-2
- datum(1:9)%meas = 0 5 0 5 0 0 0 0 0
- datum(1:9)%good_user = t f f f f f t t t
+ datum(10)%data_type = 'expression:gamma.b[ol10]-gamma.a[ol10]'
+ datum(1:10)%weight = 1 1e-2 1 1e-2 1 1 10 1e-2 1e-2 1e-2
+ datum(1:10)%meas = 0 5 0 5 0 0 0 0 0 0
+ datum(1:10)%good_user = t f t f t f t f f t
 /
 
 &tao_d1_data
@@ -480,8 +481,10 @@
  d1_data%name = 'sym'
  datum(1)%data_type  = 'expression:ele::yi10_q89_ps[i]-ele::ir10_qd9_ps[i]'
  datum(2)%data_type  = 'expression:ele::yi10_qf9_ps[i]-ele::ir10_qf8_ps[i]'
- datum(1:2)%meas = 0 0
- datum(1:2)%weight = 1e-4 1e-4
+ datum(3)%data_type  = 'expression:ele::yi10_qd6_ps[i]-ele::ir10_qf6_ps[i]'
+ datum(4)%data_type  = 'expression:ele::yi10_qf7_ps[i]-ele::ir10_qd7_ps[i]'
+ datum(1:4)%meas = 0 0 0 0
+ datum(1:4)%weight = 1e-4 1e-4 1e-4 1e-4
 /
 
 &tao_d1_data
