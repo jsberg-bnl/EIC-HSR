@@ -114,7 +114,7 @@ def match_hsr(tao):
     tao.cmd('set def uni=2')
     tao.cmd(ir_var[0])
     tao.cmd('use dat ir6w.arc')
-    tao.cmd('use dat ir6w.betay[1,5]')
+    tao.cmd('use dat ir6w.fit')
     residual = [0.0 for i in range(0,8)]
     residual[0] = optimize(tao)
     tao.cmd('set universe 2 off')

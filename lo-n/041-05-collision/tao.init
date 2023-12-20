@@ -153,7 +153,7 @@
 &tao_d2_data
  universe = 2
  d2_data%name = 'ir6w'
- n_d1_data = 7
+ n_d1_data = 8
 /
 
 &tao_d1_data
@@ -231,6 +231,15 @@
  datum(1)%weight = 10000
  datum(2:5)%weight = 0.01 0.01 0.01 0.01
  datum(1)%meas = 0
+/
+
+&tao_d1_data
+ ix_d1_data = 8
+ d1_data%name = 'fit'
+ datum(1) = 'expression:beta.b[yo5_qf8->-0.5*l]-beta.b[yo5_qd11->-0.5*l]'
+ datum(2) = 'expression:beta.b[bi5_qd8->-0.5*l]-beta.b[yo5_qd11->-0.5*l]'
+ datum(1:2)%weight=1e-2 1e-2
+ datum(1:2)%meas = 0 0
 /
 
 &tao_d2_data
