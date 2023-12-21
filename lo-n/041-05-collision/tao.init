@@ -324,6 +324,8 @@
 &tao_d1_data
  ix_d1_data = 2
  d1_data%name = 'low_lim'
+ default_meas = 0
+ default_weight = 1e-8
  datum(1)%data_type  = 'expression: var::ir8[1]|model  - var::ir8[1]|low_lim'
  datum(2)%data_type  = 'expression: var::ir8[2]|model  - var::ir8[2]|low_lim'
  datum(3)%data_type  = 'expression: var::ir8[3]|model  - var::ir8[3]|low_lim'
@@ -346,6 +348,8 @@
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'high_lim'
+ default_meas = 0
+ default_weight = 1e-8
  datum(1)%data_type  = 'expression: var::ir8[1]|high_lim  - var::ir8[1]|model'
  datum(2)%data_type  = 'expression: var::ir8[2]|high_lim  - var::ir8[2]|model'
  datum(3)%data_type  = 'expression: var::ir8[3]|high_lim  - var::ir8[3]|model'
@@ -576,6 +580,8 @@
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'low_lim'
+ default_meas = 0
+ default_weight = 1e-8
  datum(1)%data_type   = 'expression: var::ir12[1]|model   - var::ir12[1]|low_lim'
  datum(2)%data_type   = 'expression: var::ir12[2]|model   - var::ir12[2]|low_lim'
  datum(3)%data_type   = 'expression: var::ir12[3]|model   - var::ir12[3]|low_lim'
@@ -586,14 +592,13 @@
  datum(8)%data_type   = 'expression: var::ir12[8]|model   - var::ir12[8]|low_lim'
  datum(9)%data_type   = 'expression: var::ir12[9]|model   - var::ir12[9]|low_lim'
  datum(10)%data_type  = 'expression: var::ir12[10]|model  - var::ir12[10]|low_lim'
- datum(1:10)%meas = 0 0 0 0 0 0 0 0 0 0
- datum(1:10)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
- datum(1:10)%good_user = f f f f f f f f f f
 /
 
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'high_lim'
+ default_meas = 0
+ default_weight = 1e-8
  datum(1)%data_type   = 'expression: var::ir12[1]|high_lim   - var::ir12[1]|model'
  datum(2)%data_type   = 'expression: var::ir12[2]|high_lim   - var::ir12[2]|model'
  datum(3)%data_type   = 'expression: var::ir12[3]|high_lim   - var::ir12[3]|model'
@@ -604,9 +609,6 @@
  datum(8)%data_type   = 'expression: var::ir12[8]|high_lim   - var::ir12[8]|model'
  datum(9)%data_type   = 'expression: var::ir12[9]|high_lim   - var::ir12[9]|model'
  datum(10)%data_type  = 'expression: var::ir12[10]|high_lim  - var::ir12[10]|model'
- datum(1:10)%meas = 0 0 0 0 0 0 0 0 0 0
- datum(1:10)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
- datum(1:10)%good_user = f f f f f f f f f f
 /
 
 &tao_d1_data
@@ -715,6 +717,8 @@
 &tao_d1_data
  ix_d1_data = 2
  d1_data%name = 'low_lim'
+ default_meas = 0
+ default_weight = 1e-8
  datum(1)%data_type  = 'expression: var::ir4[1]|model  - var::ir4[1]|low_lim'
  datum(2)%data_type  = 'expression: var::ir4[2]|model  - var::ir4[2]|low_lim'
  datum(3)%data_type  = 'expression: var::ir4[3]|model  - var::ir4[3]|low_lim'
@@ -737,6 +741,8 @@
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'high_lim'
+ default_meas = 0
+ default_weight = 1e-8
  datum(1)%data_type  = 'expression: var::ir4[1]|high_lim  - var::ir4[1]|model'
  datum(2)%data_type  = 'expression: var::ir4[2]|high_lim  - var::ir4[2]|model'
  datum(3)%data_type  = 'expression: var::ir4[3]|high_lim  - var::ir4[3]|model'
