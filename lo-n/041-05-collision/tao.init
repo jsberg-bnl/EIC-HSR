@@ -309,16 +309,19 @@
  datum(6)%data_type = 'expression: alpha.b[yo8_int11_2] - 11@alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'o08' 'o08' 'o08' 'o08' 'o08'
- datum(12)%data_type = 'expression:beta.a[yo8_qf2->-0.5*l]-beta.a[yi7_qf3-1]'
- datum(13)%data_type = 'expression:beta.b[yo8_qd3]-beta.b[yi7_qd2->-0.5*l]'
- datum(14)%data_type = 'expression:beta.a[yi7_qf5->-0.5*l]-beta.a[yi7_qf7->-0.5*l]'
- datum(15)%data_type = 'expression:beta.b[yi7_qd4->-0.5*l]-beta.b[yi7_qd6->-0.5*l]'
- datum(16)%data_type = 'expression:beta.a[yo8_qf4->-0.5*l]-beta.a[yo8_qf8->-0.5*l]'
- datum(17)%data_type = 'expression:beta.b[yo8_qd5->-0.5*l]-beta.b[yo8_qd7->-0.5*l]'
+ datum(12)%data_type = 'expression:gamma.b[o08]-gamma.a[o08]'
+ datum(13)%data_type = 'expression:beta.a[yo8_qf2->-0.5*l]-beta.a[yi7_qf3-1]'
+ datum(14)%data_type = 'expression:beta.b[yo8_qd3]-beta.b[yi7_qd2->-0.5*l]'
+ datum(15)%data_type = 'expression:beta.a[yi7_qf5->-0.5*l]-beta.a[yi7_qf7->-0.5*l]'
+ datum(16)%data_type = 'expression:beta.b[yi7_qd4->-0.5*l]-beta.b[yi7_qd6->-0.5*l]'
+ datum(17)%data_type = 'expression:beta.a[yo8_qf4->-0.5*l]-beta.a[yo8_qf8->-0.5*l]'
+ datum(18)%data_type = 'expression:beta.b[yo8_qd5->-0.5*l]-beta.b[yo8_qd7->-0.5*l]'
+ datum(19)%data_type = 'expression:beta.a[yo8_qf6->-0.5*l]-beta.a[yo8_qf10->-0.5*l]'
+ datum(20)%data_type = 'expression:beta.b[yo8_qd5->-0.5*l]-beta.b[yo8_qd11->-0.5*l]'
  datum(7:9)%eval_point = 'center' 'center' 'center'
- datum(1:17)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2
- datum(1:17)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0 0 0 0 0 0
- datum(1:17)%good_user = t t t t t t t f f f f t t f t t f 
+ datum(1:20)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2
+ datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0 0 0 0 0 0 0 0 0
+ datum(1:20)%good_user = t t t t t t t t t f f t f f t t f f t t
 /
 
 &tao_d1_data
@@ -396,7 +399,7 @@
  datum(2:7)%ele_start_name = 'yi7_int11_2' 'yi7_int11_2' 'yi7_b3' 'yi7_b3' 'yo8_b4' 'yo8_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
  datum(1:7)%meas = 0 0 0 0 0 0 0
- datum(1:7)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
+ datum(1:7)%weight = 1 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
  datum(1:7)%good_user = f f f f f f f
 /
 
@@ -709,15 +712,18 @@
  datum(6)%data_type = 'expression: lat::alpha.b[yo4_int11_2] - 11@lat::alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
  datum(7:11)%ele_name = 'ip4' 'ip4' 'ip4' 'ip4' 'ip4'
- datum(12)%data_type = 'expression:beta.a[yo4_qf2->-0.5*l]-beta.a[yi3_qf3-1]'
- datum(13)%data_type = 'expression:beta.b[yo4_qd3]-beta.b[yi3_qd2->-0.5*l]'
- datum(14)%data_type = 'expression:beta.a[yi3_qf5->-0.5*l]-beta.a[yi3_qf7->-0.5*l]'
- datum(15)%data_type = 'expression:beta.b[yi3_qd4->-0.5*l]-beta.b[yi3_qd6->-0.5*l]'
- datum(16)%data_type = 'expression:beta.a[yo4_qf4->-0.5*l]-beta.a[yo4_qf8->-0.5*l]'
- datum(17)%data_type = 'expression:beta.b[yo4_qd5->-0.5*l]-beta.b[yo4_qd7->-0.5*l]'
- datum(1:17)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2
- datum(1:17)%meas = 0 0 0 0 0 0 0 0 0 0.1 0.1 0 0 0 0 0 0
- datum(1:17)%good_user = t t t t t t t f f f f t t f t t f
+ datum(12)%data_type = 'expression:gamma.b[ip4]-gamma.a[ip4]'
+ datum(13)%data_type = 'expression:beta.a[yo4_qf2->-0.5*l]-beta.a[yi3_qf3-1]'
+ datum(14)%data_type = 'expression:beta.b[yo4_qd3]-beta.b[yi3_qd2->-0.5*l]'
+ datum(15)%data_type = 'expression:beta.a[yi3_qf5->-0.5*l]-beta.a[yi3_qf7->-0.5*l]'
+ datum(16)%data_type = 'expression:beta.b[yi3_qd4->-0.5*l]-beta.b[yi3_qd6->-0.5*l]'
+ datum(17)%data_type = 'expression:beta.a[yo4_qf4->-0.5*l]-beta.a[yo4_qf8->-0.5*l]'
+ datum(18)%data_type = 'expression:beta.b[yo4_qd5->-0.5*l]-beta.b[yo4_qd7->-0.5*l]'
+ datum(19)%data_type = 'expression:beta.a[yo4_qf6->-0.5*l]-beta.a[yo4_qf10->-0.5*l]'
+ datum(20)%data_type = 'expression:beta.b[yo4_qd5->-0.5*l]-beta.b[yo4_qd11->-0.5*l]'
+ datum(1:20)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2
+ datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0 0 0 0 0 0 0 0 0
+ datum(1:20)%good_user = t t t t t t t t t f f t f f t t f f t t
 /
 
 &tao_d1_data
@@ -778,7 +784,7 @@
  datum(2:7)%ele_start_name = 'yi3_int11_2' 'yi3_int11_2' 'yi3_b3' 'yi3_b3' 'yo4_b4' 'yo4_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
  datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
- datum(1:9)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-3 1e-3
+ datum(1:9)%weight = 1 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-3 1e-3
  datum(1:9)%good_user = f f f f f f f f f
 /
 
