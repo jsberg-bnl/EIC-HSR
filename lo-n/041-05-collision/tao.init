@@ -320,7 +320,7 @@
  datum(20)%data_type = 'expression:beta.b[yo8_qd5->-0.5*l]-beta.b[yo8_qd11->-0.5*l]'
  datum(7:9)%eval_point = 'center' 'center' 'center'
  datum(1:20)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2
- datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0 0 0 0 0 0 0 0 0
+ datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0.09 0.09 0 0 0 0 0 0 0 0 0
  datum(1:20)%good_user = t t t t t t t t t f f t f f t t f f t t
 /
 
@@ -722,7 +722,7 @@
  datum(19)%data_type = 'expression:beta.a[yo4_qf6->-0.5*l]-beta.a[yo4_qf10->-0.5*l]'
  datum(20)%data_type = 'expression:beta.b[yo4_qd5->-0.5*l]-beta.b[yo4_qd11->-0.5*l]'
  datum(1:20)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2 1e-2
- datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0 0 0 0 0 0 0 0 0
+ datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0.09 0.09 0 0 0 0 0 0 0 0 0
  datum(1:20)%good_user = t t t t t t t t t f f t f f t t f f t t
 /
 
