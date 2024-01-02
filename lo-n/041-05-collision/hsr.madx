@@ -1,0 +1,99 @@
+chdir, dir='../..';
+call, file='hsr.madx';
+chdir, dir='lo-n/041-05-collision';
+call, file='../ir12-ps.madx';
+
+beam, energy=41, particle=antiproton;
+
+call, file='rhic.madx';
+call, file='ir2.madx';
+call, file='ir4.madx';
+call, file='ir6.madx';
+call, file='ir8n.madx';
+call, file='ir10.madx';
+call, file='ir12.madx';
+
+use, sequence=hsr_lo_n;
+
+rhic_rip = 590.581639053215;
+dx0_eic_ip6 = +0.81;
+dtheta0_eic_ip6 = -0.017;
+
+set, format="10d", "25.17e", "-24s";
+select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
+survey, file='hsr-survey.tfs',
+ x0 = -(rhic_rip - dx0_eic_ip6),
+ z0 = 0,
+ theta0 = pi + dtheta0_eic_ip6;
+
+// Re-match IR6 forward to correct model difference between Bmad and MAD-X PTC
+betx_crab = 200;
+betx_ip = 0.90;
+bety_ip = 7.1e-2;
+lcrab6 = o_crab_ip6f->l;
+option, -twiss_print;
+// IR6: Close orbit bump, match crab beta
+match, use_macro;
+fit_ir6w0:macro={
+ use, sequence=hsr_lo_n, range=o_crab_ip6f/ip6w;
+ ptc_create_universe;
+ ptc_create_layout, exact, model=2, method=6, nst=5;
+ ptc_twiss, rmatrix, betx=betx_crab, alfx=0, bety=1, icase=5, no=5;
+ // Compute the map from the IP to the crab center
+ mc6xx = table(ptc_twiss,ip6w,re22) - 0.5*lcrab6*table(ptc_twiss,ip6w,re21);
+ mc6xp = -table(ptc_twiss,ip6w,re12) + 0.5*lcrab6*table(ptc_twiss,ip6w,re11);
+ // Beta functions at the crab center
+ betc = mc6xx*mc6xx*betx_ip + mc6xp*mc6xp/betx_ip;
+ // Phase advance to the crab center
+ phixc = asin(mc6xp/sqrt(betc*betx_ip));
+ ptc_end;
+};
+vary, name=b0apf->k0, step=1e-6;
+vary, name=b1pf->k0, step=1e-6;
+vary, name=q2pf->k1, step=1e-5;
+vary, name=q3pf->k1, step=1e-5;
+constraint, weight=1e6, expr=table(ptc_twiss,ip6w,x)=0;
+constraint, weight=1e6, expr=table(ptc_twiss,ip6w,px)=0;
+constraint, expr=phixc=-0.5*pi;
+constraint, weight=1e-3, expr=betc=betx_crab;
+jacobian, calls=1024, tolerance=1e-18;
+endmatch;
+
+// IR6: Initial conditions at arc
+use, sequence=hsr_lo_n, range=yo9_int11_2/obfl[64];
+ptc_create_universe;
+ptc_create_layout, exact, model=2, method=6, nst=5;
+ptc_twiss, rmatrix, icase=5, no=5, maptable;
+ptc_end;
+
+// IR6: Match to the arc
+match, use_macro;
+fit_ir6w1:macro={
+ use, sequence=hsr_lo_n, range=yo5_int11_2/ip6w;
+ ptc_create_universe;
+ ptc_create_layout, exact, model=2, method=6, nst=5;
+ ptc_twiss, initial_matrix_table, icase=5, no=5;
+ ptc_end;
+};
+vary, name=yo5_qf4_i, step=1e-2;
+vary, name=bi5_qd8_i, step=1e-2;
+vary, name=yo5_qd7_i, step=1e-2;
+vary, name=yo5_qf8_i, step=1e-2;
+vary, name=yo5_qd9_i, step=1e-2;
+vary, name=h5_q11_i, step=1e-2;
+constraint, expr=table(ptc_twiss,ip6w,betx)=betx_ip;
+constraint, expr=table(ptc_twiss,ip6w,alfx)=0;
+constraint, expr=table(ptc_twiss,ip6w,bety)=bety_ip;
+constraint, expr=table(ptc_twiss,ip6w,alfy)=0;
+constraint, expr=table(ptc_twiss,ip6w,disp1)=0;
+constraint, expr=table(ptc_twiss,ip6w,disp2)=0;
+jacobian, calls=1024, tolerance=1e-18;
+endmatch;
+
+// Output TWISS table
+use, sequence=hsr_lo_n;
+select, flag=ptc_twiss, column=name,keyword,t,s,x,px,disp1,disp2,beta11,alfa11,beta22,alfa22;
+ptc_create_universe;
+ptc_create_layout, exact, model=2, method=6, nst=5;
+ptc_twiss, closed_orbit, icase=56, no=5, file='hsr-ptc.tfs';
+ptc_end;
