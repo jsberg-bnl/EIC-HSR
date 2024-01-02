@@ -5,9 +5,9 @@ ltrpwd10 = ltrpcav+l591+lwc;
 ltrpwd10x = ltrpwd10+lflq1x+lbq1-lpld0q1;
 
 thl10 = +1.20270102801919247e-02;
-lh10 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd10x*cos(thd0) - lwd*cos(0.5*thd0));
+lh10 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd10x*cos(thd0) - lwdl*cos(0.5*thd0));
 ll10 = 2*(lcenxdx*cos(thl10) + lcendx*cos(0.5*thdx-thl10)/cos(0.5*thdx) + lcendxd0*cos(thdx-thl10)/cos(thdx) 
- + lcend0*cos(0.5*(thdx+thd0)-thl10)/cos(0.5*(thdx+thd0)) - ltrpwd10x*cos(thl10-thd0) - lwd*cos(0.5*(thl10-thd0)));
+ + lcend0*cos(0.5*(thdx+thd0)-thl10)/cos(0.5*(thdx+thd0)) - ltrpwd10x*cos(thl10-thd0) - lwdl*cos(0.5*(thl10-thd0)));
 
 otrpcav10: drift, l=ltrpcav;
 owc10: drift, l=lwc;
@@ -17,8 +17,8 @@ otrpwd10: drift, l=ltrpwd10;
 
 cavity_591MHz: rfcavity, l = l591, harmon = 7560;
 
-dsw_ir10l: sbend, l=lwd/sinc(0.5*(thl10-thd0)), angle=thl10-thd0, e1=0.5*(thl10-thd0), e2=0.5*(thl10-thd0);
-dsw_ir10h: sbend, l=lwd/sinc(0.5*thd0), angle=-thd0, e1=-0.5*thd0, e2=-0.5*thd0;
+dsw_ir10l: sbend, l=lwdl/sinc(0.5*(thl10-thd0)), angle=thl10-thd0, e1=0.5*(thl10-thd0), e2=0.5*(thl10-thd0);
+dsw_ir10h: sbend, l=lwdl/sinc(0.5*thd0), angle=-thd0, e1=-0.5*thd0, e2=-0.5*thd0;
 dwarm_ir10l: dsw_ir10l, angle=-dsw_ir10l->angle, e1=-dsw_ir10l->e1, e2=-dsw_ir10l->e2;
 dwarm_ir10h: dsw_ir10h;
 

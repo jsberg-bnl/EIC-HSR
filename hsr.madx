@@ -3,7 +3,8 @@ call, file='rhic-lat.madx';
 e275 = 275e9;
 p275 = sqrt(e275*e275-pmass*pmass);
 
-lwd = 6;
+lwdl = 6.0;
+lwds = 4.4;
 lwc = 2;
 
 call, file='ir2-lat.madx';
