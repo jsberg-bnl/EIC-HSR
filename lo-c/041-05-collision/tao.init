@@ -416,7 +416,7 @@
  ix_d1_data = 1
  d1_data%name = 'fit'
  datum(1:7)%data_type = 'eta.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b' 'eta.x' 'etap.x'
- datum(1:7)%ele_name = 'ol10' 'ol10' 'ol10' 'ol10' 'ol10' 'cavity_591mhz' 'cavity_591mhz'
+ datum(1:7)%ele_name = 'ol10' 'ol10' 'ol10' 'ol10' 'ol10' 'ocavity_591' 'ocavity_591'
  datum(1:7)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center'
  datum(8)%data_type = 'expression:lat::beta.a[yi10_qf3]-lat::beta.a[yo9_qf2->-0.5*l]'
  datum(9)%data_type = 'expression:lat::beta.b[yi10_qd2->-0.5*l]-lat::beta.b[yo9_qd3-1]'
