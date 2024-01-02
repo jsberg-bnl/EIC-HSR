@@ -13,6 +13,6 @@ set ele [2:5]@0 alpha_a = 0
 set ele [2:5]@0 beta_b = 7.1e-2
 set ele [2:5]@0 alpha_b = 0
 set uni 2:5 off
-set data ir6w.crab[2]|meas = 0.25*twopi
+set data 2@ir6w.crab[2]|meas = 0.25*twopi
 call 'set-match.tao'
 set uni * on
