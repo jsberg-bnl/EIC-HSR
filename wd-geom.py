@@ -26,11 +26,12 @@ lwc = 2
 lw12 = lwc-lpld0q1
 # IR10
 lc2w_wd = 1.36941
-lvalve_wd = 0.11
-lvalvegap_wd = 0.2
+lgv = 0.11
+lgvfl = 0.2
+lgvwd = 0.42
 lh10 = 1.1
 l09_0 = (lcenxdx+lcendx+lcendxd0+lcend0-0.5*lh10-lwds*cos(0.5*thd0))/cos(thd0)
-l10_0 = lc2w_wd+2*lvalvegap_wd+lvalve_wd-lpld0q1
+l10_0 = lc2w_wd+lgv+lgvfl+lgvwd-lpld0q1
 
 def fth(thc,lw0,lwd):
     return lw0*sin(thc-thd0) + lwd*sin(0.5*(thc-thd0)) \

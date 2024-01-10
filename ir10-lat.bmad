@@ -1,21 +1,24 @@
 lc2w_wd = 1.36941
-lvalve_wd = 0.11
-lvalvegap_wd = 0.2
-valve_wd: instrument, l=lvalve_wd
-ovalve_wd: drift, l=lvalvegap_wd
+lgv = 0.11
+lgvfl = 0.20
+lgvwd = 0.42
+
+valve_wd: instrument, l=lgv
+ogvfl: drift, l=lgvfl
+ogvwd: drift, l=lgvwd
 oc2w_wd: drift, l=lc2w_wd-lbq1-lflq1x
 
 lh10 = 1.1
 l09_0 = (lcenxdx+lcendx+lcendxd0+lcend0-0.5*lh10-lwds*cos(0.5*thd0))/cos(thd0)
 
-ocavity_591: pipe, l=l09_0+lpld0q1-lc2w_wd-2*lvalve_wd-4*lvalvegap_wd
+ocavity_591: pipe, l=l09_0+lpld0q1-lc2w_wd-2*lgv-3*lgvfl-lgvwd
 oh10: drift, l=lh10
-o10hi_wd_q1: drift, l=l09_0+lpld0q1-lc2w_wd-lvalve_wd-lvalvegap_wd
+o10hi_wd_q1: drift, l=l09_0+lpld0q1-lc2w_wd-lgv-lgvfl
 
-thl10 = +1.35734622348490600e-02
+thl10 = +1.36649185202707656e-02
 ll10 = 2*(lcenxdx*cos(thl10) + lcendx*cos(0.5*thdx-thl10)/cos(0.5*thdx) + lcendxd0*cos(thdx-thl10)/cos(thdx) &
  + lcend0*cos(0.5*(thdx+thd0)-thl10)/cos(0.5*(thdx+thd0))) - 2*lwds*cos(0.5*(thl10-thd0)) &
- - (l09_0 + lvalve_wd + 2*lvalvegap_wd + lc2w_wd - lpld0q1) * cos(thl10-thd0)
+ - (l09_0 + lgv + lgvfl + lgvwd + lc2w_wd - lpld0q1) * cos(thl10-thd0)
 
 ol10: drift, l=ll10
 
@@ -24,6 +27,6 @@ h10hi_dw0: sbend, l=lwds/sinc(0.5*thd0), g=-2*sin(0.5*thd0)/lwds, e1=-0.5*thd0, 
 h09lo_dw0: sbend, l=lwds/sinc(0.5*(thl10-thd0)), g=+2*sin(0.5*(thl10-thd0))/lwds, e1=+0.5*(thl10-thd0), e2=+0.5*(thl10-thd0)
 h10lo_dw0: sbend, l=lwds/sinc(0.5*(thl10-thd0)), g=-2*sin(0.5*(thl10-thd0))/lwds, e1=-0.5*(thl10-thd0), e2=-0.5*(thl10-thd0)
 
-ir10w: line=(oc2w_wd,ovalve_wd,valve_wd,ovalve_wd,ocavity_591,ovalve_wd,valve_wd,ovalve_wd)
-ir10: line=(ir10w,h09hi_dw0,oh10,h10hi_dw0,o10hi_wd_q1,valve_wd,ovalve_wd,oc2w_wd)
-ir10_41: line=(ir10w,h09lo_dw0,ol10,h10lo_dw0,ovalve_wd,valve_wd,ovalve_wd,oc2w_wd)
+ir10w: line=(oc2w_wd,ogvfl,valve_wd,ogvfl,ocavity_591,ogvfl,valve_wd,ogvwd)
+ir10: line=(ir10w,h09hi_dw0,oh10,h10hi_dw0,o10hi_wd_q1,valve_wd,ogvfl,oc2w_wd)
+ir10_41: line=(ir10w,h09lo_dw0,ol10,h10lo_dw0,ogvwd,valve_wd,ogvfl,oc2w_wd)
