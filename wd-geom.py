@@ -21,6 +21,8 @@ thdx=asin(sin(alpha) + lcendx/rhodx)
 # 
 lwdl = 6.0
 lwds = 4.4
+lwd2 = 2.0
+lww2 = 0.5
 lwc = 2
 # IR12
 lw12 = lwc-lpld0q1
@@ -32,6 +34,18 @@ lgvwd = 0.42
 lh10 = 1.1
 l09_0 = (lcenxdx+lcendx+lcendxd0+lcend0-0.5*lh10-lwds*cos(0.5*thd0))/cos(thd0)
 l10_0 = lc2w_wd+lgv+lgvfl+lgvwd-lpld0q1
+
+def fth2(th,lw0,n):
+    return lcenxdx*sin(thd0+n*th) + lcendx*sin(thd0+n*th-0.5*thdx)/cos(0.5*thdx) \
+        + lcendxd0*sin(thd0+n*th-thdx)/cos(thdx) + lcend0*sin(n*th-0.5*(thdx-thd0))/cos(0.5*(thdx+thd0)) \
+        - lw0*sin(n*th) - lwd2*fsum([sin((k+0.5)*th) for k in range(0,n)]) - lww2*fsum([sin(k*th) for k in range(1,n)])
+
+def dth2(th,lw0,n):
+    return n*lcenxdx*cos(thd0+n*th) + n*lcendx*cos(thd0+n*th-0.5*thdx)/cos(0.5*thdx) \
+        + n*lcendxd0*cos(thd0+n*th-thdx)/cos(thdx) + n*lcend0*cos(n*th-0.5*(thdx-thd0))/cos(0.5*(thdx+thd0)) \
+        - n*lw0*cos(n*th) \
+        - lwd2*fsum([(k+0.5)*cos((k+0.5)*th) for k in range(0,n)]) \
+        - lww2*fsum([k*cos(k*th) for k in range(1,n)])
 
 def fth(thc,lw0,lwd):
     return lw0*sin(thc-thd0) + lwd*sin(0.5*(thc-thd0)) \
@@ -59,5 +73,22 @@ def find_thc(lw0,lwd,chatty=False):
             decline = True
     return thc
 
+def find_th2(lw0,n,chatty=False):
+    th = 0.0
+    e1 = fth2(th,lw0,n)
+    if chatty:
+        print(f"{e1:+24.17e}")
+    decline = False
+    while not decline or abs(e1) < abs(e0):
+        th -= fth2(th,lw0,n)/dth2(th,lw0,n)
+        e0 = e1
+        e1 = fth2(th,lw0,n)
+        if chatty:
+            print(f"{e1:+24.17e}")
+        if abs(e1) < abs(e0):
+            decline = True
+    return th
+
 print(f"thl10 = {find_thc(0.5*(l09_0+l10_0),lwds):+24.17e}")
 print(f"thh12 = {find_thc(lw12,lwdl):+24.17e}")
+print(f"thw08 = {find_th2(l10_0,3):+24.17e}")

@@ -1,13 +1,3 @@
-lc2w_wd = 1.36941
-lgv = 0.11
-lgvfl = 0.20
-lgvwd = 0.42
-
-valve_wd: instrument, l=lgv
-ogvfl: drift, l=lgvfl
-ogvwd: drift, l=lgvwd
-oc2w_wd: drift, l=lc2w_wd-lbq1-lflq1x
-
 lh10 = 1.1
 l09_0 = (lcenxdx+lcendx+lcendxd0+lcend0-0.5*lh10-lwds*cos(0.5*thd0))/cos(thd0)
 
