@@ -1,10 +1,10 @@
-lseptum = 5.5
+lseptum = 4
 lhjet = 2
 lpc = 2.5
 lkickinj = 0.9
 likickinj = 0.1
 n_kick_inj = 10
-lcav25 = 0.33948
+lcav25 = 3.3948
 lcav50 = 1.443
 lcav100 = 1.0215
 lcav197 = 0.874
@@ -19,7 +19,7 @@ lv50 = 0.25
 lv100 = 0.25
 l4sq4 = 10.64309
 lsv4 = l4sq4 - lseptum - lsxt - lsb4 - lbfl4 - lbsk4iy
-ls197 = l3space - lbsk4iy - lsv4 - lseptum - 2*lbsk4ly - lv25 - 2*lcav25 - li25 - li25_197 - 5*lcav197 - 4*li197
+ls197 = l3space - lbsk4iy - lsv4 - lseptum - 2*lbsk4ly - lv25 - 4*lcav25 - 3*li25 - li25_197 - 7*lcav197 - 6*li197
 l3wdhj = 0.5
 l3hjpc = 0.35
 l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - lwds &
@@ -36,7 +36,7 @@ lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
 thc04 = +7.43678176157924319e-03
 lc04 = 2*lcenxdx*cos(thc04) + 2*lcendx*cos(thc04-0.5*thdx)/cos(0.5*thdx) + 2*lcendxd0*cos(thc04-thdx)/cos(thdx) &
  + 2*lcend0*cos(thc04-0.5*(thd0+thdx))/cos(0.5*(thd0+thdx)) + (lw3-lw4)*cos(thc04-thd0) - 2*lwds*cos(0.5*(thc04-thd0))
-lk100 = lc04 - lw3t - lc2w_wd - 2*lgvfl - lgv - lv100 - 2*lcav100 - li100 &
+lk100 = lc04 - lw3t - lc2w_wd - 2*lgvfl - lgv - lv100 - 3*lcav100 - 2*li100 &
  - 2*n_kick_inj*lkickinj - 2*(n_kick_inj-1)*likickinj - lkkw - lkkd - lkdw
 
 yo4_dw0: sbend, l=lwds/sinc(0.5*(thc04-thd0)), g=2*sin(0.5*(thc04-thd0))/lwds, e1=0.5*(thc04-thd0), e2=0.5*(thc04-thd0)
@@ -70,15 +70,20 @@ cav100: rfcavity, l=lcav100, harmon=1260
 cav197: rfcavity, l=lcav197, harmon=2520
 cav25_1: cav25
 cav25_2: cav25
+cav25_3: cav25
+cav25_4: cav25
 cav50_1: cav50
 cav50_2: cav50
 cav100_1: cav100
 cav100_2: cav100
+cav100_3: cav100
 cav197_1: cav197
 cav197_2: cav197
 cav197_3: cav197
 cav197_4: cav197
 cav197_5: cav197
+cav197_6: cav197
+cav197_7: cav197
 
 septum_ir4: pipe, l=lseptum
 det_pol_hpol_hjet: instrument, l=lhjet
@@ -157,10 +162,18 @@ yo4_du3_hsr:line=(obsk4ly,
  yo4_sv3_1,
  obsk4ly,
  ov25,
+ cav25_4,
+ o25,
+ cav25_3,
+ o25,
  cav25_2,
  o25,
  cav25_1,
  o25_197,
+ cav197_7,
+ o197,
+ cav197_6,
+ o197,
  cav197_5,
  o197,
  cav197_4,
@@ -178,7 +191,7 @@ yo4_du3_hsr:line=(obsk4ly,
 
 ir4: line=(
  oc2w_wd,ogvfl,valve_wd,ogvfl,
- ov100,cav100_2,o100,cav100_1,
+ ov100,cav100_3,o100,cav100_2,o100,cav100_1,
  ok100,
  kick_assy_b,okkw,ip4,okkd,kick_assy_a,
  okdw,yo4_dw0,odw50,
