@@ -35,16 +35,25 @@ lgv = 0.11
 lgvfl = 0.2
 
 # IR4
-lhjet = 2
-lpc = 2.5
-l3hjpc = 0.35
-l3wqhj = 0.5
+lq3bpm = 5.06*0.0254
+lvalve = 3.84*0.0254
+lbelw7 = 7.67*0.0254
+lk10hz = 2.45*0.0254
+lpc = 82.92*0.0254
+lwpump = 13.12*0.0254
+ljettrans = 12.625*0.0254
+ljetfl = 0.97*0.0254
+ljet = 24.5*0.0254
+ljetall = ljet+2*ljetfl+2*ljettrans
+lwdtrans = 0.438
+lwdfl = 0.198
+
 lv50 = 0.25
 lcav50 = 1.443
 li50 = 0.5
 ldw50 = 0.5
 
-lw3 = lpld0q1+lq1+lplq1q2+lq2+lplq2q3+lq3+lbq3+lbfl3+2*lbsk3ly+lhjet+lpc+l3hjpc+l3wqhj+lwds
+lw3 = lpld0q1+lq1+lplq1q2+lq2+lplq2q3+lq3+lbq3+lbfl3+lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl+lwds
 lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
 # IR12
 lw12 = lwc-lpld0q1

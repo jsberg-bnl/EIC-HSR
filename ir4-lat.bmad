@@ -1,6 +1,4 @@
 lseptum = 4
-lhjet = 2
-lpc = 2.5
 lkickinj = 0.9
 likickinj = 0.1
 n_kick_inj = 10
@@ -20,20 +18,34 @@ lv100 = 0.25
 l4sq4 = 10.64309
 lsv4 = l4sq4 - lseptum - lsxt - lsb4 - lbfl4 - lbsk4iy
 ls197 = l3space - lbsk4iy - lsv4 - lseptum - 2*lbsk4ly - lv25 - 4*lcav25 - 3*li25 - li25_197 - 7*lcav197 - 6*li197
-l3wdhj = 0.5
-l3hjpc = 0.35
-l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - lwds &
- - l3wdhj - l3hjpc - lhjet - lpc - 2*lbsk3ly
 lkkw = 9.2
 lkkd = 3.0
 ldw50 = 0.5
 lkdw = 2.045
 
-lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+2*lbsk3ly+lhjet+lpc+l3hjpc+l3wdhj
+! Polarimetry layout
+lq3bpm = 5.06*0.0254
+lvalve = 3.84*0.0254
+lbelw7 = 7.67*0.0254
+lk10hz = 2.45*0.0254
+lpc = 82.92*0.0254
+lwpump = 13.12*0.0254
+ljettrans = 12.625*0.0254
+ljetfl = 0.97*0.0254
+ljet = 24.5*0.0254
+ljetall = ljet+2*ljetfl+2*ljettrans
+
+lwdtrans = 0.438
+lwdfl = 0.198
+
+l4wdq3 = lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl
+l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - lwds - l4wdq3
+
+lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+l4wdq3
 lw3 = lpld0q1+lw3t+lwds
 lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
 
-thc04 = +7.43678176157924319e-03
+thc04 = +7.27370860629462414e-03
 lc04 = 2*lcenxdx*cos(thc04) + 2*lcendx*cos(thc04-0.5*thdx)/cos(0.5*thdx) + 2*lcendxd0*cos(thc04-thdx)/cos(thdx) &
  + 2*lcend0*cos(thc04-0.5*(thd0+thdx))/cos(0.5*(thd0+thdx)) + (lw3-lw4)*cos(thc04-thd0) - 2*lwds*cos(0.5*(thc04-thd0))
 lk100 = lc04 - lw3t - lc2w_wd - 2*lgvfl - lgv - lv100 - 3*lcav100 - 2*li100 &
@@ -86,7 +98,20 @@ cav197_6: cav197
 cav197_7: cav197
 
 septum_ir4: pipe, l=lseptum
-det_pol_hpol_hjet: instrument, l=lhjet
+
+! Polarimetery and nearby
+yi3_b3w: monitor, l=lq3bpm
+ovalve: drift, l=lvalve
+obelw7: drift, l=lbelw7
+ok10hzh: drift, l=0.5*lk10hz
+owpump: drift, l=lwpump
+ojettrans: drift, l=ljettrans
+ojetfl: drift, l=ljetfl
+ohe3jet: pipe, l=ljetall+2*lbelw7
+owdtrans: drift, l=lwdtrans
+owdfl: drift, l=lwdfl
+
+det_pol_hpol_hjet: instrument, l=ljet
 det_pol_hpol_pc1_2: instrument, l=lpc
 
 o_kick_assy: drift, l=likickinj
@@ -101,8 +126,6 @@ o25_197: drift, l=li25_197
 osv4: drift, l=lsv4
 os197: drift, l=ls197
 o3kwd: drift, l=l3kwd
-o3wdhj: drift, l=l3wdhj
-o3hjpc: drift, l=l3hjpc
 okkw: drift, l=lkkw
 okkd: drift, l=lkkd
 odw50: drift, l=ldw50
@@ -150,13 +173,31 @@ yi3_du3_hsr:line=(obsk3iy,
  ocktufl,
  o3kwd,
  yi3_dw0,
- o3wdhj,
+ owdfl,
+ owdtrans,
+ obelw7,
+ owpump,
+ ovalve,
+ ohe3jet,
+ ovalve,
+ owpump,
+ obelw7,
+ ojettrans,
+ ojetfl,
  det_pol_hpol_hjet,
- o3hjpc,
+ ojetfl,
+ ojettrans,
+ obelw7,
+ owpump,
+ ovalve,
+ obelw7,
  det_pol_hpol_pc1_2,
- obsk3ly,
- yi3_sv3,
- obsk3ly)
+ ok10hzh,
+ yi3_kfbh3,
+ ok10hzh,
+ obelw7,
+ ovalve,
+ yi3_b3w)
 
 yo4_du3_hsr:line=(obsk4ly,
  yo4_sv3_1,
