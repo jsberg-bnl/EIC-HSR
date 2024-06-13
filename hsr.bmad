@@ -8,6 +8,9 @@ lwdl = 6.0
 lwds = 4.4
 lwc = 2
 
+lwd2 = 2.0
+lww2 = 0.5
+
 lc2w_wd = 1.36941
 lgv = 0.11
 lgvfl = 0.20
@@ -17,6 +20,7 @@ valve_wd: instrument, l=lgv
 ogvfl: drift, l=lgvfl
 ogvwd: drift, l=lgvwd
 oc2w_wd: drift, l=lc2w_wd-lbq1-lflq1x
+oww2: drift, l=lww2
 
 call, file='ir2-lat.bmad'
 call, file='ir4-lat.bmad'
