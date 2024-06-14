@@ -55,7 +55,9 @@ lcav50 = 1.443
 li50 = 0.5
 ldw50 = 0.5
 
-lw3 = lpld0q1+lq1+lplq1q2+lq2+lplq2q3+lq3+lbq3+lbfl3+lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl+lwds
+lw3 = lpld0q1+lq1+lplq1q2+lq2+lplq2q3+lq3+lbq3+lbfl3 \
+ +lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall \
+ +lwdtrans+lwdfl+2*lwd2+lww2
 lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
 # IR12
 lw12 = lwc-lpld0q1
@@ -120,7 +122,7 @@ def find_th2(lw0,n,chatty=False):
             decline = True
     return th
 
-print(f"thc04 = {find_thc(0.5*(lw4-lw3),lwds):+24.17e}")
+print(f"thw04 = {find_th2(0.5*(lw4-lw3),2):+24.17e}")
 print(f"thl10 = {find_thc(0.5*(l09_0+l10_0),lwds):+24.17e}")
 print(f"thh12 = {find_thc(lw12,lwdl):+24.17e}")
 print(f"thw08 = {find_th2(l10_0,3):+24.17e}")

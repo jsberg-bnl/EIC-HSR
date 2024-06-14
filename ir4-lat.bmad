@@ -39,19 +39,25 @@ lwdtrans = 0.438
 lwdfl = 0.198
 
 l4wdq3 = lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl
-l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - lwds - l4wdq3
+l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - 2*lwd2 - lww2 - l4wdq3
 
 lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+l4wdq3
-lw3 = lpld0q1+lw3t+lwds
+lw3 = lpld0q1+lw3t+2*lwd2+lww2
 lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
 
-thc04 = +7.27370860629462414e-03
-lc04 = 2*lcenxdx*cos(thc04) + 2*lcendx*cos(thc04-0.5*thdx)/cos(0.5*thdx) + 2*lcendxd0*cos(thc04-thdx)/cos(thdx) &
- + 2*lcend0*cos(thc04-0.5*(thd0+thdx))/cos(0.5*(thd0+thdx)) + (lw3-lw4)*cos(thc04-thd0) - 2*lwds*cos(0.5*(thc04-thd0))
+thw04 = +1.79958490848494039e-03
+nwd04 = 2
+thc04 = nwd04*thw04+thd0
+lc04 = 2*lcenxdx*cos(thc04) &
+ + 2*lcendx*cos(thc04-0.5*thdx)/cos(0.5*thdx) &
+ + 2*lcendxd0*cos(thc04-thdx)/cos(thdx) &
+ + 2*lcend0*cos(nwd04*thw04-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx)) &
+ + (lw3-lw4)*cos(nwd04*thw04) &
+ - 4*lwd2*cos(thw04)*cos(0.5*thw04) - 2*lww2*cos(thw04)
 lk100 = lc04 - lw3t - lc2w_wd - 2*lgvfl - lgv - lv100 - 3*lcav100 - 2*li100 &
  - 2*n_kick_inj*lkickinj - 2*(n_kick_inj-1)*likickinj - lkkw - lkkd - lkdw
 
-yo4_dw0: sbend, l=lwds/sinc(0.5*(thc04-thd0)), g=2*sin(0.5*(thc04-thd0))/lwds, e1=0.5*(thc04-thd0), e2=0.5*(thc04-thd0)
+yo4_dw0: sbend, l=lwd2/sinc(0.5*thw04), g=2*sin(0.5*thw04)/lwd2, e1=0.5*thw04, e2=0.5*thw04
 yi3_dw0: yo4_dw0, g=-yo4_dw0[g], e1=-yo4_dw0[e1], e2=-yo4_dw0[e2]
 
 kickinj: kicker, l=lkickinj
@@ -173,6 +179,8 @@ yi3_du3_hsr:line=(obsk3iy,
  ocktufl,
  o3kwd,
  yi3_dw0,
+ oww2,
+ yi3_dw0,
  owdfl,
  owdtrans,
  obelw7,
@@ -235,6 +243,6 @@ ir4: line=(
  ov100,cav100_3,o100,cav100_2,o100,cav100_1,
  ok100,
  kick_assy_b,okkw,ip4,okkd,kick_assy_a,
- okdw,yo4_dw0,odw50,
+ okdw,yo4_dw0,oww2,yo4_dw0,odw50,
  cav50_2,o50,cav50_1,ov50,
  ogvfl,valve_wd,ogvfl,oc2w_wd)
