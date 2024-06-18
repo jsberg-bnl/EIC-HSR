@@ -37,7 +37,7 @@ lgv = 0.11
 lgvfl = 0.2
 
 # IR4
-lq3bpm = 5.06*0.0254
+ltrpbpm = 5.06*0.0254
 lvalve = 3.84*0.0254
 lbelw7 = 7.67*0.0254
 lk10hz = 2.45*0.0254
@@ -56,9 +56,9 @@ li50 = 0.5
 ldw50 = 0.5
 
 lw3 = lpld0q1+lq1+lplq1q2+lq2+lplq2q3+lq3+lbq3+lbfl3 \
- +lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall \
+ +ltrpbpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall \
  +lwdtrans+lwdfl+2*lwd2+lww2
-lw4 = lbq1+lflq1x+lq3bpm+2*lvalve+2*lbelw7+2*lcav50+li50+2*lv50+lwdfl+lwdtrans-lpld0q1
+lw4 = lbq1+lflq1x+ltrpbpm+2*lvalve+2*lbelw7+2*lcav50+li50+2*lv50+lwdfl+lwdtrans-lpld0q1
 # IR12
 lw12 = lwc-lpld0q1
 # IR10

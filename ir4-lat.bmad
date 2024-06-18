@@ -24,7 +24,7 @@ ldw50 = 0.5
 lkdw = 2.045
 
 ! Polarimetry layout
-lq3bpm = 5.06*0.0254
+ltrpbpm = 5.06*0.0254
 lvalve = 3.84*0.0254
 lbelw7 = 7.67*0.0254
 lk10hz = 2.45*0.0254
@@ -38,12 +38,12 @@ ljetall = ljet+2*ljetfl+2*ljettrans
 lwdtrans = 0.438
 lwdfl = 0.198
 
-l4wdq3 = lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl
+l4wdq3 = ltrpbpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl
 l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - 2*lwd2 - lww2 - l4wdq3
 
 lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+l4wdq3
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
-lw4 = lbq1+lflq1x+lq3bpm+2*lvalve+2*lbelw7+2*lcav50+li50+2*lv50+lwdfl+lwdtrans-lpld0q1
+lw4 = lbq1+lflq1x+ltrpbpm+2*lvalve+2*lbelw7+2*lcav50+li50+2*lv50+lwdfl+lwdtrans-lpld0q1
 
 thw04 = +1.79302913342695006e-03
 nwd04 = 2
@@ -54,7 +54,7 @@ lc04 = 2*lcenxdx*cos(thc04) &
  + 2*lcend0*cos(nwd04*thw04-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx)) &
  + (lw3-lw4)*cos(nwd04*thw04) &
  - 4*lwd2*cos(thw04)*cos(0.5*thw04) - 2*lww2*cos(thw04)
-l04 = lc04 - lw3t - lbq1 - lflq1x - lq3bpm - 2*lvalve - 2*lbelw7 - 3*lcav100 - 2*li100 - 2*lv100 &
+l04 = lc04 - lw3t - lbq1 - lflq1x - ltrpbpm - 2*lvalve - 2*lbelw7 - 3*lcav100 - 2*li100 - 2*lv100 &
  - n_kick_inj*lkickinj - (n_kick_inj+1)*likickinj - lwdtrans - lwdfl
 
 yo4_dw0: sbend, l=lwd2/sinc(0.5*thw04), g=2*sin(0.5*thw04)/lwd2, e1=0.5*thw04, e2=0.5*thw04
@@ -105,11 +105,11 @@ cav197_7: cav197
 
 septum_ir4: pipe, l=lseptum
 
-yi3_b1w: monitor, l=lq3bpm
-yo4_b1w: monitor, l=lq3bpm
+yi3_b1w: monitor, l=ltrpbpm
+yi3_b3w: monitor, l=ltrpbpm
+yo4_b1w: monitor, l=ltrpbpm
 
 ! Polarimetery and nearby
-yi3_b3w: monitor, l=lq3bpm
 ovalve: drift, l=lvalve
 obelw7: drift, l=lbelw7
 ok10hzh: drift, l=0.5*lk10hz
