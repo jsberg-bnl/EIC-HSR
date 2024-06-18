@@ -45,7 +45,7 @@ lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+l4wdq3
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
 lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
 
-thw04 = +1.79958490848494039e-03
+thw04 = +1.79958490407613027e-03
 nwd04 = 2
 thc04 = nwd04*thw04+thd0
 lc04 = 2*lcenxdx*cos(thc04) &
