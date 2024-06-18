@@ -58,7 +58,7 @@ ldw50 = 0.5
 lw3 = lpld0q1+lq1+lplq1q2+lq2+lplq2q3+lq3+lbq3+lbfl3 \
  +lq3bpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall \
  +lwdtrans+lwdfl+2*lwd2+lww2
-lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
+lw4 = lbq1+lflq1x+lq3bpm+2*lvalve+2*lbelw7+2*lcav50+li50+2*lv50+lwdfl+lwdtrans-lpld0q1
 # IR12
 lw12 = lwc-lpld0q1
 # IR10

@@ -1,7 +1,7 @@
 lseptum = 4
 lkickinj = 0.9
 likickinj = 0.1
-n_kick_inj = 10
+n_kick_inj = 20
 lcav25 = 3.3948
 lcav50 = 1.443
 lcav100 = 1.0215
@@ -43,9 +43,9 @@ l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*l
 
 lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+l4wdq3
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
-lw4 = lc2w_wd+lgv+2*lgvfl+lv50+2*lcav50+li50+ldw50-lpld0q1
+lw4 = lbq1+lflq1x+lq3bpm+2*lvalve+2*lbelw7+2*lcav50+li50+2*lv50+lwdfl+lwdtrans-lpld0q1
 
-thw04 = +1.79958490407613027e-03
+thw04 = +1.79302913342695006e-03
 nwd04 = 2
 thc04 = nwd04*thw04+thd0
 lc04 = 2*lcenxdx*cos(thc04) &
@@ -54,33 +54,33 @@ lc04 = 2*lcenxdx*cos(thc04) &
  + 2*lcend0*cos(nwd04*thw04-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx)) &
  + (lw3-lw4)*cos(nwd04*thw04) &
  - 4*lwd2*cos(thw04)*cos(0.5*thw04) - 2*lww2*cos(thw04)
-lk100 = lc04 - lw3t - lc2w_wd - 2*lgvfl - lgv - lv100 - 3*lcav100 - 2*li100 &
- - 2*n_kick_inj*lkickinj - 2*(n_kick_inj-1)*likickinj - lkkw - lkkd - lkdw
+l04 = lc04 - lw3t - lbq1 - lflq1x - lq3bpm - 2*lvalve - 2*lbelw7 - 3*lcav100 - 2*li100 - 2*lv100 &
+ - n_kick_inj*lkickinj - (n_kick_inj+1)*likickinj - lwdtrans - lwdfl
 
 yo4_dw0: sbend, l=lwd2/sinc(0.5*thw04), g=2*sin(0.5*thw04)/lwd2, e1=0.5*thw04, e2=0.5*thw04
 yi3_dw0: yo4_dw0, g=-yo4_dw0[g], e1=-yo4_dw0[e1], e2=-yo4_dw0[e2]
 
 kickinj: kicker, l=lkickinj
-sl_kick_mod1a: kickinj
-sl_kick_mod2a: kickinj
-sl_kick_mod3a: kickinj
-sl_kick_mod4a: kickinj
-sl_kick_mod5a: kickinj
-sl_kick_mod6a: kickinj
-sl_kick_mod7a: kickinj
-sl_kick_mod8a: kickinj
-sl_kick_mod9a: kickinj
-sl_kick_mod10a: kickinj
-sl_kick_mod1b: kickinj
-sl_kick_mod2b: kickinj
-sl_kick_mod3b: kickinj
-sl_kick_mod4b: kickinj
-sl_kick_mod5b: kickinj
-sl_kick_mod6b: kickinj
-sl_kick_mod7b: kickinj
-sl_kick_mod8b: kickinj
-sl_kick_mod9b: kickinj
-sl_kick_mod10b: kickinj
+sl_kick_mod01: kickinj
+sl_kick_mod02: kickinj
+sl_kick_mod03: kickinj
+sl_kick_mod04: kickinj
+sl_kick_mod05: kickinj
+sl_kick_mod06: kickinj
+sl_kick_mod07: kickinj
+sl_kick_mod08: kickinj
+sl_kick_mod09: kickinj
+sl_kick_mod10: kickinj
+sl_kick_mod11: kickinj
+sl_kick_mod12: kickinj
+sl_kick_mod13: kickinj
+sl_kick_mod14: kickinj
+sl_kick_mod15: kickinj
+sl_kick_mod16: kickinj
+sl_kick_mod17: kickinj
+sl_kick_mod18: kickinj
+sl_kick_mod19: kickinj
+sl_kick_mod20: kickinj
 
 cav25: rfcavity, l=lcav25, harmon=315
 cav50: rfcavity, l=lcav50, harmon=630
@@ -104,6 +104,9 @@ cav197_6: cav197
 cav197_7: cav197
 
 septum_ir4: pipe, l=lseptum
+
+yi3_b1w: monitor, l=lq3bpm
+yo4_b1w: monitor, l=lq3bpm
 
 ! Polarimetery and nearby
 yi3_b3w: monitor, l=lq3bpm
@@ -136,32 +139,30 @@ okkw: drift, l=lkkw
 okkd: drift, l=lkkd
 odw50: drift, l=ldw50
 okdw: drift, l=lkdw
-ok100: drift, l=lk100
+o04: drift, l=l04
 
-kick_assy_a: line=(
- sl_kick_mod1a,o_kick_assy,
- sl_kick_mod2a,o_kick_assy,
- sl_kick_mod3a,o_kick_assy,
- sl_kick_mod4a,o_kick_assy,
- sl_kick_mod5a,o_kick_assy,
- sl_kick_mod6a,o_kick_assy,
- sl_kick_mod7a,o_kick_assy,
- sl_kick_mod8a,o_kick_assy,
- sl_kick_mod9a,o_kick_assy,
- sl_kick_mod10a)
-kick_assy_b: line=(
- sl_kick_mod1b,o_kick_assy,
- sl_kick_mod2b,o_kick_assy,
- sl_kick_mod3b,o_kick_assy,
- sl_kick_mod4b,o_kick_assy,
- sl_kick_mod5b,o_kick_assy,
- sl_kick_mod6b,o_kick_assy,
- sl_kick_mod7b,o_kick_assy,
- sl_kick_mod8b,o_kick_assy,
- sl_kick_mod9b,o_kick_assy,
- sl_kick_mod10b)
-
-ip4: marker
+inj_kickers: line=(
+ o_kick_assy, sl_kick_mod20,
+ o_kick_assy, sl_kick_mod19,
+ o_kick_assy, sl_kick_mod18,
+ o_kick_assy, sl_kick_mod17,
+ o_kick_assy, sl_kick_mod16,
+ o_kick_assy, sl_kick_mod15,
+ o_kick_assy, sl_kick_mod14,
+ o_kick_assy, sl_kick_mod13,
+ o_kick_assy, sl_kick_mod12,
+ o_kick_assy, sl_kick_mod11,
+ o_kick_assy, sl_kick_mod10,
+ o_kick_assy, sl_kick_mod09,
+ o_kick_assy, sl_kick_mod08,
+ o_kick_assy, sl_kick_mod07,
+ o_kick_assy, sl_kick_mod06,
+ o_kick_assy, sl_kick_mod05,
+ o_kick_assy, sl_kick_mod04,
+ o_kick_assy, sl_kick_mod03,
+ o_kick_assy, sl_kick_mod02,
+ o_kick_assy, sl_kick_mod01,
+ o_kick_assy)
 
 yi3_du3_hsr:line=(obsk3iy,
  yi3_sv4,
@@ -238,11 +239,18 @@ yo4_du3_hsr:line=(obsk4ly,
  yo4_sv4,
  obsk4iy)
 
+ip4: marker
+
 ir4: line=(
- oc2w_wd,ogvfl,valve_wd,ogvfl,
- ov100,cav100_3,o100,cav100_2,o100,cav100_1,
- ok100,
- kick_assy_b,okkw,ip4,okkd,kick_assy_a,
- okdw,yo4_dw0,oww2,yo4_dw0,odw50,
- cav50_2,o50,cav50_1,ov50,
- ogvfl,valve_wd,ogvfl,oc2w_wd)
+ yi3_b1w,
+ ovalve, obelw7,
+ ov100, cav100_3, o100, cav100_2, o100, cav100_1, ov100,
+ ovalve, obelw7,
+ inj_kickers,
+ ip4,
+ o04,
+ owdtrans, owdfl, yo4_dw0, oww2, yo4_dw0, owdfl, owdtrans,
+ obelw7, ovalve,
+ ov50, cav50_2, o50, cav50_2, ov50,
+ obelw7, ovalve,
+ yo4_b1w)
