@@ -14,7 +14,7 @@
 /
 
 &tao_design_lattice
- n_universes = 22
+ n_universes = 21
  design_lattice(1) = 'hsr.bmad' '../hsr-ovl.bmad' ! Full ring
  design_lattice(2) = 'hsr.bmad' '../../ir6w-ovl.bmad'
  design_lattice(3) = 'hsr.bmad' '../../ir6d-ovl.bmad'
@@ -36,7 +36,6 @@
  design_lattice(19) = 'hsr.bmad'
  design_lattice(20) = 'hsr.bmad'
  design_lattice(21) = 'hsr.bmad'
- design_lattice(22) = 'hsr.bmad' '../../ir4-ovl.bmad'
  ! Insertions
  design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6w' ! ir6w
  design_lattice(2)%reverse_lattice = t
@@ -66,7 +65,6 @@
  ! Other slices of insertions
  design_lattice(21)%slice_lattice = 'yi7_int9_3:yo8_int11_2'   ! ir8 rev
  design_lattice(21)%reverse_lattice = t
- design_lattice(22)%slice_lattice = 'yi3_b1+2:yo4_b1-2'        ! inner ir4
 /
 
 &tao_var
