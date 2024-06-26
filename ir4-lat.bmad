@@ -235,15 +235,12 @@ yo4_du3_hsr:line=(obsk4ly,
  yo4_sv4,
  obsk4iy)
 
-ip4: marker
-
 ir4: line=(
  yi3_b1w,
  ovalve, obelw7,
  ov100, cav100_3, o100, cav100_2, o100, cav100_1, ov100,
  ovalve, obelw7,
  inj_kickers,
- ip4,
  o04,
  owdtrans, owdfl, yo4_dw0, oww2, yo4_dw0, owdfl, owdtrans,
  obelw7, ovalve,

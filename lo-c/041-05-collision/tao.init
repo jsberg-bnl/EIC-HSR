@@ -715,9 +715,12 @@
  datum(4)%data_type = 'expression: lat::alpha.a[yo4_int11_2] - 13@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: lat::beta.b[yo4_int11_2] - 13@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[yo4_int11_2] - 13@lat::alpha.b[0]'
- datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
- datum(7:11)%ele_name = 'ip4' 'ip4' 'ip4' 'ip4' 'ip4'
- datum(12)%data_type = 'expression:gamma.b[ip4]-gamma.a[ip4]'
+ datum(7)%data_type = 'expression: lat::eta.x[yi3_qf1]+lat::eta.x[yo4_qd1-1]'
+ datum(8)%data_type = 'expression: lat::alpha.a[yi3_qf1]+lat::alpha.a[yo4_qd1-1]'
+ datum(9)%data_type = 'expression: lat::alpha.b[yi3_qf1]+lat::alpha.b[yo4_qd1-1]'
+ datum(10)%data_type = 'expression: 0.5*(lat::gamma.a[yi3_qf1]+lat::gamma.a[yo4_qd1-1])'
+ datum(11)%data_type = 'expression: 0.5*(lat::gamma.b[yi3_qf1]+lat::gamma.b[yo4_qd1-1])'
+ datum(12)%data_type = 'expression: data::ir4.fit[10]|model-data::ir4.fit[11]|model'
  datum(13)%data_type = 'expression:beta.a[yo4_qf2->-0.5*l]-beta.a[yi3_qf3-1]'
  datum(14)%data_type = 'expression:beta.b[yo4_qd3]-beta.b[yi3_qd2->-0.5*l]'
  datum(15)%data_type = 'expression:beta.a[yi3_qf5->-0.5*l]-beta.a[yi3_qf7->-0.5*l]'
@@ -784,12 +787,13 @@
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'opt'
- datum(1:9)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'etap.x' 'etap.x'
- datum(1:9)%ele_name = 'ip4' 'yi3_b4' 'yi3_b4' 'yo4_b3' 'yo4_b3' 'yo4_int11_2' 'yo4_int11_2' 'dwarm3-1' 'dwarm4'
+ datum(1)%data_type = 'expression:0.5*(lat::eta.x[yo4_qd1-1]-lat::eta.x[yi3_qf1])'
+ datum(2:9)%data_type = 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'etap.x' 'etap.x'
+ datum(2:9)%ele_name = 'yi3_b4' 'yi3_b4' 'yo4_b3' 'yo4_b3' 'yo4_int11_2' 'yo4_int11_2' 'yi3_dw0##1-1' 'yo4_dw0##2'
  datum(2:7)%ele_start_name = 'yi3_int11_2' 'yi3_int11_2' 'yi3_b3' 'yi3_b3' 'yo4_b4' 'yo4_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
  datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
- datum(1:9)%weight = 1 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-3 1e-3
+ datum(1:9)%weight = 1e-5 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-3 1e-3
  datum(1:9)%good_user = f f f f f f f f f
 /
 
