@@ -1,7 +1,7 @@
 lseptum = 4
 lkickinj = 0.9
 likickinj = 0.1
-n_kick_inj = 20
+n_kick_inj = 18
 lcav25 = 3.3948
 lcav50 = 1.443
 lcav100 = 1.0215
@@ -79,8 +79,6 @@ sl_kick_mod15: kickinj
 sl_kick_mod16: kickinj
 sl_kick_mod17: kickinj
 sl_kick_mod18: kickinj
-sl_kick_mod19: kickinj
-sl_kick_mod20: kickinj
 
 cav25: rfcavity, l=lcav25, harmon=315
 cav50: rfcavity, l=lcav50, harmon=630
@@ -142,8 +140,6 @@ okdw: drift, l=lkdw
 o04: drift, l=l04
 
 inj_kickers: line=(
- o_kick_assy, sl_kick_mod20,
- o_kick_assy, sl_kick_mod19,
  o_kick_assy, sl_kick_mod18,
  o_kick_assy, sl_kick_mod17,
  o_kick_assy, sl_kick_mod16,
