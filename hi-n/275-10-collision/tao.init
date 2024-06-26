@@ -600,9 +600,12 @@
  datum(4)%data_type = 'expression: lat::alpha.a[yo4_int11_2] - 12@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: lat::beta.b[yo4_int11_2] - 12@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[yo4_int11_2] - 12@lat::alpha.b[0]'
- datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
- datum(7:11)%ele_name = 'ip4' 'ip4' 'ip4' 'ip4' 'ip4'
- datum(12)%data_type = 'expression:gamma.a[ip4]-gamma.b[ip4]'
+ datum(7)%data_type = 'expression: lat::eta.x[yi3_qf1]+lat::eta.x[yo4_qd1-1]'
+ datum(8)%data_type = 'expression: lat::alpha.a[yi3_qf1]+lat::alpha.a[yo4_qd1-1]'
+ datum(9)%data_type = 'expression: lat::alpha.b[yi3_qf1]+lat::alpha.b[yo4_qd1-1]'
+ datum(10)%data_type = 'expression: 0.5*(lat::gamma.a[yi3_qf1]+lat::gamma.a[yo4_qd1-1])'
+ datum(11)%data_type = 'expression: 0.5*(lat::gamma.b[yi3_qf1]+lat::gamma.b[yo4_qd1-1])'
+ datum(12)%data_type = 'expression: data::ir4.fit[10]|model-data::ir4.fit[11]|model'
  datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
  datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
 /
