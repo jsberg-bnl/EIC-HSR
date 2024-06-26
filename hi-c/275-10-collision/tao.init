@@ -96,14 +96,6 @@
 /
 
 &tao_var
- v1_var%name = 'ir4g'
- default_universe = '1,9,22'
- var(1:4)%ele_name = 'okickwd3' 'okickwd4' 'ov_dwarm3' 'ov_dwarm4'
- var(1:4)%step = 1e-3 1e-3 1e-6 1e-6
- var(1:4)%attribute = 'l' 'l' 'angle' 'angle'
-/
-
-&tao_var
  v1_var%name = 'ir4'
  default_universe = '1,9'
  var(1:3)%ele_name = 'y4_q6_ps' 'y4_q7_ps' 'y4_q89_ps'
@@ -304,22 +296,6 @@
  datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
  datum(1:5)%meas = 0 0 0 0 0
  datum(1:5)%good_user = f f f f t
-/
-
-&tao_d2_data
- universe = '22'
- d2_data%name = 'ir4g'
- n_d1_data = 1
-/
-
-&tao_d1_data
- ix_d1_data = 1
- d1_data%name = 'geom'
- datum(1:3)%data_type = 'floor.x' 'floor.z' 'floor.theta'
- datum(4)%data_type = 'expression: 22@ele::ov_dwarm3[angle]+22@ele::ov_dwarm4[angle]'
- datum(1:3)%ele_name = 'det_pol_hpol_hjet+1' 'det_pol_hpol_hjet+1' 'det_pol_hpol_hjet+1'
- datum(1:4)%weight = 1 1 1e4 1e4
- datum(4)%meas = 0
 /
 
 &tao_d2_data
