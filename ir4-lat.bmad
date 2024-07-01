@@ -1,35 +1,37 @@
+! Standard DU objects
+ltrpbpm = 5.06*0.0254
+lvalve = 3.84*0.0254
+lbelw7 = 7.67*0.0254
+lwpump = 13.12*0.0254
+lk10hz = 2.45*0.0254
+
+! Injection, RF dimensions
 lseptum = 4
 lkickinj = 0.9
 likickinj = 0.1
 n_kick_inj = 18
 lcav25 = 3.3948
-lcav50 = 1.443
-lcav100 = 1.0215
+lcav50 = 2.05
+lcav100 = 1.305
 lcav197 = 0.874
-li25 = 0.5
-li50 = 0.5
-li100 = 0.5
-li197 = 0.5
-li25_197 = 0.5
+li25 = lbelw7
+li50 = lbelw7
+li100 = lbelw7
+li197 = lbelw7
+li25_197 = lbelw7+lvalve
 l4q3_25 = 2.65718
-lv25 = 0.25
-lv50 = 0.25
-lv100 = 0.25
+lv25 = lbelw7
 l4sq4 = 10.64309
 lsv4 = l4sq4 - lseptum - lsxt - lsb4 - lbfl4 - lbsk4iy
-ls197 = l3space - lbsk4iy - lsv4 - lseptum - 2*lbsk4ly - lv25 - 4*lcav25 - 3*li25 - li25_197 - 7*lcav197 - 6*li197
+ls197 = l3space - lbsk4iy - lsv4 - lseptum - ltrpbpm - 2*lvalve - 4*lbelw7 - 2*lwpump &
+ - 4*lcav25 - 3*li25 - li25_197 - 8*lcav197 - 7*li197
 lkkw = 9.2
 lkkd = 3.0
 ldw50 = 0.5
 lkdw = 2.045
 
 ! Polarimetry layout
-ltrpbpm = 5.06*0.0254
-lvalve = 3.84*0.0254
-lbelw7 = 7.67*0.0254
-lk10hz = 2.45*0.0254
 lpc = 82.92*0.0254
-lwpump = 13.12*0.0254
 ljettrans = 12.625*0.0254
 ljetfl = 0.97*0.0254
 ljet = 24.5*0.0254
@@ -43,9 +45,9 @@ l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*l
 
 lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+l4wdq3
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
-lw4 = lbq1+lflq1x+ltrpbpm+2*lvalve+2*lbelw7+2*lcav50+li50+2*lv50+lwdfl+lwdtrans-lpld0q1
+lw4 = lbq1+lflq1x+ltrpbpm+2*lvalve+4*lbelw7+2*lwpump+3*lcav50+2*li50+lwdfl+lwdtrans-lpld0q1
 
-thw04 = +1.79302913342695006e-03
+thw04 = +1.89924164367851834e-03
 nwd04 = 2
 thc04 = nwd04*thw04+thd0
 lc04 = 2*lcenxdx*cos(thc04) &
@@ -54,7 +56,7 @@ lc04 = 2*lcenxdx*cos(thc04) &
  + 2*lcend0*cos(nwd04*thw04-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx)) &
  + (lw3-lw4)*cos(nwd04*thw04) &
  - 4*lwd2*cos(thw04)*cos(0.5*thw04) - 2*lww2*cos(thw04)
-l04 = lc04 - lw3t - lbq1 - lflq1x - ltrpbpm - 2*lvalve - 2*lbelw7 - 3*lcav100 - 2*li100 - 2*lv100 &
+l04 = lc04 - lw3t - lbq1 - lflq1x - ltrpbpm - 2*lvalve - 4*lbelw7 - 2*lwpump - 4*lcav100 - 3*li100 &
  - n_kick_inj*lkickinj - (n_kick_inj+1)*likickinj - lwdtrans - lwdfl
 
 yo4_dw0: sbend, l=lwd2/sinc(0.5*thw04), g=2*sin(0.5*thw04)/lwd2, e1=0.5*thw04, e2=0.5*thw04
@@ -90,9 +92,11 @@ cav25_3: cav25
 cav25_4: cav25
 cav50_1: cav50
 cav50_2: cav50
+cav50_3: cav50
 cav100_1: cav100
 cav100_2: cav100
 cav100_3: cav100
+cav100_4: cav100
 cav197_1: cav197
 cav197_2: cav197
 cav197_3: cav197
@@ -100,12 +104,15 @@ cav197_4: cav197
 cav197_5: cav197
 cav197_6: cav197
 cav197_7: cav197
+cav197_8: cav197
+cav197_9: cav197
 
 septum_ir4: pipe, l=lseptum
 
 yi3_b1w: monitor, l=ltrpbpm
 yi3_b3w: monitor, l=ltrpbpm
 yo4_b1w: monitor, l=ltrpbpm
+yo4_b3w: monitor, l=ltrpbpm
 
 ! Polarimetery and nearby
 ovalve: drift, l=lvalve
@@ -123,8 +130,6 @@ det_pol_hpol_pc1_2: instrument, l=lpc
 
 o_kick_assy: drift, l=likickinj
 ov25: drift, l=lv25
-ov50: drift, l=lv50
-ov100: drift, l=lv100
 o25: drift, l=li25
 o50: drift, l=li50
 o100: drift, l=li100
@@ -204,10 +209,7 @@ yi3_du3_hsr:line=(obsk3iy,
  ovalve,
  yi3_b3w)
 
-yo4_du3_hsr:line=(obsk4ly,
- yo4_sv3_1,
- obsk4ly,
- ov25,
+yo4_du3_hsr:line=(yo4_b3w,ovalve,obelw7,owpump,obelw7,
  cav25_4,
  o25,
  cav25_3,
@@ -216,6 +218,8 @@ yo4_du3_hsr:line=(obsk4ly,
  o25,
  cav25_1,
  o25_197,
+ cav197_8,
+ o197,
  cav197_7,
  o197,
  cav197_6,
@@ -229,6 +233,10 @@ yo4_du3_hsr:line=(obsk4ly,
  cav197_2,
  o197,
  cav197_1,
+ obelw7,
+ ovalve,
+ owpump,
+ obelw7,
  os197,
  septum_ir4,
  osv4,
@@ -237,13 +245,13 @@ yo4_du3_hsr:line=(obsk4ly,
 
 ir4: line=(
  yi3_b1w,
- ovalve, obelw7,
- ov100, cav100_3, o100, cav100_2, o100, cav100_1, ov100,
- ovalve, obelw7,
+ ovalve, obelw7, owpump, obelw7,
+ cav100_4, o100, cav100_3, o100, cav100_2, o100, cav100_1, 
+ ovalve, obelw7, owpump, obelw7,
  inj_kickers,
  o04,
  owdtrans, owdfl, yo4_dw0, oww2, yo4_dw0, owdfl, owdtrans,
- obelw7, ovalve,
- ov50, cav50_2, o50, cav50_2, ov50,
- obelw7, ovalve,
+ obelw7, owpump, obelw7, ovalve,
+ cav50_3, o50, cav50_2, o50, cav50_1, 
+ obelw7, owpump, obelw7, ovalve,
  yo4_b1w)
