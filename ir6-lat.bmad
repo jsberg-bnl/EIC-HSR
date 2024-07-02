@@ -209,7 +209,6 @@ o2fl: drift, l=2*ofl[l]
 
 ! Quads for proton forward
 q3pf: quadrupole, l=0.75
-qf3_pf: quadrupole, l=lq3
 
 h5_tv3: vkicker, l=0.25
 h5_qs3: quadrupole, tilt, l=0.25
