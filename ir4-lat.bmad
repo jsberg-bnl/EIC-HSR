@@ -13,7 +13,7 @@ n_kick_inj = 18
 lcav25 = 3.3948
 lcav50 = 2.05
 lcav100 = 1.305
-lcav197 = 0.874
+lcav197 = 0.748+2*0.0254
 li25 = lbelw7
 li50 = lbelw7
 li100 = lbelw7
@@ -24,7 +24,7 @@ lv25 = lbelw7
 l4sq4 = 10.64309
 lsv4 = l4sq4 - lseptum - lsxt - lsb4 - lbfl4 - lbsk4iy
 ls197 = l3space - lbsk4iy - lsv4 - lseptum - ltrpbpm - 2*lvalve - 4*lbelw7 - 2*lwpump &
- - 4*lcav25 - 3*li25 - li25_197 - 8*lcav197 - 7*li197
+ - 4*lcav25 - 3*li25 - li25_197 - 9*lcav197 - 8*li197
 lkkw = 9.2
 lkkd = 3.0
 ldw50 = 0.5
@@ -218,6 +218,8 @@ yo4_du3_hsr:line=(yo4_b3w,ovalve,obelw7,owpump,obelw7,
  o25,
  cav25_1,
  o25_197,
+ cav197_9,
+ o197,
  cav197_8,
  o197,
  cav197_7,
