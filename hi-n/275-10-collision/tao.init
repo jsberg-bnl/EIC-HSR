@@ -47,7 +47,7 @@
  ! periodic cells
  design_lattice(9)%slice_lattice = 'yo9_int11_2:yo9_int9_3-1' ! yo5=yo9 end rev
  design_lattice(9)%reverse_lattice = t
- design_lattice(10)%slice_lattice = 'o10int_pr+1:yi6_int11_2'  ! yi2=yi6 beg
+ design_lattice(10)%slice_lattice = 'yi6_bv10-1:yi6_int11_2'  ! yi2=yi6 beg
  design_lattice(11)%slice_lattice = 'yi3_int11_2:yi3_int9_3-1' ! yi3=yi7 end
  design_lattice(12)%slice_lattice = 'yo4_int9_3+1:yo4_int11_2' ! yo4=yo8 beg
  design_lattice(13)%slice_lattice = 'yo9_int11_2:yo9_int9_3-1' ! yo9 end
@@ -228,12 +228,12 @@
 &tao_d1_data
  ix_d1_data = 2
  d1_data%name = 'arc'
- datum(1)%data_type = 'expression: 3@lat::eta.x[o10int_pr] - 10@lat::eta.x[0]'
- datum(2)%data_type = 'expression: 3@lat::etap.x[o10int_pr] - 10@lat::etap.x[0]'
- datum(3)%data_type = 'expression: 3@lat::beta.a[o10int_pr] - 10@lat::beta.a[0]'
- datum(4)%data_type = 'expression: 3@lat::alpha.a[o10int_pr] - 10@lat::alpha.a[0]'
- datum(5)%data_type = 'expression: 3@lat::beta.b[o10int_pr] - 10@lat::beta.b[0]'
- datum(6)%data_type = 'expression: 3@lat::alpha.b[o10int_pr] - 10@lat::alpha.b[0]'
+ datum(1)%data_type = 'expression: 3@lat::eta.x[yi6_bv10-2] - 10@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 3@lat::etap.x[yi6_bv10-2] - 10@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 3@lat::beta.a[yi6_bv10-2] - 10@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 3@lat::alpha.a[yi6_bv10-2] - 10@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 3@lat::beta.b[yi6_bv10-2] - 10@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 3@lat::alpha.b[yi6_bv10-2] - 10@lat::alpha.b[0]'
  datum(1:6)%meas = 0 0 0 0 0 0
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
  datum(1:6)%good_user = f f f f f f
@@ -244,7 +244,7 @@
  d1_data%name = 'opt'
  default_weight = 1
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
- datum(1:5)%ele_name = 'o10int_pr' 'o10int_pr' 'o10int_pr' 'o10int_pr' 'yi6_int11_2'
+ datum(1:5)%ele_name = 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_int11_2'
  datum(1:4)%ele_start_name = 'b1pr' 'b1pr' 'ip6d' 'ip6d'
  datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
  datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
