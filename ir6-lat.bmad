@@ -1,3 +1,27 @@
+! RHIC layout info, inner ring
+lrhicdx = lcendx/cos(0.5*thdx)
+trhicdx = 0.5*thdx
+lrhicx0 = lcendxd0/cos(thdx)
+trhicx0 = thdx
+lrhicd0 = lcend0/cos(0.5*(thdx+thd0))
+trhicd0 = 0.5*(thdx+thd0)
+lrhic05 = lpld0d5-ldspd5x-rho*tan(0.5*(thd5-thd0))
+trhic05 = thd0
+lrhicd5i = 2*rho*sin(0.5*(thd5-thd0))
+trhicd5i = 0.5*(thd5+thd0)
+lrhic56 = 0.5*lplq5q6-rho*tan(0.5*(thd5-thd0))-ldspd5a+lq+lplq6q7-lpldsq7-ldps-ldspds
+lrhic69 = ldps*sinc(0.5*thds)
+trhicd6 = thd5+0.5*thds
+lrhic68 = lpldsq7 - ldspds + lq7 + lplq7q8 + lq + lqd - ldspqd
+trhic68 = thd5+thds
+lrhicd8 = ldip*sinc(0.5*thcell)
+trhicd8 = thd5+thds+0.5*thcell
+lrhic89 = lqd-ldspqd+lq+lplq9ds-ldspds
+trhic89 = thd5+thds+thcell
+trhicd9 = thd5+thcell+1.5*thds
+lrhic910 = lbd10-ldspds-lbfl
+trhic910 = thd5+thcell+2*thds
+
 ! Modfied yo5_cq[78] to look like they do near RHIC snakes IRs
 yo5_cq7_mod:line=(obfl,
  yo5_b7,
@@ -76,32 +100,108 @@ yo5_rot:line=(odum1fl,
  odum1fl)
 
 ! The IR6 deisul rotator, RHIC style
-yi6_introt : obel78d
-yi6_brot : bpmv
-yi6_rot_hlx1 : pipe, l=lhelix
-yi6_rot_hlx2 : pipe, l=lhelix
-yi6_rot_hlx3 : pipe, l=lhelix
-yi6_rot_hlx4 : pipe, l=lhelix
-yi6_rot:line=(odum1fl,
+h6_introt : obel78d
+h6_brot : bpmv
+h6_rot_hlx1 : pipe, l=lhelix
+h6_rot_hlx2 : pipe, l=lhelix
+h6_rot_hlx3 : pipe, l=lhelix
+h6_rot_hlx4 : pipe, l=lhelix
+h6_rot:line=(odum1fl,
  osnke,
- yi6_rot_hlx4,
+ h6_rot_hlx4,
  osnkm,
- yi6_rot_hlx3,
+ h6_rot_hlx3,
  osnkmm,
- yi6_brot,
+ h6_brot,
  osnkmm,
- yi6_rot_hlx2,
+ h6_rot_hlx2,
  osnkm,
- yi6_rot_hlx1,
+ h6_rot_hlx1,
  osnke,
  odum1fl)
+
+! IR6 deisul matching magnets: dipoles
+th_h601=2*thcell-dtheta0_eic_ip6-thd5-2*thds
+h6_dh01: sbend, l=ldip, angle=-th_h601
+h6_d01: line=(odfl,h6_dh01,odfl)
+
+h6_dh02: sbend, l=ldip, angle=thcell
+h6_d02: line=(odfl,h6_dh02,odfl)
+h6_dh03: sbend, l=ldip, angle=thcell
+h6_d03: line=(odfl,h6_dh03,odfl)
+h6_dh04: sbend, l=ldip, angle=thcell
+h6_d04: line=(odfl,h6_dh04,odfl)
+
+h6_q04: quadrupole, l=lq2, field_master=t
+h6_q04_i: overlay={h6_q04[b1_gradient]:0.032247392307692316/h6_q04[l]*i}, var={i}
+h6_cor04: kicker, l=lcor, field_master=t
+h6_th04_i:overlay={h6_cor04[bl_hkick]:0.005637592999999998*i},var={i}
+h6_oct04_i:overlay={h6_cor04[b3]:2.657578125*i},var={i}
+h6_dec04_i:overlay={h6_cor04[b4]:39.96289062499999*i},var={i}
+h6_dod04_i:overlay={h6_cor04[b5]:791.142578125*i},var={i}
+h6_tp2i04: line=(oflq2a,h6_q04,ocq2,h6_cor04,ocfl2)
+
+h6_q05: quadrupole, l=lq, field_master=t
+h6_q05_i:overlay={h6_q05[b1_gradient]:0.016572460606060605/h6_q05[l]*i}, var={i}
+h6_cor05: kicker, l=lcor, field_master=t
+h6_tv05_i:overlay={h6_cor05[bl_vkick]:0.005612747*i},var={i}
+h6_oct05_i:overlay={h6_cor05[b3]:12.346880000000004*i},var={i}
+h6_dec05_i:overlay={h6_cor05[b4]:386.38592*i},var={i}
+h6_qs05_i:overlay={h6_cor05[a1]:0.030435680000000007*i},var={i}
+h6_cq8c05: line=(obfl,oqbms,h6_q05,ocq,h6_cor05,ocfl)
+
+h6_q06: quadrupole, l=lq, field_master=t
+h6_q06_i:overlay={h6_q06[b1_gradient]:0.016572460606060605/h6_q06[l]*i}, var={i}
+h6_cor06: kicker, l=lcor, field_master=t
+h6_th06_i:overlay={h6_cor06[bl_hkick]:0.005619562*i},var={i}
+h6_oct06_i:overlay={h6_cor06[b3]:12.380799999999999*i},var={i}
+h6_dec06_i:overlay={h6_cor06[b4]:388.6028799999999*i},var={i}
+h6_qgt06_i:overlay={h6_cor06[b1]:0.030651719999999997*i},var={i}
+h6_cq8b06: line=(obfl,oqbms,h6_q06,ocq,h6_cor06,ocfl)
+
+h6_q07: quadrupole, l=lq, field_master=t
+h6_q07_i:overlay={h6_q07[b1_gradient]:0.016572460606060605/h6_q07[l]*i}, var={i}
+h6_cor07: kicker, l=lcor, field_master=t
+h6_tv07_i:overlay={h6_cor07[bl_vkick]:0.005612747*i},var={i}
+h6_oct07_i:overlay={h6_cor07[b3]:12.346880000000004*i},var={i}
+h6_dec07_i:overlay={h6_cor07[b4]:386.38592*i},var={i}
+h6_qs07_i:overlay={h6_cor07[a1]:0.030435680000000007*i},var={i}
+h6_cq8c07: line=(obfl,oqbms,h6_q07,ocq,h6_cor07,ocfl)
+
+h6_q08: quadrupole, l=lq, field_master=t
+h6_q08_i:overlay={h6_q08[b1_gradient]:0.016572460606060605/h6_q08[l]*i}, var={i}
+h6_cor08: kicker, l=lcor, field_master=t
+h6_th08_i:overlay={h6_cor08[bl_hkick]:0.005619562*i},var={i}
+h6_oct08_i:overlay={h6_cor08[b3]:12.380799999999999*i},var={i}
+h6_dec08_i:overlay={h6_cor08[b4]:388.6028799999999*i},var={i}
+h6_qgt08_i:overlay={h6_cor08[b1]:0.030651719999999997*i},var={i}
+h6_cq8b08: line=(obfl,oqbms,h6_q08,ocq,h6_cor08,ocfl)
+
+h6_q09: quadrupole, l=lq, field_master=t
+h6_q09_i:overlay={h6_q09[b1_gradient]:0.016572460606060605/h6_q09[l]*i}, var={i}
+h6_cor09: kicker, l=lcor, field_master=t
+h6_tv09_i:overlay={h6_cor09[bl_vkick]:0.005612747*i},var={i}
+h6_oct09_i:overlay={h6_cor09[b3]:12.346880000000004*i},var={i}
+h6_dec09_i:overlay={h6_cor09[b4]:386.38592*i},var={i}
+h6_qs09_i:overlay={h6_cor09[a1]:0.030435680000000007*i},var={i}
+h6_cq8c09: line=(obfl,oqbms,h6_q09,ocq,h6_cor09,ocfl)
+
+h6_q10: quadrupole, l=lq, field_master=t
+h6_q10_i:overlay={h6_q10[b1_gradient]:0.016572460606060605/h6_q10[l]*i}, var={i}
+h6_cor10: kicker, l=lcor, field_master=t
+h6_th10_i:overlay={h6_cor10[bl_hkick]:0.005619562*i},var={i}
+h6_oct10_i:overlay={h6_cor10[b3]:12.380799999999999*i},var={i}
+h6_dec10_i:overlay={h6_cor10[b4]:388.6028799999999*i},var={i}
+h6_qgt10_i:overlay={h6_cor10[b1]:0.030651719999999997*i},var={i}
+h6_cq8b10: line=(obfl,oqbms,h6_q10,ocq,h6_cor10,ocfl)
 
 e275 = 275e9
 p275 = sqrt(e275*e275-m_proton*m_proton)
 
 ! Detector solenoid
 sol_rot = 0.025
-sol_half: solenoid, l=2, bs_field=0
+lsol_det = 2
+sol_half: solenoid, l=lsol_det, bs_field=0
 star_detect_f: sol_half, fringe_at=entrance_end
 star_detect_r: sol_half, fringe_at=exit_end
 pb_sol_f: patch, x_pitch=sol_rot,
@@ -113,14 +213,22 @@ pe_sol_r: patch, x_pitch=-sol_rot,
  x_offset=-sol_half[l]*tan(sol_rot)
 l_sol_pr: line=(pb_sol_r,star_detect_r,pe_sol_r)
 
-! Extra offset since I don't want ot have a z_offset for the detector solenoid
-dz_sol_r = -sol_half[l]*tan(sol_rot)*tan(0.5*sol_rot)
 ! Layout near the IR
-
-o1pr: drift, l=38
-q1apr: quadrupole, l=1.8, superimpose, ref=o1pr, ref_origin=beginning, offset=4.2+dz_sol_r
-q1bpr: quadrupole, l=1.4, superimpose, ref=o1pr, ref_origin=beginning, offset=6.3+dz_sol_r
-q2pr: quadrupole, l=4.5, superimpose, ref=o1pr, ref_origin=beginning, offset=10.75+dz_sol_r
+! Rear IR layout
+l06d_q1a=1.8
+l06d_q1b=1.4
+l06d_q2=4.5
+l06d_sol_q1a=3.3
+l06d_q1a_q1b=0.5
+l06d_q1b_q2=1.5
+l06d_q2_q3=22.45
+q1apr: quadrupole, l=l06d_q1a
+q1bpr: quadrupole, l=l06d_q1b
+q2pr: quadrupole, l=l06d_q2
+o06d_sol_q1a: drift, l=l06d_sol_q1a-lsol_det*tan(sol_rot)*tan(0.5*sol_rot)
+o06d_q1a_q1b: drift, l=l06d_q1a_q1b
+o06d_q1b_q2: drift, l=l06d_q1b_q2
+o06d_q2_q3: drift, l=l06d_q2_q3
 
 ! b0pf layout
 ze = 5.8 ! Distance along electron line to B0 entrance plane
@@ -171,22 +279,6 @@ pbr_b1apf: patch
 pet_b1apf: patch
 per_b1apf: patch
 
-! These are RHIC DX magnets
-b1pr: sbend
-b2pr: sbend
-o_b1pr : overlay={
- b1pr[l]:lcendx/sinc(0.5*angle),
- b1pr[g]:2*sin(0.5*angle)/lcendx,
- b1pr[e1]:0.5*angle,
- b1pr[e2]:0.5*angle},
- var={angle}
-o_b2pr : overlay={
- b2pr[l]:lcendx/sinc(0.5*angle),
- b2pr[g]:2*sin(0.5*angle)/lcendx,
- b2pr[e1]:0.5*angle,
- b2pr[e2]:0.5*angle},
- var={angle}
-
 ! New dipoles
 b_b2pf = 5
 g_b2pf = b_b2pf*c_light/p275
@@ -201,29 +293,28 @@ oint: drift, l=0.3
 otpr: drift, l=0.25
 
 ! Drifts from magnet to flange, new magnets
-o_crab_mag: drift, l=1.0
+l_crab_mag=1
+o_crab_mag: drift, l=l_crab_mag
 ow2c: drift, l=1.0
 o_ffdet_wq: drift, l=0.3
 ofl: drift, l=0.5
 o2fl: drift, l=2*ofl[l]
 
-! Quads for proton forward
-q3pf: quadrupole, l=0.75
+! Quads and correctors on IP side of crab
+lh6_qw=0.75
+lh6_cor=0.25
+lh6_qw_spc=0.15
+q3pf: quadrupole, l=lh6_qw
+h5_tv3: vkicker, l=lh6_cor
+h5_qs3: quadrupole, tilt, l=lh6_cor
+h6_q3: quadrupole, l=lh6_qw
+h6_tv3: vkicker, l=lh6_cor
+h6_qs3: quadrupole, tilt, l=lh6_cor
+oh6_wq_spc: drift, l=lh6_qw_spc
 
-h5_tv3: vkicker, l=0.25
-h5_qs3: quadrupole, tilt, l=0.25
-o5_q3t3: drift, l=0.15
-
-! Nominal quads for proton rear
-qcrab: quadrupole, l=1.5
-q3pr: qcrab, superimpose, ref=o1pr, ref_origin=end, ele_origin=end, offset=-ofl[l]
-q4pr: qcrab
-q5pr: qcrab
+o6_q3t3: drift, l=0.15
 
 ! Other drifts
-o2pr: drift
-o3pr: drift
-o10int_pr: drift, l=2.9798943330376915E-01 ! Just to fit previous version
 o06w_ffdet: drift
 d9_pf: drift
 
@@ -231,9 +322,9 @@ l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds
 yo5_du9w: drift, l=l9injct - 2*lbel9ki
 
 ! Drifts for rotators, snakes, and crabs
-o_crab_ip6f: pipe, l=15.06
-o_crab_ip6r: pipe, l=15.2
-o_rotator_ip6r: pipe, l=l7dummy+2*ldum1fl
+lcrab=15.06
+o_crab_ip6f: pipe, l=lcrab
+o_crab_ip6r: pipe, l=lcrab
 
 ! Far-forward detectors
 o_roman_pot_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
@@ -288,11 +379,47 @@ OV_B2PF[TH2] = +1.67744943262122526E-002
 D9_PF[L] = +1.55089650046537342E+000
 YO5_DU9W[L] = +6.82010965822203730E+000-lbfl-lqb-lq-lcq-lcor-lcfl
 
-! Geometric parameter values
-O2PR[L] =  1.66686780884237962E+001
-O3PR[L] =  6.77592289451467789E+000
-o_b1pr[angle] = -17e-3
-O_B2PR[ANGLE] =  3.67453870996644781E-003
+! deisul geometry calculation
+! Lengths of RHIC modules used
+ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2
+lcq8 = lbfl+lqbms+lq+lcq+lcor+lcfl
+! Length from IP to d1
+l6ip_q3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3
+l6ip_q3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcq8+lbelabi+ldfl ! Fix when I do d1 right
+l6ip_d1=l6ip_q3+l6ip_q3_d1
+! Lengths of straights between dipoles
+l6_d1d2 = 2*ldfl + 3*lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl ! Fix when I do d1 right
+l6_d2d3 = lcq8 + 2*lbelabi + 2*ldfl
+l6_d3d4 = lcq8 + 2*lbelabi + 2*ldfl
+l6_d4q10 = lbelabi
+l6_d1 = ldip*sinc(0.5*th_h601) ! Fix when I do d1 right
+l6_dn = ldip*sinc(0.5*thcell)
+t6_d1d2 = thd5 + 2*(thds-thcell)
+t6_d2 = thd5 + 2*thds - 1.5*thcell
+t6_d2d3 = thd5 + 2*thds - thcell
+t6_d3 = thd5 + 2*thds - 0.5*thcell
+t6_d3d4 = thd5 + 2*thds
+t6_d4 = thd5 + 2*thds + 0.5*thcell
+! Compute drifts
+l6_67rhic = lcenxdx*sin(dtheta0_eic_ip6) + lrhicdx*sin(trhicdx+dtheta0_eic_ip6) + lrhicx0*sin(trhicx0+dtheta0_eic_ip6) &
+ + lrhicd0*sin(trhicd0+dtheta0_eic_ip6) + lrhic05*sin(trhic05+dtheta0_eic_ip6) + lrhicd5i*sin(trhicd5i+dtheta0_eic_ip6) &
+ + lrhic56*sin(thd5+dtheta0_eic_ip6) + lrhic69*sin(trhicd6+dtheta0_eic_ip6) + lrhic68*sin(trhic68+dtheta0_eic_ip6) &
+ + lrhicd8*sin(trhicd8+dtheta0_eic_ip6) + lrhic89*sin(trhic89+dtheta0_eic_ip6) + lrhic69*sin(trhicd9+dtheta0_eic_ip6) &
+ + (lrhic910-lbelabi)*sin(trhic910+dtheta0_eic_ip6)
+l6_67eic = l6_d1d2*sin(t6_d1d2+dtheta0_eic_ip6) + l6_dn*sin(t6_d2+dtheta0_eic_ip6) + l6_d2d3*sin(t6_d2d3+dtheta0_eic_ip6) &
+ + l6_dn*sin(t6_d3+dtheta0_eic_ip6) + l6_d3d4*sin(t6_d3d4+dtheta0_eic_ip6) + l6_dn*sin(t6_d4+dtheta0_eic_ip6)
+l6_67 = -((l6_67rhic-l6_67eic)+dx0_eic_ip6*cos(dtheta0_eic_ip6)+l6_d1*sin(0.5*th_h601))/sin(th_h601)
+t6_67 = 2*(thcell-thds) - thd5
+l6_45rhic = lcenxdx*sin(t6_67) + lrhicdx*sin(trhicdx+t6_67) + lrhicx0*sin(trhicx0+t6_67) &
+ + lrhicd0*sin(trhicd0+t6_67) + lrhic05*sin(trhic05+t6_67) + lrhicd5i*sin(trhicd5i+t6_67) &
+ + lrhic56*sin(thd5+t6_67) + lrhic69*sin(trhicd6+t6_67) + lrhic68*sin(trhic68+t6_67) &
+ + lrhicd8*sin(trhicd8+t6_67) + lrhic89*sin(trhic89+t6_67) + lrhic69*sin(trhicd9+t6_67) &
+ + (lrhic910-lbelabi)*sin(trhic910+t6_67)
+l6_45eic = l6_d1d2*sin(t6_d1d2+t6_67) + l6_dn*sin(t6_d2+t6_67) + l6_d2d3*sin(t6_d2d3+t6_67) &
+ + l6_dn*sin(t6_d3+t6_67) + l6_d3d4*sin(t6_d3d4+t6_67) + l6_dn*sin(t6_d4+t6_67)
+l6_45 = ((l6_45rhic-l6_45eic)-dx0_eic_ip6*cos(t6_d3d4)-l6_d1*sin(0.5*th_h601))/sin(th_h601)
+o6_45: drift, l=l6_45-l6ip_d1
+o6_67: drift, l=l6_67-l6_d1d2
 
 hsr6w: line=(
  yo5_int9_5,yo5_du9w,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
@@ -312,7 +439,7 @@ hsr6w: line=(
  d9_pf,
  yi6_trp2, o_crab_mag,
  o_crab_ip6f,
- o_crab_mag, b2pf, ow2c, h5_tv3, o5_q3t3, h5_qs3, o5_q3t3, q3pf, o_ffdet_wq,
+ o_crab_mag, b2pf, ow2c, h5_tv3, oh6_wq_spc, h5_qs3, oh6_wq_spc, q3pf, o_ffdet_wq,
  o06w_ffdet,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
  o06w_b1_b1a,
@@ -330,25 +457,13 @@ hsr6w: line=(
  d1_pf,
  l_sol_pf)
 
-! FIX: missing interconnects
 hsr6d: line=(
- l_sol_pr,
- o1pr,
+ l_sol_pr, o06d_sol_q1a, q1apr, o06d_q1a_q1b, q1bpr, o06d_q1b_q2, q2pr,
+ o06d_q2_q3, h6_q3, oh6_wq_spc, h6_qs3, oh6_wq_spc, h6_tv3, o_crab_mag,
  o_crab_ip6r,
- ofl, q4pr, o2pr,
- b1pr, o2fl,
- q5pr, ofl,
- o3pr,
- yi6_cqt4,
- yi6_rot,
- yi6_cqt5,
- ofl, b2pr, ofl,
- yi6_cqt6,
- yi6_d5,
- yi6_cq7,
- yi6_d6,
- yi6_cq8,
- yi6_d9,
- yi6_cqb9,
- yi6_d8,
- o10int_pr)
+ o_crab_mag, 
+ h6_tp2i04,
+ o6_45,
+ h6_cq8c05, obelabi, h6_d01, obelabi, h6_cq8b06,
+ o6_67, h6_cq8c07, obelabi, h6_rot, obelabi, 
+ h6_cq8b08, obelabi, h6_d02, obelabi, h6_cq8c09, obelabi, h6_d03, obelabi, h6_cq8b10, obelabi, h6_d04, obelabi)
