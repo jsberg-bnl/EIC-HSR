@@ -245,7 +245,7 @@
  default_weight = 1
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
  datum(1:5)%ele_name = 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_int11_2'
- datum(1:4)%ele_start_name = 'b1pr' 'b1pr' 'ip6d' 'ip6d'
+ datum(1:4)%ele_start_name = 'h6_q04' 'h6_q04' 'ip6d' 'ip6d'
  datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
  datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
  datum(1:5)%meas = 0 0 0 0 0
