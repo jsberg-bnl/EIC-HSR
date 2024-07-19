@@ -72,12 +72,12 @@
 &tao_var
  v1_var%name = 'ir6d'
  default_universe = '1,3'
- var(1:5)%ele_name = 'k1_q1_6d' 'q2pr' 'q3pr' 'q4pr' 'q5pr'
- var(1:5)%step = 1e-3 1e-3 1e-3 1e-3 1e-3
- var(1:5)%attribute = 'k1' 'k1' 'k1' 'k1' 'k1'
- var(6:11)%ele_name = 'yi6_qd4_i' 'yi6_qf5_i' 'yi6_qd6_i' 'yi6_qf7_i' 'yi6_qd8_i' 'yi6_qf9_i'
- var(6:11)%step = 1 1 1 1 1 1
- var(6:11)%attribute = 'i' 'i' 'i' 'i' 'i' 'i'
+ var(1:3)%ele_name = 'k1_q1_6d' 'q2pr' 'h6_q3'
+ var(1:3)%step = 1e-3 1e-3 1e-3
+ var(1:3)%attribute = 'k1' 'k1' 'k1'
+ var(4:10)%ele_name = 'h6_q04_i' 'h6_q05_i' 'h6_q06_i' 'h6_q07_i' 'h6_q08_i' 'h6_q09_i' 'h6_q10_i'
+ var(4:10)%step = 1 1 1 1 1 1 1
+ var(4:10)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i'
 /
 
 &tao_var
