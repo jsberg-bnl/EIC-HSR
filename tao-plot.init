@@ -39,3 +39,25 @@
  curve(1)%line%color = 'blue'
  curve(1)%n_turn = -1
 /
+
+&tao_template_plot
+ plot%name = 'dcurly_h'
+ plot%x_axis_type = 's'
+ plot%n_graph = 1
+/
+
+&tao_template_graph
+ graph_index = 1
+ graph%name = 'dcurly_h'
+ graph%n_curve = 1
+ graph%x%major_div_nominal = 7
+ graph%y%label = 'dJ\d\gy\u/d\gy'' [m]'
+ graph%curve_legend_origin%x = -60
+ graph%curve_legend_origin%y = -8
+ graph%curve_legend_origin%units = 'POINTS/GRAPH/RT'
+ curve(1)%smooth_line_calc = .false.
+ curve(1)%data_type = 'expression: alpha.a*eta.x + beta.a*etap.x'
+ curve(1)%line%color = 'blue'
+ curve(1)%legend_text = 'dJ\d\gy\u/d\gy'''
+ curve(1)%line%width = 8
+/
