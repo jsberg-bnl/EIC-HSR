@@ -121,14 +121,14 @@ h6_rot:line=(odum1fl,
  odum1fl)
 
 ! IR6 deisul matching magnets: dipoles
-th_h601=thcell-dtheta0_eic_ip6-thd0-2*thds
-h6_dh01: sbend, l=ld5i, angle=-th_h601
-h6_d01: line=(odsfl,h6_dh01,odsfl)
+th_h601=thcell-dtheta0_eic_ip6+thd0-2*thds
+h6_dh01: sbend, l=ld5o, angle=-th_h601
+h6_d01: line=(od5ofl,h6_dh01,od5ofl)
 
 h6_dh02: sbend, l=ldip, angle=thcell
 h6_d02: line=(odfl,h6_dh02,odfl)
-h6_dh03: sbend, l=ld5i, angle=thd5-thd0
-h6_d03: line=(odsfl,h6_dh03,odsfl)
+h6_dh03: sbend, l=ld5o, angle=thd5+thd0
+h6_d03: line=(od5ofl,h6_dh03,od5ofl)
 h6_dh04: sbend, l=ldip, angle=thcell
 h6_d04: line=(odfl,h6_dh04,odfl)
 
@@ -385,21 +385,21 @@ ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2
 lcq8 = lbfl+lqbms+lq+lcq+lcor+lcfl
 ! Length from IP to d1
 l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3
-l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcq8+lbelabi+ldsfl ! Fix when I do d1 right
+l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcq8+lbelabi+ld5ofl ! Fix when I do d1 right
 l6_ipd1=l6_ipq3+l6_ipq3_d1
 ! Lengths of straights between dipoles
-l6_d1d2 = ldsfl + 2*lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ldfl ! Fix when I do d1 right
-l6_d2d3 = lcq8 + 2*lbelabi + ldsfl + ldfl
-l6_d3d4 = 2*lcq8 + 2*lbelabi + ldsfl + ldfl
-l6_d1 = ld5i*sinc(0.5*th_h601) ! Fix when I do d1 right
+l6_d1d2 = ld5ofl + 2*lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ldfl ! Fix when I do d1 right
+l6_d2d3 = lcq8 + 2*lbelabi + ld5ofl + ldfl
+l6_d3d4 = 2*lcq8 + 2*lbelabi + ld5ofl + ldfl
+l6_d1 = ld5o*sinc(0.5*th_h601) ! Fix when I do d1 right
 l6_d2 = ldip*sinc(0.5*thcell)
-l6_d3 = ld5i*sinc(0.5*(thd5-thd0))
+l6_d3 = ld5o*sinc(0.5*(thd5+thd0))
 l6_d4 = ldip*sinc(0.5*thcell)
-t6_d1 = 0.5*(thd0 - thcell - dtheta0_eic_ip6) + thds
-t6_d1d2 = thd0 + 2*thds - thcell
-t6_d2 = thd0 + 2*thds - 0.5*thcell
-t6_d2d3 = thd0 + 2*thds
-t6_d3 = 0.5*(thd0+thd5) + 2*thds
+t6_d1 = 0.5*(-thd0 - thcell - dtheta0_eic_ip6) + thds
+t6_d1d2 = -thd0 + 2*thds - thcell
+t6_d2 = -thd0 + 2*thds - 0.5*thcell
+t6_d2d3 = -thd0 + 2*thds
+t6_d3 = 0.5*(-thd0+thd5) + 2*thds
 t6_d3d4 = thd5 + 2*thds
 t6_d4 = thd5 + 2*thds + 0.5*thcell
 ! Compute drifts
