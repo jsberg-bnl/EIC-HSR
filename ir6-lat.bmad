@@ -141,14 +141,16 @@ h6_dec04_i:overlay={h6_cor04[b4]:39.96289062499999*i},var={i}
 h6_dod04_i:overlay={h6_cor04[b5]:791.142578125*i},var={i}
 h6_tp2i04: line=(oflq2a,h6_q04,ocq2,h6_cor04,ocfl2)
 
-h6_q05: quadrupole, l=lq, field_master=t
-h6_q05_i:overlay={h6_q05[b1_gradient]:0.016572460606060605/h6_q05[l]*i}, var={i}
 h6_cor05: kicker, l=lcor, field_master=t
 h6_tv05_i:overlay={h6_cor05[bl_vkick]:0.005612747*i},var={i}
-h6_oct05_i:overlay={h6_cor05[b3]:12.346880000000004*i},var={i}
-h6_dec05_i:overlay={h6_cor05[b4]:386.38592*i},var={i}
-h6_qs05_i:overlay={h6_cor05[a1]:0.030435680000000007*i},var={i}
-h6_cq8c05: line=(obfl,oqbms,h6_q05,ocq,h6_cor05,ocfl)
+h6_b305_i:overlay={h6_cor05[b3]:12.346880000000004*i},var={i}
+h6_b405_i:overlay={h6_cor05[b4]:386.38592*i},var={i}
+h6_a105_i:overlay={h6_cor05[a1]:0.030435680000000007*i},var={i}
+h6_q05:quadrupole,l=lq,field_master=t
+h6_q05_i:overlay={h6_q05[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h6_tq05:quadrupole,l=lsxt,field_master=t
+h6_tq05_i:overlay={h6_tq05[b1_gradient]:0.2381915*i/lsxt},var={i}
+h6_cqtc05:line=(ocfl,h6_cor05,ocq,h6_q05,oqs,h6_tq05,osb,obfl)
 
 h6_tq06:quadrupole,l=lsxt,field_master=t
 h6_tq06_i:overlay={h6_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
@@ -156,9 +158,9 @@ h6_q06:quadrupole,l=lq4,field_master=t
 h6_q06_i:overlay={h6_q06[b1_gradient]:0.027149189411764706*i/lq4},var={i}
 h6_cor06: kicker, l=lcor
 h6_th06_i:overlay={h6_cor06[bl_hkick]:0.005610334999999999*i},var={i}
-h6_b306_i:overlay={h6_cor06[b3]:12.31232*i},var={i}
-h6_b406_i:overlay={h6_cor06[b4]:387.2896*i},var={i}
-h6_a106_i:overlay={h6_cor06[a1]:0.03043852000000001*i},var={i}
+h6_oct06_i:overlay={h6_cor06[b3]:12.31232*i},var={i}
+h6_dec06_i:overlay={h6_cor06[b4]:387.2896*i},var={i}
+h6_qs06_i:overlay={h6_cor06[a1]:0.03043852000000001*i},var={i}
 h6_cq4f06:line=(obfl,osb4c,h6_tq06,oqs4,h6_q06,ocq4,h6_cor06,ocfl)
 
 h6_q07: quadrupole, l=lq, field_master=t
@@ -385,10 +387,11 @@ YO5_DU9W[L] = +6.82010965822203730E+000-lbfl-lqb-lq-lcq-lcor-lcfl
 ! Lengths of RHIC modules used
 ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2
 lcq8 = lbfl+lqbms+lq+lcq+lcor+lcfl
+lcqs = lbfl+lqb+lq+lcq+lcor+lcfl
 lcqt4 = lbfl+lsb4c+lsxt+lqs4+lq4+lcq4+lcor+lcfl
 ! Length from IP to d1
 l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3
-l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcq8+lbelabi+ld5ofl ! Fix when I do d1 right
+l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lbelabi+ld5ofl ! Fix when I do d1 right
 l6_ipd1=l6_ipq3+l6_ipq3_d1
 ! Lengths of straights between dipoles
 l6_d1d2 = ld5ofl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ldfl ! Fix when I do d1 right
@@ -468,7 +471,7 @@ hsr6d: line=(
  o_crab_mag, 
  h6_tp2i04,
  o6_45,
- h6_cq8c05, obelabi, 
+ h6_cqtc05, obelabi, 
  h6_d01, obelabi, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cq8c07, obelabi,
  h6_d02, obelabi, h6_cq8b08, obelabi,
  h6_d03, obelabi, h6_cq8c09, 
