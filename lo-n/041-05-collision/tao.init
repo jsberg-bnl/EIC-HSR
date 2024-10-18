@@ -17,8 +17,8 @@
 &tao_design_lattice
  n_universes = 17
  design_lattice(1) = 'hsr.bmad' '../hsr-ovl.bmad'
- design_lattice(2) = 'hsr.bmad'
- design_lattice(3) = 'hsr.bmad'
+ design_lattice(2) = 'hsr.bmad' '../../ir6w-ovl.bmad'
+ design_lattice(3) = 'hsr.bmad' '../../ir6d-ovl.bmad'
  design_lattice(4) = 'hsr.bmad'
  design_lattice(5) = 'hsr.bmad'
  design_lattice(6) = 'hsr.bmad'
@@ -54,27 +54,27 @@
 &tao_var
  v1_var%name = 'ir6w'
  default_universe = '1,2'
- var(1:4)%ele_name = 'q1apf' 'q1bpf' 'q2pf' 'q3pf' 
- var(5:12)%ele_name = 'yi6_qd2_i' 'bo3_qf8_i' 'yo5_qf4_i' 'bi5_qd8_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i' 'h5_q11_i'
- var(1:12)%step = 1e-3 1e-3 1e-3 1e-3 1 1 1 1 1 1 1 1
- var(1:12)%attribute = 'k1' 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 
- var(13:14)%ele_name = 'b0apf' 'b1pf'
- var(13:14)%attribute = 'db_field' 'db_field'
- var(13:14)%step = 1e-2 1e-2
+ var(1:3)%ele_name = 'k1_q1_6w' 'q2pf' 'q3pf' 
+ var(4:11)%ele_name = 'yi6_qd2_i' 'bo3_qf8_i' 'yo5_qf4_i' 'bi5_qd8_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i' 'h5_q11_i'
+ var(1:11)%step = 1e-3 1e-3 1e-3 1 1 1 1 1 1 1 1
+ var(1:11)%attribute = 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 
+ var(12:13)%ele_name = 'b0apf' 'b1pf'
+ var(12:13)%attribute = 'db_field' 'db_field'
+ var(12:13)%step = 1e-2 1e-2
 /
 
 &tao_var
  v1_var%name = 'ir6d'
  default_universe = '1,3'
- var(1:6)%ele_name = 'q1apr' 'q1bpr' 'q2pr' 'q3pr' 'q4pr' 'q5pr'
- var(1:6)%step = 1e-3 1e-3 1e-3 1e-3 1e-3 1e-3
- var(1:6)%attribute = 'k1' 'k1' 'k1' 'k1' 'k1' 'k1'
- var(7:12)%ele_name = 'yi6_qd4_i' 'yi6_qf5_i' 'yi6_qd6_i' 'yi6_qf7_i' 'yi6_qd8_i' 'yi6_qf9_i'
- var(7:12)%step = 1 1 1 1 1 1
- var(7:12)%attribute = 'i' 'i' 'i' 'i' 'i' 'i'
- var(13:15)%ele_name = 'o2pr' 'o3pr' 'o_b2pr'
- var(13:15)%attribute = 'l' 'l' 'angle'
- var(13:15)%step = 1e-3 1e-3 1e-5
+ var(1:5)%ele_name = 'k1_q1_6d' 'q2pr' 'q3pr' 'q4pr' 'q5pr'
+ var(1:5)%step = 1e-3 1e-3 1e-3 1e-3 1e-3
+ var(1:5)%attribute = 'k1' 'k1' 'k1' 'k1' 'k1'
+ var(6:11)%ele_name = 'yi6_qd4_i' 'yi6_qf5_i' 'yi6_qd6_i' 'yi6_qf7_i' 'yi6_qd8_i' 'yi6_qf9_i'
+ var(6:11)%step = 1 1 1 1 1 1
+ var(6:11)%attribute = 'i' 'i' 'i' 'i' 'i' 'i'
+ var(12:14)%ele_name = 'o2pr' 'o3pr' 'o_b2pr'
+ var(12:14)%attribute = 'l' 'l' 'angle'
+ var(12:14)%step = 1e-3 1e-3 1e-5
 /
 
 &tao_var
