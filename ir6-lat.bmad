@@ -118,8 +118,8 @@ dz_sol_r = -sol_half[l]*tan(sol_rot)*tan(0.5*sol_rot)
 ! Layout near the IR
 
 o1pr: drift, l=38
-q1apr: quadrupole, l=1.8, superimpose, ref=o1pr, ref_origin=beginning, offset=4.2+dz_sol_r
-q1bpr: quadrupole, l=1.4, superimpose, ref=o1pr, ref_origin=beginning, offset=6.3+dz_sol_r
+q1apr: quadrupole, l=1.29, superimpose, ref=o1pr, ref_origin=beginning, offset=4.565+dz_sol_r
+q1bpr: quadrupole, l=1.29, superimpose, ref=o1pr, ref_origin=beginning, offset=6.355+dz_sol_r
 q2pr: quadrupole, l=4.5, superimpose, ref=o1pr, ref_origin=beginning, offset=10.75+dz_sol_r
 
 ! b0pf layout
