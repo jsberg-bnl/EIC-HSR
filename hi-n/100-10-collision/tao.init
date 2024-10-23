@@ -208,7 +208,7 @@
 &tao_d2_data
  universe = '3'
  d2_data%name = 'ir6d'
- n_d1_data = 3
+ n_d1_data = 4
 /
 
 &tao_d1_data
@@ -241,6 +241,14 @@
 
 &tao_d1_data
  ix_d1_data = 3
+ default_weight = 1
+ d1_data%name = 'aper'
+ datum(1)%data_type = 'expression:sqrt(30e-3*lat::beta.a[q1bpr])'
+ datum(1)%meas = 2.52
+/
+
+&tao_d1_data
+ ix_d1_data = 4
  d1_data%name = 'opt'
  default_weight = 1
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
