@@ -2,8 +2,8 @@ call, file='../ir4-ovl.bmad'
 call, file='../ir6w-ovl.bmad'
 call, file='../ir6d-ovl.bmad'
 sxf_ps: overlay={
- bi1_sxf1_ps[i] : -i,
- bi1_sxf2_ps[i] : -i,
+ yo1_sxf1_ps[i] : +i,
+ yo1_sxf2_ps[i] : +i,
  yi3_sxf1_ps[i] : +i,
  yi3_sxf2_ps[i] : +i,
  yo5_sxf1_ps[i] : +i,
@@ -12,11 +12,11 @@ sxf_ps: overlay={
  yi7_sxf2_ps[i] : +i,
  yo9_sxf1_ps[i] : +i,
  yo9_sxf2_ps[i] : +i,
- bo11_sxf1_ps[i] : -i,
- bo11_sxf2_ps[i] : -i}, var={i}, i=yi3_sxf1_ps[i]
+ yi11_sxf1_ps[i] : +i,
+ yi11_sxf2_ps[i] : +i}, var={i}, i=yi3_sxf1_ps[i]
 sxd_ps: overlay={
- bi1_sxd1_ps[i] : -i,
- bi1_sxd2_ps[i] : -i,
+ yo1_sxd1_ps[i] : +i,
+ yo1_sxd2_ps[i] : +i,
  yi3_sxd1_ps[i] : +i,
  yi3_sxd2_ps[i] : +i,
  yo5_sxd1_ps[i] : +i,
@@ -25,5 +25,5 @@ sxd_ps: overlay={
  yi7_sxd2_ps[i] : +i,
  yo9_sxd1_ps[i] : +i,
  yo9_sxd2_ps[i] : +i,
- bo11_sxd1_ps[i] : -i,
- bo11_sxd2_ps[i] : -i}, var={i}, i=yi3_sxd1_ps[i]
+ yi11_sxd1_ps[i] : +i,
+ yi11_sxd2_ps[i] : +i}, var={i}, i=yi3_sxd1_ps[i]
