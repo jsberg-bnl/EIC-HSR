@@ -1,12 +1,12 @@
 call, file='../../hsr.bmad'
 
 call, file='rhic.bmad'
-call, file='ir2.bmad'
+! call, file='ir2.bmad'
 call, file='ir4.bmad'
 call, file='ir6.bmad'
 call, file='ir8n.bmad'
-call, file='ir10.bmad'
-call, file='ir12.bmad'
+! call, file='ir10.bmad'
+! call, file='ir12.bmad'
 
 beginning[e_tot]           = e275
 

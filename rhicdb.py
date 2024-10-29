@@ -4,10 +4,13 @@ import ast
 import copy
 import itertools
 import sybpydb
+import getpass
 
 class db_parser:
     def __init__(self):
-        conn = sybpydb.connect(user='harmless',password='harmless',servername='OPSYB1')
+        user = input('Username: ')
+        pw = getpass.getpass()
+        conn = sybpydb.connect(user=user,password=pw,servername='OPSYB1')
         cur = conn.cursor()
         cur.execute('use rhic')
         # geometry
@@ -590,71 +593,54 @@ def write_all_swns(lines,db,file_bmad,file_madx):
 db = db_parser()
 
 arc01b = line('b','bi12_cqs10','bi1_cqs10',db)
-# arc05b = line('b','bi4_cqs10','bi5_cqs10',db)
-arc11b = line('b','bo10_cqs10','bo11_cqs10',db)
 
+arc01y = line('y','yo12_cqs10','yo1_cqs10',db)
 arc03y = line('y','yi2_cqs10','yi3_cqs10',db)
 arc05y = line('y','yo4_cqs10','yo5_cqs10',db)
 arc07y = line('y','yi6_cqs10','yi7_cqs10',db)
 arc09y = line('y','yo8_cqs10','yo9_cqs10',db)
 arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
-mat01b = line('b','bi1_int9_3','bi1_cq7',db)
-ins10b = line('b','bo10_trp1','bo10_int9_3',db)
-mat11b = line('b','bo11_int9_3','bo11_int7_2',db)
-ins11b = line('b','bo11_int7_1','bo11_cqt4',db)
-trp11b = line('b','bo11_trp3','bo11_trp1',db)
-trp12b = line('b','bi12_trp1','bi12_trp3',db)
-mat12b = line('b','bi12_cqt4','bi12_int9_3',db)
-
-mat02y = line('y','yi2_cq7','yi2_int9_3',db)
+# For now, just leave room for the snake
+mat01y = line('y','yo1_int9_3','yo1_int7_2',db)
+ins01y = line('y','yo1_int7_1','yo1_trp1',db)
+ins02y = line('y','yi2_trp1','yi2_int9_3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
 trp03y = line('y','yi3_trp3','yi3_trp1',db)
 trp04y = line('y','yo4_trp1','yo4_trp3',db)
 mat04y = line('y','yo4_cqt4','yo4_int9_3',db)
-ins07y = line('y','yi7_int9_3','yi7_trp1',db)
+mat07y = line('y','yi7_int9_3','yi7_int7_2',db)
+ins07y = line('y','yi7_int7_1','yi7_trp1',db)
 ins08y = line('y','yo8_trp1','yo8_int9_3',db)
 ins09y = line('y','yo9_int9_3','yo9_trp1',db)
 ins10y = line('y','yi10_trp1','yi10_int9_3',db)
-ins11y = line('y','yi11_int9_3','yi11_trp1',db)
+mat11y = line('y','yi11_int9_3','yi11_int7_2',db)
+ins11y = line('y','yi11_int7_1','yi11_cqt4',db)
+trp11y = line('y','yi11_trp3','yi11_trp1',db)
+trp12y = line('y','yo12_trp1','yo12_trp3',db)
+mat12y = line('y','yo12_cqt4','yo12_int9_3',db)
 
 # Lines carried over from RHIC
 line_list = [
-    arc01b,arc03y,arc05y,arc07y,arc09y,arc11b,arc11y,
-    mat03y,trp03y,trp04y,mat04y,ins07y,ins08y,ins09y,ins10b,ins10y,mat11b,ins11b,trp11b,ins11y,trp12b,mat12b]
+    arc01b,arc01y,arc03y,arc05y,arc07y,arc09y,arc11y,
+    mat01y,ins01y,ins02y,mat03y,trp03y,trp04y,mat04y,mat07y,ins07y,ins08y,ins09y,ins10y,mat11y,ins11y,trp11y,trp12y,mat12y]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
 # slots kept intact but used in isolation
-ir2_slots = [slot('y',s,db)
-             for s in ('yo1_cqt4','yo1_cqt5','yo1_cqt6','yo1_cqb9',
-                       'yi2_cqt5','yi2_cqt6',
-                       'yi2_d6',
-                       'yi2_cq7','yi2_int7_1','yi2_du7','yi2_int7_2',
-                       'yi2_cq8','yi2_int8_1','yi2_d8','yi2_int8_2',
-                       'yi2_cqb9','yi2_int9_1','yi2_du9','yi2_int9_2','yi2_d9','yi2_int9_3')] + \
-            [slot('b',s,db)
-             for s in ('bi1_int9_3','bi1_d9','bi1_int9_2','bi1_du9','bi1_int9_1','bi1_cqb9',
-                       'bi1_int8_2','bi1_d8','bi1_int8_1','bi1_cq8',
-                       'bi1_int7_2','bi1_du7','bi1_int7_1','bi1_cq7',
-                       'bi1_d6',
-                       'bi1_cqt5','bi1_cqt6',
-                       'bo2_cqt4','bo2_cqt5','bo2_cqt6','bo2_cqb9')]
 ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp2','yi6_trp2','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_1','yo5_int9_5','yo5_int9_6',
                        'yi6_cqt4','yi6_cqt5','yi6_d5','yi6_cqt6','yi6_d6','yi6_cq7','yi6_cq8','yi6_d8','yi6_cqb9','yi6_d9')] + \
             [slot('b',s,db) for s in ('bi5_cq8','bo3_cq8')]
-ir10_slots = [slot('y','g9_dux',db),slot('b','g10_dux',db)]
-ir12_slots = [slot('b','g11_dux',db)]
 
 # slots that are broken up, but I need the bits for whatever reason
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
-ir12_parts = [slot('b','bo11_du3',db),slot('b','g12_dux',db),slot('b','bi12_du3',db)]
+ir12_parts = [slot('y','yi11_du3',db),slot('y','yo12_du3',db),slot('b','bi12_du3',db)]
 
-slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots+ir10_slots+ir12_parts+ir12_slots) # Everything I have some need for
-all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir10_slots+ir12_parts+ir12_slots) # Things I need all the parts for 
-all_slots = line_info(ir2_slots+ir6_slots+ir10_slots+ir12_slots) # Slots kept intact but used in isolation
+slots_and_lines = line_info(line_list+ir4_parts+ir6_slots+ir12_parts) # Everything I have some need for
+all_parts = line_info(ir4_parts+ir6_slots+ir12_parts) # Things I need all the parts for 
+all_slots = line_info(ir6_slots) # Slots kept intact but used in isolation
 all_lines = line_info(line_list) # RHIC lines
 
 extra_geom = {'lcenxdx','lcendxd0','ld0fla','lbeld0q1','thdx'}

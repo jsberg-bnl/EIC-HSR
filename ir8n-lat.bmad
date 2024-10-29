@@ -1,19 +1,23 @@
-thw08 = +1.99630619719628599e-03
-nwd08 = 3
-thc08 = nwd08*thw08+thd0
+! The snake at 7'oclock
+yi7_bsnk : bpmv
+yi7_snk_hlx1 : pipe, l=lhelix
+yi7_snk_hlx2 : pipe, l=lhelix
+yi7_snk_hlx3 : pipe, l=lhelix
+yi7_snk_hlx4 : pipe, l=lhelix
+yi7_snk7:line=(odum1fl,
+ osnke,
+ yi7_snk_hlx4,
+ osnkm,
+ yi7_snk_hlx3,
+ osnkmm,
+ yi7_bsnk,
+ osnkmm,
+ yi7_snk_hlx2,
+ osnkm,
+ yi7_snk_hlx1,
+ osnke,
+ odum1fl)
 
-l08 = 2*(lcenxdx*cos(thc08) &
- + lcendx*cos(thc08-0.5*thdx)/cos(0.5*thdx) &
- + lcendxd0*cos(thc08-thdx)/cos(thdx) &
- + lcend0*cos(nwd08*thw08-0.5*(thdx-thd0))/cos(0.5*(thdx+thd0)) &
- - (lgv+lgvfl+lgvwd+lc2w_wd-lpld0q1)*cos(nwd08*thw08) &
- - lwd2*cos(1.5*thw08)*(2*cos(thw08)+1) - lww2*2*cos(1.5*thw08)*cos(0.5*thw08))
-
-otrpwd08: drift, l=lwc-(lflq1x+lbq1)
-o08: drift, l=l08
-
-dw08d: sbend, l=lwd2/sinc(0.5*thw08), g=2*sin(0.5*thw08)/lwd2, e1=0.5*thw08, e2=0.5*thw08
-dw08w: dw08d, g=-dw08d[g], e1=-dw08d[e1], e2=-dw08d[e2]
-
-ir08n: line=(oc2w_wd,ogvfl,valve_wd,ogvwd,dw08w,oww2,dw08w,oww2,dw08w,
- o08,dw08d,oww2,dw08d,oww2,dw08d,ogvwd,valve_wd,ogvfl,oc2w_wd)
+o08: drift, l=lcross
+ir08n: line=(mat07y,yi7_snk7,ins07y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwrev,oww2,dwrev,oww2,dwrev,
+ o08,dwfwd,oww2,dwfwd,oww2,dwfwd,ogvwd,valve_wd,ogvfl,oc2w_wd,ins08y)

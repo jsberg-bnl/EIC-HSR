@@ -245,7 +245,7 @@ yo4_du3_hsr:line=(yo4_b3w,ovalve,obelw7,owpump,obelw7,
  yo4_sv4,
  obsk4iy)
 
-ir4: line=(
+ir4: line=(mat03y,yi3_du3_hsr,trp03y,
  yi3_b1w,
  ovalve, obelw7, owpump, obelw7,
  cav100_4, o100, cav100_3, o100, cav100_2, o100, cav100_1, 
@@ -256,4 +256,4 @@ ir4: line=(
  obelw7, owpump, obelw7, ovalve,
  cav50_3, o50, cav50_2, o50, cav50_1, 
  obelw7, owpump, obelw7, ovalve,
- yo4_b1w)
+ yo4_b1w,trp04y,yo4_du3_hsr,mat04y)

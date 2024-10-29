@@ -1,62 +1,66 @@
-thh12 = +9.51655616279081969e-03
-ltrpwd12x = lwc-lpld0q1
-
-ll12 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd12x*cos(thd0) - lwdl*cos(0.5*thd0))
-lh12 = 2*(lcenxdx*cos(thh12) + lcendx*cos(0.5*thdx-thh12)/cos(0.5*thdx) + lcendxd0*cos(thdx-thh12)/cos(thdx) &
- + lcend0*cos(0.5*(thdx+thd0)-thh12)/cos(0.5*(thdx+thd0)) - ltrpwd12x*cos(thh12-thd0) - lwdl*cos(0.5*(thh12-thd0)))
-
-otrpwd12: drift, l=lwc-(lflq1x+lbq1)
-oh12: drift, l=lh12
-ol12: drift, l=ll12
-
-dsw_ir12h: sbend, l=lwdl/sinc(0.5*(thh12-thd0)), g=-2*sin(0.5*(thh12-thd0))/lwdl, e1=-0.5*(thh12-thd0), e2=-0.5*(thh12-thd0)
-dsw_ir12l: sbend, l=lwdl/sinc(0.5*thd0), g=2*sin(0.5*thd0)/lwdl, e1=0.5*thd0, e2=0.5*thd0
-dwarm_ir12h: dsw_ir12h, g=-dsw_ir12h[g], e1=-dsw_ir12h[e1], e2=-dsw_ir12h[e2]
-dwarm_ir12l: dsw_ir12l
-
 lcolkfbh = 0.5
 lcolps = 20
 ocolkfbh: drift, l=lcolkfbh
 ocolksch: drift, l=0.5*o3b12c5[l]
-o3b11c1_hsr: drift, l=o3b11c1[l]-lcolkfbh
 o3b12c2w: drift, l=o3b12c2[l] + o3b12c3[l] + o3b12c4[l] + 2*leldfl + 4*lcktvfl + 0.5*o3b12c5[l] - lcolps
 o3b12c2d: drift, l=lcolps - 0.5*o3b12c5[l] - 4*lcktvfl - o3b12c4[l] - o3b12c3[l] - 2*leldfl
 scol_h3_1: rcollimator
 scol_h3_2: rcollimator
 pcol_h4: rcollimator
 
-bo11_bsnk : bpmv
-bo11_snk_hlx1 : pipe, l=lhelix
-bo11_snk_hlx2 : pipe, l=lhelix
-bo11_snk_hlx3 : pipe, l=lhelix
-bo11_snk_hlx4 : pipe, l=lhelix
-bo11_snk7:line=(odum1fl,
- osnke,
- bo11_snk_hlx4,
- osnkm,
- bo11_snk_hlx3,
- osnkmm,
- bo11_bsnk,
- osnkmm,
- bo11_snk_hlx2,
- osnkm,
- bo11_snk_hlx1,
- osnke,
- odum1fl)
+yi11_du3_hsr: line=(
+ obsk11iy,
+ yi11_sv4,
+ o3y11c0,
+ ocktlfl,
+ yi11_kscl3_3,
+ ocktlfl,
+ o3y11c1,
+ ocktlfl,
+ yi11_kscl3_2,
+ ocktlfl,
+ o3y11c2,
+ ocktlfl,
+ yi11_kscl3_1,
+ ocktlfl,
+ o3y11c3,
+ yi11_kfbh3,
+ o3y11c4,
+ yi11_sv3,
+ obsk11ly)
 
-bo11_du3_hsr:line=(obsk11ib,
- bo11_sv4,
- o3b11c0,
- omskhfl,
- bo11_mskh3,
- omskhfl,
- o3b11c1_hsr,
- scol_h3_2,
- ocolkfbh,
- bo11_kfbh3,
- o3b11c2,
- bo11_sv3,
- obsk11lb)
+yo12_du3_hsr: line=(
+ obsk12ly,
+ yo12_sv3_1,
+ o3y12c0,
+ yo12_kfbh3,
+ o3y12c1,
+ ocpufl,
+ yo12_cpuh3,
+ ocpufl,
+ o3y12c2,
+ oipmfll,
+ yo12_ipm3,
+ oipmfls,
+ o3y12c3,
+ oeldfl,
+ yo12_eld3,
+ oeldfl,
+ o3y12c4,
+ ocpufl,
+ yo12_cpuv3,
+ ocpufl,
+ o3y12c5,
+ yo12_sv3_2,
+ o3y12c6,
+ opolfll,
+ yo12_pol3_1,
+ opolflm,
+ yo12_pol3_2,
+ opolfls,
+ o3y12c7,
+ yo12_sv4,
+ obsk12iy)
 
 bi12_du3_hsr:line=(obsk12lb,
  bi12_sv3_1,
@@ -102,34 +106,26 @@ bi12_du3_hsr:line=(obsk12lb,
  bi12_sv4,
  obsk12ib)
 
-g12_duxw: line=(opjetfl,
- g12_pjetx,
- g12_markx,
- opjetfl,
- ox12c0,
- g12_svx_1,
- ox12c1,
- oeldhvfl,
- g12_eldx_1,
- oeldhvfl,
- oeldfl,
- g12_eldx_2,
- oeldfl,
- g12_solx_1,
- g12_solx_1,
- g12_solx_1)
-g12_duxd: line=(g12_bsx_1,
- ox12c3,
- g12_bsx_2,
- ox12c4,
- g12_bsx_3,
- ox12c5,
- obxflx,
- g12_bx,
- obxfla,
- ox12c6,
- g12_svx_2,
- obsk12lg)
+! The snake at 11'oclock
+yi11_bsnk : bpmv
+yi11_snk_hlx1 : pipe, l=lhelix
+yi11_snk_hlx2 : pipe, l=lhelix
+yi11_snk_hlx3 : pipe, l=lhelix
+yi11_snk_hlx4 : pipe, l=lhelix
+yi11_snk7:line=(odum1fl,
+ osnke,
+ yi11_snk_hlx4,
+ osnkm,
+ yi11_snk_hlx3,
+ osnkmm,
+ yi11_bsnk,
+ osnkmm,
+ yi11_snk_hlx2,
+ osnkm,
+ yi11_snk_hlx1,
+ osnke,
+ odum1fl)
 
-ir12: line=(otrpwd12,dwarm_ir12h,oh12,dsw_ir12h,otrpwd12)
-ir12_41: line=(otrpwd12,dwarm_ir12l,ol12,dsw_ir12l,otrpwd12)
+o12: drift, l=lcross
+ir12: line=(mat11y,yi11_snk7,ins11y,yi11_du3_hsr,trp11y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwrev,oww2,dwrev,oww2,dwrev,
+ o12,dwfwd,oww2,dwfwd,oww2,dwfwd,ogvwd,valve_wd,ogvfl,oc2w_wd,trp12y,yo12_du3_hsr,mat12y)

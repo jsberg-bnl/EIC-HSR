@@ -40,9 +40,9 @@
  design_lattice(2)%reverse_lattice = t
  design_lattice(3)%slice_lattice = 'ip6d:yi6_int11_2' ! ir6d
  design_lattice(4)%slice_lattice = 'yi7_int11_2:yo8_int11_2' ! ir8
- design_lattice(5)%slice_lattice = 'yo9_int11_2:bo10_int11_2'  ! ir10
- design_lattice(6)%slice_lattice = 'bo11_int11_2:bi12_int11_2' ! ir12
- design_lattice(7)%slice_lattice = 'bi1_int11_2:yi2_int11_2'   ! ir2
+ design_lattice(5)%slice_lattice = 'yo9_int11_2:yi10_int11_2'  ! ir10
+ design_lattice(6)%slice_lattice = 'yi11_int11_2:yo12_int11_2' ! ir12
+ design_lattice(7)%slice_lattice = 'yo1_int11_2:yi2_int11_2'   ! ir2
  design_lattice(8)%slice_lattice = 'yi3_int11_2:yo4_int11_2'   ! ir4
  ! periodic cells
  design_lattice(9)%slice_lattice = 'yo9_int11_2:yo9_int9_3-1' ! yo5=yo9 end rev

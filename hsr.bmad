@@ -4,18 +4,24 @@ rhic_rip = 590.581639053215
 dx0_eic_ip6 = +0.81
 dtheta0_eic_ip6 = -0.017
 
-lwdl = 6.0
-lwds = 4.4
-lwc = 2
-
-lwd2 = 2.0
-lww2 = 0.4
-
+! Layout of a standard IR between triplets
 lc2w_wd = 1.36941
 lgv = 0.11
 lgvfl = 0.20
 lgvwd = 0.42
-
+lwd2 = 2.0
+lww2 = 0.4
+nwd = 3
+thwd = +1.99630619719628599e-03
+thcross = nwd*thwd+thd0
+lcross = 2*(lcenxdx*cos(thcross) &
+ + lcendx*cos(thcross-0.5*thdx)/cos(0.5*thdx) &
+ + lcendxd0*cos(thcross-thdx)/cos(thdx) &
+ + lcend0*cos(nwd*thwd-0.5*(thdx-thd0))/cos(0.5*(thdx+thd0)) &
+ - (lgv+lgvfl+lgvwd+lc2w_wd-lpld0q1)*cos(nwd*thwd) &
+ - lwd2*cos(1.5*thwd)*(2*cos(thwd)+1) - lww2*2*cos(1.5*thwd)*cos(0.5*thwd))
+dwfwd: sbend, l=lwd2/sinc(0.5*thwd), g=2*sin(0.5*thwd)/lwd2, e1=0.5*thwd, e2=0.5*thwd
+dwrev: dwfwd, g=-dwfwd[g], e1=-dwfwd[e1], e2=-dwfwd[e2]
 valve_wd: instrument, l=lgv
 ogvfl: drift, l=lgvfl
 ogvwd: drift, l=lgvwd
@@ -30,8 +36,6 @@ call, file='ir8n-lat.bmad'
 call, file='ir10-lat.bmad'
 call, file='ir12-lat.bmad'
 call, file='rhic-ps.bmad'
-call, file='ir2-ps.bmad'
-call, file='ir10-ps.bmad'
 
 qmain_ps: overlay={ y_qmain_ps[i] : +i, b_qmain_ps[i] : -i }, var={i}
 qtrim_ps: overlay={ y_qtrim_ps[i] : +i, b_qtrim_ps[i] : -i }, var={i}
@@ -46,50 +50,4 @@ parameter[ptc_exact_model] = t
 beginning[x_position] = -rhic_rip + dx0_eic_ip6
 beginning[theta_position] = dtheta0_eic_ip6 + pi
 
-hsr_hi_n: line=(ip6d,hsr6d,
- arc07y,ins07y,ir08n,ins08y,arc09y,
- ins09y,ir10,ins10b,
- arc11b,
- mat11b,bo11_snk7,ins11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w)
-
-hsr_lo_n: line=(ip6d,hsr6d,
- arc07y,ins07y,ir08n,ins08y,arc09y,
- ins09y,ir10_41,ins10y,
- arc11y,
- ins11y,ir12_41,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w)
-
-hsr: line=(ip6d,hsr6d,
- arc07y,ir8,arc09y,
- ins09y,ir10,ins10b,
- arc11b,
- mat11b,bo11_snk7,ins11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w)
-
-hsr41: line=(ip6d,hsr6d,
- arc07y,ir8,arc09y,
- ins09y,ir10_41,ins10y,
- arc11y,
- ins11y,ir12_41,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w)
+hsr_hi_n: line=(ip6d,hsr6d,arc07y,ir08n,arc09y,ir10,arc11y,ir12,arc01y,ir2,arc03y,ir4,arc05y,hsr6w,ip6w)
