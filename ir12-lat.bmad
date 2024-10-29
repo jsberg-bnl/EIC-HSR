@@ -126,6 +126,6 @@ yi11_snk7:line=(odum1fl,
  osnke,
  odum1fl)
 
-o12: drift, l=lcross
+oh12: drift, l=lcross
 ir12: line=(mat11y,yi11_snk7,ins11y,yi11_du3_hsr,trp11y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwrev,oww2,dwrev,oww2,dwrev,
- o12,dwfwd,oww2,dwfwd,oww2,dwfwd,ogvwd,valve_wd,ogvfl,oc2w_wd,trp12y,yo12_du3_hsr,mat12y)
+ oh12,dwfwd,oww2,dwfwd,oww2,dwfwd,ogvwd,valve_wd,ogvfl,oc2w_wd,trp12y,yo12_du3_hsr,mat12y)
