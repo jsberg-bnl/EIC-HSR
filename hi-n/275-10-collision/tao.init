@@ -351,9 +351,9 @@
  datum(5)%data_type = 'expression: lat::beta.b[yi10_int11_2] - 10@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[yi10_int11_2] - 10@lat::alpha.b[0]'
  datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
- datum(7:11)%ele_name = 'o10' 'o10' 'o10' 'o10' 'o10'
+ datum(7:11)%ele_name = 'h10_cav591_2' 'h10_cav591_2' 'h10_cav591_2' 'h10_cav591_2' 'h10_cav591_2'
  datum(7:9)%eval_point = 'center' 'center' 'center'
- datum(12)%data_type = 'expression:gamma.a[o10]-gamma.b[o10]'
+ datum(12)%data_type = 'expression:gamma.a[h10_cav591_2]-gamma.b[h10_cav591_2]'
  datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
  datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
 /
@@ -425,7 +425,7 @@
  ix_d1_data = 4
  d1_data%name = 'opt'
  datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
- datum(1:7)%ele_name = 'o10' 'yo9_b4' 'yo9_b4' 'yi10_b3' 'yi10_b3' 'yi10_int11_2' 'yi10_int11_2'
+ datum(1:7)%ele_name = 'h10_cav591_2' 'yo9_b4' 'yo9_b4' 'yi10_b3' 'yi10_b3' 'yi10_int11_2' 'yi10_int11_2'
  datum(1)%eval_point = 'center'
  datum(2:7)%ele_start_name = 'yo9_int11_2' 'yo9_int11_2' 'yo9_b3' 'yo9_b3' 'yi10_b4' 'yi10_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'

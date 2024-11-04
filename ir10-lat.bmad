@@ -1,3 +1,11 @@
-o10: drift, l=lcross
+lcav591 = 5.4
+lbel11 = 11.52*.0254
+cav591 : rfcavity, harmon=7560, l=lcav591
+h10_cav591_1 : cav591
+h10_cav591_2 : cav591
+h10_cav591_3 : cav591
+obel11 : drift, l=lbel11
+ocavtrp : drift, l=0.5*(lcross-3*lcav591-2*lbel11)
 ir10: line=(ins09y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwfwd,oww2,dwfwd,oww2,dwfwd,
- o10,dwrev,oww2,dwrev,oww2,dwrev,ogvwd,valve_wd,ogvfl,oc2w_wd,ins10y)
+ ocavtrp,h10_cav591_1,obel11,h10_cav591_2,obel11,h10_cav591_3,ocavtrp,
+ dwrev,oww2,dwrev,oww2,dwrev,ogvwd,valve_wd,ogvfl,oc2w_wd,ins10y)
