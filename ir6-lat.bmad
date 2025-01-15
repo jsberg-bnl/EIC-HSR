@@ -159,17 +159,22 @@ pbr_q2pf: patch
 pet_q2pf: patch
 per_q2pf: patch
 o06w_q2_b1: drift
-b1pf: sbend, l=3.00, field_master=t
+b1xpf: sbend, l=2.25, field_master=t
+b1pf: b1xpf
 pbt_b1pf: patch
 pbr_b1pf: patch
 pet_b1pf: patch
 per_b1pf: patch
 o06w_b1_b1a: drift
-b1apf: sbend, l=1.50
+b1apf: b1xpf
 pbt_b1apf: patch
 pbr_b1apf: patch
 pet_b1apf: patch
 per_b1apf: patch
+o_b1pf : overlay={
+ b1pf[db_field] : db_field,
+ b1apf[db_field] : db_field},
+ var = {db_field}
 
 ! These are RHIC DX magnets
 b1pr: sbend
@@ -241,9 +246,6 @@ o_roman_pot_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=en
 o_roman_pot_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
 o_off_mom_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
 o_off_mom_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
-
-! Proton forward, closer orbit near IR
-b1apf[dg] = -2.7*c_light/p275
 
 pt_ir6f = 1.23443089471739316E+009 ! Transverse momentum passed by apertures at 275 GeV, for information only
 ! Forward geometry

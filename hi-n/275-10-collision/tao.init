@@ -64,7 +64,7 @@
  var(4:11)%ele_name = 'yi6_qd2_i' 'bo3_qf8_i' 'yo5_qf4_i' 'bi5_qd8_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i' 'h5_q11_i'
  var(1:11)%step = 1e-3 1e-3 1e-3 1 1 1 1 1 1 1 1
  var(1:11)%attribute = 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
- var(12:13)%ele_name = 'b0apf' 'b1pf'
+ var(12:13)%ele_name = 'b0apf' 'o_b1pf'
  var(12:13)%attribute = 'db_field' 'db_field'
  var(12:13)%step = 1e-2 1e-2
 /
