@@ -30,13 +30,6 @@ yo5_cq7_mod:line=(obfl,
  ocq7,
  lmp05y07,
  ocfl)
-yo5_cq8_mod:line=(ocfl,
- lmp05y08,
- ocq,
- yo5_qf8,
- oqbms,
- yo5_b8,
- obfl)
 yo5_d9r:line=(odswl,yo5_dh9,odsfl)
 
 h5_tq09:quadrupole,l=lsxt,field_master=t
