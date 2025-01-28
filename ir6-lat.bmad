@@ -39,6 +39,17 @@ yo5_cq8_mod:line=(ocfl,
  obfl)
 yo5_d9r:line=(odswl,yo5_dh9,odsfl)
 
+h5_tq09:quadrupole,l=lsxt,field_master=t
+h5_tq09_i:overlay={h5_tq09[b1_gradient]:0.2381915*i/lsxt},var={i}
+h5_q09:quadrupole,l=lq,field_master=t
+h5_q09_i:overlay={h5_q09[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h5_cor09: kicker, l=lcor
+h5_th09_i:overlay={h5_cor09[bl_hkick]:0.005619562*i},var={i}
+h5_b309_i:overlay={h5_cor09[b3]:12.380799999999999*i},var={i}
+h5_b409_i:overlay={h5_cor09[b4]:388.6028799999999*i},var={i}
+h5_b109_i:overlay={h5_cor09[b1]:0.030651719999999997*i},var={i}
+h5_cqtb09:line=(obfl,osb,h5_tq09,oqs,h5_q09,ocq,h5_cor09,ocfl)
+
 h5_tq11:quadrupole,l=lsxt,field_master=t
 h5_tq11_i:overlay={h5_tq11[b1_gradient]:0.2381915*i/lsxt},var={i}
 h5_q11:quadrupole,l=lq,field_master=t
@@ -380,8 +391,8 @@ O_OFF_MOM_IP6_1[OFFSET] = -4.30920926540308780E-001
 O_OFF_MOM_IP6_2[OFFSET] = -2.43292994238379023E+000
 
 OV_B2PF[TH2] = +1.67744943262122526E-002+2*thd0
-D9_PF[L] = +4.51926637510471618E+000
-YO5_DU9W[L] = +1.33890386393451877E+000
+D9_PF[L] = +4.13540231058658048E+000
+YO5_DU9W[L] = +9.10412881205251767E-001
 
 ! deisul geometry calculation
 ! Lengths of RHIC modules used
@@ -430,7 +441,7 @@ o6_910: drift, l=l6_910-l6_d3d4
 
 hsr6w: line=(
  yo5_int9_5,yo5_du9w,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
- yo5_int8_2,yo5_d8,yo5_int8_1,yo5_cq8_mod,
+ yo5_int8_2,yo5_d8,yo5_int8_1,h5_cqtb09,
  yo5_int7_2, yo5_snk7, yo5_int7_1,
  yo5_cq7_mod,
  yo5_introt, yo5_rot, yo5_introt,
