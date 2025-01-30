@@ -127,10 +127,10 @@ h6_d01: line=(od5ofl,h6_dh01,od5ofl)
 
 h6_dh02: sbend, l=ldip, angle=thcell
 h6_d02: line=(odfl,h6_dh02,odfl)
-h6_dh03: sbend, l=ldip, angle=thcell
-h6_d03: line=(odfl,h6_dh03,odfl)
-h6_dh04: sbend, l=ld5o, angle=thd5+thd0
-h6_d04: line=(od5ofl,h6_dh04,od5ofl)
+h6_dh03: sbend, l=ld5o, angle=thd5+thd0
+h6_d03: line=(od5ofl,h6_dh03,od5ofl)
+h6_dh04: sbend, l=ldip, angle=thcell
+h6_d04: line=(odfl,h6_dh04,odfl)
 
 h6_q04: quadrupole, l=lq2, field_master=t
 h6_q04_i: overlay={h6_q04[b1_gradient]:0.032247392307692316/h6_q04[l]*i}, var={i}
@@ -395,25 +395,25 @@ l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lbelabi+ld
 l6_ipd1=l6_ipq3+l6_ipq3_d1
 ! Lengths of straights between dipoles
 l6_d1d2 = ld5ofl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ldfl ! Fix when I do d1 right
-l6_d2d3 = lcq8 + 2*lbelabi + 2*ldfl
+l6_d2d3 = lcq8 + 2*lbelabi + ld5ofl + ldfl
 l6_d3d4 = 2*lcq8 + 2*lbelabi + ld5ofl + ldfl
 l6_d1 = ld5o*sinc(0.5*th_h601) ! Fix when I do d1 right
 l6_d2 = ldip*sinc(0.5*thcell)
-l6_d3 = ldip*sinc(0.5*thcell)
-l6_d4 = ld5o*sinc(0.5*(thd5+thd0))
+l6_d3 = ld5o*sinc(0.5*(thd5+thd0))
+l6_d4 = ldip*sinc(0.5*thcell)
 t6_d1 = 0.5*(-thd0 - thcell - dtheta0_eic_ip6) + thds
 t6_d1d2 = -thd0 + 2*thds - thcell
 t6_d2 = -thd0 + 2*thds - 0.5*thcell
 t6_d2d3 = -thd0 + 2*thds
-t6_d3 = -thd0 + 2*thds + 0.5*thcell
-t6_d3d4 = -thd0 + 2*thds + thcell
-t6_d4 = 0.5*(thd5-thd0) + 2*thds + thcell
+t6_d3 = 2*thds + 0.5*(thd5-thd0)
+t6_d3d4 = 2*thds + thd5
+t6_d4 = 2*thds + thd5 + 0.5*thcell
 ! Compute drifts
 l6_910rhic = lcenxdx*sin(dtheta0_eic_ip6) + lrhicdx*sin(trhicdx+dtheta0_eic_ip6) + lrhicx0*sin(trhicx0+dtheta0_eic_ip6) &
  + lrhicd0*sin(trhicd0+dtheta0_eic_ip6) + lrhic05*sin(trhic05+dtheta0_eic_ip6) + lrhicd5i*sin(trhicd5i+dtheta0_eic_ip6) &
  + lrhic56*sin(thd5+dtheta0_eic_ip6) + lrhic69*sin(trhicd6+dtheta0_eic_ip6) + lrhic68*sin(trhic68+dtheta0_eic_ip6) &
  + lrhicd8*sin(trhicd8+dtheta0_eic_ip6) + lrhic89*sin(trhic89+dtheta0_eic_ip6) + lrhic69*sin(trhicd9+dtheta0_eic_ip6) &
- + (lrhic910-lbelabi-ld5ofl)*sin(trhic910+dtheta0_eic_ip6)
+ + (lrhic910-lbelabi-ldfl)*sin(trhic910+dtheta0_eic_ip6)
 l6_910eic = l6_d1*sin(t6_d1+dtheta0_eic_ip6) + l6_d1d2*sin(t6_d1d2+dtheta0_eic_ip6) + l6_d2*sin(t6_d2+dtheta0_eic_ip6) &
  + l6_d3*sin(t6_d3+dtheta0_eic_ip6) + l6_d2d3*sin(t6_d2d3+dtheta0_eic_ip6) + l6_d4*sin(t6_d4+dtheta0_eic_ip6)
 l6_910 = (l6_910rhic-l6_910eic-dx0_eic_ip6*cos(dtheta0_eic_ip6))/sin(t6_d3d4+dtheta0_eic_ip6)
@@ -421,7 +421,7 @@ l6_45rhic = -lcenxdx*sin(t6_d3d4) + lrhicdx*sin(trhicdx-t6_d3d4) + lrhicx0*sin(t
  + lrhicd0*sin(trhicd0-t6_d3d4) + lrhic05*sin(trhic05-t6_d3d4) + lrhicd5i*sin(trhicd5i-t6_d3d4) &
  + lrhic56*sin(thd5-t6_d3d4) + lrhic69*sin(trhicd6-t6_d3d4) + lrhic68*sin(trhic68-t6_d3d4) &
  + lrhicd8*sin(trhicd8-t6_d3d4) + lrhic89*sin(trhic89-t6_d3d4) + lrhic69*sin(trhicd9-t6_d3d4) &
- + (lrhic910-lbelabi-ld5ofl)*sin(trhic910-t6_d3d4)
+ + (lrhic910-lbelabi-ldfl)*sin(trhic910-t6_d3d4)
 l6_45eic = l6_d1*sin(t6_d1-t6_d3d4) + l6_d1d2*sin(t6_d1d2-t6_d3d4) + l6_d2*sin(t6_d2-t6_d3d4) &
  + l6_d3*sin(t6_d3-t6_d3d4) + l6_d2d3*sin(t6_d2d3-t6_d3d4) + l6_d4*sin(t6_d4-t6_d3d4)
 l6_45 = -(l6_45rhic-l6_45eic-dx0_eic_ip6*cos(t6_d3d4))/sin(t6_d3d4+dtheta0_eic_ip6)
