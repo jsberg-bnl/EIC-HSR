@@ -1,7 +1,7 @@
 call, file='rhic-lat.bmad'
 
 rhic_rip = 590.581639053215
-dx0_eic_ip6 = +0.81
+dx0_eic_ip6 = +0.98
 dtheta0_eic_ip6 = -0.017
 
 ! Layout of a standard IR between triplets
