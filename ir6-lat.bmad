@@ -284,11 +284,14 @@ pet_b1apf: patch
 per_b1apf: patch
 
 ! New dipoles
-b_b2pf = 5
-g_b2pf = b_b2pf*c_light/p275
-b2pf: sbend, g=g_b2pf
+b_b2pf_old = 5
+g_b2pf_old = b_b2pf_old*c_light/p275
+th_b2pf_old = +1.67744943262122526E-002
+lr_b2pf_old = 2*sin(0.5*th_b2pf_old)/g_b2pf_old
+b2pf: sbend
 ov_b2pf : overlay={
- b2pf[l] : th2/g_b2pf,
+ b2pf[g] : 2*sin(0.5*th2)/lr_b2pf_old,
+ b2pf[l] : lr_b2pf_old/sinc(0.5*th2),
  b2pf[e1] : 0.5*th2,
  b2pf[e2] : 0.5*th2},
  var = {th2}
