@@ -192,14 +192,16 @@ h6_dec09_i:overlay={h6_cor09[b4]:386.38592*i},var={i}
 h6_qs09_i:overlay={h6_cor09[a1]:0.030435680000000007*i},var={i}
 h6_cq8c09: line=(obfl,oqbms,h6_q09,ocq,h6_cor09,ocfl)
 
-h6_q10: quadrupole, l=lq, field_master=t
-h6_q10_i:overlay={h6_q10[b1_gradient]:0.016572460606060605/h6_q10[l]*i}, var={i}
-h6_cor10: kicker, l=lcor, field_master=t
+h6_cor10: kicker, l=lcor
 h6_th10_i:overlay={h6_cor10[bl_hkick]:0.005619562*i},var={i}
-h6_oct10_i:overlay={h6_cor10[b3]:12.380799999999999*i},var={i}
-h6_dec10_i:overlay={h6_cor10[b4]:388.6028799999999*i},var={i}
-h6_qgt10_i:overlay={h6_cor10[b1]:0.030651719999999997*i},var={i}
-h6_cq8b10: line=(obfl,oqbms,h6_q10,ocq,h6_cor10,ocfl)
+h6_b310_i:overlay={h6_cor10[b3]:12.380799999999999*i},var={i}
+h6_b410_i:overlay={h6_cor10[b4]:388.6028799999999*i},var={i}
+h6_b110_i:overlay={h6_cor10[b1]:0.030651719999999997*i},var={i}
+h6_q10:quadrupole,l=lq,field_master=t
+h6_q10_i:overlay={h6_q10[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h6_tq10:quadrupole,l=lsxt,field_master=t
+h6_tq10_i:overlay={h6_tq10[b1_gradient]:0.2381915*i/lsxt},var={i}
+h6_cqtb10:line=(ocfl,h6_cor10,ocq,h6_q10,oqs,h6_tq10,osb,obfl)
 
 e275 = 275e9
 p275 = sqrt(e275*e275-m_proton*m_proton)
@@ -398,7 +400,7 @@ l6_ipd1=l6_ipq3+l6_ipq3_d1
 ! Lengths of straights between dipoles
 l6_d1d2 = ld5ofl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ld5ofl ! Fix when I do d1 right
 l6_d2d3 = lcqs + 2*lbelabi + ld5ofl + ldfl
-l6_d3d4 = 2*lcq8 + 2*lbelabi + 2*ldfl
+l6_d3d4 = lcq8 + lcqs + 2*lbelabi + 2*ldfl
 l6_d1 = ld5o*sinc(0.5*th_h601) ! Fix when I do d1 right
 l6_d2 = ld5o*sinc(0.5*(thd5+thd0))
 l6_d3 = ldip*sinc(0.5*thcell)
@@ -477,5 +479,5 @@ hsr6d: line=(
  h6_d01, obelabi, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cq8c07, obelabi,
  h6_d02, obelabi, h6_cqtb08, obelabi,
  h6_d03, obelabi, h6_cq8c09, 
- o6_910, h6_cq8b10, obelabi,
+ o6_910, h6_cqtb10, obelabi,
  h6_d04, obelabi)
