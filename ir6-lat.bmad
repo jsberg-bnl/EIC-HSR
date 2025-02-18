@@ -1,27 +1,3 @@
-! RHIC layout info, inner ring
-lrhicdx = lcendx/cos(0.5*thdx)
-trhicdx = 0.5*thdx
-lrhicx0 = lcendxd0/cos(thdx)
-trhicx0 = thdx
-lrhicd0 = lcend0/cos(0.5*(thdx+thd0))
-trhicd0 = 0.5*(thdx+thd0)
-lrhic05 = lpld0d5-ldspd5x-rho*tan(0.5*(thd5-thd0))
-trhic05 = thd0
-lrhicd5i = 2*rho*sin(0.5*(thd5-thd0))
-trhicd5i = 0.5*(thd5+thd0)
-lrhic56 = 0.5*lplq5q6-rho*tan(0.5*(thd5-thd0))-ldspd5a+lq+lplq6q7-lpldsq7-ldps-ldspds
-lrhic69 = ldps*sinc(0.5*thds)
-trhicd6 = thd5+0.5*thds
-lrhic68 = lpldsq7 - ldspds + lq7 + lplq7q8 + lq + lqd - ldspqd
-trhic68 = thd5+thds
-lrhicd8 = ldip*sinc(0.5*thcell)
-trhicd8 = thd5+thds+0.5*thcell
-lrhic89 = lqd-ldspqd+lq+lplq9ds-ldspds
-trhic89 = thd5+thds+thcell
-trhicd9 = thd5+thcell+1.5*thds
-lrhic910 = lbd10-ldspds-lbfl
-trhic910 = thd5+thcell+2*thds
-
 ! Modfied yo5_cq[78] to look like they do near RHIC snakes IRs
 yo5_cq7_mod:line=(obfl,
  yo5_b7,
@@ -411,17 +387,17 @@ t6_d4 = 0.5*(thd5-thd0) + 2*thds + thcell
 ! Compute drifts
 l6_910rhic = lcenxdx*sin(dtheta0_eic_ip6) + lrhicdx*sin(trhicdx+dtheta0_eic_ip6) + lrhicx0*sin(trhicx0+dtheta0_eic_ip6) &
  + lrhicd0*sin(trhicd0+dtheta0_eic_ip6) + lrhic05*sin(trhic05+dtheta0_eic_ip6) + lrhicd5i*sin(trhicd5i+dtheta0_eic_ip6) &
- + lrhic56*sin(thd5+dtheta0_eic_ip6) + lrhic69*sin(trhicd6+dtheta0_eic_ip6) + lrhic68*sin(trhic68+dtheta0_eic_ip6) &
- + lrhicd8*sin(trhicd8+dtheta0_eic_ip6) + lrhic89*sin(trhic89+dtheta0_eic_ip6) + lrhic69*sin(trhicd9+dtheta0_eic_ip6) &
- + (lrhic910-lbelabi-ld5ofl)*sin(trhic910+dtheta0_eic_ip6)
+ + lrhic56i*sin(thd5+dtheta0_eic_ip6) + lrhic69*sin(trhicd6+dtheta0_eic_ip6) + lrhic68i*sin(trhic68+dtheta0_eic_ip6) &
+ + lrhicd8*sin(trhicd8+dtheta0_eic_ip6) + lrhic89i*sin(trhic89+dtheta0_eic_ip6) + lrhic69*sin(trhicd9+dtheta0_eic_ip6) &
+ + (lrhic910bi-lbelabi-ld5ofl)*sin(trhic910+dtheta0_eic_ip6)
 l6_910eic = l6_d1*sin(t6_d1+dtheta0_eic_ip6) + l6_d1d2*sin(t6_d1d2+dtheta0_eic_ip6) + l6_d2*sin(t6_d2+dtheta0_eic_ip6) &
  + l6_d3*sin(t6_d3+dtheta0_eic_ip6) + l6_d2d3*sin(t6_d2d3+dtheta0_eic_ip6) + l6_d4*sin(t6_d4+dtheta0_eic_ip6)
 l6_910 = (l6_910rhic-l6_910eic-dx0_eic_ip6*cos(dtheta0_eic_ip6))/sin(t6_d3d4+dtheta0_eic_ip6)
 l6_45rhic = -lcenxdx*sin(t6_d3d4) + lrhicdx*sin(trhicdx-t6_d3d4) + lrhicx0*sin(trhicx0-t6_d3d4) &
  + lrhicd0*sin(trhicd0-t6_d3d4) + lrhic05*sin(trhic05-t6_d3d4) + lrhicd5i*sin(trhicd5i-t6_d3d4) &
- + lrhic56*sin(thd5-t6_d3d4) + lrhic69*sin(trhicd6-t6_d3d4) + lrhic68*sin(trhic68-t6_d3d4) &
- + lrhicd8*sin(trhicd8-t6_d3d4) + lrhic89*sin(trhic89-t6_d3d4) + lrhic69*sin(trhicd9-t6_d3d4) &
- + (lrhic910-lbelabi-ld5ofl)*sin(trhic910-t6_d3d4)
+ + lrhic56i*sin(thd5-t6_d3d4) + lrhic69*sin(trhicd6-t6_d3d4) + lrhic68i*sin(trhic68-t6_d3d4) &
+ + lrhicd8*sin(trhicd8-t6_d3d4) + lrhic89i*sin(trhic89-t6_d3d4) + lrhic69*sin(trhicd9-t6_d3d4) &
+ + (lrhic910bi-lbelabi-ld5ofl)*sin(trhic910-t6_d3d4)
 l6_45eic = l6_d1*sin(t6_d1-t6_d3d4) + l6_d1d2*sin(t6_d1d2-t6_d3d4) + l6_d2*sin(t6_d2-t6_d3d4) &
  + l6_d3*sin(t6_d3-t6_d3d4) + l6_d2d3*sin(t6_d2d3-t6_d3d4) + l6_d4*sin(t6_d4-t6_d3d4)
 l6_45 = -(l6_45rhic-l6_45eic-dx0_eic_ip6*cos(t6_d3d4))/sin(t6_d3d4+dtheta0_eic_ip6)
