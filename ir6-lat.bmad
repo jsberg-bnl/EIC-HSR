@@ -362,9 +362,6 @@ YO5_DU9W[L] = +6.82010965822203730E+000-lbfl-lqb-lq-lcq-lcor-lcfl
 ! deisul geometry calculation
 ! Lengths of RHIC modules used
 ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2
-lcq8 = lbfl+lqbms+lq+lcq+lcor+lcfl
-lcqs = lbfl+lqb+lq+lcq+lcor+lcfl
-lcqt4 = lbfl+lsb4c+lsxt+lqs4+lq4+lcq4+lcor+lcfl
 ! Length from IP to d1
 l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3
 l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lbelabi+ld5ofl ! Fix when I do d1 right

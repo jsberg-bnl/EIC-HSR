@@ -30,6 +30,10 @@ lrhic910bi = lbd10-ldspds-lbfl
 lrhic910bo = lbd10+ldspds-lbfl
 trhic910 = thd5+thcell+2*thds
 
+lcq8 = lbfl+lqbms+lq+lcq+lcor+lcfl
+lcqs = lbfl+lqb+lq+lcq+lcor+lcfl
+lcqt4 = lbfl+lsb4c+lsxt+lqs4+lq4+lcq4+lcor+lcfl
+
 rhic_rip = 590.581639053215
 dx0_eic_ip6 = +0.81
 dtheta0_eic_ip6 = -0.017
