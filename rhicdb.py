@@ -120,7 +120,7 @@ class db_parser:
                 # If this is a slot, go through its elements
                 eles = self.slot.get(row[1])
                 if eles:
-                    self.slots[m].append((row[1],row[1] if re.match('g\d+_dx',row[0]) else row[0],[]))
+                    self.slots[m].append((row[1],row[1] if re.match(r'g\d+_dx',row[0]) else row[0],[]))
                     eles = eles[:]
                     # First pass, expand beamlines that aren't correctors
                     ix_ele = 0
@@ -220,7 +220,7 @@ class db_parser:
                                 eles[ix_ele:ix_ele+1] = []
                             else:
                                 if eles[ix_ele] == row[1]:
-                                    if re.match('g\d+_dhx',row[0]):
+                                    if re.match(r'g\d+_dhx',row[0]):
                                         self.slots[m][-1][2].append((row[1],row[1],row[3]))
                                     else:
                                         self.slots[m][-1][2].append((row[1],row[0],row[3]))
@@ -602,9 +602,8 @@ arc09y = line('y','yo8_cqs10','yo9_cqs10',db)
 arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
 # For now, just leave room for the snake
-mat01y = line('y','yo1_int9_3','yo1_int7_2',db)
-ins01y = line('y','yo1_int7_1','yo1_trp1',db)
-ins02y = line('y','yi2_trp1','yi2_int9_3',db)
+trp01y = line('y','yo1_trp3','yo1_trp1',db)
+trp02y = line('y','yi2_trp1','yi2_trp3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
 trp03y = line('y','yi3_trp3','yi3_trp1',db)
 trp04y = line('y','yo4_trp1','yo4_trp3',db)
@@ -623,11 +622,12 @@ mat12y = line('y','yo12_cqt4','yo12_int9_3',db)
 # Lines carried over from RHIC
 line_list = [
     arc01b,arc01y,arc03y,arc05y,arc07y,arc09y,arc11y,
-    mat01y,ins01y,ins02y,mat03y,trp03y,trp04y,mat04y,mat07y,ins07y,ins08y,ins09y,ins10y,mat11y,ins11y,trp11y,trp12y,mat12y]
+    mat03y,trp03y,trp04y,mat04y,mat07y,ins07y,ins08y,ins09y,ins10y,mat11y,ins11y,trp11y,trp12y,mat12y]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
 # slots kept intact but used in isolation
+ir2_slots = [trp01y,trp02y] + [slot('y',s,db) for s in ('yo1_d9','yo1_d8','yo1_d6','yo1_d5','yi2_d6','yi2_d8','yi2_d9')]
 ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp2','yi6_trp2','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_1','yo5_int9_5','yo5_int9_6',
@@ -638,9 +638,9 @@ ir6_slots = [slot('y',s,db)
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
 ir12_parts = [slot('y','yi11_du3',db),slot('y','yo12_du3',db),slot('b','bi12_du3',db)]
 
-slots_and_lines = line_info(line_list+ir4_parts+ir6_slots+ir12_parts) # Everything I have some need for
-all_parts = line_info(ir4_parts+ir6_slots+ir12_parts) # Things I need all the parts for 
-all_slots = line_info(ir6_slots) # Slots kept intact but used in isolation
+slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots+ir12_parts) # Everything I have some need for
+all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir12_parts) # Things I need all the parts for 
+all_slots = line_info(ir2_slots+ir6_slots) # Slots kept intact but used in isolation
 all_lines = line_info(line_list) # RHIC lines
 
 extra_geom = {'lcenxdx','lcendxd0','ld0fla','lbeld0q1','thdx'}
