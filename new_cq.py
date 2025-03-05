@@ -585,7 +585,7 @@ if len(sys.argv) == 1:
 elif sys.argv[1] == 'ls':
     for cq in sorted(cqs.cqlist):
         print(cq)
-elif len(sys.argv) <= 5:
+elif len(sys.argv) <= 4:
     usage()
 else:
     if sys.argv[3] in cqs.cqlist and sys.argv[4] in ('b','c'):
