@@ -40,7 +40,7 @@ h02_snk:line=(odum1fl,
 h02_dh5: d5i
 h02_d5: line=(od5ofl,h02_dh5,od5ofl)
 
-h01o_bv08:monitor
+h01o_b08:monitor
 h01o_q08:quadrupole,l=lq,field_master=t
 h01o_q08_i:overlay={h01o_q08[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h01o_cor08: kicker, l=lcor
@@ -48,7 +48,7 @@ h01o_tv08_i:overlay={h01o_cor08[bl_vkick]:0.005612747*i},var={i}
 h01o_b308_i:overlay={h01o_cor08[b3]:12.346880000000004*i},var={i}
 h01o_b408_i:overlay={h01o_cor08[b4]:386.38592*i},var={i}
 h01o_a108_i:overlay={h01o_cor08[a1]:0.030435680000000007*i},var={i}
-h01o_cqbc08:line=(obfl,h01o_bv08,oqb,h01o_q08,ocq,h01o_cor08,ocfl)
+h01o_cq8c08:line=(obfl,h01o_b08,oqbms,h01o_q08,ocq,h01o_cor08,ocfl)
 
 h01o_b07:monitor
 h01o_q07:quadrupole,l=lq,field_master=t
@@ -193,7 +193,7 @@ l21_4 = ldsfl+lbelabi+2*lcqs+l7dummy+2*(ldum1fl+lbel78d)+lbelaci+ldfl
 t21_4 = thd5+thds
 l21_5 = 2*rho*sin(0.5*thcell)
 t21_5 = thd5+thds+0.5*thcell
-l21_6 = ldfl+lbelaci+lcq8+lcqs+lbel9ti+ldsfl ! Addition flex here
+l21_6 = ldfl+lbelaci+2*lcq8+lbel9ti+ldsfl ! Addition flex here
 t21_6 = thd5+thds+thcell
 l21_7 = 2*rho*sin(0.5*thds)
 t21_7 = thd5+1.5*thds+thcell
@@ -229,7 +229,7 @@ o02: drift, l=(-zrall*sin(t21_6)+xrall*cos(t21_6)+lr01*sin(tr01-t21_6)+lr02*sin(
 
 ir2ow: line=(obel10bi,
  yo1_d9, obel9ti,
- h01o_cqbc08, h01o_o87,
+ h01o_cq8c08, h01o_o87,
  h01o_cq8b07, obelaci,
  yo1_d8, obelaci,
  h01o_cqtc06, obel78d,
