@@ -181,7 +181,7 @@ zrall = zr00+zr05+zr06+zr07+zr08+zr09+zr10+zr11+zr12
 ! Now, compute values for the pieces of IR2
 ! Update these when the IR2 layout changes
 ltrp = lflq1x+lbq1+lq1+lplq1q2+lq2+lplq2q3+lq3+lcq3a+lcor+lbc3+lbfl3
-l2_0 = 2*(ltrp+lbelabi)+ld5ofl+ldsfl
+l2_0 = 2*(ltrp+lbelabi)+ld5ofl+ldfl
 t2_0 = -thd0
 l21_1 = 2*rho*sin(0.5*(thd5+thd0))
 t21_1 = 0.5*(thd5-thd0)
@@ -199,17 +199,17 @@ l21_7 = 2*rho*sin(0.5*thds)
 t21_7 = thd5+1.5*thds+thcell
 l21_8 = ldsfl+lbel10bi
 t21_8 = thd5+2*thds+thcell
-l22_1 = 2*rho*sin(0.5*thds)
-t22_1 = -thd0-0.5*thds
-l22_2 = ldsfl+lbelabi+lcqt4+lbelabi+ld5ofl
-t22_2 = -thd0-thds
+l22_1 = 2*rho*sin(0.5*thcell)
+t22_1 = -thd0-0.5*thcell
+l22_2 = ldfl+lbelabi+lcqt4+lbelabi+ld5ofl
+t22_2 = -thd0-thcell
 l22_3 = 2*rho*sin(0.5*(thd5-thd0))
-t22_3 = -0.5*(thd0+thd5)-thds
-l22_4 = ld5ofl+lbelabi+lcqt4+lbelaci+ldfl
-t22_4 = -thd5-thds
-l22_5 = 2*rho*sin(0.5*thcell)
-t22_5 = -thd5-thds-0.5*thcell
-l22_6 = ldfl+lbelaci+lcq8+l7dummy+2*(lbel78d+ldum1fl)+lcqs+lbel9ti+ldsfl
+t22_3 = -0.5*(thd0+thd5)-thcell
+l22_4 = ld5ofl+lbelabi+lcqt4+lbelaci+ldsfl
+t22_4 = -thd5-thcell
+l22_5 = 2*rho*sin(0.5*thds)
+t22_5 = -thd5-thcell-0.5*thds
+l22_6 = ldsfl+lbelaci+lcq8+l7dummy+2*(lbel78d+ldum1fl)+lcqs+lbel9ti+ldsfl
 t22_6 = -thd5-thds-thcell
 l22_7 = 2*rho*sin(0.5*thds)
 t22_7 = -thd5-1.5*thds-thcell
@@ -242,11 +242,11 @@ ir2ow: line=(obel10bi,
  trp01y)
 
 ir2d: line=(trp02y, obelabi,
- yi2_d6, obelabi,
+ yi2_d8, obelabi,
  h02_cq4c04, obelabi,
  h02_d5, obelabi,
  h02_cq4f05, obelaci,
- yi2_d8, obelaci,
+ yi2_d6, obelaci,
  h02_cq8c06, obel78d,
  h02_snk, obel78d,
  h02_cqbf07, obel9ti,
