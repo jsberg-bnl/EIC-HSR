@@ -113,11 +113,8 @@
  default_universe = '1,7'
  default_attribute = 'i'
  default_step = 1
- var(1:3)%ele_name = 'y2_q6_ps' 'y2_q7_ps' 'y2_q89_ps'
- var(4:10)%ele_name = 'yo1_qd1_ps' 'yo1_qf2_ps' 'yo1_qd3_ps' 'yo1_tq4_ps' 'yo1_tq5_ps' 'yo1_tq6_ps' 'yo1_qf8_ps'
- var(11:17)%ele_name = 'yi2_qf1_ps' 'yi2_qd2_ps' 'yi2_qf3_ps' 'yi2_tq4_ps' 'yi2_tq5_ps' 'yi2_tq6_ps' 'yi2_qf9_ps'
- var(1:17)%low_lim =   +14  +14 -280  +14 -140 -280 -100 -100 -100 -150  +14 -140 -280 -100 -100 -100 -150
- var(1:17)%high_lim = +430 +550 +280 +190 +140  -14 +100 +100 +100   -5 +190 +140  -14 +100 +100 +100   -5
+ var(1:8)%ele_name = 'yo1_qd1_i' 'yo1_qf2_i' 'yo1_qd3_i' 'h01o_q04_i' 'h01o_q05_i' 'h01o_q06_i' 'h01o_q07_i' 'h01o_q08_i'
+ var(9:15)%ele_name = 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i' 'h02_q04_i' 'h02_q05_i' 'h02_q06_i' 'h02_q07_i'
 /
 
 &tao_var
@@ -517,7 +514,7 @@
 &tao_d2_data
  universe = '7'
  d2_data%name = 'ir2'
- n_d1_data = 4
+ n_d1_data = 2
 /
 
 &tao_d1_data
@@ -529,75 +526,23 @@
  datum(4)%data_type = 'expression: lat::alpha.a[yi2_int11_2] - 10@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: lat::beta.b[yi2_int11_2] - 10@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[yi2_int11_2] - 10@lat::alpha.b[0]'
- datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
+ datum(7:11)%data_type = 'etap.x' 'alpha.a' 'alpha.b' 'beta.a' 'beta.b'
  datum(7:11)%ele_name = 'o02' 'o02' 'o02' 'o02' 'o02'
- datum(7:9)%eval_point = 'center' 'center' 'center'
- datum(12)%data_type = 'expression:gamma.a[o02]-gamma.b[o02]'
- datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
- datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+ datum(7:11)%eval_point = 'center' 'center' 'center' 'center' 'center'
+ datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1e-2 1e-2
+ datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 162 162
 /
 
 &tao_d1_data
  ix_d1_data = 2
- d1_data%name = 'low_lim'
- default_meas = 0
- default_weight = 1e-8
- default_merit_type = 'min'
- datum(1)%data_type  = 'expression: var::ir2[1]|model  - var::ir2[1]|low_lim'
- datum(2)%data_type  = 'expression: var::ir2[2]|model  - var::ir2[2]|low_lim'
- datum(3)%data_type  = 'expression: var::ir2[3]|model  - var::ir2[3]|low_lim'
- datum(4)%data_type  = 'expression: var::ir2[4]|model  - var::ir2[4]|low_lim'
- datum(5)%data_type  = 'expression: var::ir2[5]|model  - var::ir2[5]|low_lim'
- datum(6)%data_type  = 'expression: var::ir2[6]|model  - var::ir2[6]|low_lim'
- datum(7)%data_type  = 'expression: var::ir2[7]|model  - var::ir2[7]|low_lim'
- datum(8)%data_type  = 'expression: var::ir2[8]|model  - var::ir2[8]|low_lim'
- datum(9)%data_type  = 'expression: var::ir2[9]|model  - var::ir2[9]|low_lim'
- datum(10)%data_type = 'expression: var::ir2[10]|model - var::ir2[10]|low_lim'
- datum(11)%data_type = 'expression: var::ir2[11]|model - var::ir2[11]|low_lim'
- datum(12)%data_type = 'expression: var::ir2[12]|model - var::ir2[12]|low_lim'
- datum(13)%data_type = 'expression: var::ir2[13]|model - var::ir2[13]|low_lim'
- datum(14)%data_type = 'expression: var::ir2[14]|model - var::ir2[14]|low_lim'
- datum(15)%data_type = 'expression: var::ir2[15]|model - var::ir2[15]|low_lim'
- datum(16)%data_type = 'expression: var::ir2[16]|model - var::ir2[16]|low_lim'
- datum(17)%data_type = 'expression: var::ir2[17]|model - var::ir2[17]|low_lim'
-/
-
-&tao_d1_data
- ix_d1_data = 3
- d1_data%name = 'high_lim'
- default_meas = 0
- default_weight = 1e-8
- default_merit_type = 'min'
- datum(1)%data_type  = 'expression: var::ir2[1]|high_lim  - var::ir2[1]|model'
- datum(2)%data_type  = 'expression: var::ir2[2]|high_lim  - var::ir2[2]|model'
- datum(3)%data_type  = 'expression: var::ir2[3]|high_lim  - var::ir2[3]|model'
- datum(4)%data_type  = 'expression: var::ir2[4]|high_lim  - var::ir2[4]|model'
- datum(5)%data_type  = 'expression: var::ir2[5]|high_lim  - var::ir2[5]|model'
- datum(6)%data_type  = 'expression: var::ir2[6]|high_lim  - var::ir2[6]|model'
- datum(7)%data_type  = 'expression: var::ir2[7]|high_lim  - var::ir2[7]|model'
- datum(8)%data_type  = 'expression: var::ir2[8]|high_lim  - var::ir2[8]|model'
- datum(9)%data_type  = 'expression: var::ir2[9]|high_lim  - var::ir2[9]|model'
- datum(10)%data_type = 'expression: var::ir2[10]|high_lim - var::ir2[10]|model'
- datum(11)%data_type = 'expression: var::ir2[11]|high_lim - var::ir2[11]|model'
- datum(12)%data_type = 'expression: var::ir2[12]|high_lim - var::ir2[12]|model'
- datum(13)%data_type = 'expression: var::ir2[13]|high_lim - var::ir2[13]|model'
- datum(14)%data_type = 'expression: var::ir2[14]|high_lim - var::ir2[14]|model'
- datum(15)%data_type = 'expression: var::ir2[15]|high_lim - var::ir2[15]|model'
- datum(16)%data_type = 'expression: var::ir2[16]|high_lim - var::ir2[16]|model'
- datum(17)%data_type = 'expression: var::ir2[17]|high_lim - var::ir2[17]|model'
-/
-
-&tao_d1_data
- ix_d1_data = 4
  d1_data%name = 'opt'
- datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
- datum(1:7)%ele_name = 'o02' 'yo1_b4' 'yo1_b4' 'yi2_b3' 'yi2_b3' 'yi2_int11_2' 'yi2_int11_2'
- datum(1)%eval_point = 'center'
- datum(2:7)%ele_start_name = 'yo1_int11_2' 'yo1_int11_2' 'yo1_b3' 'yo1_b3' 'yi2_b4' 'yi2_b4'
- datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
- datum(1:7)%meas = 0 0 0 0 0 0 0
- datum(1:7)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
- datum(1:7)%good_user = f f f f f f f
+ datum(1:2)%data_type = 'beta.a' 'beta.b'
+ datum(1:2)%ele_name = 'yi2_qf3' 'yi2_qf3'
+ datum(1:2)%ele_start_name = 'yo1_qd3-1' 'yo1_qd3-1'
+ datum(1:2)%merit_type = 'max' 'max'
+ datum(1:2)%meas = 0 0
+ datum(1:2)%weight = 1e-8 1e-8
+ datum(1:2)%good_user = f f
 /
 
 &tao_d2_data
