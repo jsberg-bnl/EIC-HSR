@@ -526,11 +526,11 @@
  datum(4)%data_type = 'expression: lat::alpha.a[yi2_int11_2] - 10@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: lat::beta.b[yi2_int11_2] - 10@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[yi2_int11_2] - 10@lat::alpha.b[0]'
- datum(7:11)%data_type = 'etap.x' 'alpha.a' 'alpha.b' 'beta.a' 'beta.b'
- datum(7:11)%ele_name = 'o02' 'o02' 'o02' 'o02' 'o02'
- datum(7:11)%eval_point = 'center' 'center' 'center' 'center' 'center'
- datum(1:11)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1e-2 1e-2
- datum(1:11)%meas = 0 0 0 0 0 0 0 0 0 162 162
+ datum(7:13)%data_type = 'etap.x' 'alpha.a' 'alpha.b' 'beta.a' 'beta.b' 'eta.x' 'beta.a'
+ datum(7:13)%ele_name = 'o02' 'o02' 'o02' 'o02' 'o02' 'o02' 'h01o_q05'
+ datum(7:13)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:13)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1e-2 1e-2 1 1e-2
+ datum(1:13)%meas = 0 0 0 0 0 0 0 0 0 162 162 0 100
 /
 
 &tao_d1_data
