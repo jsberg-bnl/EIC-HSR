@@ -105,16 +105,14 @@ h02_a104_i:overlay={h02_cor04[a1]:0.030435680000000007*i},var={i}
 h02_cq4c04:line=(obfl,h02_b04,osb4c,h02_tq04,oqs4,h02_q04,ocq4,h02_cor04,ocfl)
 
 h02_b05:monitor
-h02_tq05:quadrupole,l=lsxt,field_master=t
-h02_tq05_i:overlay={h02_tq05[b1_gradient]:0.2381915*i/lsxt},var={i}
-h02_q05:quadrupole,l=lq4,field_master=t
-h02_q05_i:overlay={h02_q05[b1_gradient]:0.027149189411764706*i/lq4},var={i}
+h02_q05:quadrupole,l=lq,field_master=t
+h02_q05_i:overlay={h02_q05[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h02_cor05: kicker, l=lcor
-h02_th05_i:overlay={h02_cor05[bl_hkick]:0.005610334999999999*i},var={i}
-h02_b305_i:overlay={h02_cor05[b3]:12.31232*i},var={i}
-h02_b405_i:overlay={h02_cor05[b4]:387.2896*i},var={i}
-h02_a105_i:overlay={h02_cor05[a1]:0.03043852000000001*i},var={i}
-h02_cq4f05:line=(obfl,h02_b05,osb4c,h02_tq05,oqs4,h02_q05,ocq4,h02_cor05,ocfl)
+h02_th05_i:overlay={h02_cor05[bl_hkick]:0.005619562*i},var={i}
+h02_b305_i:overlay={h02_cor05[b3]:12.380799999999999*i},var={i}
+h02_b405_i:overlay={h02_cor05[b4]:388.6028799999999*i},var={i}
+h02_b105_i:overlay={h02_cor05[b1]:0.030651719999999997*i},var={i}
+h02_cq8b05:line=(obfl,h02_b05,oqbms,h02_q05,ocq,h02_cor05,ocfl)
 
 h02_b06:monitor
 h02_q06:quadrupole,l=lq,field_master=t
@@ -201,7 +199,7 @@ l22_2 = ldfl+lbelabi+lcqt4+lbelabi+ld5ofl
 t22_2 = -thd0-thcell
 l22_3 = 2*rho*sin(0.5*(thd5-thd0))
 t22_3 = -0.5*(thd0+thd5)-thcell
-l22_4 = ld5ofl+lbelabi+lcqt4+lbelaci+ldsfl
+l22_4 = ld5ofl+lbelabi+lcq8+lbelaci+ldsfl
 t22_4 = -thd5-thcell
 l22_5 = 2*rho*sin(0.5*thds)
 t22_5 = -thd5-thcell-0.5*thds
@@ -241,7 +239,7 @@ ir2d: line=(trp02y, obelabi,
  yi2_d8, obelabi,
  h02_cq4c04, obelabi,
  h02_d5, obelabi,
- h02_cq4f05, obelaci,
+ h02_cq8b05, obelaci,
  yi2_d6, obelaci,
  h02_cq8c06, obel78d,
  h02_snk, obel78d,
