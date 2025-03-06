@@ -60,29 +60,25 @@ h01o_b407_i:overlay={h01o_cor07[b4]:388.6028799999999*i},var={i}
 h01o_b107_i:overlay={h01o_cor07[b1]:0.030651719999999997*i},var={i}
 h01o_cq8b07:line=(obfl,h01o_b07,oqbms,h01o_q07,ocq,h01o_cor07,ocfl)
 
-h01o_cor06: kicker, l=lcor
-h01o_tv06_i:overlay={h01o_cor06[bl_vkick]:0.005612747*i},var={i}
-h01o_b306_i:overlay={h01o_cor06[b3]:12.346880000000004*i},var={i}
-h01o_b406_i:overlay={h01o_cor06[b4]:386.38592*i},var={i}
-h01o_a106_i:overlay={h01o_cor06[a1]:0.030435680000000007*i},var={i}
-h01o_q06:quadrupole,l=lq,field_master=t
-h01o_q06_i:overlay={h01o_q06[b1_gradient]:0.016572460606060605*i/lq},var={i}
-h01o_tq06:quadrupole,l=lsxt,field_master=t
-h01o_tq06_i:overlay={h01o_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
-h01o_bv06:monitor
-h01o_cqtc06:line=(ocfl,h01o_cor06,ocq,h01o_q06,oqs,h01o_tq06,osb,h01o_bv06,obfl)
-
+h01o_b05:monitor
+h01o_q05:quadrupole,l=lq,field_master=t
+h01o_q05_i:overlay={h01o_q05[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h01o_cor05: kicker, l=lcor
 h01o_th05_i:overlay={h01o_cor05[bl_hkick]:0.005619562*i},var={i}
 h01o_b305_i:overlay={h01o_cor05[b3]:12.380799999999999*i},var={i}
 h01o_b405_i:overlay={h01o_cor05[b4]:388.6028799999999*i},var={i}
 h01o_b105_i:overlay={h01o_cor05[b1]:0.030651719999999997*i},var={i}
-h01o_q05:quadrupole,l=lq,field_master=t
-h01o_q05_i:overlay={h01o_q05[b1_gradient]:0.016572460606060605*i/lq},var={i}
-h01o_tq05:quadrupole,l=lsxt,field_master=t
-h01o_tq05_i:overlay={h01o_tq05[b1_gradient]:0.2381915*i/lsxt},var={i}
-h01o_bh05:monitor
-h01o_cqtb05:line=(ocfl,h01o_cor05,ocq,h01o_q05,oqs,h01o_tq05,osb,h01o_bh05,obfl)
+h01o_cq8b05:line=(obfl,h01o_b05,oqbms,h01o_q05,ocq,h01o_cor05,ocfl)
+
+h01o_b06:monitor
+h01o_q06:quadrupole,l=lq,field_master=t
+h01o_q06_i:overlay={h01o_q06[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h01o_cor06: kicker, l=lcor
+h01o_tv06_i:overlay={h01o_cor06[bl_vkick]:0.005612747*i},var={i}
+h01o_b306_i:overlay={h01o_cor06[b3]:12.346880000000004*i},var={i}
+h01o_b406_i:overlay={h01o_cor06[b4]:386.38592*i},var={i}
+h01o_a106_i:overlay={h01o_cor06[a1]:0.030435680000000007*i},var={i}
+h01o_cq8c06:line=(obfl,h01o_b06,oqbms,h01o_q06,ocq,h01o_cor06,ocfl)
 
 h01o_b04:monitor
 h01o_tq04:quadrupole,l=lsxt,field_master=t
@@ -189,7 +185,7 @@ l21_2 = ld5ofl+2*lbelabi+lcqt4+ldsfl
 t21_2 = thd5
 l21_3 = 2*rho*sin(0.5*thds)
 t21_3 = thd5+0.5*thds
-l21_4 = ldsfl+lbelabi+2*lcqs+l7dummy+2*(ldum1fl+lbel78d)+lbelaci+ldfl
+l21_4 = ldsfl+lbelabi+2*lcq8+l7dummy+2*(ldum1fl+lbel78d)+lbelaci+ldfl
 t21_4 = thd5+thds
 l21_5 = 2*rho*sin(0.5*thcell)
 t21_5 = thd5+thds+0.5*thcell
@@ -232,9 +228,9 @@ ir2ow: line=(obel10bi,
  h01o_cq8c08, h01o_o87,
  h01o_cq8b07, obelaci,
  yo1_d8, obelaci,
- h01o_cqtc06, obel78d,
+ h01o_cq8c06, obel78d,
  h01o_snk, obel78d,
- h01o_cqtb05, obelabi,
+ h01o_cq8b05, obelabi,
  yo1_d6, obelabi,
  h01o_cq4c04, obelabi,
  yo1_d5,
