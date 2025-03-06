@@ -526,11 +526,15 @@
  datum(4)%data_type = 'expression: lat::alpha.a[yi2_int11_2] - 10@lat::alpha.a[0]'
  datum(5)%data_type = 'expression: lat::beta.b[yi2_int11_2] - 10@lat::beta.b[0]'
  datum(6)%data_type = 'expression: lat::alpha.b[yi2_int11_2] - 10@lat::alpha.b[0]'
- datum(7:13)%data_type = 'etap.x' 'alpha.a' 'alpha.b' 'beta.a' 'beta.b' 'eta.x' 'beta.a'
- datum(7:13)%ele_name = 'o02' 'o02' 'o02' 'o02' 'o02' 'o02' 'h01o_q05'
- datum(7:13)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center'
- datum(1:13)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1e-2 1e-2 1 1e-2
- datum(1:13)%meas = 0 0 0 0 0 0 0 0 0 162 162 0 100
+ datum(7:12)%data_type = 'etap.x' 'alpha.a' 'alpha.b' 'beta.a' 'beta.b' 'eta.x'
+ datum(7:12)%ele_name = 'o02' 'o02' 'o02' 'o02' 'o02' 'o02'
+ datum(7:12)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(13)%data_type = 'expression:lat::beta.a[o02->-0.5*l]-lat::beta.b[o02->-0.5*l]'
+ datum(14:16)%data_type = 'beta.a' 'beta.a' 'beta.a'
+ datum(14:16)%ele_name = 'h01o_q05' 'yo1_qd3' 'h02_q05'
+ datum(14:16)%eval_point = 'center' 'center' 'center'
+ datum(1:16)%weight = 1 1 1e-2 1 1e-2 1 1e2 1 1 1e-2 1e-2 1 1e-2 1e-2 1e-2 1e-2
+ datum(1:16)%meas = 0 0 0 0 0 0 0 0 0 81 81 0 0 0 0 0
 /
 
 &tao_d1_data
