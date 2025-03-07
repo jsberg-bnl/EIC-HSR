@@ -195,15 +195,15 @@ l21_8 = ldsfl+lbel10bi
 t21_8 = thd5+2*thds+thcell
 l22_1 = 2*rho*sin(0.5*thcell)
 t22_1 = -thd0-0.5*thcell
-l22_2 = ldfl+lbelabi+lcqt4+lbelabi+ld5ofl
+l22_2 = ldfl+lbelabi+lcqt4+lbelabi+ldsfl
 t22_2 = -thd0-thcell
-l22_3 = 2*rho*sin(0.5*(thd5-thd0))
-t22_3 = -0.5*(thd0+thd5)-thcell
-l22_4 = ld5ofl+lbelabi+lcq8+lbelaci+ldsfl
-t22_4 = -thd5-thcell
-l22_5 = 2*rho*sin(0.5*thds)
-t22_5 = -thd5-thcell-0.5*thds
-l22_6 = ldsfl+lbelaci+lcq8+l7dummy+2*(lbel78d+ldum1fl)+lcqs+lbel9ti+ldsfl
+l22_3 = 2*rho*sin(0.5*thds)
+t22_3 = -0.5*thds-thd0-thcell
+l22_4 = ldsfl+lbelabi+lcq8+lbelaci+ld5ofl
+t22_4 = -thds-thd0-thcell
+l22_5 = 2*rho*sin(0.5*(thd5-thd0))
+t22_5 = -0.5*(thd5+thd0)-thds-thcell
+l22_6 = ld5ofl+lbelaci+lcq8+l7dummy+2*(lbel78d+ldum1fl)+lcqs+lbel9ti+ldsfl
 t22_6 = -thd5-thds-thcell
 l22_7 = 2*rho*sin(0.5*thds)
 t22_7 = -thd5-1.5*thds-thcell
@@ -238,9 +238,9 @@ ir2ow: line=(obel10bi,
 ir2d: line=(trp02y, obelabi,
  yi2_d8, obelabi,
  h02_cq4c04, obelabi,
- h02_d5, obelabi,
+ yi2_d6, obelabi,
  h02_cq8b05, obelaci,
- yi2_d6, obelaci,
+ h02_d5, obelaci,
  h02_cq8c06, obel78d,
  h02_snk, obel78d,
  h02_cqbf07, obel9ti,
