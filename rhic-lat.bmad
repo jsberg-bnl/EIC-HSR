@@ -1901,7 +1901,6 @@ yo12_sxf20:sfpo
 yi7_kfbh3:kfbh
 yo8_kfbh3:kfbh
 yo9_kfbh3:kfbh
-yi10_kfbh3:kfbh
 bi1_th11:kickh
 bi1_th13:kickh
 bi1_th15:kickh
@@ -2383,8 +2382,6 @@ yo8_sv3_2:mvalve
 yo9_sv3_1:mvalve
 yo9_sv3_2:mvalve
 yo9_sv4:mvalve
-yi10_sv3:mvalve
-yi10_sv4:mvalve
 ! slots from the intact part of RHIC (that aren't just drifts)
 bi1_cqs10:line=(ocfl,
  lmp01b10,
@@ -4644,13 +4641,6 @@ yi10_d19:line=(odfl,
 yi10_d20:line=(odfl,
  yi10_dh20,
  odfl)
-yi10_du3:line=(obsk10ly,
- yi10_sv3,
- o3y10c0,
- yi10_kfbh3,
- o3y10c1,
- yi10_sv4,
- obsk10iy)
 yi10_du4:line=(odum1fl,
  o4dummy,
  odum1fl)
@@ -5933,13 +5923,12 @@ ins09y:line=(yo9_int9_3,
  yo9_trp2,
  yo9_int1,
  yo9_trp1)
-ins10y:line=(yi10_trp1,
+trp10y:line=(yi10_trp1,
  yi10_int1,
  yi10_trp2,
  yi10_int2,
- yi10_trp3,
- yi10_du3,
- yi10_cqt4,
+ yi10_trp3)
+mat10y:line=(yi10_cqt4,
  yi10_int4_1,
  yi10_du4,
  yi10_int4_2,
@@ -6093,6 +6082,7 @@ yo5_qf8:qfb6
 bi12_kfbh3:kfbh
 yi3_kfbh3:kfbh
 yo4_kfbh3:kfbh
+yi10_kfbh3:kfbh
 yi11_kfbh3:kfbh
 yo12_kfbh3:kfbh
 ! correctors
@@ -6188,6 +6178,8 @@ yo5_sv7:mvalve
 yo5_sv8:mvalve
 yo5_sv9_1:mvalve
 yo5_sv9_2:mvalve
+yi10_sv3:mvalve
+yi10_sv4:mvalve
 yi11_sv3:mvalve
 yi11_sv4:mvalve
 yo12_sv3_1:mvalve
