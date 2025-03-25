@@ -134,17 +134,40 @@ h02_q07_i:overlay={h02_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h02_bh07:monitor
 h02_cqbf07:line=(ocfl,h02_cor07,ocq,h02_q07,oqb,h02_bh07,obfl)
 
-trp01b: line=(bi1_trp3,
+ldev = 0.399
+levdt3 = 31*0.0254
+lc3ev = 83.5*0.0254 - (0.5*lq3+lcq3a+lcor)
+oc3ev: drift, l=lc3ev
+
+h01o_tp3: line=(oc3ev,
+ lmp01b3a,
+ ocq3a,
+ bi1_qf3,
+ ocq3x,
+ lmp01b3x,
+ ocfl3)
+h01o_trp: line=(h01o_tp3,
  bi1_int2,
  bi1_trp2,
  bi1_int1,
  bi1_trp1)
-
-trp02y: line=(yi2_trp1,
+h02_tp3: line=(ocfl3,
+ lmp02y3x,
+ ocq3x,
+ yi2_qf3,
+ ocq3a,
+ lmp02y3a,
+ oc3ev)
+h02_trp: line=(yi2_trp1,
  yi2_int1,
  yi2_trp2,
  yi2_int2,
- yi2_trp3)
+ h02_tp3)
+
+lh01oq3d = levdt3+ldev-ld5ofl
+lh02q3d = levdt3+ldev-ldfl
+oh01oq3d: drift, l=lh01oq3d
+oh02q3d: drift, l=lh02q3d
 
 ! Drift calculation
 ! First, compute values for distance across RHIC
@@ -174,8 +197,8 @@ xrall = xr06+xr08+xr10+xr12
 zrall = zr00+zr05+zr06+zr07+zr08+zr09+zr10+zr11+zr12
 ! Now, compute values for the pieces of IR2
 ! Update these when the IR2 layout changes
-ltrp = lflq1x+lbq1+lq1+lplq1q2+lq2+lplq2q3+lq3+lcq3a+lcor+lbc3+lbfl3
-l2_0 = 2*(ltrp+lbelabi)+ld5ofl+ldfl
+ltrp = lflq1x+lbq1+lq1+lplq1q2+lq2+lplq2q3+lq3+lcq3a+lcor+lc3ev
+l2_0 = 2*(ltrp+levdt3+ldev)
 t2_0 = -thd0
 l21_1 = 2*rho*sin(0.5*(thd5+thd0))
 t21_1 = 0.5*(thd5-thd0)
@@ -232,10 +255,10 @@ ir2ow: line=(obel10bi,
  yo1_d6, obelabi,
  h01o_cq4c04, obelabi,
  yo1_d5,
- obelabi,
- trp01b)
+ oh01oq3d,
+ h01o_trp)
 
-ir2d: line=(trp02y, obelabi,
+ir2d: line=(h02_trp, oh02q3d,
  yi2_d8, obelabi,
  h02_cq4c04, obelabi,
  yi2_d6, obelabi,
