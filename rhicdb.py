@@ -602,7 +602,7 @@ arc09y = line('y','yo8_cqs10','yo9_cqs10',db)
 arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
 # For now, just leave room for the snake
-trp01y = line('y','yo1_trp3','yo1_trp1',db)
+trp01b = line('b','bi1_trp3','bi1_trp1',db)
 trp02y = line('y','yi2_trp1','yi2_trp3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
 trp03y = line('y','yi3_trp3','yi3_trp1',db)
@@ -627,7 +627,7 @@ for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.ma
     v.name = n
 
 # slots kept intact but used in isolation
-ir2_slots = [trp01y,trp02y] + [slot('y',s,db) for s in ('yo1_d9','yo1_d8','yo1_d6','yo1_d5','yi2_d6','yi2_d8','yi2_d9')]
+ir2_slots = [trp01b,trp02y] + [slot('y',s,db) for s in ('yo1_d9','yo1_d8','yo1_d6','yo1_d5','yi2_d6','yi2_d8','yi2_d9')]
 ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp2','yi6_trp2','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_1','yo5_int9_5','yo5_int9_6',

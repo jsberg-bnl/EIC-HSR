@@ -134,11 +134,11 @@ h02_q07_i:overlay={h02_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h02_bh07:monitor
 h02_cqbf07:line=(ocfl,h02_cor07,ocq,h02_q07,oqb,h02_bh07,obfl)
 
-trp01y: line=(yo1_trp3,
- yo1_int2,
- yo1_trp2,
- yo1_int1,
- yo1_trp1)
+trp01b: line=(bi1_trp3,
+ bi1_int2,
+ bi1_trp2,
+ bi1_int1,
+ bi1_trp1)
 
 trp02y: line=(yi2_trp1,
  yi2_int1,
@@ -233,7 +233,7 @@ ir2ow: line=(obel10bi,
  h01o_cq4c04, obelabi,
  yo1_d5,
  obelabi,
- trp01y)
+ trp01b)
 
 ir2d: line=(trp02y, obelabi,
  yi2_d8, obelabi,

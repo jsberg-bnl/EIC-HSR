@@ -654,7 +654,6 @@ q1i4:quadrupole,l=lq1
 q1i8:quadrupole,l=lq1
 q1i10:quadrupole,l=lq1
 q1i12:quadrupole,l=lq1
-q1o2:quadrupole,l=lq1
 q1o4:quadrupole,l=lq1
 q1o8:quadrupole,l=lq1
 q1o10:quadrupole,l=lq1
@@ -665,7 +664,6 @@ q2i6:quadrupole,l=lq2
 q2i8:quadrupole,l=lq2
 q2i10:quadrupole,l=lq2
 q2i12:quadrupole,l=lq2
-q2o2:quadrupole,l=lq2
 q2o4:quadrupole,l=lq2
 q2o6:quadrupole,l=lq2
 q2o8:quadrupole,l=lq2
@@ -676,7 +674,6 @@ q3i4:quadrupole,l=lq3
 q3i8:quadrupole,l=lq3
 q3i10:quadrupole,l=lq3
 q3i12:quadrupole,l=lq3
-q3o2:quadrupole,l=lq3
 q3o4:quadrupole,l=lq3
 q3o8:quadrupole,l=lq3
 q3o10:quadrupole,l=lq3
@@ -6038,9 +6035,9 @@ mat12y:line=(yo12_cqt4,
 yo5_int9_6:obel10bo
 yo5_int8_1:obelaco
 yo5_int8_2:obelaco
-yo1_int1:obelq1q2
+bi1_int1:obelq1q2
 yi2_int1:obelq1q2
-yo1_int2:obelq2q3
+bi1_int2:obelq2q3
 yi2_int2:obelq2q3
 ! things, acting currently like drifts
 ! dipoles
@@ -6059,14 +6056,14 @@ yo5_dh9:ds
 yi6_dh6:ds
 yi6_dh9:ds
 ! quadrupoles
+bi1_qf1:q1i2
 yi2_qf1:q1i2
-yo1_qd1:q1o2
+bi1_qd2:q2i2
 yi2_qd2:q2i2
 yi6_qd2:q2i6
-yo1_qf2:q2o2
 yo5_qf2:q2o6
+bi1_qf3:q3i2
 yi2_qf3:q3i2
-yo1_qd3:q3o2
 yi6_qd4:q4i6
 yi6_tq4:q4it6
 yo5_qf4:q4o6
@@ -6096,9 +6093,9 @@ yo4_kfbh3:kfbh
 yi11_kfbh3:kfbh
 yo12_kfbh3:kfbh
 ! correctors
-lmp01y02:kicker,l=lcor,scale_multipoles=f
-lmp01y3a:kicker,l=lcor,scale_multipoles=f
-lmp01y3x:kicker,l=lcor,scale_multipoles=f
+lmp01b02:kicker,l=lcor,scale_multipoles=f
+lmp01b3a:kicker,l=lcor,scale_multipoles=f
+lmp01b3x:kicker,l=lcor,scale_multipoles=f
 lmp02y02:kicker,l=lcor,scale_multipoles=f
 lmp02y3a:kicker,l=lcor,scale_multipoles=f
 lmp02y3x:kicker,l=lcor,scale_multipoles=f
@@ -6137,10 +6134,10 @@ yi6_bh9:bpmh
 yo5_bv5:bpmv
 yo5_bv9:bpmv
 yi6_bv6:bpmv
+bi1_b1:cplmon
+bi1_b3:cplmon
 bo3_b8:cplmon
 bi5_b8:cplmon
-yo1_b1:cplmon
-yo1_b3:cplmon
 yi2_b1:cplmon
 yi2_b3:cplmon
 yo5_b4:cplmon
@@ -6194,6 +6191,25 @@ yo12_sv3_1:mvalve
 yo12_sv3_2:mvalve
 yo12_sv4:mvalve
 ! slots
+bi1_trp1:line=(oflq1a,
+ bi1_qf1,
+ obq1,
+ bi1_b1,
+ oflq1x)
+bi1_trp2:line=(oflq2a,
+ bi1_qd2,
+ ocq2,
+ lmp01b02,
+ ocfl2)
+bi1_trp3:line=(obfl3,
+ bi1_b3,
+ obc3,
+ lmp01b3a,
+ ocq3a,
+ bi1_qf3,
+ ocq3x,
+ lmp01b3x,
+ ocfl3)
 bo3_cq8:line=(ocfl,
  lmp03b08,
  ocq,
@@ -6220,25 +6236,6 @@ yo1_d8:line=(odfl,
 yo1_d9:line=(odsfl,
  yo1_dh9,
  odsfl)
-yo1_trp1:line=(oflq1a,
- yo1_qd1,
- obq1,
- yo1_b1,
- oflq1x)
-yo1_trp2:line=(oflq2a,
- yo1_qf2,
- ocq2,
- lmp01y02,
- ocfl2)
-yo1_trp3:line=(obfl3,
- yo1_b3,
- obc3,
- lmp01y3a,
- ocq3a,
- yo1_qd3,
- ocq3x,
- lmp01y3x,
- ocfl3)
 yi2_d6:line=(odsfl,
  yi2_dh6,
  odsfl)

@@ -1932,14 +1932,14 @@ yo12_tv7_i:=+yo12_tv7_ps;
 yo12_tv9_i:=+yo12_tv9_ps;
 // IR slots
 // quadrupoles
+bi1_qf1,k1:=-0.013745546153846155/bi1_qf1->l*bi1_qf1_i/beam->brho;
 yi2_qf1,k1:=0.013745546153846155/yi2_qf1->l*yi2_qf1_i/beam->brho;
-yo1_qd1,k1:=0.013745546153846155/yo1_qd1->l*yo1_qd1_i/beam->brho;
+bi1_qd2,k1:=-0.032247392307692316/bi1_qd2->l*bi1_qd2_i/beam->brho;
 yi2_qd2,k1:=0.032247392307692316/yi2_qd2->l*yi2_qd2_i/beam->brho;
 yi6_qd2,k1:=0.032247392307692316/yi6_qd2->l*yi6_qd2_i/beam->brho;
-yo1_qf2,k1:=0.032247392307692316/yo1_qf2->l*yo1_qf2_i/beam->brho;
 yo5_qf2,k1:=0.032247392307692316/yo5_qf2->l*yo5_qf2_i/beam->brho;
+bi1_qf3,k1:=-0.020001844230769228/bi1_qf3->l*bi1_qf3_i/beam->brho;
 yi2_qf3,k1:=0.020001844230769228/yi2_qf3->l*yi2_qf3_i/beam->brho;
-yo1_qd3,k1:=0.020001844230769228/yo1_qd3->l*yo1_qd3_i/beam->brho;
 yi6_qd4,k1:=0.027149189411764706/yi6_qd4->l*yi6_qd4_i/beam->brho;
 yi6_tq4,k1:=0.2381915/yi6_tq4->l*yi6_tq4_i/beam->brho;
 yo5_qf4,k1:=0.027149189411764706/yo5_qf4->l*yo5_qf4_i/beam->brho;
@@ -1963,18 +1963,18 @@ yo5_qf8,k1:=0.016572460606060605/yo5_qf8->l*yo5_qf8_i/beam->brho;
 // sextupoles
 // kickers
 // correctors
-yo1_th2,kick:=-0.005637592999999998*yo1_th2_i/beam->brho;
-yo1_oct2,knl:={0,0,0,-15.945468750000002*yo1_oct2_i/beam->brho};
-yo1_dec2,knl:={0,0,0,0,-959.1093749999999*yo1_dec2_i/beam->brho};
-yo1_dod2,knl:={0,0,0,0,0,-94937.109375*yo1_dod2_i/beam->brho};
-yo1_tv3,kick:=-0.005631586999999999*yo1_tv3_i/beam->brho;
-yo1_sx3,knl:={0,0,-0.505985*yo1_sx3_i/beam->brho};
-yo1_oct3,knl:={0,0,0,-15.964031250000003*yo1_oct3_i/beam->brho};
-yo1_dod3,knl:={0,0,0,0,0,-95024.99999999999*yo1_dod3_i/beam->brho};
-yo1_dods3,ksl:={0,0,0,0,0,-94626.5625*yo1_dods3_i/beam->brho};
-yo1_octs3,ksl:={0,0,0,-15.872999999999996*yo1_octs3_i/beam->brho};
-yo1_sxs3,ksl:={0,0,-0.5067375*yo1_sxs3_i/beam->brho};
-yo1_qs3,ksl:={0,-0.022193925000000003*yo1_qs3_i/beam->brho};
+bi1_tv2,kick:=-0.00563167*bi1_tv2_i/beam->brho;
+bi1_oct2,knl:={0,0,0,-15.9255*bi1_oct2_i/beam->brho};
+bi1_dec2,knl:={0,0,0,0,-959.9249999999997*bi1_dec2_i/beam->brho};
+bi1_dod2,knl:={0,0,0,0,0,-94699.21875000001*bi1_dod2_i/beam->brho};
+bi1_th3,kick:=-0.00562434*bi1_th3_i/beam->brho;
+bi1_sx3,knl:={0,0,-0.50648375*bi1_sx3_i/beam->brho};
+bi1_oct3,knl:={0,0,0,-15.93121875*bi1_oct3_i/beam->brho};
+bi1_dod3,knl:={0,0,0,0,0,-94824.609375*bi1_dod3_i/beam->brho};
+bi1_dods3,ksl:={0,0,0,0,0,-94626.5625*bi1_dods3_i/beam->brho};
+bi1_octs3,ksl:={0,0,0,-15.872999999999996*bi1_octs3_i/beam->brho};
+bi1_sxs3,ksl:={0,0,-0.5067375*bi1_sxs3_i/beam->brho};
+bi1_qs3,ksl:={0,-0.022193925000000003*bi1_qs3_i/beam->brho};
 yi2_tv2,kick:=-0.00563167*yi2_tv2_i/beam->brho;
 yi2_oct2,knl:={0,0,0,-15.9255*yi2_oct2_i/beam->brho};
 yi2_dec2,knl:={0,0,0,0,-959.9249999999997*yi2_dec2_i/beam->brho};
