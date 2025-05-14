@@ -1,0 +1,19 @@
+call, file='../../hsr.bmad'
+
+parameter[particle] = #197antiAu-79
+
+mau = mass_of(#197antiAu-79)
+eau = 10.52*mau
+pau = sqrt(eau^2-mau^2)
+pauq = pau/79
+beginning[e_tot]    = 10.52*mass_of(#197antiAu-79)
+
+call, file='rhic.bmad'
+call, file='ir2.bmad'
+call, file='ir4.bmad'
+call, file='ir6.bmad'
+call, file='ir8n.bmad'
+call, file='ir10.bmad'
+call, file='ir12.bmad'
+
+use, hsr_hi_n
