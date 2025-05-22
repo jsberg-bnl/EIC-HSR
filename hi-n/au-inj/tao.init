@@ -211,6 +211,56 @@
 /
 
 &tao_d2_data
+ universe = '3'
+ d2_data%name = 'ir6wr'
+ n_d1_data = 4
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'orbit'
+ default_weight = 1e4
+ datum(1:2)%data_type = 'orbit.x' 'orbit.px'
+ datum(1:2)%ele_name = 'ip6w' 'ip6w'
+ datum(1:2)%meas = 0 0
+ datum(1:2)%good_user = f f
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'crab'
+ datum(1:3)%data_type = 'beta.a' 'alpha.a' 'beta.a'
+ datum(1:3)%ele_name = 'o_crab_ip6f' 'o_crab_ip6f' 'yi6_qd2'
+ datum(1:3)%meas = 100 0 100
+ datum(1:3)%weight = 1e-2 1 1e-2
+ datum(1:3)%eval_point = 'center' 'center' 'center'
+ datum(1:3)%good_user = f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'ip'
+ datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(1:6)%ele_name = 'ip6w' 'ip6w' 'ip6w' 'ip6w' 'ip6w' 'ip6w'
+ datum(1:6)%meas = 0 0 10 0 0.9 0
+ datum(1:6)%weight = 1 1 1e-1 1 1e-1 1
+ datum(1:6)%good_user = f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'opt'
+ default_weight = 1
+ datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
+ datum(1:4)%ele_start_name = 'yo5_sv9_2-1' 'yo5_sv9_2-1' 'yo5_sv9_2-1' 'yo5_sv9_2-1'
+ datum(1:5)%ele_name = 'yo5_tq4' 'bo3_qf8' 'ip6w' 'ip6w' 'ip6w'
+ datum(1:4)%merit_type = 'max' 'max' 'integral' 'integral'
+ datum(1:5)%weight = 1e-10 1e-10 1e-8 1e-8 100
+ datum(1:5)%meas = 0 0 0 0 0
+ datum(1:5)%good_user = f f f f t
+/
+
+&tao_d2_data
  universe = '4'
  d2_data%name = 'ir6d'
  n_d1_data = 3
@@ -253,6 +303,46 @@
  datum(1:4)%ele_start_name = 'h6_q04' 'h6_q04' 'ip6d' 'ip6d'
  datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
  datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
+ datum(1:5)%meas = 0 0 0 0 0
+ datum(1:5)%good_user = f f f f t
+/
+
+&tao_d2_data
+ universe = '5'
+ d2_data%name = 'ir6dr'
+ n_d1_data = 3
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'ir'
+ datum(1:3)%data_type = 'beta.a' 'beta.b' 'beta.a'
+ datum(1:3)%ele_name = 'q2pr' 'h6_q3' 'h6_q04'
+ datum(1:3)%meas = 100 0 100
+ datum(1:3)%weight = 1e-2 1e-2 1e-2
+ datum(1:3)%eval_point = 'center' 'center' 'center'
+ datum(1:3)%good_user = f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'ip'
+ datum(1:6)%data_type = 'eta.x' 'etap.x' 'beta.a' 'alpha.a' 'beta.b' 'alpha.b'
+ datum(1:6)%ele_name = 'h6_dh01' 'h6_dh01' 'ip6d' 'ip6d' 'ip6d' 'ip6d'
+ datum(1:6)%meas = 0 0 10 0 0.9 0
+ datum(1:6)%weight = 1 1 1e-1 1 1e-1 1
+ datum(1:6)%good_user = f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'opt'
+ default_weight = 1
+ datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
+ datum(1:4)%ele_start_name = 'yi6_int11_2' 'yi6_int11_2' 'yi6_int11_2' 'yi6_int11_2'
+ datum(1:5)%ele_name = 'o6_45-1' 'o6_45-1' 'ip6d' 'ip6d' 'ip6d'
+ datum(1:4)%merit_type = 'max' 'max' 'integral' 'integral'
+ datum(1:5)%weight = 1e-10 1e-10 1e-8 1e-8 100
  datum(1:5)%meas = 0 0 0 0 0
  datum(1:5)%good_user = f f f f t
 /

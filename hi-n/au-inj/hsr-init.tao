@@ -1,5 +1,5 @@
 set global lattice_calc_on=f
-set branch [11:15]@0 geometry=closed
+set branch [11:16]@0 geometry=closed
 ! RHIC geometry calculations
 set sym xd0 = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0))
 set sym zd0 = lcenxdx + lcendx + lcendxd0 + lcend0
