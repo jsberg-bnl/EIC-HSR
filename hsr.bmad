@@ -34,6 +34,21 @@ lcq8 = lbfl+lqbms+lq+lcq+lcor+lcfl
 lcqs = lbfl+lqb+lq+lcq+lcor+lcfl
 lcqt4 = lbfl+lsb4c+lsxt+lqs4+lq4+lcq4+lcor+lcfl
 
+! Warm objects
+lvalve = 3.84*0.0254
+lbelw7 = 7.67*0.0254
+lbelw11 = 11.52*0.0254
+lwpump = 13.12*0.0254
+ltrpbpm = 5.06*0.0254
+obelw7: drift, l=lbelw7
+obelw11: drift, l=lbelw11
+owpump: drift, l=lwpump
+! Bits for the warm dipoles
+lwdtrans = 0.438
+lwdfl = 0.198
+owdtrans: drift, l=lwdtrans
+owdfl: drift, l=lwdfl
+
 rhic_rip = 590.581639053215
 dx0_eic_ip6 = +0.98
 dtheta0_eic_ip6 = -0.017
@@ -54,12 +69,14 @@ lcross = 2*(lcenxdx*cos(thcross) &
  + lcend0*cos(nwd*thwd-0.5*(thdx-thd0))/cos(0.5*(thdx+thd0)) &
  - (lgv+lgvfl+lgvwd+lc2w_wd-lpld0q1)*cos(nwd*thwd) &
  - lwd2*cos(1.5*thwd)*(2*cos(thwd)+1) - lww2*2*cos(1.5*thwd)*cos(0.5*thwd))
+ltrpx1=lbq1+lflq1x ! Q1 flange up to but not including Q1
+ltrp13=lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3 ! Q1 to Q3 flange inclusive
 dwfwd: sbend, l=lwd2/sinc(0.5*thwd), g=2*sin(0.5*thwd)/lwd2, e1=0.5*thwd, e2=0.5*thwd
 dwrev: dwfwd, g=-dwfwd[g], e1=-dwfwd[e1], e2=-dwfwd[e2]
 valve_wd: instrument, l=lgv
 ogvfl: drift, l=lgvfl
 ogvwd: drift, l=lgvwd
-oc2w_wd: drift, l=lc2w_wd-lbq1-lflq1x
+oc2w_wd: drift, l=lc2w_wd-ltrpx1
 oww2: drift, l=lww2
 
 call, file='ir2-lat.bmad'

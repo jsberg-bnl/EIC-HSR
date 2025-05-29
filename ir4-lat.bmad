@@ -1,8 +1,4 @@
 ! Standard DU objects
-ltrpbpm = 5.06*0.0254
-lvalve = 3.84*0.0254
-lbelw7 = 7.67*0.0254
-lwpump = 13.12*0.0254
 lk10hz = 2.45*0.0254
 
 ! Injection, RF dimensions
@@ -37,15 +33,12 @@ ljetfl = 0.97*0.0254
 ljet = 24.5*0.0254
 ljetall = ljet+2*ljetfl+2*ljettrans
 
-lwdtrans = 0.438
-lwdfl = 0.198
-
 l4wdq3 = ltrpbpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl
 l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - 2*lwd2 - lww2 - l4wdq3
 
-lw3t = lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3+l4wdq3
+lw3t = ltrp13+l4wdq3
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
-lw4 = lbq1+lflq1x+ltrpbpm+2*lvalve+4*lbelw7+2*lwpump+3*lcav50+2*li50+lwdfl+lwdtrans-lpld0q1
+lw4 = ltrpx1+ltrpbpm+2*lvalve+4*lbelw7+2*lwpump+3*lcav50+2*li50+lwdfl+lwdtrans-lpld0q1
 
 thw04 = +1.89924164367851834e-03
 nwd04 = 2
@@ -56,7 +49,7 @@ lc04 = 2*lcenxdx*cos(thc04) &
  + 2*lcend0*cos(nwd04*thw04-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx)) &
  + (lw3-lw4)*cos(nwd04*thw04) &
  - 4*lwd2*cos(thw04)*cos(0.5*thw04) - 2*lww2*cos(thw04)
-l04 = lc04 - lw3t - lbq1 - lflq1x - ltrpbpm - 2*lvalve - 4*lbelw7 - 2*lwpump - 4*lcav100 - 3*li100 &
+l04 = lc04 - lw3t - ltrpx1 - ltrpbpm - 2*lvalve - 4*lbelw7 - 2*lwpump - 4*lcav100 - 3*li100 &
  - n_kick_inj*lkickinj - (n_kick_inj+1)*likickinj - lwdtrans - lwdfl
 
 yo4_dw0: sbend, l=lwd2/sinc(0.5*thw04), g=2*sin(0.5*thw04)/lwd2, e1=0.5*thw04, e2=0.5*thw04
@@ -116,14 +109,10 @@ yo4_b3w: monitor, l=ltrpbpm
 
 ! Polarimetery and nearby
 ovalve: drift, l=lvalve
-obelw7: drift, l=lbelw7
 ok10hzh: drift, l=0.5*lk10hz
-owpump: drift, l=lwpump
 ojettrans: drift, l=ljettrans
 ojetfl: drift, l=ljetfl
 ohe3jet: pipe, l=ljetall+2*lbelw7
-owdtrans: drift, l=lwdtrans
-owdfl: drift, l=lwdfl
 
 det_pol_hpol_hjet: instrument, l=ljet
 det_pol_hpol_pc1_2: instrument, l=lpc
