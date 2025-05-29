@@ -6,6 +6,11 @@ mau = mass_of(#197antiAu-79)
 eau = 10.52*mau
 pau = sqrt(eau^2-mau^2)
 pauq = pau/79
+emau = 2.5e-6*mau/pau
+dpau = 6e-4
+nsaux = 7
+nsauy = 6
+
 beginning[e_tot]    = 10.52*mass_of(#197antiAu-79)
 
 call, file='rhic.bmad'
