@@ -28,9 +28,9 @@ lkdw = 2.045
 
 ! Polarimetry layout
 lpc = 82.92*0.0254
-ljettrans = 12.625*0.0254
-ljetfl = 0.97*0.0254
-ljet = 24.5*0.0254
+ljettrans = 0.32
+ljetfl = 0.025
+ljet = 0.622
 ljetall = ljet+2*ljetfl+2*ljettrans
 
 l4wdq3 = ltrpbpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl
@@ -115,6 +115,7 @@ ojetfl: drift, l=ljetfl
 ohe3jet: pipe, l=ljetall+2*lbelw7
 
 det_pol_hpol_hjet: instrument, l=ljet
+det_pol_hpol_he3jet: instrument, l=ljet
 det_pol_hpol_pc1_2: instrument, l=lpc
 
 o_kick_assy: drift, l=likickinj
@@ -154,7 +155,97 @@ inj_kickers: line=(
  o_kick_assy, sl_kick_mod01,
  o_kick_assy)
 
-yi3_du3_hsr:line=(obsk3iy,
+lxc2w4 = 55e-3
+lv88 = 85e-3 ! Matches drawing
+lv125 = 97.5e-3 ! Matches drawing
+lt88_124 = 0.2159
+lbpm124 = (5.06+1.5)*0.0254
+lbel7_2 = 7.62*.0254
+lbel7_4ext = 8.17*.0254
+lksc = 38.17*0.0254 ! Not consistent with RHIC
+lschv = 0.2
+lbscl = 75*0.0254
+l03k10hz = 6*.0254
+l03q3xtra = 2.611356-lbfl3-lbc3-lcor-lcq3a
+lhjettag = l3space - lxc2w4 - lv88 - 3*lt88_124 - lbpm124 - 2*lbel7_2 - 4*lwpump - 2*lbelw11 - 6*lv125 - 15*lbel7_4ext &
+ - 8*lksc - lschv - lbscl - 2*lwdfl - 2*lwd2 - lww2 - 2*ljetall - lpc - l03k10hz - l03q3xtra
+
+oxc2w4: drift, l=lxc2w4
+ov88: drift, l=lv88
+ov125: drift, l=lv125
+ot88_124: drift, l=lt88_124
+h03_b4: monitor, l=lbpm124
+obel7_2: drift, l=lbel7_2
+obel7_4ext: drift, l=lbel7_4ext
+h03_kscv3a: instrument, l=lksc
+h03_kscv3b: instrument, l=lksc
+h03_kscv3c: instrument, l=lksc
+h03_kscv3d: instrument, l=lksc
+h03_ksch3a: instrument, l=lksc
+h03_ksch3b: instrument, l=lksc
+h03_ksch3c: instrument, l=lksc
+h03_ksch3d: instrument, l=lksc
+h03_bscl: instrument, l=lbscl
+oschv: drift, l=lschv
+o03k10hzh: drift, l=0.5*l03k10hz
+o03q3xtra: drift, l=l03q3xtra
+ohjettag: drift, l=lhjettag
+
+yi3_du3_hsr: line=(
+ oxc2w4,
+ ov88,
+ ot88_124,
+ h03_b4,
+ obel7_2,
+ owpump,
+ obelw11,
+ ohjettag,
+ obelw11,
+ ov125,
+ obel7_4ext,
+ h03_kscv3a,
+ obel7_4ext,
+ h03_kscv3b,
+ obel7_4ext,
+ h03_kscv3c,
+ obel7_4ext,
+ h03_kscv3d,
+ obel7_4ext,
+ oschv,
+ h03_ksch3a,
+ obel7_4ext,
+ h03_ksch3b,
+ obel7_4ext,
+ h03_ksch3c,
+ obel7_4ext,
+ h03_ksch3d,
+ h03_bscl,
+ ov125,
+ obel7_4ext,
+ ot88_124,
+ owdfl,
+ yi3_dw0,
+ oww2,
+ yi3_dw0,
+ owdfl,
+ ot88_124,
+ obel7_4ext,
+ owpump,
+ ov125, obel7_4ext, ojettrans, ojetfl, det_pol_hpol_hjet, ojetfl, ojettrans, obel7_4ext, ov125,
+ owpump,
+ obel7_4ext, ojettrans, ojetfl, det_pol_hpol_he3jet, ojetfl, ojettrans, obel7_4ext,
+ owpump,
+ ov125,
+ obel7_4ext,
+ det_pol_hpol_pc1_2,
+ o03k10hzh,
+ yi3_kfbh3,
+ o03k10hzh,
+ obel7_2,
+ ov125,
+ o03q3xtra)
+
+yi3_du3_hsr_old:line=(obsk3iy,
  yi3_sv4,
  o3y3c0,
  ocktxfl,
