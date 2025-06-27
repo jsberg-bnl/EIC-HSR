@@ -121,10 +121,8 @@ yo4_b3w: monitor, l=ltrpbpm
 
 ! Polarimetery and nearby
 ovalve: drift, l=lvalve
-ok10hzh: drift, l=0.5*lk10hz
 ojettrans: drift, l=ljettrans
 ojetfl: drift, l=ljetfl
-ohe3jet: pipe, l=ljetall+2*lbelw7
 
 det_pol_hpol_hjet: instrument, l=ljet
 det_pol_hpol_he3jet: instrument, l=ljet
