@@ -33,9 +33,21 @@ ljetfl = 0.025
 ljet = 0.622
 ljetall = ljet+2*ljetfl+2*ljettrans
 
-l4wdq3 = ltrpbpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl
-l3kwd = l3space - lbsk3iy - o3y3c0[l] - o3y3c1[l] - o3y3c2[l] -  2*lcktxfl - 4*lcktufl - 2*lwd2 - lww2 - l4wdq3
-
+lxc2w4 = 55e-3
+lv88 = 85e-3 ! Matches drawing
+lv125 = 97.5e-3 ! Matches drawing
+lt88_124 = 0.2159
+lbpm124 = (5.06+1.5)*0.0254
+lbel7_2 = 7.62*.0254
+lbel7_4ext = 8.17*.0254
+lksc = 38.17*0.0254 ! Not consistent with RHIC
+lschv = 0.2
+lbscl = 75*0.0254
+l03k10hz = 6*.0254
+l03q3xtra = 2.611356-lbfl3-lbc3-lcor-lcq3a
+lhjettag = l3space - lxc2w4 - lv88 - 3*lt88_124 - lbpm124 - 2*lbel7_2 - 4*lwpump - 2*lbelw11 - 6*lv125 - 15*lbel7_4ext &
+ - 8*lksc - lschv - lbscl - 2*lwdfl - 2*lwd2 - lww2 - 2*ljetall - lpc - l03k10hz - l03q3xtra
+l4wdq3 = l03q3xtra+l03k10hz+lpc+4*lv25+3*lwpump+6*lbel7_4ext+lt88_124+lwdfl
 lw3t = ltrp13+l4wdq3
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
 lw4 = ltrpx1+ltrpbpm+2*lvalve+4*lbelw7+2*lwpump+3*lcav50+2*li50+lwdfl+lwdtrans-lpld0q1
@@ -127,7 +139,6 @@ o197: drift, l=li197
 o25_197: drift, l=li25_197
 osv4: drift, l=lsv4
 os197: drift, l=ls197
-o3kwd: drift, l=l3kwd
 okkw: drift, l=lkkw
 okkd: drift, l=lkkd
 odw50: drift, l=ldw50
@@ -154,21 +165,6 @@ inj_kickers: line=(
  o_kick_assy, sl_kick_mod02,
  o_kick_assy, sl_kick_mod01,
  o_kick_assy)
-
-lxc2w4 = 55e-3
-lv88 = 85e-3 ! Matches drawing
-lv125 = 97.5e-3 ! Matches drawing
-lt88_124 = 0.2159
-lbpm124 = (5.06+1.5)*0.0254
-lbel7_2 = 7.62*.0254
-lbel7_4ext = 8.17*.0254
-lksc = 38.17*0.0254 ! Not consistent with RHIC
-lschv = 0.2
-lbscl = 75*0.0254
-l03k10hz = 6*.0254
-l03q3xtra = 2.611356-lbfl3-lbc3-lcor-lcq3a
-lhjettag = l3space - lxc2w4 - lv88 - 3*lt88_124 - lbpm124 - 2*lbel7_2 - 4*lwpump - 2*lbelw11 - 6*lv125 - 15*lbel7_4ext &
- - 8*lksc - lschv - lbscl - 2*lwdfl - 2*lwd2 - lww2 - 2*ljetall - lpc - l03k10hz - l03q3xtra
 
 oxc2w4: drift, l=lxc2w4
 ov88: drift, l=lv88
@@ -244,50 +240,6 @@ yi3_du3_hsr: line=(
  obel7_2,
  ov125,
  o03q3xtra)
-
-yi3_du3_hsr_old:line=(obsk3iy,
- yi3_sv4,
- o3y3c0,
- ocktxfl,
- yi3_kscv3,
- ocktxfl,
- o3y3c1,
- ocktufl,
- yi3_ksch3_2,
- ocktufl,
- o3y3c2,
- ocktufl,
- yi3_ksch3_1,
- ocktufl,
- o3kwd,
- yi3_dw0,
- oww2,
- yi3_dw0,
- owdfl,
- owdtrans,
- obelw7,
- owpump,
- ovalve,
- obelw7,
- ojettrans,
- ojetfl,
- det_pol_hpol_hjet,
- ojetfl,
- ojettrans,
- obelw7,
- ovalve,
- owpump,
- ohe3jet,
- owpump,
- ovalve,
- obelw7,
- det_pol_hpol_pc1_2,
- ok10hzh,
- yi3_kfbh3,
- ok10hzh,
- obelw7,
- ovalve,
- yi3_b3w)
 
 yo4_du3_hsr:line=(yo4_b3w,ovalve,obelw7,owpump,obelw7,
  cav25_4,
