@@ -51,8 +51,6 @@ lplq3q4=lpltemp-lq1-lq2-lq3-lq4-lq-lsb4-lsb-lqs4-lqs-lcq-lcq4-2*(lsxt+lcor)
 l3space = lplq3q4 - lbfl3 - lbc3 - lcor - lcq3a - lbfl4
 
 # 
-lwdl = 6.0
-lwds = 4.4
 lwd2 = 2.0
 lww2 = 0.4
 lwc = 2
@@ -71,19 +69,28 @@ ltrpx1=lbq1+lflq1x
 ltrp13=lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3
 
 # IR4
-lvalve = 3.84*0.0254
-lk10hz = 2.45*0.0254
+lt88_124 = 0.2159
+lt88_152 = 0.371308
+lt124_152 = 0.190216
+lbel7_2 = 7.62*0.0254
+lbel7_4ext = 8.17*0.0254
+lv88 = 85e-3
+lv125 = 97.5e-3
+
+l03q3xtra = 2.611356-lbfl3-lbc3-lcor-lcq3a
+l04q1fl = 1.355428
+l04x_01 = 0.127656
+l03k10hz = 6*0.0254
 lpc = 82.92*0.0254
-ljettrans = 12.625*0.0254
-ljetfl = 0.97*0.0254
-ljet = 24.5*0.0254
+ljettrans = 0.32
+ljetfl = 0.025
+ljet = 0.622
 ljetall = ljet+2*ljetfl+2*ljettrans
-
 lcav50 = 2.05
-li50 = lbelw7
 
-lw3 = lpld0q1+ltrp13+ltrpbpm+4*lvalve+7*lbelw7+lk10hz+lpc+3*lwpump+2*ljetall+lwdtrans+lwdfl+2*lwd2+lww2
-lw4 = ltrpx1+ltrpbpm+2*lvalve+4*lbelw7+2*lwpump+3*lcav50+2*li50+lwdfl+lwdtrans-lpld0q1
+lw3t = lwdfl+lt88_124+6*lbel7_4ext+3*lwpump+4*lv125+2*ljetall+lpc+l03k10hz+lbel7_2+l03q3xtra+ltrp13
+lw3 = lpld0q1+lw3t+2*lwd2+lww2
+lw4 = l04q1fl+lv125+lbel7_2+lwpump+lbelw11+lt124_152+l04x_01+3*lcav50+3*lbel7_4ext+lt88_152+lv88+lwdfl-lpld0q1
 
 # IR12
 lw12 = lwc-lpld0q1
