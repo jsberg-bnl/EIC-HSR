@@ -73,8 +73,8 @@ lc04 = 2*lcenxdx*cos(thc04) &
  + 2*lcend0*cos(nwd04*thw04-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx)) &
  + (lw3-lw4)*cos(nwd04*thw04) &
  - 4*lwd2*cos(thw04)*cos(0.5*thw04) - 2*lww2*cos(thw04)
-l04 = lc04 - lw3t - l03q1fl - lv88 - lt88_76 - l04x_00 - 4*lbel45 - 4*lcav100 - lt76_50 - 2*lv50 &
- - 17*lbel45 - 32*lkfl - 16*lkickinj - lt50_124 - lv125 - 4*lbelw11 - lwpump - lt88_124 - lwdfl
+l04 = lc04 - lw3t - l03q1fl - lv88 - lt88_76 - l04x_00 - 21*lbel45 - 4*lcav100 - lt76_50 - 2*lv50 &
+ - 32*lkfl - 16*lkickinj - lt50_124 - lv125 - 4*lbelw11 - lwpump - lt88_124 - lwdfl
 
 l04q3xtra = 2.661761-0.127167+0.076764-lbfl3-lbc3-lcor-lcq3a
 l04_3_00 = 0.733446-0.0381-0.0375-(5*0.0127-0.00127)+0.02
