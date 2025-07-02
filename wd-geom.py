@@ -86,7 +86,7 @@ ljettrans = 0.32
 ljetfl = 0.025
 ljet = 0.622
 ljetall = ljet+2*ljetfl+2*ljettrans
-lcav50 = 2.05
+lcav50 = 1.466253
 
 lw3t = lwdfl+lt88_124+6*lbel7_4ext+3*lwpump+4*lv125+2*ljetall+lpc+l03k10hz+lbel7_2+l03q3xtra+ltrp13
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
