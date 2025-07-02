@@ -113,10 +113,10 @@
  default_universe = '1,7'
  default_attribute = 'i'
  default_step = 1
- var(1:7)%ele_name = 'bi1_qf1_i' 'bi1_qd2_i' 'bi1_qf3_i' 'h01o_q5_i' 'h01o_q6_i' 'h01o_q7_i' 'h01o_q8_i'
- var(8:13)%ele_name = 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i' 'h02_q5_i' 'h02_q6_i' 'h02_q7_i'
- var(14:17)%ele_name = 'h01o_tq5_i' 'h01o_tq6_i' 'h01o_tq7_i' 'h01o_tq8_i'
- var(18:20)%ele_name = 'h02_tq5_i' 'h02_tq6_i' 'h02_tq7_i'
+ var(1:8)%ele_name = 'bi1_qf1_i' 'bi1_qd2_i' 'bi1_qf3_i' 'h01o_q4_i' 'h01o_q5_i' 'h01o_q6_i' 'h01o_q7_i' 'h01o_q8_i'
+ var(9:15)%ele_name = 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i' 'h02_q4_i' 'h02_q5_i' 'h02_q6_i' 'h02_q7_i'
+ var(16:20)%ele_name = 'h01o_tq4_i' 'h01o_tq5_i' 'h01o_tq6_i' 'h01o_tq7_i' 'h01o_tq8_i'
+ var(21:24)%ele_name = 'h02_tq4_i' 'h02_tq5_i' 'h02_tq6_i' 'h02_tq7_i'
 /
 
 &tao_var
@@ -542,12 +542,12 @@
  d1_data%name = 'betx'
  default_data_type = 'beta.a'
  default_weight = 1e-2
- datum(1:9)%ele_name = 'h01o_q8' 'h01o_tq8' 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'oq3dtpr##1'
- datum(10:15)%ele_name = 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3'
- datum(16:22)%ele_name = 'oq3dtpr##2' 'h02_tq5' 'h02_q5' 'h02_q6' 'h02_tq6' 'h02_tq7' 'h02_q7'
- datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'beginning'
- datum(7:12)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(13:17)%eval_point = 'end' 'center' 'center' 'center'
+ datum(1:10)%ele_name = 'h01o_q8' 'h01o_tq8' 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4'
+ datum(11:18)%ele_name = 'oq3dtpr##1' 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3' 'oq3dtpr##2'
+ datum(19:26)%ele_name = 'h02_tq4' 'h02_q4' 'h02_tq5' 'h02_q5' 'h02_q6' 'h02_tq6' 'h02_tq7' 'h02_q7'
+ datum(1:10)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(11:18)%eval_point = 'beginning' 'center' 'center' 'center' 'center' 'center' 'center' 'end'
+ datum(19:26)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
 /
 
 &tao_d1_data
@@ -555,12 +555,12 @@
  d1_data%name = 'bety'
  default_data_type = 'beta.b'
  default_weight = 1e-2
- datum(1:9)%ele_name = 'h01o_q8' 'h01o_tq8' 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'oq3dtpr##1'
- datum(10:15)%ele_name = 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3'
- datum(16:22)%ele_name = 'oq3dtpr##2' 'h02_tq5' 'h02_q5' 'h02_q6' 'h02_tq6' 'h02_tq7' 'h02_q7'
- datum(1:5)%eval_point = 'center' 'center' 'center' 'center' 'beginning'
- datum(6:11)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(12:15)%eval_point = 'end' 'center' 'center' 'center'
+ datum(1:10)%ele_name = 'h01o_q8' 'h01o_tq8' 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4'
+ datum(11:18)%ele_name = 'oq3dtpr##1' 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3' 'oq3dtpr##2'
+ datum(19:26)%ele_name = 'h02_tq4' 'h02_q4' 'h02_tq5' 'h02_q5' 'h02_q6' 'h02_tq6' 'h02_tq7' 'h02_q7'
+ datum(1:10)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(11:18)%eval_point = 'beginning' 'center' 'center' 'center' 'center' 'center' 'center' 'end'
+ datum(19:26)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
 /
 
 &tao_d1_data

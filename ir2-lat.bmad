@@ -67,8 +67,32 @@ h01o_q5_i:overlay={h01o_q5[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h01o_tq5:quadrupole,l=lsxt,field_master=t
 h01o_tq5_i:overlay={h01o_tq5[b1_gradient]:0.2381915*i/lsxt},var={i}
 h01o_bv5:monitor
-
 h01o_cqtc5:line=(ocfl,h01o_cor5,ocq,h01o_q5,oqs,h01o_tq5,osb,h01o_bv5,obfl)
+
+h01o_cor4: kicker, l=lcor
+h01o_th4_i:overlay={h01o_cor4[bl_hkick]:0.005619562*i},var={i}
+h01o_b34_i:overlay={h01o_cor4[b3]:12.380799999999999*i},var={i}
+h01o_b44_i:overlay={h01o_cor4[b4]:388.6028799999999*i},var={i}
+h01o_b14_i:overlay={h01o_cor4[b1]:0.030651719999999997*i},var={i}
+h01o_q4:quadrupole,l=lq,field_master=t
+h01o_q4_i:overlay={h01o_q4[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h01o_tq4:quadrupole,l=lsxt,field_master=t
+h01o_tq4_i:overlay={h01o_tq4[b1_gradient]:0.2381915*i/lsxt},var={i}
+h01o_bh4:monitor
+h01o_cqtb4:line=(ocfl,h01o_cor4,ocq,h01o_q4,oqs,h01o_tq4,osb,h01o_bh4,obfl)
+
+h02_bh4:monitor
+h02_tq4:quadrupole,l=lsxt,field_master=t
+h02_tq4_i:overlay={h02_tq4[b1_gradient]:0.2381915*i/lsxt},var={i}
+h02_q4:quadrupole,l=lq,field_master=t
+h02_q4_i:overlay={h02_q4[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h02_cor4: kicker, l=lcor
+h02_th4_i:overlay={h02_cor4[bl_hkick]:0.005619562*i},var={i}
+h02_b34_i:overlay={h02_cor4[b3]:12.380799999999999*i},var={i}
+h02_b44_i:overlay={h02_cor4[b4]:388.6028799999999*i},var={i}
+h02_b14_i:overlay={h02_cor4[b1]:0.030651719999999997*i},var={i}
+h02_cqtb4:line=(obfl,h02_bh4,osb,h02_tq4,oqs,h02_q4,ocq,h02_cor4,ocfl)
+
 h02_b5:monitor
 h02_tq5:quadrupole,l=lsxt,field_master=t
 h02_tq5_i:overlay={h02_tq5[b1_gradient]:0.2381915*i/lsxt},var={i}
@@ -109,14 +133,12 @@ lc3ev = 83.5*0.0254 - (0.5*lq3+lcq3a+lcor)
 lbtq3 = 6*0.0254
 lbelq3 = 4.25*0.0254
 lq3dtpr = 5.75*0.0254
-lbelbpm = 10*0.0254
 l80belxtra = 1*0.0254
-ltrpxtra = lbc3+lbfl3-lc3ev-lbtq3-lbelq3-lq3dtpr-lbelbpm-l80belxtra
+ltrpxtra = lbc3+lbfl3-lc3ev-lbtq3-lbelq3-lq3dtpr-l80belxtra
 oc3ev: drift, l=lc3ev
 obtq3: drift, l=lbtq3
 obelq3: drift, l=lbelq3
 oq3dtpr: drift, l=lq3dtpr
-obelbpm: drift, l=lbelbpm
 o80belxtra: drift, l=l80belxtra
 otrpxtra01o: drift, l=ltrpxtra+lbelaci
 otrpxtra02: drift, l=ltrpxtra+lbelabi
@@ -179,7 +201,7 @@ zrall = zr00+zr05+zr06+zr07+zr08+zr09+zr10+zr11+zr12
 ! Now, compute values for the pieces of IR2
 ! Update these when the IR2 layout changes
 ltrp = lflq1x+lbq1+lq1+lplq1q2+lq2+lplq2q3+lq3+lcq3a+lcor+lc3ev+lbtq3+lbelq3
-l2_0 = 2*(ltrp+ltrpxtra+lq3dtpr+lbelbpm+l80belxtra)+ld5ofl+ldfl+lbelabi+lbelaci
+l2_0 = 2*(ltrp+ltrpxtra+lq3dtpr+l80belxtra+lcqs)+ld5ofl+ldfl+3*lbelabi+lbelaci
 t2_0 = thd5-thcell
 l21o_1 = 2*rho*sin(0.5*thcell)
 t21o_1 = thd5-0.5*thcell
@@ -234,10 +256,12 @@ ir2ow: line=(h01o_o7a,
  h01o_cqtb6, obelabi,
  yo1_d6, obelabi,
  h01o_cqtc5, obelaci,
- yi2_d8, o80belxtra, obelbpm, oq3dtpr,
+ yi2_d8, obelabi,
+ h01o_cqtb4, o80belxtra, oq3dtpr,
  otrpxtra01o, h01o_trp)
 
-ir2d: line=(h02_trp, otrpxtra02, oq3dtpr, obelbpm, o80belxtra,
+ir2d: line=(h02_trp, otrpxtra02, oq3dtpr, o80belxtra,
+ h02_cqtb4, obelabi,
  h02_d5i, obelabi,
  h02_cq4c5, obelabi,
  yi2_d6, obelabi,
