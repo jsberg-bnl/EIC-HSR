@@ -126,6 +126,9 @@
  var(9:15)%ele_name = 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i' 'h02_q4_i' 'h02_q5_i' 'h02_q6_i' 'h02_q7_i'
  var(16:20)%ele_name = 'h01o_tq4_i' 'h01o_tq5_i' 'h01o_tq6_i' 'h01o_tq7_i' 'h01o_tq8_i'
  var(21:24)%ele_name = 'h02_tq4_i' 'h02_tq5_i' 'h02_tq6_i' 'h02_tq7_i'
+ var(1:8)%step = 17 7 12 14 14 14 14 14
+ var(9:15)%step = 17 7 12 14 9 9 9
+ var(16:24)%step = 1 1 1 1 1 1 1 1 1
 /
 
 &tao_var
