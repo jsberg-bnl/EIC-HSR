@@ -4,7 +4,7 @@ lk10hz = 2.45*0.0254
 ! Vacuum components
 l03q1fl = 1.355755
 l04q1fl = 1.355428
-l04x_00 = 0.318821
+l04x_00 = 0.338698
 l04x_01 = 0.127656
 lbel45 = 4.5*0.0254
 lbel7_2 = 7.62*0.0254
@@ -19,7 +19,7 @@ lv50 = 75e-3
 lv88 = 85e-3 ! Matches drawing
 lv125 = 97.5e-3 ! Matches drawing
 lv150 = 0.11
-l04_1 = 4.903722
+l04_1 = 4.959625
 
 ! Injection, RF dimensions
 lseptum = 4
