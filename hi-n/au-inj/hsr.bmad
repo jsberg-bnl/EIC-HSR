@@ -3,8 +3,10 @@ call, file='../../hsr.bmad'
 parameter[particle] = #197antiAu-79
 
 mau = mass_of(#197antiAu-79)
-eau = 10.52*mau
-pau = sqrt(eau^2-mau^2)
+gpi = 46.5/anomalous_moment_of(proton)
+bgpi = sqrt(gpi*gpi-1)
+pau = 79*bgpi*m_proton
+eau = sqrt(pau^2+mau^2)
 pauq = pau/79
 emau = 2.5e-6*mau/pau
 dpau = 6e-4
