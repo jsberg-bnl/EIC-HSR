@@ -687,7 +687,7 @@
 &tao_d2_data
  universe = '9'
  d2_data%name = 'ir2'
- n_d1_data = 4
+ n_d1_data = 5
 /
 
 &tao_d1_data
@@ -742,16 +742,28 @@
  datum(18:24)%meas = 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3
 /
 
+
 &tao_d1_data
  ix_d1_data = 4
- d1_data%name = 'opt'
- datum(1:2)%data_type = 'beta.a' 'beta.b'
- datum(1:2)%ele_name = 'yi2_qf3' 'yi2_qf3'
- datum(1:2)%ele_start_name = 'bi1_qf3-1' 'bi1_qf3-1'
- datum(1:2)%merit_type = 'max' 'max'
- datum(1:2)%meas = 0 0
- datum(1:2)%weight = 1e-8 1e-8
- datum(1:2)%good_user = f f
+ d1_data%name = 'qmain'
+ default_data_type = 'expression:ele::#[i]|model'
+ default_merit_type = 'abs_max'
+ default_weight = 3e-9
+ default_meas = 5500
+ datum(1:4)%ele_name = 'h01o_q7_i' 'h01o_q6_i' 'h01o_q5_i' 'h01o_q4_i'
+ datum(5:12)%ele_name = 'bi1_qf3_i' 'bi1_qd2_i' 'bi1_qf1_i' 'h01o_q00_i' 'h02_q00_i' 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i'
+ datum(13:15)%ele_name = 'h02_q4_i' 'h02_q5_i' 'h02_q6_i'
+/
+
+&tao_d1_data
+ ix_d1_data = 5
+ d1_data%name = 'qtrim'
+ default_data_type = 'expression:ele::#[i]|model'
+ default_merit_type = 'abs_max'
+ default_weight = 1e-8
+ default_meas = 115
+ datum(1:4)%ele_name = 'h01o_tq7_i' 'h01o_tq6_i' 'h01o_tq5_i' 'h01o_tq4_i'
+ datum(5:7)%ele_name = 'h02_tq4_i' 'h02_tq5_i' 'h02_tq6_i'
 /
 
 &tao_d2_data
