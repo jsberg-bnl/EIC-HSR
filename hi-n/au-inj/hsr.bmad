@@ -13,7 +13,7 @@ dpau = 6e-4
 nsaux = 7
 nsauy = 6
 
-beginning[e_tot]    = 10.52*mass_of(#197antiAu-79)
+beginning[e_tot]    = eau
 
 call, file='rhic.bmad'
 call, file='ir2.bmad'
