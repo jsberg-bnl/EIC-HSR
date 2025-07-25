@@ -113,10 +113,10 @@
  default_universe = '1,7'
  default_attribute = 'i'
  default_step = 1
- var(1:7)%ele_name = 'bi1_qf1_i' 'bi1_qd2_i' 'bi1_qf3_i' 'h01o_q4_i' 'h01o_q5_i' 'h01o_q6_i' 'h01o_q7_i'
- var(8:13)%ele_name = 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i' 'h02_q4_i' 'h02_q5_i' 'h02_q6_i'
- var(14:17)%ele_name = 'h01o_tq4_i' 'h01o_tq5_i' 'h01o_tq6_i' 'h01o_tq7_i'
- var(18:20)%ele_name = 'h02_tq4_i' 'h02_tq5_i' 'h02_tq6_i'
+ var(1:8)%ele_name = 'h01o_q00_i' 'bi1_qf1_i' 'bi1_qd2_i' 'bi1_qf3_i' 'h01o_q4_i' 'h01o_q5_i' 'h01o_q6_i' 'h01o_q7_i'
+ var(9:15)%ele_name = 'h02_q00_i' 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i' 'h02_q4_i' 'h02_q5_i' 'h02_q6_i'
+ var(16:19)%ele_name = 'h01o_tq4_i' 'h01o_tq5_i' 'h01o_tq6_i' 'h01o_tq7_i'
+ var(20:22)%ele_name = 'h02_tq4_i' 'h02_tq5_i' 'h02_tq6_i'
 /
 
 &tao_var
@@ -513,6 +513,9 @@
  datum(1:7)%good_user = f f f f f f f
 /
 
+&symbolic_number nsx=10/
+&symbolic_number nsy=10/
+
 &tao_d2_data
  universe = '7'
  d2_data%name = 'ir2'
@@ -539,28 +542,59 @@
 
 &tao_d1_data
  ix_d1_data = 2
- d1_data%name = 'betx'
- default_data_type = 'beta.a'
+ d1_data%name = 'aperx'
+ default_merit_type = 'max'
  default_weight = 1e-2
- datum(1:5)%ele_name = 'h01o_q7' 'h01o_q6' 'h01o_q5' 'h01o_q4' 'oq3dtpr##1'
- datum(6:11)%ele_name = 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3'
- datum(12:15)%ele_name = 'oq3dtpr##2' 'h02_q4' 'h02_q5' 'h02_q6'
- datum(1:6)%eval_point = 'center' 'center' 'center' 'center' 'beginning'
- datum(7:12)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(13:17)%eval_point = 'end' 'center' 'center' 'center'
+ default_data_type = 'expression:nsx*sqrt(lat::beta.a[#]*emx+(lat::eta.x[#]*dp)^2)'
+ datum(1:9)%ele_name = 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4' 'oq3dtpr##1'
+ datum(10:17)%ele_name = 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'h01o_q00' 'h02_q00' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3'
+ datum(18:24)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
+ datum(1:9)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'beginning'
+ datum(10:17)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(18:24)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:9)%meas = 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3
+ datum(10:17)%meas = 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3
+ datum(18:24)%meas = 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3
 /
 
 &tao_d1_data
  ix_d1_data = 3
- d1_data%name = 'bety'
- default_data_type = 'beta.b'
+ d1_data%name = 'apery'
+ default_merit_type = 'max'
  default_weight = 1e-2
- datum(1:5)%ele_name = 'h01o_q7' 'h01o_q6' 'h01o_q5' 'h01o_q4' 'oq3dtpr##1'
- datum(6:11)%ele_name = 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3'
- datum(12:15)%ele_name = 'oq3dtpr##2' 'h02_q4' 'h02_q5' 'h02_q6'
- datum(1:5)%eval_point = 'center' 'center' 'center' 'center' 'beginning'
- datum(6:11)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(12:15)%eval_point = 'end' 'center' 'center' 'center'
+ default_data_type = 'expression:nsy*sqrt(lat::beta.b[#]*emy)'
+ datum(1:9)%ele_name = 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4' 'oq3dtpr##1'
+ datum(10:17)%ele_name = 'bi1_qf3' 'bi1_qd2' 'bi1_qf1' 'h01o_q00' 'h02_q00' 'yi2_qf1' 'yi2_qd2' 'yi2_qf3'
+ datum(18:24)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
+ datum(1:9)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'beginning'
+ datum(10:17)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(18:24)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:9)%meas = 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3
+ datum(10:17)%meas = 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3
+ datum(18:24)%meas = 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'qmain'
+ default_data_type = 'expression:ele::#[i]|model'
+ default_merit_type = 'abs_max'
+ default_weight = 3e-9
+ default_meas = 5500
+ datum(1:4)%ele_name = 'h01o_q7_i' 'h01o_q6_i' 'h01o_q5_i' 'h01o_q4_i'
+ datum(5:12)%ele_name = 'bi1_qf3_i' 'bi1_qd2_i' 'bi1_qf1_i' 'h01o_q00_i' 'h02_q00_i' 'yi2_qf1_i' 'yi2_qd2_i' 'yi2_qf3_i'
+ datum(13:15)%ele_name = 'h02_q4_i' 'h02_q5_i' 'h02_q6_i'
+/
+
+&tao_d1_data
+ ix_d1_data = 5
+ d1_data%name = 'qtrim'
+ default_data_type = 'expression:ele::#[i]|model'
+ default_merit_type = 'abs_max'
+ default_weight = 1e-8
+ default_meas = 115
+ datum(1:4)%ele_name = 'h01o_tq7_i' 'h01o_tq6_i' 'h01o_tq5_i' 'h01o_tq4_i'
+ datum(5:7)%ele_name = 'h02_tq4_i' 'h02_tq5_i' 'h02_tq6_i'
 /
 
 &tao_d1_data

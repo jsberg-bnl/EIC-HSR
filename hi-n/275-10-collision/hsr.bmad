@@ -1,5 +1,9 @@
 call, file='../../hsr.bmad'
 
+emx = 5.2e-6*m_proton/p275
+emy = 2.5e-6*m_proton/p275 ! Pessimistic, for aperture purposes
+dp = 6.8e-4
+
 call, file='rhic.bmad'
 call, file='ir2.bmad'
 call, file='ir4.bmad'
