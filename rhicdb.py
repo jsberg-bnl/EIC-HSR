@@ -603,7 +603,9 @@ arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
 # For now, just leave room for the snake
 trp01b = line('b','bi1_trp3','bi1_trp1',db)
-trp02y = line('y','yi2_trp1','yi2_trp3',db)
+mat01y = line('y','yo1_int9_3','yo1_int7_2',db)
+ins01y = line('y','yo1_int7_1','yo1_trp1',db)
+ins02y = line('y','yi2_trp1','yi2_int9_3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
 trp03y = line('y','yi3_trp3','yi3_trp1',db)
 trp04y = line('y','yo4_trp1','yo4_trp3',db)
@@ -622,13 +624,13 @@ mat12y = line('y','yo12_cqt4','yo12_int9_3',db)
 
 # Lines carried over from RHIC
 line_list = [
-    arc01b,arc01y,arc03y,arc05y,arc07y,arc09y,arc11y,
+    arc01b,arc01y,arc03y,arc05y,arc07y,arc09y,arc11y,mat01y,ins01y,ins02y,
     mat03y,trp03y,trp04y,mat04y,mat07y,ins07y,ins08y,ins09y,trp10y,mat10y,mat11y,ins11y,trp11y,trp12y,mat12y]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
 # slots kept intact but used in isolation
-ir2_slots = [trp01b,trp02y] + [slot('y',s,db) for s in ('yo1_d9','yo1_d8','yo1_d6','yo1_d5','yi2_d6','yi2_d8','yi2_d9')]
+ir2_slots = [trp01b]
 ir6_slots = [slot('y',s,db)
              for s in ('yo5_trp2','yi6_trp2','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
                        'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_1','yo5_int9_5','yo5_int9_6',
@@ -641,7 +643,7 @@ ir10_parts = [slot('y','yi10_du3',db)]
 ir12_parts = [slot('y','yi11_du3',db),slot('y','yo12_du3',db),slot('b','bi12_du3',db)]
 
 slots_and_lines = line_info(line_list+ir2_slots+ir4_parts+ir6_slots+ir10_parts+ir12_parts) # Everything I have some need for
-all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir10_parts+ir12_parts) # Things I need all the parts for 
+all_parts = line_info(ir2_slots+ir4_parts+ir6_slots+ir10_parts+ir12_parts) # Things I need all the parts for
 all_slots = line_info(ir2_slots+ir6_slots) # Slots kept intact but used in isolation
 all_lines = line_info(line_list) # RHIC lines
 
