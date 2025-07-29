@@ -538,6 +538,11 @@ class cqslot :
                         print(name+f',k2:={-db.trans[e[1][1]]}/'+e[0]+'*'+name+'_i/beam->brho;',file=file_madx)
                 else:
                     name = id[0]+'_cor'+id[1]
+                    if kind[:3] == 'tp3':
+                        if e[1][0][0] < -1:
+                            name += 'k'
+                        else:
+                            name += kind[3]
                     print(name+': kicker, l=lcor, scale_multipoles=f',file=file_bmad)
                     coils = []
                     for coil in e[1]:
