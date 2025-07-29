@@ -1,0 +1,23 @@
+! The snake at 1 o'clock
+yo1_bsnk : bpmv
+yo1_snk_hlx1 : pipe, l=lhelix
+yo1_snk_hlx2 : pipe, l=lhelix
+yo1_snk_hlx3 : pipe, l=lhelix
+yo1_snk_hlx4 : pipe, l=lhelix
+yo1_snk7:line=(odum1fl,
+ osnke,
+ yo1_snk_hlx4,
+ osnkm,
+ yo1_snk_hlx3,
+ osnkmm,
+ yo1_bsnk,
+ osnkmm,
+ yo1_snk_hlx2,
+ osnkm,
+ yo1_snk_hlx1,
+ osnke,
+ odum1fl)
+
+o02s: drift, l=lcross
+ir02s: line=(mat01y,yo1_snk7,ins01y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwfwd,oww2,dwfwd,oww2,dwfwd,
+ o02s,dwrev,oww2,dwrev,oww2,dwref,ogvwd,valve_wd,ogvfl,oc2w_wd,ins02y)
