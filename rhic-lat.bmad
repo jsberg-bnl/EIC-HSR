@@ -645,7 +645,6 @@ obabflx:drift,l=lbabflx
 obbpmfl:drift,l=lbbpmfl
 obc3:drift,l=lbc3
 obcoolfl:drift,l=lbcoolfl
-obel4rot:drift,l=lbel4rot
 obel5ci:drift,l=lbel5ci
 obel5co:drift,l=lbel5co
 obel6bi:drift,l=lbel6bi
@@ -753,7 +752,6 @@ orfaln:drift,l=lrfaln
 orfash:drift,l=lrfash
 orfst1:drift,l=lrfst1
 orfstend:drift,l=lrfstend
-orotcwt:drift,l=lrotcwt
 osb:drift,l=lsb
 osb4:drift,l=lsb4
 osb4c:drift,l=lsb4c
@@ -772,14 +770,6 @@ oyagslitfl:drift,l=lyagslitfl
 ! things, acting currently like drifts
 dmplong:pipe,l=ldmplong
 dmpshrt:pipe,l=ldmpshrt
-hlxh19ml:pipe,l=lhelix
-hlxh19mr:pipe,l=lhelix
-hlxh19pl:pipe,l=lhelix
-hlxh19pr:pipe,l=lhelix
-hlxh23ml:pipe,l=lhelix
-hlxh23mr:pipe,l=lhelix
-hlxh23pl:pipe,l=lhelix
-hlxh23pr:pipe,l=lhelix
 hlxv12mr:pipe,l=lhelix
 hlxv12pr:pipe,l=lhelix
 hlxv40mr:pipe,l=lhelix
@@ -1018,8 +1008,6 @@ colv1:rcollimator,l=lcol,y_limit=0.04879
 mvalve:marker
 ! site-wide names
 ! drifts
-yi7_int3:obel4rot
-yo8_int3:obel4rot
 yi2_int5_1:obel5ci
 yi3_int5_1:obel5ci
 yi7_int5_1:obel5ci
@@ -1491,14 +1479,6 @@ yo12_int2:obelq2q3
 ! things, acting currently like drifts
 yo9_dmp3_2:dmplong
 yo9_dmp3_1:dmpshrt
-yi7_hlx3_1:hlxh19ml
-yi7_hlx3_4:hlxh19mr
-yo8_hlx3_4:hlxh19pl
-yo8_hlx3_1:hlxh19pr
-yi7_hlx3_3:hlxh23ml
-yi7_hlx3_2:hlxh23mr
-yo8_hlx3_2:hlxh23pl
-yo8_hlx3_3:hlxh23pr
 yi3_hlx7_4:hlxv12mr
 yo9_hlx7_1:hlxv12mr
 yi3_hlx7_1:hlxv12pr
@@ -1742,22 +1722,18 @@ yo9_qd3:q3o10
 yo12_qd3:q3o12
 yi2_qd4:q4i2
 yi3_qd4:q4i4
-yi7_qd4:q4i8
 yi10_qd4:q4i10
 yi11_qd4:q4i12
 yi2_tq4:q4it2
 yi3_tq4:q4it4
-yi7_tq4:q4it8
 yi10_tq4:q4it10
 yi11_tq4:q4it12
 yo1_qf4:q4o2
 yo4_qf4:q4o4
-yo8_qf4:q4o8
 yo9_qf4:q4o10
 yo12_qf4:q4o12
 yo1_tq4:q4ot2
 yo4_tq4:q4ot4
-yo8_tq4:q4ot8
 yo9_tq4:q4ot10
 yo12_tq4:q4ot12
 yi2_qf5:q5i2
@@ -2172,8 +2148,6 @@ yo1_cool_sol8:sol8_cool
 yo1_cool_dcomp1_1:dcomp1_cool
 yo1_cool_dcomp1_2:dcomp1_cool
 yi2_kfbh3:kfbh
-yi7_kfbh3:kfbh
-yo8_kfbh3:kfbh
 yo9_kfbh3:kfbh
 bi1_th11:kickh
 bi1_th13:kickh
@@ -2340,7 +2314,6 @@ lmp06y10:kicker,l=lcor,scale_multipoles=f
 lmp07y02:kicker,l=lcor,scale_multipoles=f
 lmp07y3a:kicker,l=lcor,scale_multipoles=f
 lmp07y3x:kicker,l=lcor,scale_multipoles=f
-lmp07y04:kicker,l=lcor,scale_multipoles=f
 lmp07y05:kicker,l=lcor,scale_multipoles=f
 lmp07y06:kicker,l=lcor,scale_multipoles=f
 lmp07y07:kicker,l=lcor,scale_multipoles=f
@@ -2358,7 +2331,6 @@ lmp07y18:kicker,l=lcor,scale_multipoles=f
 lmp08y02:kicker,l=lcor,scale_multipoles=f
 lmp08y3a:kicker,l=lcor,scale_multipoles=f
 lmp08y3x:kicker,l=lcor,scale_multipoles=f
-lmp08y04:kicker,l=lcor,scale_multipoles=f
 lmp08y05:kicker,l=lcor,scale_multipoles=f
 lmp08y06:kicker,l=lcor,scale_multipoles=f
 lmp08y07:kicker,l=lcor,scale_multipoles=f
@@ -2589,7 +2561,6 @@ yi6_bv14:bpmv
 yi6_bv16:bpmv
 yi6_bv18:bpmv
 yi6_bv20:bpmv
-yi7_b3_1:bpmv
 yi7_bv6:bpmv
 yi7_bv10:bpmv
 yi7_bv12:bpmv
@@ -2597,7 +2568,6 @@ yi7_bv14:bpmv
 yi7_bv16:bpmv
 yi7_bv18:bpmv
 yi7_bv20:bpmv
-yo8_b3_1:bpmv
 yo8_bv5:bpmv
 yo8_bv9:bpmv
 yo8_bv11:bpmv
@@ -2657,12 +2627,10 @@ yo4_b7:cplmon
 yo4_b8:cplmon
 yi7_b1:cplmon
 yi7_b3:cplmon
-yi7_b4:cplmon
 yi7_b7:cplmon
 yi7_b8:cplmon
 yo8_b1:cplmon
 yo8_b3:cplmon
-yo8_b4:cplmon
 yo8_b7:cplmon
 yo8_b8:cplmon
 yo9_b1:cplmon
@@ -2694,7 +2662,6 @@ yi2_dmptv3_1:dmptv
 yi2_dmptv3_2:dmptv
 yi2_bht3:htpu
 yi2_ipm3:ipmh
-yo8_mskh3:mskh
 yi2_bqm3_1:qmmpu
 yi2_bqm3_2:qmmpu
 yi2_spu3_3:scav
@@ -2707,20 +2674,12 @@ yo1_cool_yag1:yag1_cool
 yo1_cool_yag2slit:yag2slit_cool
 yo1_cool_yag3:yag3_cool
 ! collimators
-yi7_c3:col
-yi7_ch3_1:colh1
-yi7_ch3_2:colh2
-yi7_cv3:colv1
 ! markers
 yo1_sv3_1:mvalve
 yo1_sv3_2:mvalve
 yo1_sv4:mvalve
 yi2_sv3:mvalve
 yi2_sv4:mvalve
-yi7_sv3_1:mvalve
-yi7_sv3_2:mvalve
-yo8_sv3_1:mvalve
-yo8_sv3_2:mvalve
 yo9_sv3_1:mvalve
 yo9_sv3_2:mvalve
 yo9_sv4:mvalve
@@ -4466,15 +4425,6 @@ yi7_cqs21:line=(obfl,
  ocq,
  yi7_th21,
  ocfl)
-yi7_cqt4:line=(ocfl,
- lmp07y04,
- ocq4,
- yi7_qd4,
- oqs4,
- yi7_tq4,
- osb4c,
- yi7_b4,
- obfl)
 yi7_cqt5:line=(ocfl,
  lmp07y05,
  ocq,
@@ -4538,21 +4488,6 @@ yi7_d19:line=(odfl,
 yi7_d20:line=(odfl,
  yi7_dh20,
  odfl)
-yi7_du3:line=(obsk7iy,
- yi7_sv3_2,
- o3y7c0,
- yi7_ch3_2,
- o3y7c1,
- yi7_cv3,
- o3y7c2,
- yi7_ch3_1,
- o3y7c3,
- yi7_c3,
- o3y7c4,
- yi7_kfbh3,
- o3y7c5,
- yi7_sv3_1,
- obsk7ly)
 yi7_du4:line=(odum1fl,
  o4dummy,
  odum1fl)
@@ -4562,19 +4497,6 @@ yi7_du6:line=(odum2fl,
 yi7_du9:line=(odum2fl,
  o9dummy,
  odum1fl)
-yi7_rot3:line=(odum1fl,
- osnke,
- yi7_hlx3_4,
- osnkm,
- yi7_hlx3_3,
- osnkmm,
- yi7_b3_1,
- osnkmm,
- yi7_hlx3_2,
- osnkm,
- yi7_hlx3_1,
- osnke,
- orotcwt)
 yi7_trp1:line=(oflq1a,
  yi7_qf1,
  obq1,
@@ -4716,15 +4638,6 @@ yo8_cqs20:line=(ocfl,
  osb,
  yo8_bh20,
  obfl)
-yo8_cqt4:line=(obfl,
- yo8_b4,
- osb4c,
- yo8_tq4,
- oqs4,
- yo8_qf4,
- ocq4,
- lmp08y04,
- ocfl)
 yo8_cqt5:line=(obfl,
  yo8_bv5,
  osb,
@@ -4788,17 +4701,6 @@ yo8_d19:line=(odfl,
 yo8_d20:line=(odfl,
  yo8_dh20,
  odfl)
-yo8_du3:line=(obsk8ly,
- yo8_sv3_1,
- o3y8c0,
- yo8_kfbh3,
- o3y8c1,
- omskhfl,
- yo8_mskh3,
- omskhfl,
- o3y8c2,
- yo8_sv3_2,
- obsk8iy)
 yo8_du4:line=(odum1fl,
  o4dummy,
  odum1fl)
@@ -4811,19 +4713,6 @@ yo8_du7:line=(odum1fl,
 yo8_du9:line=(odum1fl,
  o9dummy,
  odum2fl)
-yo8_rot3:line=(orotcwt,
- osnke,
- yo8_hlx3_1,
- osnkm,
- yo8_hlx3_2,
- osnkmm,
- yo8_b3_1,
- osnkmm,
- yo8_hlx3_3,
- osnkm,
- yo8_hlx3_4,
- osnke,
- odum1fl)
 yo8_trp1:line=(oflq1x,
  yo8_b1,
  obq1,
@@ -6574,26 +6463,18 @@ ins07y:line=(yi7_int7_1,
  yi7_cqt5,
  yi7_int4_2,
  yi7_du4,
- yi7_int4_1,
- yi7_cqt4,
- yi7_int3,
- yi7_rot3,
- yi7_du3,
- yi7_trp3,
+ yi7_int4_1)
+trp07y:line=(yi7_trp3,
  yi7_int2,
  yi7_trp2,
  yi7_int1,
  yi7_trp1)
-ins08y:line=(yo8_trp1,
+trp08y:line=(yo8_trp1,
  yo8_int1,
  yo8_trp2,
  yo8_int2,
- yo8_trp3,
- yo8_du3,
- yo8_rot3,
- yo8_int3,
- yo8_cqt4,
- yo8_int4_1,
+ yo8_trp3)
+ins08y:line=(yo8_int4_1,
  yo8_du4,
  yo8_int4_2,
  yo8_cqt5,
@@ -6776,9 +6657,13 @@ yi6_qd2:q2i6
 yo5_qf2:q2o6
 bi1_qf3:q3i2
 yi6_qd4:q4i6
+yi7_qd4:q4i8
 yi6_tq4:q4it6
+yi7_tq4:q4it8
 yo5_qf4:q4o6
+yo8_qf4:q4o8
 yo5_tq4:q4ot6
+yo8_tq4:q4ot8
 yi6_qf5:q5i6
 yi6_tq5:q5it6
 yo5_qd5:q5o6
@@ -6801,6 +6686,8 @@ yo5_qf8:qfb6
 bi12_kfbh3:kfbh
 yi3_kfbh3:kfbh
 yo4_kfbh3:kfbh
+yi7_kfbh3:kfbh
+yo8_kfbh3:kfbh
 yi10_kfbh3:kfbh
 yi11_kfbh3:kfbh
 yo12_kfbh3:kfbh
@@ -6824,6 +6711,8 @@ lmp06y06:kicker,l=lcor,scale_multipoles=f
 lmp06y07:kicker,l=lcor,scale_multipoles=f
 lmp06y08:kicker,l=lcor,scale_multipoles=f
 lmp06y09:kicker,l=lcor,scale_multipoles=f
+lmp07y04:kicker,l=lcor,scale_multipoles=f
+lmp08y04:kicker,l=lcor,scale_multipoles=f
 ! cavities
 yo4_cava3_1:rfac1
 yo4_cava3_2:rfac2
@@ -6853,6 +6742,8 @@ yo5_b8:cplmon
 yi6_b4:cplmon
 yi6_b7:cplmon
 yi6_b8:cplmon
+yi7_b4:cplmon
+yo8_b4:cplmon
 ! instruments
 bi12_ksch3_1:ckth
 bi12_ksch3_2:ckth
@@ -6870,12 +6761,17 @@ bi12_eld3:elcdetv
 yo12_eld3:elcdetv
 bi12_ipm3:ipmh
 yo12_ipm3:ipmv
+yo8_mskh3:mskh
 bi12_pol3_1:polar1
 yo12_pol3_1:polar1
 bi12_pol3_2:polar2
 yo12_pol3_2:polar2
 yo4_wcm3:wcm
 ! collimators
+yi7_c3:col
+yi7_ch3_1:colh1
+yi7_ch3_2:colh2
+yi7_cv3:colv1
 ! markers
 bi12_sv3_1:mvalve
 bi12_sv3_2:mvalve
@@ -6892,6 +6788,10 @@ yo5_sv7:mvalve
 yo5_sv8:mvalve
 yo5_sv9_1:mvalve
 yo5_sv9_2:mvalve
+yi7_sv3_1:mvalve
+yi7_sv3_2:mvalve
+yo8_sv3_1:mvalve
+yo8_sv3_2:mvalve
 yi10_sv3:mvalve
 yi10_sv4:mvalve
 yi11_sv3:mvalve
@@ -7070,3 +6970,29 @@ yi6_trp2:line=(ocfl2,
  ocq2,
  yi6_qd2,
  oflq2a)
+yi7_du3:line=(obsk7iy,
+ yi7_sv3_2,
+ o3y7c0,
+ yi7_ch3_2,
+ o3y7c1,
+ yi7_cv3,
+ o3y7c2,
+ yi7_ch3_1,
+ o3y7c3,
+ yi7_c3,
+ o3y7c4,
+ yi7_kfbh3,
+ o3y7c5,
+ yi7_sv3_1,
+ obsk7ly)
+yo8_du3:line=(obsk8ly,
+ yo8_sv3_1,
+ o3y8c0,
+ yo8_kfbh3,
+ o3y8c1,
+ omskhfl,
+ yo8_mskh3,
+ omskhfl,
+ o3y8c2,
+ yo8_sv3_2,
+ obsk8iy)
