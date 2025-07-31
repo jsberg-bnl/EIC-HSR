@@ -673,17 +673,15 @@
 &tao_d1_data
  ix_d1_data = 4
  d1_data%name = 'sym'
- datum(1)%data_type =  'expression: data::ir4.low_lim[10]  - data::ir4.low_lim[9]'
- datum(2)%data_type =  'expression: data::ir4.low_lim[1]   - data::ir4.low_lim[9]'
- datum(3)%data_type =  'expression: data::ir4.high_lim[12] - data::ir4.low_lim[9]'
- datum(4)%data_type =  'expression: data::ir4.low_lim[4]   - data::ir4.low_lim[9]'
- datum(5)%data_type =  'expression: data::ir4.low_lim[6]   - data::ir4.low_lim[9]'
- datum(6)%data_type =  'expression: data::ir4.low_lim[11]  - data::ir4.low_lim[9]'
- datum(7)%data_type =  'expression: data::ir4.low_lim[13]  - data::ir4.low_lim[9]'
- datum(8)%data_type =  'expression: data::ir4.high_lim[16] - data::ir4.low_lim[9]'
- datum(9)%data_type =  'expression: data::ir4.high_lim[17] - data::ir4.low_lim[9]'
- datum(1:9)%weight = 1 1 1 1 1 1 1 1 1
- datum(1:9)%meas = 0 0 0 0 0 0 0 0 0
+ datum(1)%data_type =  'expression: data::ir4.low_lim[3]   - data::ir4.low_lim[1]'
+ datum(2)%data_type =  'expression: data::ir4.low_lim[4]   - data::ir4.low_lim[3]'
+ datum(3)%data_type =  'expression: data::ir4.high_lim[8]  - data::ir4.low_lim[4]'
+ datum(4)%data_type =  'expression: data::ir4.low_lim[11]  - data::ir4.high_lim[8]'
+ datum(5)%data_type =  'expression: data::ir4.high_lim[12] - data::ir4.low_lim[11]'
+ datum(6)%data_type =  'expression: data::ir4.low_lim[14]  - data::ir4.high_lim[12]'
+ datum(7)%data_type =  'expression: data::ir4.high_lim[17] - data::ir4.low_lim[14]'
+ datum(1:7)%weight = 1 1 1 1 1 1 1
+ datum(1:7)%meas = 0 0 0 0 0 0 0
 /
 
 &tao_d1_data
