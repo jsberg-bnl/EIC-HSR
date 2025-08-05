@@ -1,0 +1,761 @@
+&tao_start
+ startup_file = 'hsr.tao'
+ plot_file = '../../tao-plot.init'
+/
+
+&tao_params
+ global%blank_line_between_commands = f
+ global%draw_curve_off_scale_warn = f
+ global%history_file = '.history_tao'
+ global%lmdif_negligible_merit = 1e-60
+ global%n_opti_cycles = 128
+ global%symbol_import = t
+ global%var_limits_on = f
+/
+
+&tao_design_lattice
+ n_universes = 13
+ design_lattice(1) = 'hsr.bmad' '../hsr-ovl.bmad' ! Full ring
+ design_lattice(2) = 'hsr.bmad' '../../ir6w-ovl.bmad'
+ design_lattice(3) = 'hsr.bmad' '../../ir6d-ovl.bmad'
+ design_lattice(4) = 'hsr.bmad'
+ design_lattice(5) = 'hsr.bmad'
+ design_lattice(6) = 'hsr.bmad'
+ design_lattice(7) = 'hsr.bmad'
+ design_lattice(8) = 'hsr.bmad' '../../ir4-ovl.bmad'
+ design_lattice(9) = 'hsr.bmad'
+ design_lattice(10) = 'hsr.bmad'
+ design_lattice(11) = 'hsr.bmad'
+ design_lattice(12) = 'hsr.bmad'
+ design_lattice(13) = 'hsr.bmad'
+ ! Insertions
+ design_lattice(2)%slice_lattice = 'yo5_int11_2:ip6w' ! ir6w
+ design_lattice(2)%reverse_lattice = t
+ design_lattice(3)%slice_lattice = 'ip6d:yi6_int11_2' ! ir6d
+ design_lattice(4)%slice_lattice = 'yi7_int11_2:yo8_int11_2' ! ir8
+ design_lattice(5)%slice_lattice = 'yo9_int11_2:yi10_int11_2'  ! ir10
+ design_lattice(6)%slice_lattice = 'yi11_int11_2:yo12_int11_2' ! ir12
+ design_lattice(7)%slice_lattice = 'yo1_int11_2:yi2_int11_2'   ! ir2
+ design_lattice(8)%slice_lattice = 'yi3_int11_2:yo4_int11_2'   ! ir4
+ ! periodic cells
+ design_lattice(9)%slice_lattice = 'yo9_int11_2:yo9_int9_3-1' ! yo5=yo9 end rev
+ design_lattice(9)%reverse_lattice = t
+ design_lattice(10)%slice_lattice = 'yi6_bv10-1:yi6_int11_2'  ! yi2=yi6=yi10 beg
+ design_lattice(11)%slice_lattice = 'yi3_int11_2:yi3_int9_3-1' ! yi3=yi7=yi11 end
+ design_lattice(12)%slice_lattice = 'yo4_int9_3+1:yo4_int11_2' ! yo4=yo8=yo12 beg
+ design_lattice(13)%slice_lattice = 'yo9_int11_2:yo9_int9_3-1' ! yo1=yo9 end
+/
+
+&tao_var
+ v1_var%name = 'ir6w'
+ default_universe = '1,2'
+ var(1:3)%ele_name = 'k1_q1_6w' 'q2pf' 'q3pf'
+ var(4:11)%ele_name = 'yi6_qd2_i' 'bo3_qf8_i' 'yo5_qf4_i' 'bi5_qd8_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i' 'h5_q11_i'
+ var(1:11)%step = 1e-3 1e-3 1e-3 1 1 1 1 1 1 1 1
+ var(1:11)%attribute = 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+ var(12:13)%ele_name = 'b0apf' 'b1pf'
+ var(12:13)%attribute = 'db_field' 'db_field'
+ var(12:13)%step = 1e-2 1e-2
+/
+
+&tao_var
+ v1_var%name = 'ir6d'
+ default_universe = '1,3'
+ var(1:3)%ele_name = 'k1_q1_6d' 'q2pr' 'h6_q3'
+ var(1:3)%step = 1e-3 1e-3 1e-3
+ var(1:3)%attribute = 'k1' 'k1' 'k1'
+ var(4:10)%ele_name = 'h6_q04_i' 'h6_q05_i' 'h6_q06_i' 'h6_q07_i' 'h6_q08_i' 'h6_q09_i' 'h6_q10_i'
+ var(4:10)%step = 1 1 1 1 1 1 1
+ var(4:10)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+/
+
+&tao_var
+ v1_var%name = 'ir8'
+ default_universe = '1,4'
+ default_attribute = 'i'
+ default_step = 1
+ var(1:3)%ele_name = 'y8_q6_ps' 'y8_q7_ps' 'y8_q89_ps'
+ var(4:10)%ele_name =  'yi7_qf1_ps' 'yi7_qd2_ps' 'yi7_qf3_ps' 'yi7_tq4_ps' 'yi7_tq5_ps' 'yi7_tq6_ps' 'yi7_qf9_ps'
+ var(11:17)%ele_name = 'yo8_qd1_ps' 'yo8_qf2_ps' 'yo8_qd3_ps' 'yo8_tq4_ps' 'yo8_tq5_ps' 'yo8_tq6_ps' 'yo8_qf8_ps'
+ var(1:17)%low_lim =   +14  +14 -280  +14 -140 -280 -100 -100 -100 -150  +14 -140 -280 -100 -100 -100 -150
+ var(1:17)%high_lim = +430 +550 +280 +190 +140  -14 +100 +100 +100   -5 +190 +140  -14 +100 +100 +100   -5
+/
+
+&tao_var
+ v1_var%name = 'ir10'
+ default_universe = '1,5'
+ default_attribute = 'i'
+ default_step = 1
+ var(1:6)%ele_name = 'yo9_qd1_ps' 'yo9_qf2_ps' 'yo9_qd3_ps' 'yo9_tq4_ps' 'yo9_tq5_ps' 'yo9_tq6_ps'
+ var(7:10)%ele_name = 'yo9_qf6_ps' 'yo9_qd7_ps' 'yo9_qf8_ps' 'yo9_qd9_ps'
+ var(11:16)%ele_name = 'yi10_qf1_ps' 'yi10_qd2_ps' 'yi10_qf3_ps' 'yi10_tq4_ps' 'yi10_tq5_ps' 'yi10_tq6_ps'
+ var(17:20)%ele_name = 'yi10_qd6_ps' 'yi10_qf7_ps' 'yi10_qf9_ps' 'yi10_q89_ps'
+ var(1:10)%low_lim  =  +14 -140 -280 -100 -100 -100  +14  +14  -150 -278
+ var(1:10)%high_lim = +190 +140  -14 +100 +100 +100 +430 +550    -5 +278
+ var(11:20)%low_lim  =  +14 -140 -280 -100 -100 -100  +14  +14  -150 -278
+ var(11:20)%high_lim = +190 +140  -14 +100 +100 +100 +430 +550    -5 +278
+/
+
+&tao_var
+ v1_var%name = 'ir12'
+ default_universe = '1,6'
+ default_attribute = 'i'
+ default_step = 1
+ var(1:3)%ele_name = 'y12_q6_ps' 'y12_q7_ps' 'y12_q89_ps'
+ var(4:10)%ele_name =  'yi11_qf1_ps' 'yi11_qd2_ps' 'yi11_qf3_ps' 'yi11_tq4_ps' 'yi11_tq5_ps' 'yi11_tq6_ps' 'yi11_qf9_ps'
+ var(11:17)%ele_name = 'yo12_qd1_ps' 'yo12_qf2_ps' 'yo12_qd3_ps' 'yo12_tq4_ps' 'yo12_tq5_ps' 'yo12_tq6_ps' 'yo12_qf8_ps'
+ var(1:17)%low_lim =   +14  +14 -280  +14 -140 -280 -100 -100 -100 -150  +14 -140 -280 -100 -100 -100 -150
+ var(1:17)%high_lim = +430 +550 +280 +190 +140  -14 +100 +100 +100   -5 +190 +140  -14 +100 +100 +100   -5
+/
+
+&tao_var
+ v1_var%name = 'ir2'
+ default_universe = '1,7'
+ default_attribute = 'i'
+ default_step = 1
+ var(1:3)%ele_name = 'y2_q6_ps' 'y2_q7_ps' 'y2_q89_ps'
+ var(4:10)%ele_name =  'yo1_qd1_ps' 'yo1_qf2_ps' 'yo1_qd3_ps' 'yo1_tq4_ps' 'yo1_tq5_ps' 'yo1_tq6_ps' 'yo1_qf8_ps'
+ var(11:17)%ele_name = 'yi2_qf1_ps' 'yi2_qd2_ps' 'yi2_qf3_ps' 'yi2_tq4_ps' 'yi2_tq5_ps' 'yi2_tq6_ps' 'yi2_qf9_ps'
+ var(1:17)%low_lim =   +14  +14 -280  +14 -140 -280 -100 -100 -100 -150  +14 -140 -280 -100 -100 -100 -150
+ var(1:17)%high_lim = +430 +550 +280 +190 +140  -14 +100 +100 +100   -5 +190 +140  -14 +100 +100 +100   -5
+/
+
+&tao_var
+ v1_var%name = 'ir4'
+ default_universe = '1,8'
+ var(1:3)%ele_name = 'y4_q6_ps' 'y4_q7_ps' 'y4_q89_ps'
+ var(4:10)%ele_name = 'yi3_qf1_ps' 'yi3_qd2_ps' 'yi3_qf3_ps' 'yi3_tq4_ps' 'yi3_tq5_ps' 'yi3_tq6_ps' 'yi3_qf9_ps'
+ var(11:17)%ele_name = 'yo4_qd1_ps' 'yo4_qf2_ps' 'yo4_qd3_ps' 'yo4_tq4_ps' 'yo4_tq5_ps' 'yo4_tq6_ps' 'yo4_qf8_ps'
+ var(1:17)%low_lim =   +14  +14 -280  +14 -140 -280 -100 -100 -100 -150  +14 -140 -280 -100 -100 -100 -150
+ var(1:17)%high_lim = +430 +550 +280 +190 +140  -14 +100 +100 +100   -5 +190 +140  -14 +100 +100 +100   -5
+ var(1:17)%step = 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ var(1:17)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+/
+
+&tao_var
+ v1_var%name = 'qarc'
+ default_attribute = 'i'
+ default_step = 0.1
+ var(1:2)%ele_name = 'qmain_ps' 'qtrim_ps'
+/
+
+&tao_var
+ v1_var%name = 'sx'
+ default_universe = '1'
+ default_attribute = 'i'
+ default_step = 0.1
+ var(1:2)%ele_name = 'sxf_ps' 'sxd_ps'
+/
+
+&tao_d2_data
+ universe = '2'
+ d2_data%name = 'ir6w'
+ n_d1_data = 4
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'orbit'
+ default_weight = 1e4
+ datum(1:2)%data_type = 'orbit.x' 'orbit.px'
+ datum(1:2)%ele_name = 'b1pf+2' 'b1pf+2'
+ datum(1:2)%meas = 0 0
+ datum(1:2)%good_user = f f
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'crab'
+ datum(1:3)%data_type = 'beta.a' 'alpha.a' 'phase.a'
+ datum(3)%ele_ref_name = 'ip6w'
+ datum(1:3)%ele_name = 'o_crab_ip6f' 'o_crab_ip6f' 'o_crab_ip6f'
+ datum(1:3)%meas = 1300 0 1.57079632679489662
+ datum(1:3)%weight = 1e-3 1 1
+ datum(1:3)%eval_point = 'center' 'center' 'center'
+ datum(1:3)%good_user = f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'arc'
+ datum(1)%data_type = 'expression: 2@lat::eta.x[yo5_sv9_2+1] - 9@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 2@lat::etap.x[yo5_sv9_2+1] - 9@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 2@lat::beta.a[yo5_sv9_2+1] - 9@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 2@lat::alpha.a[yo5_sv9_2+1] - 9@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 2@lat::beta.b[yo5_sv9_2+1] - 9@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 2@lat::alpha.b[yo5_sv9_2+1] - 9@lat::alpha.b[0]'
+ datum(1:6)%meas = 0 0 0 0 0 0
+ datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
+ datum(1:6)%good_user = f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'opt'
+ default_weight = 1
+ datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
+ datum(1:5)%ele_name = 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_int11_2'
+ datum(1:4)%ele_start_name = 'yo5_tq4' 'bo3_qf8' 'ip6w' 'ip6w'
+ datum(1:4)%merit_type = 'max' 'max' 'integral' 'integral'
+ datum(1:5)%weight = 1e-10 1e-10 1e-8 1e-8 100
+ datum(1:5)%meas = 0 0 0 0 0
+ datum(1:5)%good_user = f f f f t
+/
+
+&tao_d2_data
+ universe = '3'
+ d2_data%name = 'ir6d'
+ n_d1_data = 3
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ ix_min_data = 1
+ ix_max_data = 3
+ d1_data%name = 'crab'
+ datum(1:3)%data_type = 'beta.a' 'alpha.a' 'phase.a'
+ datum(3)%ele_ref_name = 'ip6d'
+ datum(1:3)%ele_name = 'o_crab_ip6r' 'o_crab_ip6r' 'o_crab_ip6r'
+ datum(1:3)%meas = 1300 0 1.57079632679489662
+ datum(1:3)%weight = 1e-3 1 1
+ datum(1:3)%eval_point = 'center' 'center' 'center'
+ datum(1:3)%good_user = f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'arc'
+ datum(1)%data_type = 'expression: 3@lat::eta.x[yi6_bv10-2] - 10@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 3@lat::etap.x[yi6_bv10-2] - 10@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 3@lat::beta.a[yi6_bv10-2] - 10@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 3@lat::alpha.a[yi6_bv10-2] - 10@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 3@lat::beta.b[yi6_bv10-2] - 10@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 3@lat::alpha.b[yi6_bv10-2] - 10@lat::alpha.b[0]'
+ datum(1:6)%meas = 0 0 0 0 0 0
+ datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
+ datum(1:6)%good_user = f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'opt'
+ default_weight = 1
+ datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
+ datum(1:5)%ele_name = 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_int11_2'
+ datum(1:4)%ele_start_name = 'h6_q04' 'h6_q04' 'ip6d' 'ip6d'
+ datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
+ datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
+ datum(1:5)%meas = 0 0 0 0 0
+ datum(1:5)%good_user = f f f f t
+/
+
+&tao_d2_data
+ universe = '4'
+ d2_data%name = 'ir8'
+ n_d1_data = 5
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1)%data_type = 'expression: lat::eta.x[yo8_int11_2] - 12@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: lat::etap.x[yo8_int11_2] - 12@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: lat::beta.a[yo8_int11_2] - 12@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: lat::alpha.a[yo8_int11_2] - 12@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: lat::beta.b[yo8_int11_2] - 12@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: lat::alpha.b[yo8_int11_2] - 12@lat::alpha.b[0]'
+ datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
+ datum(7:11)%ele_name = 'o08' 'o08' 'o08' 'o08' 'o08'
+ datum(7:9)%eval_point = 'center' 'center' 'center'
+ datum(12)%data_type = 'expression:gamma.a[o08]-gamma.b[o08]'
+ datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'low_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
+ datum(1)%data_type  = 'expression: var::ir8[1]|model  - var::ir8[1]|low_lim'
+ datum(2)%data_type  = 'expression: var::ir8[2]|model  - var::ir8[2]|low_lim'
+ datum(3)%data_type  = 'expression: var::ir8[3]|model  - var::ir8[3]|low_lim'
+ datum(4)%data_type  = 'expression: var::ir8[4]|model  - var::ir8[4]|low_lim'
+ datum(5)%data_type  = 'expression: var::ir8[5]|model  - var::ir8[5]|low_lim'
+ datum(6)%data_type  = 'expression: var::ir8[6]|model  - var::ir8[6]|low_lim'
+ datum(7)%data_type  = 'expression: var::ir8[7]|model  - var::ir8[7]|low_lim'
+ datum(8)%data_type  = 'expression: var::ir8[8]|model  - var::ir8[8]|low_lim'
+ datum(9)%data_type  = 'expression: var::ir8[9]|model  - var::ir8[9]|low_lim'
+ datum(10)%data_type = 'expression: var::ir8[10]|model - var::ir8[10]|low_lim'
+ datum(11)%data_type = 'expression: var::ir8[11]|model - var::ir8[11]|low_lim'
+ datum(12)%data_type = 'expression: var::ir8[12]|model - var::ir8[12]|low_lim'
+ datum(13)%data_type = 'expression: var::ir8[13]|model - var::ir8[13]|low_lim'
+ datum(14)%data_type = 'expression: var::ir8[14]|model - var::ir8[14]|low_lim'
+ datum(15)%data_type = 'expression: var::ir8[15]|model - var::ir8[15]|low_lim'
+ datum(16)%data_type = 'expression: var::ir8[16]|model - var::ir8[16]|low_lim'
+ datum(17)%data_type = 'expression: var::ir8[17]|model - var::ir8[17]|low_lim'
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'high_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
+ datum(1)%data_type  = 'expression: var::ir8[1]|high_lim  - var::ir8[1]|model'
+ datum(2)%data_type  = 'expression: var::ir8[2]|high_lim  - var::ir8[2]|model'
+ datum(3)%data_type  = 'expression: var::ir8[3]|high_lim  - var::ir8[3]|model'
+ datum(4)%data_type  = 'expression: var::ir8[4]|high_lim  - var::ir8[4]|model'
+ datum(5)%data_type  = 'expression: var::ir8[5]|high_lim  - var::ir8[5]|model'
+ datum(6)%data_type  = 'expression: var::ir8[6]|high_lim  - var::ir8[6]|model'
+ datum(7)%data_type  = 'expression: var::ir8[7]|high_lim  - var::ir8[7]|model'
+ datum(8)%data_type  = 'expression: var::ir8[8]|high_lim  - var::ir8[8]|model'
+ datum(9)%data_type  = 'expression: var::ir8[9]|high_lim  - var::ir8[9]|model'
+ datum(10)%data_type = 'expression: var::ir8[10]|high_lim - var::ir8[10]|model'
+ datum(11)%data_type = 'expression: var::ir8[11]|high_lim - var::ir8[11]|model'
+ datum(12)%data_type = 'expression: var::ir8[12]|high_lim - var::ir8[12]|model'
+ datum(13)%data_type = 'expression: var::ir8[13]|high_lim - var::ir8[13]|model'
+ datum(14)%data_type = 'expression: var::ir8[14]|high_lim - var::ir8[14]|model'
+ datum(15)%data_type = 'expression: var::ir8[15]|high_lim - var::ir8[15]|model'
+ datum(16)%data_type = 'expression: var::ir8[16]|high_lim - var::ir8[16]|model'
+ datum(17)%data_type = 'expression: var::ir8[17]|high_lim - var::ir8[17]|model'
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'opt'
+ datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
+ datum(1:7)%ele_name = 'o08' 'yi7_b4' 'yi7_b4' 'yo8_b3' 'yo8_b3' 'yo8_int11_2' 'yo8_int11_2'
+ datum(1)%eval_point = 'center'
+ datum(2:7)%ele_start_name = 'yi7_int11_2' 'yi7_int11_2' 'yi7_b3' 'yi7_b3' 'yo8_b4' 'yo8_b4'
+ datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+ datum(1:7)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
+ datum(1:7)%good_user = f f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 5
+ d1_data%name = 'sym'
+ datum(1)%data_type =  'expression: data::ir8.high_lim[2]  - data::ir8.low_lim[1]'
+ datum(2)%data_type =  'expression: data::ir8.low_lim[4]   - data::ir8.high_lim[2]'
+ datum(3)%data_type =  'expression: data::ir8.high_lim[7]  - data::ir8.low_lim[4]'
+ datum(4)%data_type =  'expression: data::ir8.high_lim[10] - data::ir8.high_lim[7]'
+ datum(5)%data_type =  'expression: data::ir8.low_lim[11]  - data::ir8.high_lim[10]'
+ datum(6)%data_type =  'expression: data::ir8.high_lim[12] - data::ir8.low_lim[11]'
+ datum(7)%data_type =  'expression: data::ir8.low_lim[17]  - data::ir8.high_lim[12]'
+ datum(1:7)%weight = 1 1 1 1 1 1 1
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+/
+
+&tao_d2_data
+ universe = '5'
+ d2_data%name = 'ir10'
+ n_d1_data = 5
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1)%data_type = 'expression: lat::eta.x[yi10_int11_2] - 10@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: lat::etap.x[yi10_int11_2] - 10@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: lat::beta.a[yi10_int11_2] - 10@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: lat::alpha.a[yi10_int11_2] - 10@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: lat::beta.b[yi10_int11_2] - 10@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: lat::alpha.b[yi10_int11_2] - 10@lat::alpha.b[0]'
+ datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
+ datum(7:11)%ele_name = 'h10_cav591_2' 'h10_cav591_2' 'h10_cav591_2' 'h10_cav591_2' 'h10_cav591_2'
+ datum(7:9)%eval_point = 'center' 'center' 'center'
+ datum(12)%data_type = 'expression:gamma.a[h10_cav591_2]-gamma.b[h10_cav591_2]'
+ datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'low_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
+ datum(1)%data_type   = 'expression: var::ir10[1]|model  - var::ir10[1]|low_lim'
+ datum(2)%data_type   = 'expression: var::ir10[2]|model  - var::ir10[2]|low_lim'
+ datum(3)%data_type   = 'expression: var::ir10[3]|model  - var::ir10[3]|low_lim'
+ datum(4)%data_type   = 'expression: var::ir10[4]|model  - var::ir10[4]|low_lim'
+ datum(5)%data_type   = 'expression: var::ir10[5]|model  - var::ir10[5]|low_lim'
+ datum(6)%data_type   = 'expression: var::ir10[6]|model  - var::ir10[6]|low_lim'
+ datum(7)%data_type   = 'expression: var::ir10[7]|model  - var::ir10[7]|low_lim'
+ datum(8)%data_type   = 'expression: var::ir10[8]|model  - var::ir10[8]|low_lim'
+ datum(9)%data_type   = 'expression: var::ir10[9]|model  - var::ir10[9]|low_lim'
+ datum(10)%data_type  = 'expression: var::ir10[10]|model - var::ir10[10]|low_lim'
+ datum(11)%data_type  = 'expression: var::ir10[11]|model - var::ir10[11]|low_lim'
+ datum(12)%data_type  = 'expression: var::ir10[12]|model - var::ir10[12]|low_lim'
+ datum(13)%data_type  = 'expression: var::ir10[13]|model - var::ir10[13]|low_lim'
+ datum(14)%data_type  = 'expression: var::ir10[14]|model - var::ir10[14]|low_lim'
+ datum(15)%data_type  = 'expression: var::ir10[15]|model - var::ir10[15]|low_lim'
+ datum(16)%data_type  = 'expression: var::ir10[16]|model - var::ir10[16]|low_lim'
+ datum(17)%data_type  = 'expression: var::ir10[17]|model - var::ir10[17]|low_lim'
+ datum(18)%data_type  = 'expression: var::ir10[18]|model - var::ir10[18]|low_lim'
+ datum(19)%data_type  = 'expression: var::ir10[19]|model - var::ir10[19]|low_lim'
+ datum(20)%data_type  = 'expression: var::ir10[20]|model - var::ir10[20]|low_lim'
+ datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ datum(1:20)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
+ datum(1:20)%good_user = f f f f f f f f f f f f f f f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'high_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
+ datum(1)%data_type   = 'expression: var::ir10[1]|high_lim  - var::ir10[1]|model'
+ datum(2)%data_type   = 'expression: var::ir10[2]|high_lim  - var::ir10[2]|model'
+ datum(3)%data_type   = 'expression: var::ir10[3]|high_lim  - var::ir10[3]|model'
+ datum(4)%data_type   = 'expression: var::ir10[4]|high_lim  - var::ir10[4]|model'
+ datum(5)%data_type   = 'expression: var::ir10[5]|high_lim  - var::ir10[5]|model'
+ datum(6)%data_type   = 'expression: var::ir10[6]|high_lim  - var::ir10[6]|model'
+ datum(7)%data_type   = 'expression: var::ir10[7]|high_lim  - var::ir10[7]|model'
+ datum(8)%data_type   = 'expression: var::ir10[8]|high_lim  - var::ir10[8]|model'
+ datum(9)%data_type   = 'expression: var::ir10[9]|high_lim  - var::ir10[9]|model'
+ datum(10)%data_type  = 'expression: var::ir10[10]|high_lim - var::ir10[10]|model'
+ datum(10)%data_type  = 'expression: var::ir10[10]|high_lim - var::ir10[10]|model'
+ datum(11)%data_type  = 'expression: var::ir10[11]|high_lim - var::ir10[11]|model'
+ datum(12)%data_type  = 'expression: var::ir10[12]|high_lim - var::ir10[12]|model'
+ datum(13)%data_type  = 'expression: var::ir10[13]|high_lim - var::ir10[13]|model'
+ datum(14)%data_type  = 'expression: var::ir10[14]|high_lim - var::ir10[14]|model'
+ datum(15)%data_type  = 'expression: var::ir10[15]|high_lim - var::ir10[15]|model'
+ datum(16)%data_type  = 'expression: var::ir10[16]|high_lim - var::ir10[16]|model'
+ datum(17)%data_type  = 'expression: var::ir10[17]|high_lim - var::ir10[17]|model'
+ datum(18)%data_type  = 'expression: var::ir10[18]|high_lim - var::ir10[18]|model'
+ datum(19)%data_type  = 'expression: var::ir10[19]|high_lim - var::ir10[19]|model'
+ datum(20)%data_type  = 'expression: var::ir10[20]|high_lim - var::ir10[20]|model'
+ datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ datum(1:20)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
+ datum(1:20)%good_user = f f f f f f f f f f f f f f f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'opt'
+ datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
+ datum(8)%data_type = 'expression:lat::gamma.a[h10_cav591_2->-0.5*l]*lat::eta.x[h10_cav591_2->-0.5*l]^2+2*lat::
+alpha.a[h10_cav591_2->-0.5*l]*lat::eta.x[h10_cav591_2->-0.5*l]*lat::etap.x[h10_cav591_2->-0.5*l]+lat::beta.a[h10_cav591_2->-0
+.5*l]*lat::etap.x[h10_cav591_2->-0.5*l]^2'
+ datum(1:7)%ele_name = 'h10_cav591_2' 'yo9_b4' 'yo9_b4' 'yi10_b3' 'yi10_b3' 'yi10_int11_2' 'yi10_int11_2'
+ datum(1)%eval_point = 'center'
+ datum(2:7)%ele_start_name = 'yo9_int11_2' 'yo9_int11_2' 'yo9_b3' 'yo9_b3' 'yi10_b4' 'yi10_b4'
+ datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
+ datum(1:8)%meas = 0 0 0 0 0 0 0 0
+ datum(1:8)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-4
+ datum(1:8)%good_user = f f f f f f f f
+/
+
+&tao_d1_data
+ ix_d1_data = 5
+ d1_data%name = 'sym'
+ datum(1)%data_type =  'expression: data::ir10.high_lim[2]  - data::ir10.low_lim[1]'
+ datum(2)%data_type =  'expression: data::ir10.low_lim[7]   - data::ir10.high_lim[2]'
+ datum(3)%data_type =  'expression: data::ir10.high_lim[8]  - data::ir10.low_lim[7]'
+ datum(4)%data_type =  'expression: data::ir10.low_lim[9]   - data::ir10.high_lim[8]'
+ datum(5)%data_type =  'expression: data::ir10.low_lim[10]  - data::ir10.low_lim[9]'
+ datum(6)%data_type =  'expression: data::ir10.high_lim[12] - data::ir10.low_lim[10]'
+ datum(7)%data_type =  'expression: data::ir10.high_lim[13] - data::ir10.high_lim[12]'
+ datum(8)%data_type =  'expression: data::ir10.high_lim[14] - data::ir10.high_lim[13]'
+ datum(9)%data_type =  'expression: data::ir10.low_lim[19]  - data::ir10.high_lim[14]'
+ datum(10)%data_type = 'expression: data::ir10.low_lim[20]  - data::ir10.low_lim[19]'
+ datum(1:10)%weight = 1 1 1 1 1 1 1 1 1 1
+ datum(1:10)%meas = 0 0 0 0 0 0 0 0 0 0 
+/
+
+&tao_d2_data
+ universe = '6'
+ d2_data%name = 'ir12'
+ n_d1_data = 4
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1)%data_type = 'expression: lat::eta.x[yo12_int11_2] - 12@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: lat::etap.x[yo12_int11_2] - 12@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: lat::beta.a[yo12_int11_2] - 12@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: lat::alpha.a[yo12_int11_2] - 12@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: lat::beta.b[yo12_int11_2] - 12@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: lat::alpha.b[yo12_int11_2] - 12@lat::alpha.b[0]'
+ datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
+ datum(7:11)%ele_name = 'oh12' 'oh12' 'oh12' 'oh12' 'oh12'
+ datum(7:9)%eval_point = 'center' 'center' 'center'
+ datum(12)%data_type = 'expression:gamma.a[oh12]-gamma.b[oh12]'
+ datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'low_lim'
+ datum(1)%data_type  = 'expression: var::ir12[1]|model  - var::ir12[1]|low_lim'
+ datum(2)%data_type  = 'expression: var::ir12[2]|model  - var::ir12[2]|low_lim'
+ datum(3)%data_type  = 'expression: var::ir12[3]|model  - var::ir12[3]|low_lim'
+ datum(4)%data_type  = 'expression: var::ir12[4]|model  - var::ir12[4]|low_lim'
+ datum(5)%data_type  = 'expression: var::ir12[5]|model  - var::ir12[5]|low_lim'
+ datum(6)%data_type  = 'expression: var::ir12[6]|model  - var::ir12[6]|low_lim'
+ datum(7)%data_type  = 'expression: var::ir12[7]|model  - var::ir12[7]|low_lim'
+ datum(8)%data_type  = 'expression: var::ir12[8]|model  - var::ir12[8]|low_lim'
+ datum(9)%data_type  = 'expression: var::ir12[9]|model  - var::ir12[9]|low_lim'
+ datum(10)%data_type = 'expression: var::ir12[10]|model - var::ir12[10]|low_lim'
+ datum(11)%data_type = 'expression: var::ir12[11]|model - var::ir12[11]|low_lim'
+ datum(12)%data_type = 'expression: var::ir12[12]|model - var::ir12[12]|low_lim'
+ datum(13)%data_type = 'expression: var::ir12[13]|model - var::ir12[13]|low_lim'
+ datum(14)%data_type = 'expression: var::ir12[14]|model - var::ir12[14]|low_lim'
+ datum(15)%data_type = 'expression: var::ir12[15]|model - var::ir12[15]|low_lim'
+ datum(16)%data_type = 'expression: var::ir12[16]|model - var::ir12[16]|low_lim'
+ datum(17)%data_type = 'expression: var::ir12[17]|model - var::ir12[17]|low_lim'
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'high_lim'
+ datum(1)%data_type  = 'expression: var::ir12[1]|high_lim  - var::ir12[1]|model'
+ datum(2)%data_type  = 'expression: var::ir12[2]|high_lim  - var::ir12[2]|model'
+ datum(3)%data_type  = 'expression: var::ir12[3]|high_lim  - var::ir12[3]|model'
+ datum(4)%data_type  = 'expression: var::ir12[4]|high_lim  - var::ir12[4]|model'
+ datum(5)%data_type  = 'expression: var::ir12[5]|high_lim  - var::ir12[5]|model'
+ datum(6)%data_type  = 'expression: var::ir12[6]|high_lim  - var::ir12[6]|model'
+ datum(7)%data_type  = 'expression: var::ir12[7]|high_lim  - var::ir12[7]|model'
+ datum(8)%data_type  = 'expression: var::ir12[8]|high_lim  - var::ir12[8]|model'
+ datum(9)%data_type  = 'expression: var::ir12[9]|high_lim  - var::ir12[9]|model'
+ datum(10)%data_type = 'expression: var::ir12[10]|high_lim - var::ir12[10]|model'
+ datum(11)%data_type = 'expression: var::ir12[11]|high_lim - var::ir12[11]|model'
+ datum(12)%data_type = 'expression: var::ir12[12]|high_lim - var::ir12[12]|model'
+ datum(13)%data_type = 'expression: var::ir12[13]|high_lim - var::ir12[13]|model'
+ datum(14)%data_type = 'expression: var::ir12[14]|high_lim - var::ir12[14]|model'
+ datum(15)%data_type = 'expression: var::ir12[15]|high_lim - var::ir12[15]|model'
+ datum(16)%data_type = 'expression: var::ir12[16]|high_lim - var::ir12[16]|model'
+ datum(17)%data_type = 'expression: var::ir12[17]|high_lim - var::ir12[17]|model'
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'opt'
+ datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
+ datum(1:7)%ele_name = 'oh12' 'yi11_b4' 'yi11_b4' 'yo12_b3' 'yo12_b3' 'yo12_int11_2' 'yo12_int11_2'
+ datum(1)%eval_point = 'center'
+ datum(2:7)%ele_start_name = 'yi11_int11_2' 'yi11_int11_2' 'yi11_b3' 'yi11_b3' 'yo12_b4' 'yo12_b4'
+ datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+ datum(1:7)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
+ datum(1:7)%good_user = f f f f f f f
+/
+
+&tao_d2_data
+ universe = '7'
+ d2_data%name = 'ir2'
+ n_d1_data = 4
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1)%data_type = 'expression: lat::eta.x[yi2_int11_2] - 10@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: lat::etap.x[yi2_int11_2] - 10@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: lat::beta.a[yi2_int11_2] - 10@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: lat::alpha.a[yi2_int11_2] - 10@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: lat::beta.b[yi2_int11_2] - 10@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: lat::alpha.b[yi2_int11_2] - 10@lat::alpha.b[0]'
+ datum(7:11)%data_type = 'eta.x' 'alpha.a' 'alpha.b' 'gamma.a' 'gamma.b'
+ datum(7:11)%ele_name = 'o02s' 'o02s' 'o02s' 'o02s' 'o02s'
+ datum(7:9)%eval_point = 'center' 'center' 'center'
+ datum(12)%data_type = 'expression:gamma.a[o02s]-gamma.b[o02s]'
+ datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'low_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
+ datum(1)%data_type  = 'expression: var::ir2[1]|model  - var::ir2[1]|low_lim'
+ datum(2)%data_type  = 'expression: var::ir2[2]|model  - var::ir2[2]|low_lim'
+ datum(3)%data_type  = 'expression: var::ir2[3]|model  - var::ir2[3]|low_lim'
+ datum(4)%data_type  = 'expression: var::ir2[4]|model  - var::ir2[4]|low_lim'
+ datum(5)%data_type  = 'expression: var::ir2[5]|model  - var::ir2[5]|low_lim'
+ datum(6)%data_type  = 'expression: var::ir2[6]|model  - var::ir2[6]|low_lim'
+ datum(7)%data_type  = 'expression: var::ir2[7]|model  - var::ir2[7]|low_lim'
+ datum(8)%data_type  = 'expression: var::ir2[8]|model  - var::ir2[8]|low_lim'
+ datum(9)%data_type  = 'expression: var::ir2[9]|model  - var::ir2[9]|low_lim'
+ datum(10)%data_type = 'expression: var::ir2[10]|model - var::ir2[10]|low_lim'
+ datum(11)%data_type = 'expression: var::ir2[11]|model - var::ir2[11]|low_lim'
+ datum(12)%data_type = 'expression: var::ir2[12]|model - var::ir2[12]|low_lim'
+ datum(13)%data_type = 'expression: var::ir2[13]|model - var::ir2[13]|low_lim'
+ datum(14)%data_type = 'expression: var::ir2[14]|model - var::ir2[14]|low_lim'
+ datum(15)%data_type = 'expression: var::ir2[15]|model - var::ir2[15]|low_lim'
+ datum(16)%data_type = 'expression: var::ir2[16]|model - var::ir2[16]|low_lim'
+ datum(17)%data_type = 'expression: var::ir2[17]|model - var::ir2[17]|low_lim'
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'high_lim'
+ default_meas = 0
+ default_weight = 1e-8
+ default_merit_type = 'min'
+ datum(1)%data_type  = 'expression: var::ir2[1]|high_lim  - var::ir2[1]|model'
+ datum(2)%data_type  = 'expression: var::ir2[2]|high_lim  - var::ir2[2]|model'
+ datum(3)%data_type  = 'expression: var::ir2[3]|high_lim  - var::ir2[3]|model'
+ datum(4)%data_type  = 'expression: var::ir2[4]|high_lim  - var::ir2[4]|model'
+ datum(5)%data_type  = 'expression: var::ir2[5]|high_lim  - var::ir2[5]|model'
+ datum(6)%data_type  = 'expression: var::ir2[6]|high_lim  - var::ir2[6]|model'
+ datum(7)%data_type  = 'expression: var::ir2[7]|high_lim  - var::ir2[7]|model'
+ datum(8)%data_type  = 'expression: var::ir2[8]|high_lim  - var::ir2[8]|model'
+ datum(9)%data_type  = 'expression: var::ir2[9]|high_lim  - var::ir2[9]|model'
+ datum(10)%data_type = 'expression: var::ir2[10]|high_lim - var::ir2[10]|model'
+ datum(11)%data_type = 'expression: var::ir2[11]|high_lim - var::ir2[11]|model'
+ datum(12)%data_type = 'expression: var::ir2[12]|high_lim - var::ir2[12]|model'
+ datum(13)%data_type = 'expression: var::ir2[13]|high_lim - var::ir2[13]|model'
+ datum(14)%data_type = 'expression: var::ir2[14]|high_lim - var::ir2[14]|model'
+ datum(15)%data_type = 'expression: var::ir2[15]|high_lim - var::ir2[15]|model'
+ datum(16)%data_type = 'expression: var::ir2[16]|high_lim - var::ir2[16]|model'
+ datum(17)%data_type = 'expression: var::ir2[17]|high_lim - var::ir2[17]|model'
+/
+
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'opt'
+ datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
+ datum(1:7)%ele_name = 'o02s' 'yo1_b4' 'yo1_b4' 'yi2_b3' 'yi2_b3' 'yi2_int11_2' 'yi2_int11_2'
+ datum(1)%eval_point = 'center'
+ datum(2:7)%ele_start_name = 'yo1_int11_2' 'yo1_int11_2' 'yo1_b3' 'yo1_b3' 'yi2_b4' 'yi2_b4'
+ datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+ datum(1:7)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
+ datum(1:7)%good_user = f f f f f f f
+/
+
+&tao_d2_data
+ universe = '8'
+ d2_data%name = 'ir4'
+ n_d1_data = 5
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'fit'
+ datum(1)%data_type = 'expression: lat::eta.x[yo4_int11_2] - 12@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: lat::etap.x[yo4_int11_2] - 12@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: lat::beta.a[yo4_int11_2] - 12@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: lat::alpha.a[yo4_int11_2] - 12@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: lat::beta.b[yo4_int11_2] - 12@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: lat::alpha.b[yo4_int11_2] - 12@lat::alpha.b[0]'
+ datum(7)%data_type = 'expression: lat::eta.x[yi3_qf1]+lat::eta.x[yo4_qd1-1]'
+ datum(8)%data_type = 'expression: lat::alpha.a[yi3_qf1]+lat::alpha.a[yo4_qd1-1]'
+ datum(9)%data_type = 'expression: lat::alpha.b[yi3_qf1]+lat::alpha.b[yo4_qd1-1]'
+ datum(10)%data_type = 'expression: 0.5*(lat::gamma.a[yi3_qf1]+lat::gamma.a[yo4_qd1-1])'
+ datum(11)%data_type = 'expression: 0.5*(lat::gamma.b[yi3_qf1]+lat::gamma.b[yo4_qd1-1])'
+ datum(12)%data_type = 'expression: data::ir4.fit[10]|model-data::ir4.fit[11]|model'
+ datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+/
+
+&tao_d1_data
+ ix_d1_data = 2
+ d1_data%name = 'low_lim'
+ datum(1)%data_type  = 'expression: var::ir4[1]|model  - var::ir4[1]|low_lim'
+ datum(2)%data_type  = 'expression: var::ir4[2]|model  - var::ir4[2]|low_lim'
+ datum(3)%data_type  = 'expression: var::ir4[3]|model  - var::ir4[3]|low_lim'
+ datum(4)%data_type  = 'expression: var::ir4[4]|model  - var::ir4[4]|low_lim'
+ datum(5)%data_type  = 'expression: var::ir4[5]|model  - var::ir4[5]|low_lim'
+ datum(6)%data_type  = 'expression: var::ir4[6]|model  - var::ir4[6]|low_lim'
+ datum(7)%data_type  = 'expression: var::ir4[7]|model  - var::ir4[7]|low_lim'
+ datum(8)%data_type  = 'expression: var::ir4[8]|model  - var::ir4[8]|low_lim'
+ datum(9)%data_type  = 'expression: var::ir4[9]|model  - var::ir4[9]|low_lim'
+ datum(10)%data_type = 'expression: var::ir4[10]|model - var::ir4[10]|low_lim'
+ datum(11)%data_type = 'expression: var::ir4[11]|model - var::ir4[11]|low_lim'
+ datum(12)%data_type = 'expression: var::ir4[12]|model - var::ir4[12]|low_lim'
+ datum(13)%data_type = 'expression: var::ir4[13]|model - var::ir4[13]|low_lim'
+ datum(14)%data_type = 'expression: var::ir4[14]|model - var::ir4[14]|low_lim'
+ datum(15)%data_type = 'expression: var::ir4[15]|model - var::ir4[15]|low_lim'
+ datum(16)%data_type = 'expression: var::ir4[16]|model - var::ir4[16]|low_lim'
+ datum(17)%data_type = 'expression: var::ir4[17]|model - var::ir4[17]|low_lim'
+/
+
+&tao_d1_data
+ ix_d1_data = 3
+ d1_data%name = 'high_lim'
+ datum(1)%data_type  = 'expression: var::ir4[1]|high_lim  - var::ir4[1]|model'
+ datum(2)%data_type  = 'expression: var::ir4[2]|high_lim  - var::ir4[2]|model'
+ datum(3)%data_type  = 'expression: var::ir4[3]|high_lim  - var::ir4[3]|model'
+ datum(4)%data_type  = 'expression: var::ir4[4]|high_lim  - var::ir4[4]|model'
+ datum(5)%data_type  = 'expression: var::ir4[5]|high_lim  - var::ir4[5]|model'
+ datum(6)%data_type  = 'expression: var::ir4[6]|high_lim  - var::ir4[6]|model'
+ datum(7)%data_type  = 'expression: var::ir4[7]|high_lim  - var::ir4[7]|model'
+ datum(8)%data_type  = 'expression: var::ir4[8]|high_lim  - var::ir4[8]|model'
+ datum(9)%data_type  = 'expression: var::ir4[9]|high_lim  - var::ir4[9]|model'
+ datum(10)%data_type = 'expression: var::ir4[10]|high_lim - var::ir4[10]|model'
+ datum(11)%data_type = 'expression: var::ir4[11]|high_lim - var::ir4[11]|model'
+ datum(12)%data_type = 'expression: var::ir4[12]|high_lim - var::ir4[12]|model'
+ datum(13)%data_type = 'expression: var::ir4[13]|high_lim - var::ir4[13]|model'
+ datum(14)%data_type = 'expression: var::ir4[14]|high_lim - var::ir4[14]|model'
+ datum(15)%data_type = 'expression: var::ir4[15]|high_lim - var::ir4[15]|model'
+ datum(16)%data_type = 'expression: var::ir4[16]|high_lim - var::ir4[16]|model'
+ datum(17)%data_type = 'expression: var::ir4[17]|high_lim - var::ir4[17]|model'
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'sym'
+ datum(1)%data_type =  'expression: data::ir4.low_lim[3]   - data::ir4.low_lim[1]'
+ datum(2)%data_type =  'expression: data::ir4.low_lim[4]   - data::ir4.low_lim[3]'
+ datum(3)%data_type =  'expression: data::ir4.high_lim[8]  - data::ir4.low_lim[4]'
+ datum(4)%data_type =  'expression: data::ir4.low_lim[11]  - data::ir4.high_lim[8]'
+ datum(5)%data_type =  'expression: data::ir4.high_lim[12] - data::ir4.low_lim[11]'
+ datum(6)%data_type =  'expression: data::ir4.low_lim[14]  - data::ir4.high_lim[12]'
+ datum(7)%data_type =  'expression: data::ir4.high_lim[17] - data::ir4.low_lim[14]'
+ datum(1:7)%weight = 1 1 1 1 1 1 1
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+/
+
+&tao_d1_data
+ ix_d1_data = 5
+ d1_data%name = 'opt'
+ datum(1)%data_type = 'expression:0.5*(lat::eta.x[yo4_qd1-1]-lat::eta.x[yi3_qf1])'
+ datum(2:7)%data_type = 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
+ datum(2:7)%ele_name = 'yi3_b4' 'yi3_b4' 'yo4_b3' 'yo4_b3' 'yo4_int11_2' 'yo4_int11_2'
+ datum(2:7)%ele_start_name = 'yi3_int11_2' 'yi3_int11_2' 'yi3_b3' 'yi3_b3' 'yo4_b4' 'yo4_b4'
+ datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+ datum(1:7)%weight = 1e-5 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10
+ datum(1:7)%good_user = f f f f f f f
+/
+
+&tao_d2_data
+ universe = '1'
+ d2_data%name = 'chrom'
+ n_d1_data = 1
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'chrom'
+ default_weight = 1
+ datum(1:2)%data_type = 'chrom.a' 'chrom.b'
+ datum(1:2)%meas = 2 2
+/
+
+&tao_d2_data
+ universe = '9'
+ d2_data%name = 'cell'
+ n_d1_data = 1
+/
+
+&tao_d1_data
+ ix_d1_data = 1
+ d1_data%name = 'tune'
+ default_weight = 1
+ datum(1:2)%ele_ref_name = 'beginning' 'beginning'
+ datum(1:2)%ele_name = 'yo9_int11_2' 'yo9_int11_2'
+ datum(1:2)%data_type = 'phase.a' 'phase.b'
+/

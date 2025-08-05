@@ -1,0 +1,21 @@
+call, file='../../hsr.bmad'
+
+call, file='rhic.bmad'
+call, file='ir2.bmad'
+call, file='ir4.bmad'
+call, file='ir6.bmad'
+call, file='ir8n.bmad'
+call, file='ir10.bmad'
+call, file='ir12.bmad'
+
+parameter[particle] = #197antiAu-79
+
+mau = mass_of(#197antiAu-79)
+pau = sqrt((46.5/anomalous_moment_of(proton))^2-1)*m_proton*79
+eau = sqrt(pau^2+mau^2)
+
+beginning[e_tot]           = eau
+b0pf[db_field] = b0pf[db_field]*pau/(79*p275)
+b0pf[b1_gradient] = b0pf[b1_gradient]*pau/(79*p275)
+
+use, hsr_hi_8s_2s
