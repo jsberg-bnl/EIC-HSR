@@ -1,0 +1,79 @@
+chdir, dir='../..';
+call, file='hsr.madx';
+chdir, dir='hi-8s-2s/275-10-collision';
+
+call, file='rhic.madx';
+call, file='ir2.madx';
+call, file='ir4.madx';
+call, file='ir6.madx';
+call, file='ir8n.madx';
+call, file='ir10.madx';
+call, file='ir12.madx';
+
+beam, energy=275, particle=antiproton;
+use, sequence=hsr_hi_8s_2s;
+
+set, format="10d", "25.17e", "-24s";
+select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
+survey, file='hsr-survey.tfs',
+ x0 = -(rhic_rip - dx0_eic_ip6),
+ z0 = 0,
+ theta0 = pi + dtheta0_eic_ip6;
+
+beta_crab = 1300;
+option, -twiss_print;
+match, use_macro;
+fit_ir6w0:macro={
+ use, sequence=hsr_hi_8s_2s, range=o_crab_mag[4]/ip6w;
+ ptc_create_universe;
+ ptc_create_layout, exact, model=2, method=6, nst=5;
+ ptc_twiss, betx=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab, alfx=-0.5*o_crab_ip6f->l/beta_crab, bety=1, icase=5, no=5;
+ ptc_end;
+};
+vary, name=b0apf->k0, step=1e-6;
+vary, name=b1pf->k0, step=1e-6;
+vary, name=q2pf->k1, step=1e-5;
+vary, name=q3pf->k1, step=1e-5;
+constraint, weight=1e6, expr=table(ptc_twiss,ip6w,x)=0;
+constraint, weight=1e6, expr=table(ptc_twiss,ip6w,px)=0;
+constraint, weight=1e-3, expr=table(ptc_twiss,ip6w,beta11)=0.80;
+constraint, expr=table(ptc_twiss,ip6w,alfa11)=0;
+jacobian, calls=1024, tolerance=1e-18;
+endmatch;
+
+select, flag=ptc_twiss, clear;
+use, sequence=hsr_hi_8s_2s, range=yo5_int11_2/obfl[194];
+ptc_create_universe;
+ptc_create_layout, exact, model=2, method=6, nst=5;
+ptc_twiss, icase=5, no=5, maptable;
+ptc_end;
+
+match, use_macro;
+fit_ir6w1:macro={
+ use, sequence=hsr_hi_8s_2s, range=yo5_int11_2/ip6w;
+ ptc_create_universe;
+ ptc_create_layout, exact, model=2, method=6, nst=5;
+ ptc_twiss, initial_matrix_table, icase=5, no=5;
+ ptc_end;
+};
+vary, name=h5_q11_i, step=0.1;
+vary, name=yo5_qf8_i, step=0.1;
+vary, name=yo5_qd7_i, step=0.1;
+vary, name=bi5_qd8_i, step=0.1;
+vary, name=yo5_qf4_i, step=0.1;
+vary, name=yi6_qd2_i, step=0.1;
+constraint, expr=table(ptc_twiss,ip6w,disp1)=0;
+constraint, expr=table(ptc_twiss,ip6w,disp2)=0;
+constraint, weight=1e-3, expr=table(ptc_twiss,o_crab_mag[3],beta11)=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab;
+constraint, expr=table(ptc_twiss,o_crab_mag[3],alfa11)=0.5*o_crab_ip6f->l/beta_crab;
+constraint, expr=table(ptc_twiss,ip6w,beta22)=7.2e-2;
+constraint, expr=table(ptc_twiss,ip6w,alfa22)=0.0;
+jacobian, calls=1024, tolerance=1e-18;
+endmatch;
+
+use, sequence=hsr_hi_8s_2s;
+select, flag=ptc_twiss, column=name,keyword,t,s,x,px,disp1,disp2,beta11,alfa11,beta22,alfa22;
+ptc_create_universe;
+ptc_create_layout, exact, model=2, method=6, nst=5;
+ptc_twiss, closed_orbit, icase=56, no=5, file='hsr-ptc.tfs';
+ptc_end;
