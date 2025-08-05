@@ -3,7 +3,7 @@ import re
 
 def bmad_to_madx(bmad,madx):
     for l in bmad:
-        m = re.match('^([a-z]\w*)\[([a-z]\w*)\] *= *(.*)$',l,re.I)
+        m = re.match(r'^([a-z]\w*)\[([a-z]\w*)\] *= *(.*)$',l,re.I)
         if m:
             e,a,v = m.group(1,2,3)
             v = v.replace('[I]','');
@@ -30,7 +30,7 @@ def bmad_to_madx(bmad,madx):
                 print(e+', '+a+assign+v+';',file=madx)
 
 for name in os.listdir():
-    m = re.match('(ir[0-9]+[cn]?|rhic)\.bmad',name)
+    m = re.match(r'(ir[0-9]+[cn]?|rhic)\.bmad',name)
     if m:
         stem = m.group(1)
         with open(stem+'.bmad','r') as bmad, open(stem+'.madx','w') as madx:
