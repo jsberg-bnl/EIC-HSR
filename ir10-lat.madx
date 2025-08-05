@@ -1,28 +1,46 @@
-lq1dw_10 = 0.927704;
-l591 = 5.211;
-ltrpcav = 0.370;
-ltrpwd10 = ltrpcav+l591+lwc;
-ltrpwd10x = ltrpwd10+lflq1x+lbq1-lpld0q1;
+lcav591 = 5.4;
+cav591 : rfcavity, harmon=7560, l=lcav591;
+h10_cav591_1 : cav591;
+h10_cav591_2 : cav591;
+h10_cav591_3 : cav591;
 
-thl10 = +1.20270102801919247e-02;
-lh10 = 2*(lcenxdx + lcendx + lcendxd0 + lcend0 - ltrpwd10x*cos(thd0) - lwdl*cos(0.5*thd0));
-ll10 = 2*(lcenxdx*cos(thl10) + lcendx*cos(0.5*thdx-thl10)/cos(0.5*thdx) + lcendxd0*cos(thdx-thl10)/cos(thdx) 
- + lcend0*cos(0.5*(thdx+thd0)-thl10)/cos(0.5*(thdx+thd0)) - ltrpwd10x*cos(thl10-thd0) - lwdl*cos(0.5*(thl10-thd0)));
+lval88 = 0.085;
+lval125 = 0.0975;
+l4trans = 8.5*0.0254;
+l4trans_new = 72e-3;
+l10_du3_1 = lval125+ltrpbpm+lbelw7+lwpump+lbelw11+lwdtrans+lwdfl;
+l10_du3_4 = lwdfl+lwdtrans+lbelw11+lwpump+lbelw7+l4trans+ltrpbpm+lval88+l4trans_new;
+oval88 : drift, l=lval88;
+oval125 : drift, l=lval125;
+o4trans : drift, l=l4trans;
+o4trans_new : drift, l=l4trans_new;
+yi10_b3w: monitor, l=ltrpbpm;
+yi10_b4w: monitor, l=ltrpbpm;
+oyi10du3: drift, l=l3space-l10_du3_1-l10_du3_4-2*lwd2-lww2;
 
-otrpcav10: drift, l=ltrpcav;
-owc10: drift, l=lwc;
-oh10: drift, l=lh10;
-ol10: drift, l=ll10;
-otrpwd10: drift, l=ltrpwd10;
+thw10 = +1.32953414551945548e-03;
+nwd10 = 2;
+thc10 = nwd10*thw10+thd0;
+yo9_dw0: sbend, l=lwd2/sinc(0.5*thw10), angle=thw10, e1=0.5*thw10, e2=0.5*thw10;
+yi10_dw0: sbend, l=lwd2/sinc(0.5*thw10), angle=-thw10, e1=-0.5*thw10, e2=-0.5*thw10;
+lw09 = lc2w_wd+lgvfl+lgv+lgvwd-lpld0q1;
+lw10 = lpld0q1+ltrp13+l3space-l10_du3_4;
+lc10 = 2*lcenxdx*cos(thc10)
+ + 2*lcendx*cos(thc10-0.5*thdx)/cos(0.5*thdx)
+ + 2*lcendxd0*cos(thc10-thdx)/cos(thdx)
+ + 2*lcend0*cos(nwd10*thw10-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx))
+ + (lw10-lw09)*cos(nwd10*thw10)
+ - 4*lwd2*cos(thw10)*cos(0.5*thw10) - 2*lww2*cos(thw10)
+ - ltrpx1 - ltrp13 - l3space + l10_du3_4 + lww2 + 2*lwd2
+ - 3*lcav591 - 2*lbelw11;
+l10cavdif = lc2w_wd-ltrpx1+lgvfl+lgvwd+2*lwd2+lww2;
+ocavtrp09 : drift, l=0.5*(lc10 - l10cavdif);
+ocavtrp10 : drift, l=0.5*(lc10 + l10cavdif);
 
-cavity_591MHz: rfcavity, l = l591, harmon = 7560;
-
-dsw_ir10l: sbend, l=lwdl/sinc(0.5*(thl10-thd0)), angle=thl10-thd0, e1=0.5*(thl10-thd0), e2=0.5*(thl10-thd0);
-dsw_ir10h: sbend, l=lwdl/sinc(0.5*thd0), angle=-thd0, e1=-0.5*thd0, e2=-0.5*thd0;
-dwarm_ir10l: dsw_ir10l, angle=-dsw_ir10l->angle, e1=-dsw_ir10l->e1, e2=-dsw_ir10l->e2;
-dwarm_ir10h: dsw_ir10h;
-
-ir10w: line=(otrpcav10,cavity_591MHz,owc10);
-
-ir10: line=(ir10w,dsw_ir10h,oh10,dwarm_ir10h,otrpwd10);
-ir10_41: line=(ir10w,dsw_ir10l,ol10,dwarm_ir10l,otrpwd10);
+ir10: line=(ins09y,oc2w_wd,ogvfl,valve_wd,ogvwd,yo9_dw0,oww2,yo9_dw0,
+ ocavtrp09,h10_cav591_1,obelw11,h10_cav591_2,obelw11,h10_cav591_3,ocavtrp10,
+ trp10y,
+ oval125,yi10_b3w,obelw7,owpump,obelw11,oyi10du3,
+ owdtrans,owdfl,yi10_dw0,oww2,yi10_dw0,owdfl,owdtrans,
+ obelw11,owpump,obelw7,o4trans,yi10_b4w,oval88,o4trans_new,
+ mat10y);

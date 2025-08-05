@@ -1,13 +1,86 @@
 call, file='rhic-lat.madx';
 
-e275 = 275e9;
-p275 = sqrt(e275*e275-pmass*pmass);
+// RHIC layout info
+lrhicdx = lcendx/cos(0.5*thdx);
+trhicdx = 0.5*thdx;
+lrhicx0 = lcendxd0/cos(thdx);
+trhicx0 = thdx;
+lrhicd0 = lcend0/cos(0.5*(thdx+thd0));
+trhicd0 = 0.5*(thdx+thd0);
+lrhic05 = lpld0d5-ldspd5x-rho*tan(0.5*(thd5-thd0));
+trhic05 = thd0;
+lrhicd5i = 2*rho*sin(0.5*(thd5-thd0));
+trhicd5i = 0.5*(thd5+thd0);
+lrhicd5o = 2*rho*sin(0.5*(thd5+thd0));
+trhicd5o = 0.5*(thd5-thd0);
+lrhic56i = 0.5*lplq5q6-rho*tan(0.5*(thd5-thd0))-ldspd5a+lq+lplq6q7-lpldsq7-ldps-ldspds;
+lrhic56o = 0.5*lplq5q6-rho*tan(0.5*(thd5+thd0))+ldspd5a+lq+lplq6q7-lpldsq7-ldps+ldspds;
+lrhic69 = ldps*sinc(0.5*thds);
+trhicd6 = thd5+0.5*thds;
+lrhic68i = lpldsq7 - ldspds + lq7 + lplq7q8 + lq + lqd - ldspqd;
+lrhic68o = lpldsq7 + ldspds + lq7 + lplq7q8 + lq + lqd + ldspqd;
+trhic68 = thd5+thds;
+lrhicd8 = ldip*sinc(0.5*thcell);
+trhicd8 = thd5+thds+0.5*thcell;
+lrhic89i = lqd-ldspqd+lq+lplq9ds-ldspds;
+lrhic89o = lqd+ldspqd+lq+lplq9ds+ldspds;
+trhic89 = thd5+thds+thcell;
+trhicd9 = thd5+thcell+1.5*thds;
+lrhic910bi = lbd10-ldspds-lbfl;
+lrhic910bo = lbd10+ldspds-lbfl;
+trhic910 = thd5+thcell+2*thds;
 
-lwdl = 6.0;
-lwds = 4.4;
-lwc = 2;
+lcq8 = lbfl+lqbms+lq+lcq+lcor+lcfl;
+lcqs = lbfl+lqb+lq+lcq+lcor+lcfl;
+lcqt4 = lbfl+lsb4c+lsxt+lqs4+lq4+lcq4+lcor+lcfl;
 
-call, file='ir2-lat.madx';
+// Warm objects
+lvalve = 3.84*0.0254;
+lbelw7 = 7.67*0.0254;
+lbelw11 = 11.52*0.0254;
+lwpump = 13.12*0.0254;
+ltrpbpm = 5.06*0.0254;
+obelw7: drift, l=lbelw7;
+obelw11: drift, l=lbelw11;
+owpump: drift, l=lwpump;
+// Bits for the warm dipoles
+lwdtrans = 0.438;
+lwdfl = 0.198;
+owdtrans: drift, l=lwdtrans;
+owdfl: drift, l=lwdfl;
+
+rhic_rip = 590.581639053215;
+dx0_eic_ip6 = +0.98;
+dtheta0_eic_ip6 = -0.017;
+
+// Layout of a standard IR between triplets
+lc2w_wd = 1.36941;
+lgv = 0.11;
+lgvfl = 0.20;
+lgvwd = 0.42;
+lwd2 = 2.0;
+lww2 = 0.4;
+nwd = 3;
+thwd = +1.99630619719628599e-03;
+thcross = nwd*thwd+thd0;
+lcross = 2*(lcenxdx*cos(thcross)
+ + lcendx*cos(thcross-0.5*thdx)/cos(0.5*thdx)
+ + lcendxd0*cos(thcross-thdx)/cos(thdx)
+ + lcend0*cos(nwd*thwd-0.5*(thdx-thd0))/cos(0.5*(thdx+thd0))
+ - (lgv+lgvfl+lgvwd+lc2w_wd-lpld0q1)*cos(nwd*thwd)
+ - lwd2*cos(1.5*thwd)*(2*cos(thwd)+1) - lww2*2*cos(1.5*thwd)*cos(0.5*thwd));
+ltrpx1=lbq1+lflq1x; // Q1 flange up to but not including Q1
+ltrp13=lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3; // Q1 to Q3 flange inclusive
+dwfwd: sbend, l=lwd2/sinc(0.5*thwd), angle=thwd, e1=0.5*thwd, e2=0.5*thwd;
+dwrev: sbend, l=lwd2/sinc(0.5*thwd), angle=-thwd, e1=-0.5*thwd, e2=-0.5*thwd;
+valve_wd: instrument, l=lgv;
+ogvfl: drift, l=lgvfl;
+ogvwd: drift, l=lgvwd;
+oc2w_wd: drift, l=lc2w_wd-ltrpx1;
+oww2: drift, l=lww2;
+
+// call, file='ir2-lat.madx';
+call, file='ir2s-lat.madx';
 call, file='ir4-lat.madx';
 call, file='ir6-lat.madx';
 call, file='ir8c-lat.madx';
@@ -15,8 +88,6 @@ call, file='ir8n-lat.madx';
 call, file='ir10-lat.madx';
 call, file='ir12-lat.madx';
 call, file='rhic-ps.madx';
-call, file='ir2-ps.madx';
-call, file='ir10-ps.madx';
 
 y_qmain_ps := qmain_ps;
 b_qmain_ps := -qmain_ps;
@@ -26,51 +97,5 @@ b_qtrim_ps := -qtrim_ps;
 ip6d: marker;
 ip6w: marker;
 
-hsr_hi_n: line=(ip6d,hsr6d,
- arc07y,ins07y,ir08n,ins08y,arc09y,
- ins09y,ir10,ins10b,
- arc11b,
- mat11b,bo11_snk7,ins11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w);
-
-hsr_lo_n: line=(ip6d,hsr6d,
- arc07y,ins07y,ir08n,ins08y,arc09y,
- ins09y,ir10_41,ins10y,
- arc11y,
- ins11y,ir12_41,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w);
-
-hsr: line=(ip6d,hsr6d,
- arc07y,
- ir8,
- arc09y,
- ins09y,ir10,ins10b,
- arc11b,
- mat11b,bo11_snk7,ins11b,bo11_du3_hsr,trp11b,ir12,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w);
-hsr41: line=(ip6d,hsr6d,
- arc07y,ir8,arc09y,
- ins09y,ir10_41,ins10y,
- arc11y,
- ins11y,ir12_41,trp12b,bi12_du3_hsr,mat12b,
- arc01b,
- ir2,
- arc03y,
- mat03y,yi3_du3_hsr,trp03y,ir4,trp04y,yo4_du3_hsr,mat04y,
- arc05y,
- hsr6w,ip6w);
+hsr_hi_n: line=(ip6d,hsr6d,arc07y,ir08n,arc09y,ir10,arc11y,ir12,arc01y,ir2,arc03y,ir4,arc05y,hsr6w,ip6w);
+hsr_hi_8s_2s: line=(ip6d,hsr6d,arc07y,ir08n,arc09y,ir10,arc11y,ir12,arc01y,ir02s,arc03y,ir4,arc05y,hsr6w,ip6w);

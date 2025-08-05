@@ -1,174 +1,366 @@
-lwd04 = 5;
-lseptum = 2;
-lhjet = 2;
-lpc = 2.5;
-lpcsep = 3;
-l_wcm_to_septum = 16;
-l_pc_to_bpm4 = 4;
-lqwir4 = 0.9;
-lqwfl = 0.2;
-lq1wd = 2.92770376 - lflq1x;
-thwdir4 = 6.06998319986880829E-003;
-lir4h = 17.0952891656339503;
+// Standard DU objects
+lk10hz = 2.45*0.0254;
+
+// Vacuum components
+l03q1fl = 1.355755;
+l04q1fl = 1.355428;
+l04x_00 = 0.338698;
+l04x_01 = 0.127656;
+lbel45 = 4.5*0.0254;
+lbel7_2 = 7.62*0.0254;
+lbel7_4ext = 8.17*0.0254;
+lt76_50 = 0.182934;
+lt50_124 = 0.419199;
+lt88_76 = 0.104983;
+lt88_124 = 0.2159;
+lt88_152 = 0.371308;
+lt124_152 = 0.190216;
+lv50 = 75e-3;
+lv88 = 85e-3; // Matches drawing
+lv125 = 97.5e-3; // Matches drawing
+lv150 = 0.11;
+l04_1 = 4.959625;
+
+// Injection, RF dimensions
+lseptum = 4;
 lkickinj = 0.9;
-l_kick_assy = 10;
-n_kick_inj = 10;
-lkickx3 = 4.1;
-lkickx4 = 4.0;
-lk28 = 5 - lqwir4 - 2*lqwfl - lbsk3ly;
-lk197 = 5 - lcktufl;
-li28 = 0.5;
-li197 = 0.5;
+lkfl = 0.059436;
+likickinj = 0.1;
+n_kick_inj = 18;
+lcav25 = 2.619324;
+lcav50 = 1.466253;
+lcav100 = 0.829399;
+lcav197 = 34*.0254;
+li25 = lbelw7;
+li50 = lbelw7;
+li100 = lbelw7;
+li197 = lbelw7;
+li25_197 = lbelw7+lvalve;
+l4q3_25 = 2.65718;
+lv25 = lbelw7;
+l4sq4 = 10.64309;
+lsv4 = l4sq4 - lseptum - lsxt - lsb4 - lbfl4 - lbsk4iy;
+ls197 = l3space - lbsk4iy - lsv4 - lseptum - ltrpbpm - 2*lvalve - 4*lbelw7 - 2*lwpump
+ - 4*lcav25 - 3*li25 - li25_197 - 9*lcav197 - 8*li197;
 
-dwarm3: sbend, angle=-thwdir4, l=lwd04/sinc(0.5*thwdir4), e1=-0.5*thwdir4, e2=-0.5*thwdir4;
-dwarm4: sbend, angle=+thwdir4, l=lwd04/sinc(0.5*thwdir4), e1=+0.5*thwdir4, e2=+0.5*thwdir4;
+// Polarimetry layout
+lpc = 82.92*0.0254;
+ljettrans = 0.32;
+ljetfl = 0.025;
+ljet = 0.622;
+ljetall = ljet+2*ljetfl+2*ljettrans;
 
-warm_quad3: quadrupole, l=lqwir4;
-warm_quad4: quadrupole, l=lqwir4;
+lxc2w4 = 55e-3;
+lbpm124 = (5.06+1.5)*0.0254;
+lksc = 38.17*0.0254; // Not consistent with RHIC
+lschv = 0.2;
+lbscl = 75*0.0254;
+l03k10hz = 6*.0254;
+l03q3xtra = 2.611356-lbfl3-lbc3-lcor-lcq3a;
+lhjettag = l3space - lxc2w4 - lv88 - 3*lt88_124 - lbpm124 - 2*lbel7_2 - 4*lwpump - 2*lbelw11 - 6*lv125 - 15*lbel7_4ext
+ - 8*lksc - lschv - lbscl - 2*lwdfl - 2*lwd2 - lww2 - 2*ljetall - lpc - l03k10hz - l03q3xtra;
+
+lw3t = lwdfl+lt88_124+6*lbel7_4ext+3*lwpump+4*lv125+2*ljetall+lpc+l03k10hz+lbel7_2+l03q3xtra+ltrp13;
+lw3 = lpld0q1+lw3t+2*lwd2+lww2;
+lw4 = l04q1fl+lv125+lbel7_2+lwpump+lbelw11+lt124_152+l04x_01+3*lcav50+3*lbel7_4ext+lt88_152+lv88+lwdfl-lpld0q1;
+
+thw04 = +1.86841941128851048e-03;
+nwd04 = 2;
+thc04 = nwd04*thw04+thd0;
+lc04 = 2*lcenxdx*cos(thc04)
+ + 2*lcendx*cos(thc04-0.5*thdx)/cos(0.5*thdx)
+ + 2*lcendxd0*cos(thc04-thdx)/cos(thdx)
+ + 2*lcend0*cos(nwd04*thw04-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx))
+ + (lw3-lw4)*cos(nwd04*thw04)
+ - 4*lwd2*cos(thw04)*cos(0.5*thw04) - 2*lww2*cos(thw04);
+l04 = lc04 - lw3t - l03q1fl - lv88 - lt88_76 - l04x_00 - 21*lbel45 - 4*lcav100 - lt76_50 - 2*lv50
+ - 32*lkfl - 16*lkickinj - lt50_124 - lv125 - 4*lbelw11 - lwpump - lt88_124 - lwdfl;
+
+l04q3xtra = 2.661761-0.127167+0.076764-lbfl3-lbc3-lcor-lcq3a;
+l04_3_00 = 0.733446-0.0381-0.0375-(5*0.0127-0.00127)+0.02;
+l04_3_01 = 0.305182+0.021068;
+l_marmon_cf = 0.108232;
+l_marmon_cf_124_145 = 0.204016;
+lsepfl0 = 0.1666;
+lsepfl1 = 0.1216;
+lsepfl2 = 0.129284;
+lsepfl3 = 0.116544;
+lsep_ind = 1.5;
+lsep_dc = 3.976;
+l04_3_02 = l3space - l04q3xtra - 2*lv125 - 2*lbel7_2 - 2*lwpump - l04_3_00
+ - l_marmon_cf_124_145 - 12*lcav197 - 5*l_marmon_cf - 3*lv150 - 5*lbel7_4ext - l04_3_01 - 4*lcav25 - lt124_152
+ - 2*lbpm124 - lsepfl0 - lsepfl1 - lsepfl2 - lsepfl3 - lsep_ind - lsep_dc - lbelw11 - lt88_124 - lv88 - lxc2w4;
+
+yo4_dw0: sbend, l=lwd2/sinc(0.5*thw04), angle=thw04, e1=0.5*thw04, e2=0.5*thw04;
+yi3_dw0: yo4_dw0, angle=-thw04, e1=-0.5*thw04, e2=-0.5*thw04;
 
 kickinj: kicker, l=lkickinj;
-sl_kick_mod1a: kickinj;
-sl_kick_mod2a: kickinj;
-sl_kick_mod3a: kickinj;
-sl_kick_mod4a: kickinj;
-sl_kick_mod5a: kickinj;
-sl_kick_mod6a: kickinj;
-sl_kick_mod7a: kickinj;
-sl_kick_mod8a: kickinj;
-sl_kick_mod9a: kickinj;
-sl_kick_mod10a: kickinj;
-sl_kick_mod1b: kickinj;
-sl_kick_mod2b: kickinj;
-sl_kick_mod3b: kickinj;
-sl_kick_mod4b: kickinj;
-sl_kick_mod5b: kickinj;
-sl_kick_mod6b: kickinj;
-sl_kick_mod7b: kickinj;
-sl_kick_mod8b: kickinj;
-sl_kick_mod9b: kickinj;
-sl_kick_mod10b: kickinj;
+sl_kick_mod01: kickinj;
+sl_kick_mod02: kickinj;
+sl_kick_mod03: kickinj;
+sl_kick_mod04: kickinj;
+sl_kick_mod05: kickinj;
+sl_kick_mod06: kickinj;
+sl_kick_mod07: kickinj;
+sl_kick_mod08: kickinj;
+sl_kick_mod09: kickinj;
+sl_kick_mod10: kickinj;
+sl_kick_mod11: kickinj;
+sl_kick_mod12: kickinj;
+sl_kick_mod13: kickinj;
+sl_kick_mod14: kickinj;
+sl_kick_mod15: kickinj;
+sl_kick_mod16: kickinj;
 
-cav28: rfcavity, l=3394.8e-3, harmon=315;
-cav197: rfcavity, l=874e-3, harmon=2520;
-cav28_1: cav28;
-cav28_2: cav28;
-cav197_1: cav197;
-cav197_2: cav197;
-cav197_3: cav197;
-cav197_4: cav197;
-cav197_5: cav197;
+cav25: rfcavity, l=lcav25, harmon=315;
+cav50: rfcavity, l=lcav50, harmon=630;
+cav100: rfcavity, l=lcav100, harmon=1260;
+cav197: rfcavity, l=lcav197, harmon=2520;
+cav25_1: cav25;
+cav25_2: cav25;
+cav25_3: cav25;
+cav25_4: cav25;
+cav50_1: cav50;
+cav50_2: cav50;
+cav50_3: cav50;
+cav100_1: cav100;
+cav100_2: cav100;
+cav100_3: cav100;
+cav100_4: cav100;
+cav197_01: cav197;
+cav197_02: cav197;
+cav197_03: cav197;
+cav197_04: cav197;
+cav197_05: cav197;
+cav197_06: cav197;
+cav197_07: cav197;
+cav197_08: cav197;
+cav197_09: cav197;
+cav197_10: cav197;
+cav197_11: cav197;
+cav197_12: cav197;
 
 septum_ir4: placeholder, l=lseptum;
-det_pol_hpol_hjet: instrument, l=lhjet;
-det_pol_hpol_pc1: instrument, l = lpc;
-det_pol_hpol_pc2: instrument, l = lpc;
 
-o_wcm_to_septum: drift, l=l_wcm_to_septum-lwcmxfl;
-o_pc: drift, l=lpcsep-lpc;
-o_pc_to_gv: drift, l=l_pc_to_bpm4-lbfl4-lbsk4iy-0.5*lpc;
-o_septum_to_pc: drift, l=l3space-2*lbsk4ly-o3y4c0->l-o3y4c1->l-lwcmxfl-l_wcm_to_septum-lseptum-l_pc_to_bpm4-lpcsep-0.5*lpc+lbfl4-lqwir4-2*lqwfl;
-oqwfl: drift, l=lqwfl;
-oq1wd: drift, l=lq1wd;
-ohjetfl: drift, l=0.5*(lq1wd-lhjet);
-o_kick_assy: drift, l=l_kick_assy/n_kick_inj - lkickinj;
-okickx3: drift, l=lkickx3;
-okickx4: drift, l=lkickx4;
-okickwd3: drift, l=lir4h-l_kick_assy-lkickx3;
-okickwd4: drift, l=lir4h-l_kick_assy-lkickx4;
-ok28: drift, l=lk28;
-ok197: drift, l=lk197;
-o28: drift, l=li28;
+yi3_b1w: monitor, l=ltrpbpm;
+yi3_b3w: monitor, l=ltrpbpm;
+yo4_b1w: monitor, l=ltrpbpm;
+yo4_b3w: monitor, l=ltrpbpm;
+
+// Polarimetery and nearby
+ovalve: drift, l=lvalve;
+ojettrans: drift, l=ljettrans;
+ojetfl: drift, l=ljetfl;
+
+det_pol_hpol_hjet: instrument, l=ljet;
+det_pol_hpol_he3jet: instrument, l=ljet;
+det_pol_hpol_pc1_2: instrument, l=lpc;
+
+o03q1xtra: drift, l=l03q1fl-ltrpx1;
+o04q1xtra: drift, l=l04q1fl-ltrpx1;
+ot88_76: drift, l=lt88_76;
+o04x_00: drift, l=l04x_00;
+o04x_01: drift, l=l04x_01;
+obel45: drift, l=lbel45;
+ot76_50: drift, l=lt76_50;
+ov50: drift, l=lv50;
+ov150: drift, l=lv150;
+okfl: drift, l=lkfl;
+
+o25: drift, l=li25;
+o50: drift, l=li50;
+o100: drift, l=li100;
 o197: drift, l=li197;
-o197_28: drift, l=l3space -
- (lbsk3iy+o3y3c0->l+2*lcktxfl+o3y3c1->l+4*lcktufl+o3y3c2->l
-  +2*lbsk3ly+o3y3c10->l+lqwir4+2*lqwfl
-  +5*cav197->l+4*li197+2*cav28->l+li28+lk197+lk28);
+o25_197: drift, l=li25_197;
+osv4: drift, l=lsv4;
+os197: drift, l=ls197;
+o04_0: drift, l=l04 - l04_1;
+o04_1: drift, l=l04_1;
+ot50_124: drift, l=lt50_124;
+ot88_152: drift, l=lt88_152;
+ot124_152: drift, l=lt124_152;
 
-kick_assy_a: line=(
- sl_kick_mod1a,o_kick_assy,
- sl_kick_mod2a,o_kick_assy,
- sl_kick_mod3a,o_kick_assy,
- sl_kick_mod4a,o_kick_assy,
- sl_kick_mod5a,o_kick_assy,
- sl_kick_mod6a,o_kick_assy,
- sl_kick_mod7a,o_kick_assy,
- sl_kick_mod8a,o_kick_assy,
- sl_kick_mod9a,o_kick_assy,
- sl_kick_mod10a,o_kick_assy);
-kick_assy_b: line=(
- sl_kick_mod1b,o_kick_assy,
- sl_kick_mod2b,o_kick_assy,
- sl_kick_mod3b,o_kick_assy,
- sl_kick_mod4b,o_kick_assy,
- sl_kick_mod5b,o_kick_assy,
- sl_kick_mod6b,o_kick_assy,
- sl_kick_mod7b,o_kick_assy,
- sl_kick_mod8b,o_kick_assy,
- sl_kick_mod9b,o_kick_assy,
- sl_kick_mod10b,o_kick_assy);
+oxc2w4: drift, l=lxc2w4;
+ov88: drift, l=lv88;
+ov125: drift, l=lv125;
+ot88_124: drift, l=lt88_124;
+h03_b4: monitor, l=lbpm124;
+obel7_2: drift, l=lbel7_2;
+obel7_4ext: drift, l=lbel7_4ext;
+h03_kscv3a: instrument, l=lksc;
+h03_kscv3b: instrument, l=lksc;
+h03_kscv3c: instrument, l=lksc;
+h03_kscv3d: instrument, l=lksc;
+h03_ksch3a: instrument, l=lksc;
+h03_ksch3b: instrument, l=lksc;
+h03_ksch3c: instrument, l=lksc;
+h03_ksch3d: instrument, l=lksc;
+h03_bscl: instrument, l=lbscl;
+oschv: drift, l=lschv;
+o03k10hzh: drift, l=0.5*l03k10hz;
+o03q3xtra: drift, l=l03q3xtra;
+ohjettag: drift, l=lhjettag;
 
-ip4: marker;
+inj_kickers: line=(
+ obel45,
+ okfl, sl_kick_mod01, okfl,
+ obel45,
+ okfl, sl_kick_mod02, okfl,
+ obel45,
+ okfl, sl_kick_mod03, okfl,
+ obel45,
+ okfl, sl_kick_mod04, okfl,
+ obel45,
+ okfl, sl_kick_mod05, okfl,
+ obel45,
+ okfl, sl_kick_mod06, okfl,
+ obel45,
+ okfl, sl_kick_mod07, okfl,
+ obel45,
+ okfl, sl_kick_mod08, okfl,
+ obel45,
+ ov50,
+ obel45,
+ okfl, sl_kick_mod09, okfl,
+ obel45,
+ okfl, sl_kick_mod10, okfl,
+ obel45,
+ okfl, sl_kick_mod11, okfl,
+ obel45,
+ okfl, sl_kick_mod12, okfl,
+ obel45,
+ okfl, sl_kick_mod13, okfl,
+ obel45,
+ okfl, sl_kick_mod14, okfl,
+ obel45,
+ okfl, sl_kick_mod15, okfl,
+ obel45,
+ okfl, sl_kick_mod16, okfl);
 
-yi3_du3_hsr:line=(obsk3iy,
- yi3_sv4,
- o3y3c0,
- ocktxfl,
- yi3_kscv3,
- ocktxfl,
- o3y3c1,
- ocktufl,
- yi3_ksch3_2,
- ocktufl,
- o3y3c2,
- ocktufl,
- yi3_ksch3_1,
- ocktufl,
- ok197,
- cav197_5,
- o197,
- cav197_4,
- o197,
- cav197_3,
- o197,
- cav197_2,
- o197,
- cav197_1,
- o197_28,
- cav28_2,
- o28,
- cav28_1,
- ok28,
+o04q3xtra: drift, l=l04q3xtra;
+o04_3_00: drift, l=l04_3_00;
+o04_3_01: drift, l=l04_3_01;
+o04_3_02: drift, l=l04_3_02;
+o_marmon_cf_124_145: drift, l=l_marmon_cf_124_145;
+o_marmon_cf: drift, l=l_marmon_cf;
+osepfl0: drift, l=lsepfl0;
+osepfl1: drift, l=lsepfl1;
+osepfl2: drift, l=lsepfl2;
+osepfl3: drift, l=lsepfl3;
+
+h04_b4: monitor, l=lbpm124;
+h04_bsep: monitor, l=lbpm124;
+septum_ind: placeholder, l=lsep_ind;
+septum_dc: placeholder, l=lsep_dc;
+
+yi3_du3_hsr: line=(
+ oxc2w4,
+ ov88,
+ ot88_124,
+ h03_b4,
+ obel7_2,
+ owpump,
+ obelw11,
+ ohjettag,
+ obelw11,
+ ov125,
+ obel7_4ext,
+ h03_kscv3a,
+ obel7_4ext,
+ h03_kscv3b,
+ obel7_4ext,
+ h03_kscv3c,
+ obel7_4ext,
+ h03_kscv3d,
+ obel7_4ext,
+ oschv,
+ h03_ksch3a,
+ obel7_4ext,
+ h03_ksch3b,
+ obel7_4ext,
+ h03_ksch3c,
+ obel7_4ext,
+ h03_ksch3d,
+ h03_bscl,
+ ov125,
+ obel7_4ext,
+ ot88_124,
+ owdfl,
+ yi3_dw0,
+ oww2,
+ yi3_dw0,
+ owdfl,
+ ot88_124,
+ obel7_4ext,
+ owpump,
+ ov125, obel7_4ext, ojettrans, ojetfl, det_pol_hpol_hjet, ojetfl, ojettrans, obel7_4ext, ov125,
+ owpump,
+ obel7_4ext, ojettrans, ojetfl, det_pol_hpol_he3jet, ojetfl, ojettrans, obel7_4ext,
+ owpump,
+ ov125,
+ obel7_4ext,
+ det_pol_hpol_pc1_2,
+ o03k10hzh,
  yi3_kfbh3,
- o3y3c10,
- oqwfl,
- warm_quad3,
- oqwfl,
- obsk3ly,
- yi3_sv3,
- obsk3ly);
+ o03k10hzh,
+ obel7_2,
+ ov125,
+ o03q3xtra);
 
-yo4_du3_hsr:line=(obsk4ly,
- yo4_sv3_1,
- obsk4ly,
- oqwfl,
- warm_quad4,
- oqwfl,
- o3y4c0,
- yo4_kfbh3,
- o3y4c1,
- owcmxfl,
- yo4_wcm3,
- owcmxfl,
- o_wcm_to_septum,
- septum_ir4,
- o_septum_to_pc,
- det_pol_hpol_pc2,
- o_pc,
- det_pol_hpol_pc1,
- o_pc_to_gv,
- yo4_sv4,
- obsk4iy);
+ir04x:line=(
+ o03q1xtra,
+ ov88,
+ ot88_76,
+ o04x_00,
+ obel45, cav100_4, obel45, cav100_3, obel45, cav100_2, obel45, cav100_1,
+ ot76_50,
+ ov50,
+ inj_kickers,
+ ot50_124,
+ ov125,
+ obelw11,
+ o04_0,
+ obelw11,
+ owpump,
+ obelw11,
+ o04_1,
+ obelw11,
+ ot88_124,
+ owdfl, yo4_dw0, oww2, yo4_dw0, owdfl,
+ ov88,
+ ot88_152,
+ obel7_4ext, cav50_3, obel7_4ext, cav50_2, obel7_4ext, cav50_1,
+ o04x_01,
+ ot124_152,
+ obelw11,
+ owpump,
+ obel7_2,
+ ov125,
+ o04q1xtra);
 
-ir4: line=(
- oq1wd,dwarm3,okickwd3,kick_assy_b,okickx3,ip4,
- okickx4,kick_assy_a,okickwd4,dwarm4,ohjetfl,det_pol_hpol_hjet,ohjetfl);
+yo4_du3_hsr:line=(o04q3xtra,
+ ov125,
+ obel7_2,
+ owpump,
+ o04_3_00,
+ o_marmon_cf_124_145,
+ cav197_12, cav197_11, cav197_10, cav197_09,
+ o_marmon_cf, ov150, o_marmon_cf,
+ cav197_08, cav197_07, cav197_06, cav197_05,
+ o_marmon_cf, ov150, o_marmon_cf,
+ cav197_04, cav197_03, cav197_02, cav197_01,
+ o_marmon_cf, ov150,
+ obel7_4ext, cav25_4, obel7_4ext, cav25_3, o04_3_01,
+ obel7_4ext, cav25_2, obel7_4ext, cav25_1,
+ ot124_152,
+ ov125,
+ h04_bsep,
+ obel7_4ext,
+ osepfl3, septum_ind, osepfl2, osepfl1, septum_dc, osepfl0,
+ o04_3_02,
+ obelw11, owpump, obel7_2, h04_b4,
+ ot88_124,
+ ov88,
+ oxc2w4);
+
+ir4: line=(mat03y,yi3_du3_hsr,trp03y,ir04x,trp04y,yo4_du3_hsr,mat04y);

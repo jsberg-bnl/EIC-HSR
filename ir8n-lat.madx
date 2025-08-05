@@ -24,5 +24,6 @@ yo8_cq4f4:line=(obfl4,yo8_b4,osb4,yo8_tq4,oqs4,yo8_qf4,ocq4,lmp08y04,ocfl);
 ldelrot = l7dummy + ldum1fl + lrotcwt + lbel4rot + lqb4c - lqb4 + lbfl - lbfl4;
 odelrot: drift, l=ldelrot;
 
+o08: drift, l=lcross;
 ir08n: line=(mat07y,yi7_snk7,ins07y,yi7_cq4c4,odelrot,yi7_du3,trp07y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwrev,oww2,dwrev,oww2,dwrev,
  o08,dwfwd,oww2,dwfwd,oww2,dwfwd,ogvwd,valve_wd,ogvfl,oc2w_wd,trp08y,yo8_du3,odelrot,yo8_cq4f4,ins08y);

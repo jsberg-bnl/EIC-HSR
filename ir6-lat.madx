@@ -15,6 +15,7 @@ yo5_cq8_mod:line=(ocfl,
  obfl);
 yo5_d9r:line=(odswl,yo5_dh9,odsfl);
 
+h5_bv11:vmonitor;
 h5_tq11:quadrupole,l=lsxt;
 h5_tq11,k1:=-0.2381915/lsxt*h5_tq11_i/beam->brho;
 h5_q11:quadrupole,l=lq;
@@ -24,9 +25,9 @@ h5_b311:multipole,knl:={0,0,0,-74.08128000000002*h5_b311_i/beam->brho};
 h5_b411:multipole,knl:={0,0,0,0,-9273.26208*h5_b411_i/beam->brho};
 h5_a111:multipole,ksl:={0,-0.030435680000000007*h5_a111_i/beam->brho};
 h5_cor11:line=(olmp0,h5_tv11,h5_b311,h5_b411,h5_a111,olmp0);
-h5_cqtc11:line=(obfl,osb,h5_tq11,oqs,h5_q11,ocq,h5_cor11,ocfl);
+h5_cqtc11:line=(obfl,h5_bv11,osb,h5_tq11,oqs,h5_q11,ocq,h5_cor11,ocfl);
 
-! The IR6 snake, RHIC style
+// The IR6 snake, RHIC style
 yo5_int7_1 : obel78d;
 yo5_int7_2 : obel78d;
 yo5_bsnk : bpmv;
@@ -48,13 +49,13 @@ yo5_snk7:line=(odum1fl,
  osnke,
  odum1fl);
 
-! Make two D5Is with shortened beam tubes
+// Make two D5Is with shortened beam tubes
 h5_dh3: sbend, angle=thd5-thd0, l=ld5i;
 h5_dh4: sbend, angle=thd5-thd0, l=ld5i;
 h5_d3: line=(odsfl,h5_dh3,odsfl);
 h5_d4: line=(odsfl,h5_dh4,odsfl);
 
-! The IR6 widdershins rotator, RHIC style
+// The IR6 widdershins rotator, RHIC style
 yo5_introt : obel78d;
 yo5_brot : bpmv;
 yo5_rot_hlx1 : placeholder, l=lhelix;
@@ -75,12 +76,124 @@ yo5_rot:line=(odum1fl,
  osnke,
  odum1fl);
 
+// The IR6 deisul rotator, RHIC style
+h6_introt : obel78d;
+h6_brot : bpmv;
+h6_rot_hlx1 : placeholder, l=lhelix;
+h6_rot_hlx2 : placeholder, l=lhelix;
+h6_rot_hlx3 : placeholder, l=lhelix;
+h6_rot_hlx4 : placeholder, l=lhelix;
+h6_rot:line=(odum1fl,
+ osnke,
+ h6_rot_hlx4,
+ osnkm,
+ h6_rot_hlx3,
+ osnkmm,
+ h6_brot,
+ osnkmm,
+ h6_rot_hlx2,
+ osnkm,
+ h6_rot_hlx1,
+ osnke,
+ odum1fl);
+
+// IR6 deisul matching magnets: dipoles
+th_h601=thcell-dtheta0_eic_ip6+thd0-2*thds;
+h6_dh01: sbend, l=ld5o, angle=-th_h601;
+h6_d01: line=(od5ofl,h6_dh01,od5ofl);
+
+h6_dh02: sbend, l=ld5o, angle=thd5+thd0;
+h6_d02: line=(od5ofl,h6_dh02,od5ofl);
+h6_dh03: sbend, l=ldip, angle=thcell;
+h6_d03: line=(odfl,h6_dh03,odfl);
+h6_dh04: sbend, l=ldip, angle=thcell;
+h6_d04: line=(odfl,h6_dh04,odfl);
+
+h6_q04:quadrupole,l=lq2;
+h6_q04,k1:=-0.032247392307692316/lq2*h6_q04_i/beam->brho;
+h6_th04:hkicker,kick:=-0.005637592999999998*h6_th04_i/beam->brho;
+h6_b304:multipole,knl:={0,0,0,-15.945468750000002*h6_b304_i/beam->brho};
+h6_b404:multipole,knl:={0,0,0,0,-959.1093749999999*h6_b404_i/beam->brho};
+h6_b504:multipole,knl:={0,0,0,0,0,-94937.109375*h6_b504_i/beam->brho};
+h6_cor04:line=(olmp0,h6_th04,h6_b304,h6_b404,h6_b504,olmp0);
+h6_tp2i04:line=(oflq2a,h6_q04,ocq2,h6_cor04,ocfl2);
+
+h6_tv05:vkicker,kick:=-0.005612747*h6_tv05_i/beam->brho;
+h6_b305:multipole,knl:={0,0,0,-74.08128000000002*h6_b305_i/beam->brho};
+h6_b405:multipole,knl:={0,0,0,0,-9273.26208*h6_b405_i/beam->brho};
+h6_a105:multipole,ksl:={0,-0.030435680000000007*h6_a105_i/beam->brho};
+h6_cor05:line=(olmp0,h6_tv05,h6_b305,h6_b405,h6_a105,olmp0);
+h6_q05:quadrupole,l=lq;
+h6_q05,k1:=-0.016572460606060605/lq*h6_q05_i/beam->brho;
+h6_tq05:quadrupole,l=lsxt;
+h6_tq05,k1:=-0.2381915/lsxt*h6_tq05_i/beam->brho;
+h6_bv05:vmonitor;
+h6_cqtc05:line=(ocfl,h6_cor05,ocq,h6_q05,oqs,h6_tq05,osb,h6_bv05,obfl);
+
+h6_b06:monitor;
+h6_tq06:quadrupole,l=lsxt;
+h6_tq06,k1:=-0.2381915/lsxt*h6_tq06_i/beam->brho;
+h6_q06:quadrupole,l=lq4;
+h6_q06,k1:=-0.027149189411764706/lq4*h6_q06_i/beam->brho;
+h6_th06:hkicker,kick:=-0.005610334999999999*h6_th06_i/beam->brho;
+h6_b306:multipole,knl:={0,0,0,-73.87392*h6_b306_i/beam->brho};
+h6_b406:multipole,knl:={0,0,0,0,-9294.9504*h6_b406_i/beam->brho};
+h6_a106:multipole,ksl:={0,-0.03043852000000001*h6_a106_i/beam->brho};
+h6_cor06:line=(olmp0,h6_th06,h6_b306,h6_b406,h6_a106,olmp0);
+h6_cq4f06:line=(obfl,h6_b06,osb4c,h6_tq06,oqs4,h6_q06,ocq4,h6_cor06,ocfl);
+
+h6_b07:monitor;
+h6_q07:quadrupole,l=lq;
+h6_q07,k1:=-0.016572460606060605/lq*h6_q07_i/beam->brho;
+h6_tv07:vkicker,kick:=-0.005612747*h6_tv07_i/beam->brho;
+h6_b307:multipole,knl:={0,0,0,-74.08128000000002*h6_b307_i/beam->brho};
+h6_b407:multipole,knl:={0,0,0,0,-9273.26208*h6_b407_i/beam->brho};
+h6_a107:multipole,ksl:={0,-0.030435680000000007*h6_a107_i/beam->brho};
+h6_cor07:line=(olmp0,h6_tv07,h6_b307,h6_b407,h6_a107,olmp0);
+h6_cq8c07:line=(obfl,h6_b07,oqbms,h6_q07,ocq,h6_cor07,ocfl);
+
+h6_th08:hkicker,kick:=-0.005619562*h6_th08_i/beam->brho;
+h6_b308:multipole,knl:={0,0,0,-74.28479999999999*h6_b308_i/beam->brho};
+h6_b408:multipole,knl:={0,0,0,0,-9326.469119999998*h6_b408_i/beam->brho};
+h6_b108:multipole,knl:={0,-0.030651719999999997*h6_b108_i/beam->brho};
+h6_cor08:line=(olmp0,h6_th08,h6_b308,h6_b408,h6_b108,olmp0);
+h6_q08:quadrupole,l=lq;
+h6_q08,k1:=-0.016572460606060605/lq*h6_q08_i/beam->brho;
+h6_tq08:quadrupole,l=lsxt;
+h6_tq08,k1:=-0.2381915/lsxt*h6_tq08_i/beam->brho;
+h6_bh08:hmonitor;
+h6_cqtb08:line=(ocfl,h6_cor08,ocq,h6_q08,oqs,h6_tq08,osb,h6_bh08,obfl);
+
+h6_b09:monitor;
+h6_q09:quadrupole,l=lq;
+h6_q09,k1:=-0.016572460606060605/lq*h6_q09_i/beam->brho;
+h6_tv09:vkicker,kick:=-0.005612747*h6_tv09_i/beam->brho;
+h6_b309:multipole,knl:={0,0,0,-74.08128000000002*h6_b309_i/beam->brho};
+h6_b409:multipole,knl:={0,0,0,0,-9273.26208*h6_b409_i/beam->brho};
+h6_a109:multipole,ksl:={0,-0.030435680000000007*h6_a109_i/beam->brho};
+h6_cor09:line=(olmp0,h6_tv09,h6_b309,h6_b409,h6_a109,olmp0);
+h6_cq8c09:line=(obfl,h6_b09,oqbms,h6_q09,ocq,h6_cor09,ocfl);
+
+h6_th10:hkicker,kick:=-0.005619562*h6_th10_i/beam->brho;
+h6_b310:multipole,knl:={0,0,0,-74.28479999999999*h6_b310_i/beam->brho};
+h6_b410:multipole,knl:={0,0,0,0,-9326.469119999998*h6_b410_i/beam->brho};
+h6_b110:multipole,knl:={0,-0.030651719999999997*h6_b110_i/beam->brho};
+h6_cor10:line=(olmp0,h6_th10,h6_b310,h6_b410,h6_b110,olmp0);
+
+h6_q10:quadrupole,l=lq;
+h6_q10,k1:=-0.016572460606060605/lq*h6_q10_i/beam->brho;
+h6_tq10:quadrupole,l=lsxt;
+h6_tq10,k1:=-0.2381915/lsxt*h6_tq10_i/beam->brho;
+h6_bh10:hmonitor;
+h6_cqtb10:line=(ocfl,h6_cor10,ocq,h6_q10,oqs,h6_tq10,osb,h6_bh10,obfl);
+
 e275 = 275e9;
-p275 = sqrt(e275*e275-pmass*pmass*1e18);
+p275 = sqrt(e275*e275-m_proton*m_proton);
 
 // Detector solenoid
 sol_rot = 0.025;
-sol_half: solenoid, l=2;
+lsol_det = 2;
+sol_half: solenoid, l=lsol_det, ks=0;
 star_detect_f: sol_half;
 star_detect_r: sol_half;
 pbr_sol_f: yrotation, angle=+sol_rot;
@@ -92,40 +205,23 @@ per_sol_r: yrotation, angle=-sol_rot;
 pet_sol_r: translation, dx=-sol_half->l*tan(sol_rot);
 l_sol_pr: line=(pbr_sol_r,star_detect_r,pet_sol_r,per_sol_r);
 
-// Extra offset since I don't want ot have a z_offset for the detector solenoid
-dz_sol_r = -sol_half->l*tan(sol_rot)*tan(0.5*sol_rot);
 // Layout near the IR
+// Rear IR layout;
+l06d_q1a=1.8;
+l06d_q1b=1.4;
+l06d_q2=4.5;
+l06d_sol_q1a=3.3;
+l06d_q1a_q1b=0.5;
+l06d_q1b_q2=1.5;
+l06d_q2_q3=22.45;
+q1apr: quadrupole, l=l06d_q1a;
+q1bpr: quadrupole, l=l06d_q1b;
+q2pr: quadrupole, l=l06d_q2;
+o06d_sol_q1a: drift, l=l06d_sol_q1a-lsol_det*tan(sol_rot)*tan(0.5*sol_rot);
+o06d_q1a_q1b: drift, l=l06d_q1a_q1b;
+o06d_q1b_q2: drift, l=l06d_q1b_q2;
+o06d_q2_q3: drift, l=l06d_q2_q3;
 
-// Drifts from magnet to flange, new magnets
-ofl: drift, l=0.5;
-o2fl: drift, l=2*ofl->l;
-
-// These are RHIC DX magnets
-b1pr: rbend, l=lcendx, angle=-17e-3;
-b2pr: rbend, l=lcendx, angle=+3.67453870996644781E-003;
-
-// Nominal quads for proton rear
-qcrab: quadrupole, l=1.5;
-
-l_q1apr = 1.8;
-l_q1bpr = 1.4;
-l_q2pr = 4.5;
-lfl = 0.5;
-z_q1apr = 4.2+dz_sol_r;
-z_q1bpr = 6.3+dz_sol_r;
-z_q2pr = 10.75+dz_sol_r;
-o1pr_1: drift, l=z_q1apr-0.5*l_q1apr;
-o1pr_2: drift, l=z_q1bpr-z_q1apr-0.5*(l_q1apr+l_q1bpr);
-o1pr_3: drift, l=z_q2pr-z_q1bpr-0.5*(l_q1bpr+l_q2pr);
-o1pr_4: drift, l=38 - z_q2pr - 0.5*l_q2pr - ofl->l - qcrab->l;
-q1apr: quadrupole, l=l_q1apr;
-q1bpr: quadrupole, l=l_q1bpr;
-q2pr: quadrupole, l=l_q2pr;
-q3pr: qcrab;
-q4pr: qcrab;
-q5pr: qcrab;
-
-// Forward
 // b0pf layout
 ze = 5.8; // Distance along electron line to B0 entrance plane
 ac = 25e-3; // Crossing angle
@@ -172,50 +268,53 @@ pbt_b1pf: translation;
 per_b1pf: yrotation;
 pet_b1pf: translation;
 o06w_b1_b1a: drift;
-b1apf: sbend, l=1.50, k0:=0;
+b1apf: sbend, l=1.50;
 pbr_b1apf: yrotation;
 pbt_b1apf: translation;
 per_b1apf: yrotation;
 pet_b1apf: translation;
 
-// These are RHIC DX magnets
-b1pr: rbend, l=lcendx, angle=-17e-3;
-b2pr: rbend, l=lcendx, angle=+3.67453870996644781E-003;
-
-// New dipoles
+// New dipoles;
 b_b2pf = 5;
-g_b2pf = b_b2pf*clight/p275;
 B2PF_TH = +1.67744943262122526E-002;
-b2pf: sbend, angle:=b2pf_th, l:=b2pf_th/g_b2pf, e1:=0.5*b2pf_th, e2:=0.5*b2pf_th;
+b2pf: sbend, angle := b2pf_th, l := p275*b2pf_th/(b_b2pf*clight), e1 := 0.5*b2pf_th, e2 := 0.5*b2pf_th;
 
 oint: drift, l=0.3;
+otpr: drift, l=0.25;
 
 // Drifts from magnet to flange, new magnets
-o_crab_mag: drift, l=1.0;
+l_crab_mag=1;
+o_crab_mag: drift, l=l_crab_mag;
 ow2c: drift, l=1.0;
 o_ffdet_wq: drift, l=0.3;
 ofl: drift, l=0.5;
 o2fl: drift, l=2*ofl->l;
 
-// Quads for proton forward
-q3pf: quadrupole, l=0.75;
+// Quads and correctors on IP side of crab
+lh6_qw=0.75;
+lh6_cor=0.25;
+lh6_qw_spc=0.15;
+q3pf: quadrupole, l=lh6_qw;
+h5_tv3: vkicker, l=lh6_cor;
+h5_qs3: quadrupole, tilt, l=lh6_cor;
+h6_q3: quadrupole, l=lh6_qw;
+h6_tv3: vkicker, l=lh6_cor;
+h6_qs3: quadrupole, tilt, l=lh6_cor;
+oh6_wq_spc: drift, l=lh6_qw_spc;
 
-h5_tv3: vkicker, l=0.25;
-h5_qs3: quadrupole, tilt, l=0.25;
-o5_q3t3: drift, l=0.15;
+o6_q3t3: drift, l=0.15;
 
 // Other drifts
-o2pr: drift;
-o3pr: drift;
-o10int_pr: drift, l=2.9798943330376915E-01; // Just to fit previous version
+o06w_ffdet: drift;
 d9_pf: drift;
 
-yo5_du9w: drift;
+l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds;
+yo5_du9w: drift, l=l9injct - 2*lbel9ki;
 
 // Drifts for rotators, snakes, and crabs
-o_crab_ip6f: placeholder, l=15.06;
-o_crab_ip6r: placeholder, l=15.2;
-o_rotator_ip6r: placeholder, l=l7dummy+2*ldum1fl;
+lcrab=15.06;
+o_crab_ip6f: placeholder, l=lcrab;
+o_crab_ip6r: placeholder, l=lcrab;
 
 // Far-forward detectors
 l_roman_pot = 0.4;
@@ -246,9 +345,9 @@ o06w_ffdet: line=(
  o06w_ffdet_5);
 
 // Proton forward, closer orbit near IR
-b1apf, k0 = -2.7*clight/p275;
+b1apf, k0 = -2.7*c_light/p275;
 
-pt_ir6f = 1.23446182828266096E+009; // Transverse momentum passed by apertures at 275 GeV, for information only
+pt_ir6f = 1.23443089471739316E+009; // Transverse momentum passed by apertures at 275 GeV, for information only
 // Forward geometry
 O06W_B0_B0A, L = +9.01355498920959897E-001;
 PER_B0APF, ANGLE = -4.79514821232049273E-003;
@@ -281,12 +380,50 @@ PET_B1APF, DX = -1.70096429725014632E-002;
 PBT_B1APF, DX = -1.53882030013441119E-002;
 PBR_B1APF, ANGLE = +2.38032985038345683E-002;
 
-D9_PF, L = +1.55089650046537342E+000;
-YO5_DU9W, L = +6.82010965822203730E+000-lbfl-lqb-lq-lcq-lcor-lcfl;
+D9_PF, L = +3.01978792573086663E+000;
+YO5_DU9W, L = +1.62560557528363891E+000;
 
-// Geometric parameter values
-O2PR, L =  1.66686780884237962E+001;
-O3PR, L =  6.77592289451467789E+000;
+// deisul geometry calculation
+// Lengths of RHIC modules used
+ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2;
+// Length from IP to d1
+l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3;
+l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lbelabi+ld5ofl; // Fix when I do d1 right
+l6_ipd1=l6_ipq3+l6_ipq3_d1;
+// Lengths of straights between dipoles
+l6_d1d2 = ld5ofl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ld5ofl; // Fix when I do d1 right
+l6_d2d3 = lcqs + 2*lbelabi + ld5ofl + ldfl;
+l6_d3d4 = lcq8 + lcqs + 2*lbelabi + 2*ldfl;
+l6_d1 = ld5o*sinc(0.5*th_h601); // Fix when I do d1 right
+l6_d2 = ld5o*sinc(0.5*(thd5+thd0));
+l6_d3 = ldip*sinc(0.5*thcell);
+l6_d4 = ldip*sinc(0.5*thcell);
+t6_d1 = 0.5*(-thd0 - thcell - dtheta0_eic_ip6) + thds;
+t6_d1d2 = -thd0 + 2*thds - thcell;
+t6_d2 = 2*thds + 0.5*(thd5-thd0) - thcell;
+t6_d2d3 = 2*thds + thd5 - thcell;
+t6_d3 = 2*thds + thd5 - 0.5*thcell;
+t6_d3d4 = 2*thds + thd5;
+t6_d4 = 2*thds + thd5 + 0.5*thcell;
+// Compute drifts
+l6_910rhic = lcenxdx*sin(dtheta0_eic_ip6) + lrhicdx*sin(trhicdx+dtheta0_eic_ip6) + lrhicx0*sin(trhicx0+dtheta0_eic_ip6)
+ + lrhicd0*sin(trhicd0+dtheta0_eic_ip6) + lrhic05*sin(trhic05+dtheta0_eic_ip6) + lrhicd5i*sin(trhicd5i+dtheta0_eic_ip6)
+ + lrhic56i*sin(thd5+dtheta0_eic_ip6) + lrhic69*sin(trhicd6+dtheta0_eic_ip6) + lrhic68i*sin(trhic68+dtheta0_eic_ip6)
+ + lrhicd8*sin(trhicd8+dtheta0_eic_ip6) + lrhic89i*sin(trhic89+dtheta0_eic_ip6) + lrhic69*sin(trhicd9+dtheta0_eic_ip6)
+ + (lrhic910bi-lbelabi-ldfl)*sin(trhic910+dtheta0_eic_ip6);
+l6_910eic = l6_d1*sin(t6_d1+dtheta0_eic_ip6) + l6_d1d2*sin(t6_d1d2+dtheta0_eic_ip6) + l6_d2*sin(t6_d2+dtheta0_eic_ip6)
+ + l6_d3*sin(t6_d3+dtheta0_eic_ip6) + l6_d2d3*sin(t6_d2d3+dtheta0_eic_ip6) + l6_d4*sin(t6_d4+dtheta0_eic_ip6);
+l6_910 = (l6_910rhic-l6_910eic-dx0_eic_ip6*cos(dtheta0_eic_ip6))/sin(t6_d3d4+dtheta0_eic_ip6);
+l6_45rhic = -lcenxdx*sin(t6_d3d4) + lrhicdx*sin(trhicdx-t6_d3d4) + lrhicx0*sin(trhicx0-t6_d3d4)
+ + lrhicd0*sin(trhicd0-t6_d3d4) + lrhic05*sin(trhic05-t6_d3d4) + lrhicd5i*sin(trhicd5i-t6_d3d4)
+ + lrhic56i*sin(thd5-t6_d3d4) + lrhic69*sin(trhicd6-t6_d3d4) + lrhic68i*sin(trhic68-t6_d3d4)
+ + lrhicd8*sin(trhicd8-t6_d3d4) + lrhic89i*sin(trhic89-t6_d3d4) + lrhic69*sin(trhicd9-t6_d3d4)
+ + (lrhic910bi-lbelabi-ldfl)*sin(trhic910-t6_d3d4);
+l6_45eic = l6_d1*sin(t6_d1-t6_d3d4) + l6_d1d2*sin(t6_d1d2-t6_d3d4) + l6_d2*sin(t6_d2-t6_d3d4)
+ + l6_d3*sin(t6_d3-t6_d3d4) + l6_d2d3*sin(t6_d2d3-t6_d3d4) + l6_d4*sin(t6_d4-t6_d3d4);
+l6_45 = -(l6_45rhic-l6_45eic-dx0_eic_ip6*cos(t6_d3d4))/sin(t6_d3d4+dtheta0_eic_ip6);
+o6_45: drift, l=l6_45-l6_ipd1;
+o6_910: drift, l=l6_910-l6_d3d4;
 
 hsr6w: line=(
  yo5_int9_5,yo5_du9w,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
@@ -306,7 +443,7 @@ hsr6w: line=(
  d9_pf,
  yi6_trp2, o_crab_mag,
  o_crab_ip6f,
- o_crab_mag, b2pf, ow2c, h5_tv3, o5_q3t3, h5_qs3, o5_q3t3, q3pf, o_ffdet_wq,
+ o_crab_mag, b2pf, ow2c, h5_tv3, oh6_wq_spc, h5_qs3, oh6_wq_spc, q3pf, o_ffdet_wq,
  o06w_ffdet,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
  o06w_b1_b1a,
@@ -324,25 +461,16 @@ hsr6w: line=(
  d1_pf,
  l_sol_pf);
 
-// FIX: missing interconnects
 hsr6d: line=(
- l_sol_pr,
- o1pr_1, q1apr, o1pr_2, q1bpr, o1pr_3, q2pr, o1pr_4, q3pr, ofl,
+ l_sol_pr, o06d_sol_q1a, q1apr, o06d_q1a_q1b, q1bpr, o06d_q1b_q2, q2pr,
+ o06d_q2_q3, h6_q3, oh6_wq_spc, h6_qs3, oh6_wq_spc, h6_tv3, o_crab_mag,
  o_crab_ip6r,
- ofl, q4pr, o2pr,
- b1pr, o2fl,
- q5pr, ofl,
- o3pr,
- yi6_cqt4,
- o_rotator_ip6r,
- yi6_cqt5,
- ofl, b2pr, ofl,
- yi6_cqt6,
- yi6_d5,
- yi6_cq7,
- yi6_d6,
- yi6_cq8,
- yi6_d9,
- yi6_cqb9,
- yi6_d8,
- o10int_pr);
+ o_crab_mag, 
+ h6_tp2i04,
+ o6_45,
+ h6_cqtc05, obelabi, 
+ h6_d01, obelabi, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cq8c07, obelabi,
+ h6_d02, obelabi, h6_cqtb08, obelabi,
+ h6_d03, obelabi, h6_cq8c09, 
+ o6_910, h6_cqtb10, obelabi,
+ h6_d04, obelabi);
