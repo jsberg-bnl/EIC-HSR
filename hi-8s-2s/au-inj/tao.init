@@ -232,7 +232,7 @@
 &tao_d2_data
  universe = '3'
  d2_data%name = 'ir6d'
- n_d1_data = 3
+ n_d1_data = 5
 /
 
 &tao_d1_data
@@ -265,15 +265,41 @@
 
 &tao_d1_data
  ix_d1_data = 3
+ d1_data%name = 'aperx'
+ default_weight = 1
+ default_merit_type = 'max'
+ default_meas = 31.5e-3
+ default_data_type = 'expression:nsx*sqrt(lat::beta.a[#]*emx+(lat::eta.x[#]*dp)^2)'
+ datum(1:9)%ele_name = 'h6_q3' 'h6_q04' 'o6_45' 'h6_q05' 'h6_q06' 'h6_q07' 'h6_q08' 'h6_q09' 'h6_q10'
+ datum(1:9)%eval_point = 'center' 'center' 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:2)%meas = 50e-3 52.5e-3
+/
+
+&tao_d1_data
+ ix_d1_data = 4
+ d1_data%name = 'apery'
+ default_weight = 1
+ default_merit_type = 'max'
+ default_meas = 23.75e-3
+ default_data_type = 'expression:nsy*sqrt(lat::beta.b[#]*emy)'
+ datum(1:9)%ele_name = 'h6_q3' 'h6_q04' 'o6_45' 'h6_q05' 'h6_q06' 'h6_q07' 'h6_q08' 'h6_q09' 'h6_q10'
+ datum(1:9)%eval_point = 'center' 'center' 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:2)%meas = 50e-3 45e-3
+/
+
+&tao_d1_data
+ ix_d1_data = 5
  d1_data%name = 'opt'
  default_weight = 1
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
+ datum(6)%data_type = 'expression:max(data::ir6d.aperx[3:]|model/data::ir6d.aperx[3:]|meas)'
+ datum(7)%data_type = 'expression:max(data::ir6d.apery[3:]|model/data::ir6d.apery[3:]|meas)'
  datum(1:5)%ele_name = 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_bv10-2' 'yi6_int11_2'
  datum(1:4)%ele_start_name = 'h6_q04' 'h6_q04' 'ip6d' 'ip6d'
  datum(1:4)%merit_type = 'integral' 'integral' 'integral' 'integral'
- datum(1:5)%weight = 1e-12 1e-12 1e-8 1e-8 100
- datum(1:5)%meas = 0 0 0 0 0
- datum(1:5)%good_user = f f f f t
+ datum(1:7)%weight = 1e-12 1e-12 1e-8 1e-8 100 1e-4 1e-4
+ datum(1:7)%meas = 0 0 0 0 0 0 0
+ datum(1:7)%good_user = f f f f t f f
 /
 
 &tao_d2_data
