@@ -13,6 +13,11 @@ parameter[particle] = #197antiAu-79
 mau = mass_of(#197antiAu-79)
 pau = sqrt((46.5/anomalous_moment_of(proton))^2-1)*m_proton*79
 eau = sqrt(pau^2+mau^2)
+emx = 2.5e-6*mau/pau
+emy = emx
+dp = 6e-4
+nsx = 7
+nsy = 6
 
 beginning[e_tot]           = eau
 b0pf[db_field] = b0pf[db_field]*pau/(79*p275)
