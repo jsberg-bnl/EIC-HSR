@@ -35,7 +35,7 @@ def replace(filename):
     os.rename(filename+'+',filename)
     
 ir_var = ['use var '+v for v in (
-    'ir6w[4,6:9,11]',
+    'ir6w[4,7:11]',
     'ir6d[4,5,7:10]',
     'ir8',
     'ir10',
