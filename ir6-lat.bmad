@@ -19,7 +19,7 @@ h5_tq11:quadrupole,l=lsxt,field_master=t
 h5_tq11_i:overlay={h5_tq11[b1_gradient]:0.2381915*i/lsxt},var={i}
 h5_q11:quadrupole,l=lq,field_master=t
 h5_q11_i:overlay={h5_q11[b1_gradient]:0.016572460606060605*i/lq},var={i}
-h5_cor11: kicker, l=lcor
+h5_cor11: kicker, l=lcor, field_master=t, scale_multipoles=f
 h5_tv11_i:overlay={h5_cor11[bl_vkick]:0.005612747*i},var={i}
 h5_b311_i:overlay={h5_cor11[b3]:12.346880000000004*i},var={i}
 h5_b411_i:overlay={h5_cor11[b4]:386.38592*i},var={i}
@@ -110,14 +110,14 @@ h6_d04: line=(odfl,h6_dh04,odfl)
 
 h6_q04: quadrupole, l=lq2, field_master=t
 h6_q04_i: overlay={h6_q04[b1_gradient]:0.032247392307692316/h6_q04[l]*i}, var={i}
-h6_cor04: kicker, l=lcor, field_master=t
+h6_cor04: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_th04_i:overlay={h6_cor04[bl_hkick]:0.005637592999999998*i},var={i}
 h6_oct04_i:overlay={h6_cor04[b3]:2.657578125*i},var={i}
 h6_dec04_i:overlay={h6_cor04[b4]:39.96289062499999*i},var={i}
 h6_dod04_i:overlay={h6_cor04[b5]:791.142578125*i},var={i}
 h6_tp2i04: line=(oflq2a,h6_q04,ocq2,h6_cor04,ocfl2)
 
-h6_cor05: kicker, l=lcor, field_master=t
+h6_cor05: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_tv05_i:overlay={h6_cor05[bl_vkick]:0.005612747*i},var={i}
 h6_b305_i:overlay={h6_cor05[b3]:12.346880000000004*i},var={i}
 h6_b405_i:overlay={h6_cor05[b4]:386.38592*i},var={i}
@@ -132,7 +132,7 @@ h6_tq06:quadrupole,l=lsxt,field_master=t
 h6_tq06_i:overlay={h6_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
 h6_q06:quadrupole,l=lq4,field_master=t
 h6_q06_i:overlay={h6_q06[b1_gradient]:0.027149189411764706*i/lq4},var={i}
-h6_cor06: kicker, l=lcor
+h6_cor06: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_th06_i:overlay={h6_cor06[bl_hkick]:0.005610334999999999*i},var={i}
 h6_oct06_i:overlay={h6_cor06[b3]:12.31232*i},var={i}
 h6_dec06_i:overlay={h6_cor06[b4]:387.2896*i},var={i}
@@ -141,14 +141,14 @@ h6_cq4f06:line=(obfl,osb4c,h6_tq06,oqs4,h6_q06,ocq4,h6_cor06,ocfl)
 
 h6_q07: quadrupole, l=lq, field_master=t
 h6_q07_i:overlay={h6_q07[b1_gradient]:0.016572460606060605/h6_q07[l]*i}, var={i}
-h6_cor07: kicker, l=lcor, field_master=t
+h6_cor07: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_tv07_i:overlay={h6_cor07[bl_vkick]:0.005612747*i},var={i}
 h6_oct07_i:overlay={h6_cor07[b3]:12.346880000000004*i},var={i}
 h6_dec07_i:overlay={h6_cor07[b4]:386.38592*i},var={i}
 h6_qs07_i:overlay={h6_cor07[a1]:0.030435680000000007*i},var={i}
 h6_cq8c07: line=(obfl,oqbms,h6_q07,ocq,h6_cor07,ocfl)
 
-h6_cor08: kicker, l=lcor
+h6_cor08: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_th08_i:overlay={h6_cor08[bl_hkick]:0.005619562*i},var={i}
 h6_b308_i:overlay={h6_cor08[b3]:12.380799999999999*i},var={i}
 h6_b408_i:overlay={h6_cor08[b4]:388.6028799999999*i},var={i}
@@ -161,14 +161,14 @@ h6_cqtb08:line=(ocfl,h6_cor08,ocq,h6_q08,oqs,h6_tq08,osb,obfl)
 
 h6_q09: quadrupole, l=lq, field_master=t
 h6_q09_i:overlay={h6_q09[b1_gradient]:0.016572460606060605/h6_q09[l]*i}, var={i}
-h6_cor09: kicker, l=lcor, field_master=t
+h6_cor09: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_tv09_i:overlay={h6_cor09[bl_vkick]:0.005612747*i},var={i}
 h6_oct09_i:overlay={h6_cor09[b3]:12.346880000000004*i},var={i}
 h6_dec09_i:overlay={h6_cor09[b4]:386.38592*i},var={i}
 h6_qs09_i:overlay={h6_cor09[a1]:0.030435680000000007*i},var={i}
 h6_cq8c09: line=(obfl,oqbms,h6_q09,ocq,h6_cor09,ocfl)
 
-h6_cor10: kicker, l=lcor
+h6_cor10: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_th10_i:overlay={h6_cor10[bl_hkick]:0.005619562*i},var={i}
 h6_b310_i:overlay={h6_cor10[b3]:12.380799999999999*i},var={i}
 h6_b410_i:overlay={h6_cor10[b4]:388.6028799999999*i},var={i}
