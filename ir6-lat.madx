@@ -188,7 +188,7 @@ h6_bh10:hmonitor;
 h6_cqtb10:line=(ocfl,h6_cor10,ocq,h6_q10,oqs,h6_tq10,osb,h6_bh10,obfl);
 
 e275 = 275e9;
-p275 = sqrt(e275*e275-m_proton*m_proton);
+p275 = sqrt(e275*e275-pmass*pmass*1e18);
 
 // Detector solenoid
 sol_rot = 0.025;
@@ -345,7 +345,7 @@ o06w_ffdet: line=(
  o06w_ffdet_5);
 
 // Proton forward, closer orbit near IR
-b1apf, k0 = -2.7*c_light/p275;
+b1apf, k0 = -2.7*clight/p275;
 
 pt_ir6f = 1.23443089471739316E+009; // Transverse momentum passed by apertures at 275 GeV, for information only
 // Forward geometry
