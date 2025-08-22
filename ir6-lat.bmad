@@ -1,19 +1,24 @@
-! Modfied yo5_cq[78] to look like they do near RHIC snakes IRs
-yo5_cq7_mod:line=(obfl,
- yo5_b7,
- oqbms7,
- yo5_qd7,
- ocq7,
- lmp05y07,
- ocfl)
-yo5_cq8_mod:line=(ocfl,
- lmp05y08,
- ocq,
- yo5_qf8,
- oqbms,
- yo5_b8,
- obfl)
 yo5_d9r:line=(odswl,yo5_dh9,odsfl)
+
+h5_cor08: kicker, l=lcor, scale_multipoles=f
+h5_th08_i:overlay={h5_cor08[bl_hkick]:0.005619562*i},var={i}
+h5_b308_i:overlay={h5_cor08[b3]:12.380799999999999*i},var={i}
+h5_b408_i:overlay={h5_cor08[b4]:388.6028799999999*i},var={i}
+h5_b108_i:overlay={h5_cor08[b1]:0.030651719999999997*i},var={i}
+h5_q08:quadrupole,l=lq7,field_master=t
+h5_q08_i:overlay={h5_q08[b1_gradient]:0.013872341176470586*i/lq7},var={i}
+h5_b08:monitor
+h5_cq7b08:line=(ocfl,h5_cor08,ocq7,h5_q08,oqbms7,h5_b08,obfl)
+
+h5_b09:monitor
+h5_q09:quadrupole,l=lq,field_master=t
+h5_q09_i:overlay={h5_q09[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h5_cor09: kicker, l=lcor, scale_multipoles=f
+h5_tv09_i:overlay={h5_cor09[bl_vkick]:0.005612747*i},var={i}
+h5_b309_i:overlay={h5_cor09[b3]:12.346880000000004*i},var={i}
+h5_b409_i:overlay={h5_cor09[b4]:386.38592*i},var={i}
+h5_a109_i:overlay={h5_cor09[a1]:0.030435680000000007*i},var={i}
+h5_cq8c09:line=(obfl,h5_b09,oqbms,h5_q09,ocq,h5_cor09,ocfl)
 
 h5_tq11:quadrupole,l=lsxt,field_master=t
 h5_tq11_i:overlay={h5_tq11[b1_gradient]:0.2381915*i/lsxt},var={i}
@@ -407,9 +412,9 @@ o6_910: drift, l=l6_910-l6_d3d4
 
 hsr6w: line=(
  yo5_int9_5,yo5_du9w,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
- yo5_int8_2,yo5_d8,yo5_int8_1,yo5_cq8_mod,
+ yo5_int8_2,yo5_d8,yo5_int8_1,h5_cq8c09,
  yo5_int7_2, yo5_snk7, yo5_int7_1,
- yo5_cq7_mod,
+ h5_cq7b08,
  yo5_introt, yo5_rot, yo5_introt,
  bi5_cq8,
  oint,
