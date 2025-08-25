@@ -582,16 +582,16 @@ def usage():
     print('    rev:  b or c, depending on which end is first')
     exit(1)
 
+if len(sys.argv) == 1 or \
+   sys.argv[1] != 'ls' and len(sys.argv) <= 4:
+    usage()
+
 db = db_parser()
 cqs = cqslot(db)
 
-if len(sys.argv) == 1:
-    usage()
-elif sys.argv[1] == 'ls':
+if sys.argv[1] == 'ls':
     for cq in sorted(cqs.cqlist):
         print(cq)
-elif len(sys.argv) <= 4:
-    usage()
 else:
     if sys.argv[3] in cqs.cqlist and sys.argv[4] in ('b','c'):
         if len(sys.argv) == 7:
