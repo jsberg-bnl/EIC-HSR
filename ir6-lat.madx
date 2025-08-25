@@ -313,8 +313,7 @@ o6_q3t3: drift, l=0.15;
 o06w_ffdet: drift;
 d9_pf: drift;
 
-l9injct=lplq9ds-lqbwm-lbwk-ldswl+ldspds;
-yo5_du9w: drift, l=l9injct - 2*lbel9ki;
+o5q11_arc: drift
 
 // Drifts for rotators, snakes, and crabs
 lcrab=15.06;
@@ -386,7 +385,7 @@ PBT_B1APF, DX = -1.53882030013441119E-002;
 PBR_B1APF, ANGLE = +2.38032985038345683E-002;
 
 D9_PF, L = +3.01978792573086663E+000;
-YO5_DU9W, L = +1.62560557528363891E+000;
+o5q11_arc, L = +1.62560557528363891E+000+lbel9ki;
 
 // deisul geometry calculation
 // Lengths of RHIC modules used
@@ -431,7 +430,7 @@ o6_45: drift, l=l6_45-l6_ipd1;
 o6_910: drift, l=l6_910-l6_d3d4;
 
 hsr6w: line=(
- yo5_int9_5,yo5_du9w,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
+ o5q11_arc,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
  yo5_int8_2,yo5_d8,yo5_int8_1,h5_cq8c09,
  yo5_int7_2, yo5_snk7, yo5_int7_1,
  h5_cq7b08,
