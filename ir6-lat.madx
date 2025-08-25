@@ -1,4 +1,5 @@
-yo5_d9r:line=(odswl,yo5_dh9,odsfl);
+h5_dh5: ds;
+h5_d6:line=(odsfl,h5_dh5,odsfl);
 
 h5_th08:hkicker,kick:=-0.005619562*h5_th08_i/beam->brho;
 h5_b308:multipole,knl:={0,0,0,-74.28479999999999*h5_b308_i/beam->brho};
@@ -19,6 +20,16 @@ h5_b409:multipole,knl:={0,0,0,0,-9273.26208*h5_b409_i/beam->brho};
 h5_a109:multipole,ksl:={0,-0.030435680000000007*h5_a109_i/beam->brho};
 h5_cor09:line=(olmp0,h5_tv09,h5_b309,h5_b409,h5_a109,olmp0);
 h5_cq8c09:line=(obfl,h5_b09,oqbms,h5_q09,ocq,h5_cor09,ocfl);
+
+h5_b10:monitor;
+h5_q10:quadrupole,l=lq;
+h5_q10,k1:=-0.016572460606060605/lq*h5_q10_i/beam->brho;
+h5_th10:hkicker,kick:=-0.005619562*h5_th10_i/beam->brho;
+h5_b310:multipole,knl:={0,0,0,-74.28479999999999*h5_b310_i/beam->brho};
+h5_b410:multipole,knl:={0,0,0,0,-9326.469119999998*h5_b410_i/beam->brho};
+h5_b110:multipole,knl:={0,-0.030651719999999997*h5_b110_i/beam->brho};
+h5_cor10:line=(olmp0,h5_th10,h5_b310,h5_b410,h5_b110,olmp0);
+h5_cq8b10:line=(obfl,h5_b10,oqbms,h5_q10,ocq,h5_cor10,ocfl);
 
 h5_bv11:vmonitor;
 h5_tq11:quadrupole,l=lsxt;
@@ -313,7 +324,7 @@ o6_q3t3: drift, l=0.15;
 o06w_ffdet: drift;
 d9_pf: drift;
 
-o5q11_arc: drift
+o5q11_arc: drift;
 
 // Drifts for rotators, snakes, and crabs
 lcrab=15.06;
@@ -384,8 +395,8 @@ PET_B1APF, DX = -1.70096429725014632E-002;
 PBT_B1APF, DX = -1.53882030013441119E-002;
 PBR_B1APF, ANGLE = +2.38032985038345683E-002;
 
-D9_PF, L = +3.01978792573086663E+000;
-o5q11_arc, L = +1.62560557528363891E+000+lbel9ki;
+D9_PF, L = +3.06573138499100484E+000;
+O5Q11_ARC, L = +3.16416438722673021E+000;
 
 // deisul geometry calculation
 // Lengths of RHIC modules used
@@ -430,7 +441,7 @@ o6_45: drift, l=l6_45-l6_ipd1;
 o6_910: drift, l=l6_910-l6_d3d4;
 
 hsr6w: line=(
- o5q11_arc,h5_cqtc11,yo5_int9_1,yo5_d9r,yo5_int9_6,yo5_cq9,
+ o5q11_arc,h5_cqtc11,obelaco,h5_d6,obelabo,h5_cq8b10,
  yo5_int8_2,yo5_d8,yo5_int8_1,h5_cq8c09,
  yo5_int7_2, yo5_snk7, yo5_int7_1,
  h5_cq7b08,

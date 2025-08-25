@@ -57,7 +57,7 @@ fit_ir6w1:macro={
  ptc_end;
 };
 vary, name=h5_q11_i, step=0.1;
-vary, name=yo5_qd9_i, step=0.1;
+vary, name=h5_q10_i, step=0.1;
 vary, name=h5_q09_i, step=0.1;
 vary, name=h5_q08_i, step=0.1;
 vary, name=bi5_qd8_i, step=0.1;
