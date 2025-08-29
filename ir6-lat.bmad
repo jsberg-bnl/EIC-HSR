@@ -1,6 +1,18 @@
 h5_dh5: ds
 h5_d6:line=(odsfl,h5_dh5,odsfl)
 
+h5_bv05:monitor
+h5_tq05:quadrupole,l=lsxt,field_master=t
+h5_tq05_i:overlay={h5_tq05[b1_gradient]:0.2381915*i/lsxt},var={i}
+h5_q05:quadrupole,l=lq,field_master=t
+h5_q05_i:overlay={h5_q05[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h5_cor05: kicker, l=lcor, scale_multipoles=f
+h5_tv05_i:overlay={h5_cor05[bl_vkick]:0.005612747*i},var={i}
+h5_b305_i:overlay={h5_cor05[b3]:12.346880000000004*i},var={i}
+h5_b405_i:overlay={h5_cor05[b4]:386.38592*i},var={i}
+h5_a105_i:overlay={h5_cor05[a1]:0.030435680000000007*i},var={i}
+h5_cqtc05:line=(obfl,h5_bv05,osb,h5_tq05,oqs,h5_q05,ocq,h5_cor05,ocfl)
+
 h5_cor08: kicker, l=lcor, scale_multipoles=f
 h5_th08_i:overlay={h5_cor08[bl_hkick]:0.005619562*i},var={i}
 h5_b308_i:overlay={h5_cor08[b3]:12.380799999999999*i},var={i}
@@ -375,7 +387,7 @@ O_OFF_MOM_IP6_1[OFFSET] = -4.30920926540308780E-001
 O_OFF_MOM_IP6_2[OFFSET] = -2.43292994238379023E+000
 
 OV_B2PF[TH2] = +1.67744943262122526E-002
-D9_PF[L] = +3.06573138499100484E+000
+D9_PF[L] = +3.06573138499100484E+000+lcq8-lcqs
 O5Q11_ARC[L] = +3.16416438722673021E+000
 
 ! deisul geometry calculation
@@ -434,7 +446,7 @@ hsr6w: line=(
  oint,
  yo5_d5,
  oint,
- bo3_cq8,
+ h5_cqtc05,
  d9_pf,
  yi6_trp2, o_crab_mag,
  o_crab_ip6f,

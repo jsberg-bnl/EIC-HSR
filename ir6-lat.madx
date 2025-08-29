@@ -1,6 +1,18 @@
 h5_dh5: ds;
 h5_d6:line=(odsfl,h5_dh5,odsfl);
 
+h5_bv05:vmonitor;
+h5_tq05:quadrupole,l=lsxt;
+h5_tq05,k1:=-0.2381915/lsxt*h5_tq05_i/beam->brho;
+h5_q05:quadrupole,l=lq;
+h5_q05,k1:=-0.016572460606060605/lq*h5_q05_i/beam->brho;
+h5_tv05:vkicker,kick:=-0.005612747*h5_tv05_i/beam->brho;
+h5_b305:multipole,knl:={0,0,0,-74.08128000000002*h5_b305_i/beam->brho};
+h5_b405:multipole,knl:={0,0,0,0,-9273.26208*h5_b405_i/beam->brho};
+h5_a105:multipole,ksl:={0,-0.030435680000000007*h5_a105_i/beam->brho};
+h5_cor05:line=(olmp0,h5_tv05,h5_b305,h5_b405,h5_a105,olmp0);
+h5_cqtc05:line=(obfl,h5_bv05,osb,h5_tq05,oqs,h5_q05,ocq,h5_cor05,ocfl);
+
 h5_th08:hkicker,kick:=-0.005619562*h5_th08_i/beam->brho;
 h5_b308:multipole,knl:={0,0,0,-74.28479999999999*h5_b308_i/beam->brho};
 h5_b408:multipole,knl:={0,0,0,0,-9326.469119999998*h5_b408_i/beam->brho};
@@ -395,7 +407,7 @@ PET_B1APF, DX = -1.70096429725014632E-002;
 PBT_B1APF, DX = -1.53882030013441119E-002;
 PBR_B1APF, ANGLE = +2.38032985038345683E-002;
 
-D9_PF, L = +3.06573138499100484E+000;
+D9_PF, L = +3.06573138499100484E+000+lcq8-lcqs;
 O5Q11_ARC, L = +3.16416438722673021E+000;
 
 // deisul geometry calculation
@@ -454,7 +466,7 @@ hsr6w: line=(
  oint,
  yo5_d5,
  oint,
- bo3_cq8,
+ h5_cqtc05,
  d9_pf,
  yi6_trp2, o_crab_mag,
  o_crab_ip6f,
