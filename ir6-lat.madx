@@ -1,6 +1,15 @@
 h5_dh5: ds;
 h5_d6:line=(odsfl,h5_dh5,odsfl);
 
+h5_th04:hkicker,kick:=-0.005637592999999998*h5_th04_i/beam->brho;
+h5_b304:multipole,knl:={0,0,0,-15.945468750000002*h5_b304_i/beam->brho};
+h5_b404:multipole,knl:={0,0,0,0,-959.1093749999999*h5_b404_i/beam->brho};
+h5_b504:multipole,knl:={0,0,0,0,0,-94937.109375*h5_b504_i/beam->brho};
+h5_cor04:line=(olmp0,h5_th04,h5_b304,h5_b404,h5_b504,olmp0);
+h5_q04:quadrupole,l=lq2;
+h5_q04,k1:=-0.032247392307692316/lq2*h5_q04_i/beam->brho;
+h5_tp2i04:line=(ocfl2,h5_cor04,ocq2,h5_q04,oflq2a);
+
 h5_bv05:vmonitor;
 h5_tq05:quadrupole,l=lsxt;
 h5_tq05,k1:=-0.2381915/lsxt*h5_tq05_i/beam->brho;
@@ -12,6 +21,28 @@ h5_b405:multipole,knl:={0,0,0,0,-9273.26208*h5_b405_i/beam->brho};
 h5_a105:multipole,ksl:={0,-0.030435680000000007*h5_a105_i/beam->brho};
 h5_cor05:line=(olmp0,h5_tv05,h5_b305,h5_b405,h5_a105,olmp0);
 h5_cqtc05:line=(obfl,h5_bv05,osb,h5_tq05,oqs,h5_q05,ocq,h5_cor05,ocfl);
+
+h5_th06:hkicker,kick:=-0.005610334999999999*h5_th06_i/beam->brho;
+h5_b306:multipole,knl:={0,0,0,-73.87392*h5_b306_i/beam->brho};
+h5_b406:multipole,knl:={0,0,0,0,-9294.9504*h5_b406_i/beam->brho};
+h5_a106:multipole,ksl:={0,-0.03043852000000001*h5_a106_i/beam->brho};
+h5_cor06:line=(olmp0,h5_th06,h5_b306,h5_b406,h5_a106,olmp0);
+h5_q06:quadrupole,l=lq4;
+h5_q06,k1:=-0.027149189411764706/lq4*h5_q06_i/beam->brho;
+h5_tq06:quadrupole,l=lsxt;
+h5_tq06,k1:=-0.2381915/lsxt*h5_tq06_i/beam->brho;
+h5_b06:monitor;
+h5_cq4f06:line=(ocfl,h5_cor06,ocq4,h5_q06,oqs4,h5_tq06,osb4c,h5_b06,obfl);
+
+h5_tv07:vkicker,kick:=-0.005612747*h5_tv07_i/beam->brho;
+h5_b307:multipole,knl:={0,0,0,-74.08128000000002*h5_b307_i/beam->brho};
+h5_b407:multipole,knl:={0,0,0,0,-9273.26208*h5_b407_i/beam->brho};
+h5_a107:multipole,ksl:={0,-0.030435680000000007*h5_a107_i/beam->brho};
+h5_cor07:line=(olmp0,h5_tv07,h5_b307,h5_b407,h5_a107,olmp0);
+h5_q07:quadrupole,l=lq;
+h5_q07,k1:=-0.016572460606060605/lq*h5_q07_i/beam->brho;
+h5_b07:monitor;
+h5_cq8c07:line=(ocfl,h5_cor07,ocq,h5_q07,oqbms,h5_b07,obfl);
 
 h5_th08:hkicker,kick:=-0.005619562*h5_th08_i/beam->brho;
 h5_b308:multipole,knl:={0,0,0,-74.28479999999999*h5_b308_i/beam->brho};
@@ -458,17 +489,17 @@ hsr6w: line=(
  yo5_int7_2, yo5_snk7, yo5_int7_1,
  h5_cq7b08,
  yo5_introt, yo5_rot, yo5_introt,
- bi5_cq8,
+ h5_cq8c07,
  oint,
  h5_d4,
  oint,
- yo5_cqt4,
+ h5_cq4f06,
  oint,
  yo5_d5,
  oint,
  h5_cqtc05,
  d9_pf,
- yi6_trp2, o_crab_mag,
+ h5_tp2i04, o_crab_mag,
  o_crab_ip6f,
  o_crab_mag, b2pf, ow2c, h5_tv3, oh6_wq_spc, h5_qs3, oh6_wq_spc, q3pf, o_ffdet_wq,
  o06w_ffdet,

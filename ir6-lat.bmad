@@ -1,6 +1,15 @@
 h5_dh5: ds
 h5_d6:line=(odsfl,h5_dh5,odsfl)
 
+h5_cor04: kicker, l=lcor, scale_multipoles=f
+h5_th04_i:overlay={h5_cor04[bl_hkick]:0.005637592999999998*i},var={i}
+h5_b304_i:overlay={h5_cor04[b3]:2.657578125*i},var={i}
+h5_b404_i:overlay={h5_cor04[b4]:39.96289062499999*i},var={i}
+h5_b504_i:overlay={h5_cor04[b5]:791.142578125*i},var={i}
+h5_q04:quadrupole,l=lq2,field_master=t
+h5_q04_i:overlay={h5_q04[b1_gradient]:0.032247392307692316*i/lq2},var={i}
+h5_tp2i04:line=(ocfl2,h5_cor04,ocq2,h5_q04,oflq2a)
+
 h5_bv05:monitor
 h5_tq05:quadrupole,l=lsxt,field_master=t
 h5_tq05_i:overlay={h5_tq05[b1_gradient]:0.2381915*i/lsxt},var={i}
@@ -12,6 +21,28 @@ h5_b305_i:overlay={h5_cor05[b3]:12.346880000000004*i},var={i}
 h5_b405_i:overlay={h5_cor05[b4]:386.38592*i},var={i}
 h5_a105_i:overlay={h5_cor05[a1]:0.030435680000000007*i},var={i}
 h5_cqtc05:line=(obfl,h5_bv05,osb,h5_tq05,oqs,h5_q05,ocq,h5_cor05,ocfl)
+
+h5_cor06: kicker, l=lcor, scale_multipoles=f
+h5_th06_i:overlay={h5_cor06[bl_hkick]:0.005610334999999999*i},var={i}
+h5_b306_i:overlay={h5_cor06[b3]:12.31232*i},var={i}
+h5_b406_i:overlay={h5_cor06[b4]:387.2896*i},var={i}
+h5_a106_i:overlay={h5_cor06[a1]:0.03043852000000001*i},var={i}
+h5_q06:quadrupole,l=lq4,field_master=t
+h5_q06_i:overlay={h5_q06[b1_gradient]:0.027149189411764706*i/lq4},var={i}
+h5_tq06:quadrupole,l=lsxt,field_master=t
+h5_tq06_i:overlay={h5_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
+h5_b06:monitor
+h5_cq4f06:line=(ocfl,h5_cor06,ocq4,h5_q06,oqs4,h5_tq06,osb4c,h5_b06,obfl)
+
+h5_cor07: kicker, l=lcor, scale_multipoles=f
+h5_tv07_i:overlay={h5_cor07[bl_vkick]:0.005612747*i},var={i}
+h5_b307_i:overlay={h5_cor07[b3]:12.346880000000004*i},var={i}
+h5_b407_i:overlay={h5_cor07[b4]:386.38592*i},var={i}
+h5_a107_i:overlay={h5_cor07[a1]:0.030435680000000007*i},var={i}
+h5_q07:quadrupole,l=lq,field_master=t
+h5_q07_i:overlay={h5_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h5_b07:monitor
+h5_cq8c07:line=(ocfl,h5_cor07,ocq,h5_q07,oqbms,h5_b07,obfl)
 
 h5_cor08: kicker, l=lcor, scale_multipoles=f
 h5_th08_i:overlay={h5_cor08[bl_hkick]:0.005619562*i},var={i}
@@ -438,17 +469,17 @@ hsr6w: line=(
  yo5_int7_2, yo5_snk7, yo5_int7_1,
  h5_cq7b08,
  yo5_introt, yo5_rot, yo5_introt,
- bi5_cq8,
+ h5_cq8c07,
  oint,
  h5_d4,
  oint,
- yo5_cqt4,
+ h5_cq4f06,
  oint,
  yo5_d5,
  oint,
  h5_cqtc05,
  d9_pf,
- yi6_trp2, o_crab_mag,
+ h5_tp2i04, o_crab_mag,
  o_crab_ip6f,
  o_crab_mag, b2pf, ow2c, h5_tv3, oh6_wq_spc, h5_qs3, oh6_wq_spc, q3pf, o_ffdet_wq,
  o06w_ffdet,
