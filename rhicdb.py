@@ -637,11 +637,7 @@ for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.ma
 
 # slots kept intact but used in isolation
 ir2_slots = [trp01b]
-ir6_slots = [slot('y',s,db)
-             for s in ('yo5_trp2','yi6_trp2','yo5_cqt4','yo5_cqt5','yo5_d5','yo5_cqt6','yo5_cq7',
-                       'yo5_int8_1','yo5_d8','yo5_int8_2','yo5_cq8','yo5_cq9','yo5_d9','yo5_int9_1','yo5_int9_5','yo5_int9_6',
-                       'yi6_cqt4','yi6_cqt5','yi6_d5','yi6_cqt6','yi6_d6','yi6_cq7','yi6_cq8','yi6_d8','yi6_cqb9','yi6_d9')] + \
-            [slot('b',s,db) for s in ('bi5_cq8','bo3_cq8')]
+ir6_slots = [slot('y',s,db) for s in ('yo5_d5','yo5_int8_1','yo5_d8','yo5_int8_2')]
 ir8_slots = [slot('y','yi7_du3',db),slot('y','yo8_du3',db)]
 rhic_slots = ir2_slots + ir6_slots + ir8_slots
 
