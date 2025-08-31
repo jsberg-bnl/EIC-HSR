@@ -176,16 +176,15 @@ h6_dec04_i:overlay={h6_cor04[b4]:39.96289062499999*i},var={i}
 h6_dod04_i:overlay={h6_cor04[b5]:791.142578125*i},var={i}
 h6_tp2i04: line=(oflq2a,h6_q04,ocq2,h6_cor04,ocfl2)
 
-h6_cor05: kicker, l=lcor, field_master=t, scale_multipoles=f
+h6_cor05: kicker, l=lcor, scale_multipoles=f
 h6_tv05_i:overlay={h6_cor05[bl_vkick]:0.005612747*i},var={i}
 h6_b305_i:overlay={h6_cor05[b3]:12.346880000000004*i},var={i}
 h6_b405_i:overlay={h6_cor05[b4]:386.38592*i},var={i}
 h6_a105_i:overlay={h6_cor05[a1]:0.030435680000000007*i},var={i}
 h6_q05:quadrupole,l=lq,field_master=t
 h6_q05_i:overlay={h6_q05[b1_gradient]:0.016572460606060605*i/lq},var={i}
-h6_tq05:quadrupole,l=lsxt,field_master=t
-h6_tq05_i:overlay={h6_tq05[b1_gradient]:0.2381915*i/lsxt},var={i}
-h6_cqtc05:line=(ocfl,h6_cor05,ocq,h6_q05,oqs,h6_tq05,osb,obfl)
+h6_b05:monitor
+h6_cq8c05:line=(ocfl,h6_cor05,ocq,h6_q05,oqbms,h6_b05,obfl)
 
 h6_tq06:quadrupole,l=lsxt,field_master=t
 h6_tq06_i:overlay={h6_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
@@ -198,14 +197,15 @@ h6_dec06_i:overlay={h6_cor06[b4]:387.2896*i},var={i}
 h6_qs06_i:overlay={h6_cor06[a1]:0.03043852000000001*i},var={i}
 h6_cq4f06:line=(obfl,osb4c,h6_tq06,oqs4,h6_q06,ocq4,h6_cor06,ocfl)
 
-h6_q07: quadrupole, l=lq, field_master=t
-h6_q07_i:overlay={h6_q07[b1_gradient]:0.016572460606060605/h6_q07[l]*i}, var={i}
-h6_cor07: kicker, l=lcor, field_master=t, scale_multipoles=f
+h6_cor07: kicker, l=lcor, scale_multipoles=f
 h6_tv07_i:overlay={h6_cor07[bl_vkick]:0.005612747*i},var={i}
-h6_oct07_i:overlay={h6_cor07[b3]:12.346880000000004*i},var={i}
-h6_dec07_i:overlay={h6_cor07[b4]:386.38592*i},var={i}
-h6_qs07_i:overlay={h6_cor07[a1]:0.030435680000000007*i},var={i}
-h6_cq8c07: line=(obfl,oqbms,h6_q07,ocq,h6_cor07,ocfl)
+h6_b307_i:overlay={h6_cor07[b3]:12.346880000000004*i},var={i}
+h6_b407_i:overlay={h6_cor07[b4]:386.38592*i},var={i}
+h6_a107_i:overlay={h6_cor07[a1]:0.030435680000000007*i},var={i}
+h6_q07:quadrupole,l=lq,field_master=t
+h6_q07_i:overlay={h6_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h6_b07:monitor
+h6_cq8c07:line=(ocfl,h6_cor07,ocq,h6_q07,oqbms,h6_b07,obfl)
 
 h6_cor08: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_th08_i:overlay={h6_cor08[bl_hkick]:0.005619562*i},var={i}
@@ -426,7 +426,7 @@ O5Q11_ARC[L] = +3.16416438722673021E+000
 ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2
 ! Length from IP to d1
 l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3
-l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lbelabi+ld5ofl ! Fix when I do d1 right
+l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcq8+lbelabi+ld5ofl ! Fix when I do d1 right
 l6_ipd1=l6_ipq3+l6_ipq3_d1
 ! Lengths of straights between dipoles
 l6_d1d2 = ld5ofl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ld5ofl ! Fix when I do d1 right
@@ -506,7 +506,7 @@ hsr6d: line=(
  o_crab_mag, 
  h6_tp2i04,
  o6_45,
- h6_cqtc05, obelabi, 
+ h6_cq8c05, obelabi, 
  h6_d01, obelabi, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cq8c07, obelabi,
  h6_d02, obelabi, h6_cqtb08, obelabi,
  h6_d03, obelabi, h6_cq8c09, 

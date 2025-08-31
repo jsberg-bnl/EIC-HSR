@@ -184,10 +184,8 @@ h6_a105:multipole,ksl:={0,-0.030435680000000007*h6_a105_i/beam->brho};
 h6_cor05:line=(olmp0,h6_tv05,h6_b305,h6_b405,h6_a105,olmp0);
 h6_q05:quadrupole,l=lq;
 h6_q05,k1:=-0.016572460606060605/lq*h6_q05_i/beam->brho;
-h6_tq05:quadrupole,l=lsxt;
-h6_tq05,k1:=-0.2381915/lsxt*h6_tq05_i/beam->brho;
-h6_bv05:vmonitor;
-h6_cqtc05:line=(ocfl,h6_cor05,ocq,h6_q05,oqs,h6_tq05,osb,h6_bv05,obfl);
+h6_b05:monitor;
+h6_cq8c05:line=(ocfl,h6_cor05,ocq,h6_q05,oqbms,h6_b05,obfl);
 
 h6_b06:monitor;
 h6_tq06:quadrupole,l=lsxt;
@@ -201,15 +199,15 @@ h6_a106:multipole,ksl:={0,-0.03043852000000001*h6_a106_i/beam->brho};
 h6_cor06:line=(olmp0,h6_th06,h6_b306,h6_b406,h6_a106,olmp0);
 h6_cq4f06:line=(obfl,h6_b06,osb4c,h6_tq06,oqs4,h6_q06,ocq4,h6_cor06,ocfl);
 
-h6_b07:monitor;
-h6_q07:quadrupole,l=lq;
-h6_q07,k1:=-0.016572460606060605/lq*h6_q07_i/beam->brho;
 h6_tv07:vkicker,kick:=-0.005612747*h6_tv07_i/beam->brho;
 h6_b307:multipole,knl:={0,0,0,-74.08128000000002*h6_b307_i/beam->brho};
 h6_b407:multipole,knl:={0,0,0,0,-9273.26208*h6_b407_i/beam->brho};
 h6_a107:multipole,ksl:={0,-0.030435680000000007*h6_a107_i/beam->brho};
 h6_cor07:line=(olmp0,h6_tv07,h6_b307,h6_b407,h6_a107,olmp0);
-h6_cq8c07:line=(obfl,h6_b07,oqbms,h6_q07,ocq,h6_cor07,ocfl);
+h6_q07:quadrupole,l=lq;
+h6_q07,k1:=-0.016572460606060605/lq*h6_q07_i/beam->brho;
+h6_b07:monitor;
+h6_cq8c07:line=(ocfl,h6_cor07,ocq,h6_q07,oqbms,h6_b07,obfl);
 
 h6_th08:hkicker,kick:=-0.005619562*h6_th08_i/beam->brho;
 h6_b308:multipole,knl:={0,0,0,-74.28479999999999*h6_b308_i/beam->brho};
@@ -238,7 +236,6 @@ h6_b310:multipole,knl:={0,0,0,-74.28479999999999*h6_b310_i/beam->brho};
 h6_b410:multipole,knl:={0,0,0,0,-9326.469119999998*h6_b410_i/beam->brho};
 h6_b110:multipole,knl:={0,-0.030651719999999997*h6_b110_i/beam->brho};
 h6_cor10:line=(olmp0,h6_th10,h6_b310,h6_b410,h6_b110,olmp0);
-
 h6_q10:quadrupole,l=lq;
 h6_q10,k1:=-0.016572460606060605/lq*h6_q10_i/beam->brho;
 h6_tq10:quadrupole,l=lsxt;
@@ -446,7 +443,7 @@ O5Q11_ARC, L = +3.16416438722673021E+000;
 ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2;
 // Length from IP to d1
 l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3;
-l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lbelabi+ld5ofl; // Fix when I do d1 right
+l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcq8+lbelabi+ld5ofl; // Fix when I do d1 right
 l6_ipd1=l6_ipq3+l6_ipq3_d1;
 // Lengths of straights between dipoles
 l6_d1d2 = ld5ofl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ld5ofl; // Fix when I do d1 right
@@ -526,7 +523,7 @@ hsr6d: line=(
  o_crab_mag, 
  h6_tp2i04,
  o6_45,
- h6_cqtc05, obelabi, 
+ h6_cq8c05, obelabi, 
  h6_d01, obelabi, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cq8c07, obelabi,
  h6_d02, obelabi, h6_cqtb08, obelabi,
  h6_d03, obelabi, h6_cq8c09, 
