@@ -79,7 +79,7 @@ ogvwd: drift, l=lgvwd;
 oc2w_wd: drift, l=lc2w_wd-ltrpx1;
 oww2: drift, l=lww2;
 
-// call, file='ir2-lat.madx';
+// call, file='ir2c-lat.madx';
 call, file='ir2s-lat.madx';
 call, file='ir4-lat.madx';
 call, file='ir6-lat.madx';
