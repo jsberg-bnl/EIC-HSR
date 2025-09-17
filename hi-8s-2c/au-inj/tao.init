@@ -59,12 +59,13 @@
  v1_var%name = 'ir6w'
  default_universe = '1,2,3'
  var(1:3)%ele_name = 'k1_q1_6w' 'q2pf' 'q3pf'
- var(4:11)%ele_name = 'yi6_qd2_i' 'bo3_qf8_i' 'yo5_qf4_i' 'bi5_qd8_i' 'yo5_qd7_i' 'yo5_qf8_i' 'yo5_qd9_i' 'h5_q11_i'
- var(1:11)%step = 1e-3 1e-3 1e-3 1 1 1 1 1 1 1 1
- var(1:11)%attribute = 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
- var(12:13)%ele_name = 'b0apf' 'b1pf'
- var(12:13)%attribute = 'db_field' 'db_field'
- var(12:13)%step = 1e-2 1e-2
+ var(4:12)%ele_name = 'h5_q04_i' 'h5_q05_i' 'h5_tq05_i' 'h5_tq06_i' 'h5_q06_i' 'h5_q07_i' 'h5_q08_i' 'h5_q09_i' 'h5_q10_i'
+ var(13:14)%ele_name = 'h5_q11_i' 'h5_tq11_i'
+ var(1:14)%step = 1e-3 1e-3 1e-3 1 1 0.1 0.1 1 1 1 1 1 1 0.1
+ var(1:14)%attribute = 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+ var(15:16)%ele_name = 'b0apf' 'b1pf'
+ var(15:16)%attribute = 'db_field' 'db_field'
+ var(15:16)%step = 1e-2 1e-2
 /
 
 &tao_var
@@ -122,10 +123,12 @@
  default_universe = '1,9'
  default_attribute = 'i'
  default_step = 1
- var(1:7)%ele_name = 'h01o_q1_i' 'h01o_q2_i' 'h01o_q3_i' 'h01o_q4_i' 'h01o_q5_i' 'h01o_q6_i' 'h01o_q7_i'
- var(8:13)%ele_name = 'h02_q1_i' 'h02_q2_i' 'h02_q3_i' 'h02_q4_i' 'h02_q5_i' 'h02_q6_i'
- var(14:17)%ele_name = 'h01o_tq4_i' 'h01o_tq5_i' 'h01o_tq6_i' 'h01o_tq7_i'
- var(18:20)%ele_name = 'h02_tq4_i' 'h02_tq5_i' 'h02_tq6_i'
+ var(1:8)%ele_name = 'h01o_q7_i' 'h01o_tq7_i' 'h01o_q6_i' 'h01o_tq6_i' 'h01o_q5_i' 'h01o_tq5_i' 'h01o_q4_i' 'h01o_tq4_i'
+ var(9:13)%ele_name = 'h01o_q3_i' 'h01o_q2_i' 'h01o_q1_i' 'h01o_q00b' 'h01o_q00a'
+ var(14:18)%ele_name = 'h02_q00a' 'h02_q00b' 'h02_q1_i' 'h02_q2_i' 'h02_q3_i'
+ var(19:24)%ele_name = 'h02_tq4_i' 'h02_q4_i' 'h02_q5_i' 'h02_tq5_i' 'h02_tq6_i' 'h02_q6_i'
+ var(12:15)%attribute = 'k1' 'k1' 'k1' 'k1'
+ var(12:15)%step = 1e-3 1e-3 1e-3 1e-3
 /
 
 &tao_var
@@ -186,12 +189,12 @@
 &tao_d1_data
  ix_d1_data = 3
  d1_data%name = 'arc'
- datum(1)%data_type = 'expression: 2@lat::eta.x[yo5_sv9_2+1] - 11@lat::eta.x[0]'
- datum(2)%data_type = 'expression: 2@lat::etap.x[yo5_sv9_2+1] - 11@lat::etap.x[0]'
- datum(3)%data_type = 'expression: 2@lat::beta.a[yo5_sv9_2+1] - 11@lat::beta.a[0]'
- datum(4)%data_type = 'expression: 2@lat::alpha.a[yo5_sv9_2+1] - 11@lat::alpha.a[0]'
- datum(5)%data_type = 'expression: 2@lat::beta.b[yo5_sv9_2+1] - 11@lat::beta.b[0]'
- datum(6)%data_type = 'expression: 2@lat::alpha.b[yo5_sv9_2+1] - 11@lat::alpha.b[0]'
+ datum(1)%data_type = 'expression: 2@lat::eta.x[yo5_bh10-2] - 11@lat::eta.x[0]'
+ datum(2)%data_type = 'expression: 2@lat::etap.x[yo5_bh10-2] - 11@lat::etap.x[0]'
+ datum(3)%data_type = 'expression: 2@lat::beta.a[yo5_bh10-2] - 11@lat::beta.a[0]'
+ datum(4)%data_type = 'expression: 2@lat::alpha.a[yo5_bh10-2] - 11@lat::alpha.a[0]'
+ datum(5)%data_type = 'expression: 2@lat::beta.b[yo5_bh10-2] - 11@lat::beta.b[0]'
+ datum(6)%data_type = 'expression: 2@lat::alpha.b[yo5_bh10-2] - 11@lat::alpha.b[0]'
  datum(1:6)%meas = 0 0 0 0 0 0
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
  datum(1:6)%good_user = f f f f f f
@@ -202,8 +205,8 @@
  d1_data%name = 'opt'
  default_weight = 1
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
- datum(1:5)%ele_name = 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_sv9_2+1' 'yo5_int11_2'
- datum(1:4)%ele_start_name = 'yo5_tq4' 'bo3_qf8' 'ip6w' 'ip6w'
+ datum(1:5)%ele_name = 'yo5_bh10-2' 'yo5_bh10-2' 'yo5_bh10-2' 'yo5_bh10-2' 'yo5_int11_2'
+ datum(1:4)%ele_start_name = 'h5_tq06' 'h5_q05' 'ip6w' 'ip6w'
  datum(1:4)%merit_type = 'max' 'max' 'integral' 'integral'
  datum(1:5)%weight = 1e-10 1e-10 1e-8 1e-8 100
  datum(1:5)%meas = 0 0 0 0 0
@@ -230,7 +233,7 @@
  ix_d1_data = 2
  d1_data%name = 'crab'
  datum(1:3)%data_type = 'beta.a' 'alpha.a' 'beta.a'
- datum(1:3)%ele_name = 'o_crab_ip6f' 'o_crab_ip6f' 'yi6_qd2'
+ datum(1:3)%ele_name = 'o_crab_ip6f' 'o_crab_ip6f' 'h5_q04'
  datum(1:3)%meas = 100 0 100
  datum(1:3)%weight = 1e-2 1 1e-2
  datum(1:3)%eval_point = 'center' 'center' 'center'
@@ -251,10 +254,11 @@
  ix_d1_data = 4
  d1_data%name = 'aperx'
  default_weight = 1
- default_merit_type = 'target'
+ default_merit_type = 'max'
  default_meas = 31.5e-3
- default_data_type = 'expression:nsaux*sqrt(lat::beta.a[#->-0.5*l]*emau+(lat::eta.x[#->-0.5*l]*dpau)^2)'
- datum(1:9)%ele_name = 'q3pf' 'yi6_qd2' 'bo3_qf8' 'yo5_qf4' 'bi5_qd8' 'yo5_qd7' 'yo5_qf8' 'yo5_qd9' 'h5_q11'
+ default_data_type = 'expression:nsx*sqrt(lat::beta.a[#]*emx+(lat::eta.x[#]*dp)^2)'
+ datum(1:10)%ele_name = 'q3pf' 'h5_q04' 'd9_pf' 'h5_q05' 'h5_q06' 'h5_q07' 'h5_q08' 'h5_q09' 'h5_q10' 'h5_q11'
+ datum(1:10)%eval_point = 'center' 'center' 'beginning' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
  datum(1:9)%good_user = f f f f f f f f f
  datum(1:2)%meas = 50e-3 52.5e-3
 /
@@ -263,12 +267,11 @@
  ix_d1_data = 5
  d1_data%name = 'apery'
  default_weight = 1
- default_merit_type = 'target'
+ default_merit_type = 'max'
  default_meas = 23.75e-3
- default_data_type = 'expression:nsauy*sqrt(lat::beta.b[#->-0.5*l]*emau)'
- datum(1:2)%ele_name = 'q3pf' 'yi6_qd2'
- datum(4:10)%ele_name = 'bo3_qf8' 'yo5_qf4' 'bi5_qd8' 'yo5_qd7' 'yo5_qf8' 'yo5_qd9' 'h5_q11'
- datum(3)%data_type = 'expression:nsauy*sqrt(lat::beta.b[d9_pf-1]*emau)'
+ default_data_type = 'expression:nsy*sqrt(lat::beta.b[#->-0.5*l]*emy)'
+ datum(1:10)%ele_name = 'q3pf' 'h5_q04' 'd9_pf' 'h5_q05' 'h5_q06' 'h5_q07' 'h5_q08' 'h5_q09' 'h5_q10' 'h5_q11'
+ datum(1:10)%eval_point = 'center' 'center' 'beginning' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
  datum(1:10)%good_user = f f f f f f f f f f
  datum(1:2)%meas = 50e-3 45e-3
 /
@@ -278,8 +281,8 @@
  d1_data%name = 'opt'
  default_weight = 1
  datum(1:5)%data_type = 'beta.a' 'beta.b' 'gamma.a' 'gamma.b' 'unstable.orbit'
- datum(1:4)%ele_start_name = 'yo5_sv9_2-1' 'yo5_sv9_2-1' 'yo5_sv9_2-1' 'yo5_sv9_2-1'
- datum(1:5)%ele_name = 'yo5_tq4' 'bo3_qf8' 'ip6w' 'ip6w' 'ip6w'
+ datum(1:4)%ele_start_name = 'yo5_bh10+2' 'yo5_bh10+2' 'yo5_bh10+2' 'yo5_bh10+2'
+ datum(1:5)%ele_name = 'h5_tq06' 'h5_q05' 'ip6w' 'ip6w' 'ip6w'
  datum(1:4)%merit_type = 'max' 'max' 'integral' 'integral'
  datum(1:5)%weight = 1e-10 1e-10 1e-8 1e-8 100
  datum(1:5)%meas = 0 0 0 0 0
@@ -377,46 +380,26 @@
  ix_d1_data = 4
  d1_data%name = 'aperx'
  default_weight = 1
- default_merit_type = 'target'
+ default_merit_type = 'max'
  default_meas = 31.5e-3
- default_data_type = 'expression:nsaux*sqrt(lat::beta.a[#->-0.5*l]*emau+(lat::eta.x[#->-0.5*l]*dpau)^2)'
- datum(1:3)%ele_name = 'q2pr' 'h6_q3' 'h6_q04' 
- datum(5:10)%ele_name = 'h6_q05' 'h6_q06' 'h6_q07' 'h6_q08' 'h6_q09' 'h6_q10'
- datum(1)%data_type = 'expression:nsaux*sqrt(lat::beta.a[q2pr->-0.5*l]*emau+(lat::eta.x[q2pr->-0.5*l]*dpau)^2)'
- datum(2)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q3->-0.5*l]*emau+(lat::eta.x[h6_q3->-0.5*l]*dpau)^2)'
- datum(3)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q04->-0.5*l]*emau+(lat::eta.x[h6_q04->-0.5*l]*dpau)^2)'
- datum(4)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q05+3]*emau+(lat::eta.x[h6_q05+3]*dpau)^2)'
- datum(5)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q05->-0.5*l]*emau+(lat::eta.x[h6_q05->-0.5*l]*dpau)^2)'
- datum(6)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q06->-0.5*l]*emau+(lat::eta.x[h6_q06->-0.5*l]*dpau)^2)'
- datum(7)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q07->-0.5*l]*emau+(lat::eta.x[h6_q07->-0.5*l]*dpau)^2)'
- datum(8)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q08->-0.5*l]*emau+(lat::eta.x[h6_q08->-0.5*l]*dpau)^2)'
- datum(9)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q09->-0.5*l]*emau+(lat::eta.x[h6_q09->-0.5*l]*dpau)^2)'
- datum(10)%data_type = 'expression:nsaux*sqrt(lat::beta.a[h6_q10->-0.5*l]*emau+(lat::eta.x[h6_q10->-0.5*l]*dpau)^2)'
+ default_data_type = 'expression:nsx*sqrt(lat::beta.a[#]*emx+(lat::eta.x[#]*dp)^2)'
+ datum(1:10)%ele_name = 'q2pr' 'h6_q3' 'h6_q04' 'o6_45' 'h6_q05' 'h6_q06' 'h6_q07' 'h6_q08' 'h6_q09' 'h6_q10'
+ datum(1:10)%eval_point = 'center' 'center' 'center' 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:3)%meas = 54e-3 50e-3 52.5e-3
  datum(1:10)%good_user = f f f f f f f f f f
- datum(1:3)%meas = 50e-3 50e-3 52.5e-3
 /
 
 &tao_d1_data
  ix_d1_data = 5
  d1_data%name = 'apery'
  default_weight = 1
- default_merit_type = 'target'
+ default_merit_type = 'max'
  default_meas = 23.75e-3
- default_data_type = 'expression:nsauy*sqrt(lat::beta.b[#->-0.5*l]*emau)'
- datum(1:3)%ele_name = 'q2pr' 'h6_q3' 'h6_q04' 
- datum(5:10)%ele_name = 'h6_q05' 'h6_q06' 'h6_q07' 'h6_q08' 'h6_q09' 'h6_q10'
- datum(1)%data_type = 'expression:nsauy*sqrt(lat::beta.b[q2pr->-0.5*l]*emau)'
- datum(2)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q3->-0.5*l]*emau)'
- datum(3)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q04->-0.5*l]*emau)'
- datum(4)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q05-5]*emau)'
- datum(5)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q05->-0.5*l]*emau)'
- datum(6)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q06->-0.5*l]*emau)'
- datum(7)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q07->-0.5*l]*emau)'
- datum(8)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q08->-0.5*l]*emau)'
- datum(9)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q09->-0.5*l]*emau)'
- datum(10)%data_type = 'expression:nsauy*sqrt(lat::beta.b[h6_q10->-0.5*l]*emau)'
+ default_data_type = 'expression:nsy*sqrt(lat::beta.b[#]*emy)'
+ datum(1:10)%ele_name = 'q2pr' 'h6_q3' 'h6_q04' 'o6_45' 'h6_q05' 'h6_q06' 'h6_q07' 'h6_q08' 'h6_q09' 'h6_q10'
+ datum(1:10)%eval_point = 'center' 'center' 'center' 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(1:3)%meas = 54e-3 50e-3 45e-3
  datum(1:10)%good_user = f f f f f f f f f f
- datum(1:3)%meas = 50e-3 50e-3 45e-3
 /
 
 &tao_d2_data
@@ -713,16 +696,15 @@
  d1_data%name = 'aperx'
  default_merit_type = 'max'
  default_weight = 1e-2
- default_data_type = 'expression:nsaux*sqrt(lat::beta.a[#]*emau+(lat::eta.x[#]*dpau)^2)'
+ default_meas = 31.5e-3
+ default_data_type = 'expression:nsx*sqrt(lat::beta.a[#]*emx+(lat::eta.x[#]*dp)^2)'
  datum(1:9)%ele_name = 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4' 'oq3dtpr##1'
  datum(10:15)%ele_name = 'h01o_q3' 'h01o_q2' 'h01o_q1' 'h02_q1' 'h02_q2' 'h02_q3'
  datum(16:22)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
  datum(1:9)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'beginning'
  datum(10:15)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
  datum(16:22)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
- datum(1:9)%meas = 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3
  datum(10:15)%meas = 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3
- datum(16:22)%meas = 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3 31.5e-3
 /
 
 &tao_d1_data
@@ -730,16 +712,15 @@
  d1_data%name = 'apery'
  default_merit_type = 'max'
  default_weight = 1e-2
- default_data_type = 'expression:nsauy*sqrt(lat::beta.b[#]*emau)'
+ default_data_type = 'expression:nsy*sqrt(lat::beta.b[#]*emy)'
+ default_meas = 23.75e-3
  datum(1:9)%ele_name = 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4' 'oq3dtpr##1'
  datum(10:15)%ele_name = 'h01o_q3' 'h01o_q2' 'h01o_q1' 'h02_q1' 'h02_q2' 'h02_q3'
  datum(16:22)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
  datum(1:9)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'beginning'
  datum(10:15)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
  datum(16:22)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
- datum(1:9)%meas = 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3
  datum(10:15)%meas = 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3
- datum(16:22)%meas = 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3 23.75e-3
 /
 
 &tao_d1_data
