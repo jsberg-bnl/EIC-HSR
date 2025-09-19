@@ -1,0 +1,28 @@
+call, file='../../hsr.bmad'
+
+parameter[particle] = antiproton
+
+ep = (45.5/anomalous_moment_of(proton))*m_proton
+pp = sqrt(ep^2-m_proton^2)
+emx = 2.5e-6*m_proton/pp
+emy = 2.5e-6*m_proton/pp
+dp = 7.4e-4
+nsx = 8
+nsy = 7
+
+! Temporary, delete me
+pau_u = sqrt((46.5/anomalous_moment_of(proton))^2-1)*m_proton
+
+beginning[e_tot] = ep
+b0pf[db_field] = b0pf[db_field]*pp/p275
+b0pf[b1_gradient] = b0pf[b1_gradient]*pp/p275
+
+call, file='rhic.bmad'
+call, file='ir2.bmad'
+call, file='ir4.bmad'
+call, file='ir6.bmad'
+call, file='ir8n.bmad'
+call, file='ir10.bmad'
+call, file='ir12.bmad'
+
+use, hsr_hi_n
