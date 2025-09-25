@@ -552,12 +552,13 @@
  default_meas = 31.5e-3
  default_data_type = 'expression:nsx*sqrt(lat::beta.a[#]*emx+(lat::eta.x[#]*dp)^2)'
  datum(1:9)%ele_name = 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4' 'oq3dtpr##1'
- datum(10:15)%ele_name = 'h01o_q3' 'h01o_q2' 'h01o_q1' 'h02_q1' 'h02_q2' 'h02_q3'
- datum(16:22)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
+ datum(10:14)%ele_name = 'h01o_q3' 'h01o_q2' 'h01o_q1' 'h01o_q00b' 'h01o_q00a'
+ datum(15:19)%ele_name = 'h02_q00a' 'h02_q00b' 'h02_q1' 'h02_q2' 'h02_q3'
+ datum(20:26)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
  datum(1:9)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'beginning'
- datum(10:15)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(16:22)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
- datum(10:15)%meas = 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3
+ datum(10:19)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(20:26)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(10:19)%meas = 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3 52.5e-3
 /
 
 &tao_d1_data
@@ -568,12 +569,13 @@
  default_data_type = 'expression:nsy*sqrt(lat::beta.b[#]*emy)'
  default_meas = 23.75e-3
  datum(1:9)%ele_name = 'h01o_q7' 'h01o_tq7' 'h01o_q6' 'h01o_tq6' 'h01o_q5' 'h01o_tq5' 'h01o_q4' 'h01o_tq4' 'oq3dtpr##1'
- datum(10:15)%ele_name = 'h01o_q3' 'h01o_q2' 'h01o_q1' 'h02_q1' 'h02_q2' 'h02_q3'
- datum(16:22)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
+ datum(10:14)%ele_name = 'h01o_q3' 'h01o_q2' 'h01o_q1' 'h01o_q00b' 'h01o_q00a'
+ datum(15:19)%ele_name = 'h02_q00a' 'h02_q00b' 'h02_q1' 'h02_q2' 'h02_q3'
+ datum(20:26)%ele_name = 'oq3dtpr##2' 'h02_tq4' 'h02_q4' 'h02_q5' 'h02_tq5' 'h02_tq6' 'h02_q6'
  datum(1:9)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'beginning'
- datum(10:15)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center'
- datum(16:22)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
- datum(10:15)%meas = 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3
+ datum(10:19)%eval_point = 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(20:26)%eval_point = 'end' 'center' 'center' 'center' 'center' 'center' 'center'
+ datum(10:19)%meas = 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3 45e-3
 /
 
 &tao_d1_data

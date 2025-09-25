@@ -170,9 +170,9 @@ lq3dtpr = 5.75*0.0254
 lbelbpm = 10*0.0254
 l80belxtra = 1*0.0254
 ltrpxtra = lbc3+lbfl3-lc3ev-lbtq3-lbelq3-lq3dtpr-lbelbpm-l80belxtra
-l02wq = 1.0
-l02trpwq = lbelq1q2+lflq1a+lq1+lbq1+lflq1x+1.0
-l02wqwq = 1.5
+l02wq = 60*0.0254
+l02trpwq = 60*0.0254
+l02wqwq = 84*0.0254
 
 oc3ev: drift, l=lc3ev
 obtq3: drift, l=lbtq3
