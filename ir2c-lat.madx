@@ -1,77 +1,48 @@
+lc3ev = 83.5*0.0254 - (0.5*lq3+lcq3a+lcor);
+lbtq3 = 6*0.0254;
+lbelq3 = 4.25*0.0254;
+lq3dtpr = 5.75*0.0254;
+lbelbpm = 10*0.0254;
+l80belxtra = 1*0.0254;
+ltrpxtra = lbc3+lbfl3-lc3ev-lbtq3-lbelq3-lq3dtpr-lbelbpm-l80belxtra;
+l02wq = 60*0.0254;
+l02trpwq = 60*0.0254;
+l02wqwq = 84*0.0254;
+
+oc3ev: drift, l=lc3ev;
+obtq3: drift, l=lbtq3;
+obelq3: drift, l=lbelq3;
+oq3dtpr: drift, l=lq3dtpr;
+obelbpm: drift, l=lbelbpm;
+o80belxtra: drift, l=l80belxtra;
+otrpxtra01o: drift, l=ltrpxtra+lbelaci;
+otrpxtra02: drift, l=ltrpxtra+lbelabi;
+o02trpwq: drift, l=l02trpwq;
+o02wqwq: drift, l=l02wqwq;
+
 // Snake
-bi1_bsnk : bpmv;
-bi1_snk_hlx1 : placeholder, l=lhelix;
-bi1_snk_hlx2 : placeholder, l=lhelix;
-bi1_snk_hlx3 : placeholder, l=lhelix;
-bi1_snk_hlx4 : placeholder, l=lhelix;
-bi1_snk7:line=(odum1fl,osnke,bi1_snk_hlx4,osnkm,bi1_snk_hlx3,osnkmm,bi1_bsnk,osnkmm,bi1_snk_hlx2,osnkm,bi1_snk_hlx1,osnke,odum1fl);
+h01o_bsnk : bpmv;
+h01o_snk_hlx1 : placeholder, l=lhelix;
+h01o_snk_hlx2 : placeholder, l=lhelix;
+h01o_snk_hlx3 : placeholder, l=lhelix;
+h01o_snk_hlx4 : placeholder, l=lhelix;
+h01o_snk:line=(odum1fl,
+ osnke,
+ h01o_snk_hlx4,
+ osnkm,
+ h01o_snk_hlx3,
+ osnkmm,
+ h01o_bsnk,
+ osnkmm,
+ h01o_snk_hlx2,
+ osnkm,
+ h01o_snk_hlx1,
+ osnke,
+ odum1fl);
 
-// RHIC lines
-ins01b: line=(bi1_int9_3,
- bi1_d9,
- bi1_int9_2,
- bi1_du9,
- bi1_int9_1,
- bi1_cqb9,
- bi1_int8_2,
- bi1_d8,
- bi1_int8_1,
- bi1_cq8,
- bi1_int7_2,
- bi1_snk7,
- bi1_int7_1);
+h02_dh5: d5i;
+h02_d5i: line=(od5ofl,h02_dh5,od5ofl);
 
-ins02y: line=(yi2_int7_1,
- yi2_du7,
- yi2_int7_2,
- yi2_cq8,
- yi2_int8_1,
- yi2_d8,
- yi2_int8_2,
- yi2_cqb9,
- yi2_int9_1,
- yi2_du9,
- yi2_int9_2,
- yi2_d9,
- yi2_int9_3);
-
-ld5 = rho*thd5;
-
-delta_lqd = -0.008759;
-l65 = 56.699873;    // 25 mm value
-l6m = 44.195574;    // 25 mm value
-l_inner_hc = 14.793530;
-lqd5tot = l_inner_hc - ld5 - 0.5*(lq+lq7);
-lqd6tot = l_inner_hc - ldps - lq;
-foqd5 = 0.5;
-foqd6 = 0.2;
-
-o76: drift, l=4+(lbfl+lqbms7+lq7)-(lbfl+lqb+lq+lcq+lcor+lcfl)-(lcfl+lcor+lcq);
-o6d: drift, l=foqd6*lqd6tot - (lqs+lsxt+lsb+lbfl) - ldsfl;
-o5c: drift, l=l65 + 0.5*lq - l6m - (lcfl+lcor+lcq4+0.5*lq4);
-o54: drift, l=4 + 0.5*lq7 - (0.5*lq4+lqs4+lsxt+lsb4+lbfl4) - (lcfl+lcor+lcq);
-o4d: drift, l=foqd5*lqd5tot + 0.5*lq7 - (0.5*lq+lqs+lsxt+lsb+lbfl);
-o3d: drift, l=(1-foqd5)*lqd5tot - (lcfl+lcor+lcq);
-o32: drift, l=11.0743358735516466;
-o21_1: drift, l=2*(lqd+delta_lqd) + ldip + 0.5*lq - (lbfl+lsb+lsxt+lqs) - (lbfl+lqbms7+0.5*lq7);
-o21_2: drift, l=2*(lqd+delta_lqd) + ldip + 0.5*lq - (lbfl+lsb+lsxt+lqs) - (0.5*lq7+lcq7+lcor+lcfl);
-
-ocool_out: placeholder, l=0.5*l65 - foqd6*lqd6tot - ldps - ldsfl;
-ocool_in:  placeholder, l=l6m - 0.5*l65 + 1e-6;
-
-cool_kicker_out: ocool_out;
-cool_kicker_in: ocool_in;
-cool_modulator_in: ocool_in;
-cool_modulator_out: ocool_out;
-
-d5: sbend, angle=thd5, l=ld5; // Not any RHIC magnet; do something about me
-
-ir2: line=(
- ins01b,yo1_cqt6,o76,bi1_cqt6,o6d,bi1_d6,cool_kicker_out,cool_kicker_in,
- o5c,yo1_cqt4,o54,bi1_cqt5,o4d,d5,o3d,yo1_cqb9,o32,yo1_cqt5,
- o21_1,bi1_cq7,o21_2,
- bo2_cqt5,o32,bo2_cqb9,o3d,d5,o4d,yi2_cqt5,o54,bo2_cqt4,o5c,
- cool_modulator_in,cool_modulator_out,yi2_d6,o6d,yi2_cqt6,o76,bo2_cqt6,ins02y);
 h01o_tv7:vkicker,kick:=-0.005612747*h01o_tv7_i/beam->brho;
 h01o_b37:multipole,knl:={0,0,0,-74.08128000000002*h01o_b37_i/beam->brho};
 h01o_b47:multipole,knl:={0,0,0,0,-9273.26208*h01o_b47_i/beam->brho};
@@ -83,6 +54,7 @@ h01o_tq7:quadrupole,l=lsxt;
 h01o_tq7,k1:=-0.2381915/lsxt*h01o_tq7_i/beam->brho;
 h01o_bv7:vmonitor;
 h01o_cqtc7:line=(ocfl,h01o_cor7,ocq,h01o_q7,oqs,h01o_tq7,osb,h01o_bv7,obfl);
+
 h01o_tv6:vkicker,kick:=-0.005612747*h01o_tv6_i/beam->brho;
 h01o_b36:multipole,knl:={0,0,0,-74.08128000000002*h01o_b36_i/beam->brho};
 h01o_b46:multipole,knl:={0,0,0,0,-9273.26208*h01o_b46_i/beam->brho};
@@ -94,6 +66,7 @@ h01o_tq6:quadrupole,l=lsxt;
 h01o_tq6,k1:=-0.2381915/lsxt*h01o_tq6_i/beam->brho;
 h01o_bv6:vmonitor;
 h01o_cqtc6:line=(ocfl,h01o_cor6,ocq,h01o_q6,oqs,h01o_tq6,osb,h01o_bv6,obfl);
+
 h01o_th5:hkicker,kick:=-0.005619562*h01o_th5_i/beam->brho;
 h01o_b35:multipole,knl:={0,0,0,-74.28479999999999*h01o_b35_i/beam->brho};
 h01o_b45:multipole,knl:={0,0,0,0,-9326.469119999998*h01o_b45_i/beam->brho};
@@ -105,6 +78,7 @@ h01o_tq5:quadrupole,l=lsxt;
 h01o_tq5,k1:=-0.2381915/lsxt*h01o_tq5_i/beam->brho;
 h01o_bh5:hmonitor;
 h01o_cqtb5:line=(ocfl,h01o_cor5,ocq,h01o_q5,oqs,h01o_tq5,osb,h01o_bh5,obfl);
+
 h01o_tv4:vkicker,kick:=-0.005612747*h01o_tv4_i/beam->brho;
 h01o_b34:multipole,knl:={0,0,0,-74.08128000000002*h01o_b34_i/beam->brho};
 h01o_b44:multipole,knl:={0,0,0,0,-9273.26208*h01o_b44_i/beam->brho};
@@ -116,6 +90,65 @@ h01o_tq4:quadrupole,l=lsxt;
 h01o_tq4,k1:=-0.2381915/lsxt*h01o_tq4_i/beam->brho;
 h01o_bv4:vmonitor;
 h01o_cqtc4:line=(ocfl,h01o_cor4,ocq,h01o_q4,oqs,h01o_tq4,osb,h01o_bv4,obfl);
+
+h01o_b3:monitor;
+h01o_th3:hkicker,kick:=-0.00562434*h01o_th3_i/beam->brho;
+h01o_b23:multipole,knl:={0,0,-0.50648375*h01o_b23_i/beam->brho};
+h01o_b33:multipole,knl:={0,0,0,-15.93121875*h01o_b33_i/beam->brho};
+h01o_b53:multipole,knl:={0,0,0,0,0,-94824.609375*h01o_b53_i/beam->brho};
+h01o_cor3l:line=(olmp0,h01o_th3,h01o_b23,h01o_b33,h01o_b53,olmp0);
+h01o_q3:quadrupole,l=lq3;
+h01o_q3,k1:=-0.020001844230769228/lq3*h01o_q3_i/beam->brho;
+h01o_a53:multipole,ksl:={0,0,0,0,0,-94626.5625*h01o_a53_i/beam->brho};
+h01o_a33:multipole,ksl:={0,0,0,-15.872999999999996*h01o_a33_i/beam->brho};
+h01o_a23:multipole,ksl:={0,0,-0.5067375*h01o_a23_i/beam->brho};
+h01o_a13:multipole,ksl:={0,-0.022193925000000003*h01o_a13_i/beam->brho};
+h01o_cor3k:line=(olmp0,h01o_a53,h01o_a33,h01o_a23,h01o_a13,olmp0);
+h01o_tp3l3:line=(obelq3,obtq3,oc3ev,h01o_cor3l,ocq3a,h01o_q3,ocq3x,h01o_cor3k,ocfl3);
+
+h01o_q2:quadrupole,l=lq2;
+h01o_q2,k1:=-0.032247392307692316/lq2*h01o_q2_i/beam->brho;
+h01o_tv2:vkicker,kick:=-0.00563167*h01o_tv2_i/beam->brho;
+h01o_b32:multipole,knl:={0,0,0,-15.9255*h01o_b32_i/beam->brho};
+h01o_b42:multipole,knl:={0,0,0,0,-959.9249999999997*h01o_b42_i/beam->brho};
+h01o_b52:multipole,knl:={0,0,0,0,0,-94699.21875000001*h01o_b52_i/beam->brho};
+h01o_cor2:line=(olmp0,h01o_tv2,h01o_b32,h01o_b42,h01o_b52,olmp0);
+h01o_tp2j2:line=(oflq2a,h01o_q2,ocq2,h01o_cor2,ocfl2);
+
+h01o_q1:quadrupole,l=lq1;
+h01o_q1,k1:=-0.013745546153846155/lq1*h01o_q1_i/beam->brho;
+h01o_b1:monitor;
+h01o_tp11:line=(oflq1a,h01o_q1,obq1,h01o_b1,oflq1x);
+
+h02_b1:monitor;
+h02_q1:quadrupole,l=lq1;
+h02_q1,k1:=-0.013745546153846155/lq1*h02_q1_i/beam->brho;
+h02_tp11:line=(oflq1x,h02_b1,obq1,h02_q1,oflq1a);
+
+h02_tv2:vkicker,kick:=-0.00563167*h02_tv2_i/beam->brho;
+h02_b32:multipole,knl:={0,0,0,-15.9255*h02_b32_i/beam->brho};
+h02_b42:multipole,knl:={0,0,0,0,-959.9249999999997*h02_b42_i/beam->brho};
+h02_b52:multipole,knl:={0,0,0,0,0,-94699.21875000001*h02_b52_i/beam->brho};
+h02_cor2:line=(olmp0,h02_tv2,h02_b32,h02_b42,h02_b52,olmp0);
+h02_q2:quadrupole,l=lq2;
+h02_q2,k1:=-0.032247392307692316/lq2*h02_q2_i/beam->brho;
+h02_tp2j2:line=(ocfl2,h02_cor2,ocq2,h02_q2,oflq2a);
+
+h02_a53:multipole,ksl:={0,0,0,0,0,-94626.5625*h02_a53_i/beam->brho};
+h02_a33:multipole,ksl:={0,0,0,-15.872999999999996*h02_a33_i/beam->brho};
+h02_a23:multipole,ksl:={0,0,-0.5067375*h02_a23_i/beam->brho};
+h02_a13:multipole,ksl:={0,-0.022193925000000003*h02_a13_i/beam->brho};
+h02_cor3k:line=(olmp0,h02_a53,h02_a33,h02_a23,h02_a13,olmp0);
+h02_q3:quadrupole,l=lq3;
+h02_q3,k1:=-0.020001844230769228/lq3*h02_q3_i/beam->brho;
+h02_th3:hkicker,kick:=-0.00562434*h02_th3_i/beam->brho;
+h02_b23:multipole,knl:={0,0,-0.50648375*h02_b23_i/beam->brho};
+h02_b33:multipole,knl:={0,0,0,-15.93121875*h02_b33_i/beam->brho};
+h02_b53:multipole,knl:={0,0,0,0,0,-94824.609375*h02_b53_i/beam->brho};
+h02_cor3l:line=(olmp0,h02_th3,h02_b23,h02_b33,h02_b53,olmp0);
+h02_b3:monitor;
+h02_tp3l3:line=(ocfl3,h02_cor3k,ocq3x,h02_q3,ocq3a,h02_cor3l,oc3ev,obtq3,obelq3);
+
 h02_b4:monitor;
 h02_tq4:quadrupole,l=lsxt;
 h02_tq4,k1:=-0.2381915/lsxt*h02_tq4_i/beam->brho;
@@ -127,6 +160,7 @@ h02_b44:multipole,knl:={0,0,0,0,-9273.26208*h02_b44_i/beam->brho};
 h02_a14:multipole,ksl:={0,-0.030435680000000007*h02_a14_i/beam->brho};
 h02_cor4:line=(olmp0,h02_tv4,h02_b34,h02_b44,h02_a14,olmp0);
 h02_cq4c4:line=(obfl,h02_b4,osb4c,h02_tq4,oqs4,h02_q4,ocq4,h02_cor4,ocfl);
+
 h02_th5:hkicker,kick:=-0.005610334999999999*h02_th5_i/beam->brho;
 h02_b35:multipole,knl:={0,0,0,-73.87392*h02_b35_i/beam->brho};
 h02_b45:multipole,knl:={0,0,0,0,-9294.9504*h02_b45_i/beam->brho};
@@ -138,6 +172,7 @@ h02_tq5:quadrupole,l=lsxt;
 h02_tq5,k1:=-0.2381915/lsxt*h02_tq5_i/beam->brho;
 h02_b5:monitor;
 h02_cq4f5:line=(ocfl,h02_cor5,ocq4,h02_q5,oqs4,h02_tq5,osb4c,h02_b5,obfl);
+
 h02_b6:monitor;
 h02_tq6:quadrupole,l=lsxt;
 h02_tq6,k1:=-0.2381915/lsxt*h02_tq6_i/beam->brho;
@@ -149,3 +184,120 @@ h02_b46:multipole,knl:={0,0,0,0,-9294.9504*h02_b46_i/beam->brho};
 h02_a16:multipole,ksl:={0,-0.03043852000000001*h02_a16_i/beam->brho};
 h02_cor6:line=(olmp0,h02_th6,h02_b36,h02_b46,h02_a16,olmp0);
 h02_cq4f6:line=(obfl,h02_b6,osb4c,h02_tq6,oqs4,h02_q6,ocq4,h02_cor6,ocfl);
+
+h01o_trp: line=(h01o_tp3l3,
+ obelq2q3,
+ h01o_tp2j2,
+ obelq1q2,
+ h01o_tp11);
+h02_trp: line=(h02_tp11,
+ obelq1q2,
+ h02_tp2j2,
+ obelq2q3,
+ h02_tp3l3);
+
+q02warm: quadrupole, l=l02wq;
+h01o_q00a: q02warm;
+h01o_q00b: q02warm;
+h02_q00a: q02warm;
+h02_q00b: q02warm;
+
+// Drift calculation
+// First, compute values for distance across RHIC
+zr00 = 2*lcenxdx;
+lr01 = 2*lcendx/cos(0.5*thdx);
+tr01 = -0.5*thdx;
+lr02 = 2*lcendxd0/cos(thdx);
+tr02 = -thdx;
+lr03 = 2*lcend0/cos(0.5*(thdx+thd0));
+tr03 = -0.5*(thdx+thd0);
+rho50 = rho/(cos(0.5*(thd5+thd0))*cos(0.5*(thd5-thd0)));
+lr04 = 2*lpld0d5-rho50*sin(thd5);
+tr04 = -thd0;
+zr05 = 2*rho*sin(thd5);
+zr06 = (lplq5q6+2*(lq+lplq6q7-lpldsq7-ldps)-rho50*sin(thd5))*cos(thd5);
+xr06 = (2*(ldspd5a+ldspds)-rho50*sin(thd0))*sin(thd5);
+zr07 = 4*rho*sin(0.5*thds)*cos(thd5+0.5*thds);
+zr08 = 2*(lpldsq7+lq7+lplq7q8+lq+lqd)*cos(thd5+thds);
+xr08 = 2*(ldspds+ldspqd)*sin(thd5+thds);
+zr09 = 4*rho*sin(0.5*thcell)*cos(thd5+thds+0.5*thcell);
+zr10 = 2*(lqd+lq+lplq9ds)*cos(thd5+thds+thcell);
+xr10 = 2*(ldspqd+ldspds)*sin(thd5+thds+thcell);
+zr11 = 4*rho*sin(0.5*thds)*cos(thd5+1.5*thds+thcell);
+zr12 = 2*(lbd10-lbfl)*cos(thd5+2*thds+thcell);
+xr12 = 2*ldspds*sin(thd5+2*thds+thcell);
+xrall = xr06+xr08+xr10+xr12;
+zrall = zr00+zr05+zr06+zr07+zr08+zr09+zr10+zr11+zr12;
+// Now, compute values for the pieces of IR2
+// Update these when the IR2 layout changes
+ltrp = lflq1x+lbq1+lq1+lplq1q2+lq2+lplq2q3+lq3+lcq3a+lcor+lc3ev+lbtq3+lbelq3;
+l2_0 = 2*(ltrp+ltrpxtra+lq3dtpr+lbelbpm+l80belxtra+l02trpwq+l02wqwq+2*l02wq)+ld5ofl+ldfl+lbelabi+lbelaci;
+t2_0 = thd5-thcell;
+l21o_1 = 2*rho*sin(0.5*thcell);
+t21o_1 = thd5-0.5*thcell;
+l21o_2 = ldfl+lbelabi+lbelaci+lcqs+ldsfl;
+t21o_2 = thd5;
+l21o_3 = 2*rho*sin(0.5*thds);
+t21o_3 = thd5+0.5*thds;
+l21o_4 = ldsfl+lbelabi+2*lcqs+l7dummy+2*(ldum1fl+lbel78d)+lbelaci+ldfl;
+t21o_4 = thd5+thds;
+l21o_5 = 2*rho*sin(0.5*thcell);
+t21o_5 = thd5+thds+0.5*thcell;
+l21o_6 = ldfl+lbelaci+lcqs+lbel9ti+ldsfl;
+t21o_6 = thd5+thds+thcell;
+l21o_7 = 2*rho*sin(0.5*thds);
+t21o_7 = thd5+1.5*thds+thcell;
+l21o_8 = ldsfl; // Additional flex here
+t21o_8 = thd5+2*thds+thcell;
+l22_1 = 2*rho*sin(0.5*(thd5-thd0));
+t22_1 = 0.5*(thd5+thd0)-thcell;
+l22_2 = ld5ofl+lbelabi+lcqt4+lbelabi+ldsfl;
+t22_2 = thd0-thcell;
+l22_3 = 2*rho*sin(0.5*thds);
+t22_3 = thd0-thcell-0.5*thds;
+l22_4 = ldsfl+2*lbelabi+lcqt4+ld5ofl;
+t22_4 = thd0-thcell-thds;
+l22_5 = 2*rho*sin(0.5*(thd5+thd0));
+t22_5 = 0.5*(thd0-thd5)-thcell-thds;
+l22_6 = ld5ofl+lbelabi+lcqt4+lbel9ti+ldsfl;
+t22_6 = -thd5-thds-thcell;
+l22_7 = 2*rho*sin(0.5*thds);
+t22_7 = -thd5-1.5*thds-thcell;
+l22_8 = ldsfl+lbel10bi;
+t22_8 = -thd5-2*thds-thcell;
+
+h01o_o7a: drift, l=(-zrall*sin(t2_0)+xrall*cos(t2_0)+lr01*sin(tr01-t2_0)+lr02*sin(tr02-t2_0)+lr03*sin(tr03-t2_0)
+ +lr04*sin(tr04-t2_0)-l21o_1*sin(t21o_1-t2_0)-l21o_2*sin(t21o_2-t2_0)-l21o_3*sin(t21o_3-t2_0)-l21o_4*sin(t21o_4-t2_0)
+ -l21o_5*sin(t21o_5-t2_0)-l21o_6*sin(t21o_6-t2_0)-l21o_7*sin(t21o_7-t2_0)-l22_1*sin(t22_1-t2_0)-l22_2*sin(t22_2-t2_0)
+ -l22_3*sin(t22_3-t2_0)-l22_4*sin(t22_4-t2_0)-l22_5*sin(t22_5-t2_0)-l22_6*sin(t22_6-t2_0)-l22_7*sin(t22_7-t2_0)
+ -l22_8*sin(t22_8-t2_0))/sin(t21o_8-t2_0)-l21o_8;
+o02: drift, l=(-zrall*sin(t21o_8)+xrall*cos(t21o_8)+lr01*sin(tr01-t21o_8)+lr02*sin(tr02-t21o_8)+lr03*sin(tr03-t21o_8)
+ +lr04*sin(tr04-t21o_8)-l21o_1*sin(t21o_1-t21o_8)-l21o_2*sin(t21o_2-t21o_8)-l21o_3*sin(t21o_3-t21o_8)-l21o_4*sin(t21o_4-t21o_8)
+ -l21o_5*sin(t21o_5-t21o_8)-l21o_6*sin(t21o_6-t21o_8)-l21o_7*sin(t21o_7-t21o_8)-l22_1*sin(t22_1-t21o_8)-l22_2*sin(t22_2-t21o_8)
+ -l22_3*sin(t22_3-t21o_8)-l22_4*sin(t22_4-t21o_8)-l22_5*sin(t22_5-t21o_8)-l22_6*sin(t22_6-t21o_8)-l22_7*sin(t22_7-t21o_8)
+ -l22_8*sin(t22_8-t21o_8))/sin(t2_0-t21o_8)-l2_0;
+
+ir2ow: line=(h01o_o7a,
+ yo1_d9, obel9ti,
+ h01o_cqtc7, obelaci,
+ yo1_d8, obelaci,
+ h01o_cqtc6, obel78d,
+ h01o_snk, obel78d,
+ h01o_cqtb5, obelabi,
+ yo1_d6, obelabi,
+ h01o_cqtc4, obelaci,
+ yi2_d8, o80belxtra, obelbpm, oq3dtpr,
+ otrpxtra01o, h01o_trp,
+ o02trpwq, h01o_q00b, o02wqwq, h01o_q00a);
+
+ir2d: line=(h02_q00a, o02wqwq, h02_q00b, o02trpwq,
+ h02_trp, otrpxtra02, oq3dtpr, obelbpm, o80belxtra,
+ h02_d5i, obelabi,
+ h02_cq4c4, obelabi,
+ yi2_d6, obelabi,
+ h02_cq4f5, obelabi,
+ yo1_d5, obelabi,
+ h02_cq4f6, obel9ti,
+ yi2_d9, obel10bi);
+
+ir2: line=(ir2ow,o02,ir2d);
