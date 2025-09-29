@@ -34,35 +34,35 @@ h5_tq06_i:overlay={h5_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
 h5_b06:monitor
 h5_cq4f06:line=(ocfl,h5_cor06,ocq4,h5_q06,oqs4,h5_tq06,osb4c,h5_b06,obfl)
 
+h5_b07:monitor
+h5_q07:quadrupole,l=lq,field_master=t
+h5_q07_i:overlay={h5_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h5_cor07: kicker, l=lcor, scale_multipoles=f
 h5_tv07_i:overlay={h5_cor07[bl_vkick]:0.005612747*i},var={i}
 h5_b307_i:overlay={h5_cor07[b3]:12.346880000000004*i},var={i}
 h5_b407_i:overlay={h5_cor07[b4]:386.38592*i},var={i}
 h5_a107_i:overlay={h5_cor07[a1]:0.030435680000000007*i},var={i}
-h5_q07:quadrupole,l=lq,field_master=t
-h5_q07_i:overlay={h5_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
-h5_b07:monitor
-h5_cq8c07:line=(ocfl,h5_cor07,ocq,h5_q07,oqbms,h5_b07,obfl)
+h5_cq8c07:line=(obfl,h5_b07,oqbms,h5_q07,ocq,h5_cor07,ocfl)
 
+h5_b08:monitor
+h5_q08:quadrupole,l=lq7,field_master=t
+h5_q08_i:overlay={h5_q08[b1_gradient]:0.013872341176470586*i/lq7},var={i}
 h5_cor08: kicker, l=lcor, scale_multipoles=f
 h5_th08_i:overlay={h5_cor08[bl_hkick]:0.005619562*i},var={i}
 h5_b308_i:overlay={h5_cor08[b3]:12.380799999999999*i},var={i}
 h5_b408_i:overlay={h5_cor08[b4]:388.6028799999999*i},var={i}
 h5_b108_i:overlay={h5_cor08[b1]:0.030651719999999997*i},var={i}
-h5_q08:quadrupole,l=lq7,field_master=t
-h5_q08_i:overlay={h5_q08[b1_gradient]:0.013872341176470586*i/lq7},var={i}
-h5_b08:monitor
-h5_cq7b08:line=(ocfl,h5_cor08,ocq7,h5_q08,oqbms7,h5_b08,obfl)
+h5_cq7b08:line=(obfl,h5_b08,oqbms7,h5_q08,ocq7,h5_cor08,ocfl)
 
-h5_b09:monitor
-h5_q09:quadrupole,l=lq,field_master=t
-h5_q09_i:overlay={h5_q09[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h5_cor09: kicker, l=lcor, scale_multipoles=f
 h5_tv09_i:overlay={h5_cor09[bl_vkick]:0.005612747*i},var={i}
 h5_b309_i:overlay={h5_cor09[b3]:12.346880000000004*i},var={i}
 h5_b409_i:overlay={h5_cor09[b4]:386.38592*i},var={i}
 h5_a109_i:overlay={h5_cor09[a1]:0.030435680000000007*i},var={i}
-h5_cq8c09:line=(obfl,h5_b09,oqbms,h5_q09,ocq,h5_cor09,ocfl)
+h5_q09:quadrupole,l=lq,field_master=t
+h5_q09_i:overlay={h5_q09[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h5_b09:monitor
+h5_cq8c09:line=(ocfl,h5_cor09,ocq,h5_q09,oqbms,h5_b09,obfl)
 
 h5_b10:monitor
 h5_q10:quadrupole,l=lq,field_master=t
