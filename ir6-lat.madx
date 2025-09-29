@@ -285,7 +285,6 @@ xb0hf = 1.45779264977192957E-01; // Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half->l + sol_half->l*sin(sol_rot)*tan(0.5*sol_rot);
 lb0pf = 1.2;
-kb0pf := -8.12223828336297515E+00/beam->brho;
 b0pf: sbend, l=lb0pf, k0:=xb0hf*kb0pf, k1:=kb0pf;
 pbr_b0pf: yrotation, angle=2.67043931616361939E-02;
 pbt_b0pf: translation, dx=-3.02264219559301335E-002;
