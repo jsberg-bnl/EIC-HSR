@@ -34,15 +34,15 @@ h5_tq06,k1:=-0.2381915/lsxt*h5_tq06_i/beam->brho;
 h5_b06:monitor;
 h5_cq4f06:line=(ocfl,h5_cor06,ocq4,h5_q06,oqs4,h5_tq06,osb4c,h5_b06,obfl);
 
-h5_b07:monitor;
-h5_q07:quadrupole,l=lq;
-h5_q07,k1:=-0.016572460606060605/lq*h5_q07_i/beam->brho;
 h5_tv07:vkicker,kick:=-0.005612747*h5_tv07_i/beam->brho;
 h5_b307:multipole,knl:={0,0,0,-74.08128000000002*h5_b307_i/beam->brho};
 h5_b407:multipole,knl:={0,0,0,0,-9273.26208*h5_b407_i/beam->brho};
 h5_a107:multipole,ksl:={0,-0.030435680000000007*h5_a107_i/beam->brho};
 h5_cor07:line=(olmp0,h5_tv07,h5_b307,h5_b407,h5_a107,olmp0);
-h5_cq8c07:line=(obfl,h5_b07,oqbms,h5_q07,ocq,h5_cor07,ocfl);
+h5_q07:quadrupole,l=lq;
+h5_q07,k1:=-0.016572460606060605/lq*h5_q07_i/beam->brho;
+h5_b07:monitor;
+h5_cq8c07:line=(ocfl,h5_cor07,ocq,h5_q07,oqbms,h5_b07,obfl);
 
 h5_b08:monitor;
 h5_q08:quadrupole,l=lq7;
