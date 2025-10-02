@@ -1,0 +1,48 @@
+chdir, dir='../..';
+call, file='hsr.madx';
+chdir, dir='hi-8s-2c/au-inj';
+
+mau = 183.432828540740265; // From Bmad
+a_proton = 1.79284734463;
+pau = sqrt((46.5/a_proton)^2-1)*pmass*79;
+eau = sqrt(pau^2+mau^2);
+emx = 2.5e-6*mau/pau;
+emy = emx;
+dp = 6e-4;
+nsx = 7;
+nsy = 6;
+
+call, file='rhic.madx';
+call, file='ir2.madx';
+call, file='ir4.madx';
+call, file='ir6.madx';
+call, file='ir8n.madx';
+call, file='ir10.madx';
+call, file='ir12.madx';
+
+beam, energy=ep, charge=-79, mass=mau, energy=eau;
+use, sequence=hsr_hi_n;
+
+set, format="10d", "25.17e", "-24s";
+select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
+survey, file='hsr-survey.tfs',
+ x0 = -(rhic_rip - dx0_eic_ip6),
+ z0 = 0,
+ theta0 = pi + dtheta0_eic_ip6;
+
+option, -twiss_print;
+match, use_macro;
+fit_ir6w_orbit:macro={
+ use, sequence=hsr_hi_n, range=pbr_b1apf/per_b0pf;
+ twiss, exact, betx=1, bety=1;
+};
+vary, name=b0apf->k0, step=1e-6;
+vary, name=b1pf->k0, step=1e-6;
+constraint, weight=1e6, expr=table(twiss,per_b0pf,x)=0;
+constraint, weight=1e6, expr=table(twiss,per_b0pf,px)=0;
+jacobian, calls=32, tolerance=1e-18;
+endmatch;
+
+use, sequence=hsr_hi_n;
+select, flag=twiss, column=name,keyword,t,s,x,px,dx,dpx,betx,alfx,bety,alfy;
+twiss, exact, tolerance=1e-12, file='hsr-twiss.tfs';
