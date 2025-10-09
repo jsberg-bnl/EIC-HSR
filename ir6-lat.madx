@@ -281,13 +281,13 @@ o06d_q2_q3: drift, l=l06d_q2_q3;
 // b0pf layout
 ze = 5.8; // Distance along electron line to B0 entrance plane
 ac = 25e-3; // Crossing angle
-xb0hf = 1.45779264977192957E-01; // Distance of B0 axis from electron line
+xb0hf = 34e-3; // Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half->l + sol_half->l*sin(sol_rot)*tan(0.5*sol_rot);
 lb0pf = 1.2;
 b0pf: sbend, l=lb0pf, k0:=xb0hf*kb0pf, k1:=kb0pf;
-pbr_b0pf: yrotation, angle=2.67043931616361939E-02;
-pbt_b0pf: translation, dx=-3.02264219559301335E-002;
+pbr_b0pf: yrotation, angle=2.6704393161636225E-02;
+pbt_b0pf: translation, dx=-1.42016467739204760E-01;
 per_b0pf: yrotation, angle=-ac;
 pet_b0pf: translation, dx=ze*tan(ac) - xb0hf;
 o06w_b0_b0a: drift;
@@ -403,7 +403,7 @@ b1apf, k0 = -2.7*clight/p275;
 
 pt_ir6f = 1.23443089471739316E+009; // Transverse momentum passed by apertures at 275 GeV, for information only
 // Forward geometry
-O06W_B0_B0A, L = +9.01355498920959897E-001;
+O06W_B0_B0A, L = 9.00548128737538867E-01;
 PER_B0APF, ANGLE = -4.79514821232049273E-003;
 PET_B0APF, DX = -7.07734721058384929E-003;
 PBT_B0APF, DX = +3.55265096116321247E-003;
@@ -511,7 +511,7 @@ hsr6w: line=(
  o06w_b0a_q1a,
  pbr_b0apf, pbt_b0apf, b0apf, pet_b0apf, per_b0apf,
  o06w_b0_b0a,
- pbt_b0pf, pbr_b0pf, b0pf, pet_b0pf, per_b0pf,
+ pbr_b0pf, pbt_b0pf, b0pf, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf);
 
