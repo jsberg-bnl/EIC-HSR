@@ -33,5 +33,13 @@ for name in os.listdir():
     m = re.match(r'(ir[0-9]+[cn]?|rhic)\.bmad',name)
     if m:
         stem = m.group(1)
+        if stem == 'ir6':
+            kb0pf = None
+            with open(stem+'.madx','r') as madx:
+                for l in madx:
+                    if re.match(r'kb0pf',l):
+                        kb0pf = l.rstrip()
         with open(stem+'.bmad','r') as bmad, open(stem+'.madx','w') as madx:
             bmad_to_madx(bmad,madx)
+            if stem == 'ir6' and not kb0pf is None:
+                print(kb0pf,file=madx)
