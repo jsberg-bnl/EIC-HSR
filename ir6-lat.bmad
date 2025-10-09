@@ -260,11 +260,11 @@ l_sol_pr: line=(pb_sol_r,star_detect_r,pe_sol_r)
 ! Rear IR layout
 l06d_q1a=1.8
 l06d_q1b=1.4
-l06d_q2=4.5
+l06d_q2=3.5
 l06d_sol_q1a=3.3
 l06d_q1a_q1b=0.5
-l06d_q1b_q2=1.5
-l06d_q2_q3=22.45
+l06d_q1b_q2=2.0
+l06d_q2_q3=22.95
 q1apr: quadrupole, l=l06d_q1a
 q1bpr: quadrupole, l=l06d_q1b
 q2pr: quadrupole, l=l06d_q2
