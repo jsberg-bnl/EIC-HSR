@@ -37,7 +37,7 @@ fit_ir6w_orbit:macro={
  twiss, exact, betx=1, bety=1;
 };
 vary, name=b0apf->k0, step=1e-6;
-vary, name=b1pf->k0, step=1e-6;
+vary, name=b1apf->k0, step=1e-6;
 constraint, weight=1e6, expr=table(twiss,per_b0pf,x)=0;
 constraint, weight=1e6, expr=table(twiss,per_b0pf,px)=0;
 jacobian, calls=32, tolerance=1e-18;

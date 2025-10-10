@@ -32,7 +32,7 @@ fit_ir6w0:macro={
  twiss, exact, betx=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab, alfx=-0.5*o_crab_ip6f->l/beta_crab, bety=1;
 };
 vary, name=b0apf->k0, step=1e-6;
-vary, name=b1pf->k0, step=1e-6;
+vary, name=b1apf->k0, step=1e-6;
 vary, name=q2pf->k1, step=1e-5;
 vary, name=q3pf->k1, step=1e-5;
 constraint, weight=1e6, expr=table(twiss,ip6w,x)=0;

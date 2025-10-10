@@ -316,22 +316,22 @@ pbr_q2pf: yrotation;
 pbt_q2pf: translation;
 per_q2pf: yrotation;
 pet_q2pf: translation;
-o06w_q2_b1: drift;
-b1pf: sbend, l=3.00;
-pbr_b1pf: yrotation;
-pbt_b1pf: translation;
-per_b1pf: yrotation;
-pet_b1pf: translation;
-o06w_b1_b1a: drift;
-b1apf: sbend, l=1.50;
+o06w_q2_b1a: drift;
+b1apf: sbend, l=2.03132356446431084;
 pbr_b1apf: yrotation;
 pbt_b1apf: translation;
 per_b1apf: yrotation;
 pet_b1apf: translation;
+o06w_b1a_b1b: drift;
+b1bpf: sbend, l=2.03132356446431084;
+pbr_b1bpf: yrotation;
+pbt_b1bpf: translation;
+per_b1bpf: yrotation;
+pet_b1bpf: translation;
 
 // New dipoles;
 b_b2pf = 5;
-B2PF_TH = +1.67744943262122526E-002;
+B2PF_TH = +1.67744943262118085E-002;
 b2pf: sbend, angle := b2pf_th, l := p275*b2pf_th/(b_b2pf*clight), e1 := 0.5*b2pf_th, e2 := 0.5*b2pf_th;
 
 oint: drift, l=0.3;
@@ -373,11 +373,11 @@ o_crab_ip6r: placeholder, l=lcrab;
 // Far-forward detectors
 l_roman_pot = 0.4;
 l_off_mom = 0.4;
-L_O06W_FFDET =  1.57326368042536924E+001;
-L_ROMAN_POT_IP6_1 = 3.93443670426640146E+000;
-L_ROMAN_POT_IP6_2 = 5.93644572010988281E+000;
-L_OFF_MOM_IP6_1 = 4.30920926540308780E-001;
-L_OFF_MOM_IP6_2 = 2.43292994238379023E+000;
+L_O06W_FFDET =  1.61706640812576161E+001;
+L_ROMAN_POT_IP6_1 = 4.37246398127056057E+000;
+L_ROMAN_POT_IP6_2 = 6.37447299711404192E+000;
+L_OFF_MOM_IP6_1 = 8.68948203544467779E-001;
+L_OFF_MOM_IP6_2 = 2.87095721938794934E+000;
 o06w_ffdet_1: drift, l=l_o06w_ffdet - l_roman_pot_ip6_2 - 0.5*l_roman_pot;
 o06w_ffdet_2: drift, l=l_roman_pot_ip6_2 - l_roman_pot_ip6_1 - l_roman_pot;
 o06w_ffdet_3: drift, l=l_roman_pot_ip6_1 - l_off_mom_ip6_2 - 0.5*l_roman_pot - 0.5*l_off_mom;
@@ -399,7 +399,7 @@ o06w_ffdet: line=(
  o06w_ffdet_5);
 
 // Proton forward, closer orbit near IR
-b1apf, k0 = -2.7*clight/p275;
+b1bpf, k0 = -3.82378031812593069E-003;
 
 pt_ir6f = 1.23443089471739316E+009; // Transverse momentum passed by apertures at 275 GeV, for information only
 // Forward geometry
@@ -423,19 +423,19 @@ PER_Q2PF, ANGLE = -1.29367560655846096E-002;
 PET_Q2PF, DX = -4.51593211840057920E-002;
 PBT_Q2PF, DX = -1.13897121786721012E-002;
 PBR_Q2PF, ANGLE = +1.54668927288380952E-002;
-O06W_Q2_B1, L = +5.01544459683320509E-001;
-PER_B1PF, ANGLE = -1.47507561726256458E-003;
-PET_B1PF, DX = -1.48375342617892581E-002;
-PBT_B1PF, DX = -6.26799876724247647E-003;
-PBR_B1PF, ANGLE = +1.25950476108859111E-002;
-O06W_B1_B1A, L = +5.01685083746840399E-001;
-PER_B1APF, ANGLE = -1.93871142166689610E-002;
-PET_B1APF, DX = -1.70096429725014632E-002;
-PBT_B1APF, DX = -1.53882030013441119E-002;
-PBR_B1APF, ANGLE = +2.38032985038345683E-002;
+O06W_Q2_B1A, L = +5.01942132533036434E-001;
+PER_B1APF, ANGLE = +1.75960226559421749E-003;
+PET_B1APF, DX = -2.90198960144249750E-002;
+PBT_B1APF, DX = +2.47052473888617341E-002;
+PBR_B1APF, ANGLE = +6.00765827119416340E-003;
+O06W_B1A_B1B, L = +5.00640006207530908E-001;
+PER_B1BPF, ANGLE = -1.60344027598332724E-002;
+PET_B1BPF, DX = -1.66843848914812638E-002;
+PBT_B1BPF, DX = -2.37825978171619414E-002;
+PBR_B1BPF, ANGLE = +2.38032985038336871E-002;
 
-D9_PF, L = +3.06573138499100484E+000+lcq8-lcqs;
-O5Q11_ARC, L = +3.16416438722673021E+000;
+D9_PF, L = +2.25455938499137742E+000;
+O5Q11_ARC, L = +3.16416438722630478E+000;
 
 // deisul geometry calculation
 // Lengths of RHIC modules used
@@ -499,10 +499,10 @@ hsr6w: line=(
  o_crab_ip6f,
  o_crab_mag, b2pf, ow2c, h5_tv3, oh6_wq_spc, h5_qs3, oh6_wq_spc, q3pf, o_ffdet_wq,
  o06w_ffdet,
+ pbr_b1bpf, pbt_b1bpf, b1bpf, pet_b1bpf, per_b1bpf,
+ o06w_b1a_b1b,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
- o06w_b1_b1a,
- pbr_b1pf, pbt_b1pf, b1pf, pet_b1pf, per_b1pf,
- o06w_q2_b1,
+ o06w_q2_b1a,
  pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
  o06w_q1b_q2,
  pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
