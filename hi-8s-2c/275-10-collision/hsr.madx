@@ -72,3 +72,58 @@ select, flag=twiss, clear;
 use, sequence=hsr_hi_n;
 select, flag=twiss, column=name,keyword,t,s,x,px,dx,dpx,betx,alfx,bety,alfy;
 twiss, exact, tolerance=1e-12, file='hsr-twiss.tfs';
+
+bety_crab_6w = table(twiss,o_crab_ip6f,bety);
+alfy_crab_6w = table(twiss,o_crab_ip6f,alfy);
+gamy_crab_6w = (1+alfy_crab_6w^2)/bety_crab_6w;
+
+k2l_q1apf = 0.5;
+
+option, -twiss_print;
+alfy0 = alfy_crab_6w;
+match, use_macro;
+fit_ir6w2:macro={
+ use, sequence=hsr_hi_n, range=o_crab_mag[4]/ip6w;
+ twiss, exact, betx=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab, alfx=-0.5*o_crab_ip6f->l/beta_crab,
+  alfy=alfy0, bety=(1+alfy0^2)/gamy_crab_6w;
+};
+vary, name=b0apfh->k0, step=1e-6;
+vary, name=q1apfh->k1, step=1e-5;
+vary, name=b1pf->k0, step=1e-6;
+vary, name=q2pf->k1, step=1e-5;
+vary, name=q3pf->k1, step=1e-5;
+vary, name=alfy0, step=1e-5;
+constraint, weight=1e6, expr=table(twiss,ip6w,x)=0;
+constraint, weight=1e6, expr=table(twiss,ip6w,px)=0;
+constraint, weight=1e-1, expr=table(twiss,ip6w,betx)=0.80;
+constraint, expr=table(twiss,ip6w,alfx)=0;
+constraint, weight=1e-1, expr=table(twiss,ip6w,bety)=0.072;
+constraint, expr=table(twiss,ip6w,alfy)=0;
+jacobian, calls=64, tolerance=1e-24;
+endmatch;
+
+select, flag=twiss, clear;
+match, use_macro;
+fit_ir6w3:macro={
+ use, sequence=hsr_hi_n, range=yo5_int11_2/ip6w;
+ twiss, exact, beta0=arc5;
+};
+vary, name=h5_q11_i, step=0.1;
+vary, name=h5_q10_i, step=0.1;
+vary, name=h5_q09_i, step=0.1;
+vary, name=h5_q08_i, step=0.1;
+vary, name=h5_q07_i, step=0.1;
+vary, name=h5_q04_i, step=0.1;
+constraint, expr=table(twiss,ip6w,dx)=0;
+constraint, expr=table(twiss,ip6w,dpx)=0;
+constraint, weight=1e-3, expr=table(twiss,o_crab_mag[3],betx)=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab;
+constraint, expr=table(twiss,o_crab_mag[3],alfx)=0.5*o_crab_ip6f->l/beta_crab;
+constraint, expr=table(twiss,ip6w,bety)=7.2e-2;
+constraint, expr=table(twiss,ip6w,alfy)=0.0;
+jacobian, calls=64, tolerance=1e-24;
+endmatch;
+
+select, flag=twiss, clear;
+use, sequence=hsr_hi_n;
+select, flag=twiss, column=name,keyword,t,s,x,px,dx,dpx,betx,alfx,bety,alfy;
+twiss, exact, tolerance=1e-12, file='hsr-twiss-sext.tfs';
