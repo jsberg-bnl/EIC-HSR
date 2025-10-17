@@ -312,17 +312,22 @@ pbr_q2pf: patch
 pet_q2pf: patch
 per_q2pf: patch
 o06w_q2_b1a: drift
-b1apf: sbend, l=2.03132356446431084, field_master=t
+b1pf: sbend, l=2.03132356446431084, field_master=t
+b1apf: b1pf
 pbt_b1apf: patch
 pbr_b1apf: patch
 pet_b1apf: patch
 per_b1apf: patch
 o06w_b1a_b1b: drift
-b1bpf: sbend, l=2.03132356446431084
+b1bpf: b1pf
 pbt_b1bpf: patch
 pbr_b1bpf: patch
 pet_b1bpf: patch
 per_b1bpf: patch
+ov_b1pf: overlay={
+ b1apf[db_field] : db_field,
+ b1bpf[db_field] : db_field},
+ var = {db_field}
 
 ! New dipoles
 b_b2pf = 5
@@ -375,9 +380,6 @@ o_roman_pot_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=en
 o_roman_pot_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
 o_off_mom_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
 o_off_mom_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
-
-! Proton forward, closer orbit near IR
-b1bpf[dg] = -3.82378031812593069E-003
 
 pt_ir6f = 1.23443089471739316E+009 ! Transverse momentum passed by apertures at 275 GeV, for information only
 ! Forward geometry

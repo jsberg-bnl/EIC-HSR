@@ -53,7 +53,7 @@
  var(4:11)%ele_name = 'h5_q04_i' 'h5_q05_i' 'h5_q06_i' 'h5_q07_i' 'h5_q08_i' 'h5_q09_i' 'h5_q10_i' 'h5_q11_i'
  var(1:11)%step = 1e-3 1e-3 1e-3 1 1 1 1 1 1 1 1
  var(1:11)%attribute = 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
- var(12:13)%ele_name = 'b0apf' 'b1apf'
+ var(12:13)%ele_name = 'b0apf' 'ov_b1pf'
  var(12:13)%attribute = 'db_field' 'db_field'
  var(12:13)%step = 1e-2 1e-2
 /
@@ -157,7 +157,7 @@
  d1_data%name = 'orbit'
  default_weight = 1e4
  datum(1:2)%data_type = 'orbit.x' 'orbit.px'
- datum(1:2)%ele_name = 'b1apf+2' 'b1apf+2'
+ datum(1:2)%ele_name = 'b1bpf+2' 'b1bpf+2'
  datum(1:2)%meas = 0 0
  datum(1:2)%good_user = f f
 /
