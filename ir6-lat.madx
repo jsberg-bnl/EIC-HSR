@@ -270,7 +270,8 @@ l06d_sol_q1a=3.3;
 l06d_q1a_q1b=0.5;
 l06d_q1b_q2=2.0;
 l06d_q2_q3=22.95;
-q1apr: quadrupole, l=l06d_q1a;
+q1aprh: quadrupole, l=0.5*l06d_q1a;
+sq1apr: multipole, knl:={0.0,0.0,k2l_q1apr};
 q1bpr: quadrupole, l=l06d_q1b;
 q2pr: quadrupole, l=l06d_q2;
 o06d_sol_q1a: drift, l=l06d_sol_q1a-lsol_det*tan(sol_rot)*tan(0.5*sol_rot);
@@ -291,13 +292,15 @@ pbt_b0pf: translation, dx=-1.42016467739204760E-01;
 per_b0pf: yrotation, angle=-ac;
 pet_b0pf: translation, dx=ze*tan(ac) - xb0hf;
 o06w_b0_b0a: drift;
-b0apf: sbend, l=0.60;
+b0apfh: sbend, l=0.5*0.60;
+sb0apf: multipole, knl:={0.0,0.0,k2l_b0apf};
 pbt_b0apf: translation;
 pbr_b0apf: yrotation;
 pet_b0apf: translation;
 per_b0apf: yrotation;
 // Q1 forward
-q1apf: quadrupole, l=1.46;
+q1apfh: quadrupole, l=0.5*1.46;
+sq1apf: multipole, knl:={0.0,0.0,k2l_q1apf};
 q1bpf: quadrupole, l=1.61;
 o06w_b0a_q1a: drift;
 o06w_q1a_q1b: drift;
@@ -507,16 +510,16 @@ hsr6w: line=(
  o06w_q1b_q2,
  pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
  o06w_q1a_q1b,
- pbr_q1apf, pbt_q1apf, q1apf, pet_q1apf, per_q1apf,
+ pbr_q1apf, pbt_q1apf, q1apfh, sq1apf, q1apfh, pet_q1apf, per_q1apf,
  o06w_b0a_q1a,
- pbr_b0apf, pbt_b0apf, b0apf, pet_b0apf, per_b0apf,
+ pbr_b0apf, pbt_b0apf, b0apfh, sb0apf, b0apfh, pet_b0apf, per_b0apf,
  o06w_b0_b0a,
  pbr_b0pf, pbt_b0pf, b0pf, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf);
 
 hsr6d: line=(
- l_sol_pr, o06d_sol_q1a, q1apr, o06d_q1a_q1b, q1bpr, o06d_q1b_q2, q2pr,
+ l_sol_pr, o06d_sol_q1a, q1aprh, sq1apr, q1aprh, o06d_q1a_q1b, q1bpr, o06d_q1b_q2, q2pr,
  o06d_q2_q3, h6_q3, oh6_wq_spc, h6_qs3, oh6_wq_spc, h6_tv3, o_crab_mag,
  o_crab_ip6r,
  o_crab_mag, 
