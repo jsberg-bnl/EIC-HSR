@@ -162,14 +162,14 @@ h6_d01: line=(odsfl,h6_dh01,odsfl)
 h6_dh02: sbend, l=ldps, angle=-0.5*th_h601
 h6_d02: line=(odsfl,h6_dh02,odsfl)
 
-h6_dh03: sbend, l=ldip, angle=thcell
-h6_d03: line=(odfl,h6_dh03,odfl)
+h6_dh03: sbend, l=ldps, angle=thds
+h6_d03: line=(odsfl,h6_dh03,odsfl)
 h6_dh04: sbend, l=ldps, angle=thds
 h6_d04: line=(odsfl,h6_dh04,odsfl)
 h6_dh05: sbend, l=ldip, angle=thcell
 h6_d05: line=(odfl,h6_dh05,odfl)
-h6_dh06: sbend, l=ldps, angle=thds
-h6_d06: line=(odsfl,h6_dh06,odsfl)
+h6_dh06: sbend, l=ldip, angle=thcell
+h6_d06: line=(odfl,h6_dh06,odfl)
 
 h6_q04: quadrupole, l=lq2, field_master=t
 h6_q04_i: overlay={h6_q04[b1_gradient]:0.032247392307692316/h6_q04[l]*i}, var={i}
@@ -436,59 +436,59 @@ l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcq8+lbelabi+ld
 l6_ipd1=l6_ipq3+l6_ipq3_d1
 ! Lengths of straights between dipoles
 l6_d1d2 = 2*ldsfl + lbelabi
-l6_d2d3 = ldsfl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl + ldfl ! Fix when I do d1/d2 right
-l6_d3d4 = lcqs + 2*lbelabi + ldfl + ldsfl
-l6_d4d5 = lcq8 + 2*lbelabi + ldsfl + ldfl
-l6_d5d6 = 2*lbelabi + lcqs + ldsfl + ldfl
+l6_d2d3 = 2*ldsfl + lcqt4 + lcq8 + 4*lbelabi + l7dummy + 2*ldum1fl ! Fix when I do d1/d2 right
+l6_d3d4 = lcqs + 2*lbelabi + 2*ldsfl
+l6_d4d5 = lcq8 + 2*lbelabi + ldfl + ldsfl
+l6_d5d6 = 2*lbelabi + lcqs + 2*ldfl
 
 l6_d1 = ldps*sinc(0.25*th_h601) ! Fix when I do d1 right
 l6_d2 = ldps*sinc(0.25*th_h601) ! Fix when I do d1 right
-l6_d3 = ldip*sinc(0.5*thcell)
+l6_d3 = ldps*sinc(0.5*thds)
 l6_d4 = ldps*sinc(0.5*thds)
 l6_d5 = ldip*sinc(0.5*thcell)
-l6_d6 = ldps*sinc(0.5*thds)
+l6_d6 = ldip*sinc(0.5*thcell)
 t6_d1 = 0.25*thd5 - 0.25*thcell - 0.75*dtheta0_eic_ip6
 t6_d1d2 = 0.5*(thd5 - thcell - dtheta0_eic_ip6)
 t6_d2 = 0.75*thd5 - 0.75*thcell - 0.25*dtheta0_eic_ip6
 t6_d2d3 = thd5 - thcell
-t6_d3 = thd5 - 0.5*thcell
-t6_d3d4 = thd5
-t6_d4 = thd5 + 0.5*thds
-t6_d4d5 = thd5 + thds
-t6_d5 = thd5 + 0.5*thcell + thds
-t6_d5d6 = thd5 + thcell + thds
-t6_d6 = thd5 + thcell + 1.5*thds
+t6_d3 = thd5 - thcell + 0.5*thds
+t6_d3d4 = thd5 - thcell + thds
+t6_d4 = thd5 - thcell + 1.5*thds
+t6_d4d5 = thd5 - thcell + 2*thds
+t6_d5 = thd5 - 0.5*thcell + 2*thds
+t6_d5d6 = thd5 + 2*thds
+t6_d6 = thd5 + 0.5*thcell + 2*thds
 
-t6_d96_avg = 0.5*(t6_d3d4+t6_d5d6)
+t6_d96_avg = 0.5*(t6_d2d3+t6_d3d4)
 
 ! Compute drifts
 l6_d96rhic = lcenxdx*sin(dtheta0_eic_ip6) + lrhicdx*sin(trhicdx+dtheta0_eic_ip6) + lrhicx0*sin(trhicx0+dtheta0_eic_ip6) &
  + lrhicd0*sin(trhicd0+dtheta0_eic_ip6) + lrhic05*sin(trhic05+dtheta0_eic_ip6) + lrhicd5i*sin(trhicd5i+dtheta0_eic_ip6) &
  + lrhic56i*sin(thd5+dtheta0_eic_ip6) + lrhic69*sin(trhicd6+dtheta0_eic_ip6) + lrhic68i*sin(trhic68+dtheta0_eic_ip6) &
  + lrhicd8*sin(trhicd8+dtheta0_eic_ip6) + lrhic89i*sin(trhic89+dtheta0_eic_ip6) + lrhic69*sin(trhicd9+dtheta0_eic_ip6) &
- + (lrhic910bi-lbelabi-ldsfl)*sin(trhic910+dtheta0_eic_ip6)
+ + (lrhic910bi-lbelabi-ldfl)*sin(trhic910+dtheta0_eic_ip6)
 l6_d96eic = l6_d1*sin(t6_d1+dtheta0_eic_ip6) + l6_d1d2*sin(t6_d1d2+dtheta0_eic_ip6) &
- + l6_d2*sin(t6_d2+dtheta0_eic_ip6) + l6_d2d3*sin(t6_d2d3+dtheta0_eic_ip6) &
+ + l6_d2*sin(t6_d2+dtheta0_eic_ip6) &
  + l6_d3*sin(t6_d3+dtheta0_eic_ip6) &
  + l6_d4*sin(t6_d4+dtheta0_eic_ip6) + l6_d4d5*sin(t6_d4d5+dtheta0_eic_ip6) &
- + l6_d5*sin(t6_d5+dtheta0_eic_ip6) &
+ + l6_d5*sin(t6_d5+dtheta0_eic_ip6) + l6_d5d6*sin(t6_d5d6+dtheta0_eic_ip6)&
  + l6_d6*sin(t6_d6+dtheta0_eic_ip6) 
-l6_d96 = 0.5*(l6_d96rhic-l6_d96eic-dx0_eic_ip6*cos(dtheta0_eic_ip6))/(sin(t6_d96_avg+dtheta0_eic_ip6)*cos(0.5*(thcell+thds)))
+l6_d96 = 0.5*(l6_d96rhic-l6_d96eic-dx0_eic_ip6*cos(dtheta0_eic_ip6))/(sin(t6_d96_avg+dtheta0_eic_ip6)*cos(0.5*thds))
 l6_45rhic = -lcenxdx*sin(t6_d96_avg) + lrhicdx*sin(trhicdx-t6_d96_avg) + lrhicx0*sin(trhicx0-t6_d96_avg) &
  + lrhicd0*sin(trhicd0-t6_d96_avg) + lrhic05*sin(trhic05-t6_d96_avg) + lrhicd5i*sin(trhicd5i-t6_d96_avg) &
  + lrhic56i*sin(thd5-t6_d96_avg) + lrhic69*sin(trhicd6-t6_d96_avg) + lrhic68i*sin(trhic68-t6_d96_avg) &
  + lrhicd8*sin(trhicd8-t6_d96_avg) + lrhic89i*sin(trhic89-t6_d96_avg) + lrhic69*sin(trhicd9-t6_d96_avg) &
- + (lrhic910bi-lbelabi-ldsfl)*sin(trhic910-t6_d96_avg)
+ + (lrhic910bi-lbelabi-ldfl)*sin(trhic910-t6_d96_avg)
 l6_45eic = l6_d1*sin(t6_d1-t6_d96_avg) + l6_d1d2*sin(t6_d1d2-t6_d96_avg) &
- + l6_d2*sin(t6_d2-t6_d96_avg) + l6_d2d3*sin(t6_d2d3-t6_d96_avg) &
+ + l6_d2*sin(t6_d2-t6_d96_avg) &
  + l6_d3*sin(t6_d3-t6_d96_avg) &
  + l6_d4*sin(t6_d4-t6_d96_avg) + l6_d4d5*sin(t6_d4d5-t6_d96_avg) &
- + l6_d5*sin(t6_d5-t6_d96_avg) &
+ + l6_d5*sin(t6_d5-t6_d96_avg) + l6_d5d6*sin(t6_d5d6-t6_d96_avg) &
  + l6_d6*sin(t6_d6-t6_d96_avg) 
 l6_45 = -(l6_45rhic-l6_45eic-dx0_eic_ip6*cos(t6_d96_avg))/sin(t6_d96_avg+dtheta0_eic_ip6)
 o6_45: drift, l=l6_45-l6_ipd1
+o6_d03: drift, l=l6_d96-l6_d2d3
 o6_d04: drift, l=l6_d96-l6_d3d4
-o6_d06: drift, l=l6_d96-l6_d5d6
 
 hsr6w: line=(
  o5q11_arc,h5_cqtc11,obelaco,h5_d6,obelabo,h5_cq8b10,
@@ -535,7 +535,7 @@ hsr6d: line=(
  o6_45,
  h6_cq8c05, obelabi, 
  h6_d01, obelabi, h6_d02, obelabi, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cq8c07, obelabi,
- h6_d03, obelabi, h6_cqtb08, obelabi,
+ o6_d03, h6_d03, obelabi, h6_cqtb08, obelabi,
  o6_d04, h6_d04, obelabi, h6_cq8c09, obelabi,
  h6_d05, obelabi, h6_cqtb10, obelabi,
- o6_d06, h6_d06, obelabi)
+ h6_d06, obelabi)
