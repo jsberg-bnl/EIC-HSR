@@ -157,8 +157,17 @@ h6_rot:line=(odum1fl,
  odum1fl);
 
 // IR6 deisul matching magnets: dipoles
-th_h601=thcell-dtheta0_eic_ip6+thd0-2*thds;
-h6_dh01: sbend, l=ld5o, angle=-th_h601;
+// Mispowered reversed D5O
+// Use half-interconnects, kinked in the center
+th_h601=dtheta0_eic_ip6+2*thds-(thcell+thd0);
+dth_h601=dtheta0_eic_ip6+2*thds+thd5-thcell;
+lhint = 0.5*lbelabi;
+ohint: drift, l=lhint;
+lt_h601 = lhint+ldfl;
+pint: yrotation, angle=-0.5*dth_h601;
+lc_h601 = ld5o*sinc(0.5*(thd5+thd0)) + 2*lt_h601*cos(0.5*(thd5+thd0));
+h6_dh01: sbend, l=ld5o, angle=-(thd5+thd0),
+ k0 = 2*sin(0.5*th_h601)/(ld5o*sinc(0.5*(thd5+thd0))*(1-lt_h601/rho*tan(0.5*dth_h601)));
 h6_d01: line=(odfl,h6_dh01,odfl);
 
 h6_dh02: sbend, l=ld5o, angle=thd5+thd0;
@@ -446,13 +455,13 @@ O5Q11_ARC, L = +3.16416438722673021E+000;
 ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2;
 // Length from IP to d1
 l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3;
-l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lbelabi+ldfl; // Fix when I do d1 right
+l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lhint;
 l6_ipd1=l6_ipq3+l6_ipq3_d1;
 // Lengths of straights between dipoles
-l6_d1d2 = ldfl + lcqt4 + lcqs + 4*lbelabi + l7dummy + 2*ldum1fl + ld5ofl; // Fix when I do d1 right
+l6_d1d2 = lhint + lcqt4 + lcqs + 3*lbelabi + l7dummy + 2*ldum1fl + ld5ofl; // Fix when I do d1 right
 l6_d2d3 = lcqs + 2*lbelabi + ld5ofl + ldfl;
 l6_d3d4 = lcq8 + lcqs + 2*lbelabi + 2*ldfl;
-l6_d1 = ld5o*sinc(0.5*th_h601); // Fix when I do d1 right
+l6_d1 = lc_h601;
 l6_d2 = ld5o*sinc(0.5*(thd5+thd0));
 l6_d3 = ldip*sinc(0.5*thcell);
 l6_d4 = ldip*sinc(0.5*thcell);
@@ -526,8 +535,9 @@ hsr6d: line=(
  o_crab_mag, 
  h6_tp2i04,
  o6_45,
- h6_cqtc05, obelabi, 
- h6_d01, obelabi, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cqtc07, obelabi,
+ h6_cqtc05, ohint,
+ pint, ohint, h6_d01, ohint, pint,
+ ohint, h6_cq4f06, obelabi, h6_rot, obelabi, h6_cqtc07, obelabi,
  h6_d02, obelabi, h6_cqtb08, obelabi,
  h6_d03, obelabi, h6_cq8c09, 
  o6_910, h6_cqtb10, obelabi,
