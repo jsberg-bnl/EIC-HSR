@@ -602,9 +602,9 @@ arc09y = line('y','yo8_cqs10','yo9_cqs10',db)
 arc11y = line('y','yi10_cqs10','yi11_cqs10',db)
 
 # For now, just leave room for the snake
-trp01b = line('b','bi1_trp3','bi1_trp1',db)
 mat01y = line('y','yo1_int9_3','yo1_int7_2',db)
 ins01y = line('y','yo1_int7_1','yo1_trp1',db)
+mat01b = line('b','bi1_int9_3','bi1_trp1',db)
 ins02y = line('y','yi2_trp1','yi2_int9_3',db)
 mat03y = line('y','yi3_int9_3','yi3_cqt4',db)
 trp03y = line('y','yi3_trp3','yi3_trp1',db)
@@ -621,25 +621,26 @@ mat10y = line('y','yi10_cqt4','yi10_int9_3',db)
 mat11y = line('y','yi11_int9_3','yi11_int7_2',db)
 ins11y = line('y','yi11_int7_1','yi11_cqt4',db)
 trp11y = line('y','yi11_trp3','yi11_trp1',db)
+trp12b = line('b','bi12_trp1','bi12_trp3',db)
 trp12y = line('y','yo12_trp1','yo12_trp3',db)
+mat12b = line('b','bi12_cqt4','bi12_int9_3',db)
 mat12y = line('y','yo12_cqt4','yo12_int9_3',db)
 
 # Lines carried over from RHIC
 line_list = [
     arc01b,arc01y,arc03y,arc05y,arc07y,arc09y,arc11y,
-    mat01y,ins01y,ins02y,
+    mat01b,mat01y,ins01y,ins02y,
     mat03y,trp03y,trp04y,mat04y,mat07y,
     ins07y,trp07y,trp08y,ins08y,
     ins09y,trp10y,mat10y,
-    mat11y,ins11y,trp11y,trp12y,mat12y]
+    mat11y,ins11y,trp11y,trp12b,mat12b,trp12y,mat12y]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
 # slots kept intact but used in isolation
-ir2_slots = [trp01b]
 ir6_slots = [slot('y',s,db) for s in ('yo5_d5','yo5_int8_1','yo5_d8','yo5_int8_2')]
 ir8_slots = [slot('y','yi7_du3',db),slot('y','yo8_du3',db)]
-rhic_slots = ir2_slots + ir6_slots + ir8_slots
+rhic_slots = ir6_slots + ir8_slots
 
 # slots that are broken up, but I need the bits for whatever reason
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
