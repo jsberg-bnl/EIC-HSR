@@ -1,0 +1,12 @@
+y12_q6_ps :=  ir12_q6_ps;
+b12_q6_ps := -ir12_q6_ps;
+y12_q7_ps :=  ir12_q7_ps;
+b12_q7_ps := -ir12_q7_ps;
+y12_q89_ps :=  ir12_q89_ps;
+b12_q89_ps := -ir12_q89_ps;
+y2_q6_ps :=  ir2_q6_ps;
+b2_q6_ps := -ir2_q6_ps;
+y2_q7_ps :=  ir2_q7_ps;
+b2_q7_ps := -ir2_q7_ps;
+y2_q89_ps :=  ir2_q89_ps;
+b2_q89_ps := -ir2_q89_ps;
