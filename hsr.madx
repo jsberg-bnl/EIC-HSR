@@ -73,6 +73,8 @@ ltrpx1=lbq1+lflq1x; // Q1 flange up to but not including Q1
 ltrp13=lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3; // Q1 to Q3 flange inclusive
 dwfwd: sbend, l=lwd2/sinc(0.5*thwd), angle=thwd, e1=0.5*thwd, e2=0.5*thwd;
 dwrev: sbend, l=lwd2/sinc(0.5*thwd), angle=-thwd, e1=-0.5*thwd, e2=-0.5*thwd;
+lirlo = 2*(lcenxdx+lcendx+lcendxd0+lcend0-(lgv+lgvfl+lgvwd+lc2w_wd-lpld0q1)*cos(thd0)-lwd2*cos(0.5*thd0));
+dwlo: sbend, l=lwd2/sinc(0.5*thd0), angle=thd0, e1=0.5*thd0, e2=0.5*thd0;
 valve_wd: instrument, l=lgv;
 ogvfl: drift, l=lgvfl;
 ogvwd: drift, l=lgvwd;
@@ -99,3 +101,4 @@ ip6w: marker;
 
 hsr_hi_n: line=(ip6d,hsr6d,arc07y,ir08n,arc09y,ir10,arc11y,ir12,arc01y,ir2,arc03y,ir4,arc05y,hsr6w,ip6w);
 hsr_hi_8s_2s: line=(ip6d,hsr6d,arc07y,ir08n,arc09y,ir10,arc11y,ir12,arc01y,ir02s,arc03y,ir4,arc05y,hsr6w,ip6w);
+hsr_lo_8s_2s: line=(ip6d,hsr6d,arc07y,ir08n,arc09y,ir10,arc11y,ir12_lo,arc01b,ir02s_lo,arc03y,ir4,arc05y,hsr6w,ip6w);

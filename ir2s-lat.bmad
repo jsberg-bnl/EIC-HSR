@@ -19,5 +19,8 @@ yo1_snk7:line=(odum1fl,
  odum1fl)
 
 o02s: drift, l=lcross
+ol02s: drift, l=lirlo
+ir02sd: line=(ogvwd,valve_wd,ogvfl,oc2w_wd,ins02y)
 ir02s: line=(mat01y,yo1_snk7,ins01y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwfwd,oww2,dwfwd,oww2,dwfwd,
- o02s,dwrev,oww2,dwrev,oww2,dwrev,ogvwd,valve_wd,ogvfl,oc2w_wd,ins02y)
+ o02s,dwrev,oww2,dwrev,oww2,dwrev,ir02sd)
+ir02s_lo: line=(mat01b,oc2w_wd,ogvfl,valve_wd,ogvwd,dwlo,ol02s,dwlo,ir02sd)
