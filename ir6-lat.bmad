@@ -198,29 +198,29 @@ h6_b405_i:overlay={h6_cor05[b4]:386.38592*i},var={i}
 h6_a105_i:overlay={h6_cor05[a1]:0.030435680000000007*i},var={i}
 h6_cqtc05:line=(obfl,h6_bv05,osb,h6_tq05,oqs,h6_q05,ocq,h6_cor05,ocfl)
 
+h6_b06:monitor
+h6_tq06:quadrupole,l=lsxt,field_master=t
+h6_tq06_i:overlay={h6_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
+h6_q06:quadrupole,l=lq4,field_master=t
+h6_q06_i:overlay={h6_q06[b1_gradient]:0.027149189411764706*i/lq4},var={i}
 h6_cor06: kicker, l=lcor, scale_multipoles=f
 h6_th06_i:overlay={h6_cor06[bl_hkick]:0.005610334999999999*i},var={i}
 h6_b306_i:overlay={h6_cor06[b3]:12.31232*i},var={i}
 h6_b406_i:overlay={h6_cor06[b4]:387.2896*i},var={i}
 h6_a106_i:overlay={h6_cor06[a1]:0.03043852000000001*i},var={i}
-h6_q06:quadrupole,l=lq4,field_master=t
-h6_q06_i:overlay={h6_q06[b1_gradient]:0.027149189411764706*i/lq4},var={i}
-h6_tq06:quadrupole,l=lsxt,field_master=t
-h6_tq06_i:overlay={h6_tq06[b1_gradient]:0.2381915*i/lsxt},var={i}
-h6_b06:monitor
-h6_cq4f06:line=(ocfl,h6_cor06,ocq4,h6_q06,oqs4,h6_tq06,osb4c,h6_b06,obfl)
+h6_cq4f06:line=(obfl,h6_b06,osb4c,h6_tq06,oqs4,h6_q06,ocq4,h6_cor06,ocfl)
 
-h6_bv07:monitor
-h6_tq07:quadrupole,l=lsxt,field_master=t
-h6_tq07_i:overlay={h6_tq07[b1_gradient]:0.2381915*i/lsxt},var={i}
-h6_q07:quadrupole,l=lq,field_master=t
-h6_q07_i:overlay={h6_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h6_cor07: kicker, l=lcor, scale_multipoles=f
 h6_tv07_i:overlay={h6_cor07[bl_vkick]:0.005612747*i},var={i}
 h6_b307_i:overlay={h6_cor07[b3]:12.346880000000004*i},var={i}
 h6_b407_i:overlay={h6_cor07[b4]:386.38592*i},var={i}
 h6_a107_i:overlay={h6_cor07[a1]:0.030435680000000007*i},var={i}
-h6_cqtc07:line=(obfl,h6_bv07,osb,h6_tq07,oqs,h6_q07,ocq,h6_cor07,ocfl)
+h6_q07:quadrupole,l=lq,field_master=t
+h6_q07_i:overlay={h6_q07[b1_gradient]:0.016572460606060605*i/lq},var={i}
+h6_tq07:quadrupole,l=lsxt,field_master=t
+h6_tq07_i:overlay={h6_tq07[b1_gradient]:0.2381915*i/lsxt},var={i}
+h6_bv07:monitor
+h6_cqtc07:line=(ocfl,h6_cor07,ocq,h6_q07,oqs,h6_tq07,osb,h6_bv07,obfl)
 
 h6_cor08: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_th08_i:overlay={h6_cor08[bl_hkick]:0.005619562*i},var={i}
