@@ -326,22 +326,21 @@ pbt_q2pf: patch
 pbr_q2pf: patch
 pet_q2pf: patch
 per_q2pf: patch
-o06w_q2_b1a: drift
+o06w_q2_b1: drift
 b1pf: sbend, l=2.03132356446431084, field_master=t
+pbt_b1pf: patch
+pbr_b1pf: patch
+pet_b1pf: patch
+per_b1pf: patch
+o06w_b1_b1a: drift
 b1apf: b1pf
 pbt_b1apf: patch
 pbr_b1apf: patch
 pet_b1apf: patch
 per_b1apf: patch
-o06w_b1a_b1b: drift
-b1bpf: b1pf
-pbt_b1bpf: patch
-pbr_b1bpf: patch
-pet_b1bpf: patch
-per_b1bpf: patch
 ov_b1pf: overlay={
- b1apf[db_field] : db_field,
- b1bpf[db_field] : db_field},
+ b1pf[db_field] : db_field,
+ b1apf[db_field] : db_field},
  var = {db_field}
 
 ! New dipoles
@@ -418,16 +417,16 @@ PER_Q2PF[X_PITCH] = -1.29367560655846096E-002
 PET_Q2PF[X_OFFSET] = -4.51593211840057920E-002
 PBT_Q2PF[X_OFFSET] = -1.13897121786721012E-002
 PBR_Q2PF[X_PITCH] = +1.54668927288380952E-002
-O06W_Q2_B1A[L] = +5.01942132533036434E-001
-PER_B1APF[X_PITCH] = +1.75960226559421749E-003
-PET_B1APF[X_OFFSET] = -2.90198960144249750E-002
-PBT_B1APF[X_OFFSET] = +2.47052473888617341E-002
-PBR_B1APF[X_PITCH] = +6.00765827119416340E-003
-O06W_B1A_B1B[L] = +5.00640006207530908E-001
-PER_B1BPF[X_PITCH] = -1.60344027598332724E-002
-PET_B1BPF[X_OFFSET] = -1.66843848914812638E-002
-PBT_B1BPF[X_OFFSET] = -2.37825978171619414E-002
-PBR_B1BPF[X_PITCH] = +2.38032985038336871E-002
+O06W_Q2_B1[L] = +5.01942132533036434E-001
+PER_B1PF[X_PITCH] = +1.75960226559421749E-003
+PET_B1PF[X_OFFSET] = -2.90198960144249750E-002
+PBT_B1PF[X_OFFSET] = +2.47052473888617341E-002
+PBR_B1PF[X_PITCH] = +6.00765827119416340E-003
+O06W_B1_B1A[L] = +5.00640006207530908E-001
+PER_B1APF[X_PITCH] = -1.60344027598332724E-002
+PET_B1APF[X_OFFSET] = -1.66843848914812638E-002
+PBT_B1APF[X_OFFSET] = -2.37825978171619414E-002
+PBR_B1APF[X_PITCH] = +2.38032985038336871E-002
 
 ! Far-forward detector layout
 O06W_FFDET[L] =  1.61706640812576161E+001
@@ -502,10 +501,10 @@ hsr6w: line=(
  o_crab_ip6f,
  o_crab_mag, b2pf, ow2c, h5_tv3, oh6_wq_spc, h5_qs3, oh6_wq_spc, q3pf, o_ffdet_wq,
  o06w_ffdet,
- pbr_b1bpf, pbt_b1bpf, b1bpf, pet_b1bpf, per_b1bpf,
- o06w_b1a_b1b,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
- o06w_q2_b1a,
+ o06w_b1_b1a,
+ pbr_b1pf, pbt_b1pf, b1pf, pet_b1pf, per_b1pf,
+ o06w_q2_b1,
  pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
  o06w_q1b_q2,
  pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
