@@ -346,12 +346,13 @@ ov_b1pf: overlay={
 ! New dipoles
 b_b2pf = 5
 g_b2pf = b_b2pf*c_light/p275
-b2pf: sbend, g=g_b2pf
+b2pf: sbend
 ov_b2pf : overlay={
- b2pf[l] : th2/g_b2pf,
- b2pf[e1] : 0.5*th2,
- b2pf[e2] : 0.5*th2},
- var = {th2}
+ b2pf[g] : 2*sin(0.5*angle)/l,
+ b2pf[l] : l/sinc(0.5*angle),
+ b2pf[e1] : 0.5*angle,
+ b2pf[e2] : 0.5*angle},
+ var = {angle,l}
 
 oint: drift, l=0.3
 otpr: drift, l=0.25
@@ -368,9 +369,7 @@ o2fl: drift, l=2*ofl[l]
 lh6_qw=0.75
 lh6_cor=0.25
 lh6_qw_spc=0.15
-q3pf: quadrupole, l=lh6_qw
-h5_tv3: vkicker, l=lh6_cor
-h5_qs3: quadrupole, tilt, l=lh6_cor
+q3pf: quadrupole, l=0.6
 h6_q3: quadrupole, l=lh6_qw
 h6_tv3: vkicker, l=lh6_cor
 h6_qs3: quadrupole, tilt, l=lh6_cor
@@ -394,6 +393,11 @@ o_roman_pot_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=en
 o_roman_pot_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
 o_off_mom_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
 o_off_mom_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
+
+! Forward layout near crab
+o5_crab_b2: drift, l=(2*7.67+13.12)*0.0254+0.085+1
+o5_b2_q3: drift, l=0.5
+o5_crab_zdc: drift, l=1
 
 pt_ir6f = 1.23443089471739316E+009 ! Transverse momentum passed by apertures at 275 GeV, for information only
 ! Forward geometry
@@ -425,9 +429,10 @@ O_ROMAN_POT_IP6_2[OFFSET] = -6.33216292315403795E+000
 O_OFF_MOM_IP6_1[OFFSET] = -8.26638129584463699E-001
 O_OFF_MOM_IP6_2[OFFSET] = -2.82864714542794538E+000
 
-OV_B2PF[TH2] = +1.67744943262122526E-002
-D9_PF[L] = +2.25455938499126862E+000
-O5Q11_ARC[L] = +3.16416438722675730E+000
+OV_B2PF[L] = 3.019
+OV_B2PF[ANGLE] = +1.67744943262118085E-002
+D9_PF[L] = 2.36766015992692180
+O5Q11_ARC[L] = 3.05071561427372950
 
 ! deisul geometry calculation
 ! Lengths of RHIC modules used
@@ -489,7 +494,7 @@ hsr6w: line=(
  d9_pf,
  h5_tp2i04, o_crab_mag,
  o_crab_ip6f,
- o_crab_mag, b2pf, ow2c, h5_tv3, oh6_wq_spc, h5_qs3, oh6_wq_spc, q3pf, o_ffdet_wq,
+ o5_crab_b2, b2pf, o5_b2_q3, q3pf, o5_crab_zdc,
  o06w_ffdet,
  pbr_b1apf, pbt_b1apf, b1apf, pet_b1apf, per_b1apf,
  o06w_b1_b1a,
