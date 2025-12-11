@@ -327,7 +327,7 @@ pbr_q2pf: patch
 pet_q2pf: patch
 per_q2pf: patch
 o06w_q2_b1: drift
-b1pf: sbend, l=2.05242900269165629, field_master=t
+b1pf: sbend, field_master=t
 pbt_b1pf: patch
 pbr_b1pf: patch
 pet_b1pf: patch
@@ -339,9 +339,11 @@ pbr_b1apf: patch
 pet_b1apf: patch
 per_b1apf: patch
 ov_b1pf: overlay={
+ b1pf[l] : l,
+ b1apf[l] : l,
  b1pf[db_field] : db_field,
  b1apf[db_field] : db_field},
- var = {db_field}
+ var = {l,db_field}, l=2.03132356446431084
 
 ! New dipoles
 b_b2pf = 5
