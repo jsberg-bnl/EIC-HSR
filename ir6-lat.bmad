@@ -391,10 +391,10 @@ o_crab_ip6f: pipe, l=lcrab
 o_crab_ip6r: pipe, l=lcrab
 
 ! Far-forward detectors
-o_roman_pot_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
-o_roman_pot_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
-o_off_mom_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
-o_off_mom_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end
+o_roman_pot_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=beginning, offset=4.3
+o_roman_pot_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=beginning, offset=2.8
+o_off_mom_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-3.4
+o_off_mom_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-4.9
 
 ! Forward layout near crab
 o5_crab_b2: drift, l=(2*7.67+13.12)*0.0254+0.085+1
@@ -426,10 +426,6 @@ PBR_B1APF[X_PITCH] = +2.38032985038343255E-002
 
 ! Far-forward detector layout
 O06W_FFDET[L] = 1.61283540072971938E+001
-O_ROMAN_POT_IP6_1[OFFSET] = -4.33015390731055660E+000
-O_ROMAN_POT_IP6_2[OFFSET] = -6.33216292315403795E+000
-O_OFF_MOM_IP6_1[OFFSET] = -8.26638129584463699E-001
-O_OFF_MOM_IP6_2[OFFSET] = -2.82864714542794538E+000
 
 OV_B2PF[L] = 3.019
 OV_B2PF[ANGLE] = +1.67744943262118085E-002
