@@ -343,7 +343,7 @@ ov_b1pf: overlay={
  b1apf[l] : l,
  b1pf[db_field] : db_field,
  b1apf[db_field] : db_field},
- var = {l,db_field}, l=2.03132356446431084
+ var = {l,db_field}, l=2.25
 
 ! New dipoles
 b_b2pf = 5
