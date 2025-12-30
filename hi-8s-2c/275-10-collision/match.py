@@ -35,13 +35,13 @@ def replace(filename):
     os.rename(filename+'+',filename)
     
 ir_var = ['use var '+v for v in (
-    'ir6w[4,6:9,11]',
+    'ir6w[4,7:11]',
     'ir6d[4,5,7:10]',
-    'ir8[2,3,5,8,9,13:16]',
-    'ir10[4:6,9]',
-    'ir12[2,3,6:9,12,15,16]',
-    'ir2',
-    'ir4[2,3,5,8,9,13:16]',
+    'ir8[2:5,9:11,13,16:17]',
+    'ir10[1,3,6,8:12,16,18:20]',
+    'ir12[2:5,9:11,13,16:17]',
+    'ir2[3:6,9:13]',
+    'ir4[2:5,9:11,13,16:17]',
     'sx')]
 
 def strength_map(tao):
@@ -140,7 +140,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 4 on')
     tao.cmd('set def uni=4')
     tao.cmd(ir_var[2])
-    tao.cmd('use dat ir8.fit[1:6,8,9,12]')
+    tao.cmd('use dat ir8.fit[1:6,8:11]')
     residual[2] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 4 off')
     tao.cmd('veto var *')
@@ -152,7 +152,8 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 5 on')
     tao.cmd('set def uni=5')
     tao.cmd(ir_var[3])
-    tao.cmd('use dat ir10.fit[2:5]')
+    tao.cmd('use dat ir10.fit[1:6,8:11]')
+    tao.cmd('use dat ir10.sym[2:3]')
     residual[3] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 5 off')
     tao.cmd('veto var *')
@@ -163,7 +164,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 6 on')
     tao.cmd('set def uni=6')
     tao.cmd(ir_var[4])
-    tao.cmd('use dat ir12.fit[1:6,8,9,12]')
+    tao.cmd('use dat ir12.fit[1:6,8:11]')
     residual[4] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 7 off')
     tao.cmd('veto var *')
@@ -174,10 +175,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 7 on')
     tao.cmd('set def uni=7')
     tao.cmd(ir_var[5])
-    tao.cmd('use dat ir2.kicker[2,4]')
-    tao.cmd('use dat ir2.center[2,4:]')
-    tao.cmd('use dat ir2.cool')
-    tao.cmd('use dat ir2.aper[1]')
+    tao.cmd('use dat ir2.fit[1:9]')
     residual[5] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 7 off')
     tao.cmd('veto var *')
@@ -188,7 +186,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 8 on')
     tao.cmd('set def uni=8')
     tao.cmd(ir_var[6])
-    tao.cmd('use dat ir4.fit[1:6,8,9,12]')
+    tao.cmd('use dat ir4.fit[1:6,8:11]')
     residual[6] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 8 off')
     tao.cmd('veto var *')
@@ -197,49 +195,49 @@ def match_hsr(tao,chatty=False):
     
 def reset_hsr(tao):
     tao.cmd('set uni * off')
-    tao.cmd('set var *|model = *|design')
-    tao.cmd('set universe 9:17 recalculate')
+    tao.cmd('set var *|model = var::*|design')
+    tao.cmd('set universe 9:13 recalculate')
     tao.cmd('veto var *')
     tao.cmd('veto dat *@*')
 
 def tunes_hsr(tao,di,chatty=False):
     tao.cmd('set universe * off')
-    tao.cmd(f'set var qarc[1]|model = qarc[1]|design+{di[0]}')
-    tao.cmd(f'set var qarc[2]|model = qarc[2]|design+{di[1]}')
-    tao.cmd('set universe 9:17 recalculate')
+    tao.cmd(f'set var qarc[1]|model = var::qarc[1]|design+{di[0]}')
+    tao.cmd(f'set var qarc[2]|model = var::qarc[2]|design+{di[1]}')
+    tao.cmd('set universe 9:13 recalculate')
     tao.cmd('call set-match.tao')
     residual = match_hsr(tao,chatty)
     tao.cmd('set universe 1 on')
     tunes = (
         (
-            tao.evaluate('1@lat::phase.a[0&o10int_pr]')[0],
-            tao.evaluate('1@lat::phase.a[o10int_pr&yi7_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[0&h6_dh04+2]')[0],
+            tao.evaluate('1@lat::phase.a[h6_dh04+2&yi7_int9_3]')[0],
             tao.evaluate('1@lat::phase.a[yi7_int9_3&yo8_int9_3]')[0],
             tao.evaluate('1@lat::phase.a[yo8_int9_3&yo9_int9_3]')[0],
-            tao.evaluate('1@lat::phase.a[yo9_int9_3&bo10_int9_3]')[0],
-            tao.evaluate('1@lat::phase.a[bo10_int9_3&bo11_int9_3]')[0],
-            tao.evaluate('1@lat::phase.a[bo11_int9_3&bi12_int9_3]')[0],
-            tao.evaluate('1@lat::phase.a[bi12_int9_3&bi1_int9_3]')[0],
-            tao.evaluate('1@lat::phase.a[bi1_int9_3&yi2_int9_3]')[0],
-            tao.evaluate('1@lat::phase.a[yi2_int9_3&yi3_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yo9_int9_3&yi10_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yi10_int9_3&yi11_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yi11_int9_3&yo12_int9_3]')[0],
+            tao.evaluate('1@lat::phase.a[yo12_int9_3&h01o_o7a]')[0],
+            tao.evaluate('1@lat::phase.a[h01o_o7a&yi2_dh9+2]')[0],
+            tao.evaluate('1@lat::phase.a[yi2_dh9+2&yi3_int9_3]')[0],
             tao.evaluate('1@lat::phase.a[yi3_int9_3&yo4_int9_3]')[0],
-            tao.evaluate('1@lat::phase.a[yo4_int9_3&yo5_int9_6]')[0],
-            tao.evaluate('1@lat::phase.a[yo5_int9_6&end]')[0]
+            tao.evaluate('1@lat::phase.a[yo4_int9_3&o5q11_arc]')[0],
+            tao.evaluate('1@lat::phase.a[o5q11_arc&end]')[0]
         ),
         (
-            tao.evaluate('1@lat::phase.b[0&o10int_pr]')[0],
-            tao.evaluate('1@lat::phase.b[o10int_pr&yi7_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[0&h6_dh04+2]')[0],
+            tao.evaluate('1@lat::phase.b[h6_dh04+2&yi7_int9_3]')[0],
             tao.evaluate('1@lat::phase.b[yi7_int9_3&yo8_int9_3]')[0],
             tao.evaluate('1@lat::phase.b[yo8_int9_3&yo9_int9_3]')[0],
-            tao.evaluate('1@lat::phase.b[yo9_int9_3&bo10_int9_3]')[0],
-            tao.evaluate('1@lat::phase.b[bo10_int9_3&bo11_int9_3]')[0],
-            tao.evaluate('1@lat::phase.b[bo11_int9_3&bi12_int9_3]')[0],
-            tao.evaluate('1@lat::phase.b[bi12_int9_3&bi1_int9_3]')[0],
-            tao.evaluate('1@lat::phase.b[bi1_int9_3&yi2_int9_3]')[0],
-            tao.evaluate('1@lat::phase.b[yi2_int9_3&yi3_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yo9_int9_3&yi10_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yi10_int9_3&yi11_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yi11_int9_3&yo12_int9_3]')[0],
+            tao.evaluate('1@lat::phase.b[yo12_int9_3&h01o_o7a]')[0],
+            tao.evaluate('1@lat::phase.b[h01o_o7a&yi2_dh9+2]')[0],
+            tao.evaluate('1@lat::phase.b[yi2_dh9+2&yi3_int9_3]')[0],
             tao.evaluate('1@lat::phase.b[yi3_int9_3&yo4_int9_3]')[0],
-            tao.evaluate('1@lat::phase.b[yo4_int9_3&yo5_int9_6]')[0],
-            tao.evaluate('1@lat::phase.b[yo5_int9_6&end]')[0]
+            tao.evaluate('1@lat::phase.b[yo4_int9_3&o5q11_arc]')[0],
+            tao.evaluate('1@lat::phase.b[o5q11_arc&end]')[0]
         )
     )
     tao.cmd('set universe 1 off')
@@ -250,34 +248,40 @@ def tunes_hsr(tao,di,chatty=False):
 # Update I0 with new currents
 # returns ((nux,nuy),match_error)
 # tao state has variables that generated the returned values
-def fit_tune1(tao,tune_goal,I0,dI=(10.0,10.0)):
-    nua = numpy.sum(tunes_hsr(tao,I0)[0],1)/(2*numpy.pi)
-    tao.cmd('set var *|meas = *|model')
-    nu0m = numpy.sum(tunes_hsr(tao,(I0[0]-dI[0],I0[1]))[0],1)
-    tao.cmd('set var *|model = *|meas')
-    nu0p = numpy.sum(tunes_hsr(tao,(I0[0]+dI[0],I0[1]))[0],1)
-    tao.cmd('set var *|model = *|meas')
-    nu1m = numpy.sum(tunes_hsr(tao,(I0[0],I0[1]-dI[1]))[0],1)
-    tao.cmd('set var *|model = *|meas')
-    nu1p = numpy.sum(tunes_hsr(tao,(I0[0],I0[1]+dI[1]))[0],1)
-    I1 = (numpy.linalg.inv(numpy.transpose(numpy.matrix(((nu0p-nu0m)/dI[0],(nu1p-nu1m)/dI[1]))/(4*numpy.pi))) @
-          (numpy.array(tune_goal)-nua)).A1
-    tao.cmd('set var *|model = *|meas')
+def fit_tune1(tao,tune_goal,I0,dI=(10.0,10.0),chatty=False):
+    nua = numpy.sum(tunes_hsr(tao,I0,chatty=chatty)[0],1)/(2*numpy.pi)
+    tao.cmd('set var *|meas = var::*|model')
+    nu0m = numpy.sum(tunes_hsr(tao,(I0[0]-dI[0],I0[1]),chatty=chatty)[0],1)
+    tao.cmd('set var *|model = var::*|meas')
+    nu0p = numpy.sum(tunes_hsr(tao,(I0[0]+dI[0],I0[1]),chatty=chatty)[0],1)
+    tao.cmd('set var *|model = var::*|meas')
+    nu1m = numpy.sum(tunes_hsr(tao,(I0[0],I0[1]-dI[1]),chatty=chatty)[0],1)
+    tao.cmd('set var *|model = var::*|meas')
+    nu1p = numpy.sum(tunes_hsr(tao,(I0[0],I0[1]+dI[1]),chatty=chatty)[0],1)
+    I1 = numpy.linalg.solve(numpy.transpose(numpy.matrix(((nu0p-nu0m)/dI[0],(nu1p-nu1m)/dI[1]))/(4*numpy.pi)),
+                            numpy.array(tune_goal)-nua)
+    tao.cmd('set var *|model = var::*|meas')
     I0[0] += I1[0]
     I0[1] += I1[1]
-    nub = tunes_hsr(tao,I0)
+    nub = tunes_hsr(tao,I0,chatty=chatty)
     return (numpy.sum(nub[0],1)/(2*numpy.pi),numpy.sum(nub[1]))
 
 def fit_tune(tao,tune_goal,chatty=False,I0=(0.0,0.0),dI=(10.0,10.0)):
+    super_chatty=False
+    if chatty == 2:
+        super_chatty = True
+        chatty == True
+    elif chatty == 1:
+        chatty == True
     I = list(I0)
-    r = fit_tune1(tao,tune_goal,I,dI)
+    r = fit_tune1(tao,tune_goal,I,dI,chatty=super_chatty)
     if (chatty):
         print(f'Tune: {r[0][0]-tune_goal[0]:+24.17e} {r[0][1]-tune_goal[1]:+24.17e}, Err: {r[1]:+24.17e}')
     e0 = sum(numpy.array(tune_goal)**2)
     e1 = sum((r[0]-tune_goal)**2)
     while e1 > 0 and e1 < e0:
         e0 = e1
-        r = fit_tune1(tao,tune_goal,I,dI)
+        r = fit_tune1(tao,tune_goal,I,dI,chatty=super_chatty)
         if (chatty):
             print(f'Tune: {r[0][0]-tune_goal[0]:+24.17e} {r[0][1]-tune_goal[1]:+24.17e}, Err: {r[1]:+24.17e}')
         e1 = sum((r[0]-tune_goal)**2)
@@ -292,8 +296,7 @@ def fit_tune(tao,tune_goal,chatty=False,I0=(0.0,0.0),dI=(10.0,10.0)):
     tao.cmd('set universe 1 off')
     return I
 
-tao = pytao.Tao()
-tao.init('-quiet -noplot -startup hsr-init.tao')
+tao = pytao.Tao(noplot=True,startup_file='hsr-init.tao',quiet=True)
 tao.cmd('set universe * off')
 tao.cmd('veto var *')
 tao.cmd('veto dat *@*')
