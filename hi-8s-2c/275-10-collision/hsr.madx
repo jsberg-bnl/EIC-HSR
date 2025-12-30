@@ -28,7 +28,7 @@ beta_crab = 1300;
 option, -twiss_print;
 match, use_macro;
 fit_ir6w0:macro={
- use, sequence=hsr_hi_n, range=o_crab_mag[2]/ip6w;
+ use, sequence=hsr_hi_n, range=o_crab_mag[4]/ip6w;
  twiss, exact, betx=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab, alfx=-0.5*o_crab_ip6f->l/beta_crab, bety=1;
 };
 vary, name=b0apf->k0, step=1e-6;
