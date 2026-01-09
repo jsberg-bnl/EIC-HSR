@@ -302,8 +302,6 @@ pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
 o06w_b0_b0a: drift
 b0apf: sbend, l=0.60, field_master=t
-pbt_b0apf: patch
-pbr_b0apf: patch
 pet_b0apf: patch
 per_b0apf: patch
 ! Q1 forward
@@ -312,14 +310,8 @@ q1bpf: quadrupole, l=1.61
 o06w_b0a_q1a: drift
 o06w_q1a_q1b: drift
 o06w_q1b_q2: drift
-pbt_q1apf: patch
-pbr_q1apf: patch
-pet_q1apf: patch
-per_q1apf: patch
 pbt_q1bpf: patch
 pbr_q1bpf: patch
-pet_q1bpf: patch
-per_q1bpf: patch
 ! Q2 forward
 q2pf: quadrupole, l=3.80
 pbt_q2pf: patch
@@ -500,11 +492,7 @@ hsr6w: line=(
  o06w_q2_b1,
  pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
  o06w_q1b_q2,
- pbr_q1bpf, pbt_q1bpf, q1bpf, pet_q1bpf, per_q1bpf,
- o06w_q1a_q1b,
- pbr_q1apf, pbt_q1apf, q1apf, pet_q1apf, per_q1apf,
- o06w_b0a_q1a,
- pbr_b0apf, pbt_b0apf, b0apf, pet_b0apf, per_b0apf,
+ pbr_q1bpf, pbt_q1bpf, q1bpf, o06w_q1a_q1b, q1apf, o06w_b0a_q1a, b0apf, pet_b0apf, per_b0apf,
  o06w_b0_b0a,
  pbr_b0pf, pbt_b0pf, b0pf, pet_b0pf, per_b0pf,
  d1_pf,
