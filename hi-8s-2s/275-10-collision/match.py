@@ -37,11 +37,11 @@ def replace(filename):
 ir_var = ['use var '+v for v in (
     'ir6w[4,7:11]',
     'ir6d[4,5,7:10]',
-    'ir8',
-    'ir10',
-    'ir12',
+    'ir8[2:5,9:11,13,16:17]',
+    'ir10[1,3,6,8:12,16,18:20]',
+    'ir12[2:5,9:11,13,16:17]',
     'ir2',
-    'ir4',
+    'ir4[2:5,9:11,13,16:17]',
     'sx')]
 
 def strength_map(tao):
@@ -157,7 +157,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set def uni=5')
     tao.cmd(ir_var[3])
     tao.cmd('use dat ir10.fit[1:6,8:11]')
-    tao.cmd('use dat ir10.sym')
+    tao.cmd('use dat ir10.sym[2:3]')
     residual[3] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 5 off')
     tao.cmd('veto var *')
@@ -168,7 +168,7 @@ def match_hsr(tao,chatty=False):
     tao.cmd('set universe 8 on')
     tao.cmd('set def uni=8')
     tao.cmd(ir_var[6])
-    tao.cmd('use dat ir4.fit[1:6,8,9,12]')
+    tao.cmd('use dat ir4.fit[1:6,8:11]')
     residual[6] = optimize(tao,chatty=chatty)
     tao.cmd('set universe 8 off')
     tao.cmd('veto var *')
