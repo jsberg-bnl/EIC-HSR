@@ -30,7 +30,7 @@ def bmad_to_madx(bmad,madx):
                 print(e+', '+a+assign+v+';',file=madx)
 
 for name in os.listdir():
-    m = re.match(r'(ir[0-9]+[cn]?|rhic)\.bmad',name)
+    m = re.fullmatch(r'(ir[0-9]+[cn]?|rhic)\.bmad',name)
     if m:
         stem = m.group(1)
         if stem == 'ir6':
