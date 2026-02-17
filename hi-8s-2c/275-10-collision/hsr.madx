@@ -13,10 +13,6 @@ call, file='ir12.madx';
 beam, energy=275, particle=antiproton;
 use, sequence=hsr_hi_n;
 
-rhic_rip = 590.581639053215;
-dx0_eic_ip6 = +0.81;
-dtheta0_eic_ip6 = -0.017;
-
 set, format="10d", "25.17e", "-24s";
 select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
 survey, file='hsr-survey.tfs',
