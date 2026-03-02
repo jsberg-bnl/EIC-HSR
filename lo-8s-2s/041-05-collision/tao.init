@@ -157,11 +157,11 @@
  ix_d1_data = 2
  d1_data%name = 'crab'
  datum(1:3)%data_type = 'beta.a' 'phase.a' 'beta.b'
- datum(1:3)%ele_name = 'o_crab_ip6f' 'o_crab_ip6f' 'o_crab_ip6f'
+ datum(1:3)%ele_name = 'o_roman_pot_ip6_2' 'o_crab_ip6f' 'o_crab_ip6f'
  datum(2)%ele_ref_name = 'ip6w'
- datum(1)%meas = 200
+ datum(1)%meas = 530
  datum(1:3)%weight = 1e-3 1 1e-3
- datum(1:3)%eval_point = 'center' 'center' 'center'
+ datum(1:3)%eval_point = 'end' 'center' 'center'
  datum(3)%good_user = f
 /
 
