@@ -294,38 +294,43 @@ ac = 25e-3 ! Crossing angle
 xb0hf = 34e-3 ! Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
-b0pf: sbend, l=1.20, field_master=t, b1_gradient = 8.12223828336297515E+00
-b0pf[db_field] = xb0hf*b0pf[b1_gradient]
-pbr_b0pf: patch, x_pitch = 2.6704393161636225E-02
-pbt_b0pf: patch, x_offset = -1.42016467739204760E-01
+lb0pf = 1.65
+lb0pf_cm = 1.8
+ob0pf_cm: drift, l=0.5*(lb0pf_cm-lb0pf)
+
 pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
-o06w_b0_b0a: drift
-b0apf: sbend, l=0.60, field_master=t
-pet_b0apf: patch
-per_b0apf: patch
-! Q1 forward
-q1apf: quadrupole, l=1.46
-q1bpf: quadrupole, l=1.61
-o06w_b0a_q1a: drift
-o06w_q1a_q1b: drift
-o06w_q1b_q2: drift
-pbt_q1bpf: patch
-pbr_q1bpf: patch
-! Q2 forward
-q2pf: quadrupole, l=3.80
-pbt_q2pf: patch
-pbr_q2pf: patch
+b0pf: sbend, l=lb0pf, field_master=t, b1_gradient = 8.74515252699060142
+b0pf[db_field] = xb0hf*b0pf[b1_gradient]
+pbr_b0pf: patch, x_pitch = 21e-3
+pbt_b0pf: patch, x_offset = -1.5434079969224895E-01
+
+o06w_b0_q1: drift
+
+pet_q1pf: patch
+per_q1pf: patch
+q1pf: quadrupole, l=2.4
+pbt_q1pf: patch
+pbr_q1pf: patch
+
+o06w_q1_q2: drift
+
 pet_q2pf: patch
 per_q2pf: patch
+q2pf: quadrupole, l=2.5
+pbt_q2pf: patch
+pbr_q2pf: patch
+
 o06w_q2_b1: drift
-b1pf: sbend, field_master=t
+
 pet_b1pf: patch
 per_b1pf: patch
+b1pf: sbend, field_master=t
 o06w_b1_b1a: drift
 b1apf: b1pf
 pbt_b1apf: patch
 pbr_b1apf: patch
+
 ov_b1pf: overlay={
  b1pf[l] : l,
  b1apf[l] : l,
@@ -389,27 +394,22 @@ o5_crab_b2: drift, l=(2*7.67+13.12)*0.0254+0.085+1
 o5_b2_q3: drift, l=0.5
 o5_crab_zdc: drift, l=1
 
-pt_ir6f =  1.23497950890099669E+009 ! Transverse momentum passed by apertures at 275 GeV, for information only
 ! Forward geometry
-O06W_B0_B0A[L] = +9.00427808950665209E-001
-PER_B0APF[X_PITCH] = +1.13429660557850523E-003
-PET_B0APF[X_OFFSET] = +3.40289018158971635E-004
-O06W_B0A_Q1A[L] = +4.00554298732503256E-001
-O06W_Q1A_Q1B[L] = +4.00750047585586744E-001
-O06W_Q1B_Q2[L] = +4.01350312043379953E-001
-PER_Q2PF[X_PITCH] = -1.29559035125148443E-002
-PET_Q2PF[X_OFFSET] = -4.51859052831875621E-002
-PBT_Q2PF[X_OFFSET] = -5.13563092452485812E-003
-PBR_Q2PF[X_PITCH] = +1.10715369257421512E-002
-O06W_Q2_B1[L] = +5.01866896989140998E-001
-PER_B1PF[X_PITCH] = -1.97025952950994482E-003
-PET_B1PF[X_OFFSET] = -4.53456360407185205E-002
-O06W_B1_B1A[L] = +5.00791138170163075E-001
-PBT_B1APF[X_OFFSET] = -3.11941590084290898E-002
-PBR_B1APF[X_PITCH] = +2.08192348529009710E-002
+! Radii are 51 71 135 mm
+pet_q1pf[x_offset] = -1.9139229106459099E-02
+O06W_B0_Q1[L] = 2.5
+pbt_q1pf[x_offset] = -10e-3
+pet_q2pf[x_offset] = -10e-3
+O06W_Q1_Q2[L] = 0.5
+pbt_q2pf[x_offset] = -32e-3
+pet_b1pf[x_offset] = -32e-3
+O06W_Q2_B1[L] = 0.5
+O06W_B1_B1A[L] = 0.5
+pbt_b1apf[x_offset] = -2.50794876032409131E-02
+pbr_b1apf[x_pitch] = 2.10319936176925834E-02
 
 ! Far-forward detector layout
-O06W_FFDET[L] =  1.54930452018620155E+001
+O06W_FFDET[L] =  16.5
 OV_B2PF[L] = +3.25913447502354225E+000
 OV_B2PF[ANGLE] = +1.67744943262118085E-002
 
@@ -483,9 +483,9 @@ hsr6w: line=(
  b1pf, pet_b1pf, per_b1pf,
  o06w_q2_b1,
  pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
- o06w_q1b_q2,
- pbr_q1bpf, pbt_q1bpf, q1bpf, o06w_q1a_q1b, q1apf, o06w_b0a_q1a, b0apf, pet_b0apf, per_b0apf,
- o06w_b0_b0a,
+ o06w_q1_q2,
+ pbr_q1pf, pbt_q1pf, q1pf, pet_q1pf, per_q1pf,
+ o06w_b0_q1,
  pbr_b0pf, pbt_b0pf, b0pf, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf)
