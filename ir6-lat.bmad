@@ -294,22 +294,21 @@ ac = 25e-3 ! Crossing angle
 xb0hf = 34e-3 ! Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
-lb0pf = 1.65
-lb0pf_cm = 1.8
-ob0pf_cm: drift, l=0.5*(lb0pf_cm-lb0pf)
+lb0pf = 2.60
+ob0pf_cm: drift, l=0.1
 
 pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
-b0pf: sbend, l=lb0pf, field_master=t, b1_gradient = 8.74515252699060142
-b0pf[db_field] = xb0hf*b0pf[b1_gradient]
+b0pf: sbend, l=lb0pf, k1 = -9.9303311569841849E-03
+b0pf[dg] = xb0hf*b0pf[k1]
 pbr_b0pf: patch, x_pitch = 21e-3
-pbt_b0pf: patch, x_offset = -1.5434079969224895E-01
+pbt_b0pf: patch, x_offset = -1.87203733352911877E-01
 
 o06w_b0_q1: drift
 
 pet_q1pf: patch
 per_q1pf: patch
-q1pf: quadrupole, l=2.4
+q1pf: quadrupole, l=2.8
 pbt_q1pf: patch
 pbr_q1pf: patch
 
@@ -317,7 +316,7 @@ o06w_q1_q2: drift
 
 pet_q2pf: patch
 per_q2pf: patch
-q2pf: quadrupole, l=2.5
+q2pf: quadrupole, l=3.0
 pbt_q2pf: patch
 pbr_q2pf: patch
 
@@ -395,18 +394,18 @@ o5_b2_q3: drift, l=0.5
 o5_crab_zdc: drift, l=1
 
 ! Forward geometry
-! Radii are 51 71 135 mm
-pet_q1pf[x_offset] = -1.9139229106459099E-02
+! Radii are 66 92 135 mm
+pet_q1pf[x_offset] = -2.54317664705130397E-02
 O06W_B0_Q1[L] = 2.5
-pbt_q1pf[x_offset] = -10e-3
-pet_q2pf[x_offset] = -10e-3
+pbt_q1pf[x_offset] = -13e-3
+pet_q2pf[x_offset] = -13e-3
 O06W_Q1_Q2[L] = 0.5
-pbt_q2pf[x_offset] = -32e-3
-pet_b1pf[x_offset] = -32e-3
+pbt_q2pf[x_offset] = -21.5e-3
+pet_b1pf[x_offset] = -21.5e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
-pbt_b1apf[x_offset] = -2.50794876032409131E-02
-pbr_b1apf[x_pitch] = 2.10319936176925834E-02
+pbt_b1apf[x_offset] = -6.66344801214192317E-02
+pbr_b1apf[x_pitch] = 2.23718886772707563E-02
 
 ! Far-forward detector layout
 O06W_FFDET[L] =  16.5
@@ -486,7 +485,7 @@ hsr6w: line=(
  o06w_q1_q2,
  pbr_q1pf, pbt_q1pf, q1pf, pet_q1pf, per_q1pf,
  o06w_b0_q1,
- pbr_b0pf, pbt_b0pf, b0pf, pet_b0pf, per_b0pf,
+ pbr_b0pf, pbt_b0pf, ob0pf_cm, b0pf, ob0pf_cm, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf)
 
