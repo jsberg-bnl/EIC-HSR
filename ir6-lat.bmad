@@ -302,7 +302,7 @@ per_b0pf: patch, x_pitch = -ac
 b0pf: sbend, l=lb0pf, k1 = -9.9303311569841849E-03
 b0pf[dg] = xb0hf*b0pf[k1]
 pbr_b0pf: patch, x_pitch = 21e-3
-pbt_b0pf: patch, x_offset = -1.87203733352911877E-01
+pbt_b0pf: patch
 
 o06w_b0_q1: drift
 
@@ -395,7 +395,6 @@ o5_crab_zdc: drift, l=1
 
 ! Forward geometry
 ! Radii are 66 92 135 mm
-pet_q1pf[x_offset] = -2.54317664705130397E-02
 O06W_B0_Q1[L] = 2.5
 pbt_q1pf[x_offset] = -13e-3
 pet_q2pf[x_offset] = -13e-3
@@ -404,11 +403,15 @@ pbt_q2pf[x_offset] = -21.5e-3
 pet_b1pf[x_offset] = -21.5e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
-pbt_b1apf[x_offset] = -6.66344801214192317E-02
-pbr_b1apf[x_pitch] = 2.23718886772707563E-02
+
+B0PF[L] = +2.75592458292529452E+000
+PBT_B0PF[X_OFFSET] = -1.91894323249151622E-001
+PET_Q1PF[X_OFFSET] = -2.40163863884804429E-002
+PBT_B1APF[X_OFFSET] = -7.64859241683028962E-002
+PBR_B1APF[X_PITCH] = +2.38032985038332118E-002
+O06W_FFDET[L] =  1.45117765916900971E+001
 
 ! Far-forward detector layout
-O06W_FFDET[L] =  16.5
 OV_B2PF[L] = +3.25913447502354225E+000
 OV_B2PF[ANGLE] = +1.67744943262118085E-002
 
