@@ -294,36 +294,37 @@ ac = 25e-3 ! Crossing angle
 xb0hf = 34e-3 ! Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
-lb0pf = 2.60
-ob0pf_cm: drift, l=0.1
+lb0pf = 1.72
+ob0pf_cm: drift, l=0.08
 
 pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
-b0pf: sbend, l=lb0pf, k1 = -9.9303311569841849E-03
+b0pf: sbend, l=lb0pf, k1 = -8.98875608445904098E-03
 b0pf[dg] = xb0hf*b0pf[k1]
 pbr_b0pf: patch, x_pitch = 21e-3
 pbt_b0pf: patch
 
-o06w_b0_q1: drift
+o06w_b0_b0a: drift
+
+pet_b0apf: patch
+b0apf: sbend, l=0.5
+pbt_b0apf: patch
+
+o06w_b0a_q1: drift
 
 pet_q1pf: patch
-per_q1pf: patch
 q1pf: quadrupole, l=2.8
 pbt_q1pf: patch
-pbr_q1pf: patch
 
 o06w_q1_q2: drift
 
 pet_q2pf: patch
-per_q2pf: patch
 q2pf: quadrupole, l=3.0
 pbt_q2pf: patch
-pbr_q2pf: patch
 
 o06w_q2_b1: drift
 
 pet_b1pf: patch
-per_b1pf: patch
 b1pf: sbend, field_master=t
 o06w_b1_b1a: drift
 b1apf: b1pf
@@ -395,20 +396,22 @@ o5_crab_zdc: drift, l=1
 
 ! Forward geometry
 ! Radii are 66 92 135 mm
-O06W_B0_Q1[L] = 2.5
-pbt_q1pf[x_offset] = -13e-3
-pet_q2pf[x_offset] = -13e-3
+O06W_B0_B0A[L] = 2.5
+pbt_b0apf[x_offset] = -11.5e-3
+pet_q1pf[x_offset] = -11.5e-3
+O06W_B0A_Q1[L] = 0.5
+pbt_q1pf[x_offset] = -14e-3
+pet_q2pf[x_offset] = -14e-3
 O06W_Q1_Q2[L] = 0.5
-pbt_q2pf[x_offset] = -21.5e-3
-pet_b1pf[x_offset] = -21.5e-3
+pbt_q2pf[x_offset] = -22e-3
+pet_b1pf[x_offset] = -22e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
-B0PF[L] = +2.75592458292529452E+000
-PBT_B0PF[X_OFFSET] = -1.91894323249151622E-001
-PET_Q1PF[X_OFFSET] = -2.40163863884804429E-002
-PBT_B1APF[X_OFFSET] = -7.64859241683028962E-002
-PBR_B1APF[X_PITCH] = +2.38032985038332118E-002
+PBT_B0PF[X_OFFSET] = -1.60386191024426750E-01
+PET_B0APF[X_OFFSET] = -6.92481573691292041E-03
+PBT_B1APF[X_OFFSET] = -7.08947808990415818E-02
+PBR_B1APF[X_PITCH] = 2.42585974254574469E-02
 O06W_FFDET[L] =  1.45117765916900971E+001
 
 ! Far-forward detector layout
@@ -482,12 +485,14 @@ hsr6w: line=(
  o06w_ffdet,
  pbr_b1apf, pbt_b1apf, b1apf, 
  o06w_b1_b1a,
- b1pf, pet_b1pf, per_b1pf,
+ b1pf, pet_b1pf,
  o06w_q2_b1,
- pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
+ pbt_q2pf, q2pf, pet_q2pf,
  o06w_q1_q2,
- pbr_q1pf, pbt_q1pf, q1pf, pet_q1pf, per_q1pf,
- o06w_b0_q1,
+ pbt_q1pf, q1pf, pet_q1pf,
+ o06w_b0a_q1,
+ pbt_b0apf, b0apf, pet_b0apf,
+ o06w_b0_b0a,
  pbr_b0pf, pbt_b0pf, ob0pf_cm, b0pf, ob0pf_cm, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf)
