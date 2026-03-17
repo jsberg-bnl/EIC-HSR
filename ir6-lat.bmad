@@ -397,21 +397,21 @@ o5_crab_zdc: drift, l=1
 ! Forward geometry
 ! Radii are 66 92 135 mm
 O06W_B0_B0A[L] = 2.5
-pbt_b0apf[x_offset] = -12.5e-3
-pet_q1pf[x_offset] = -12.5e-3
+pbt_b0apf[x_offset] = -11e-3
+pet_q1pf[x_offset] = -11e-3
 O06W_B0A_Q1[L] = 0.5
 pbt_q1pf[x_offset] = -14.5e-3
 pet_q2pf[x_offset] = -14.5e-3
 O06W_Q1_Q2[L] = 0.5
-pbt_q2pf[x_offset] = -20e-3
-pet_b1pf[x_offset] = -20e-3
+pbt_q2pf[x_offset] = -22e-3
+pet_b1pf[x_offset] = -22e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
 PBT_B0PF[X_OFFSET] = -1.60386191024426750E-01
-PET_B0APF[X_OFFSET] = -7.92481573691292041E-03
+PET_B0APF[X_OFFSET] = -10.92481573691292041E-03
 B0APF[L] = +6.79164128183889049E-001
-PBT_B1APF[X_OFFSET] = -7.89337263349782492E-002
+PBT_B1APF[X_OFFSET] = -74.9337263349782492E-003
 PBR_B1APF[X_PITCH] = +2.38032985038329065E-002
 O06W_FFDET[L] =  1.44089323016660025E+001
 
