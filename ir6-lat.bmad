@@ -294,12 +294,11 @@ ac = 25e-3 ! Crossing angle
 xb0hf = 34e-3 ! Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
-lb0pf = 2.60
 ob0pf_cm: drift, l=0.1
 
 pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
-b0pf: sbend, l=lb0pf, k1 = -9.9303311569841849E-03
+b0pf: sbend, k1 = -9.9303311569841849E-03
 b0pf[dg] = xb0hf*b0pf[k1]
 pbr_b0pf: patch, x_pitch = 21e-3
 pbt_b0pf: patch
@@ -316,7 +315,7 @@ o06w_q1_q2: drift
 
 pet_q2pf: patch
 per_q2pf: patch
-q2pf: quadrupole, l=3.0
+q2pf: quadrupole, l=3.1
 pbt_q2pf: patch
 pbr_q2pf: patch
 
@@ -394,22 +393,22 @@ o5_b2_q3: drift, l=0.5
 o5_crab_zdc: drift, l=1
 
 ! Forward geometry
-! Radii are 66 92 135 mm
+! Radii are 68 97 141 mm
 O06W_B0_Q1[L] = 2.5
-pbt_q1pf[x_offset] = -13e-3
-pet_q2pf[x_offset] = -13e-3
+pbt_q1pf[x_offset] = -14.5e-3
+pet_q2pf[x_offset] = -14.5e-3
 O06W_Q1_Q2[L] = 0.5
-pbt_q2pf[x_offset] = -21.5e-3
-pet_b1pf[x_offset] = -21.5e-3
+pbt_q2pf[x_offset] = -22e-3
+pet_b1pf[x_offset] = -22e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
-B0PF[L] = +2.75592458292529452E+000
-PBT_B0PF[X_OFFSET] = -1.91894323249151622E-001
-PET_Q1PF[X_OFFSET] = -2.40163863884804429E-002
-PBT_B1APF[X_OFFSET] = -7.64859241683028962E-002
-PBR_B1APF[X_PITCH] = +2.38032985038332118E-002
-O06W_FFDET[L] =  1.45117765916900971E+001
+B0PF[L] = +2.81032191490811201E+000
+PBT_B0PF[X_OFFSET] = -1.93543501659550726E-001
+PET_Q1PF[X_OFFSET] = -2.55098316197657493E-002
+PBT_B1APF[X_OFFSET] = -74.1623231336651108E-003
+PBR_B1APF[X_PITCH] = +2.38032985038330001E-002
+O06W_FFDET[L] =  1.43573128663999423E+001
 
 ! Far-forward detector layout
 OV_B2PF[L] = +3.25913447502354225E+000
