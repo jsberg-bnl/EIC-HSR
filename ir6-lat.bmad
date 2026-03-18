@@ -303,7 +303,8 @@ b0pf[dg] = xb0hf*b0pf[k1]
 pbr_b0pf: patch, x_pitch = 21e-3
 pbt_b0pf: patch
 
-o06w_b0_q1: drift
+o06w_w2c_ff: drift, l=0.5
+o06w_near_ff: instrument, l=1.5
 
 pet_q1pf: patch
 per_q1pf: patch
@@ -394,7 +395,6 @@ o5_crab_zdc: drift, l=1
 
 ! Forward geometry
 ! Radii are 68 97 141 mm
-O06W_B0_Q1[L] = 2.5
 pbt_q1pf[x_offset] = -14.5e-3
 pet_q2pf[x_offset] = -14.5e-3
 O06W_Q1_Q2[L] = 0.5
@@ -486,7 +486,7 @@ hsr6w: line=(
  pbr_q2pf, pbt_q2pf, q2pf, pet_q2pf, per_q2pf,
  o06w_q1_q2,
  pbr_q1pf, pbt_q1pf, q1pf, pet_q1pf, per_q1pf,
- o06w_b0_q1,
+ o06w_w2c_ff, o06w_near_ff, o06w_w2c_ff,
  pbr_b0pf, pbt_b0pf, ob0pf_cm, b0pf, ob0pf_cm, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf)
