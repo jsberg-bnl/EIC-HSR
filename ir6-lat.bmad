@@ -291,7 +291,7 @@ o06d_q2_q3: drift, l=l06d_q2_q3
 ! b0pf layout
 ze = 5.8 ! Distance along electron line to B0 entrance plane
 ac = 25e-3 ! Crossing angle
-xb0hf = 34e-3 ! Distance of B0 axis from electron line
+xb0hf = 63e-3 ! Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
 ob0pf_cm: drift, l=0.1
@@ -406,7 +406,7 @@ pet_b1pf[x_offset] = -20e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
-PBT_B0PF[X_OFFSET] = -1.98806389012034707E-001
+PBT_B0PF[X_OFFSET] = -169.806389012034707E-003
 PET_Q1PF[X_OFFSET] = -2.47472127096309003E-002
 PBT_B1APF[X_OFFSET] = -78.1618893437538396E-003
 PBR_B1APF[X_PITCH] = +2.38032985038333818E-002
