@@ -299,18 +299,18 @@ ob0pf_cm: drift, l=0.1
 pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
 b0pf: sbend, k1 = -9.9303311569841849E-03
-B0PF[L] = +2.81031542639935994E+000
+B0PF[L] = +2.81040850803062536E+000
 b0pf[dg] = xb0hf*b0pf[k1]
 
 o06w_w2c_ff: drift, l=0.5
 o06w_near_ff: instrument, l=1.5
 
-pbr_b0pf: patch, x_pitch = ac
+pbr_b0pf: patch
 pbt_b0pf: patch
 
 
 pet_q1pf: patch
-per_q1pf: patch, x_pitch=-4e-3
+per_q1pf: patch
 q1pf: quadrupole, l=2.8
 pbt_q1pf: patch
 pbr_q1pf: patch
@@ -406,11 +406,13 @@ pet_b1pf[x_offset] = -20e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
-PBT_B0PF[X_OFFSET] = -169.806389012034707E-003
-PET_Q1PF[X_OFFSET] = -2.47472127096309003E-002
-PBT_B1APF[X_OFFSET] = -78.1618893437538396E-003
-PBR_B1APF[X_PITCH] = +2.38032985038333818E-002
-O06W_FFDET[L] =  1.43573310920621395E+001
+PBT_B0PF[X_OFFSET] = -1.79630744285611543E-001
+PBR_B0PF[X_PITCH] = +3.01600759164046862E-002
+PER_Q1PF[X_PITCH] = -9.16007591640468494E-003
+PET_Q1PF[X_OFFSET] = -7.18704047057033835E-003
+PBT_B1APF[X_OFFSET] = -7.81678038568236755E-002
+PBR_B1APF[X_PITCH] = +2.38032985038328232E-002
+O06W_FFDET[L] =  1.43570825940807403E+001
 
 ! Far-forward detector layout
 OV_B2PF[L] = +3.25913447502354225E+000
