@@ -341,7 +341,7 @@ ov_b1pf: overlay={
  b1apf[l] : l,
  b1pf[db_field] : db_field,
  b1apf[db_field] : db_field},
- var = {l,db_field}, l=2.25
+ var = {l,db_field}, l=2.20
 
 ! New dipoles
 b_b2pf = 5
@@ -408,8 +408,8 @@ O06W_B0A_Q1[L] = 0.5
 pbt_q1pf[x_offset] = -14.5e-3
 pet_q2pf[x_offset] = -14.5e-3
 O06W_Q1_Q2[L] = 0.5
-pbt_q2pf[x_offset] = -20.5e-3
-pet_b1pf[x_offset] = -20.5e-3
+pbt_q2pf[x_offset] = -20e-3
+pet_b1pf[x_offset] = -20e-3
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
@@ -418,10 +418,10 @@ PBR_B0PF[X_PITCH] = 2.76172922385577412E-02
 PER_B0APF[X_PITCH] = -6.61729223855811455E-03
 PET_B0APF[X_OFFSET] = 2.31093432182458147E-03
 
-B0APF[L] = +6.79219062376827942E-001
-PBT_B1APF[X_OFFSET] = -7.79385326751390328E-002
-PBR_B1APF[X_PITCH] = +2.38032985038333922E-002
-O06W_FFDET[L] =  1.44087303635161170E+001
+B0APF[L] = +6.58247679658779172E-001
+PBT_B1APF[X_OFFSET] = -76.0584707765030029E-003
+PBR_B1APF[X_PITCH] = +2.38032985038333367E-002
+O06W_FFDET[L] =  1.45297360253392576E+001
 
 ! Far-forward detector layout
 OV_B2PF[L] = +3.25913447502354225E+000
