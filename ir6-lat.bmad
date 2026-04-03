@@ -312,14 +312,23 @@ o06w_b0_b0a: drift
 
 per_b0apf: patch
 pet_b0apf: patch
-b0apf: sbend
-pbt_b0apf: patch
+b0apf: sbend, l=0.6
 
-o06w_b0a_q1: drift
+r_b0apf = 44e-3
+r_q1pf = 63e-3
+r_q2pf = 92e-3
+r_b1pf = 135e-3
 
-pet_q1pf: patch
-q1pf: quadrupole, l=2.8
-pbt_q1pf: patch
+l_b0aq1 = 0.5
+l_q1pf = 2.7
+th_q1pf = atan(r_q1pf/(l_q1pf+0.5*l_b0aq1)) - asin(r_b0apf/sqrt(r_q1pf^2+(l_q1pf+0.5*l_b0aq1)^2))
+
+pr_b0aq1: patch, x_pitch=th_q1pf
+o06w_b0a_q1: drift, l=0.5*l_b0aq1
+
+q1pf: quadrupole, l=l_q1pf
+pbt_q1pf: patch, x_offset=r_q1pf-0.5*(r_q1pf+r_q2pf)/cos(th_q1pf)
+pbr_q1pf: patch, x_pitch=-th_q1pf
 
 o06w_q1_q2: drift
 
@@ -400,16 +409,11 @@ o5_b2_q3: drift, l=0.5
 o5_crab_zdc: drift, l=1
 
 ! Forward geometry
-! Radii are 66 92 135 mm
 O06W_B0_B0A[L] = 2.5
-pbt_b0apf[x_offset] = -11e-3
-pet_q1pf[x_offset] = -11e-3
-O06W_B0A_Q1[L] = 0.5
-pbt_q1pf[x_offset] = -14.5e-3
-pet_q2pf[x_offset] = -14.5e-3
+pet_q2pf[x_offset] = 0.5*(r_q1pf-r_q2pf)
 O06W_Q1_Q2[L] = 0.5
-pbt_q2pf[x_offset] = -20e-3
-pet_b1pf[x_offset] = -20e-3
+pbt_q2pf[x_offset] = 0.5*(r_q2pf-r_b1pf)
+pet_b1pf[x_offset] = 0.5*(r_q2pf-r_b1pf)
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
@@ -418,10 +422,9 @@ PBR_B0PF[X_PITCH] = 2.76172922385577412E-02
 PER_B0APF[X_PITCH] = -6.61729223855811455E-03
 PET_B0APF[X_OFFSET] = 2.31093432182458147E-03
 
-B0APF[L] = +6.58247679658779172E-001
-PBT_B1APF[X_OFFSET] = -76.0584707765030029E-003
-PBR_B1APF[X_PITCH] = +2.38032985038333367E-002
-O06W_FFDET[L] =  1.45297360253392576E+001
+PBT_B1APF[X_OFFSET] = -7.22872624078740589E-002
+PBR_B1APF[X_PITCH] = +2.38032985038332187E-002
+O06W_FFDET[L] =  1.46881831631368716E+001
 
 ! Far-forward detector layout
 OV_B2PF[L] = +3.25913447502354225E+000
@@ -498,9 +501,9 @@ hsr6w: line=(
  o06w_q2_b1,
  pbt_q2pf, q2pf, pet_q2pf,
  o06w_q1_q2,
- pbt_q1pf, q1pf, pet_q1pf,
- o06w_b0a_q1,
- pbt_b0apf, b0apf, o06w_w2c_ff, pet_b0apf, per_b0apf,
+ pbr_q1pf, pbt_q1pf, q1pf,
+ o06w_b0a_q1, pr_b0aq1, o06w_b0a_q1,
+ b0apf, o06w_w2c_ff, pet_b0apf, per_b0apf,
  o06w_near_ff, 
  pbr_b0pf, pbt_b0pf, o06w_w2c_ff, ob0pf_cm, b0pf, ob0pf_cm, pet_b0pf, per_b0pf,
  d1_pf,
