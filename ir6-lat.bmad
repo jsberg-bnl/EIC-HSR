@@ -317,14 +317,32 @@ pbt_b0apf: patch
 
 o06w_b0a_q1: drift
 
-pet_q1pf: patch
-q1pf: quadrupole, l=2.8
-pbt_q1pf: patch
+r_b0apf = 44e-3
+r0_q1pf = 46e-3
+r1_q1pf = 64e-3
+r_q2pf = 91e-3
+r_b1pf = 135e-3
+l_q1pf = 2.7
+r2s_q1pf = r1_q1pf^2-r0_q1pf^2-2*r0_q1pf*r1_q1pf*log(r1_q1pf/r0_q1pf)
+dl_q1pf = 2*r2s_q1pf/(r1_q1pf-r0_q1pf)^2
+dki_q1pf = (6*r0_q1pf*r1_q1pf*(r0_q1pf+r1_q1pf)*log(r1_q1pf/r0_q1pf) &
+            - (r1_q1pf-r0_q1pf)*(r0_q1pf^2+10*r0_q1pf*r1_q1pf+r1_q1pf^2)) / ((r1_q1pf-r0_q1pf)*r2s_q1pf)
+per_q1pf: patch, x_pitch=atan2(r1_q1pf-r0_q1pf,l_q1pf)
+pet_q1pf: patch, x_offset=0.5*(r_b0apf+r0_q1pf)/l_q1pf*sqrt(l_q1pf^2+(r1_q1pf-r0_q1pf)^2) - r0_q1pf
+q1pf_0: quadrupole
+q1pf_1: quadrupole
+q1pf: overlay={
+ q1pf_0[b1_gradient] : b1_gradient*(1+dki_q1pf)/(1-dl_q1pf),
+ q1pf_0[l] : 0.5*l*(1-dl_q1pf),
+ q1pf_1[b1_gradient] : b1_gradient*(1-dki_q1pf)/(1+dl_q1pf),
+ q1pf_1[l] : 0.5*l*(1+dl_q1pf)}, var={b1_gradient,l}, l=l_q1pf
+pbt_q1pf: patch, x_offset = r1_q1pf - 0.5*(r1_q1pf+r_q2pf)/l_q1pf*sqrt(l_q1pf^2+(r1_q1pf-r0_q1pf)^2)
+pbr_q1pf: patch, x_pitch=-atan2(r1_q1pf-r0_q1pf,l_q1pf)
 
 o06w_q1_q2: drift
 
 pet_q2pf: patch
-q2pf: quadrupole, l=3.0
+q2pf: quadrupole, l=2.9
 pbt_q2pf: patch
 
 o06w_q2_b1: drift
@@ -341,7 +359,7 @@ ov_b1pf: overlay={
  b1apf[l] : l,
  b1pf[db_field] : db_field,
  b1apf[db_field] : db_field},
- var = {l,db_field}, l=2.20
+ var = {l,db_field}, l=2.25
 
 ! New dipoles
 b_b2pf = 5
@@ -402,14 +420,12 @@ o5_crab_zdc: drift, l=1
 ! Forward geometry
 ! Radii are 66 92 135 mm
 O06W_B0_B0A[L] = 2.5
-pbt_b0apf[x_offset] = -11e-3
-pet_q1pf[x_offset] = -11e-3
+pbt_b0apf[x_offset] = 0.5*(r_b0apf-r0_q1pf)
 O06W_B0A_Q1[L] = 0.5
-pbt_q1pf[x_offset] = -14.5e-3
-pet_q2pf[x_offset] = -14.5e-3
+pet_q2pf[x_offset] = 0.5*(r1_q1pf-r_q2pf)
 O06W_Q1_Q2[L] = 0.5
-pbt_q2pf[x_offset] = -20e-3
-pet_b1pf[x_offset] = -20e-3
+pbt_q2pf[x_offset] = 0.5*(r_q2pf-r_b1pf)
+pet_b1pf[x_offset] = 0.5*(r_q2pf-r_b1pf)
 O06W_Q2_B1[L] = 0.5
 O06W_B1_B1A[L] = 0.5
 
@@ -418,10 +434,10 @@ PBR_B0PF[X_PITCH] = 2.76172922385577412E-02
 PER_B0APF[X_PITCH] = -6.61729223855811455E-03
 PET_B0APF[X_OFFSET] = 2.31093432182458147E-03
 
-B0APF[L] = +6.58247679658779172E-001
-PBT_B1APF[X_OFFSET] = -76.0584707765030029E-003
-PBR_B1APF[X_PITCH] = +2.38032985038333367E-002
-O06W_FFDET[L] =  1.45297360253392576E+001
+B0APF[L] = 0.6
+PBT_B1APF[X_OFFSET] = -7.22872125326068093E-002
+PBR_B1APF[X_PITCH] = +2.38032985038326636E-002
+O06W_FFDET[L] =  1.46881852586436104E+001
 
 ! Far-forward detector layout
 OV_B2PF[L] = +3.25913447502354225E+000
@@ -498,7 +514,7 @@ hsr6w: line=(
  o06w_q2_b1,
  pbt_q2pf, q2pf, pet_q2pf,
  o06w_q1_q2,
- pbt_q1pf, q1pf, pet_q1pf,
+ pbr_q1pf, pbt_q1pf, q1pf_1, q1pf_0, pet_q1pf, per_q1pf,
  o06w_b0a_q1,
  pbt_b0apf, b0apf, o06w_w2c_ff, pet_b0apf, per_b0apf,
  o06w_near_ff, 
