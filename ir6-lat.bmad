@@ -321,14 +321,13 @@ r_b1pf = 135e-3
 
 l_b0aq1 = 0.5
 l_q1pf = 2.7
-th_q1pf = atan(r_q1pf/(l_q1pf+0.5*l_b0aq1)) - asin(r_b0apf/sqrt(r_q1pf^2+(l_q1pf+0.5*l_b0aq1)^2))
+th_b0aq1 = atan((r_q1pf-r_b0apf)/(l_b0aq1+l_q1pf))
 
-pr_b0aq1: patch, x_pitch=th_q1pf
-o06w_b0a_q1: drift, l=0.5*l_b0aq1
+o06w_b0a_q1: drift, l=l_b0aq1
 
 q1pf: quadrupole, l=l_q1pf
-pbt_q1pf: patch, x_offset=r_q1pf-0.5*(r_q1pf+r_q2pf)/cos(th_q1pf)
-pbr_q1pf: patch, x_pitch=-th_q1pf
+pbt_q1pf: patch, x_offset=r_q1pf-0.5*(r_q1pf+r_q2pf)/cos(th_b0aq1)
+pbr_q1pf: patch, x_pitch=-th_b0aq1
 
 o06w_q1_q2: drift
 
@@ -419,12 +418,12 @@ O06W_B1_B1A[L] = 0.5
 
 PBT_B0PF[X_OFFSET] = -1.72198348901492576E-01
 PBR_B0PF[X_PITCH] = 2.76172922385577412E-02
-PER_B0APF[X_PITCH] = -6.61729223855811455E-03
-PET_B0APF[X_OFFSET] = 2.31093432182458147E-03
+PER_B0APF[X_PITCH] = -6.79862010438307164E-04
+PET_B0APF[X_OFFSET] = 8.84300063529885882E-03
 
-PBT_B1APF[X_OFFSET] = -7.22872624078740589E-002
-PBR_B1APF[X_PITCH] = +2.38032985038332187E-002
-O06W_FFDET[L] =  1.46881831631368716E+001
+PBT_B1APF[X_OFFSET] = -7.22883381053212593E-002
+PBR_B1APF[X_PITCH] = +2.38032985038334130E-002
+O06W_FFDET[L] =  1.46881379677605217E+001
 
 ! Far-forward detector layout
 OV_B2PF[L] = +3.25913447502354225E+000
@@ -502,7 +501,7 @@ hsr6w: line=(
  pbt_q2pf, q2pf, pet_q2pf,
  o06w_q1_q2,
  pbr_q1pf, pbt_q1pf, q1pf,
- o06w_b0a_q1, pr_b0aq1, o06w_b0a_q1,
+ o06w_b0a_q1,
  b0apf, o06w_w2c_ff, pet_b0apf, per_b0apf,
  o06w_near_ff, 
  pbr_b0pf, pbt_b0pf, o06w_w2c_ff, ob0pf_cm, b0pf, ob0pf_cm, pet_b0pf, per_b0pf,
