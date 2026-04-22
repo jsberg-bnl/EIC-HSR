@@ -58,7 +58,7 @@
  var(13:14)%ele_name = 'h5_q11_i' 'h5_tq11_i'
  var(1:14)%step = 1e-3 1e-3 1e-3 1 1 0.1 0.1 1 1 1 1 1 1 0.1
  var(1:14)%attribute = 'k1' 'k1' 'k1' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
- var(15:16)%ele_name = 'b0apf' 'b1pf'
+ var(15:16)%ele_name = 'b0apf' 'ov_b1pf'
  var(15:16)%attribute = 'db_field' 'db_field'
  var(15:16)%step = 1e-2 1e-2
 /
@@ -69,9 +69,9 @@
  var(1:3)%ele_name = 'k1_q1_6d' 'q2pr' 'h6_q3'
  var(1:3)%step = 1e-3 1e-3 1e-3
  var(1:3)%attribute = 'k1' 'k1' 'k1'
- var(4:11)%ele_name = 'h6_q04_i' 'h6_q05_i' 'h6_q06_i' 'h6_q07_i' 'h6_q08_i' 'h6_tq08_i' 'h6_q09_i' 'h6_q10_i'
- var(4:11)%step = 1 1 1 1 1 1 1 1
- var(4:11)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i' 'i'
+ var(4:10)%ele_name = 'h6_q04_i' 'h6_q05_i' 'h6_q06_i' 'h6_q07_i' 'h6_q08_i' 'h6_q09_i' 'h6_q10_i'
+ var(4:10)%step = 1 1 1 1 1 1 1
+ var(4:10)%attribute = 'i' 'i' 'i' 'i' 'i' 'i' 'i'
 /
 
 &tao_var
@@ -164,7 +164,7 @@
  d1_data%name = 'orbit'
  default_weight = 1e4
  datum(1:2)%data_type = 'orbit.x' 'orbit.px'
- datum(1:2)%ele_name = 'b1pf+2' 'b1pf+2'
+ datum(1:2)%ele_name = 'b1apf+2' 'b1apf+2'
  datum(1:2)%meas = 0 0
  datum(1:2)%good_user = f f
 /
