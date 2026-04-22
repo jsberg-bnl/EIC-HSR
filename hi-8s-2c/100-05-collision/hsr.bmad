@@ -1,0 +1,16 @@
+call, file='../../hsr.bmad'
+
+e100 = 100e9
+p100 = sqrt(e100^2-m_proton^2)
+
+call, file='rhic.bmad'
+call, file='ir2.bmad'
+call, file='ir4.bmad'
+call, file='ir6.bmad'
+call, file='ir8n.bmad'
+call, file='ir10.bmad'
+call, file='ir12.bmad'
+
+beginning[e_tot]           = e100
+
+use, hsr_hi_n

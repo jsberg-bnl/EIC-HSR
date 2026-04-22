@@ -1,0 +1,60 @@
+set global lattice_calc_on=f
+set branch [9:13]@0 geometry=closed
+! RHIC geometry calculations
+set sym xd0 = lcendx*tan(0.5*thdx) + lcendxd0*tan(thdx) + lcend0*tan(0.5*(thdx+thd0))
+set sym zd0 = lcenxdx + lcendx + lcendxd0 + lcend0
+set sym lcend0d5i = lcend0d5 - ldspd5a
+set sym lcend0d5o = lcend0d5 + ldspd5a
+set sym l56i = 0.5*lplq5q6 - rho*tan(0.5*(thd5-thd0)) - ldspd5a + lq + lplq6q7 - lpldsq7 - ldps - ldspds
+set sym l56o = 0.5*lplq5q6 - rho*tan(0.5*(thd5+thd0)) + ldspd5a + lq + lplq6q7 - lpldsq7 - ldps + ldspds
+set sym l68i = lpldsq7 - ldspds + lq7 + lplq7q8 + lq + lqd - ldspqd
+set sym l68o = lpldsq7 + ldspds + lq7 + lplq7q8 + lq + lqd + ldspqd
+set sym l89i = lqd-ldspqd+lq+lplq9ds-ldspds
+set sym l89o = lqd+ldspqd+lq+lplq9ds+ldspds
+set sym l9bi = lpldsq10 - ldspds - lbfl - lqb
+set sym l9bo = lpldsq10 + ldspds - lbfl - lqb
+set sym l9ci = lpldsq10 - ldspds - lcfl - lcor - lcq
+set sym l9co = lpldsq10 + ldspds - lcfl - lcor - lcq
+set sym lt5i = rho*tan(0.5*(thd5-thd0))
+set sym lt5o = rho*tan(0.5*(thd5+thd0))
+set sym ld5ichord = 2*rho*sin(0.5*(thd5-thd0))
+set sym ld5ochord = 2*rho*sin(0.5*(thd5+thd0))
+set sym ldschord = 2*rho*sin(0.5*thds)
+set sym ldchord = 2*rho*sin(0.5*thcell)
+set sym xds9i = xd0 + lcend0d5i*tan(thd0) - lt5i*sin(thd0) + ld5ichord*sin(0.5*(thd5+thd0)) + l56i*sin(thd5) &
+ + ldschord*(sin(thd5+0.5*thds)+sin(thd5+1.5*thds+thcell)) + l68i*sin(thd5+thds) + ldchord*sin(thd5+thds+0.5*thcell) &
+ + l89i*sin(thd5+thds+thcell)
+set sym zds9i = zd0 + lcend0d5i - lt5i*cos(thd0) + ld5ichord*cos(0.5*(thd5+thd0)) + l56i*cos(thd5) &
+ + ldschord*(cos(thd5+0.5*thds)+cos(thd5+1.5*thds+thcell)) + l68i*cos(thd5+thds) + ldchord*cos(thd5+thds+0.5*thcell) &
+ + l89i*cos(thd5+thds+thcell)
+set sym xds9o = -xd0 - lcend0d5o*tan(thd0) + lt5o*sin(thd0) + ld5ochord*sin(0.5*(thd5-thd0)) + l56o*sin(thd5) &
+ + ldschord*(sin(thd5+0.5*thds)+sin(thd5+1.5*thds+thcell)) + l68o*sin(thd5+thds) + ldchord*sin(thd5+thds+0.5*thcell) &
+ + l89o*sin(thd5+thds+thcell)
+set sym zds9o = zd0 + lcend0d5o - lt5o*cos(thd0) + ld5ochord*cos(0.5*(thd5-thd0)) + l56o*cos(thd5) &
+ + ldschord*(cos(thd5+0.5*thds)+cos(thd5+1.5*thds+thcell)) + l68o*cos(thd5+thds) + ldchord*cos(thd5+thds+0.5*thcell) &
+ + l89o*cos(thd5+thds+thcell)
+set sym xcq10bi = xds9i + l9bi*sin(thd5+2*thds+thcell)
+set sym zcq10bi = zds9i + l9bi*cos(thd5+2*thds+thcell)
+set sym xcq10ci = xds9i + l9ci*sin(thd5+2*thds+thcell)
+set sym zcq10ci = zds9i + l9ci*cos(thd5+2*thds+thcell)
+set sym xcq10bo = xds9o + l9bo*sin(thd5+2*thds+thcell)
+set sym zcq10bo = zds9o + l9bo*cos(thd5+2*thds+thcell)
+set sym xcq10co = xds9o + l9co*sin(thd5+2*thds+thcell)
+set sym zcq10co = zds9o + l9co*cos(thd5+2*thds+thcell)
+! Floor layout
+set ele 2@0 theta_position = dtheta0_eic_ip6 - pi
+set ele 2@0 x_position = dx0_eic_ip6
+set ele [2,3]@0 z_position = 0
+set ele 3@0 x_position = -dx0_eic_ip6
+set ele 3@0 theta_position = dtheta0_eic_ip6
+set ele [2:3]@0 s = 0
+set particle_start [2:8]@x = 0
+set particle_start [2:8]@px = 0
+set ele [2:3]@0 eta_x = 0
+set ele [2:3]@0 etap_x = 0
+set ele [2:3]@0 beta_a = 61e-2
+set ele [2:3]@0 alpha_a = 0
+set ele [2:3]@0 beta_b = 5.5e-2
+set ele [2:3]@0 alpha_b = 0
+set global lattice_calc_on=t
+call 'set-match.tao'
