@@ -14,7 +14,9 @@ def bmad_to_madx(bmad,madx):
                 assign = ' = '
             else:
                 assign = ' := '
-            if a.upper() == 'I':
+            if e.upper() == 'OV_B1PF':
+                print('K0_B1PF := -('+v+')/beam->brho;',file=madx)
+            elif a.upper() == 'I':
                 print(e+assign+v+';',file=madx)
             elif a.upper() == 'DB_FIELD':
                 print(e+', K0 := -('+v+')/beam->brho;',file=madx)
