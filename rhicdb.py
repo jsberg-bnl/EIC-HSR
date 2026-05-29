@@ -12,7 +12,7 @@ class db_parser:
         pw = getpass.getpass()
         conn = sybpydb.connect(user=user,password=pw,servername='OPSYB1')
         cur = conn.cursor()
-        cur.execute('use rhic')
+        cur.execute('use rhic99')
         # geometry
         cur.execute('select name, definition from geometry')
         self.geometry = { e1[0].rstrip() : e1[1].rstrip() for e1 in cur.fetchall() }
@@ -616,8 +616,7 @@ trp07y = line('y','yi7_trp3','yi7_trp1',db)
 trp08y = line('y','yo8_trp1','yo8_trp3',db)
 ins08y = line('y','yo8_int4_1','yo8_int9_3',db)
 ins09y = line('y','yo9_int9_3','yo9_trp1',db)
-trp10y = line('y','yi10_trp1','yi10_trp3',db)
-mat10y = line('y','yi10_cqt4','yi10_int9_3',db)
+ins10y = line('y','yi10_trp1','yi10_int9_3',db)
 mat11y = line('y','yi11_int9_3','yi11_int7_2',db)
 ins11y = line('y','yi11_int7_1','yi11_cqt4',db)
 trp11y = line('y','yi11_trp3','yi11_trp1',db)
@@ -630,24 +629,22 @@ mat12y = line('y','yo12_cqt4','yo12_int9_3',db)
 line_list = [
     arc01b,arc01y,arc03y,arc05y,arc07y,arc09y,arc11y,
     mat01b,mat01y,ins01y,ins02y,
-    mat03y,trp03y,trp04y,mat04y,mat07y,
-    ins07y,trp07y,trp08y,ins08y,
-    ins09y,trp10y,mat10y,
+    mat03y,trp03y,trp04y,mat04y,
+    mat07y,ins07y,trp07y,trp08y,ins08y,
+    ins09y,ins10y,
     mat11y,ins11y,trp11y,trp12b,mat12b,trp12y,mat12y]
 for (n,v) in [ (n,v) for (n,v) in globals().items() if type(v) is line and re.match('^[a-z0-9]+$',n) ]:
     v.name = n
 
 # slots kept intact but used in isolation
 ir6_slots = [slot('y',s,db) for s in ('yo5_d5','yo5_int8_1','yo5_d8','yo5_int8_2')]
-ir8_slots = [slot('y','yi7_du3',db),slot('y','yo8_du3',db)]
-rhic_slots = ir6_slots + ir8_slots
+rhic_slots = ir6_slots
 
 # slots that are broken up, but I need the bits for whatever reason
 ir4_parts = [slot('y','yi3_du3',db),slot('y','yo4_du3',db)]
 ir8_parts = [slot('y','yi7_cqt4',db),slot('y','yo8_cqt4',db)]
-ir10_parts = [slot('y','yi10_du3',db)]
 ir12_parts = [slot('y','yi11_du3',db),slot('y','yo12_du3',db),slot('b','bi12_du3',db)]
-rhic_parts = ir4_parts + ir8_parts + ir10_parts + ir12_parts
+rhic_parts = ir4_parts + ir8_parts + ir12_parts
 
 slots_and_lines = line_info(line_list+rhic_slots+rhic_parts) # Everything I have some need for
 all_parts = line_info(rhic_slots+rhic_parts) # Things I need all the parts for

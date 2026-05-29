@@ -288,54 +288,6 @@ l3y4l6=0.207518
 l3y4l7=4.299077
 l3y4l8=0.207518
 l3y4l9=0.304800
-l3y7l0=0.042500
-l3y7l1=0.215900
-l3y7l10=0.244348
-l3y7l11=0.488950
-l3y7l12=0.488950
-l3y7l13=0.244348
-l3y7l14=1.783080
-l3y7l15=0.333248
-l3y7l16=0.468376
-l3y7l17=5.196256
-l3y7l18=0.244348
-l3y7l19=0.488950
-l3y7l2=0.180848
-l3y7l20=0.488950
-l3y7l21=0.244348
-l3y7l22=1.243838
-l3y7l23=0.062199
-l3y7l24=0.271049
-l3y7l25=0.194818
-l3y7l3=0.333248
-l3y7l4=0.244348
-l3y7l5=0.488950
-l3y7l6=0.488950
-l3y7l7=0.488950
-l3y7l8=0.244348
-l3y7l9=4.172712
-l3y8l0=0.048750
-l3y8l1=0.194818
-l3y8l10=5.196256
-l3y8l11=0.180975
-l3y8l12=0.187325
-l3y8l13=0.228600
-l3y8l14=0.228600
-l3y8l15=0.187325
-l3y8l16=0.155575
-l3y8l17=3.259836
-l3y8l18=0.292608
-l3y8l19=0.333248
-l3y8l2=0.062049
-l3y8l20=0.180848
-l3y8l21=0.215900
-l3y8l3=0.271199
-l3y8l4=0.292608
-l3y8l5=5.196256
-l3y8l6=3.126791
-l3y8l7=0.292608
-l3y8l8=0.333248
-l3y8l9=0.292608
 l3y9l0=0.042500
 l3y9l1=0.019812
 l3y9l10=0.333248
@@ -367,7 +319,6 @@ lbabfla=0.190500
 lbabflx=0.190500
 lbbpmfl=0.250001687789
 lbcoolfl=0.079756
-lbel4rot=0.295148
 lbel6c=0.295148
 lbel9b=0.295148
 lbelskl=0.048750
@@ -393,10 +344,6 @@ lbsk3iy=0.042508
 lbsk3ly=0.048769
 lbsk4iy=0.042500
 lbsk4ly=0.048766
-lbsk7iy=0.042501
-lbsk7ly=0.048141
-lbsk8iy=0.042500
-lbsk8ly=0.048751
 lbsk9iy=0.042501
 lbsk9ly=0.048841
 lcend0=3.58870392002
@@ -409,7 +356,6 @@ lcktlfl=0.594233
 lcktufl=0.485013
 lcktvfl=0.484759
 lcktxfl=0.964311
-lcol=0.533400
 lcor=0.50000
 lcpufl=0.393700
 lcpuwfl=0.091262
@@ -435,7 +381,6 @@ lipmfll=0.282284
 lipmfls=0.886116
 lka=1.220000
 lmicron=0.000001
-lmskhfl=0.384048
 lmvbfl=0.190500
 lmvbfls=0.188468
 lpld0q1=1.26464856138
@@ -465,7 +410,6 @@ lrfaln=2.263343
 lrfash=0.673100
 lrfst1=0.368046
 lrfstend=0.371475
-lrotcwt=0.861927
 lscavfl=0.500003375578
 lsep=0.900000
 lska=0.139700
@@ -565,7 +509,6 @@ lplq5d5i=lplq5d5 - abs(rho*tan((thd5-thd0)/2.0)) - ldspd5x
 lplq5d5o=lplq5d5 - abs(rho*tan((thd5+thd0)/2.0)) + ldspd5x
 l3b12sum=l3space-lbsk12ib-lbsk12lb-lpolfll-lpolflm-lpolfls-lipmfls-lipmfll
 l3b1l44=l3space-lbsk1ib-lbsk1lb-lbelskl-14.0*lbcoolfl-2.0*lcpuwfl-8.0*lsolcool-l3b1lsum
-l3rotat=l3space-ldum1fl-lrotcwt-l7dummy-lbel4rot+lbfl4-lbfl+lsb4-lsb4c
 l3y10l18=l3space-lbsk10iy-lbsk10ly-33.988028
 l3y11l21=l3space-lbsk11iy-lbsk11ly-6.0*lcktlfl-30.416209
 l3y12l29=l3space-lbsk12iy-lbsk12ly-l3y12sum-28.899634
@@ -577,8 +520,6 @@ l3y9l21=l3space-lbsk9iy-lbsk9ly-lbabfla-lbabflx-ldmpshrt-ldmplong-labkck-20.7533
 lbel5ci=lplq5d5i - lcfl - ld5ifl
 lbel5co=lplq5d5o - lcfl - ld5ofl
 l3b12l28=l3b12sum-2.0*(4.0*lcktvfl+leldfl)-26.596363
-l3y7l26=l3rotat-lbsk7iy-lbsk7ly-4.0*lcol-19.386810
-l3y8l22=l3rotat-lbsk8iy-lbsk8ly-2.0*lmskhfl-20.758031
 ! drifts
 d1_coolb:drift,l=l180bend
 d1_cooly:drift,l=l20bend
@@ -674,15 +615,6 @@ o3y4c7:drift,l=l3y4l16
 o3y4c8:drift,l=l3y4l17+l3y4l18+l3y4l19+l3y4l20
 o3y4c9:drift,l=l3y4l21+l3y4l22
 o3y4c10:drift,l=l3y4l23+l3y4l24+l3y4l25+l3y4l26+l3y4l27+l3y4l28+l3y4l29+l3y4l30+l3y4l31+l3y4l32
-o3y7c0:drift,l=l3y7l0+l3y7l1+l3y7l2+l3y7l3+l3y7l4+l3y7l5
-o3y7c1:drift,l=l3y7l6
-o3y7c2:drift,l=l3y7l7+l3y7l8+l3y7l9+l3y7l10+l3y7l11
-o3y7c3:drift,l=l3y7l12+l3y7l13+l3y7l14+l3y7l15+l3y7l16+l3y7l17+l3y7l18+l3y7l19
-o3y7c4:drift,l=l3y7l20+l3y7l21+l3y7l22+l3y7l23
-o3y7c5:drift,l=l3y7l24+l3y7l25+l3y7l26
-o3y8c0:drift,l=l3y8l0+l3y8l1+l3y8l2
-o3y8c1:drift,l=l3y8l3+l3y8l4+l3y8l5+l3y8l6+l3y8l7+l3y8l8+l3y8l9+l3y8l10+l3y8l11+l3y8l12+l3y8l13
-o3y8c2:drift,l=l3y8l14+l3y8l15+l3y8l16+l3y8l17+l3y8l18+l3y8l19+l3y8l20+l3y8l21+l3y8l22
 o3y9c0:drift,l=l3y9l0+l3y9l1+l3y9l2+l3y9l3+l3y9l4
 o3y9c1:drift,l=l3y9l5+l3y9l6+l3y9l7+l3y9l8+l3y9l9+l3y9l10+l3y9l11
 o3y9c2:drift,l=l3y9l12+l3y9l13+l3y9l14+l3y9l15+l3y9l16
@@ -737,10 +669,6 @@ obsk3iy:drift,l=lbsk3iy
 obsk3ly:drift,l=lbsk3ly
 obsk4iy:drift,l=lbsk4iy
 obsk4ly:drift,l=lbsk4ly
-obsk7iy:drift,l=lbsk7iy
-obsk7ly:drift,l=lbsk7ly
-obsk8iy:drift,l=lbsk8iy
-obsk8ly:drift,l=lbsk8ly
 obsk9iy:drift,l=lbsk9iy
 obsk9ly:drift,l=lbsk9ly
 obsk10iy:drift,l=lbsk10iy
@@ -780,7 +708,6 @@ oflq1x:drift,l=lflq1x
 oflq2a:drift,l=lflq2a
 oipmfll:drift,l=lipmfll
 oipmfls:drift,l=lipmfls
-omskhfl:drift,l=lmskhfl
 omvbfl:drift,l=lmvbfl
 omvbfls:drift,l=lmvbfls
 opolfll:drift,l=lpolfll
@@ -1015,7 +942,6 @@ elcdetv:instrument
 htpu:instrument
 ipmh:instrument
 ipmv:instrument
-mskh:instrument
 polar1:instrument
 polar2:instrument
 qmmpu:instrument
@@ -1030,10 +956,6 @@ yag2_cool:instrument
 yag2slit_cool:instrument
 yag3_cool:instrument
 ! collimators
-col:rcollimator,l=lcol,x_limit=0.0527,y_limit=0.05055
-colh1:rcollimator,l=lcol,x_limit=0.0515
-colh2:rcollimator,l=lcol,x_limit=0.0439
-colv1:rcollimator,l=lcol,y_limit=0.04879
 ! markers
 mvalve:marker
 ! site-wide names
@@ -2255,6 +2177,7 @@ yo1_cool_dcomp1_1:dcomp1_cool
 yo1_cool_dcomp1_2:dcomp1_cool
 yi2_kfbh3:kfbh
 yo9_kfbh3:kfbh
+yi10_kfbh3:kfbh
 bi1_th11:kickh
 bi1_th13:kickh
 bi1_th15:kickh
@@ -2838,6 +2761,8 @@ yi2_sv4:mvalve
 yo9_sv3_1:mvalve
 yo9_sv3_2:mvalve
 yo9_sv4:mvalve
+yi10_sv3:mvalve
+yi10_sv4:mvalve
 ! slots from the intact part of RHIC (that aren't just drifts)
 bi1_cq7:line=(obfl,
  bi1_b7,
@@ -5608,6 +5533,13 @@ yi10_d19:line=(odfl,
 yi10_d20:line=(odfl,
  yi10_dh20,
  odfl)
+yi10_du3:line=(obsk10ly,
+ yi10_sv3,
+ o3y10c0,
+ yi10_kfbh3,
+ o3y10c1,
+ yi10_sv4,
+ obsk10iy)
 yi10_du4:line=(odum1fl,
  o4dummy,
  odum1fl)
@@ -6983,12 +6915,13 @@ ins09y:line=(yo9_int9_3,
  yo9_trp2,
  yo9_int1,
  yo9_trp1)
-trp10y:line=(yi10_trp1,
+ins10y:line=(yi10_trp1,
  yi10_int1,
  yi10_trp2,
  yi10_int2,
- yi10_trp3)
-mat10y:line=(yi10_cqt4,
+ yi10_trp3,
+ yi10_du3,
+ yi10_cqt4,
  yi10_int4_1,
  yi10_du4,
  yi10_int4_2,
@@ -7134,9 +7067,6 @@ yo8_tq4:q4ot8
 bi12_kfbh3:kfbh
 yi3_kfbh3:kfbh
 yo4_kfbh3:kfbh
-yi7_kfbh3:kfbh
-yo8_kfbh3:kfbh
-yi10_kfbh3:kfbh
 yi11_kfbh3:kfbh
 yo12_kfbh3:kfbh
 ! correctors
@@ -7174,17 +7104,12 @@ bi12_eld3:elcdetv
 yo12_eld3:elcdetv
 bi12_ipm3:ipmh
 yo12_ipm3:ipmv
-yo8_mskh3:mskh
 bi12_pol3_1:polar1
 yo12_pol3_1:polar1
 bi12_pol3_2:polar2
 yo12_pol3_2:polar2
 yo4_wcm3:wcm
 ! collimators
-yi7_c3:col
-yi7_ch3_1:colh1
-yi7_ch3_2:colh2
-yi7_cv3:colv1
 ! markers
 bi12_sv3_1:mvalve
 bi12_sv3_2:mvalve
@@ -7197,12 +7122,6 @@ yo4_sv3_1:mvalve
 yo4_sv3_2:mvalve
 yo4_sv3_3:mvalve
 yo4_sv4:mvalve
-yi7_sv3_1:mvalve
-yi7_sv3_2:mvalve
-yo8_sv3_1:mvalve
-yo8_sv3_2:mvalve
-yi10_sv3:mvalve
-yi10_sv4:mvalve
 yi11_sv3:mvalve
 yi11_sv4:mvalve
 yo12_sv3_1:mvalve
@@ -7215,29 +7134,3 @@ yo5_d5:line=(od5ofl,
 yo5_d8:line=(odfl,
  yo5_dh8,
  odfl)
-yi7_du3:line=(obsk7iy,
- yi7_sv3_2,
- o3y7c0,
- yi7_ch3_2,
- o3y7c1,
- yi7_cv3,
- o3y7c2,
- yi7_ch3_1,
- o3y7c3,
- yi7_c3,
- o3y7c4,
- yi7_kfbh3,
- o3y7c5,
- yi7_sv3_1,
- obsk7ly)
-yo8_du3:line=(obsk8ly,
- yo8_sv3_1,
- o3y8c0,
- yo8_kfbh3,
- o3y8c1,
- omskhfl,
- yo8_mskh3,
- omskhfl,
- o3y8c2,
- yo8_sv3_2,
- obsk8iy)

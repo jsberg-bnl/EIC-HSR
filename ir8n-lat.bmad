@@ -18,12 +18,50 @@ yi7_snk7:line=(odum1fl,
  osnke,
  odum1fl)
 
+lval88 = 0.085
+lval125 = 0.0975
+l4trans = 8.5*0.0254
+l4trans_new = 72e-3
+l08_du3_1 = lval125+ltrpbpm+lbelw7+lwpump+lbelw11+lwdtrans+lwdfl
+l08_du3_4 = lwdfl+lwdtrans+lbelw11+lwpump+lbelw7+l4trans+ltrpbpm+lval88+l4trans_new
+
+thw08 = 1.70890855303384363e-03
+nwd08 = 1
+thc08 = nwd08*thw08+thd0
+lw08 = lpld0q1+ltrp13+l3space-l08_du3_4
+lc08 = 2*lcenxdx*cos(thc08) &
+ + 2*lcendx*cos(thc08-0.5*thdx)/cos(0.5*thdx) &
+ + 2*lcendxd0*cos(thc08-thdx)/cos(thdx) &
+ + 2*lcend0*cos(nwd08*thw08-0.5*(thdx-thd0))/cos(0.5*(thd0+thdx)) &
+ + 2*lw08*cos(nwd08*thw08) &
+ - 2*nwd08*lwd2*cos(0.5*thw08) &
+ - 2*(ltrpx1+ltrp13+l3space-l08_du3_4-lwd2)
+
+yi7_dw0: sbend, l=lwd2/sinc(0.5*thw08), g=-2*sin(0.5*thw08)/lwd2, e1=-0.5*thw08, e2=-0.5*thw08
+yo8_dw0: sbend, l=lwd2/sinc(0.5*thw08), g=2*sin(0.5*thw08)/lwd2, e1=0.5*thw08, e2=0.5*thw08
+
+oval88 : pipe, l=lval88
+oval125 : pipe, l=lval125
+o4trans : drift, l=l4trans
+o4trans_new : drift, l=l4trans_new
+yi7_b3w: monitor, l=ltrpbpm
+yi7_b4w: monitor, l=ltrpbpm
+yo8_b3w: monitor, l=ltrpbpm
+yo8_b4w: monitor, l=ltrpbpm
+o08du3: drift, l=l3space-l08_du3_1-l08_du3_4-lwd2
+
 yi7_cq4c4:line=(ocfl,lmp07y04,ocq4,yi7_qd4,oqs4,yi7_tq4,osb4,yi7_b4,obfl4)
 yo8_cq4f4:line=(obfl4,yo8_b4,osb4,yo8_tq4,oqs4,yo8_qf4,ocq4,lmp08y04,ocfl)
 
-ldelrot = l7dummy + ldum1fl + lrotcwt + lbel4rot + lqb4c - lqb4 + lbfl - lbfl4
-odelrot: drift, l=ldelrot
-
-o08: drift, l=lcross
-ir08n: line=(mat07y,yi7_snk7,ins07y,yi7_cq4c4,odelrot,yi7_du3,trp07y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwrev,oww2,dwrev,oww2,dwrev,
- o08,dwfwd,oww2,dwfwd,oww2,dwfwd,ogvwd,valve_wd,ogvfl,oc2w_wd,trp08y,yo8_du3,odelrot,yo8_cq4f4,ins08y)
+o08: drift, l=lc08
+ir08n: line=(mat07y,yi7_snk7,ins07y,yi7_cq4c4,
+ o4trans_new,oval88,yi7_b4w,o4trans,obelw7,owpump,obelw11,
+ owdtrans,owdfl,yi7_dw0,owdfl,owdtrans,
+ o08du3,
+ obelw11,owpump,obelw7,yi7_b3w,oval125,trp07y,
+ o08,
+ trp08y,oval125,yo8_b3w,obelw7,owpump,obelw11,
+ o08du3,
+ owdtrans,owdfl,yo8_dw0,owdfl,owdtrans,
+ obelw11,owpump,obelw7,o4trans,yo8_b4w,oval88,o4trans_new,
+ yo8_cq4f4,ins08y)
