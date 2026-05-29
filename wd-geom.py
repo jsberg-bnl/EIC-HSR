@@ -68,6 +68,10 @@ lwpump = 13.12*0.0254
 ltrpx1=lbq1+lflq1x
 ltrp13=lq1+lplq1q2+lq2+lplq2q3+lq3+lbc3+lcor+lcq3a+lbfl3
 
+# Standard IR
+lgvwd = 0.42
+lwstd = lgv+lgvfl+lgvwd+lc2w_wd-lpld0q1
+
 # IR4
 lt88_124 = 0.2159
 lt88_152 = 0.371308
@@ -92,16 +96,14 @@ lw3t = lwdfl+lt88_124+6*lbel7_4ext+3*lwpump+4*lv125+2*ljetall+lpc+l03k10hz+lbel7
 lw3 = lpld0q1+lw3t+2*lwd2+lww2
 lw4 = l04q1fl+lv125+lbel7_2+lwpump+lbelw11+lt124_152+l04x_01+3*lcav50+3*lbel7_4ext+lt88_152+lv88+lwdfl-lpld0q1
 
-# IR12
-lw12 = lwc-lpld0q1
-# IR10
+# IR08
 lval88 = 0.085
+lval125 = 0.0975
 l4trans = 8.5*0.0254
 l4trans_new = 72e-3
-lgvwd = 0.42
-l10_du3_4 = lwdfl+lwdtrans+lbelw11+lwpump+lbelw7+l4trans+ltrpbpm+lval88+l4trans_new
-lw09 = lc2w_wd+lgvfl+lgv+lgvwd-lpld0q1
-lw10 = lpld0q1+ltrp13+l3space-l10_du3_4
+l08_du3_1 = lval125+ltrpbpm+lbelw7+lwpump+lbelw11+lwdtrans+lwdfl
+l08_du3_4 = lwdfl+lwdtrans+lbelw11+lwpump+lbelw7+l4trans+ltrpbpm+lval88+l4trans_new
+lw08 = l08_du3_4-(lpld0q1+ltrp13+l3space)
 
 def fth2(th,lw0,n):
     return lcenxdx*sin(thd0+n*th) + lcendx*sin(thd0+n*th-0.5*thdx)/cos(0.5*thdx) \
@@ -158,6 +160,6 @@ def find_th2(lw0,n,chatty=False):
             decline = True
     return th
 
+print(f"thw = {find_th2(lwstd,3):+24.17e}")
 print(f"thw04 = {find_th2(0.5*(lw4-lw3),2):+24.17e}")
-print(f"thw08 = {find_th2(lw10,3):+24.17e}")
-print(f"thw10 = {find_th2(0.5*(lw09-lw10),2):+24.17e}")
+print(f"thw08 = {find_th2(lw08,1):+24.17e}")
