@@ -1,2 +1,4 @@
-k1_q1_6d: overlay = { q1apr[k1] : k1, q1bpr[k1] : k1 },
- var={k1}, k1=(q1apr[k1]*q1apr[l]+q1bpr[k1]*q1bpr[l])/(q1apr[l]+q1bpr[l])
+q1pr: overlay = {
+ q1apr[b1_gradient] : b1l*l06d_q1a0/(l06d_q1a*(l06d_q1a0+l06d_q1b0)),
+ q1bpr[b1_gradient] : b1l*l06d_q1b0/(l06d_q1b*(l06d_q1a0+l06d_q1b0)) },
+ var={b1l}, b1l = q1apr[b1_gradient]*q1apr[l]+q1bpr[b1_gradient]*q1bpr[l]
