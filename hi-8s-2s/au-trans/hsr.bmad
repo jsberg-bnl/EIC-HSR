@@ -3,7 +3,9 @@ call, file='../../hsr.bmad'
 parameter[particle] = #197antiAu-79
 
 mau = mass_of(#197antiAu-79)
-eau = 21.480e9*197
+eau0 = 21.480e9*197
+eau = 21.921526700102945e9*197
+pau0 = sqrt(eau0^2-mau^2)
 pau = sqrt(eau^2-mau^2)
 pinj = sqrt((46.5/anomalous_moment_of(proton))^2-1)*m_proton*79
 emx = 2.5e-6*mau/pau
