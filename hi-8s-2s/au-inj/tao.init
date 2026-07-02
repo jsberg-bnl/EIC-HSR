@@ -728,6 +728,8 @@ alpha.a[h10_cav591_2->-0.5*l]*lat::eta.x[h10_cav591_2->-0.5*l]*lat::etap.x[h10_c
  datum(15)%data_type = 'expression: var::ir4[15]|model - var::ir4[15]|low_lim'
  datum(16)%data_type = 'expression: var::ir4[16]|model - var::ir4[16]|low_lim'
  datum(17)%data_type = 'expression: var::ir4[17]|model - var::ir4[17]|low_lim'
+ datum(18)%data_type = 'expression: var::ir4[18]|model - var::ir4[18]|low_lim'
+ datum(19)%data_type = 'expression: var::ir4[19]|model - var::ir4[19]|low_lim'
 /
 
 &tao_d1_data
