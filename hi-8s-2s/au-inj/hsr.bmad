@@ -1,13 +1,5 @@
 call, file='../../hsr.bmad'
 
-call, file='rhic.bmad'
-call, file='ir2.bmad'
-call, file='ir4.bmad'
-call, file='ir6.bmad'
-call, file='ir8.bmad'
-call, file='ir10.bmad'
-call, file='ir12.bmad'
-
 parameter[particle] = #197antiAu-79
 
 mau = mass_of(#197antiAu-79)
@@ -18,6 +10,17 @@ emy = emx
 dp = 6e-4
 nsx = 7
 nsy = 6
+
+eaut0 = 21.480e9*197
+pau0 = sqrt(eaut0^2-mau^2)
+
+call, file='rhic.bmad'
+call, file='ir2.bmad'
+call, file='ir4.bmad'
+call, file='ir6.bmad'
+call, file='ir8.bmad'
+call, file='ir10.bmad'
+call, file='ir12.bmad'
 
 beginning[e_tot]           = eau
 b0pf[db_field] = b0pf[db_field]*pau/(79*p275)
