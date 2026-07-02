@@ -324,7 +324,7 @@
  datum(7:9)%eval_point = 'center' 'center' 'center'
  datum(12)%data_type = 'expression:gamma.a[o08]-gamma.b[o08]'
  datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
- datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.1 0.1 0
 /
 
 &tao_d1_data
@@ -424,7 +424,7 @@
  datum(7:9)%eval_point = 'center' 'center' 'center'
  datum(12)%data_type = 'expression:gamma.a[h10_cav591_2]-gamma.b[h10_cav591_2]'
  datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
- datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.1 0.1 0
 /
 
 &tao_d1_data
@@ -616,7 +616,7 @@ alpha.a[h10_cav591_2->-0.5*l]*lat::eta.x[h10_cav591_2->-0.5*l]*lat::etap.x[h10_c
  datum(7:9)%eval_point = 'center' 'center' 'center'
  datum(12)%data_type = 'expression:gamma.a[o02s]-gamma.b[o02s]'
  datum(1:12)%weight = 1 1 1e-2 1 1e-2 1 1 1 1 1 1 1
- datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.2 0.2 0
+ datum(1:12)%meas = 0 0 0 0 0 0 0 0 0 0.1 0.1 0
 /
 
 &tao_d1_data
