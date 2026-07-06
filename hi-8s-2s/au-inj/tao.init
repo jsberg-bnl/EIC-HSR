@@ -453,9 +453,6 @@
  datum(18)%data_type  = 'expression: var::ir10[18]|model - var::ir10[18]|low_lim'
  datum(19)%data_type  = 'expression: var::ir10[19]|model - var::ir10[19]|low_lim'
  datum(20)%data_type  = 'expression: var::ir10[20]|model - var::ir10[20]|low_lim'
- datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
- datum(1:20)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
- datum(1:20)%good_user = f f f f f f f f f f f f f f f f f f f f
 /
 
 &tao_d1_data
@@ -485,9 +482,6 @@
  datum(18)%data_type  = 'expression: var::ir10[18]|high_lim - var::ir10[18]|model'
  datum(19)%data_type  = 'expression: var::ir10[19]|high_lim - var::ir10[19]|model'
  datum(20)%data_type  = 'expression: var::ir10[20]|high_lim - var::ir10[20]|model'
- datum(1:20)%meas = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
- datum(1:20)%weight = 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8 1e-8
- datum(1:20)%good_user = f f f f f f f f f f f f f f f f f f f f
 /
 
 &tao_d1_data
