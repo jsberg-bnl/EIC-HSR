@@ -289,35 +289,53 @@ o06d_q1b_q2: drift, l=l06d_q1b_q2
 o06d_q2_q3: drift, l=l06d_q2_q3
 
 ! b0pf layout
-ze = 5.8 ! Distance along electron line to B0 entrance plane
+ly_b0pf = 1.321
+lm_b0pf = 1.05
+zc_b0pf = 6.4
+ze = zc_b0pf - 0.5*ly_b0pf ! Distance along electron line to B0 entrance plane
 ac = 25e-3 ! Crossing angle
 xb0hf = 34e-3 ! Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
-b0pf: sbend, l=1.20, field_master=t, b1_gradient = 8.12223828336297515E+00
-b0pf[db_field] = xb0hf*b0pf[b1_gradient]
+b0pf: sbend, l=lm_b0pf
+oev_b0pf: drift, l=0.5*(ly_b0pf-lm_b0pf)
+ov_b0pf: overlay={
+ b0pf[k1] : dgint/(zc_b0pf*tan(ac)*lm_b0pf),
+ b0pf[dg] : xb0hf*dgint/(zc_b0pf*tan(ac)*lm_b0pf)},
+ var = {dgint}
 pbr_b0pf: patch, x_pitch = 2.6704393161636225E-02
 pbt_b0pf: patch, x_offset = -1.42016467739204760E-01
 pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
 o06w_b0_b0a: drift
-b0apf: sbend, l=0.60, field_master=t
+lm_b0apf = 0.500
+ly_b0apf = 0.622
+oev_b0apf: drift, l=0.5*(ly_b0apf-lm_b0apf)
+b0apf: sbend, l=lm_b0apf, field_master=t
 pet_b0apf: patch
 per_b0apf: patch
 ! Q1 forward
-q1pf: quadrupole, l=3.00
+lm_q1pf = 2.700
+ly_q1pf = 2.850
+oev_q1pf: drift, l=0.5*(ly_q1pf-lm_q1pf)
+q1pf: quadrupole, l=lm_q1pf
 o06w_q1_q2: drift
 o06w_b0a_q1: drift
 pbt_q1pf: patch
 pbr_q1pf: patch
 ! Q2 forward
-oev_q2pf: drift, l=0.25
-q2pf: quadrupole, l=3.32
+lm_q2pf = 3.470
+ly_q2pf = 3.770
+oev_q2pf: drift, l=0.5*(ly_q2pf-lm_q2pf)
+q2pf: quadrupole, l=lm_q2pf
 pbt_q2pf: patch
 pbr_q2pf: patch
 pet_q2pf: patch
 per_q2pf: patch
 o06w_q2_b1: drift
+lm_b1pf = 1.635
+ly_b1pf = 2.096
+oev_b1pf: drift, l = 0.5*(ly_b1pf-lm_b1pf)
 b1pf: sbend, field_master=t
 pet_b1pf: patch
 per_b1pf: patch
@@ -330,7 +348,7 @@ ov_b1pf: overlay={
  b1apf[l] : l,
  b1pf[db_field] : db_field,
  b1apf[db_field] : db_field},
- var = {l,db_field}, l=2.25
+ var = {l,db_field}, l=lm_b1pf
 
 ! New dipoles
 b_b2pf = 5
@@ -390,19 +408,19 @@ o5_crab_zdc: drift, l=1
 
 pt_ir6f =  1.23497950890099669E+009 ! Transverse momentum passed by apertures at 275 GeV, for information only
 ! Forward geometry
-O06W_B0_B0A[L] = +9.00427810291761666E-001
+O06W_B0_B0A[L] = +9.00427810291761666E-001-0.211
 PER_B0APF[X_PITCH] = +1.13034858763959669E-003
 PET_B0APF[X_OFFSET] = +3.39104612397650939E-004
-O06W_B0A_Q1[L] = +3.00813774192856043E-001
-O06W_Q1_Q2[L] = +6.51597025041460443E-001
+O06W_B0A_Q1[L] = +3.00813774192856043E-001-0.010
+O06W_Q1_Q2[L] = +6.51597025041460443E-001+0.345
 PER_Q2PF[X_PITCH] = -1.55558069830955738E-002
 PET_Q2PF[X_OFFSET] = -5.04611580158244449E-002
 PBT_Q2PF[X_OFFSET] = -1.62010380554258870E-002
 PBR_Q2PF[X_PITCH] = +1.81385834923955581E-002
-O06W_Q2_B1[L] = +6.51905663409578562E-001
+O06W_Q2_B1[L] = +6.51905663409578562E-001+0.126
 PER_B1PF[X_PITCH] = -7.23223045303269738E-003
 PET_B1PF[X_OFFSET] = -4.13588986525215765E-002
-O06W_B1_B1A[L] = +6.50779633100500354E-001
+O06W_B1_B1A[L] = +6.50779633100500354E-001+0.329
 PBT_B1APF[X_OFFSET] = -3.29466297230975036E-002
 PBR_B1APF[X_PITCH] = +2.16180106982897212E-002
 O06W_FFDET[L] =  1.54013733162597415E+001
@@ -475,15 +493,15 @@ hsr6w: line=(
  o_crab_ip6f,
  o5_crab_b2, b2pf, o5_b2_q3, q3pf, o5_crab_zdc,
  o06w_ffdet,
- pbr_b1apf, pbt_b1apf, b1apf, 
+ oev_b1pf, pbr_b1apf, oev_b1pf, pbt_b1apf, b1apf,
  o06w_b1_b1a,
- b1pf, pet_b1pf, per_b1pf,
+ oev_b1pf, b1pf, oev_b1pf, pet_b1pf, per_b1pf,
  o06w_q2_b1,
  pbr_q2pf, pbt_q2pf, oev_q2pf, q2pf, oev_q2pf, pet_q2pf, per_q2pf,
  o06w_q1_q2,
- pbr_q1pf, pbt_q1pf, q1pf, o06w_b0a_q1, b0apf, pet_b0apf, per_b0apf,
+ pbr_q1pf, pbt_q1pf, oev_q1pf, q1pf, oev_q1pf, o06w_b0a_q1, oev_b0apf, b0apf, oev_b0apf, pet_b0apf, per_b0apf,
  o06w_b0_b0a,
- pbr_b0pf, pbt_b0pf, b0pf, pet_b0pf, per_b0pf,
+ pbr_b0pf, pbt_b0pf, oev_b0pf, b0pf, oev_b0pf, pet_b0pf, per_b0pf,
  d1_pf,
  l_sol_pf)
 
