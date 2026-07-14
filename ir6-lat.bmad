@@ -303,8 +303,8 @@ ov_b0pf: overlay={
  b0pf[k1] : dgint/(zc_b0pf*tan(ac)*lm_b0pf),
  b0pf[dg] : xb0hf*dgint/(zc_b0pf*tan(ac)*lm_b0pf)},
  var = {dgint}
-pbr_b0pf: patch, x_pitch = 2.6704393161636225E-02
-pbt_b0pf: patch, x_offset = -1.42016467739204760E-01
+pbr_b0pf: patch, x_pitch = 2.67012193481263940E-02
+pbt_b0pf: patch, x_offset = -1.43639425297406614E-01
 pet_b0pf: patch, x_offset = ze*tan(ac) - xb0hf
 per_b0pf: patch, x_pitch = -ac
 o06w_b0_b0a: drift
