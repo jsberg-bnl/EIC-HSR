@@ -315,10 +315,25 @@ b0apf: sbend, l=lm_b0apf, field_master=t
 pet_b0apf: patch
 per_b0apf: patch
 ! Q1 forward
-lm_q1pf = 2.700
-ly_q1pf = 2.850
-oev_q1pf: drift, l=0.5*(ly_q1pf-lm_q1pf)
-q1pf: quadrupole, l=lm_q1pf
+lm_q1pf = 3.100
+ly_q1pf = 3.260
+! Represent taper as single magnet
+r0_q1pf = 41e-3
+r1_q1pf = 78e-3
+lnr_q1pf = log(r1_q1pf/r0_q1pf)
+egpt_q1pf = (r0_q1pf+r1_q1pf)*lnr_q1pf - 2*(r1_q1pf-r0_q1pf)
+dl_q1pf = 2*egpt_q1pf/((r1_q1pf-r0_q1pf)*lnr_q1pf)
+dki_q1pf = (6*egpt_q1pf-(r1_q1pf-r0_q1pf)*lnr_q1pf*lnr_q1pf)/(egpt_q1pf*lnr_q1pf)
+oev0_q1pf: drift, l=0.5*(ly_q1pf-lm_q1pf)
+oev1_q1pf: drift, l=0.5*(ly_q1pf-lm_q1pf)
+q1pfa: quadrupole
+q1pfb: quadrupole
+ov_q1pf: overlay={
+ q1pfa[l] : 0.5*l*(1.0+dki_q1pf-dl_q1pf),
+ q1pfa[k1] : k1*(1+dki_q1pf)/(1+dki_q1pf-dl_q1pf),
+ q1pfb[l] : 0.5*l*(1.0-dki_q1pf+dl_q1pf),
+ q1pfb[k1] : k1*(1-dki_q1pf)/(1-dki_q1pf+dl_q1pf)},
+ var={k1,l}, l=lm_q1pf
 o06w_q1_q2: drift
 o06w_b0a_q1: drift
 pbt_q1pf: patch
@@ -411,8 +426,8 @@ pt_ir6f =  1.23497950890099669E+009 ! Transverse momentum passed by apertures at
 O06W_B0_B0A[L] = +6.88856216015432787E-001
 PER_B0APF[X_PITCH] = +1.10299100452131366E-003
 PET_B0APF[X_OFFSET] = +3.43030271066032820E-004
-O06W_B0A_Q1[L] = +2.91783763073137914E-001
-O06W_Q1_Q2[L] = +9.95688598557476934E-001
+O06W_B0A_Q1[L] = +2.91783763073137914E-001 - 0.113
+O06W_Q1_Q2[L] = +9.95688598557476934E-001 - 0.297
 PER_Q2PF[X_PITCH] = -1.53242446419781433E-002
 PET_Q2PF[X_OFFSET] = -4.85735857861211359E-002
 PBT_Q2PF[X_OFFSET] = -1.59246487503393562E-002
@@ -499,7 +514,7 @@ hsr6w: line=(
  o06w_q2_b1,
  pbr_q2pf, pbt_q2pf, oev_q2pf, q2pf, oev_q2pf, pet_q2pf, per_q2pf,
  o06w_q1_q2,
- pbr_q1pf, pbt_q1pf, oev_q1pf, q1pf, oev_q1pf, o06w_b0a_q1, oev_b0apf, b0apf, oev_b0apf, pet_b0apf, per_b0apf,
+ pbr_q1pf, pbt_q1pf, oev1_q1pf, q1pfb, q1pfa, oev0_q1pf, o06w_b0a_q1, oev_b0apf, b0apf, oev_b0apf, pet_b0apf, per_b0apf,
  o06w_b0_b0a,
  pbr_b0pf, pbt_b0pf, oev_b0pf, b0pf, oev_b0pf, pet_b0pf, per_b0pf,
  d1_pf,
