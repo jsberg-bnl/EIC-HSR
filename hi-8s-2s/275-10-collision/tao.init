@@ -160,7 +160,6 @@
  datum(1:2)%data_type = 'orbit.x' 'orbit.px'
  datum(1:2)%ele_name = 'b1apf+3' 'b1apf+3'
  datum(1:2)%meas = 0 0
- datum(1:2)%good_user = f f
 /
 
 &tao_d1_data
@@ -172,7 +171,7 @@
  datum(1:3)%meas = 1300 0 1.57079632679489662
  datum(1:3)%weight = 1e-3 1 1
  datum(1:3)%eval_point = 'center' 'center' 'center'
- datum(1:3)%good_user = f f f
+ datum(1:3)%good_user = t t f
 /
 
 &tao_d1_data
@@ -186,7 +185,6 @@
  datum(6)%data_type = 'expression: 2@lat::alpha.b[yo5_bh10-2] - 9@lat::alpha.b[0]'
  datum(1:6)%meas = 0 0 0 0 0 0
  datum(1:6)%weight = 1 1 1e-2 1 1e-2 1
- datum(1:6)%good_user = f f f f f f
 /
 
 &tao_d1_data
