@@ -331,12 +331,15 @@
  datum(1:7)%data_type = 'etap.x' 'beta.a' 'beta.b' 'beta.a' 'beta.b' 'beta.a' 'beta.b'
  datum(1:7)%ele_name = 'o08' 'yi7_b4' 'yi7_b4' 'yo8_b3' 'yo8_b3' 'yo8_int11_2' 'yo8_int11_2'
  datum(8)%data_type = 'expression:gamma.a[o08]*eta.x[o08]^2+2*alpha.a[o08]*eta.x[o08]*etap.x[o08]+beta.a[o08]*etap.x[o08]^2'
+ datum(9)%data_type = 'expression:eta.x[o08]/sqrt(beta.a[o08])'
+ datum(10)%data_type = 'expression:etap.x[o08]*sqrt(beta.a[o08])+eta.x[o08]*alpha.a[o08]/sqrt(beta.a[o08])'
  datum(1)%eval_point = 'center'
+ datum(9:10)%eval_point = 'center'
  datum(2:7)%ele_start_name = 'yi7_int11_2' 'yi7_int11_2' 'yi7_b3' 'yi7_b3' 'yo8_b4' 'yo8_b4'
  datum(2:7)%merit_type = 'max' 'max' 'max' 'max' 'max' 'max'
- datum(1:8)%meas = 0 0 0 0 0 0 0 0
- datum(1:8)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-4
- datum(1:8)%good_user = f f f f f f f f
+ datum(1:10)%meas = 0 0 0 0 0 0 0 0 0 0
+ datum(1:10)%weight = 1e-4 1e-10 1e-10 1e-11 1e-11 1e-10 1e-10 1e-4 1 1
+ datum(1:10)%good_user = f f f f f f f f f f
 /
 
 &tao_d2_data
