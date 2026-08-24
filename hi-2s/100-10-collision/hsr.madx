@@ -1,0 +1,65 @@
+chdir, dir='../..';
+call, file='hsr.madx';
+chdir, dir='hi-2s/100-10-collision';
+
+call, file='rhic.madx';
+call, file='ir2.madx';
+call, file='ir4.madx';
+call, file='ir6.madx';
+call, file='ir8.madx';
+call, file='ir10.madx';
+call, file='ir12.madx';
+
+beam, energy=100, particle=antiproton;
+use, sequence=hsr_hi_8s_2s;
+
+set, format="10d", "25.17e", "-24s";
+select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
+survey, file='hsr-survey.tfs',
+ x0 = -(rhic_rip - dx0_eic_ip6),
+ z0 = 0,
+ theta0 = pi + dtheta0_eic_ip6;
+
+option, -twiss_print;
+match, use_macro;
+fit_ir6w0:macro={
+ use, sequence=hsr_hi_8s_2s, range=o5_crab_b2/ip6w;
+ twiss, exact, betx=1, bety=1;
+};
+vary, name=b0apf->k0, step=1e-6;
+vary, name=b1pf->k0, step=1e-6;
+constraint, weight=1e6, expr=table(twiss,ip6w,x)=0;
+constraint, weight=1e6, expr=table(twiss,ip6w,px)=0;
+jacobian, calls=64, tolerance=1e-24;
+endmatch;
+
+select, flag=twiss, clear;
+use, sequence=hsr_hi_8s_2s, range=yo5_int11_2/obfl[194];
+savebeta, label=arc5, place=obfl[194], sequence=hsr_hi_8s_2s;
+twiss, exact;
+
+select, flag=twiss, clear;
+match, use_macro;
+fit_ir6w1:macro={
+ use, sequence=hsr_hi_8s_2s, range=yo5_int11_2/ip6w;
+ twiss, exact, beta0=arc5;
+};
+vary, name=h5_q11_i, step=0.1;
+vary, name=h5_q10_i, step=0.1;
+vary, name=h5_q09_i, step=0.1;
+vary, name=h5_q08_i, step=0.1;
+vary, name=h5_q07_i, step=0.1;
+vary, name=h5_q04_i, step=0.1;
+constraint, expr=table(twiss,ip6w,dx)=0;
+constraint, expr=table(twiss,ip6w,dpx)=0;
+constraint, expr=table(twiss,ip6w,betx)=0.63;
+constraint, expr=table(twiss,ip6w,alfx)=0.0;
+constraint, expr=table(twiss,ip6w,bety)=5.7e-2;
+constraint, expr=table(twiss,ip6w,alfy)=0.0;
+jacobian, calls=64, tolerance=1e-24;
+endmatch;
+
+select, flag=twiss, clear;
+use, sequence=hsr_hi_8s_2s;
+select, flag=twiss, column=name,keyword,t,s,x,px,dx,dpx,betx,alfx,bety,alfy;
+twiss, exact, tolerance=1e-12, file='hsr-twiss.tfs';
