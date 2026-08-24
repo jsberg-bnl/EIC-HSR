@@ -1,6 +1,6 @@
 chdir, dir='../..';
 call, file='hsr.madx';
-chdir, dir='hi-8s-2s/275-10-collision';
+chdir, dir='hi-2s/275-10-collision';
 
 call, file='rhic.madx';
 call, file='ir2.madx';
