@@ -15,7 +15,6 @@ aproton = 1.79284734463;
 qau = 79;
 beam, mass=mau, charge=-qau, pc=sqrt((46.5/aproton)^2-1)*pmass*qau;
 use, sequence=hsr_hi_8s_2s;
-value, b0pf->k0, b0pf->k1;
 
 set, format="10d", "25.17e", "-24s";
 select, flag=survey, column=name,keyword,s,l,angle,x,z,theta;
