@@ -143,7 +143,12 @@ class db_parser:
                                     row = self.nl_row(cur)
                                 if row[1] == coil and self.magnet_piece[coil] != 'drift':
                                     coils.append((row[1],row[0],row[3]))
-                            self.slots[m][-1][2].append((eles[ix_ele],coils))
+                            if eles[ix_ele][-2] == '3':
+                                corname = re.sub(r'([^_])_[^0-9]+[0-9]+',r'\1_cor',coils[0][1]) + eles[ix_ele][-2:]
+                            else:
+                                corname = re.sub(r'([^_])_[^0-9]+([0-9]+)',r'\1_cor\2',coils[0][1])
+                            print(eles[ix_ele]+': '+corname)
+                            self.slots[m][-1][2].append((corname,coils))
                             ix_ele += 1
                         # Not a corrector
                         else:
