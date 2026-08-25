@@ -1,5 +1,12 @@
 o10: drift, l=lcross
 
-ir10: line=(ins09y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwfwd,oww2,dwfwd,oww2,dwfwd,
+yo9_dw0_1: dwfwd
+yo9_dw0_2: dwfwd
+yo9_dw0_3: dwfwd
+yi10_dw0_1: dwrev
+yi10_dw0_2: dwrev
+yi10_dw0_3: dwrev
+
+ir10: line=(ins09y,oc2w_wd,ogvfl,valve_wd,ogvwd,yo9_dw0_3,oww2,yo9_dw0_2,oww2,yo9_dw0_1,
  o10,
- dwrev,oww2,dwrev,oww2,dwrev,ogvwd,valve_wd,ogvfl,oc2w_wd,ins10y)
+ yi10_dw0_1,oww2,yi10_dw0_2,oww2,yi10_dw0_3,ogvwd,valve_wd,ogvfl,oc2w_wd,ins10y)

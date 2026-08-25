@@ -126,9 +126,14 @@ yi11_snk7:line=(odum1fl,
  osnke,
  odum1fl);
 
+yi11_dw0_1: dwrev;
+yi11_dw0_2: dwrev;
+yi11_dw0_3: dwrev;
+yo12_dw0_1: dwfwd;
+yo12_dw0_2: dwfwd;
+yo12_dw0_3: dwfwd;
+
 oh12: drift, l=lcross;
-ol12: drift, l=lirlo;
-ir12w: line=(mat11y,yi11_snk7,ins11y,yi11_du3_hsr,trp11y,oc2w_wd,ogvfl,valve_wd,ogvwd);
-ir12: line=(ir12w,dwrev,oww2,dwrev,oww2,dwrev,
- oh12,dwfwd,oww2,dwfwd,oww2,dwfwd,ogvwd,valve_wd,ogvfl,oc2w_wd,trp12y,yo12_du3_hsr,mat12y);
-ir12_lo: line=(ir12w,dwlo,ol12,dwlo,ogvwd,valve_wd,ogvfl,oc2w_wd,trp12b,bi12_du3_hsr,mat12b);
+ir12: line=(mat11y,yi11_snk7,ins11y,yi11_du3_hsr,trp11y,oc2w_wd,ogvfl,valve_wd,ogvwd,
+ yi11_dw0_3,oww2,yi11_dw0_2,oww2,yi11_dw0_1,
+ oh12,yo12_dw0_1,oww2,yo12_dw0_2,oww2,yo12_dw0_3,ogvwd,valve_wd,ogvfl,oc2w_wd,trp12y,yo12_du3_hsr,mat12y);

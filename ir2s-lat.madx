@@ -18,9 +18,13 @@ yo1_snk7:line=(odum1fl,
  osnke,
  odum1fl);
 
+yo1_dw0_1: dwfwd;
+yo1_dw0_2: dwfwd;
+yo1_dw0_3: dwfwd;
+yi2_dw0_1: dwrev;
+yi2_dw0_2: dwrev;
+yi2_dw0_3: dwrev;
+
 o02s: drift, l=lcross;
-ol02s: drift, l=lirlo;
-ir02sd: line=(ogvwd,valve_wd,ogvfl,oc2w_wd,ins02y);
-ir02s: line=(mat01y,yo1_snk7,ins01y,oc2w_wd,ogvfl,valve_wd,ogvwd,dwfwd,oww2,dwfwd,oww2,dwfwd,
- o02s,dwrev,oww2,dwrev,oww2,dwrev,ir02sd);
-ir02s_lo: line=(mat01b,oc2w_wd,ogvfl,valve_wd,ogvwd,dwlo,ol02s,dwlo,ir02sd);
+ir02s: line=(mat01y,yo1_snk7,ins01y,oc2w_wd,ogvfl,valve_wd,ogvwd,yo1_dw0_3,oww2,yo1_dw0_2,oww2,yo1_dw0_1,
+ o02s,yi2_dw0_1,oww2,yi2_dw0_2,oww2,yi2_dw0_3,ogvwd,valve_wd,ogvfl,oc2w_wd,ins02y);

@@ -93,6 +93,10 @@ l04_3_02 = l3space - l04q3xtra - 2*lv125 - 2*lbel7_2 - 2*lwpump - l04_3_00 &
 
 yo4_dw0: sbend, l=lwd2/sinc(0.5*thw04), g=2*sin(0.5*thw04)/lwd2, e1=0.5*thw04, e2=0.5*thw04
 yi3_dw0: yo4_dw0, g=-yo4_dw0[g], e1=-yo4_dw0[e1], e2=-yo4_dw0[e2]
+yi3_dw0_1: yi3_dw0
+yi3_dw0_2: yi3_dw0
+yo4_dw0_1: yo4_dw0
+yo4_dw0_2: yo4_dw0
 
 kickinj: kicker, l=lkickinj
 sl_kick_mod01: kickinj
@@ -286,9 +290,9 @@ yi3_du3_hsr: line=(
  obel7_4ext,
  ot88_124,
  owdfl,
- yi3_dw0,
+ yi3_dw0_2,
  oww2,
- yi3_dw0,
+ yi3_dw0_1,
  owdfl,
  ot88_124,
  obel7_4ext,
@@ -326,7 +330,7 @@ ir04x:line=(
  o04_1,
  obelw11,
  ot88_124,
- owdfl, yo4_dw0, oww2, yo4_dw0, owdfl,
+ owdfl, yo4_dw0_1, oww2, yo4_dw0_2, owdfl,
  ov88,
  ot88_152,
  obel7_4ext, cav50_3, obel7_4ext, cav50_2, obel7_4ext, cav50_1,
