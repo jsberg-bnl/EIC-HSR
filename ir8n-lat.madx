@@ -56,7 +56,29 @@ yo8_cq4f4:line=(obfl4,yo8_b4,osb4,yo8_tq4,oqs4,yo8_qf4,ocq4,lmp08y04,ocfl);
 ldelrot = l7dummy + ldum1fl + lrotcwt + lbel4rot + lqb4c - lqb4 + lbfl - lbfl4;
 odelrot: drift, l=ldelrot;
 
-o08: drift, l=lc08;
+lcm591 = 4.6254; // Everything including gate valves, flange face to flange face
+lcav591 = 0.2775;
+o591_gv_cav: drift, l=1.2482;
+o591_cav_cav: drift, l=lcm591-2*(lcav591+o591_gv_cav->l);
+lcm591_1_ir8ctr = 13.4575; // First (absent) cryomodule flange face to ir8ctr
+ocm591_2_ir8ctr: drift, l = 0.687342;
+ocm591_3_ir8ctr: drift, l = 9.287466;
+ir8ctr: marker;
+o_cm591_2_y7q1: drift, l=0.5*lc08-lcm591-ocm591_2_ir8ctr->l;
+o_cm591_3_y8q1: drift, l=0.5*lc08-lcm591-ocm591_3_ir8ctr->l;
+cav591w: rfcavity, l=lcav591, harmon=7560;
+cav591d: rfcavity, l=lcav591, harmon=7560;
+cav591_1_1: cav591w;
+cav591_1_2: cav591d;
+cav591_2_1: cav591w;
+cav591_2_2: cav591d;
+cav591_3_1: cav591w;
+cav591_3_2: cav591d;
+cm591_1: line=(o591_gv_cav,cav591_1_1,o591_cav_cav,cav591_1_2,o591_gv_cav);
+cm591_2: line=(o591_gv_cav,cav591_2_1,o591_cav_cav,cav591_2_2,o591_gv_cav);
+cm591_3: line=(o591_gv_cav,cav591_3_1,o591_cav_cav,cav591_3_2,o591_gv_cav);
+
+o08: line=(o_cm591_2_y7q1,cm591_2,ocm591_2_ir8ctr,ir8ctr,ocm591_3_ir8ctr,cm591_3,o_cm591_3_y8q1);
 ir08n: line=(mat07y,yi7_snk7,ins07y,yi7_cq4c4,
  o4trans_new,oval88,yi7_b4w,o4trans,obelw7,owpump,obelw11,
  owdtrans,owdfl,yi7_dw0,owdfl,owdtrans,
