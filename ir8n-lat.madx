@@ -50,8 +50,8 @@ yo8_b3w: monitor, l=ltrpbpm;
 yo8_b4w: monitor, l=ltrpbpm;
 o08du3: drift, l=l3space-l08_du3_1-l08_du3_4-lwd2;
 
-yi7_cq4c4:line=(ocfl,lmp07y04,ocq4,yi7_qd4,oqs4,yi7_tq4,osb4,yi7_b4,obfl4);
-yo8_cq4f4:line=(obfl4,yo8_b4,osb4,yo8_tq4,oqs4,yo8_qf4,ocq4,lmp08y04,ocfl);
+yi7_cq4c4:line=(ocfl,yi7_cor4,ocq4,yi7_qd4,oqs4,yi7_tq4,osb4,yi7_b4,obfl4);
+yo8_cq4f4:line=(obfl4,yo8_b4,osb4,yo8_tq4,oqs4,yo8_qf4,ocq4,yo8_cor4,ocfl);
 
 ldelrot = l7dummy + ldum1fl + lrotcwt + lbel4rot + lqb4c - lqb4 + lbfl - lbfl4;
 odelrot: drift, l=ldelrot;
