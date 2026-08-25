@@ -74,6 +74,7 @@ h5_b410_i:overlay={h5_cor10[b4]:388.6028799999999*i},var={i}
 h5_b110_i:overlay={h5_cor10[b1]:0.030651719999999997*i},var={i}
 h5_cq8b10:line=(obfl,h5_b10,oqbms,h5_q10,ocq,h5_cor10,ocfl)
 
+h5_bv11:monitor
 h5_tq11:quadrupole,l=lsxt,field_master=t
 h5_tq11_i:overlay={h5_tq11[b1_gradient]:0.2381915*i/lsxt},var={i}
 h5_q11:quadrupole,l=lq,field_master=t
@@ -83,7 +84,7 @@ h5_tv11_i:overlay={h5_cor11[bl_vkick]:0.005612747*i},var={i}
 h5_b311_i:overlay={h5_cor11[b3]:12.346880000000004*i},var={i}
 h5_b411_i:overlay={h5_cor11[b4]:386.38592*i},var={i}
 h5_a111_i:overlay={h5_cor11[a1]:0.030435680000000007*i},var={i}
-h5_cqtc11:line=(obfl,osb,h5_tq11,oqs,h5_q11,ocq,h5_cor11,ocfl)
+h5_cqtc11:line=(obfl,h5_bv11,osb,h5_tq11,oqs,h5_q11,ocq,h5_cor11,ocfl)
 
 ! The IR6 snake, RHIC style
 yo5_int7_1 : obel78d
@@ -231,8 +232,10 @@ h6_q08:quadrupole,l=lq,field_master=t
 h6_q08_i:overlay={h6_q08[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h6_tq08:quadrupole,l=lsxt,field_master=t
 h6_tq08_i:overlay={h6_tq08[b1_gradient]:0.2381915*i/lsxt},var={i}
-h6_cqtb08:line=(ocfl,h6_cor08,ocq,h6_q08,oqs,h6_tq08,osb,obfl)
+h6_bh08:monitor
+h6_cqtb08:line=(ocfl,h6_cor08,ocq,h6_q08,oqs,h6_tq08,osb,h6_bh08,obfl)
 
+h6_b09:monitor
 h6_q09: quadrupole, l=lq, field_master=t
 h6_q09_i:overlay={h6_q09[b1_gradient]:0.016572460606060605/h6_q09[l]*i}, var={i}
 h6_cor09: kicker, l=lcor, field_master=t, scale_multipoles=f
@@ -240,7 +243,7 @@ h6_tv09_i:overlay={h6_cor09[bl_vkick]:0.005612747*i},var={i}
 h6_oct09_i:overlay={h6_cor09[b3]:12.346880000000004*i},var={i}
 h6_dec09_i:overlay={h6_cor09[b4]:386.38592*i},var={i}
 h6_qs09_i:overlay={h6_cor09[a1]:0.030435680000000007*i},var={i}
-h6_cq8c09: line=(obfl,oqbms,h6_q09,ocq,h6_cor09,ocfl)
+h6_cq8c09: line=(obfl,h6_b09,oqbms,h6_q09,ocq,h6_cor09,ocfl)
 
 h6_cor10: kicker, l=lcor, field_master=t, scale_multipoles=f
 h6_th10_i:overlay={h6_cor10[bl_hkick]:0.005619562*i},var={i}
@@ -251,7 +254,8 @@ h6_q10:quadrupole,l=lq,field_master=t
 h6_q10_i:overlay={h6_q10[b1_gradient]:0.016572460606060605*i/lq},var={i}
 h6_tq10:quadrupole,l=lsxt,field_master=t
 h6_tq10_i:overlay={h6_tq10[b1_gradient]:0.2381915*i/lsxt},var={i}
-h6_cqtb10:line=(ocfl,h6_cor10,ocq,h6_q10,oqs,h6_tq10,osb,obfl)
+h6_bh10:monitor
+h6_cqtb10:line=(ocfl,h6_cor10,ocq,h6_q10,oqs,h6_tq10,osb,h6_bh10,obfl)
 
 e275 = 275e9
 p275 = sqrt(e275*e275-m_proton*m_proton)
