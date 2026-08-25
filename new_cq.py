@@ -13,7 +13,7 @@ class db_parser:
         pw = getpass.getpass()
         conn = sybpydb.connect(user=user,password=pw,servername='OPSYB1')
         cur = conn.cursor()
-        cur.execute('use rhic')
+        cur.execute('use rhic99')
         # geometry
         cur.execute('select name, definition from geometry')
         self.geometry = { e1[0].rstrip() : e1[1].rstrip() for e1 in cur.fetchall() }
