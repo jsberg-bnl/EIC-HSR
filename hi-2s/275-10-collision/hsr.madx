@@ -6,7 +6,7 @@ call, file='rhic.madx';
 call, file='ir2.madx';
 call, file='ir4.madx';
 call, file='ir6.madx';
-call, file='ir8n.madx';
+call, file='ir8.madx';
 call, file='ir10.madx';
 call, file='ir12.madx';
 
