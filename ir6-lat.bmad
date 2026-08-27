@@ -255,9 +255,10 @@ h6_cqtb10:line=(ocfl,h6_cor10,ocq,h6_q10,oqs,h6_tq10,osb,obfl)
 
 e275 = 275e9
 p275 = sqrt(e275*e275-m_proton*m_proton)
+ac = 25e-3 ! Crossing angle
 
 ! Detector solenoid
-sol_rot = 0.025
+sol_rot = ac
 lsol_det = 2
 sol_half: solenoid, l=lsol_det, bs_field=0
 star_detect_f: sol_half, fringe_at=entrance_end
@@ -273,27 +274,35 @@ l_sol_pr: line=(pb_sol_r,star_detect_r,pe_sol_r)
 
 ! Layout near the IR
 ! Rear IR layout
-l06d_q1a=1.8
-l06d_q1b=1.4
-l06d_q2=3.5
-l06d_sol_q1a=3.3
-l06d_q1a_q1b=0.5
-l06d_q1b_q2=2.0
-l06d_q2_q3=22.95
-q1apr: quadrupole, l=l06d_q1a
-q1bpr: quadrupole, l=l06d_q1b
-q2pr: quadrupole, l=l06d_q2
-o06d_sol_q1a: drift, l=l06d_sol_q1a-lsol_det*tan(sol_rot)*tan(0.5*sol_rot)
-o06d_q1a_q1b: drift, l=l06d_q1a_q1b
-o06d_q1b_q2: drift, l=l06d_q1b_q2
-o06d_q2_q3: drift, l=l06d_q2_q3
+ly_q1apr = 1.8328
+lm_q1apr = ly_q1apr-0.2
+ly_q1bpr = 1.6092
+lm_q1bpr = ly_q1bpr-0.2
+ly_q2pr = 3.5443
+lm_q2pr = 2.9
+zc_q1apr = 6.1801
+zc_q1bpr = 8.3154
+zc_q2pr = 12.746
+zw_q3pr = 37.45
+zco_q2pr = 1.501 ! Offset of Q2pR center from yoke entrance
+q1apr: quadrupole, l=lm_q1apr
+q1bpr: quadrupole, l=lm_q1bpr
+q2pr: quadrupole, l=lm_q2pr
+
+o_q1apr_ev: drift, l=0.5*(ly_q1apr-lm_q1apr)
+o_q1bpr_ev: drift, l=0.5*(ly_q1bpr-lm_q1bpr)
+ow_q2pr_ev: drift, l=zco_q2pr-0.5*lm_q2pr
+od_q2pr_ev: drift, l=ly_q2pr-zco_q2pr-0.5*lm_q2pr
+o06d_sol_q1a: drift, l=zc_q1apr/cos(ac)-lsol_det-lsol_det*tan(sol_rot)*tan(0.5*sol_rot)-0.5*ly_q1apr
+o06d_q1a_q1b: drift, l=(zc_q1bpr-zc_q1apr)/cos(ac)-0.5*(ly_q1apr+ly_q1bpr)
+o06d_q1b_q2: drift, l=(zc_q2pr-zc_q1bpr)/cos(ac)-zco_q2pr-0.5*ly_q1bpr
+o06d_q2_q3: drift, l=zw_q3pr - zc_q2pr/cos(ac) - ly_q2pr + zco_q2pr
 
 ! b0pf layout
 ly_b0pf = 1.321
 lm_b0pf = 1.05
 zc_b0pf = 6.4
 ze = zc_b0pf - 0.5*ly_b0pf ! Distance along electron line to B0 entrance plane
-ac = 25e-3 ! Crossing angle
 xb0hf = 34e-3 ! Distance of B0 axis from electron line
 
 d1_pf: drift, l=ze/cos(ac) - sol_half[l] + sol_half[l]*sin(sol_rot)*tan(0.5*sol_rot)
@@ -435,9 +444,8 @@ OV_B2PF[ANGLE] = +1.67744943262118085E-002
 ! Lengths of RHIC modules used
 ltp2 = lflq2a+lq2+lcq2+lcor+lcfl2
 ! Length from IP to d1
-l6_ipq3=lsol_det+l06d_sol_q1a+l06d_q1a+l06d_q1a_q1b+l06d_q1b+l06d_q1b_q2+l06d_q2+l06d_q2_q3
 l6_ipq3_d1=lh6_qw+2*lh6_cor+2*lh6_qw_spc+2*l_crab_mag+lcrab+ltp2+lcqs+lhint
-l6_ipd1=l6_ipq3+l6_ipq3_d1
+l6_ipd1=zw_q3pr+l6_ipq3_d1
 ! Lengths of straights between dipoles
 l6_d1d2 = lhint + lcqt4 + lcqs + 3*lbelabi + l7dummy + 2*ldum1fl + ld5ofl
 l6_d2d3 = lcqs + 2*lbelabi + ld5ofl + ldfl
@@ -506,7 +514,8 @@ hsr6w: line=(
  l_sol_pf)
 
 hsr6d: line=(
- l_sol_pr, o06d_sol_q1a, q1apr, o06d_q1a_q1b, q1bpr, o06d_q1b_q2, q2pr,
+ l_sol_pr, o06d_sol_q1a, o_q1apr_ev, q1apr, o_q1apr_ev, o06d_q1a_q1b, o_q1bpr_ev, q1bpr, o_q1bpr_ev, o06d_q1b_q2,
+ ow_q2pr_ev, q2pr, od_q2pr_ev,
  o06d_q2_q3, h6_q3, oh6_wq_spc, h6_qs3, oh6_wq_spc, h6_tv3, o_crab_mag,
  o_crab_ip6r,
  o_crab_mag, 
