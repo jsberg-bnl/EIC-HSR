@@ -324,7 +324,7 @@ b0apf: sbend, l=lm_b0apf, field_master=t
 pet_b0apf: patch
 per_b0apf: patch
 ! Q1 forward
-lm_q1pf = 2.700
+lm_q1pf = 2.730
 ly_q1pf = 2.850
 oev_q1pf: drift, l=0.5*(ly_q1pf-lm_q1pf)
 q1pf: quadrupole, l=lm_q1pf
@@ -333,7 +333,7 @@ o06w_b0a_q1: drift
 pbt_q1pf: patch
 pbr_q1pf: patch
 ! Q2 forward
-lm_q2pf = 3.470
+lm_q2pf = 3.300
 ly_q2pf = 3.770
 oev_q2pf: drift, l=0.5*(ly_q2pf-lm_q2pf)
 q2pf: quadrupole, l=lm_q2pf
