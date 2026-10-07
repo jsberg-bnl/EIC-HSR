@@ -345,6 +345,7 @@ o06w_q2_b1: drift
 lm_b1pf = 1.635
 ly_b1pf = 2.096
 oev_b1pf: drift, l = 0.5*(ly_b1pf-lm_b1pf)
+oev_b1apf: oev_b1pf
 b1pf: sbend, field_master=t
 pet_b1pf: patch
 per_b1pf: patch
@@ -501,7 +502,7 @@ hsr6w: line=(
  o_crab_ip6f,
  o5_crab_b2, b2pf, o5_b2_q3, q3pf, o5_crab_zdc,
  o06w_ffdet,
- pbr_b1apf, pbt_b1apf, oev_b1pf, b1apf, oev_b1pf,
+ pbr_b1apf, pbt_b1apf, oev_b1apf, b1apf, oev_b1apf,
  o06w_b1_b1a,
  oev_b1pf, b1pf, oev_b1pf, pet_b1pf, per_b1pf,
  o06w_q2_b1,
