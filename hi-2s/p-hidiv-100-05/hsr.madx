@@ -1,6 +1,6 @@
 chdir, dir='../..';
 call, file='hsr.madx';
-chdir, dir='hi-2s/100-10-collision';
+chdir, dir='hi-2s/p-hidiv-100-05';
 
 call, file='rhic.madx';
 call, file='ir2.madx';
@@ -52,9 +52,9 @@ vary, name=h5_q07_i, step=0.1;
 vary, name=h5_q04_i, step=0.1;
 constraint, expr=table(twiss,ip6w,dx)=0;
 constraint, expr=table(twiss,ip6w,dpx)=0;
-constraint, expr=table(twiss,ip6w,betx)=0.63;
+constraint, expr=table(twiss,ip6w,betx)=0.61;
 constraint, expr=table(twiss,ip6w,alfx)=0.0;
-constraint, expr=table(twiss,ip6w,bety)=5.7e-2;
+constraint, expr=table(twiss,ip6w,bety)=5.5e-2;
 constraint, expr=table(twiss,ip6w,alfy)=0.0;
 jacobian, calls=64, tolerance=1e-24;
 endmatch;

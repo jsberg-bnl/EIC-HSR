@@ -1,6 +1,6 @@
 chdir, dir='../..';
 call, file='hsr.madx';
-chdir, dir='hi-2s/275-10-collision';
+chdir, dir='hi-2s/p-hidiv-275-18';
 
 call, file='rhic.madx';
 call, file='ir2.madx';
@@ -59,7 +59,7 @@ constraint, expr=table(twiss,ip6w,dx)=0;
 constraint, expr=table(twiss,ip6w,dpx)=0;
 constraint, weight=1e-3, expr=table(twiss,o_crab_mag[3],betx)=beta_crab+(0.5*o_crab_ip6f->l)^2/beta_crab;
 constraint, expr=table(twiss,o_crab_mag[3],alfx)=0.5*o_crab_ip6f->l/beta_crab;
-constraint, expr=table(twiss,ip6w,bety)=7.2e-2;
+constraint, expr=table(twiss,ip6w,bety)=7.1e-2;
 constraint, expr=table(twiss,ip6w,alfy)=0.0;
 jacobian, calls=64, tolerance=1e-24;
 endmatch;
