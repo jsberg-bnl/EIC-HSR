@@ -1,0 +1,4 @@
+set global plot_on=f
+call 'hsr-init.tao'
+call '../../hsr-plot.tao'
+set global plot_on=t
