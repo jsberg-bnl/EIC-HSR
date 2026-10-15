@@ -244,7 +244,7 @@
  datum(6)%data_type = 'expression:lat::beta.b[h6_q07->-0.5*l]-lat::beta.b[h6_q05->-0.5*l]'
  datum(7)%data_type = 'expression:lat::beta.a[h6_q06->-0.5*l]-lat::beta.a[o6_45]'
  datum(8)%data_type = 'expression:lat::beta.a[h6_q06->-0.5*l]-1.76*lat::beta.b[h6_q07->-0.5*l]'
- datum(1:4)%ele_start_name = 'h6_q05' 'h6_q05' 'ip6d' 'ip6d'
+ datum(1:4)%ele_start_name = 'h6_q05' 'h6_q06' 'ip6d' 'ip6d'
  datum(1:4)%merit_type = 'max' 'max' 'integral' 'integral'
  datum(1:8)%weight = 1e-9 1e-9 1e-8 1e-8 100 1e-2 1e-2 1e-2
  datum(1:8)%meas = 0 0 0 0 0 0 0 0
