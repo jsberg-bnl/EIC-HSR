@@ -10,12 +10,9 @@ dp = 7.4e-4
 nsx = 8
 nsy = 7
 
-! Temporary, delete me
-pau_u = sqrt((46.5/anomalous_moment_of(proton))^2-1)*m_proton
-
 beginning[e_tot] = ep
-b0pf[db_field] = b0pf[db_field]*pp/p275
-b0pf[b1_gradient] = b0pf[b1_gradient]*pp/p275
+
+ov_b0pf[dgint] = -1.69767029190806139E-03
 
 call, file='rhic.bmad'
 call, file='ir2.bmad'

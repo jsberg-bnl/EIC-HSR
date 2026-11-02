@@ -1,2 +1,6 @@
-k1_q1_6d: overlay = { q1apr[k1] : k1, q1bpr[k1] : k1 },
- var={k1}, k1=(q1apr[k1]*q1apr[l]+q1bpr[k1]*q1bpr[l])/(q1apr[l]+q1bpr[l])
+l_q1apr_1 = 1.8
+l_q1bpr_1 = 1.4
+k1_q1_6d: overlay = {
+ q1apr[k1] : k1l/q1apr[l]*l_q1apr_1/(l_q1apr_1+l_q1bpr_1),
+ q1bpr[k1] : k1l/q1bpr[l]*l_q1bpr_1/(l_q1apr_1+l_q1bpr_1) },
+ var={k1l}, k1l=q1apr[k1]*q1apr[l]+q1bpr[k1]*q1bpr[l]

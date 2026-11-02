@@ -1,5 +1,9 @@
 call, file='../../hsr.bmad'
 
+beginning[e_tot]           = e275
+
+ov_b0pf[dgint] = -1.69767029190806139E-03
+
 call, file='rhic.bmad'
 call, file='ir2.bmad'
 call, file='ir4.bmad'
@@ -7,7 +11,5 @@ call, file='ir6.bmad'
 call, file='ir8.bmad'
 call, file='ir10.bmad'
 call, file='ir12.bmad'
-
-beginning[e_tot]           = e275
 
 use, hsr_hi_8s_2s

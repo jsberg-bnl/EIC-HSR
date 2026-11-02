@@ -14,6 +14,8 @@ nsy = 6
 eaut0 = 21.480e9*197
 pau0 = sqrt(eaut0^2-mau^2)
 
+ov_b0pf[dgint] = -1.69767029190806139E-03
+
 call, file='rhic.bmad'
 call, file='ir2.bmad'
 call, file='ir4.bmad'
