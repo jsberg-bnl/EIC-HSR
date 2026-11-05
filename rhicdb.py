@@ -3,14 +3,14 @@ import re
 import ast
 import copy
 import itertools
-import sybpydb
+import pyodbc
 import getpass
 
 class db_parser:
     def __init__(self):
         user = input('Username: ')
         pw = getpass.getpass()
-        conn = sybpydb.connect(user=user,password=pw,servername='OPSYB1')
+        conn = pyodbc.connect('DSN=OPSYB1;UID='+user+';PWD='+pw)
         cur = conn.cursor()
         cur.execute('use rhic99')
         # geometry
