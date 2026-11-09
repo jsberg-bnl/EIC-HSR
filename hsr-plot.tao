@@ -56,7 +56,6 @@ set lat_layout ele_shape(27)%size = 0.5
 set graph dispersion draw_curve_legend=f
 set graph dispersion y%label = '\gy\fn\dX\u [m]'
 set curve dispersion.g.y draw_line=f
-set graph beta y%label_offset = -0.3
 set curve beta line_width=8
 set curve dispersion line_width=8
 scale dispersion -1 2
