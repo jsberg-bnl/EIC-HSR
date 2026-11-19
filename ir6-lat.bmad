@@ -364,16 +364,31 @@ ov_b1pf: overlay={
  b1apf[db_field] : db_field},
  var = {l,db_field}, l=lm_b1pf
 
-! New dipoles
-b_b2pf = 5
-g_b2pf = b_b2pf*c_light/p275
+! FC5 layout and placement
+fac_fc5_w2c = 0.997
+ly_b2pf = 3.6
+lm_b2pf = 3.244
+ly_q3pf = 0.521
+lm_q3pf = 0.34
+lc_q3b2pf = 2.289
+lc_q3_cryoc = 1.962
+l_b2end_crab = 1.47
+
+th_b2pf = +1.67744943262118085E-002
+o5_crab_b2: drift, l=(l_b2end_crab+0.5*ly_b2pf+lc_q3b2pf-lc_q3_cryoc-fac_fc5_w2c*0.5*ly_b2pf)/cos(0.5*th_b2pf)
+o5_b2_q3: drift, l=fac_fc5_w2c*((lc_q3b2pf-0.5*ly_b2pf)/cos(0.5*th_b2pf)-0.5*ly_q3pf)
+o_b2pf_ev: drift, l=0.5*(fac_fc5_w2c*ly_b2pf-lm_b2pf)/cos(0.5*th_b2pf)
+o_q3pf_ev: drift, l=0.5*(fac_fc5_w2c*ly_q3pf-lm_q3pf)
+o5_crab_zdc: drift
+
 b2pf: sbend
 ov_b2pf : overlay={
  b2pf[g] : 2*sin(0.5*angle)/l,
  b2pf[l] : l/sinc(0.5*angle),
  b2pf[e1] : 0.5*angle,
  b2pf[e2] : 0.5*angle},
- var = {angle,l}
+ var = {angle,l}, angle=th_b2pf, l=lm_b2pf
+q3pf: quadrupole, l=lm_q3pf
 
 oint: drift, l=0.3
 otpr: drift, l=0.25
@@ -390,7 +405,6 @@ o2fl: drift, l=2*ofl[l]
 lh6_qw=0.75
 lh6_cor=0.25
 lh6_qw_spc=0.15
-q3pf: quadrupole, l=0.6
 h6_q3: quadrupole, l=lh6_qw
 h6_tv3: vkicker, l=lh6_cor
 h6_qs3: quadrupole, tilt, l=lh6_cor
@@ -415,10 +429,6 @@ o_roman_pot_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=be
 o_off_mom_ip6_1: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-3.4
 o_off_mom_ip6_2: instrument, l=0.4, superimpose, ref=o06w_ffdet, ref_origin=end, offset=-4.9
 
-! Forward layout near crab
-o5_crab_b2: drift, l=(2*7.67+13.12)*0.0254+0.085+1
-o5_b2_q3: drift, l=0.5
-o5_crab_zdc: drift, l=1
 
 pt_ir6f =  1.23497950890099669E+009 ! Transverse momentum passed by apertures at 275 GeV, for information only
 ! Forward geometry
@@ -438,12 +448,11 @@ O06W_B1_B1A[L] = +7.49763671542599375E-001
 PBT_B1APF[X_OFFSET] = -2.95007411416087009E-002
 PBR_B1APF[X_PITCH] = +2.16358290768705989E-002
 O06W_FFDET[L] =  1.55648863496978738E+001
-OV_B2PF[L] = +3.26426180500760754E+000
-D9_PF[L] = +2.34340264852653091E+000
-O5Q11_ARC[L] = +3.07501547439718381E+000
+O5_CRAB_ZDC[L] = +1.03310631727044155E+000
+D9_PF[L] = +2.36620470542535788E+000
+O5Q11_ARC[L] = +3.05213497111629284E+000
 
 ! Far-forward detector layout
-OV_B2PF[ANGLE] = +1.67744943262118085E-002
 
 ! deisul geometry calculation
 ! Lengths of RHIC modules used
@@ -504,7 +513,7 @@ hsr6w: line=(
  d9_pf,
  h5_tp2i04, o_crab_mag,
  o_crab_ip6f,
- o5_crab_b2, b2pf, o5_b2_q3, q3pf, o5_crab_zdc,
+ o5_crab_b2, o_b2pf_ev, b2pf, o_b2pf_ev, o5_b2_q3, o_q3pf_ev, q3pf, o_q3pf_ev, o5_crab_zdc,
  o06w_ffdet,
  pbr_b1apf, pbt_b1apf, oev_b1apf, b1apf, oev_b1apf,
  o06w_b1_b1a,
